@@ -6,6 +6,7 @@
 //  Copyright 2005 __MyCompanyName__. All rights reserved.
 //
 
+#import "AppKitAdditions.h"
 #import "ViewIconViewController.h"
 #import "ViewAsIconViewCell.h"
 #import "VitaminSEEController.h"
@@ -19,16 +20,23 @@
 
 @implementation ViewIconViewController
 
+//-(id)init
+//{
+//	if(self = [super init])
+//	{
 -(void)awakeFromNib
 {
 	[ourBrowser setTarget:self];
-	[ourBrowser setAction:@selector(singleClick:)];
-	[ourBrowser setDoubleAction:@selector(doubleClick:)];	
-	[ourBrowser setCellClass:[ViewAsIconViewCell class]];
-	[ourBrowser setDelegate:self];
+		[ourBrowser setAction:@selector(singleClick:)];
+		[ourBrowser setDoubleAction:@selector(doubleClick:)];	
+		[ourBrowser setCellClass:[ViewAsIconViewCell class]];
+		[ourBrowser setDelegate:self];
+		
+		currentlySelectedCell = nil;
+	}
 	
-	currentlySelectedCell = nil;
-}
+//	return self;
+//}
 
 -(BOOL)canDelete
 {
@@ -86,7 +94,7 @@ createRowsForColumn:(int)column
 		id cell = [matrix cellAtRow:i column:0];
 		NSString* currentFile = [fileList objectAtIndex:i];
 		[cell setCellPropertiesFromPath:currentFile];
-	
+
 		// This doesn't properly detect the existance of a thumbnail...
 		if(buildThumbnails && [currentFile isImage] && 
 		   ![IconFamily fileHasCustomIcon:currentFile] )
@@ -101,6 +109,8 @@ createRowsForColumn:(int)column
 		}
 		else
 			[cell loadOwnIconOnDisplay];
+
+//		[cell setLoaded:NO];
 	}
 }
 
@@ -197,82 +207,18 @@ willDisplayCell:(id)cell
 	// will manage all our stuff...
 }
 
-
-// I should really make a SortedArray datastructure, since I repeat the binary
-// search way to many times...
-//
-// post-contest: to really fix this, I need to binary search and remove the old
-// file and binary search and add the new file. To both data strucutres. This
-// requires a SortedMutableArray as a prerequisite because I am NOT going to 
-// hand write another binary search... It'd be useful ALL over the place!
-//
-// So much of this code could be collapsed if I did the Right Thing[tm] and
-// made that class but I have no TIME since it is due MONDAY. 
--(void)renameFile:(NSString*)absolutePath to:(NSString*)newPath
-{
-	int low = -1;
-	int high = [fileList count];
-	int current;
-	
-	while(high - low > 1)
-	{
-		current = (high + low) / 2;
-		if([absolutePath caseInsensitiveCompare:[fileList objectAtIndex:current]] == 
-		   NSOrderedDescending)
-		{
-			low = current;
-		}
-		else
-		{
-			high = current;
-		}
-	}
-	
-	if(high == [fileList count] || [[fileList objectAtIndex:high] 
-		caseInsensitiveCompare:absolutePath] != NSOrderedSame)
-		NSLog(@"HUH!? %@ isn't in the current directory!?", absolutePath);
-	else
-	{
-		[fileList replaceObjectAtIndex:high withObject:newPath];
-		[fileList sortUsingSelector:@selector(caseInsensitiveCompare:)];
-		
-		// fix here later.
-		[ourBrowser loadColumnZero];
-		[ourBrowser setPath:[newPath lastPathComponent]];
-		[ourBrowser setNeedsDisplay];
-	}
-}
-
 // Binary search across our files for a certain node to remove. Much faster then
 // the previous linear search...
--(void)removeFileFromList:(NSString*)absolutePath
+-(void)removeFile:(NSString*)absolutePath
 {
-	int low = -1;
-	int high = [fileList count];
-	int current;
-	
-	while(high - low > 1)
-	{
-		current = (high + low) / 2;
-		if([absolutePath caseInsensitiveCompare:[fileList objectAtIndex:current]] == 
-		   NSOrderedDescending)
-		{
-			low = current;
-		}
-		else
-		{
-			high = current;
-		}
-	}
-	
-	if(high == [fileList count] || [[fileList objectAtIndex:high] 
-		caseInsensitiveCompare:absolutePath] != NSOrderedSame)
-		NSLog(@"HUH!? %@ isn't in the current directory!?", absolutePath);
-	else
-	{
-		[fileList removeObjectAtIndex:high];
+	unsigned index = [fileList binarySearchFor:absolutePath 
+		withSortSelector:@selector(caseInsensitiveCompare:)];
 
-		[[ourBrowser matrixInColumn:0] removeRow:high];
+	if(index != NSNotFound)
+	{
+		[fileList removeObjectAtIndex:index];
+
+		[[ourBrowser matrixInColumn:0] removeRow:index];
 		[[ourBrowser matrixInColumn:0] sizeToCells];
 		[ourBrowser setNeedsDisplay];
 		
@@ -280,6 +226,27 @@ willDisplayCell:(id)cell
 			// We better say no image.
 			[controller setCurrentFile:nil];
 	}
+}
+
+-(void)addFile:(NSString*)path
+{
+	unsigned index = [fileList lowerBoundToInsert:path withSortSelector:@selector(caseInsensitiveCompare:)];
+	
+	if(index != [fileList count])
+		[fileList insertObject:path atIndex:index];
+	else
+		[fileList addObject:path];
+	
+	NSMatrix* m = [ourBrowser matrixInColumn:0];
+	[m insertRow:index];
+	// FIXME: This needs to be generalized. What happens if this file doesn't have
+	// a thumbnail, a thumbnail request is generated, the file is moved, and then
+	// the thumbnail comes in!?
+	[[m cellAtRow:index column:0] loadOwnIconOnDisplay];
+	[self browser:ourBrowser willDisplayCell:[m cellAtRow:index column:0] 
+			atRow:index column:0];
+	[m sizeToCells];
+	[ourBrowser setNeedsDisplay];
 }
 
 // Returns the path of the next cell that would be selected if the current cell
@@ -312,8 +279,6 @@ willDisplayCell:(id)cell
 -(void)updateCell:(id)cell
 {
 	[[ourBrowser matrixInColumn:0] updateCell:cell];
-//	[ourBrowser updateCell:cell];
-	//	[ourBrowser setNeedsDisplay];
 }
 
 -(void)makeFirstResponderTo:(NSWindow*)window

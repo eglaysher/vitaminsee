@@ -12,6 +12,10 @@
 
 -(void)setPluginLayer:(PluginLayer*)pl;
 
+-(BOOL)fileIsInView:(NSString*)fileIsInView;
+
+-(BOOL)canDeleteCurrentFile;
+
 // Capabilities
 -(BOOL)canSetCurrentDirectory;
 -(BOOL)canGoEnclosingFolder;
@@ -24,5 +28,8 @@
 
 // View that gets displayed on the left hand side
 -(NSView*)view;
+
+// Set the thumbnail for file. If the 
+-(void)setThumbnail:(NSImage*)image forFile:(NSString*)path;
 
 @end

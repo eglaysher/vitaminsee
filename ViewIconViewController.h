@@ -35,13 +35,15 @@
 -(void)singleClick:(NSBrowser*)sender;
 -(void)doubleClick:(NSBrowser*)sender;
 
--(void)renameFile:(NSString*)absolutePath to:(NSString*)newPath;
--(void)removeFileFromList:(NSString*)absolutePath;
+//-(void)renameFile:(NSString*)absolutePath to:(NSString*)newPath;
+-(void)removeFile:(NSString*)absolutePath;
+-(void)addFile:(NSString*)path;
 -(NSString*)nameOfNextFile;
 -(void)selectFile:(NSString*)fileToSelect;
 -(void)updateCell:(id)cell;
 
 -(void)makeFirstResponderTo:(NSWindow*)window;
 
-- (void)clearCache;
+-(void)clearCache;
+
 @end

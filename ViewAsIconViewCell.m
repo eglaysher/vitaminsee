@@ -155,9 +155,7 @@ NSSize IMAGE_SIZE = {128.0f, 128.0f};
 	
 	// Blit the image. We regretably have to lock on this since otherwise we
 	// have a FREQUENT deadlock with one of IconFamily's carbon functions.
-//	pthread_mutex_lock(&imageTaskLock);
-		[iconImage compositeToPoint:imageFrame.origin operation:NSCompositeSourceOver];
-//	pthread_mutex_unlock(&imageTaskLock);
+	[iconImage compositeToPoint:imageFrame.origin operation:NSCompositeSourceOver];
 	
 	float newWidth = textFrame.size.width - 30.5f;
 

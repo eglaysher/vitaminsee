@@ -17,8 +17,6 @@
 	SEL returnSelector;
 }
 
-//-(void)showModal:(id)sender;
-//-(void)showSheet:(NSWindow*)parent;
 -(void)showSheet:(NSWindow*)window 
 	initialValue:(NSString*)initialValue
 		  target:(id)inTarget 

@@ -2,10 +2,6 @@
 
 #import <Cocoa/Cocoa.h>
 
-#import <pthread.h>
-
-//extern pthread_mutex_t imageTaskLock;
-
 @class ImageTaskManager;
 @class ThumbnailManager;
 @class ViewIconViewController;
@@ -44,14 +40,7 @@
 	IBOutlet NSWindow* viewerWindow;
 	IBOutlet NSScrollView* scrollView;
 
-	// Integrated plugins.
-	id _sortManagerController;
-	id _keywordManagerController;
-	id _gotoFolderController;
-
 	// File view components:
-	// * 
-//	id <FileView> currentFileView;
 	IBOutlet NSPopUpButton* directoryDropdown;
 	IBOutlet NSView* currentFileViewHolder;
 	NSView* currentFileView;
@@ -63,31 +52,31 @@
 	IBOutlet NSTextField * progressCurrentTask;
 		
 	// Actual application data--NOT OUTLETS!
-	NSImageRep* currentImageRep;
+//	NSImageRep* currentImageRep;
 	NSString* currentImageFile;
 
 	NSArray* currentDirectoryComponents;
 	NSString* currentDirectory;
 
 	// Scale data
-//	ScalingMethod scaleMethod;
 	bool scaleProportionally;
 	float scaleRatio;
 
 	NSUndoManager* pathManager;
 	
+	// Other threads that do work for us.
 	ImageTaskManager* imageTaskManager;
 	ThumbnailManager* thumbnailManager;
 	
-	SS_PrefsController *prefs;
+	SS_PrefsController *prefs;	
 	
 	// Loaded plugins:
-	NSMutableArray* loadedFilePlugins;
-	
-	// Dynamically loaded interface elemenets.
-	// Goto sheet
-	IBOutlet NSWindow* gotoFolderSheet;
-	IBOutlet NSTextField* gotoPath;
+	NSMutableArray* loadedFilePlugins;	
+
+	// Integrated plugins.
+	id _sortManagerController;
+	id _keywordManagerController;
+	id _gotoFolderController;	
 }
 
 -(void)displayAlert:(NSString*)message 

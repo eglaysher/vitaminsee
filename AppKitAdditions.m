@@ -3,12 +3,67 @@
 //  VitaminSEE
 //
 //  Created by Elliot on 3/23/05.
-//  Copyright 2005 __MyCompanyName__. All rights reserved.
 //
 // This file is filled with other people's code so their copyright notices are
 // included with their code.
 
 #import "AppKitAdditions.h"
+
+@implementation NSMutableArray (SortedMutableArray)
+
+-(unsigned)lowerBoundToInsert:(id)object withSortSelector:(SEL)sortSelector
+{
+	int low = -1;
+	int high = [self count];
+	int current;
+	
+	while(high - low > 1)
+	{
+		current = (high + low) / 2;
+		if((NSComparisonResult)[object performSelector:sortSelector withObject:[self objectAtIndex:current]]
+		   == NSOrderedDescending)
+		{
+			low = current;
+		}
+		else
+		{
+			high = current;
+		}
+	}
+	
+	return high;
+}
+
+-(void)insertObject:(id)object withSortSelector:(SEL)sortSelector
+{	
+	unsigned high = [self lowerBoundToInsert:object withSortSelector:sortSelector];
+	if(high != [self count])
+		[self insertObject:object atIndex:high];
+	else
+		[self addObject:object];
+}
+
+-(unsigned)binarySearchFor:(id)object withSortSelector:(SEL)sortSelector
+{
+	unsigned high = [self lowerBoundToInsert:object withSortSelector:sortSelector];
+	if(high == [self count] || [[self objectAtIndex:high] 
+		performSelector:sortSelector withObject:object] != NSOrderedSame)
+	{
+		high = NSNotFound;
+	}
+	
+	return high;
+}
+
+-(void)removeObject:(id)object withSortSelector:(SEL)sortSelector
+{
+	unsigned high = [self lowerBoundToInsert:object withSortSelector:sortSelector];
+	if(high != [self count])
+		[self removeObjectAtIndex:high];
+}
+
+@end
+
 
 // -----------------------------------------------------------------------------
 

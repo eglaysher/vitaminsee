@@ -10,6 +10,9 @@
 
 #import "VitaminSEEController.h"
 
+// Make this a PluginLayer a class that calls these methods on 
+// VitaminSEEController.
+
 @interface VitaminSEEController (PluginLayer)
 
 -(BOOL)supportsKeywords:(NSString*)file;
@@ -26,5 +29,8 @@
 
 -(void)copyThisFile:(NSString*)destination;
 -(int)copyFile:(NSString*)file to:(NSString*)destination;
+
+//-(void)generateThumbnailFor:(NSString*)path;
+//-(void)setThumbnailTo:(NSString*)path;
 
 @end

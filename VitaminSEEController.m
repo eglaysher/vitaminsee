@@ -20,8 +20,6 @@
 #import "ThumbnailManager.h"
 #import "GotoSheetController.h"
 
-//pthread_mutex_t imageTaskLock;
-
 @implementation VitaminSEEController
 
 /////////////////////////////////////////////////////////// WHAT HAS BEEN DONE:
@@ -39,7 +37,7 @@
 
 /** Bugs fixed:
   * Highlighting gets screwed up when deleting a file...
- */
+  */
 
 /** Polishes completed:
   * Hide "." files...
@@ -73,7 +71,7 @@
     * Knowing the name of the current image
     * Responding to UI events
   * FileDisplay
-    * Knows about the current directory
+    * Knows about the current directory. Draws stuff. Et cetera.
 
 */
 
@@ -197,11 +195,7 @@
 	
 	// Set our plugins to nil
 	loadedFilePlugins = [[NSMutableArray alloc] init];
-	_sortManagerController = nil;
-	
-	// This lock is used to ensure that Carbon parts of out code don't screw up
-	// and cause deadlock. 
-	//pthread_mutex_init(&imageTaskLock, 0);
+	_sortManagerController = nil;	
 	
 	// Use an Undo manager to manage moving back and forth.
 	pathManager = [[NSUndoManager alloc] init];	
@@ -237,7 +231,8 @@
 	[pathManager release];
 }
 
--(void)displayAlert:(NSString*)message informativeText:(NSString*)info helpAnchor:(NSString*)anchor
+-(void)displayAlert:(NSString*)message informativeText:(NSString*)info 
+		 helpAnchor:(NSString*)anchor
 {
 	NSAlert *alert = [[[NSAlert alloc] init] autorelease];
 	[alert addButtonWithTitle:@"OK"];
@@ -321,8 +316,8 @@
 	// Set this menu as the pull down...
 	[directoryDropdown setMenu:newMenu];
 	
-	// Now we figure out which view is currently in...view...and tell it to perform it's stuff
-	// appropriatly...
+	// Now we figure out which view is currently in...view...and tell it to 
+	// perform it's stuff appropriatly...
 	if(currentFileView == [viewAsIconsController view])
 		[viewAsIconsController setCurrentDirectory:newCurrentDirectory];
 	

@@ -8,9 +8,17 @@
 
 #import <Cocoa/Cocoa.h>
 
+// These additions to NSMUtableArray are my own:
+@interface NSMutableArray (SortedMutableArray)
+-(unsigned)lowerBoundToInsert:(id)object withSortSelector:(SEL)sortSelector;
+-(void)insertObject:(id)anObject withSortSelector:(SEL)sortSelector;
+-(unsigned)binarySearchFor:(id)object withSortSelector:(SEL)sortSelector;
+-(void)removeObject:(id)object withSortSelector:(SEL)sortSelector;
+@end
+
 // This category is from the BSDed Growl Project, and was written by Karl Adam.
 @interface NSWorkspace (GrowlAdditions)
-- (NSImage *) iconForApplication:(NSString *) inName;
+-(NSImage*)iconForApplication:(NSString*)inName;
 @end
 
 // This category is from Karelia Software. Full liscence in source.
@@ -20,6 +28,6 @@
 
 // This category is also from Karelia Software.
 @interface NSView (Set_and_get)
-- (void) setSubview:(NSView *)inView;
-- (id) subview;
+-(void)setSubview:(NSView *)inView;
+-(id)subview;
 @end

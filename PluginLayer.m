@@ -52,9 +52,10 @@
 												handler:nil];
 
 	if(ret)
-		[viewAsIconsController renameFile:currentImageFile to:newPath];
-//	else
-//		NSLog(@"Huh!?");
+	{
+		[viewAsIconsController removeFile:currentImageFile];
+		[viewAsIconsController addFile:newPath];
+	}
 }
 
 -(void)deleteThisFile
@@ -64,7 +65,7 @@
 	
 	// fixme: Functionate/refactor this.
 	NSString* nextFile = [viewAsIconsController nameOfNextFile];
-	[viewAsIconsController removeFileFromList:currentImageFile];
+	[viewAsIconsController removeFile:currentImageFile];
 	[viewAsIconsController selectFile:nextFile];
 	
 	[self setCurrentFile:nextFile];
@@ -74,6 +75,7 @@
 {
 	// We move the current file to the trash.
 	int tag;
+
 	[[NSWorkspace sharedWorkspace] performFileOperation:NSWorkspaceRecycleOperation
 												 source:[file stringByDeletingLastPathComponent]
 											destination:@""
@@ -85,45 +87,55 @@
 
 -(void)moveThisFile:(NSString*)destination
 {
-	if(![destination isEqual:currentDirectory])
-	{
-		NSString* nextFile = [viewAsIconsController nameOfNextFile];
-		[self moveFile:currentImageFile to:destination];
-		[viewAsIconsController removeFileFromList:currentImageFile];
-		[viewAsIconsController selectFile:nextFile];
-		
-		[self setCurrentFile:nextFile];
-	}
+	[self moveFile:currentImageFile to:destination];
 }
 
 -(int)moveFile:(NSString*)file to:(NSString*)destination
 {
-	// fixme: We need to select the next file in this directory!
-	// fixme: Code organization: We should move all these file operations into
-	//        a category...
-	int tag;
-	[[NSWorkspace sharedWorkspace] performFileOperation:NSWorkspaceMoveOperation
-												 source:[file stringByDeletingLastPathComponent]
-											destination:destination
-												  files:[NSArray arrayWithObject:[file lastPathComponent]]
-													tag:&tag];
+	int tag = 0;
+	if(![destination isEqual:[file stringByDeletingLastPathComponent]])
+	{
+		NSString* nextFile = [viewAsIconsController nameOfNextFile];
+
+		[[NSWorkspace sharedWorkspace]
+			performFileOperation:NSWorkspaceMoveOperation
+						  source:[file stringByDeletingLastPathComponent]
+					 destination:destination
+						   files:[NSArray arrayWithObject:[file lastPathComponent]]
+							 tag:&tag];
+
+		// fixme: Use fileIsInView:
+		
+		// Remove the current file from 
+		[viewAsIconsController removeFile:currentImageFile];
+		[viewAsIconsController selectFile:nextFile];
+		
+		[self setCurrentFile:nextFile];		
+	}
 	return tag;
 }
 
 -(void)copyThisFile:(NSString*)destination
 {
-	if(![destination isEqual:currentDirectory])
-		[self copyFile:currentImageFile to:destination];
+	[self copyFile:currentImageFile to:destination];
 }
 
 -(int)copyFile:(NSString*)file to:(NSString*)destination
 {
-	int tag;
-	[[NSWorkspace sharedWorkspace] performFileOperation:NSWorkspaceCopyOperation
-												 source:[file stringByDeletingLastPathComponent]
-											destination:destination
-												  files:[NSArray arrayWithObject:[file lastPathComponent]]
-													tag:&tag];
+	int tag = 0;
+	if(![destination isEqual:[file stringByDeletingLastPathComponent]])
+	{
+		[[NSWorkspace sharedWorkspace] 
+			performFileOperation:NSWorkspaceCopyOperation
+						  source:[file stringByDeletingLastPathComponent]
+					 destination:destination 
+						   files:[NSArray arrayWithObject:[file lastPathComponent]]
+							 tag:&tag];
+		
+		// Calculate the destination name
+		NSString* destinationFullPath = [destination stringByAppendingString:[file lastPathComponent]];
+		[viewAsIconsController addFile:destinationFullPath];
+	}
 	return tag;
 }
 
