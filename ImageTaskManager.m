@@ -284,14 +284,14 @@
 
 -(void)doDisplayImage:(NSString*)path
 {
-	// Now we lock the image queue and see if we have a new file
+	// Before we aquire our internal lock, tell the main application to start
+	// spinning...
+	[cqViewController startProgressIndicator];
 
-	// Okay! Now we have to
-	
 	NSImageRep* imageRep;
 	pthread_mutex_lock(&imageCacheLock);
 	NSDictionary* cacheEntry = [imageCache objectForKey:path];
-
+	
 	// If the image isn't in the cache...
 	if(!cacheEntry)
 	{
@@ -401,6 +401,9 @@
 		
 		// Now display the final image:
 		[self sendDisplayCommandWithImage:imageToRet width:imageX height:imageY];
+		
+		// An image has been displayed so stop the spinner
+		[cqViewController stopProgressIndicator];
 	}
 }
 

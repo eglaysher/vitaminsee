@@ -45,9 +45,6 @@
 	thisCellsFullPath = path;
 
 	[self setStringValue:[thisCellsFullPath lastPathComponent]];
-	
-	// For now, let's hard code the icon.
-	//[self setIcon:[[NSImage alloc] initWithSize:NSMakeSize(128, 128)]];
 		
 	// We are going to have to do something with images here...
 	[self setEnabled:[thisCellsFullPath isReadable]];
@@ -55,11 +52,11 @@
 	// In the ViewAsIconView, there are no left directories...
 	[self setLeaf:YES]; 
 	
-	// Allow editing of the cell...
+//	// Allow editing of the cell...
 //	[self setCellAttribute:NSCellEditable to:YES];
 }
 
-- (void)setIconImage: (NSImage *)image {
+- (void)setIconImage:(NSImage*)image {
     [iconImage autorelease];
     iconImage = [image copy];
     

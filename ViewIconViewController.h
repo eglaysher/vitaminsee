@@ -36,4 +36,5 @@
 -(NSString*)nameOfNextFile;
 -(void)selectFile:(NSString*)fileToSelect;
 -(void)updateCell:(id)cell;
+
 @end

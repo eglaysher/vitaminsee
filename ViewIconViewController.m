@@ -48,18 +48,7 @@
 	
 	// Select the first file
 	[ourBrowser selectRow:0 inColumn:0];
-	[self singleClick:ourBrowser];
-	
-	// Now we build thumbnails for each image.
-//	int row = 0;
-//	NSEnumerator* e = [fileList objectEnumerator];
-//	while(path = [e nextObject])
-//	{
-////		NSLog(@"Working with path %@", path);
-//		if([path isImage])
-//			[imageTaskManager buildThumbnailFor:path row:row];
-//		row++;
-//	}
+	[self singleClick:ourBrowser];	
 }
 
 -(NSView*)view
@@ -88,21 +77,11 @@ createRowsForColumn:(int)column
 
 -(void)singleClick:(NSBrowser*)sender
 {
-	// Check to see if the user clicked on the cell already selected.
-//	id selectedCell = [sender selectedCell];
-//	if(selectedCell == currentlySelectedCell)
-//	{
-//		[self editCurrentCell:sender];
-//		return;
-//	}
-	
 	// grab the image path
 	NSString* absolutePath = [[sender path] fileWithPath:currentDirectory];
 	NSMutableArray* preloadList = [NSMutableArray array];
 	
 	[controller setCurrentFile:absolutePath];
-	
-//	currentlySelectedCell = selectedCell;
 	
 	// If this is a directory, preload the first file of
 	if([absolutePath isDir])
@@ -158,36 +137,6 @@ createRowsForColumn:(int)column
 	// [controller setCurrentDirectory:] will call [self setCurrentDirectory:] which
 	// will manage all our stuff...
 }
-
-//-(void)editCurrentCell:(NSBrowser*)sender
-//{
-//	NSCell *selectedCell = [sender selectedCell];
-//	NSRect cellFrame;
-//	NSMatrix *theMatrix;
-//	int selectedRow, selectedColumn;
-//	
-//	//these might be slightly different depending on what cell you
-//	// want to edit
-//	selectedColumn = [sender selectedColumn];
-//	selectedRow = [sender selectedRowInColumn:selectedColumn];
-//	
-//	theMatrix = [sender matrixInColumn:selectedColumn];
-//	
-//	//note that the matrix itself only has one column, so we pass in 0
-//	cellFrame = [theMatrix cellFrameAtRow:selectedRow column:0];
-//	[selectedCell setEditable:YES];
-//	[selectedCell editWithFrame:cellFrame
-//						 inView:theMatrix
-//						 editor:[[sender window] fieldEditor:YES 
-//												   forObject:selectedCell]
-//		
-//					   delegate:self
-//						  event:nil]; 
-//	[selectedCell setEditable:NO];
-////	[selectedCell update
-//		[theMatrix updateCell:selectedCell];
-////	[theMatrix set`
-//}
 
 // GRRRRR: This is STILL O(n). I lied in the last commit comments!
 -(void)removeFileFromList:(NSString*)absolutePath

@@ -21,6 +21,7 @@
  * Rework FSBrowserCell's 
  - (void)drawInteriorWithFrame:(NSRect)cellFrame inView:(NSView *)controlView;
 	for my own purposes
+ * Keywords
  * Find out the legality of using Apple icons...
  * Implement the backHistory/forwardHistory!
  * All kinds of file operations.
@@ -28,6 +29,8 @@
  * Complete preferences for sort manager (the way GQView does it violates HIG)
  * Get drag on image for moving around an image...
  * Modify IconFamily to have a black line around the image...
+ * Zoom is still screwing up in some places...
+ * Integrate into the [Computer name]/[Macintosh HD]/.../ hiearachy...
  */
 
 // Set up this application's default preferences
@@ -73,8 +76,7 @@
 	[[fileSizeLabel cell] setFormatter:fsFormatter];
 	
 	[self setupToolbar];
-	scaleProportionally = NO;
-
+	[self zoomToFit:self];
 	
 	// 
 	
@@ -190,8 +192,7 @@
 	[viewAsIconsController removeFileFromList:currentImageFile];
 	[viewAsIconsController selectFile:nextFile];
 	
-	if(nextFile)
-		[self setCurrentFile:nextFile];
+	[self setCurrentFile:nextFile];
 }
 
 -(IBAction)showSortManager:(id)sender
@@ -229,7 +230,6 @@
 
 -(void)directoryMenuSelected:(id)sender
 {
-	// Stub...
 	NSString* newDirectory = [NSString pathWithComponents:
 		[currentDirectoryComponents subarrayWithRange:NSMakeRange(0,[sender tag])]];
 	[self setCurrentDirectory:newDirectory];
@@ -237,8 +237,11 @@
 
 - (void)setCurrentFile:(NSString*)newCurrentFile
 {
+	[currentImageFile release];
 	currentImageFile = newCurrentFile;
 	[currentImageFile retain];
+	
+//	NSLog(@"Setting to %@", newCurrentFile);
 	
 	// Okay, we don't know what kind of thing we have been passed, so let's
 	BOOL isDir = [newCurrentFile isDir];
@@ -307,6 +310,29 @@
 	[self redraw];
 }
 
+-(void)zoomIn:(id)sender
+{
+	scaleProportionally = YES;
+	NSLog(@"ScaleRatio: %f Sum: %f", scaleRatio, scaleRatio + 0.10f);
+	scaleRatio = scaleRatio + 0.10f;
+	NSLog(@"Sum %f", scaleRatio);
+	[self redraw];
+}
+
+-(void)zoomOut:(id)sender
+{
+	scaleProportionally = YES;
+	scaleRatio = scaleRatio - 0.10;
+	[self redraw];
+}
+
+-(void)zoomToFit:(id)sender
+{
+	scaleProportionally = NO;
+	scaleRatio = 1.0;
+	[self redraw];
+}
+
 // Redraw the window when the window resizes.
 -(void)windowDidResize:(NSNotification*)notification
 {
@@ -329,6 +355,10 @@
 	NSImage* image = [imageTaskManager getCurrentImageWithWidth:&x height:&y];
 	[imageViewer setImage:image];
 	[imageViewer setFrameSize:[image size]];
+	
+	if(!scaleProportionally)
+		scaleRatio = min(buildRatio([image size].width, x), buildRatio([image size].height, y));
+
 	[imageSizeLabel setStringValue:[NSString stringWithFormat:@"%i x %i", 
 		x, y]];
 }
@@ -342,6 +372,17 @@
 	[viewAsIconsController updateCell:cell];
 }
 
+// Progress indicator control
+-(void)startProgressIndicator
+{
+	[progressIndicator setHidden:NO];
+	[progressIndicator startAnimation:self];
+}
 
+-(void)stopProgressIndicator
+{
+	[progressIndicator stopAnimation:self];
+	[progressIndicator setHidden:YES];
+}
 
 @end

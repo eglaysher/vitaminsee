@@ -40,6 +40,8 @@
 	
 	// * ViewAsImage specific components
 	IBOutlet ViewIconViewController* viewAsIconsController;
+
+	IBOutlet NSProgressIndicator* progressIndicator;
 	
 	// Actual application data--NOT OUTLETS!
 	NSImageRep* currentImageRep;
@@ -90,5 +92,9 @@
 - (void)windowDidResize:(NSNotification*)notification;
 -(void)displayImage;
 -(void)setIcon;
+
+// Progress indicator control
+-(void)startProgressIndicator;
+-(void)stopProgressIndicator;
 
 @end

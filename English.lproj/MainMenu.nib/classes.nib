@@ -19,6 +19,7 @@
                 fileSizeLabel = NSTextField; 
                 imageSizeLabel = NSTextField; 
                 imageViewer = NSImageView; 
+                progressIndicator = NSProgressIndicator; 
                 scaleSlider = NSSlider; 
                 scaleView = NSView; 
                 scrollView = NSScrollView; 

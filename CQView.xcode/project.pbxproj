@@ -416,6 +416,7 @@
 			path = ImageTaskManager.m;
 			refType = 4;
 			sourceTree = "<group>";
+			wrapsLines = 0;
 		};
 		8B5D5E2B07B8215E00957950 = {
 			fileRef = 8B5D5E2907B8215E00957950;
