@@ -1,0 +1,23 @@
+{
+    IBClasses = (
+        {
+            ACTIONS = {scaleView100Pressed = id; scaleViewPPressed = id; scaleViewSliderMoved = id; }; 
+            CLASS = CQViewController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {
+                browser = NSBrowser; 
+                fileSizeLabel = NSTextField; 
+                imageSizeLabel = NSTextField; 
+                imageViewer = NSImageView; 
+                infoView = NSView; 
+                scaleSlider = NSSlider; 
+                scaleView = NSView; 
+                scrollView = NSScrollView; 
+                viewerWindow = NSWindow; 
+            }; 
+            SUPERCLASS = NSObject; 
+        }, 
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }
+    ); 
+    IBVersion = 1; 
+}

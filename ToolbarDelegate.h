@@ -1,0 +1,21 @@
+//
+//  ToolbarDelegate.h
+//  CQView
+//
+//  Created by Elliot on 1/30/05.
+//  Copyright 2005 __MyCompanyName__. All rights reserved.
+//
+
+#import "CQViewController.h"
+
+@interface CQViewController (ToolbarDelegate)
+
+-(void)setupToolbar;
+
+- (NSToolbarItem *) toolbar: (NSToolbar *)toolbar
+	  itemForItemIdentifier: (NSString *) itemIdent 
+  willBeInsertedIntoToolbar:(BOOL) willBeInserted;
+
+- (NSArray *) toolbarDefaultItemIdentifiers: (NSToolbar *) toolbar;
+- (NSArray *) toolbarAllowedItemIdentifiers: (NSToolbar *) toolbar;
+@end
