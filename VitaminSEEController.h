@@ -90,6 +90,10 @@ extern pthread_mutex_t imageTaskLock;
 	IBOutlet NSTextField* gotoPath;
 }
 
+-(void)displayAlert:(NSString*)message 
+	informativeText:(NSString*)info 
+		 helpAnchor:(NSString*)anchor;
+
 -(id)loadComponentFromBundle:(NSString*)path;
 
 -(NSWindowController*)sortManagerController;

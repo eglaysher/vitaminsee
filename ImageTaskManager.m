@@ -383,7 +383,7 @@
 			[vitaminSEEController displayAlert:[NSString stringWithFormat:
 				@"Can not display %@", [path lastPathComponent] ]
 							   informativeText:@"Please chcek that it's a valid file"
-				];
+									helpAnchor:@"IMAGE_WONT_LOAD_ANCHOR"];
 			[vitaminSEEController stopProgressIndicator];
 			return;
 		}

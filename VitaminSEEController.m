@@ -57,19 +57,18 @@ pthread_mutex_t imageTaskLock;
 
   * Integrated Help
   * Icon for SortManager (but it's crapy)
+  * Icons for KeywordManager in Preferences (but it's even worse)
 */
 
 //////////////////////////////////////////////////////// WHAT NEEDS TO BE DONE:
 
 /* FIRST MILESTONE GOALS (Note that the milestones have gone apeshit...)
   * Work on making things feature complete.
-  * Icons for KeywordManager in Preferences.
   * Shave about 50k off of filesize by s/icns/png/;
 */
 
 /**
   Non-required improvements that would be a good idea:
-  * Prioritize thumbnail loading to currently visible files...
   * Fit to height/Fit to width
   */
 
@@ -228,7 +227,7 @@ pthread_mutex_t imageTaskLock;
 	[pathManager release];
 }
 
--(void)displayAlert:(NSString*)message informativeText:(NSString*)info
+-(void)displayAlert:(NSString*)message informativeText:(NSString*)info helpAnchor:(NSString*)anchor
 {
 	NSAlert *alert = [[[NSAlert alloc] init] autorelease];
 	[alert addButtonWithTitle:@"OK"];
@@ -237,11 +236,25 @@ pthread_mutex_t imageTaskLock;
 	if(info)
 		[alert setInformativeText:info];
 	
+	if(anchor)
+	{
+		[alert setHelpAnchor:anchor];
+		[alert setShowsHelp:YES];
+		[alert setDelegate:self];
+	}
+	
 	[alert setAlertStyle:NSWarningAlertStyle];
 	[alert beginSheetModalForWindow:mainVitaminSeeWindow
 					  modalDelegate:nil
 					 didEndSelector:nil
 						contextInfo:nil];
+}
+
+-(BOOL)alertShowHelp:(NSAlert *)alert 
+{	
+	[[NSHelpManager sharedHelpManager] openHelpAnchor:[alert helpAnchor]
+											   inBook:@"VitaminSEE Help"];
+    return YES;
 }
 
 // ============================================================================
@@ -454,9 +467,7 @@ pthread_mutex_t imageTaskLock;
 	{
 		id loaded = [self loadComponentFromBundle:@"GotoFolderSheet.bundle"];
 		if(loaded)
-		{
 			_gotoFolderController = loaded;
-		}
 	}
 	
 	return _gotoFolderController;	
