@@ -81,7 +81,6 @@
 //104
 		1058C7A0FEA54F0111CA2CBB = {
 			children = (
-				8BB0960907DD4A310034ABD5,
 				8B5EB13407CD254F00B43D06,
 				1058C7A1FEA54F0111CA2CBB,
 			);
@@ -154,12 +153,6 @@
 			isa = PBXProject;
 			mainGroup = 29B97314FDCFA39411CA2CEA;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 8BB0954B07DD49340034ABD5;
-					ProjectRef = 8BB0954A07DD49340034ABD5;
-				},
-			);
 			targets = (
 				8B8363A207E0E88E00F3C880,
 				8BEA491607D7A73E001ADD2E,
@@ -172,7 +165,7 @@
 		};
 		29B97314FDCFA39411CA2CEA = {
 			children = (
-				8BB0954A07DD49340034ABD5,
+				8B5B697407E82FF9001FC345,
 				8B6D010807CB178F009A76DA,
 				080E96DDFE201D6D7F000001,
 				29B97315FDCFA39411CA2CEA,
@@ -714,22 +707,397 @@
 			target = 8B5620BE07CEA5A5005990E1;
 			targetProxy = 8B5620E207CEA700005990E1;
 		};
-		8B57144207DD4BC500DA79FB = {
-			fileRef = 8BB0960907DD4A310034ABD5;
+		8B5B697407E82FF9001FC345 = {
+			children = (
+				8B5B697507E83033001FC345,
+				8B5B697607E83033001FC345,
+				8B5B697707E83033001FC345,
+				8B5B697807E83033001FC345,
+				8B5B697907E83033001FC345,
+				8B5B697A07E83033001FC345,
+				8B5B697B07E83033001FC345,
+				8B5B697C07E83033001FC345,
+				8B5B697D07E83033001FC345,
+				8B5B697E07E83033001FC345,
+				8B5B697F07E83033001FC345,
+				8B5B698007E83033001FC345,
+				8B5B698107E83033001FC345,
+				8B5B698207E83033001FC345,
+				8B5B698307E83033001FC345,
+				8B5B698407E83033001FC345,
+				8B5B698507E83033001FC345,
+				8B5B698607E83033001FC345,
+				8B5B698707E83033001FC345,
+				8B5B698807E83033001FC345,
+				8B5B698907E83033001FC345,
+				8B5B698A07E83033001FC345,
+				8B5B698B07E83033001FC345,
+				8B5B698C07E83033001FC345,
+				8B5B698D07E83033001FC345,
+				8B5B698E07E83033001FC345,
+				8B5B698F07E83033001FC345,
+				8B5B699007E83033001FC345,
+				8B5B699107E83033001FC345,
+				8B5B699207E83033001FC345,
+			);
+			isa = PBXGroup;
+			name = Exiv2;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B5B697507E83033001FC345 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.cpp;
+			name = canonmn.cpp;
+			path = Exiv2/canonmn.cpp;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B5B697607E83033001FC345 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.h;
+			name = canonmn.hpp;
+			path = Exiv2/canonmn.hpp;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B5B697707E83033001FC345 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.cpp;
+			name = datasets.cpp;
+			path = Exiv2/datasets.cpp;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B5B697807E83033001FC345 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.h;
+			name = datasets.hpp;
+			path = Exiv2/datasets.hpp;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B5B697907E83033001FC345 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.h;
+			name = error.hpp;
+			path = Exiv2/error.hpp;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B5B697A07E83033001FC345 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.cpp;
+			name = exif.cpp;
+			path = Exiv2/exif.cpp;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B5B697B07E83033001FC345 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.h;
+			name = exif.hpp;
+			path = Exiv2/exif.hpp;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B5B697C07E83033001FC345 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.cpp;
+			name = fujimn.cpp;
+			path = Exiv2/fujimn.cpp;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B5B697D07E83033001FC345 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.h;
+			name = fujimn.hpp;
+			path = Exiv2/fujimn.hpp;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B5B697E07E83033001FC345 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.cpp;
+			name = ifd.cpp;
+			path = Exiv2/ifd.cpp;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B5B697F07E83033001FC345 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.h;
+			name = ifd.hpp;
+			path = Exiv2/ifd.hpp;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B5B698007E83033001FC345 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.cpp;
+			name = image.cpp;
+			path = Exiv2/image.cpp;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B5B698107E83033001FC345 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.h;
+			name = image.hpp;
+			path = Exiv2/image.hpp;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B5B698207E83033001FC345 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.cpp;
+			name = iptc.cpp;
+			path = Exiv2/iptc.cpp;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B5B698307E83033001FC345 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.h;
+			name = iptc.hpp;
+			path = Exiv2/iptc.hpp;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B5B698407E83033001FC345 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.cpp;
+			name = makernote.cpp;
+			path = Exiv2/makernote.cpp;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B5B698507E83033001FC345 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.h;
+			name = makernote.hpp;
+			path = Exiv2/makernote.hpp;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B5B698607E83033001FC345 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.cpp;
+			name = metadatum.cpp;
+			path = Exiv2/metadatum.cpp;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B5B698707E83033001FC345 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.h;
+			name = metadatum.hpp;
+			path = Exiv2/metadatum.hpp;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B5B698807E83033001FC345 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.cpp;
+			name = nikonmn.cpp;
+			path = Exiv2/nikonmn.cpp;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B5B698907E83033001FC345 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.h;
+			name = nikonmn.hpp;
+			path = Exiv2/nikonmn.hpp;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B5B698A07E83033001FC345 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.h;
+			name = rcsid.hpp;
+			path = Exiv2/rcsid.hpp;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B5B698B07E83033001FC345 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.cpp;
+			name = sigmamn.cpp;
+			path = Exiv2/sigmamn.cpp;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B5B698C07E83033001FC345 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.h;
+			name = sigmamn.hpp;
+			path = Exiv2/sigmamn.hpp;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B5B698D07E83033001FC345 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.cpp;
+			name = tags.cpp;
+			path = Exiv2/tags.cpp;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B5B698E07E83033001FC345 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.h;
+			name = tags.hpp;
+			path = Exiv2/tags.hpp;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B5B698F07E83033001FC345 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.cpp;
+			name = types.cpp;
+			path = Exiv2/types.cpp;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B5B699007E83033001FC345 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.h;
+			name = types.hpp;
+			path = Exiv2/types.hpp;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B5B699107E83033001FC345 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.cpp;
+			name = value.cpp;
+			path = Exiv2/value.cpp;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B5B699207E83033001FC345 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.h;
+			name = value.hpp;
+			path = Exiv2/value.hpp;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B5B699307E83033001FC345 = {
+			fileRef = 8B5B697507E83033001FC345;
 			isa = PBXBuildFile;
 			settings = {
 			};
 		};
-		8B582E1007D8ED3900A08D09 = {
-			buildActionMask = 2147483647;
-			comments = "We need to copy the libpng and the exiv2 frameworks into us because the average person won't have libpng and the framework for exiv2 is a hack of the original source.";
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				8B57144207DD4BC500DA79FB,
-			);
-			isa = PBXCopyFilesBuildPhase;
-			runOnlyForDeploymentPostprocessing = 0;
+		8B5B699507E83034001FC345 = {
+			fileRef = 8B5B697707E83033001FC345;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B5B699807E83034001FC345 = {
+			fileRef = 8B5B697A07E83033001FC345;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B5B699A07E83034001FC345 = {
+			fileRef = 8B5B697C07E83033001FC345;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B5B699C07E83034001FC345 = {
+			fileRef = 8B5B697E07E83033001FC345;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B5B699E07E83034001FC345 = {
+			fileRef = 8B5B698007E83033001FC345;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B5B69A007E83034001FC345 = {
+			fileRef = 8B5B698207E83033001FC345;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B5B69A207E83034001FC345 = {
+			fileRef = 8B5B698407E83033001FC345;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B5B69A407E83034001FC345 = {
+			fileRef = 8B5B698607E83033001FC345;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B5B69A607E83034001FC345 = {
+			fileRef = 8B5B698807E83033001FC345;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B5B69A907E83034001FC345 = {
+			fileRef = 8B5B698B07E83033001FC345;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B5B69AB07E83034001FC345 = {
+			fileRef = 8B5B698D07E83033001FC345;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B5B69AD07E83034001FC345 = {
+			fileRef = 8B5B698F07E83033001FC345;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B5B69AF07E83034001FC345 = {
+			fileRef = 8B5B699107E83033001FC345;
+			isa = PBXBuildFile;
+			settings = {
+			};
 		};
 		8B5D5E2907B8215E00957950 = {
 			fileEncoding = 4;
@@ -1287,18 +1655,6 @@
 			target = 8B8363A207E0E88E00F3C880;
 			targetProxy = 8B8364CD07E0EEAE00F3C880;
 		};
-		8B83E90107DD625800D69310 = {
-			containerPortal = 8BB0954A07DD49340034ABD5;
-			isa = PBXContainerItemProxy;
-			proxyType = 1;
-			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
-			remoteInfo = Exiv2;
-		};
-		8B83E90207DD625800D69310 = {
-			isa = PBXTargetDependency;
-			name = "Exiv2 (from Exiv2.xcode)";
-			targetProxy = 8B83E90107DD625800D69310;
-		};
 		8B87410F07BA9D9F00EF7923 = {
 			fileEncoding = 4;
 			isa = PBXFileReference;
@@ -1706,52 +2062,6 @@
 		};
 		8BAF0F4E07CE6E5200B0C832 = {
 			fileRef = 8BAF0F4C07CE6E5200B0C832;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
-		8BB0954A07DD49340034ABD5 = {
-			isa = PBXFileReference;
-			lastKnownFileType = "wrapper.pb-project";
-			name = Exiv2.xcode;
-			path = Exiv2/Exiv2.xcode;
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		8BB0954B07DD49340034ABD5 = {
-			children = (
-				8BB0954C07DD49340034ABD5,
-			);
-			isa = PBXGroup;
-			name = Products;
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		8BB0954C07DD49340034ABD5 = {
-			fileType = wrapper.framework;
-			isa = PBXReferenceProxy;
-			path = Exiv2.framework;
-			refType = 3;
-			remoteRef = 8BB0957407DD49690034ABD5;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		8BB0957407DD49690034ABD5 = {
-			containerPortal = 8BB0954A07DD49340034ABD5;
-			isa = PBXContainerItemProxy;
-			proxyType = 2;
-			remoteGlobalIDString = 8D07F2C80486CC7A007CD1D0;
-			remoteInfo = Exiv2;
-		};
-		8BB0960907DD4A310034ABD5 = {
-			isa = PBXFileReference;
-			lastKnownFileType = wrapper.framework;
-			name = Exiv2.framework;
-			path = Exiv2/build/Exiv2.framework;
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		8BB0960A07DD4A310034ABD5 = {
-			fileRef = 8BB0960907DD4A310034ABD5;
 			isa = PBXBuildFile;
 			settings = {
 			};
@@ -2199,7 +2509,6 @@
 		8D1107260486CEB800E47090 = {
 			buildPhases = (
 				8B6D020207CB32C0009A76DA,
-				8B582E1007D8ED3900A08D09,
 				8D1107290486CEB800E47090,
 				8D11072C0486CEB800E47090,
 				8D11072E0486CEB800E47090,
@@ -2208,6 +2517,7 @@
 			buildRules = (
 			);
 			buildSettings = {
+				DEAD_CODE_STRIPPING = YES;
 				DEPLOYMENT_POSTPROCESSING = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Exiv2/build";
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -2216,7 +2526,7 @@
 				GCC_PREFIX_HEADER = VitaminSEE_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
-				PREBINDING = NO;
+				PREBINDING = YES;
 				PRODUCT_NAME = VitaminSEE;
 				WRAPPER_EXTENSION = app;
 			};
@@ -2226,7 +2536,6 @@
 				8B5620E307CEA700005990E1,
 				8BA1243907D26F1500614FF4,
 				8BEA495707D7A9D0001ADD2E,
-				8B83E90207DD625800D69310,
 				8B8364CE07E0EEAE00F3C880,
 			);
 			isa = PBXNativeTarget;
@@ -2291,6 +2600,20 @@
 				8BA124AF07D2816300614FF4,
 				8B443AFC07D7E0AB00C4D8E9,
 				8BEC495807DE40AC003868DD,
+				8B5B699307E83033001FC345,
+				8B5B699507E83034001FC345,
+				8B5B699807E83034001FC345,
+				8B5B699A07E83034001FC345,
+				8B5B699C07E83034001FC345,
+				8B5B699E07E83034001FC345,
+				8B5B69A007E83034001FC345,
+				8B5B69A207E83034001FC345,
+				8B5B69A407E83034001FC345,
+				8B5B69A607E83034001FC345,
+				8B5B69A907E83034001FC345,
+				8B5B69AB07E83034001FC345,
+				8B5B69AD07E83034001FC345,
+				8B5B69AF07E83034001FC345,
 			);
 			isa = PBXSourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2308,7 +2631,6 @@
 			files = (
 				8D11072F0486CEB800E47090,
 				8B5EB13507CD254F00B43D06,
-				8BB0960A07DD4A310034ABD5,
 			);
 			isa = PBXFrameworksBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
