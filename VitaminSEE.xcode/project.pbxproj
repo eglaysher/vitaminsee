@@ -1045,10 +1045,9 @@
 		8B5620C007CEA5A5005990E1 = {
 			isa = PBXFileReference;
 			lastKnownFileType = text.xml;
-			name = "SortManager-Info.plist";
-			path = "/Users/elliot/Projects/VitaminSEE/SortManager-Info.plist";
-			refType = 0;
-			sourceTree = "<absolute>";
+			path = "SortManager-Info.plist";
+			refType = 4;
+			sourceTree = "<group>";
 		};
 		8B5620C907CEA6A4005990E1 = {
 			fileRef = 8B5620C007CEA5A5005990E1;
@@ -1366,10 +1365,9 @@
 		8B6D01F907CB327F009A76DA = {
 			isa = PBXFileReference;
 			lastKnownFileType = text.xml;
-			name = "SortManagerPreferences-Info.plist";
-			path = "/Users/elliot/Projects/VitaminSEE/SortManagerPreferences-Info.plist";
-			refType = 0;
-			sourceTree = "<absolute>";
+			path = "SortManagerPreferences-Info.plist";
+			refType = 4;
+			sourceTree = "<group>";
 		};
 		8B6D01FC07CB329C009A76DA = {
 			fileRef = 8B6D01F907CB327F009A76DA;
@@ -1639,10 +1637,9 @@
 		8B8363A407E0E88E00F3C880 = {
 			isa = PBXFileReference;
 			lastKnownFileType = text.xml;
-			name = "GotoFolderSheet-Info.plist";
-			path = "/Users/elliot/Projects/VitaminSEE/GotoFolderSheet-Info.plist";
-			refType = 0;
-			sourceTree = "<absolute>";
+			path = "GotoFolderSheet-Info.plist";
+			refType = 4;
+			sourceTree = "<group>";
 		};
 		8B8363BC07E0E8B700F3C880 = {
 			fileRef = 8B8363A407E0E88E00F3C880;
@@ -1790,10 +1787,9 @@
 		8BA1243607D26EC700614FF4 = {
 			isa = PBXFileReference;
 			lastKnownFileType = text.xml;
-			name = "KeywordManagerPreferences-Info.plist";
-			path = "/Users/elliot/Projects/VitaminSEE/KeywordManagerPreferences-Info.plist";
-			refType = 0;
-			sourceTree = "<absolute>";
+			path = "KeywordManagerPreferences-Info.plist";
+			refType = 4;
+			sourceTree = "<group>";
 		};
 		8BA1243807D26F1500614FF4 = {
 			containerPortal = 29B97313FDCFA39411CA2CEA;
@@ -2052,10 +2048,9 @@
 		8BAF0F3F07CE6DAA00B0C832 = {
 			isa = PBXFileReference;
 			lastKnownFileType = text.xml;
-			name = "GeneralPreferences-Info.plist";
-			path = "/Users/elliot/Projects/VitaminSEE/GeneralPreferences-Info.plist";
-			refType = 0;
-			sourceTree = "<absolute>";
+			path = "GeneralPreferences-Info.plist";
+			refType = 4;
+			sourceTree = "<group>";
 		};
 		8BAF0F4407CE6E1800B0C832 = {
 			fileRef = 8BAF0F3F07CE6DAA00B0C832;
@@ -2373,10 +2368,9 @@
 		8BEA491807D7A73E001ADD2E = {
 			isa = PBXFileReference;
 			lastKnownFileType = text.xml;
-			name = "KeywordManager-Info.plist";
-			path = "/Users/elliot/Projects/VitaminSEE/KeywordManager-Info.plist";
-			refType = 0;
-			sourceTree = "<absolute>";
+			path = "KeywordManager-Info.plist";
+			refType = 4;
+			sourceTree = "<group>";
 		};
 		8BEA491B07D7A78F001ADD2E = {
 			fileRef = 8BEA491707D7A73E001ADD2E;

@@ -164,7 +164,7 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 132991923;
+			PBXPerProjectTemplateStateSaveDate = 133211432;
 			PBXPrepackagedSmartGroups_v2 = (
 				{
 					PBXTransientLocationAtTop = bottom;
@@ -341,7 +341,7 @@
 					};
 				},
 			);
-			PBXWorkspaceStateSaveDate = 132991923;
+			PBXWorkspaceStateSaveDate = 133211432;
 		};
 		perUserProjectItems = {
 			8B19092107ED312600BB5797 = 8B19092107ED312600BB5797;
@@ -358,6 +358,11 @@
 			8B443B1E07D7EC9A00C4D8E9 = 8B443B1E07D7EC9A00C4D8E9;
 			8B443B2007D7EC9A00C4D8E9 = 8B443B2007D7EC9A00C4D8E9;
 			8B443B2107D7EC9A00C4D8E9 = 8B443B2107D7EC9A00C4D8E9;
+			8BB7F45707F0A55700668047 = 8BB7F45707F0A55700668047;
+			8BB7F45C07F0A58F00668047 = 8BB7F45C07F0A58F00668047;
+			8BB7F45D07F0A58F00668047 = 8BB7F45D07F0A58F00668047;
+			8BB7F45E07F0A58F00668047 = 8BB7F45E07F0A58F00668047;
+			8BB7F46F07F0A71500668047 = 8BB7F46F07F0A71500668047;
 			8BE1FC9707E6191100698569 = 8BE1FC9707E6191100698569;
 			8BEA4A8307D7D104001ADD2E = 8BEA4A8307D7D104001ADD2E;
 			8BEA4A8607D7D104001ADD2E = 8BEA4A8607D7D104001ADD2E;
@@ -621,7 +626,7 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {762, 2095}}";
 			sepNavSelRange = "{1504, 0}";
-			sepNavVisRect = "{{0, 594}, {705, 428}}";
+			sepNavVisRect = "{{0, 592}, {705, 428}}";
 			sepNavWindowFrame = "{{227, 86}, {750, 502}}";
 		};
 	};
@@ -879,6 +884,56 @@
 			sepNavVisRect = "{{0, 256}, {685, 182}}";
 			sepNavWindowFrame = "{{-11, 173}, {750, 502}}";
 		};
+	};
+	8BB7F45707F0A55700668047 = {
+		fRef = 8BAF0F4C07CE6E5200B0C832;
+		isa = PBXTextBookmark;
+		name = "\t[oPanel setTitle:@\"Change startup folder\"];\n";
+		rLen = 45;
+		rLoc = 587;
+		rType = 0;
+		vrLen = 417;
+		vrLoc = 358;
+	};
+	8BB7F45C07F0A58F00668047 = {
+		fRef = 8B56209C07CEA204005990E1;
+		isa = PBXTextBookmark;
+		name = "PluginLayer.m: 54";
+		rLen = 0;
+		rLoc = 1504;
+		rType = 0;
+		vrLen = 648;
+		vrLoc = 1049;
+	};
+	8BB7F45D07F0A58F00668047 = {
+		fRef = 089C165DFE840E0CC02AAC07;
+		isa = PBXTextBookmark;
+		name = "English: 4";
+		rLen = 0;
+		rLoc = 127;
+		rType = 0;
+		vrLen = 127;
+		vrLoc = 0;
+	};
+	8BB7F45E07F0A58F00668047 = {
+		fRef = 8BAF0F4C07CE6E5200B0C832;
+		isa = PBXTextBookmark;
+		name = "\t[oPanel setTitle:@\"Change startup folder\"];\n";
+		rLen = 45;
+		rLoc = 587;
+		rType = 0;
+		vrLen = 417;
+		vrLoc = 358;
+	};
+	8BB7F46F07F0A71500668047 = {
+		fRef = 8BAF0F4C07CE6E5200B0C832;
+		isa = PBXTextBookmark;
+		name = "\t[oPanel setTitle:@\"Change startup folder\"];\n";
+		rLen = 45;
+		rLoc = 587;
+		rType = 0;
+		vrLen = 417;
+		vrLoc = 358;
 	};
 	8BC6660507BF542A0075F57F = {
 		isa = PBXFileReference;
