@@ -235,16 +235,31 @@ willDisplayCell:(id)cell
 		}
 }
 
+// Returns the path of the next cell that would be selected if the current cell
+// were to be removed.
+-(NSString*)nameOfNextFile
+{
+	NSMatrix* matrix = [ourBrowser matrixInColumn:0];
+	int selected = [matrix selectedRow];
+	NSString* nextFile = nil;
+	
+	// Get either the next or the previous cell
+	id cell = [matrix cellAtRow:(selected + 1) column:0];
+	if(!cell)
+		cell = [matrix cellAtRow:(selected - 1) column:0];
+	
+	// If we got a cell
+	if(cell)
+		nextFile = [cell cellPath];
+	
+	return nextFile;
+}
+
 -(void)selectFile:(NSString*)fileToSelect
 {
-//	NSLog(@"Setting filetoselect to %@", fileToSelect);
-	[ourBrowser setPath:[NSString pathWithComponents:[NSArray arrayWithObjects:
-		@"/", [fileToSelect lastPathComponent], nil]]];
-//	[[ourBrowser window] makeFirstResponder:ourBrowser];
-	
-	// Why the HELL doesn't that work!?
-//	[ourBrowser setNeedsDisplay];
-//	[[ourBrowser window] makeFirstResponder:ourBrowser];
+	if(fileToSelect)
+		[ourBrowser setPath:[NSString pathWithComponents:[NSArray arrayWithObjects:
+			@"/", [fileToSelect lastPathComponent], nil]]];
 }
 
 @end

@@ -157,69 +157,30 @@
 
 -(void)moveThisFile:(NSString*)destination
 {
-	// fixme: We need to select the next file in this directory!
-	// fixme: Code organization: We should move all these file operations into
-	//        a category...
-	int tag;
-	[[NSWorkspace sharedWorkspace] performFileOperation:NSWorkspaceMoveOperation
-												 source:currentDirectory
-											destination:destination
-												  files:[NSArray arrayWithObject:[currentImageFile lastPathComponent]]
-													tag:&tag];
-	
-	[viewAsIconsController removeFileFromList:currentImageFile];
+	if(![destination isEqual:currentDirectory])
+	{
+		NSString* nextFile = [viewAsIconsController nameOfNextFile];
+		[self moveFile:currentImageFile to:destination];
+		[viewAsIconsController removeFileFromList:currentImageFile];
+		[viewAsIconsController selectFile:nextFile];
+		
+		if(nextFile)
+			[self setCurrentFile:nextFile];
+	}
 }
 
--(void)copyThisFile:(NSString*)destination
-{
-	
-}
-
-// fixme: The delete function grows at O(n) to the number of files in the directory.
-// This is bullshit.
 -(IBAction)deleteThisFile:(id)sender
 {
-	NSString* fileToDelete = currentImageFile;
-	
-	// We need the next file after this so we have something to select after
-	// we delete this file.
-	NSArray* directoryContents = [[NSFileManager defaultManager] 
-			directoryContentsAtPath:currentDirectory];
-	int numberOfContents = [directoryContents count];
-	NSEnumerator* dirEnum = [directoryContents objectEnumerator];
-	NSString* nextFile;
-	NSString* nextFileWithFullPath;
-	while(nextFile = [dirEnum nextObject])
-	{
-		nextFileWithFullPath = [nextFile fileWithPath:currentDirectory];
-		if([nextFileWithFullPath isEqual:currentImageFile])
-		{
-			// fixme: I need to handle the case with the last file.
-			nextFile = [[dirEnum nextObject] fileWithPath:currentDirectory];
-			break;
-		}
-	}
-	// fixme: I don't handle the case where I have the last file. Menu needs disablement...
-	if(numberOfContents == 1)
-		nextFile = nil;
+	// Delete the current file...
+	[self deleteFile:currentImageFile];
 
-	// We move the current file to the trash.
-	int tag;
-	[[NSWorkspace sharedWorkspace] performFileOperation:NSWorkspaceRecycleOperation
-												 source:currentDirectory
-											destination:@""
-												  files:[NSArray arrayWithObject:[currentImageFile lastPathComponent]]
-													tag:&tag];
-
+	// fixme: Functionate/refactor this.
+	NSString* nextFile = [viewAsIconsController nameOfNextFile];
 	[viewAsIconsController removeFileFromList:currentImageFile];
+	[viewAsIconsController selectFile:nextFile];
 	
 	if(nextFile)
-	{
-		[viewAsIconsController selectFile:nextFile];
-	
-		// Finally, we set the file to the next file so we display something
 		[self setCurrentFile:nextFile];
-	}
 }
 
 -(IBAction)showSortManager:(id)sender

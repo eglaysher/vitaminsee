@@ -47,7 +47,7 @@
 		objectForKey:@"SortManagerPaths"] objectAtIndex:rowIndex];
 	NSString* destination = [cellProperties objectForKey:@"Path"];
 
-	NSLog(@"Moving file to %@", destination);
+	NSLog(@"Moving current file to %@", destination);
 	
 	[mainController moveThisFile:destination];
 //	[mainController moveCurrentFileToPath:destination];
