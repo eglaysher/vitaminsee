@@ -27,6 +27,7 @@
 	NSSize contentViewSize;
 	float scaleRatio;
 	BOOL scaleProportionally;
+	int smoothing;
 	pthread_mutex_t imageScalingProperties;
 	
 	NSImage* currentImage;
@@ -48,6 +49,7 @@
 -(void)buildThumbnail:(NSString*)path forCell:(id)cell;
 -(void)clearThumbnailQueue;
 
+-(void)setSmoothing:(int)newSmoothing;
 -(void)setScaleRatio:(float)newScaleRatio;
 -(void)setScaleProportionally:(BOOL)newScaleProportionally;
 -(void)setContentViewSize:(NSSize)newContentViewSize;

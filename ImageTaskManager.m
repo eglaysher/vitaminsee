@@ -14,6 +14,10 @@
 
 #define CACHE_SIZE 3
 
+#define NO_SMOOTHING 1
+#define LOW_SMOOTHING 2
+#define HIGH_SMOOTHING 3
+
 @interface ImageTaskManager (Private)
 -(id)evictImages;
 -(void)doBuildIcon:(NSDictionary*)options;
@@ -132,6 +136,13 @@
 	}
 	
 	[npool release];
+}
+
+-(void)setSmoothing:(int)newSmoothing
+{
+	pthread_mutex_lock(&imageScalingProperties);
+	smoothing = newSmoothing;
+	pthread_mutex_unlock(&imageScalingProperties);
 }
 
 -(void)setScaleRatio:(float)newScaleRatio
@@ -286,7 +297,6 @@
 		NSImage* image = [[NSImage alloc] initWithContentsOfFile:path];
 		iconFamily = [IconFamily iconFamilyWithThumbnailsOfImage:image];
 		[iconFamily setAsCustomIconForFile:path];
-//		thumbnail = [[iconFamily imageWithAllReps] retain];
 		thumbnail = [iconFamily imageWithAllReps];
 	}
 	else
@@ -393,10 +403,11 @@
 //	NSLog(@"Image:[%d, %d] Dispaly:[%d, %d]", imageX, imageY, display.width, display.height);
 	
 	NSImage* imageToRet;
-	if(imageRepIsAnimated(imageRep) || canGetAwayWithQuickRender)
+	if(smoothing == NO_SMOOTHING || imageRepIsAnimated(imageRep))
 	{
+		NSLog(@"Using quick rendering for %@...", path);
 		// Draw the image by just making an NSImage from the imageRep. This is
-		// done when the image will fit in the viewport, or when we are 
+		// done when the image will have no smoothing, or when we are 
 		// rendering an animated GIF.
 		imageToRet = [[[NSImage alloc] init] autorelease];
 		[imageToRet addRepresentation:imageRep];
@@ -422,12 +433,16 @@
 			[imageRep drawInRect:NSMakeRect(0,0,display.width,display.height)];
 		}
 		[imageToRet unlockFocus];		
+		NSLog(@"First pass of %@", path);
 		[self sendDisplayCommandWithImage:imageToRet width:imageX height:imageY];
 		
 		// Now give us a chance to BAIL if we've already been given another display
 		// command
 		if([self newDisplayCommandInQueue])
+		{
+			NSLog(@"Bailing because of new display command...");
 			return;
+		}
 		
 		// Draw the image onto a new NSImage using smooth scaling. This is done
 		// whenever the image isn't animated so that the picture will have 
@@ -436,13 +451,26 @@
 			display.height)] autorelease];
 		[imageToRet lockFocus];
 		{
-			[[NSGraphicsContext currentContext] 
-				setImageInterpolation:NSImageInterpolationHigh];
+			switch(smoothing)
+			{
+				case LOW_SMOOTHING:
+					NSLog(@"Low smoothing!");
+					[[NSGraphicsContext currentContext] 
+						setImageInterpolation:NSImageInterpolationLow];
+					break;
+				default:
+				case HIGH_SMOOTHING:
+					NSLog(@"High smoothing!");
+					[[NSGraphicsContext currentContext] 
+						setImageInterpolation:NSImageInterpolationHigh];
+			}
+
 			[imageRep drawInRect:NSMakeRect(0,0,display.width,display.height)];
 		}
 		[imageToRet unlockFocus];
 		
 		// Now display the final image:
+		NSLog(@"Second pass of %@", path);
 		[self sendDisplayCommandWithImage:imageToRet width:imageX height:imageY];
 	}
 	

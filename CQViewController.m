@@ -49,7 +49,7 @@
  */
 
 /*
-   NSString different function not pathComponenets. 
+   NSString different function not pathComponenets.
  
    The Mac OSX File System -[NSFileManager displayNameAtPath:]
  */
@@ -71,7 +71,7 @@
     * See "openHandCursor" and "closedHandCursor"
   * Drag and drop
   * Fullscreen
-* Integrated help
+  * Integrated help
 */
 
 /**
@@ -84,6 +84,12 @@
 
 /* FOURTH MILESTONE GOALS
   * Keywords
+    * Use an Outline View! i.e.
+      * [Series]
+        * [Da_Capo]
+		  * Nemu_Asakura
+		  * Miharu_...
+    
   * Integrate into the [Computer name]/[Macintosh HD]/.../ hiearachy...
   * Transparent Zip/Rar support
 */
@@ -109,6 +115,18 @@
 	[defaultPrefs setObject:[NSHomeDirectory() stringByAppendingPathComponent:
 		@"Pictures/Wallpaper/Nature Wallpaper"] forKey:@"DefaultStartupPath"];
     
+	// General preferences
+	[defaultPrefs setObject:[NSNumber numberWithInt:3] forKey:@"SmoothingTag"];
+	[defaultPrefs setObject:[NSNumber numberWithBool:YES] forKey:@"DisplayThumbnails"];
+	[defaultPrefs setObject:[NSNumber numberWithBool:YES] forKey:@"GenerateThumbnails"];
+	[defaultPrefs setObject:[NSNumber numberWithBool:NO] forKey:@"GenerateThumbnailsInArchives"];
+	
+	// Default keywords for the Keyword Inspector
+	NSArray* keywordInspectorDefaults = [NSArray arrayWithObjects:
+		[NSDictionary dictionaryWithObjectsAndKeys:@"Photograph", @"Keyword", 
+			nil], nil];
+	[defaultPrefs setObject:keywordInspectorDefaults forKey:@"CommonKeywords"];
+	
 	// Default sort manager array
 	NSArray* sortManagerPaths = [NSArray arrayWithObjects:
 		[NSDictionary dictionaryWithObjectsAndKeys:@"Pictures", @"Name",
@@ -367,7 +385,7 @@
 	}
 	else
 	{
-		NSLog(@"Not displaying %@", newCurrentFile);
+//		NSLog(@"Not displaying %@", newCurrentFile);
 		// Set the label to "---" since this isn't an image...
 		[imageSizeLabel setStringValue:@"---"];
 	}
@@ -385,6 +403,8 @@
 
 -(void)redraw
 {
+	[imageTaskManager setSmoothing:[[[NSUserDefaults standardUserDefaults]
+		objectForKey:@"SmoothingTag"] intValue]];
 	[imageTaskManager setScaleProportionally:scaleProportionally];
 	[imageTaskManager setScaleRatio:scaleRatio];
 	[imageTaskManager setContentViewSize:[scrollView contentSize]];
@@ -516,7 +536,7 @@
 		 [[NSBundle mainBundle] builtInPlugInsPath] bundleExtension:@"cqvPref"];
         
         // Set which panes are included, and their order.
-        [prefs setPanesOrder:[NSArray arrayWithObjects:@"Sort Manager", @"General", @"Updating", @"A Non-Existent Preference Pane", nil]];
+        [prefs setPanesOrder:[NSArray arrayWithObjects:@"General", @"Sort Manager", @"Updating", @"A Non-Existent Preference Pane", nil]];
     }
     
     // Show the preferences window.
