@@ -4,6 +4,9 @@
   and also, made it resizable. I was testing it the other day and the lack of 
   resizing screwed things up.
 * Allow drag and drop reordering in the Sort Manager Preferences.
+* Ability to disable Preloading Images.
+* Update help to reflect new Preload Images option.
+* Credits.rtf -> Credits.html. Now with links instead of URLs!
 
 0.5.2 Feature Release
 ---------------------

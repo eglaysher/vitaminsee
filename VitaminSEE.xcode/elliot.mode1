@@ -212,10 +212,10 @@
 						<key>PBXProjectModuleLabel</key>
 						<string>ViewIconViewController.m</string>
 						<key>bookmark</key>
-						<string>8B09B6170803141700FEC5FC</string>
+						<string>8BC29B7E08031525006DA3BA</string>
 						<key>history</key>
 						<array>
-							<string>8B09B60D0803141700FEC5FC</string>
+							<string>8B09B6170803141700FEC5FC</string>
 						</array>
 					</dict>
 					<key>SplitCount</key>
@@ -250,10 +250,10 @@
 						<key>PBXProjectModuleLabel</key>
 						<string>ViewIconViewController.m</string>
 						<key>bookmark</key>
-						<string>8B09B6180803141700FEC5FC</string>
+						<string>8BC29B7F08031525006DA3BA</string>
 						<key>history</key>
 						<array>
-							<string>8B09B60F0803141700FEC5FC</string>
+							<string>8B09B6180803141700FEC5FC</string>
 						</array>
 					</dict>
 					<key>SplitCount</key>
@@ -288,10 +288,10 @@
 						<key>PBXProjectModuleLabel</key>
 						<string>AppKitAdditions.m</string>
 						<key>bookmark</key>
-						<string>8B09B6190803141700FEC5FC</string>
+						<string>8BC29B8008031525006DA3BA</string>
 						<key>history</key>
 						<array>
-							<string>8B09B5F70803139E00FEC5FC</string>
+							<string>8B09B6190803141700FEC5FC</string>
 						</array>
 					</dict>
 					<key>SplitCount</key>
@@ -307,7 +307,7 @@
 				<key>PBXModuleWindowStatusBarHidden2</key>
 				<false/>
 				<key>RubberWindowFrame</key>
-				<string>274 0 750 502 0 0 1024 746 </string>
+				<string>274 4 750 502 0 0 1024 746 </string>
 			</dict>
 		</dict>
 		<dict>
@@ -326,10 +326,10 @@
 						<key>PBXProjectModuleLabel</key>
 						<string>VitaminSEEController.m</string>
 						<key>bookmark</key>
-						<string>8B09B61A0803141700FEC5FC</string>
+						<string>8BC29B8108031525006DA3BA</string>
 						<key>history</key>
 						<array>
-							<string>8B78BBF307FDECB800274803</string>
+							<string>8B09B61A0803141700FEC5FC</string>
 						</array>
 					</dict>
 					<key>SplitCount</key>
@@ -364,10 +364,10 @@
 						<key>PBXProjectModuleLabel</key>
 						<string>VitaminSEEController.h</string>
 						<key>bookmark</key>
-						<string>8B09B61B0803141700FEC5FC</string>
+						<string>8BC29B8208031525006DA3BA</string>
 						<key>history</key>
 						<array>
-							<string>8B78BBF407FDECB800274803</string>
+							<string>8B09B61B0803141700FEC5FC</string>
 						</array>
 					</dict>
 					<key>SplitCount</key>
@@ -402,10 +402,10 @@
 						<key>PBXProjectModuleLabel</key>
 						<string>ViewIconViewController.h</string>
 						<key>bookmark</key>
-						<string>8B09B61C0803141700FEC5FC</string>
+						<string>8BC29B8308031525006DA3BA</string>
 						<key>history</key>
 						<array>
-							<string>8B78BBF507FDECB800274803</string>
+							<string>8B09B61C0803141700FEC5FC</string>
 						</array>
 					</dict>
 					<key>SplitCount</key>
@@ -440,10 +440,10 @@
 						<key>PBXProjectModuleLabel</key>
 						<string>PluginLayer.h</string>
 						<key>bookmark</key>
-						<string>8B09B61D0803141700FEC5FC</string>
+						<string>8BC29B8408031525006DA3BA</string>
 						<key>history</key>
 						<array>
-							<string>8B78BBF607FDECB800274803</string>
+							<string>8B09B61D0803141700FEC5FC</string>
 						</array>
 					</dict>
 					<key>SplitCount</key>
@@ -639,9 +639,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>8B09B5D2080312F000FEC5FC</string>
+				<string>8BC29B6A08031501006DA3BA</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>8B09B5D3080312F000FEC5FC</string>
+				<string>8BC29B6B08031501006DA3BA</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -654,7 +654,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>134419479.96497095</real>
+	<real>134419749.87161627</real>
 	<key>ToolbarDisplayMode</key>
 	<integer>2</integer>
 	<key>ToolbarIsVisible</key>
@@ -669,15 +669,15 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>8B09B5D0080312EB00FEC5FC</string>
+		<string>8BC29B68080314FC006DA3BA</string>
 		<string>8B78BBA207FDEBBE00274803</string>
 		<string>8B78BB9E07FDEBBE00274803</string>
 		<string>8B78BB5A07FCDB8A00274803</string>
 		<string>8B78BB5E07FCDB8A00274803</string>
-		<string>1C0AD2B3069F1EA900FABCE6</string>
 		<string>8B09B5F9080313B900FEC5FC</string>
 		<string>/Users/elliot/Projects/VitaminSEE-development/VitaminSEE.xcode</string>
 		<string>8B78BBCC07FDEC6000274803</string>
+		<string>1C0AD2B3069F1EA900FABCE6</string>
 		<string>8B09B5DE0803136400FEC5FC</string>
 	</array>
 	<key>WindowString</key>
@@ -710,13 +710,13 @@
 										<key>PBXProjectModuleLabel</key>
 										<string>VitaminSEEController.m</string>
 										<key>bookmark</key>
-										<string>8B09B61E0803141700FEC5FC</string>
+										<string>8BC29B8508031525006DA3BA</string>
 										<key>history</key>
 										<array>
 											<string>8B78BB9507FDEBBA00274803</string>
 											<string>8B78BB9607FDEBBA00274803</string>
 											<string>8B78BB9707FDEBBA00274803</string>
-											<string>8B78BBF807FDECB800274803</string>
+											<string>8B09B61E0803141700FEC5FC</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -785,8 +785,8 @@
 			<true/>
 			<key>TableOfContents</key>
 			<array>
-				<string>8B09B5D0080312EB00FEC5FC</string>
-				<string>8B09B5D1080312EB00FEC5FC</string>
+				<string>8BC29B68080314FC006DA3BA</string>
+				<string>8BC29B69080314FC006DA3BA</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -795,7 +795,7 @@
 			<key>WindowString</key>
 			<string>244 105 713 518 0 0 1024 746 </string>
 			<key>WindowToolGUID</key>
-			<string>8B09B5D0080312EB00FEC5FC</string>
+			<string>8BC29B68080314FC006DA3BA</string>
 			<key>WindowToolIsVisible</key>
 			<false/>
 		</dict>
@@ -1101,8 +1101,8 @@
 										<string>yes</string>
 										<key>sizes</key>
 										<array>
-											<string>{{0, 0}, {363, 167}}</string>
-											<string>{{0, 176}, {363, 267}}</string>
+											<string>{{0, 0}, {366, 167}}</string>
+											<string>{{0, 176}, {366, 267}}</string>
 										</array>
 									</dict>
 									<key>VerticalSplitView</key>
@@ -1151,9 +1151,9 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C0AD2B3069F1EA900FABCE6</string>
-				<string>8B09B5DA080312F000FEC5FC</string>
+				<string>8BC29B7408031501006DA3BA</string>
 				<string>1CD0528B0623707200166675</string>
-				<string>8B09B5DB080312F000FEC5FC</string>
+				<string>8BC29B7508031501006DA3BA</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.run</string>

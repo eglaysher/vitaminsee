@@ -196,8 +196,6 @@
 	[[fileSizeLabel cell] setFormatter:fsFormatter];
 	
 	// Set up the menu icons
-	// CHNAGE THIS! It has to lookup and load the icons instead of just grabbing
-	// them form the Application bundle!
 	NSImage* img = [[NSWorkspace sharedWorkspace] iconForFile:NSHomeDirectory()];
 	[img setSize:NSMakeSize(16, 16)];
 	[homeFolderMenuItem setImage:img];

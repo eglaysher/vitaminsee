@@ -87,6 +87,7 @@ static NSString* GotoHomeID = @"Goto Home Toolbar Identifier";
 		[item setLabel:@"Finder"];
 		[item setPaletteLabel:@"Reveal in Finder"];
 		[item setToolTip:@"Reveal in Finder"];
+		// fixme: This slows stuff down. Perhaps I'd like to not suck?
 		[item setImage:[[NSWorkspace sharedWorkspace] iconForApplication:@"Finder"]];
 		[item setTarget:self];
 		[item setAction:@selector(revealInFinder:)];
@@ -96,6 +97,7 @@ static NSString* GotoHomeID = @"Goto Home Toolbar Identifier";
 		[item setLabel:@"Preview"];
 		[item setPaletteLabel:@"View in Preview"];
 		[item setToolTip:@"View in Preview"];
+		// fixme: This slows stuff down. Perhaps I'd like to not suck?
 		[item setImage:[[NSWorkspace sharedWorkspace] iconForApplication:@"Preview"]];
 		[item setTarget:self];
 		[item setAction:@selector(viewInPreview:)];		

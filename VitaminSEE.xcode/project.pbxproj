@@ -199,6 +199,7 @@
 		};
 		29B97317FDCFA39411CA2CEA = {
 			children = (
+				8B5279390801D48E0032F515,
 				8BB7F55C07F0B9B200668047,
 				8BC27DA707ECF9B300B56836,
 				8BBC35E907E222BF007C3B6B,
@@ -210,7 +211,6 @@
 				8B32703B07E137A400FBD945,
 				8B32703C07E137A400FBD945,
 				8BAD1DAF07DE8F9E000CBEA0,
-				8BA124E207D282B300614FF4,
 				8D1107310486CEB800E47090,
 				089C165CFE840E0CC02AAC07,
 				29B97318FDCFA39411CA2CEA,
@@ -847,6 +847,31 @@
 			settings = {
 			};
 		};
+		8B5279390801D48E0032F515 = {
+			children = (
+				8B52793A0801D48E0032F515,
+			);
+			isa = PBXVariantGroup;
+			name = Credits.html;
+			path = "";
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B52793A0801D48E0032F515 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = text.html;
+			name = English;
+			path = English.lproj/Credits.html;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B5279710801D4CB0032F515 = {
+			fileRef = 8B5279390801D48E0032F515;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
 		8B53806907DD6F6D00BA7CFF = {
 			buildActionMask = 8;
 			files = (
@@ -1386,7 +1411,6 @@
 				8B5620E107CEA6F1005990E1,
 				8B561D9307CE7627005990E1,
 				8B6D020307CB32CD009A76DA,
-				8BB7F55D07F0B9B200668047,
 				8BC8F96707F211F900C66290,
 			);
 			isa = PBXCopyFilesBuildPhase;
@@ -1431,14 +1455,6 @@
 			isa = PBXBuildFile;
 			settings = {
 			};
-		};
-		8B6D02EA07CBFC89009A76DA = {
-			isa = PBXFileReference;
-			lastKnownFileType = text.rtf;
-			name = English;
-			path = English.lproj/Credits.rtf;
-			refType = 4;
-			sourceTree = "<group>";
 		};
 		8B6FCF9807B1E200003F0000 = {
 			fileEncoding = 4;
@@ -1869,21 +1885,6 @@
 		};
 		8BA124AF07D2816300614FF4 = {
 			fileRef = 8BA124AD07D2816300614FF4;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
-		8BA124E207D282B300614FF4 = {
-			children = (
-				8B6D02EA07CBFC89009A76DA,
-			);
-			isa = PBXVariantGroup;
-			name = Credits.rtf;
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		8BA124E307D282B300614FF4 = {
-			fileRef = 8BA124E207D282B300614FF4;
 			isa = PBXBuildFile;
 			settings = {
 			};
@@ -2731,6 +2732,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B78BBD607FDEC7900274803,
+				8BB7F55D07F0B9B200668047,
+				8B5279710801D4CB0032F515,
 				8BC27DA807ECF9B300B56836,
 				8BBC35EA07E222BF007C3B6B,
 				8BBC35D707E221D4007C3B6B,
@@ -2743,7 +2746,6 @@
 				8BAD1DC507DE8FD0000CBEA0,
 				8D11072A0486CEB800E47090,
 				8D11072B0486CEB800E47090,
-				8BA124E307D282B300614FF4,
 			);
 			isa = PBXResourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
