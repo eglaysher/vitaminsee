@@ -96,14 +96,16 @@
 	return [ret stringByStandardizingPath];
 }
 
+// We don't return an autoreleased NSImage since autoreleased things don't seem
+// to be released properly across threads.
 - (NSImage*)iconImageOfSize:(NSSize)size {
     NSString *path = self;
     NSImage *nodeImage = nil;
     
-    nodeImage = [[NSWorkspace sharedWorkspace] iconForFile:path];
+    nodeImage = [[[NSWorkspace sharedWorkspace] iconForFile:path] copy];
     if (!nodeImage) {
         // No icon for actual file, try the extension.
-        nodeImage = [[NSWorkspace sharedWorkspace] iconForFileType:[path pathExtension]];
+        nodeImage = [[[NSWorkspace sharedWorkspace] iconForFileType:[path pathExtension]] copy];
     }
     [nodeImage setSize: size];
     

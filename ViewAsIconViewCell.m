@@ -31,6 +31,8 @@
 
 -(void)dealloc
 {
+	[title release];
+	[iconImage release];
 	[thisCellsFullPath release];
 }
 
@@ -63,8 +65,9 @@
 }
 
 - (void)setIconImage:(NSImage*)image {
-    [iconImage autorelease];
-    iconImage = [image copy];
+    [iconImage release];
+    iconImage = image;
+	[iconImage retain];
     
     // Make sure the image is going to display at the size we want.
     [iconImage setSize: NSMakeSize(ICON_SIZE,ICON_SIZE)];

@@ -130,6 +130,8 @@
 
 		[pool release];
 	}
+	
+	[npool release];
 }
 
 -(void)setScaleRatio:(float)newScaleRatio
@@ -280,10 +282,12 @@
 		building = YES;
 		[cqViewController startProgressIndicator:[NSString 
 			stringWithFormat:@"Building thumbnail for %@...", [path lastPathComponent]]];
-		NSImage* image = [[[NSImage alloc] initWithContentsOfFile:path] autorelease];
+		// I don't think there IS an autorelease...
+		NSImage* image = [[NSImage alloc] initWithContentsOfFile:path];
 		iconFamily = [IconFamily iconFamilyWithThumbnailsOfImage:image];
 		[iconFamily setAsCustomIconForFile:path];
-		thumbnail = [[iconFamily imageWithAllReps] retain];
+//		thumbnail = [[iconFamily imageWithAllReps] retain];
+		thumbnail = [iconFamily imageWithAllReps];
 	}
 	else
 	{

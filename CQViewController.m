@@ -17,7 +17,7 @@
 @implementation CQViewController
 
 // WHAT HAS BEEN DONE:
-/*
+/**
   * Select child folder on "Go Enclosing folder"
   * Actual size zoom button
   * Modify IconFamily to have a black line around thumbnail.
@@ -25,6 +25,10 @@
   * Icons in path viewer [to emphasise that they are folders.
   * Cell drawing
 */
+
+/** Bugs fixed:
+  * Highlighting gets screwed up when deleting a file...
+ */
 
 // WHAT NEEDS TO BE DONE:
 
@@ -40,6 +44,8 @@
 */
 
 /* THIRD MILSTONE GOALS
+  * Draging of the picture
+    * See "openHandCursor" and "closedHandCursor"
   * Drag and drop
   * Fullscreen
 */
@@ -442,6 +448,9 @@
 	
 	[cell setIconImage:thumbnail];
 	[viewAsIconsController updateCell:cell];
+	
+	// Release the current icon
+	[thumbnail release];
 }
 
 // Progress indicator control

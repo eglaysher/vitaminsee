@@ -65,10 +65,6 @@ createRowsForColumn:(int)column
 {
 	int i;
 	int count = [fileList count];
-//	[ourBrowser setCellClass:[ViewAsIconViewCell class]];
-//
-//	
-//	[matrix setCellClass:[ViewAsIconViewCell class]];
 	[matrix setMode:NSListModeMatrix];
 	[matrix renewRows:count columns:1];
 	for(i = 0; i < count; ++i)
@@ -92,7 +88,7 @@ createRowsForColumn:(int)column
 	{
 		NSEnumerator* dirEnum = [[[NSFileManager defaultManager] 
 			directoryContentsAtPath:currentDirectory] objectEnumerator];
-		NSMutableArray* myFileList = [[NSMutableArray array] retain];
+//		NSMutableArray* myFileList = [[NSMutableArray array] retain];
 		NSString* curFile;
 	
 		while(curFile = [dirEnum nextObject])
@@ -170,18 +166,8 @@ createRowsForColumn:(int)column
 	else
 	{
 		[fileList removeObjectAtIndex:high];
-		[ourBrowser reloadColumn:0];
+		[[ourBrowser matrixInColumn:0] removeRow:high];
 	}
-	
-//	int filesInDir = [fileList count];
-//	int i;
-//	for(i = 0; i < filesInDir; ++i)
-//		if([[fileList objectAtIndex:i] isEqual:absolutePath])
-//		{
-//			[fileList removeObjectAtIndex:i];
-//			[ourBrowser reloadColumn:0];
-//			break;
-//		}
 }
 
 // Returns the path of the next cell that would be selected if the current cell
@@ -224,7 +210,7 @@ createRowsForColumn:(int)column
 {
 	NSEnumerator* dirEnum = [[[NSFileManager defaultManager] 
 		directoryContentsAtPath:currentDirectory] objectEnumerator];
-	NSMutableArray* myFileList = [[NSMutableArray array] retain];
+	NSMutableArray* myFileList = [NSMutableArray array];
 	NSString* curFile;
 	while(curFile = [dirEnum nextObject])
 	{

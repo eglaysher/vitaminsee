@@ -292,6 +292,12 @@
 			[self setIconFamilyElement:kThumbnail32BitData fromBitmapImageRep:borderedBitmap128];
 			[self setIconFamilyElement:kThumbnail8BitMask  fromBitmapImageRep:borderedBitmap128];
 		}
+		else
+		{
+			// Something went wrong. Use the unbordered so at least there's some image...
+			[self setIconFamilyElement:kThumbnail32BitData fromBitmapImageRep:iconBitmap128x128];
+			[self setIconFamilyElement:kThumbnail8BitMask  fromBitmapImageRep:iconBitmap128x128];			
+		}
     }
 
     // Create an NSImage with the iconBitmap128x128 NSBitmapImageRep, that we

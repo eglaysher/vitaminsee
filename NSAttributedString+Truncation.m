@@ -40,6 +40,8 @@
 - (NSAttributedString *)truncateForWidth:(int) inWidth
 {
 	NSAttributedString* result = self;
+	
+	// Commented out for leak testing...
 	if ([self size].width > inWidth)
 	{
 		NSMutableAttributedString* newString = [[[NSMutableAttributedString alloc] init] autorelease];
