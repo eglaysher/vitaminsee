@@ -28,6 +28,11 @@
 	currentlySelectedCell = nil;
 }
 
+-(BOOL)canDelete
+{
+	return [fileList count] > 0;
+}
+
 -(void)setImageTaskManager:(ImageTaskManager*)itm
 {
 	imageTaskManager = itm;
@@ -212,8 +217,14 @@ createRowsForColumn:(int)column
 		NSLog(@"HUH!? %@ isn't in the current directory!?", absolutePath);
 	else
 	{
+		NSLog(@"Removing row %d", high);
 		[fileList removeObjectAtIndex:high];
 		[[ourBrowser matrixInColumn:0] removeRow:high];
+		[ourBrowser setNeedsDisplay];
+		
+		if([fileList count] == 0)
+			// We better say no image.
+			[controller setCurrentFile:nil];
 	}
 }
 

@@ -23,6 +23,7 @@
 	ImageTaskManager* imageTaskManager;
 }
 
+-(BOOL)canDelete;
 -(void)setImageTaskManager:(ImageTaskManager*)itm;
 
 -(void)setCurrentDirectory:(NSString*)path;

@@ -51,6 +51,8 @@
   * Reveal in Finder
   * VitaminSEE icon.
   * Go to folder sheet.
+
+  * Integrated Help
 */
 
 //////////////////////////////////////////////////////// WHAT NEEDS TO BE DONE:
@@ -73,7 +75,6 @@
 
 /* FIRST MILESTONE GOALS (Note that the milestones have gone apeshit...)
   * Work on making things feature complete.
-  * Integrated Help
   * Icons for SortManager and KeywordManager in Preferences.
 */
 
@@ -486,7 +487,7 @@
 	{
 		// We can delete this file as long as we've selected a file.
 		// fixme: this doesn't work...
-		enable = mainWindowVisible && (currentImageFile != nil);
+		enable = mainWindowVisible && [viewAsIconsController canDelete];
 	}
 	// View Menu
 	else if ([theMenuItem action] == @selector(actualSize:) ||
@@ -498,7 +499,7 @@
 	}
 	else if([theMenuItem action] == @selector(revealInFinder:))
 	{
-		enable = mainWindowVisible;
+		enable = mainWindowVisible && [viewAsIconsController canDelete];
 	}
 	else if([theMenuItem action] == @selector(viewInPreview:))
 	{
@@ -545,7 +546,7 @@
 	
 	// Okay, we don't know what kind of thing we have been passed, so let's
 	BOOL isDir = [newCurrentFile isDir];
-	if(newCurrentFile && isDir)
+	if((newCurrentFile && isDir) || !currentImageFile)
 		[fileSizeLabel setObjectValue:@"---"];
 	else
 		[fileSizeLabel setObjectValue:[NSNumber 
@@ -587,6 +588,8 @@
 	
 	if([currentImageFile isImage])
 		[imageTaskManager displayImageWithPath:currentImageFile];
+	else if(!currentImageFile)
+		[imageViewer setImage:nil];
 }
 
 -(IBAction)zoomIn:(id)sender

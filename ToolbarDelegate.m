@@ -22,6 +22,11 @@ static NSString* ActualSizeToolbarID = @"Actual Size Toolbar Identifier";
 static NSString* RevealInFinderToolbarID = @"View in Finder Toolbar Identifier";
 static NSString* ViewInPreviewToolbarID = @"Reveal in Finder Toolbar Identifier";
 
+static NSString* MoveToTrashID = @"Move Item to Trash Toolbar Identifier";
+
+static NSString* GotoPicturesID = @"Goto Pictures Toolbar Identifier";
+static NSString* GotoHomeID = @"Goto Home Toolbar Identifier";
+
 @implementation VitaminSEEController (ToolbarDelegate)
 
 -(void)setupToolbar {
@@ -94,6 +99,33 @@ static NSString* ViewInPreviewToolbarID = @"Reveal in Finder Toolbar Identifier"
 		[item setTarget:self];
 		[item setAction:@selector(viewInPreview:)];		
 	}
+	else if([itemIdent isEqual:MoveToTrashID])
+	{
+		[item setLabel:@"Delete"];
+		[item setPaletteLabel:@"Delete"];
+		[item setToolTip:@"Delete"];
+		[item setImage:[NSImage imageNamed:@"ToolbarDeleteIcon"]];
+		[item setTarget:self];
+		[item setAction:@selector(deleteFileClicked:)];				
+	}
+	else if([itemIdent isEqual:GotoHomeID])
+	{
+		[item setLabel:@"Home"];
+		[item setPaletteLabel:@"Home"];
+		[item setToolTip:@"Home"];
+		[item setImage:[NSImage imageNamed:@"HomeFolderIcon"]];
+		[item setTarget:self];
+		[item setAction:@selector(goToHomeFolder:)];				
+	}	
+	else if([itemIdent isEqual:GotoPicturesID])
+	{
+		[item setLabel:@"Pictures"];
+		[item setPaletteLabel:@"Pictures"];
+		[item setToolTip:@"Pictures"];
+		[item setImage:[NSImage imageNamed:@"ToolbarPicturesFolderIcon"]];
+		[item setTarget:self];
+		[item setAction:@selector(goToPicturesFolder:)];
+	}
 	else
 		item = nil;
 
@@ -112,7 +144,7 @@ static NSString* ViewInPreviewToolbarID = @"Reveal in Finder Toolbar Identifier"
 - (NSArray *) toolbarAllowedItemIdentifiers: (NSToolbar *) toolbar
 {
 	return [NSArray arrayWithObjects:RevealInFinderToolbarID, ViewInPreviewToolbarID, 
-		ZoomInToolbarID, ZoomOutToolbarID,
+		MoveToTrashID, GotoPicturesID, GotoHomeID, ZoomInToolbarID, ZoomOutToolbarID,
 		ZoomToFitToolbarID, ActualSizeToolbarID, NSToolbarSeparatorItemIdentifier,
 		NSToolbarSpaceItemIdentifier, NSToolbarFlexibleSpaceItemIdentifier,
 		NSToolbarCustomizeToolbarItemIdentifier, nil];
@@ -125,7 +157,11 @@ static NSString* ViewInPreviewToolbarID = @"Reveal in Finder Toolbar Identifier"
 
 	if([identifier isEqual:RevealInFinderToolbarID])
 	{
-		enable = YES;
+		enable = [viewAsIconsController canDelete];
+	}
+	else if([identifier isEqual:MoveToTrashID])
+	{
+		enable = [viewAsIconsController canDelete];
 	}
     else if ([identifier isEqual:ZoomInToolbarID] || 
 			 [identifier isEqual:ZoomOutToolbarID] ||
@@ -135,7 +171,9 @@ static NSString* ViewInPreviewToolbarID = @"Reveal in Finder Toolbar Identifier"
 	{
 		// We can only do these actions if the file is an image.
         enable = [currentImageFile isImage];
-    } else if ([[toolbarItem itemIdentifier] isEqual:NSToolbarPrintItemIdentifier]){
+    } else if ([identifier isEqual:GotoPicturesID] ||
+			   [identifier isEqual:GotoHomeID])
+	{
         // always enable print for this window
         enable = YES;
     }

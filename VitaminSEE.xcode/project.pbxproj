@@ -210,6 +210,9 @@
 		};
 		29B97317FDCFA39411CA2CEA = {
 			children = (
+				8BBC35E907E222BF007C3B6B,
+				8BBC35D607E221D4007C3B6B,
+				8BBC34B907E13E52007C3B6B,
 				8B7BD1E107DFB7A80050FB25,
 				8B32703907E137A400FBD945,
 				8B32703A07E137A400FBD945,
@@ -1737,6 +1740,45 @@
 			settings = {
 			};
 		};
+		8BBC34B907E13E52007C3B6B = {
+			isa = PBXFileReference;
+			lastKnownFileType = image.icns;
+			path = ToolbarDeleteIcon.icns;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8BBC34BA07E13E53007C3B6B = {
+			fileRef = 8BBC34B907E13E52007C3B6B;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8BBC35D607E221D4007C3B6B = {
+			isa = PBXFileReference;
+			lastKnownFileType = image.icns;
+			path = ToolbarPicturesFolderIcon.icns;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8BBC35D707E221D4007C3B6B = {
+			fileRef = 8BBC35D607E221D4007C3B6B;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8BBC35E907E222BF007C3B6B = {
+			isa = PBXFileReference;
+			lastKnownFileType = image.icns;
+			path = HomeFolderIcon.icns;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8BBC35EA07E222BF007C3B6B = {
+			fileRef = 8BBC35E907E222BF007C3B6B;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
 		8BBE9AB807E0F1BB007EAE01 = {
 			children = (
 				8BBE9AB907E0F1BB007EAE01,
@@ -2166,6 +2208,9 @@
 		8D1107290486CEB800E47090 = {
 			buildActionMask = 2147483647;
 			files = (
+				8BBC35EA07E222BF007C3B6B,
+				8BBC35D707E221D4007C3B6B,
+				8BBC34BA07E13E53007C3B6B,
 				8B32703D07E137A400FBD945,
 				8B32703E07E137A400FBD945,
 				8B32703F07E137A400FBD945,
