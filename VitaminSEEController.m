@@ -71,8 +71,12 @@
 
 /* FIRST MILESTONE GOALS (Note that the milestones have gone apeshit...)
   * Work on making things feature complete.
-  * Goto folder sheet
   * Integrated Help
+  * Icons for SortManager and KeywordManager in Preferences.
+  * VitaminSEE icon.
+  * Split ImageTaskManager into two threads: One for displaying and one for 
+    preload/icons. This will help performance since it never goes above 50% CPU
+    Utilization on my iBook.
 */
 
 /**
@@ -85,8 +89,10 @@
 
 /* THIRD MILSTONE GOALS
  * Draging of the picture
+ * Go to folder like in finder. (Use sheet/modal depending on whether main window
+   is shown...)
  * See "openHandCursor" and "closedHandCursor"
- * Fullscreen
+ * Fullscreen mode.
  * Integrated help
  */
 
@@ -120,7 +126,7 @@
 	// Set up this application's default preferences	
     NSMutableDictionary *defaultPrefs = [NSMutableDictionary dictionary];
 	[defaultPrefs setObject:[NSHomeDirectory() stringByAppendingPathComponent:
-		@"Pictures/Wallpaper/Nature Wallpaper"] forKey:@"DefaultStartupPath"];
+		@"Pictures"] forKey:@"DefaultStartupPath"];
     
 	// General preferences
 	[defaultPrefs setObject:[NSNumber numberWithInt:3] forKey:@"SmoothingTag"];
@@ -130,8 +136,6 @@
 
 	// Keyword preferences
 	KeywordNode* node = [[[KeywordNode alloc] initWithParent:nil keyword:@"Keywords"] autorelease];
-	[node addChild:[[[KeywordNode alloc] initWithParent:node keyword:@"Anime"] autorelease]];
-	[node addChild:[[[KeywordNode alloc] initWithParent:node keyword:@"Blogs"] autorelease]];
 	NSData* emptyKeywordNode = [NSKeyedArchiver archivedDataWithRootObject:node];
 	[defaultPrefs setObject:emptyKeywordNode forKey:@"KeywordTree"];
 	
@@ -139,8 +143,6 @@
 	NSArray* sortManagerPaths = [NSArray arrayWithObjects:
 		[NSDictionary dictionaryWithObjectsAndKeys:@"Pictures", @"Name",
 			[NSHomeDirectory() stringByAppendingPathComponent:@"Pictures"], @"Path", nil], 
-		[NSDictionary dictionaryWithObjectsAndKeys:@"Wallpaper", @"Name",
-			[NSHomeDirectory() stringByAppendingPathComponent:@"Pictures/Wallpaper"], @"Path", nil], 
 		nil];
 	[defaultPrefs setObject:sortManagerPaths forKey:@"SortManagerPaths"];
 	[defaultPrefs setObject:[NSNumber numberWithBool:YES] forKey:@"SortManagerInContextMenu"];
@@ -292,10 +294,21 @@
 	[mainVitaminSeeWindow close];
 }
 
+-(IBAction)referesh:(id)sender
+{
+	[viewAsIconsController setCurrentDirectory:currentDirectory];
+}
+
 -(IBAction)revealInFinder:(id)sender
 {
 	[[NSWorkspace sharedWorkspace] selectFile:currentImageFile
 					 inFileViewerRootedAtPath:@""];
+}
+
+-(IBAction)viewInPreview:(id)sender
+{
+	[[NSWorkspace sharedWorkspace]	openFile:currentImageFile
+							 withApplication:@"Preview"];
 }
 
 -(IBAction)goEnclosingFolder:(id)sender
@@ -361,7 +374,6 @@
 {
 	if(!_sortManagerController)
 	{
-		NSLog(@"Looking for bundle");
 		NSString *bundlePath = [[[NSBundle mainBundle] builtInPlugInsPath]
 			stringByAppendingPathComponent:@"SortManager.cqvPlugin"];
 		NSBundle *windowBundle = [NSBundle bundleWithPath:bundlePath];
@@ -387,7 +399,6 @@
 {
 	if(!_keywordManagerController)
 	{
-		NSLog(@"Looking for bundle");
 		NSString *bundlePath = [[[NSBundle mainBundle] builtInPlugInsPath]
 			stringByAppendingPathComponent:@"KeywordManager.cqvPlugin"];
 		NSBundle *windowBundle = [NSBundle bundleWithPath:bundlePath];
@@ -423,25 +434,17 @@
 -(IBAction)toggleSortManager:(id)sender
 {	
 	if([[[self sortManagerController] window] isVisible])
-	{
 		[[self sortManagerController] close];
-	}
 	else
-	{
 		[[self sortManagerController] showWindow:self];
-	}
 }
 
 -(IBAction)toggleKeywordManager:(id)sender
 {
 	if([[[self keywordManagerController] window] isVisible])
-	{
 		[[self keywordManagerController] close];
-	}
 	else
-	{
 		[[self keywordManagerController] showWindow:self];
-	}
 }
 
 -(BOOL)validateMenuItem:(NSMenuItem *)theMenuItem
@@ -468,6 +471,14 @@
 			 [theMenuItem action] == @selector(zoomIn:) ||
 			 [theMenuItem action] == @selector(zoomOut:) ||
 			 [theMenuItem action] == @selector(zoomToFit:))
+	{
+		enable = mainWindowVisible && [currentImageFile isImage];
+	}
+	else if([theMenuItem action] == @selector(revealInFinder:))
+	{
+		enable = mainWindowVisible;
+	}
+	else if([theMenuItem action] == @selector(viewInPreview:))
 	{
 		enable = mainWindowVisible && [currentImageFile isImage];
 	}
@@ -505,8 +516,6 @@
 	[currentImageFile release];
 	currentImageFile = newCurrentFile;
 	[currentImageFile retain];
-	
-//	NSLog(@"Setting to %@", newCurrentFile);
 	
 	// Okay, we don't know what kind of thing we have been passed, so let's
 	BOOL isDir = [newCurrentFile isDir];

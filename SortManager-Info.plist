@@ -7,7 +7,7 @@
 	<key>CFBundleExecutable</key>
 	<string>SortManager</string>
 	<key>CFBundleIdentifier</key>
-	<string>org.elliotglaysher.CQView.SortManager</string>
+	<string>org.elliotglaysher.VitaminSEE.SortManager</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundlePackageType</key>

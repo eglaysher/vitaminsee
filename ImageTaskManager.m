@@ -365,6 +365,10 @@
 		[image retain];
 		[self sendDisplayCommandWithImage:image width:128 height:128];
 		[image release];
+		
+		// An image has been displayed so stop the spinner
+		[vitaminSEEController stopProgressIndicator];	
+		
 		return;
 	}
 	

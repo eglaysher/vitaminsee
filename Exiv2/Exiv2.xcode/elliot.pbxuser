@@ -1,7 +1,7 @@
 // !$*UTF8*$!
 {
 	0867D690FE84028FC02AAC07 = {
-		activeBuildStyle = 014CEA440018CDF011CA2923;
+		activeBuildStyle = 014CEA450018CDF011CA2923;
 		activeTarget = 8DC2EF4F0486A6940098B216;
 		addToTargets = (
 			8DC2EF4F0486A6940098B216,
@@ -70,13 +70,29 @@
 					PBXFindDataSource_LocationID,
 				);
 			};
+			PBXConfiguration.PBXFileTableDataSource3.PBXSymbolsDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXSymbolsDataSource_SymbolNameID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					16,
+					89.80078,
+					119.0356,
+					96.2085,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXSymbolsDataSource_SymbolTypeIconID,
+					PBXSymbolsDataSource_SymbolNameID,
+					PBXSymbolsDataSource_SymbolTypeID,
+					PBXSymbolsDataSource_ReferenceNameID,
+				);
+			};
 			PBXConfiguration.PBXTargetDataSource.PBXTargetDataSource = {
 				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
 				PBXFileTableDataSourceColumnSortingKey = PBXTargetDataSource_PrimaryAttribute;
 				PBXFileTableDataSourceColumnWidthsKey = (
 					20,
 					121,
-					188,
+					31,
 					20,
 					31,
 					43,
@@ -92,7 +108,7 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 131947178;
+			PBXPerProjectTemplateStateSaveDate = 131959228;
 			PBXPrepackagedSmartGroups_v2 = (
 				{
 					PBXTransientLocationAtTop = bottom;
@@ -269,10 +285,18 @@
 					};
 				},
 			);
-			PBXWorkspaceStateSaveDate = 131947178;
+			PBXWorkspaceStateSaveDate = 131959228;
 		};
 		sourceControlManager = 8B3FB9E407D8C49300D94965;
 		userBuildSettings = {
+		};
+	};
+	8B07AB3D07DD5AD200E38678 = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {705, 10783}}";
+			sepNavSelRange = "{921, 0}";
+			sepNavVisRect = "{{0, 2448}, {705, 428}}";
+			sepNavWindowFrame = "{{15, 239}, {750, 502}}";
 		};
 	};
 	8B3FB9E407D8C49300D94965 = {

@@ -7,7 +7,7 @@
 	<key>CFBundleExecutable</key>
 	<string>KeywordManagerPreferences</string>
 	<key>CFBundleIdentifier</key>
-	<string>org.elliotglaysher.CQView.KeywordManagerPreferences</string>
+	<string>org.elliotglaysher.VitaminSEE.KeywordManagerPreferences</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundlePackageType</key>

@@ -8,6 +8,7 @@
 
 #import "ToolbarDelegate.h"
 #import "NSString+FileTasks.h"
+#import "NSWorkspace+GrowlAdditions.h"
 
 // Our Viewer's ID
 static NSString* MainViewerWindowToolbarIdentifier = @"Main Viewere Window Toolbar Identifier";
@@ -17,6 +18,9 @@ static NSString* ZoomInToolbarID = @"Zoom in Toolbar Identifier";
 static NSString* ZoomOutToolbarID = @"Zoom out Toolbar Identifier";
 static NSString* ZoomToFitToolbarID = @"Zoom to Fit Toolbar Identifier";
 static NSString* ActualSizeToolbarID = @"Actual Size Toolbar Identifier";
+
+static NSString* RevealInFinderToolbarID = @"View in Finder Toolbar Identifier";
+static NSString* ViewInPreviewToolbarID = @"Reveal in Finder Toolbar Identifier";
 
 @implementation VitaminSEEController (ToolbarDelegate)
 
@@ -72,6 +76,24 @@ static NSString* ActualSizeToolbarID = @"Actual Size Toolbar Identifier";
 		[item setTarget:self];
 		[item setAction:@selector(actualSize:)];		
 	}
+	else if([itemIdent isEqual:RevealInFinderToolbarID])
+	{
+		[item setLabel:@"Finder"];
+		[item setPaletteLabel:@"Reveal in Finder"];
+		[item setToolTip:@"Reveal in Finder"];
+		[item setImage:[[NSWorkspace sharedWorkspace] iconForApplication:@"Finder"]];
+		[item setTarget:self];
+		[item setAction:@selector(revealInFinder:)];
+	}
+	else if([itemIdent isEqual:ViewInPreviewToolbarID])
+	{
+		[item setLabel:@"Preview"];
+		[item setPaletteLabel:@"View in Preview"];
+		[item setToolTip:@"View in Preview"];
+		[item setImage:[[NSWorkspace sharedWorkspace] iconForApplication:@"Preview"]];
+		[item setTarget:self];
+		[item setAction:@selector(viewInPreview:)];		
+	}
 //	if([itemIdent isEqual:ScaleViewToolbarID])
 //	{
 //		[item setLabel:@"Scale"];
@@ -110,12 +132,16 @@ static NSString* ActualSizeToolbarID = @"Actual Size Toolbar Identifier";
 
 - (NSArray *) toolbarDefaultItemIdentifiers: (NSToolbar *) toolbar
 {
-	return [NSArray arrayWithObjects:ZoomInToolbarID, ZoomOutToolbarID, ZoomToFitToolbarID, ActualSizeToolbarID, nil];
+	return [NSArray arrayWithObjects:RevealInFinderToolbarID, 
+		ViewInPreviewToolbarID, NSToolbarFlexibleSpaceItemIdentifier, 
+		ZoomInToolbarID, ZoomOutToolbarID, ZoomToFitToolbarID, 
+		ActualSizeToolbarID, nil];
 }
 
 - (NSArray *) toolbarAllowedItemIdentifiers: (NSToolbar *) toolbar
 {
-	return [NSArray arrayWithObjects:ZoomInToolbarID, ZoomOutToolbarID,
+	return [NSArray arrayWithObjects:RevealInFinderToolbarID, ViewInPreviewToolbarID, 
+		ZoomInToolbarID, ZoomOutToolbarID,
 		ZoomToFitToolbarID, ActualSizeToolbarID, NSToolbarSeparatorItemIdentifier,
 		NSToolbarSpaceItemIdentifier, NSToolbarFlexibleSpaceItemIdentifier,
 		NSToolbarCustomizeToolbarItemIdentifier, nil];
@@ -126,8 +152,15 @@ static NSString* ActualSizeToolbarID = @"Actual Size Toolbar Identifier";
     BOOL enable = NO;
 	NSString* identifier = [toolbarItem itemIdentifier];
 
-    if ([identifier isEqual:ZoomInToolbarID] || [identifier isEqual:ZoomOutToolbarID] ||
-		[identifier isEqual:ZoomToFitToolbarID] || [identifier isEqual:ActualSizeToolbarID])
+	if([identifier isEqual:RevealInFinderToolbarID])
+	{
+		enable = YES;
+	}
+    else if ([identifier isEqual:ZoomInToolbarID] || 
+			 [identifier isEqual:ZoomOutToolbarID] ||
+			 [identifier isEqual:ZoomToFitToolbarID] ||
+			 [identifier isEqual:ActualSizeToolbarID] ||
+			 [identifier isEqual:ViewInPreviewToolbarID])
 	{
 		// We can only do these actions if the file is an image.
         enable = [currentImageFile isImage];

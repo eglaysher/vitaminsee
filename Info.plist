@@ -22,5 +22,9 @@
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>CFBundleHelpBookFolder</key>
+	<string>VitaminSEE Help</string>
+	<key>CFBundleHelpBookName</key>
+	<string>VitaminSEE Help</string>
 </dict>
 </plist>

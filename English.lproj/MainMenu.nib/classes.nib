@@ -68,11 +68,13 @@
                 goToHomeFolder = id; 
                 goToPicturesFolder = id; 
                 openFolder = id; 
+                referesh = id; 
                 revealInFinder = id; 
                 showPreferences = id; 
                 toggleKeywordManager = id; 
                 toggleSortManager = id; 
                 toggleVitaminSee = id; 
+                viewInPreview = id; 
                 zoomIn = id; 
                 zoomOut = id; 
                 zoomToFit = id; 

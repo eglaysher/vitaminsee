@@ -91,9 +91,11 @@
 // File menu options
 -(IBAction)openFolder:(id)sender;
 -(IBAction)closeWindow:(id)sender;
+-(IBAction)referesh:(id)sender;
 
 // View menu options
 -(IBAction)revealInFinder:(id)sender;
+-(IBAction)viewInPreview:(id)sender;
 
 // Go menu actions
 -(IBAction)goEnclosingFolder:(id)sender;
