@@ -8,11 +8,11 @@
 
 #import <Cocoa/Cocoa.h>
 
-// Image metadata is a ObjC wrapper around exiv2. 
 @interface ImageMetadata : NSObject 
 {}
 
-+(NSMutableArray*)getKeywordsFromFile:(NSString*)file;
-+(void)setKeywords:(NSArray*)keywords forFile:(NSString*)file;
+// ObjC wrapper around exiv2. 
++(NSMutableArray*)getKeywordsFromJPEGFile:(NSString*)file;
++(void)setKeywords:(NSArray*)keywords forJPEGFile:(NSString*)file;
 
 @end

@@ -12,14 +12,32 @@
 
 @implementation CQViewController (PluginLayer)
 
+// I want to support keywords and comments in PNGs and GIFs, but that would
+// require that I write a block of code with libpng and libgif to read and
+// write those metadata blocks. Right now, there is no such program like exiv2…
+-(BOOL)supportsKeywords:(NSString*)file
+{
+	NSString* type = [[file pathExtension] uppercaseString];
+	BOOL canKeyword = NO;
+	if([type isEqualTo:@"JPG"] || [type isEqualTo:@"JPEG"])
+		canKeyword = YES;
+	
+	return canKeyword;
+}
+
 -(NSMutableArray*)getKeywordsFromFile:(NSString*)file
 {
-	return [ImageMetadata getKeywordsFromFile:file];
+	NSString* type = [[file pathExtension] uppercaseString];
+
+	if([type isEqualTo:@"JPG"] || [type isEqualTo:@"JPEG"])
+		return [ImageMetadata getKeywordsFromJPEGFile:file];	
+//	else if([type isEqualTo:@"PNG"])
+//		return [ImageMetadata getKeywordsFromPNGFile:file];
 }
 
 -(void)setKeywords:(NSArray*)keywords forFile:(NSString*)file
 {
-	[ImageMetadata setKeywords:keywords forFile:file];
+	[ImageMetadata setKeywords:keywords forJPEGFile:file];
 	// fixme:
 }
 

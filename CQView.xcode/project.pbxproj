@@ -79,6 +79,7 @@
 //104
 		1058C7A0FEA54F0111CA2CBB = {
 			children = (
+				8B582E2807D8EDBE00A08D09,
 				8B3FBC2207D8CA1300D94965,
 				8B5EB13407CD254F00B43D06,
 				1058C7A1FEA54F0111CA2CBB,
@@ -684,6 +685,44 @@
 		};
 		8B5767C507BD1CE900068A64 = {
 			fileRef = 8B5767C207BD1CE900068A64;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B582E1007D8ED3900A08D09 = {
+			buildActionMask = 2147483647;
+			comments = "We need to copy the libpng and the exiv2 frameworks into us because the average person won't have libpng and the framework for exiv2 is a hack of the original source.";
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				8B582E2C07D8EDC700A08D09,
+				8B582E2707D8ED9000A08D09,
+			);
+			isa = PBXCopyFilesBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B582E2707D8ED9000A08D09 = {
+			fileRef = 8B3FBC2207D8CA1300D94965;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B582E2807D8EDBE00A08D09 = {
+			isa = PBXFileReference;
+			lastKnownFileType = wrapper.framework;
+			name = libpng.framework;
+			path = /Library/Frameworks/libpng.framework;
+			refType = 0;
+			sourceTree = "<absolute>";
+		};
+		8B582E2907D8EDBE00A08D09 = {
+			fileRef = 8B582E2807D8EDBE00A08D09;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B582E2C07D8EDC700A08D09 = {
+			fileRef = 8B582E2807D8EDBE00A08D09;
 			isa = PBXBuildFile;
 			settings = {
 			};
@@ -1926,6 +1965,7 @@
 				8D11072C0486CEB800E47090,
 				8D11072E0486CEB800E47090,
 				8B6D020207CB32C0009A76DA,
+				8B582E1007D8ED3900A08D09,
 			);
 			buildRules = (
 			);
@@ -2043,6 +2083,7 @@
 				8D11072F0486CEB800E47090,
 				8B5EB13507CD254F00B43D06,
 				8B3FBC2307D8CA1300D94965,
+				8B582E2907D8EDBE00A08D09,
 			);
 			isa = PBXFrameworksBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;

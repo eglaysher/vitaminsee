@@ -202,6 +202,33 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
 		[cell setState:NSOffState];
 }
 
+-(void)enableAllCells
+{
+	// Get all the cells 
+	int numberOfCells = [outlineView numberOfRows];
+	id tableColumn = [[outlineView tableColumns] objectAtIndex:0];
+	int i = 0;
+	for(i = 0; i < numberOfCells; ++i)
+	{
+		[[tableColumn dataCellForRow:i] setEnabled:YES];
+	}
+	
+	[outlineView setNeedsDisplay];
+}
+
+-(void)disableAllCells
+{
+	int numberOfCells = [outlineView numberOfRows];
+	id tableColumn = [[outlineView tableColumns] objectAtIndex:0];
+	int i = 0;
+	for(i = 0; i < numberOfCells; ++i)
+	{
+		[[tableColumn dataCellForRow:i] setEnabled:NO];
+	}
+	
+	[outlineView setNeedsDisplay];	
+}
+
 //////////////////////////////////////////////// Protocol: FileManagerPlugin
 
 -(void)setPluginLayer:(CQViewController*)layer
@@ -223,8 +250,25 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
 	NSLog(@"Setting Keyword path to %@ in %@", [currentPath lastPathComponent],
 		  fileNameTextField);
 	[fileNameTextField setStringValue:[currentPath lastPathComponent]];
-	
-	[self loadKeywords];	
+
+	// Let's check if we can set keywords
+	if([pluginLayer supportsKeywords:newPath])
+	{
+		// First, make sure the relevant sections are enabled:
+		[outlineView setEnabled:YES];
+		[self enableAllCells];
+		[outlineView setNeedsDisplay:YES];
+		[currentKeywordsTextView setEditable:YES];
+		[self loadKeywords];			
+	}
+	else
+	{
+		// We can't deal with keywords so don't allow entry there
+		[outlineView setEnabled:NO];
+		[self disableAllCells];
+		[outlineView setNeedsDisplay:YES];
+		[currentKeywordsTextView setEditable:NO];
+	}
 }
 
 -(NSString*)name

@@ -17,7 +17,9 @@ using namespace std;
 
 @implementation ImageMetadata
 
-+(NSMutableArray*)getKeywordsFromFile:(NSString*)file
+
+////////////////////////////////// EXIV2 WRAPPER! //////////////////////////////
++(NSMutableArray*)getKeywordsFromJPEGFile:(NSString*)file
 {
 	NSLog(@"Trying to load keywords from %@", file);
 	
@@ -47,7 +49,7 @@ using namespace std;
 	return [keywords autorelease];
 }
 
-+(void)setKeywords:(NSArray*)keywords forFile:(NSString*)file
++(void)setKeywords:(NSArray*)keywords forJPEGFile:(NSString*)file
 {
 	NSLog(@"Saving keywords!");
 	// First, read the IPTC data for the file. We don't want to clobber other
@@ -75,5 +77,91 @@ using namespace std;
 	// write to file.
 	iptcData.write([file fileSystemRepresentation]);
 }
+
+////////////////////// PNG KEYWORDS
+//+(NSMutableArray*)getKeywordsFromPNGFile:(NSString*)file
+//{
+//	char* filename = [file fileSystemRepresentation];
+//	
+//	// PNG stuff
+//	png_uint w32, h32;
+//	FILE* f;
+//	png_structp png_ptr = NULL;
+//	png_infop info_ptr = NULL;
+//	
+//	f = fopen(filename, "rb");
+//	if(!f)
+//		return nil;
+//	
+//	unsigned char buf[PNG_BYTES_TO_CHECK];
+//	fread(buf, 1, PNG_BYTES_TO_CHECK, f);
+//	if(!png_check_sig(buf, PNG_BYTES_TO_CHECK))
+//	{
+//		fclose(f);
+//		return nil;
+//	}
+//	rewind(f);
+//	
+//	png_ptr = png_create_read_struct(PNG_LIBPNG_VER_STRING, NULL, NULL, NULL);
+//	if(!png_ptr)
+//	{
+//		fclose(f);
+//		return nil;
+//	}
+//	
+//	info_ptr = png_create_info_struct(png_ptr);
+//	if(!info_ptr)
+//	{
+//		png_destroy_read_struct(&png_ptr, NULL, NULL);
+//		fclose(f);
+//		return nil;
+//	}
+//	
+//	if(setjmp(png_ptr->jmpbuf))
+//	{
+//		png_destroy_read_struct(&png_ptr, &info_ptr, NULL);
+//		fclose(f);
+//		return nil;		
+//	}
+//	
+//	png_init_io(png_ptr, f);
+//	png_read_info(png_ptr, info_ptr);
+//	png_get_IHDR(png_ptr, info_ptr, (png_uint_32*)&w32, (png_uint_32*)&h32,
+//				 &bit_depth, &color_type, &interlace_type, NULL, NULL);
+//	
+//	/* Comments are of the form:
+//			text_ptr[0].key = "Title";
+//			text_ptr[0].text = "{title}";
+//			text_ptr[0].compression = PNG_TEXT_COMPRESSION_NONE;
+//			text_ptr[1].key = "Keywords";
+//			text_ptr[1].text = "{long list}";
+//			text_ptr[1].compression = PNG_TEXT_COMPRESSION_xTXt;
+//	 */
+//	
+//	png_textp text_ptr;
+//	int num_text = 0;
+//	png_get_text(png_ptr, info_ptr, &text_ptr, &num_text);
+//	NSMutableArray* keywords = nil;
+//	for(int i = 0; i < num_text; ++i)
+//	{
+//		if(strcmp(text_ptr[i]->key, "Keywords") == 0)
+//		{
+//			// fixme: deal with compressed 
+//			keywords = [[NSString stringWithCString:text_ptr[i]->text] componentsSeparatedByString:@"\n"];
+//		}
+//	}
+//
+//	png_read_end(png_ptr, info_ptr);
+//	png_destroy_read_struct(&png_ptr, &info_ptr, NULL);
+//	fclose(f);
+//	
+//	return keywords;
+//}
+//
+//+(void)setKeywords:(NSArray*)keywords forJPEGFile:(NSString*)file
+//{
+//	
+//	
+//}
 
 @end

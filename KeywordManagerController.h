@@ -33,6 +33,9 @@
 -(void)saveKeywords;
 -(void)loadKeywords;
 
+-(void)enableAllCells;
+-(void)disableAllCells;
+
 -(void)loadKeywordTree;
 -(void)loadKeywordsIntoTextViewFromList;
 -(void)loadKeywordsIntoListFromTextView;

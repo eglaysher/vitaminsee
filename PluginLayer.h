@@ -12,6 +12,7 @@
 
 @interface CQViewController (PluginLayer)
 
+-(BOOL)supportsKeywords:(NSString*)file;
 -(NSMutableArray*)getKeywordsFromFile:(NSString*)file;
 -(void)setKeywords:(NSArray*)keywords forFile:(NSString*)file;
 

@@ -30,6 +30,7 @@
   * Cell drawing
   * Sort manager
   * Preferences [Pretty much done. I can add new stuff when I want...]
+  * Keywords
 */
 
 /** Bugs fixed:
@@ -60,27 +61,31 @@
 
 /* FIRST MILESTONE GOALS (Note that the milestones have gone apeshit...)
   * File renaming (Inspector!)
-  * Keywords
-    * Use an Outline View! i.e.
-*/
-
-/* THIRD MILSTONE GOALS
-  * Draging of the picture
-    * See "openHandCursor" and "closedHandCursor"
-  * Fullscreen
-  * Integrated help
+  * Comments
+  * Work on making things feature complete.
+  * Integrated Help
 */
 
 /**
   Non-required improvements that would be a good idea:
   * Prioritize thumbnail loading to currently visible files...
   * Fit to height/Fit to width
- */
+  * Cmd-O opens == double click.
+  * Disable comments on things we can't comment on.
+  * Icons for VitaminSee
+  */
 
 /////////////////////////////////////////////////////////// POST CONTEST GOALS:
 
+/* THIRD MILSTONE GOALS
+ * Draging of the picture
+ * See "openHandCursor" and "closedHandCursor"
+ * Fullscreen
+ * Integrated help
+ */
+
 /* FOURTH MILESTONE GOALS
-    
+  * GIF/PNG keywords and comments.    
   * Integrate into the [Computer name]/[Macintosh HD]/.../ hiearachy...
   * Transparent Zip/Rar support
   * Change arrow key behaviour - scroll around in image if possible in NSScrollView
@@ -96,6 +101,7 @@
   * View as list view
   * View as browser view...
   * Duplicate detector
+  * Image Search
 */
 
 + (void)initialize 
