@@ -75,6 +75,12 @@ createRowsForColumn:(int)column
 	}
 }
 
+-(void)browserDidScroll:(NSBrowser*)sender
+{
+//	id firstCell = [sender 
+//	[sender 
+}
+
 -(void)singleClick:(NSBrowser*)sender
 {
 	// grab the image path
@@ -138,18 +144,46 @@ createRowsForColumn:(int)column
 	// will manage all our stuff...
 }
 
-// GRRRRR: This is STILL O(n). I lied in the last commit comments!
+// Binary search across our files for a certain node to remove. Much faster then
+// the previous linear search...
 -(void)removeFileFromList:(NSString*)absolutePath
 {
-	int filesInDir = [fileList count];
-	int i;
-	for(i = 0; i < filesInDir; ++i)
-		if([[fileList objectAtIndex:i] isEqual:absolutePath])
+	int low = -1;
+	int high = [fileList count];
+	int current;
+	
+	while(high - low > 1)
+	{
+		current = (high + low) / 2;
+		if([absolutePath caseInsensitiveCompare:[fileList objectAtIndex:current]] == 
+		   NSOrderedDescending)
 		{
-			[fileList removeObjectAtIndex:i];
-			[ourBrowser reloadColumn:0];
-			break;
+			low = current;
 		}
+		else
+		{
+			high = current;
+		}
+	}
+	
+	if(high == [fileList count] || [[fileList objectAtIndex:high] 
+		caseInsensitiveCompare:absolutePath] != NSOrderedSame)
+		NSLog(@"HUH!? %@ isn't in the current directory!?", absolutePath);
+	else
+	{
+		[fileList removeObjectAtIndex:high];
+		[ourBrowser reloadColumn:0];
+	}
+	
+//	int filesInDir = [fileList count];
+//	int i;
+//	for(i = 0; i < filesInDir; ++i)
+//		if([[fileList objectAtIndex:i] isEqual:absolutePath])
+//		{
+//			[fileList removeObjectAtIndex:i];
+//			[ourBrowser reloadColumn:0];
+//			break;
+//		}
 }
 
 // Returns the path of the next cell that would be selected if the current cell
@@ -202,8 +236,9 @@ createRowsForColumn:(int)column
 	}
 	
 	// Now sort the list since some filesystems (*cough*SAMBA*cough*) don't
-	// present files sorted alphabetically...
-//	[fileList sortUsingSelector:@selector(compare:)];	
+	// present files sorted alphabetically and we do binary searches to avoid
+	// O(n) overhead.
+	[fileList sortUsingSelector:@selector(caseInsensitiveCompare:)];	
 
 	[fileList release];
 	[myFileList retain];

@@ -37,6 +37,8 @@
 		thumbnailQueue = [[NSMutableArray alloc] init];
 		preloadQueue = [[NSMutableArray alloc] init];
 		
+		thumbnailLoadingPosition = 0;
+		
 		// spawn off a new thread
 		[NSThread detachNewThreadSelector:@selector(taskHandlerThread:) 
 								 toTarget:self
@@ -100,8 +102,12 @@
 		}
 		else if([thumbnailQueue count])
 		{
-			NSDictionary* action = [[thumbnailQueue objectAtIndex:0] retain];
-			[thumbnailQueue removeObjectAtIndex:0];
+			if(thumbnailLoadingPosition > [thumbnailQueue count])
+				thumbnailLoadingPosition = 0;
+			
+			NSDictionary* action = [[thumbnailQueue 
+				objectAtIndex:thumbnailLoadingPosition] retain];
+			[thumbnailQueue removeObjectAtIndex:thumbnailLoadingPosition];
 			pthread_mutex_unlock(&taskQueueLock);
 			
 			[self doBuildIcon:action];
@@ -192,6 +198,14 @@
 	// Note that we are OUT of here...
 	pthread_cond_signal(&conditionLock);
 	pthread_mutex_unlock(&taskQueueLock);	
+}
+
+-(void)setThumbnailLoadingPosition:(int)newPosition
+{
+	pthread_mutex_lock(&taskQueueLock);
+	if(newPosition < [thumbnailQueue count])
+		thumbnailLoadingPosition = newPosition;
+	pthread_mutex_unlock(&taskQueueLock);
 }
 
 -(NSImage*)getCurrentImageWithWidth:(int*)width height:(int*)height scale:(float*)scale

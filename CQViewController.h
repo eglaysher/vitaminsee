@@ -50,13 +50,11 @@
 	NSArray* currentDirectoryComponents;
 	NSString* currentDirectory;
 
-	// back and forward history
-	NSMutableArray* backHistory;
-	NSMutableArray* forwardHistory;
-	
 	// Scale data
 	bool scaleProportionally;
 	float scaleRatio;
+
+	NSUndoManager* pathManager;
 	
 	ImageTaskManager* imageTaskManager;
 }

@@ -27,9 +27,10 @@
 
 /* FIRST MILESTONE GOALS
   * Implement backHistory/forwardHistory
+    * Halfway done. Test in a NSFW environment...
+  * Jumping into the middle of a list will start loading the thumbnails there...
   * Cell drawing with advanced icon...
   * File renaming
-  * Jumping into the middle of a list will start loading the thumbnails there...
 */
 
 /* SECOND MILESTONE GOALS
@@ -97,6 +98,7 @@
 	[self zoomToFit:self];
 	
 	// 
+	pathManager = [[NSUndoManager alloc] init];
 	
 	// Now we start work on thread communication.
 	NSPort *port1 = [NSPort port];
@@ -119,6 +121,11 @@
 						 file:nil];		
 }
 
+-(void)dealloc
+{
+	[pathManager release];
+}
+
 // ============================================================================
 //                         FILE VIEW SELECTION
 // ============================================================================
@@ -130,8 +137,15 @@
 }
 
 - (void)setCurrentDirectory:(NSString*)newCurrentDirectory file:(NSString*)newCurrentFile
-{
-	NSLog(@"Setting directory to %@ and file to %@", newCurrentDirectory, newCurrentFile);
+{	
+	//
+	if(newCurrentDirectory && currentDirectory && 
+	   ![currentDirectory isEqual:newCurrentDirectory])
+		[[pathManager prepareWithInvocationTarget:self]
+			setCurrentDirectory:currentDirectory file:nil];
+//		[pathManager registerUndoWithTarget:self
+//								   selector:@selector(setCurrentDirectory:)
+//									 object:currentDirectory];
 	
 	// Set the current Directory
 	[currentDirectory release];
@@ -143,6 +157,7 @@
 	currentDirectoryComponents = [newCurrentDirectory pathComponents];
 	[currentDirectoryComponents retain];
 
+	
 	// Make an NSMenu with all the path components
 	NSEnumerator* e = [currentDirectoryComponents reverseObjectEnumerator];
 	NSString* currentComponent;
@@ -168,7 +183,6 @@
 	
 	if(newCurrentFile)
 	{
-		NSLog(@"Setting current file to %@", newCurrentFile);
 		[self setCurrentFile:newCurrentFile];
 		[viewAsIconsController selectFile:newCurrentFile];
 	}
@@ -186,12 +200,15 @@
 
 -(IBAction)goBack:(id)sender
 {
-	
+	// We can only do this if [backHistory count] > 1
+	[pathManager undo];
+//	[self updateButtons];
 }
 
 -(IBAction)goForward:(id)sender
 {
-	
+	[pathManager redo];
+//	[self updateButtons];
 }
 
 -(void)moveThisFile:(NSString*)destination
@@ -249,11 +266,11 @@
     }
     else if ([theMenuItem action] == @selector(goBack:))
     {
-        enable = [backHistory count] > 0;
+        enable = [pathManager canUndo];
     }
 	else if ([theMenuItem action] == @selector(goForward:))
 	{
-		enable = [forwardHistory count] > 0;
+		enable = [pathManager canRedo];
 	}
 	
     return enable;
@@ -348,9 +365,7 @@
 -(void)zoomIn:(id)sender
 {
 	scaleProportionally = YES;
-	NSLog(@"ScaleRatio: %f Sum: %f", scaleRatio, scaleRatio + 0.10f);
 	scaleRatio = scaleRatio + 0.10f;
-	NSLog(@"Sum %f", scaleRatio);
 	[self redraw];
 }
 
@@ -399,7 +414,6 @@
 	[imageViewer setImage:image];
 	[imageViewer setFrameSize:[image size]];
 	
-	NSLog(@"Scale ratio %f", scaleRatio);
 	scaleRatio = scale;
 
 	[imageSizeLabel setStringValue:[NSString stringWithFormat:@"%i x %i", 

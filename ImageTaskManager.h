@@ -36,6 +36,7 @@
 	
 	NSImage* currentIconFamilyThumbnail;
 	id currentIconCell;
+	int thumbnailLoadingPosition;
 	
 	id cqViewController;
 }
@@ -49,6 +50,7 @@
 -(void)setScaleRatio:(float)newScaleRatio;
 -(void)setScaleProportionally:(BOOL)newScaleProportionally;
 -(void)setContentViewSize:(NSSize)newContentViewSize;
+-(void)setThumbnailLoadingPosition:(int)newPosition;
 
 -(NSImage*)getCurrentImageWithWidth:(int*)width height:(int*)height scale:(float*)scale;
 -(id)getCurrentThumbnailCell;
