@@ -43,6 +43,7 @@
  */
 
 #import "FSNodeInfo.h"
+#import "IconFamily.h"
 
 @implementation FSNodeInfo 
 
@@ -141,15 +142,43 @@
     return result;
 }
 
+-(void)buildIconForImage
+{
+	NSString *path = [self absolutePath];
+	NSLog(@"Building icon for %@", path);
+	NSImage* img = [[[NSImage alloc] initWithContentsOfFile:path] autorelease];
+	id iconFamily = [IconFamily iconFamilyWithThumbnailsOfImage:img];
+	[iconFamily setAsCustomIconForFile:path];
+}
+
 - (NSImage*)iconImageOfSize:(NSSize)size {
     NSString *path = [self absolutePath];
-    NSImage *nodeImage = nil;
-    
-    nodeImage = [[NSWorkspace sharedWorkspace] iconForFile:path];
-    if (!nodeImage) {
-        // No icon for actual file, try the extension.
-        nodeImage = [[NSWorkspace sharedWorkspace] iconForFileType:[path pathExtension]];
-    }
+	NSImage* nodeImage;
+
+	if([IconFamily fileHasCustomIcon:path])
+		nodeImage = [[IconFamily iconFamilyWithIconOfFile:path] imageWithAllReps];
+	else
+	{
+		// No custom icon.
+		if([self isImage])
+		{
+			// Okay, so it's an image without a thumbnail.
+			NSImage* image = [[[NSImage alloc] initWithContentsOfFile:path] autorelease];
+			IconFamily* iconFamily = [IconFamily iconFamilyWithThumbnailsOfImage:image];
+			[iconFamily setAsCustomIconForFile:path];
+			nodeImage = [iconFamily imageWithAllReps];
+		}
+		else
+		{
+			// Okay, so it's not an image and it doesn't have a thumbnail. Use default
+			// icon
+			nodeImage = [[NSWorkspace sharedWorkspace] iconForFile:path];
+			if(!nodeImage) {
+				nodeImage = [[NSWorkspace sharedWorkspace] iconForFileType:[path pathExtension]];
+			}
+		}
+	}
+	[nodeImage setScalesWhenResized:YES];
     [nodeImage setSize: size];
     
     if ([self isLink]) {

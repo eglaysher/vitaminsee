@@ -19,6 +19,9 @@
 	// Scale view controls
 	IBOutlet NSView* scaleView;
 	IBOutlet NSSlider* scaleSlider;
+
+	// Sort manager outlets
+	IBOutlet NSMatrix* copyMoveMatrix;
 	
 	// Actual application data--NOT OUTLETS!
 	NSImageRep* currentImageRep;
@@ -26,6 +29,7 @@
 	// Scale data
 	bool scaleProportionally;
 	float scaleRatio;
+	
 }
 
 /*!
@@ -38,7 +42,11 @@
 
 -(void)redraw;
 
+// Scaling stuff
 - (IBAction)scaleView100Pressed:(id)sender;
 - (IBAction)scaleViewPPressed:(id)sender;
 - (IBAction)scaleViewSliderMoved:(id)sender;
+
+// Window delegate method to redraw the image when we resize...
+-(void)windowDidResize:(NSNotification*)notification;
 @end

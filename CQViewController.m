@@ -15,7 +15,11 @@
  * Rework FSBrowserCell's 
  - (void)drawInteriorWithFrame:(NSRect)cellFrame inView:(NSView *)controlView;
 	for my own purposes
- * Make the image resize in proportional mode when window resizes...
+ * All kinds of file operations.
+   * Delete files
+   * et cetera! 
+ * Complete sort manager (a la GQView)
+ * Get drag on image for moving around an image...
  */
 
 // Set up this application's default preferences
@@ -229,6 +233,12 @@
 {
 	scaleProportionally = YES;
 	scaleRatio = [sender floatValue];
+	[self redraw];
+}
+
+// Redraw the window when the window resizes.
+-(void)windowDidResize:(NSNotification*)notification
+{
 	[self redraw];
 }
 

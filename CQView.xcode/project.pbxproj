@@ -7,6 +7,10 @@
 	objects = {
 		080E96DDFE201D6D7F000001 = {
 			children = (
+				8B4A5A8F07B74EDC00F30E03,
+				8B4A5A9007B74EDC00F30E03,
+				8B4A5A9107B74EDC00F30E03,
+				8B4A5A9207B74EDC00F30E03,
 				8B7C0C3A07B5FEB4005DB6FF,
 				8B7C0C3B07B5FEB5005DB6FF,
 				8B6FD33207B30B0F003F0000,
@@ -277,6 +281,62 @@
 //8B2
 //8B3
 //8B4
+		8B4A5A8F07B74EDC00F30E03 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			path = IconFamily.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B4A5A9007B74EDC00F30E03 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
+			path = IconFamily.m;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B4A5A9107B74EDC00F30E03 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			path = "NSString+CarbonFSSpecCreation.h";
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B4A5A9207B74EDC00F30E03 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
+			path = "NSString+CarbonFSSpecCreation.m";
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B4A5A9307B74EDC00F30E03 = {
+			fileRef = 8B4A5A8F07B74EDC00F30E03;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B4A5A9407B74EDC00F30E03 = {
+			fileRef = 8B4A5A9007B74EDC00F30E03;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B4A5A9507B74EDC00F30E03 = {
+			fileRef = 8B4A5A9107B74EDC00F30E03;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B4A5A9607B74EDC00F30E03 = {
+			fileRef = 8B4A5A9207B74EDC00F30E03;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
 		8B6FCF9807B1E200003F0000 = {
 			fileEncoding = 4;
 			isa = PBXFileReference;
@@ -550,6 +610,8 @@
 				8B6FCF9A07B1E200003F0000,
 				8B6FD33407B30B0F003F0000,
 				8B7C0C3C07B5FEB5005DB6FF,
+				8B4A5A9307B74EDC00F30E03,
+				8B4A5A9507B74EDC00F30E03,
 			);
 			isa = PBXResourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -578,6 +640,8 @@
 				8B6FCF9B07B1E200003F0000,
 				8B6FD33507B30B0F003F0000,
 				8B7C0C3D07B5FEB5005DB6FF,
+				8B4A5A9407B74EDC00F30E03,
+				8B4A5A9607B74EDC00F30E03,
 			);
 			isa = PBXSourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
