@@ -126,6 +126,7 @@
 				8B5620BF07CEA5A5005990E1,
 				8BA1243507D26EC700614FF4,
 				8BEA491707D7A73E001ADD2E,
+				8B8363A307E0E88E00F3C880,
 			);
 			isa = PBXGroup;
 			name = Products;
@@ -160,6 +161,7 @@
 				},
 			);
 			targets = (
+				8B8363A207E0E88E00F3C880,
 				8BEA491607D7A73E001ADD2E,
 				8B5620BE07CEA5A5005990E1,
 				8BA1243407D26EC700614FF4,
@@ -470,7 +472,7 @@
 			};
 		};
 		8B53806907DD6F6D00BA7CFF = {
-			buildActionMask = 12;
+			buildActionMask = 8;
 			files = (
 			);
 			inputPaths = (
@@ -479,7 +481,7 @@
 			isa = PBXShellScriptBuildPhase;
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
 			shellScript = "#!/bin/sh\n\n# Clean shit up.\nfind \"$BUILD_ROOT/$WRAPPER_NAME\" -name '.svn' -prune -exec rm -rf '{}' ';'\nfind \"$BUILD_ROOT/$WRAPPER_NAME\" -name '.DS_Store' -prune -exec rm -rf '{}' ';'\n\n# Now strip the useless headers from the Framework.\nrm -f \"$BUILD_ROOT/$WRAPPER_NAME/Contents/Frameworks/Exiv2.framework/Versions/A/Headers/\"*.hpp\n";
 		};
@@ -760,6 +762,7 @@
 		};
 		8B6D010807CB178F009A76DA = {
 			children = (
+				8B83632D07E0DD3D00F3C880,
 				8BC727C707CF1E82003103C0,
 				8BC727C207CF1D18003103C0,
 				8B6D011307CB185E009A76DA,
@@ -974,12 +977,12 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				8B8364B507E0E96A00F3C880,
 				8BEA491B07D7A78F001ADD2E,
 				8BA1253707D2845D00614FF4,
 				8B5620E107CEA6F1005990E1,
 				8B561D9307CE7627005990E1,
 				8B6D020307CB32CD009A76DA,
-				8B7BD1E207DFB7A90050FB25,
 			);
 			isa = PBXCopyFilesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1083,12 +1086,6 @@
 			refType = 4;
 			sourceTree = "<group>";
 		};
-		8B7BD1E207DFB7A90050FB25 = {
-			fileRef = 8B7BD1E107DFB7A80050FB25;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
 		8B7BD1FC07DFB84B0050FB25 = {
 			fileRef = 8B7BD1E107DFB7A80050FB25;
 			isa = PBXBuildFile;
@@ -1116,6 +1113,161 @@
 			isa = PBXBuildFile;
 			settings = {
 			};
+		};
+		8B83632D07E0DD3D00F3C880 = {
+			children = (
+				8BBE9AB807E0F1BB007EAE01,
+				8B83632E07E0DD5300F3C880,
+				8B83632F07E0DD5300F3C880,
+				8B8363A407E0E88E00F3C880,
+			);
+			isa = PBXGroup;
+			name = GotoFolderSheet;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B83632E07E0DD5300F3C880 = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			path = GotoSheetController.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B83632F07E0DD5300F3C880 = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
+			path = GotoSheetController.m;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B83639F07E0E88E00F3C880 = {
+			buildActionMask = 2147483647;
+			files = (
+				8BBE9AD107E0F1DB007EAE01,
+				8B8363BC07E0E8B700F3C880,
+			);
+			isa = PBXResourcesBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B8363A007E0E88E00F3C880 = {
+			buildActionMask = 2147483647;
+			files = (
+				8B8363BD07E0E8C500F3C880,
+			);
+			isa = PBXSourcesBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B8363A107E0E88E00F3C880 = {
+			buildActionMask = 2147483647;
+			files = (
+				8B8363BE07E0E8D500F3C880,
+			);
+			isa = PBXFrameworksBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B8363A207E0E88E00F3C880 = {
+			buildPhases = (
+				8B83639F07E0E88E00F3C880,
+				8B8363A007E0E88E00F3C880,
+				8B8363A107E0E88E00F3C880,
+			);
+			buildRules = (
+			);
+			buildSettings = {
+				DEPLOYMENT_POSTPROCESSING = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = "GotoFolderSheet-Info.plist";
+				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "-framework Foundation -framework AppKit";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = GotoFolderSheet;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = "-Wmost -Wno-four-char-constants -Wno-unknown-pragmas";
+			};
+			dependencies = (
+			);
+			isa = PBXNativeTarget;
+			name = GotoFolderSheet;
+			productName = GotoFolderSheet;
+			productReference = 8B8363A307E0E88E00F3C880;
+			productSettingsXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
+<!DOCTYPE plist PUBLIC \"-//Apple Computer//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">
+<plist version=\"1.0\">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>English</string>
+	<key>CFBundleExecutable</key>
+	<string>GotoFolderSheet</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.yourcompany.GotoFolderSheet</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
+	<key>CFBundleVersion</key>
+	<string>1.0</string>
+</dict>
+</plist>
+";
+			productType = "com.apple.product-type.bundle";
+		};
+		8B8363A307E0E88E00F3C880 = {
+			explicitFileType = wrapper.cfbundle;
+			includeInIndex = 0;
+			isa = PBXFileReference;
+			path = GotoFolderSheet.bundle;
+			refType = 3;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		8B8363A407E0E88E00F3C880 = {
+			isa = PBXFileReference;
+			lastKnownFileType = text.xml;
+			name = "GotoFolderSheet-Info.plist";
+			path = "/Users/elliot/Projects/VitaminSEE/GotoFolderSheet-Info.plist";
+			refType = 0;
+			sourceTree = "<absolute>";
+		};
+		8B8363BC07E0E8B700F3C880 = {
+			fileRef = 8B8363A407E0E88E00F3C880;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B8363BD07E0E8C500F3C880 = {
+			fileRef = 8B83632F07E0DD5300F3C880;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B8363BE07E0E8D500F3C880 = {
+			fileRef = 1058C7A1FEA54F0111CA2CBB;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B8364B507E0E96A00F3C880 = {
+			fileRef = 8B8363A307E0E88E00F3C880;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B8364CD07E0EEAE00F3C880 = {
+			containerPortal = 29B97313FDCFA39411CA2CEA;
+			isa = PBXContainerItemProxy;
+			proxyType = 1;
+			remoteGlobalIDString = 8B8363A207E0E88E00F3C880;
+			remoteInfo = GotoFolderSheet;
+		};
+		8B8364CE07E0EEAE00F3C880 = {
+			isa = PBXTargetDependency;
+			target = 8B8363A207E0E88E00F3C880;
+			targetProxy = 8B8364CD07E0EEAE00F3C880;
 		};
 		8B83E90107DD625800D69310 = {
 			containerPortal = 8BB0954A07DD49340034ABD5;
@@ -1585,6 +1737,30 @@
 			settings = {
 			};
 		};
+		8BBE9AB807E0F1BB007EAE01 = {
+			children = (
+				8BBE9AB907E0F1BB007EAE01,
+			);
+			isa = PBXVariantGroup;
+			name = GoToFolderSheet.nib;
+			path = "";
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8BBE9AB907E0F1BB007EAE01 = {
+			isa = PBXFileReference;
+			lastKnownFileType = wrapper.nib;
+			name = English;
+			path = English.lproj/GoToFolderSheet.nib;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8BBE9AD107E0F1DB007EAE01 = {
+			fileRef = 8BBE9AB807E0F1BB007EAE01;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
 		8BC6662807BFCF880075F57F = {
 			fileEncoding = 30;
 			isa = PBXFileReference;
@@ -1978,6 +2154,7 @@
 				8BA1243907D26F1500614FF4,
 				8BEA495707D7A9D0001ADD2E,
 				8B83E90207DD625800D69310,
+				8B8364CE07E0EEAE00F3C880,
 			);
 			isa = PBXNativeTarget;
 			name = VitaminSEE;

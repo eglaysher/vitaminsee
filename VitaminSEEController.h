@@ -35,6 +35,7 @@
 	// Integrated plugins.
 	id _sortManagerController;
 	id _keywordManagerController;
+	id _gotoFolderController;
 
 	// File view components:
 	// * 
@@ -75,7 +76,11 @@
 	IBOutlet NSTextField* gotoPath;
 }
 
+-(id)loadComponentFromBundle:(NSString*)path;
+
 -(NSWindowController*)sortManagerController;
+-(NSWindowController*)keywordManagerController;
+-(NSWindowController*)gotoFolderController;
 
 // Moving about in 
 - (void)setCurrentDirectory:(NSString*)newCurrentDirectory file:(NSString*)newCurrentFile;

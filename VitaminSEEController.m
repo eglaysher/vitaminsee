@@ -49,6 +49,8 @@
   * Validate menu items
   * Icons for VitaminSee
   * Reveal in Finder
+  * VitaminSEE icon.
+  * Go to folder sheet.
 */
 
 //////////////////////////////////////////////////////// WHAT NEEDS TO BE DONE:
@@ -73,10 +75,6 @@
   * Work on making things feature complete.
   * Integrated Help
   * Icons for SortManager and KeywordManager in Preferences.
-  * VitaminSEE icon.
-  * Split ImageTaskManager into two threads: One for displaying and one for 
-    preload/icons. This will help performance since it never goes above 50% CPU
-    Utilization on my iBook.
 */
 
 /**
@@ -87,20 +85,24 @@
 
 /////////////////////////////////////////////////////////// POST CONTEST GOALS:
 
+/* SECOND MILESTONE GOALS
+ * Redo left panel as loadable bundle with an NSTableView
+ * Image search (Loadable bundle)
+ * Duplicate search (Loadable bundle)
+ * Integrate into the [Computer name]/[Macintosh HD]/.../ hiearachy...
+ * Transparent Zip/Rar support
+ */
+
 /* THIRD MILSTONE GOALS
  * Draging of the picture
- * Go to folder like in finder. (Use sheet/modal depending on whether main window
-   is shown...)
  * See "openHandCursor" and "closedHandCursor"
  * Fullscreen mode.
- * Integrated help
+ * Make Go to folder modal when main window isn't open.
  */
 
 /* FOURTH MILESTONE GOALS
   * GIF/PNG keywords and comments.    
   * JPEG comments
-  * Integrate into the [Computer name]/[Macintosh HD]/.../ hiearachy...
-  * Transparent Zip/Rar support
   * Change arrow key behaviour - scroll around in image if possible in NSScrollView
     and switch images
     * Julius says see "CDisplay" (Comics Viewer)
@@ -351,45 +353,60 @@
 {
 	// fixme: stub.
 	NSLog(@"Something happened.");
-	
-//	if(!gotoFolderSheet)
-//		[NSBundle loadNibNamed:@"GoToFolderSheet" owner:self];
-//	
-//	[NSApp beginSheet:gotoFolderSheet
-//	   modalForWindow:mainVitaminSeeWindow
-//		modalDelegate:self
-//	   didEndSelector:@selector(sheetDidEnd:returnCode:contextInfo:)
-//		  contextInfo:nil];
+
+	[[self gotoFolderController] showSheet:mainVitaminSeeWindow
+							  initialValue:@""
+									target:self
+								  selector:@selector(finishedGotoFolder:)];
 }
 
-//- (void)sheetDidEnd:(NSWindow*)sheet
-//		 returnCode:(int)returnCode 
-//		contextInfo:(void *)contextInfo
-//{
-//    [sheet orderOut:self];
-//	
-//}
+-(void)finishedGotoFolder:(NSString*)done
+{
+	NSLog(@"DONE: %@", done);
 
+	if([done isDir])
+	{
+		// Valid directory! Let's set it!
+		[self setCurrentDirectory:done file:nil];
+	}
+	else
+	{
+		// Beep at the user...
+		AlertSoundPlay();
+	}
+}
+	
+-(id)loadComponentFromBundle:(NSString*)path
+{
+	NSString *bundlePath = [[[NSBundle mainBundle] builtInPlugInsPath]
+			stringByAppendingPathComponent:path];
+	NSBundle *windowBundle = [NSBundle bundleWithPath:bundlePath];	
+	id component;
+
+	if(windowBundle)
+	{
+		Class windowControllerClass = [windowBundle principalClass];
+		if(windowControllerClass)
+		{
+			component = [[windowControllerClass alloc] init];
+		}
+	}
+	
+	return component;
+}
+	
 -(NSWindowController*)sortManagerController
 {
 	if(!_sortManagerController)
 	{
-		NSString *bundlePath = [[[NSBundle mainBundle] builtInPlugInsPath]
-			stringByAppendingPathComponent:@"SortManager.cqvPlugin"];
-		NSBundle *windowBundle = [NSBundle bundleWithPath:bundlePath];
-		
-		if(windowBundle)
+		id loaded = [self loadComponentFromBundle:@"SortManager.cqvPlugin"];
+		if(loaded)
 		{
-			Class windowControllerClass = [windowBundle principalClass];
-			if(windowControllerClass)
-			{
-				_sortManagerController = [[windowControllerClass alloc] init];
-				[_sortManagerController setPluginLayer:self];
-				
-				// Take note that we've loaded the plugin.
-				[loadedFilePlugins addObject:_sortManagerController];
-			}
-		}
+			_sortManagerController = loaded;
+			[_sortManagerController setPluginLayer:self];
+			[loadedFilePlugins addObject:_sortManagerController];
+
+		}		
 	}
 		
 	return _sortManagerController;
@@ -399,28 +416,32 @@
 {
 	if(!_keywordManagerController)
 	{
-		NSString *bundlePath = [[[NSBundle mainBundle] builtInPlugInsPath]
-			stringByAppendingPathComponent:@"KeywordManager.cqvPlugin"];
-		NSBundle *windowBundle = [NSBundle bundleWithPath:bundlePath];
-		
-		if(windowBundle)
+		id loaded = [self loadComponentFromBundle:@"KeywordManager.cqvPlugin"];
+		if(loaded)
 		{
-			Class windowControllerClass = [windowBundle principalClass];
-			if(windowControllerClass)
-			{
-				_keywordManagerController = [[windowControllerClass alloc] init];
-				[_keywordManagerController setPluginLayer:self];
-
-				// Set the current image file.
-				[_keywordManagerController fileSetTo:currentImageFile];
-				
-				// Take note that we've loaded the plugin.
-				[loadedFilePlugins addObject:_keywordManagerController];
-			}
+			_keywordManagerController = loaded;
+			[_keywordManagerController setPluginLayer:self];
+			[_keywordManagerController fileSetTo:currentImageFile];
+			
+			[loadedFilePlugins addObject:_keywordManagerController];			
 		}
 	}
 	
 	return _keywordManagerController;
+}
+
+-(NSWindowController*)gotoFolderController
+{
+	if(!_gotoFolderController)
+	{
+		id loaded = [self loadComponentFromBundle:@"GotoFolderSheet.bundle"];
+		if(loaded)
+		{
+			_gotoFolderController = loaded;
+		}
+	}
+	
+	return _gotoFolderController;	
 }
 
 -(IBAction)toggleVitaminSee:(id)sender
@@ -456,7 +477,8 @@
 	{
 		enable = mainWindowVisible && [currentImageFile isDir];
 	}
-	if([theMenuItem action] == @selector(closeWindow:))
+	if([theMenuItem action] == @selector(closeWindow:) ||
+	   [theMenuItem action] == @selector(referesh:))
 	{
 		enable = mainWindowVisible;
 	}
@@ -495,6 +517,10 @@
 	else if ([theMenuItem action] == @selector(goForward:))
 	{
 		enable = mainWindowVisible && [pathManager canRedo];
+	}
+	else if ([theMenuItem action] == @selector(goToFolder:))
+	{
+		enable = mainWindowVisible;
 	}
 	
     return enable;
