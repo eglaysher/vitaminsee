@@ -18,7 +18,9 @@
 
 // WHAT HAS BEEN DONE:
 /*
-  * Select child folder on "Go Enclosing folder" 
+  * Select child folder on "Go Enclosing folder"
+  * Actual size zoom button
+  * Modify IconFamily to have a black line around thumbnail.
  */
 
 // WHAT NEEDS TO BE DONE:
@@ -27,7 +29,7 @@
   * Implement backHistory/forwardHistory
   * Cell drawing with advanced icon...
   * File renaming
-  * Actual size
+  * Jumping into the middle of a list will start loading the thumbnails there...
 */
 
 /* SECOND MILESTONE GOALS
@@ -39,7 +41,6 @@
 /* THIRD MILSTONE GOALS
   * Drag and drop
   * Fullscreen
-  * Modify IconFamily to have a black line around thumbnail.
 */
 
 //// Post contest:
@@ -367,6 +368,13 @@
 	[self redraw];
 }
 
+-(void)actualSize:(id)sender
+{
+	scaleProportionally = YES;
+	scaleRatio = 1.0;
+	[self redraw];
+}
+
 // Redraw the window when the window resizes.
 -(void)windowDidResize:(NSNotification*)notification
 {
@@ -386,12 +394,13 @@
 {
 	// Get the current image from the ImageTaskManager
 	int x, y;
-	NSImage* image = [imageTaskManager getCurrentImageWithWidth:&x height:&y];
+	float scale;
+	NSImage* image = [imageTaskManager getCurrentImageWithWidth:&x height:&y scale:&scale];
 	[imageViewer setImage:image];
 	[imageViewer setFrameSize:[image size]];
 	
-	if(!scaleProportionally)
-		scaleRatio = min(buildRatio([image size].width, x), buildRatio([image size].height, y));
+	NSLog(@"Scale ratio %f", scaleRatio);
+	scaleRatio = scale;
 
 	[imageSizeLabel setStringValue:[NSString stringWithFormat:@"%i x %i", 
 		x, y]];

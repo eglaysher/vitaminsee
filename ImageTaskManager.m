@@ -194,12 +194,14 @@
 	pthread_mutex_unlock(&taskQueueLock);	
 }
 
--(NSImage*)getCurrentImageWithWidth:(int*)width height:(int*)height
+-(NSImage*)getCurrentImageWithWidth:(int*)width height:(int*)height scale:(float*)scale
 {
 	if(width)
 		*width = currentImageWidth;
 	if(height)
 		*height = currentImageHeight;
+	if(scale)
+		*scale = currentImageScale;
 	
 	return currentImage;
 }
@@ -350,7 +352,7 @@
 	BOOL canGetAwayWithQuickRender;	
 	struct DS display = buildImageSize(displayBoxWidth, displayBoxHeight, imageX, 
 									   imageY, canScaleProportionally, ratioToScale,
-									   &canGetAwayWithQuickRender);
+									   &canGetAwayWithQuickRender, &currentImageScale);
 	
 	NSLog(@"Image:[%d, %d] Dispaly:[%d, %d]", imageX, imageY, display.width, display.height);
 	

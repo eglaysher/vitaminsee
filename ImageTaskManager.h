@@ -32,6 +32,7 @@
 	NSImage* currentImage;
 	int currentImageWidth;
 	int currentImageHeight;
+	float currentImageScale;
 	
 	NSImage* currentIconFamilyThumbnail;
 	id currentIconCell;
@@ -49,7 +50,7 @@
 -(void)setScaleProportionally:(BOOL)newScaleProportionally;
 -(void)setContentViewSize:(NSSize)newContentViewSize;
 
--(NSImage*)getCurrentImageWithWidth:(int*)width height:(int*)height;
+-(NSImage*)getCurrentImageWithWidth:(int*)width height:(int*)height scale:(float*)scale;
 -(id)getCurrentThumbnailCell;
 -(NSImage*)getCurrentThumbnail;
 

@@ -18,7 +18,7 @@
 
 @interface IconFamily (Internals)
 
-+ (NSImage*) resampleImage:(NSImage*)image toIconWidth:(int)width usingImageInterpolation:(NSImageInterpolation)imageInterpolation;
++ (NSImage*) resampleImage:(NSImage*)image toIconWidth:(int)width usingImageInterpolation:(NSImageInterpolation)imageInterpolation imageRect:(NSRect*)imageRect;
 
 + (Handle) get32BitDataFromBitmapImageRep:(NSBitmapImageRep*)bitmapImageRep requiredPixelSize:(int)requiredPixelSize;
 
@@ -253,6 +253,7 @@
     NSBitmapImageRep* iconBitmap32x32;
     NSBitmapImageRep* iconBitmap16x16;
     NSImage* bitmappedIconImage128x128;
+	NSRect imageRect;
     
     // Start with a new, empty IconFamily.
     self = [self init];
@@ -266,13 +267,31 @@
     // returns an NSImage that contains an NSCacheImageRep, rather than
     // an NSBitmapImageRep.  We convert to an NSBitmapImageRep, so that
 	// our methods can scan the image data, using initWithFocusedViewRect:.
-    iconImage128x128 = [IconFamily resampleImage:image toIconWidth:128 usingImageInterpolation:imageInterpolation];
+    iconImage128x128 = [IconFamily resampleImage:image toIconWidth:128 usingImageInterpolation:imageInterpolation imageRect:&imageRect];
 	[iconImage128x128 lockFocus];
 	iconBitmap128x128 = [[NSBitmapImageRep alloc] initWithFocusedViewRect:NSMakeRect(0, 0, 128, 128)];
 	[iconImage128x128 unlockFocus];
     if (iconBitmap128x128) {
-        [self setIconFamilyElement:kThumbnail32BitData fromBitmapImageRep:iconBitmap128x128];
-        [self setIconFamilyElement:kThumbnail8BitMask  fromBitmapImageRep:iconBitmap128x128];
+		// If we have successfully made the first 128x128 image, then we can make 
+		// a second one with a border quite easily. We can't reuse the first because
+		// the border looks ugly when scaled down to 16x16.
+		NSImage* bordered128 = [[iconImage128x128 copy] autorelease];
+		NSBitmapImageRep* borderedBitmap128;
+		[bordered128 lockFocus];
+
+		// Set our border color to BLACK.
+		[[NSColor blackColor] set];
+		NSFrameRect(imageRect);
+
+		// Now that we have drawn our border, copy this image...
+		borderedBitmap128 = [[[NSBitmapImageRep alloc] initWithFocusedViewRect:NSMakeRect(0, 0, 128, 128)] autorelease];
+		[bordered128 unlockFocus];
+        
+		if(borderedBitmap128)
+		{
+			[self setIconFamilyElement:kThumbnail32BitData fromBitmapImageRep:borderedBitmap128];
+			[self setIconFamilyElement:kThumbnail8BitMask  fromBitmapImageRep:borderedBitmap128];
+		}
     }
 
     // Create an NSImage with the iconBitmap128x128 NSBitmapImageRep, that we
@@ -285,7 +304,7 @@
    
     // Resample the 128x128 image to create a 32x32 pixel, 32-bit RGBA version,
     // and use that as our "large" (32x32) icon and 8-bit mask.
-    iconImage32x32 = [IconFamily resampleImage:bitmappedIconImage128x128 toIconWidth:32 usingImageInterpolation:imageInterpolation];
+    iconImage32x32 = [IconFamily resampleImage:bitmappedIconImage128x128 toIconWidth:32 usingImageInterpolation:imageInterpolation imageRect:nil];
 	[iconImage32x32 lockFocus];
 	iconBitmap32x32 = [[NSBitmapImageRep alloc] initWithFocusedViewRect:NSMakeRect(0, 0, 32, 32)];
 	[iconImage32x32 unlockFocus];
@@ -298,7 +317,7 @@
 
     // Resample the 128x128 image to create a 16x16 pixel, 32-bit RGBA version,
     // and use that as our "small" (16x16) icon and 8-bit mask.
-    iconImage16x16 = [IconFamily resampleImage:bitmappedIconImage128x128 toIconWidth:16 usingImageInterpolation:imageInterpolation];
+    iconImage16x16 = [IconFamily resampleImage:bitmappedIconImage128x128 toIconWidth:16 usingImageInterpolation:imageInterpolation imageRect:nil];
 	[iconImage16x16 lockFocus];
 	iconBitmap16x16 = [[NSBitmapImageRep alloc] initWithFocusedViewRect:NSMakeRect(0, 0, 16, 16)];
 	[iconImage16x16 unlockFocus];
@@ -861,7 +880,7 @@
 
 @implementation IconFamily (Internals)
 
-+ (NSImage*) resampleImage:(NSImage*)image toIconWidth:(int)iconWidth usingImageInterpolation:(NSImageInterpolation)imageInterpolation
++ (NSImage*) resampleImage:(NSImage*)image toIconWidth:(int)iconWidth usingImageInterpolation:(NSImageInterpolation)imageInterpolation imageRect:(NSRect*)imageRect
 {
     NSGraphicsContext* graphicsContext;
     BOOL wasAntialiasing;
@@ -925,12 +944,15 @@
     [graphicsContext setImageInterpolation:imageInterpolation];
     
     // Composite the working image into the icon bitmap, centered.
-    targetRect.origin.x = ((float)iconWidth - newSize.width ) / 2.0;
-    targetRect.origin.y = ((float)iconWidth - newSize.height) / 2.0;
-    targetRect.size.width = newSize.width;
-    targetRect.size.height = newSize.height;
+    targetRect.origin.x = (int)(((float)iconWidth - newSize.width ) / 2.0);
+    targetRect.origin.y = (int)(((float)iconWidth - newSize.height) / 2.0);
+    targetRect.size.width = (int)(newSize.width);
+    targetRect.size.height = (int)(newSize.height);
     [workingImageRep drawInRect:targetRect];
 
+	if(imageRect)
+		*imageRect = targetRect;
+	
     // Restore previous graphics context settings.
     [graphicsContext setShouldAntialias:wasAntialiasing];
     [graphicsContext setImageInterpolation:previousImageInterpolation];

@@ -15,7 +15,7 @@ struct DS {
 };
 struct DS buildImageSize(int boxWidth, int boxHeight, int imageWidth, int imageHeight,
 					  BOOL canScaleProportionally, float ratioToScale,
-					  BOOL*canGetAwayWithQuickRender);
+					  BOOL*canGetAwayWithQuickRender, float* ratioUsed);
 float buildRatio(int first, int second);
 BOOL imageRepIsAnimated(NSImageRep* rep);
 NSImage* buildImageFromNormalFile(NSString* path, NSSize size);

@@ -12,7 +12,7 @@
 
 struct DS buildImageSize(int boxWidth, int boxHeight, int imageWidth, int imageHeight,
 						 BOOL canScaleProportionally, float ratioToScale,
-						 BOOL*canGetAwayWithQuickRender)
+						 BOOL*canGetAwayWithQuickRender, float* ratioUsed)
 {
 	NSLog(@"Going to build size with box:[%d,%d] image:[%d, %d] canScale:%d ratio:%f",
 		  boxWidth, boxHeight, imageWidth, imageHeight, canScaleProportionally, ratioToScale);
@@ -24,6 +24,7 @@ struct DS buildImageSize(int boxWidth, int boxHeight, int imageWidth, int imageH
 		// ratio and then tell the imageViewer to scale it to that size.
 		display.width = imageWidth * ratioToScale;
 		display.height = imageHeight * ratioToScale;
+		*ratioUsed = ratioToScale;
 	}
 	else
 	{
@@ -32,6 +33,7 @@ struct DS buildImageSize(int boxWidth, int boxHeight, int imageWidth, int imageH
 			display.width = imageWidth;
 			display.height = imageHeight;
 			*canGetAwayWithQuickRender = YES; 		
+			*ratioUsed = 1.0;
 		}
 		else
 		{
@@ -65,6 +67,7 @@ struct DS buildImageSize(int boxWidth, int boxHeight, int imageWidth, int imageH
 					// We've found the ratio to use. Get out of this loop...
 					display.width = imageWidth * ratio;
 					display.height = imageHeight * ratio;
+					*ratioUsed = ratio;
 					break;
 				}
 			}		

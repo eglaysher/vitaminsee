@@ -15,6 +15,7 @@ static NSString* MainViewerWindowToolbarIdentifier = @"Main Viewere Window Toolb
 static NSString* ZoomInToolbarID = @"Zoom in Toolbar Identifier";
 static NSString* ZoomOutToolbarID = @"Zoom out Toolbar Identifier";
 static NSString* ZoomToFitToolbarID = @"Zoom to Fit Toolbar Identifier";
+static NSString* ActualSizeToolbarID = @"Actual Size Toolbar Identifier";
 
 @implementation CQViewController (ToolbarDelegate)
 
@@ -66,6 +67,15 @@ static NSString* ZoomToFitToolbarID = @"Zoom to Fit Toolbar Identifier";
 		[item setTarget:self];
 		[item setAction:@selector(zoomToFit:)];
 	}
+	else if([itemIdent isEqual:ActualSizeToolbarID])
+	{
+		[item setLabel:@"Actual Size"];
+		[item setPaletteLabel:@"Actual Size"];
+		[item setToolTip:@"Actual Size"];
+		[item setImage:[NSImage imageNamed:@"ActualSizeToolbarImage"]];
+		[item setTarget:self];
+		[item setAction:@selector(actualSize:)];		
+	}
 //	if([itemIdent isEqual:ScaleViewToolbarID])
 //	{
 //		[item setLabel:@"Scale"];
@@ -104,13 +114,13 @@ static NSString* ZoomToFitToolbarID = @"Zoom to Fit Toolbar Identifier";
 
 - (NSArray *) toolbarDefaultItemIdentifiers: (NSToolbar *) toolbar
 {
-	return [NSArray arrayWithObjects:ZoomInToolbarID, ZoomOutToolbarID, ZoomToFitToolbarID, nil];
+	return [NSArray arrayWithObjects:ZoomInToolbarID, ZoomOutToolbarID, ZoomToFitToolbarID, ActualSizeToolbarID, nil];
 }
 
 - (NSArray *) toolbarAllowedItemIdentifiers: (NSToolbar *) toolbar
 {
 	return [NSArray arrayWithObjects:ZoomInToolbarID, ZoomOutToolbarID,
-		ZoomToFitToolbarID, NSToolbarSeparatorItemIdentifier,
+		ZoomToFitToolbarID, ActualSizeToolbarID, NSToolbarSeparatorItemIdentifier,
 		NSToolbarSpaceItemIdentifier, NSToolbarFlexibleSpaceItemIdentifier,
 		NSToolbarCustomizeToolbarItemIdentifier, nil];
 }
