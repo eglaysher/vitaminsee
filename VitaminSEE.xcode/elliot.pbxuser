@@ -164,7 +164,7 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 132185551;
+			PBXPerProjectTemplateStateSaveDate = 132187165;
 			PBXPrepackagedSmartGroups_v2 = (
 				{
 					PBXTransientLocationAtTop = bottom;
@@ -341,7 +341,7 @@
 					};
 				},
 			);
-			PBXWorkspaceStateSaveDate = 132185551;
+			PBXWorkspaceStateSaveDate = 132187165;
 		};
 		perUserProjectItems = {
 			8B443AFE07D7E3F800C4D8E9 = 8B443AFE07D7E3F800C4D8E9;
@@ -353,9 +353,9 @@
 			8B81C79E07E0FE0100EED911 = 8B81C79E07E0FE0100EED911;
 			8B81C79F07E0FE0100EED911 = 8B81C79F07E0FE0100EED911;
 			8B81C7A007E0FE0100EED911 = 8B81C7A007E0FE0100EED911;
-			8BBE9BB507E0FDAD007EAE01 = 8BBE9BB507E0FDAD007EAE01;
-			8BBE9BB607E0FDAD007EAE01 = 8BBE9BB607E0FDAD007EAE01;
-			8BBE9BB707E0FDAD007EAE01 = 8BBE9BB707E0FDAD007EAE01;
+			8BC6CD0B07E10530001A5D6B = 8BC6CD0B07E10530001A5D6B;
+			8BC6CD0C07E10530001A5D6B = 8BC6CD0C07E10530001A5D6B;
+			8BC6CD0D07E10530001A5D6B = 8BC6CD0D07E10530001A5D6B;
 			8BEA4A8307D7D104001ADD2E = 8BEA4A8307D7D104001ADD2E;
 			8BEA4A8607D7D104001ADD2E = 8BEA4A8607D7D104001ADD2E;
 			8BEA4A8707D7D104001ADD2E = 8BEA4A8707D7D104001ADD2E;
@@ -822,36 +822,6 @@
 			sepNavWindowFrame = "{{-11, 173}, {750, 502}}";
 		};
 	};
-	8BBE9BB507E0FDAD007EAE01 = {
-		fRef = 8B443AFA07D7E0AB00C4D8E9;
-		isa = PBXTextBookmark;
-		name = "ImageMetadata.mm: 22";
-		rLen = 0;
-		rLoc = 423;
-		rType = 0;
-		vrLen = 0;
-		vrLoc = 0;
-	};
-	8BBE9BB607E0FDAD007EAE01 = {
-		fRef = 8B5D5E2907B8215E00957950;
-		isa = PBXTextBookmark;
-		name = "ImageTaskManager.h: 67";
-		rLen = 0;
-		rLoc = 1566;
-		rType = 0;
-		vrLen = 779;
-		vrLoc = 787;
-	};
-	8BBE9BB707E0FDAD007EAE01 = {
-		fRef = 8BF72B0607B9E78F003A3C82;
-		isa = PBXTextBookmark;
-		name = "ViewIconViewController.m: 110";
-		rLen = 0;
-		rLoc = 3016;
-		rType = 0;
-		vrLen = 939;
-		vrLoc = 2308;
-	};
 	8BC6660507BF542A0075F57F = {
 		isa = PBXFileReference;
 		lastKnownFileType = sourcecode.c.objc;
@@ -882,6 +852,36 @@
 			sepNavVisRect = "{{0, 888}, {734, 96}}";
 			sepNavWindowFrame = "{{263, 65}, {750, 502}}";
 		};
+	};
+	8BC6CD0B07E10530001A5D6B = {
+		fRef = 8B443AFA07D7E0AB00C4D8E9;
+		isa = PBXTextBookmark;
+		name = "ImageMetadata.mm: 22";
+		rLen = 0;
+		rLoc = 423;
+		rType = 0;
+		vrLen = 0;
+		vrLoc = 0;
+	};
+	8BC6CD0C07E10530001A5D6B = {
+		fRef = 8B5D5E2907B8215E00957950;
+		isa = PBXTextBookmark;
+		name = "ImageTaskManager.h: 67";
+		rLen = 0;
+		rLoc = 1566;
+		rType = 0;
+		vrLen = 779;
+		vrLoc = 787;
+	};
+	8BC6CD0D07E10530001A5D6B = {
+		fRef = 8BF72B0607B9E78F003A3C82;
+		isa = PBXTextBookmark;
+		name = "ViewIconViewController.m: 110";
+		rLen = 0;
+		rLoc = 3016;
+		rType = 0;
+		vrLen = 939;
+		vrLoc = 2308;
 	};
 	8BD0115207A9599000AA4BAA = {
 		activeArgIndex = 2147483647;
