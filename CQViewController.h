@@ -102,4 +102,5 @@
 -(void)stopProgressIndicator;
 
 -(IBAction)showPreferences:(id)sender;
+-(IBAction)deleteFileClicked:(id)sender;
 @end

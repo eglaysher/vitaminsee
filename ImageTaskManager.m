@@ -297,7 +297,8 @@
 		NSImage* image = [[NSImage alloc] initWithContentsOfFile:path];
 		iconFamily = [IconFamily iconFamilyWithThumbnailsOfImage:image];
 		[iconFamily setAsCustomIconForFile:path];
-		thumbnail = [iconFamily imageWithAllReps];
+		// Must retain
+		thumbnail = [[iconFamily imageWithAllReps] retain];
 	}
 	else
 	{

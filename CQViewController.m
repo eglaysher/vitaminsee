@@ -16,6 +16,7 @@
 #import "IconFamily.h"
 #import "ImmutableToMutableTransformer.h"
 #import "SS_PrefsController.h"
+#import "KeywordNode.h"
 
 @implementation CQViewController
 
@@ -53,6 +54,8 @@
    NSString different function not pathComponenets.
  
    The Mac OSX File System -[NSFileManager displayNameAtPath:]
+ 
+    VITAMIN SEE
  */
 
 /* FIRST MILESTONE GOALS (Note that the milestones have gone apeshit...)
@@ -111,6 +114,13 @@
 	[defaultPrefs setObject:[NSNumber numberWithBool:YES] forKey:@"DisplayThumbnails"];
 	[defaultPrefs setObject:[NSNumber numberWithBool:YES] forKey:@"GenerateThumbnails"];
 	[defaultPrefs setObject:[NSNumber numberWithBool:NO] forKey:@"GenerateThumbnailsInArchives"];
+
+	// Keyword preferences
+	KeywordNode* node = [[[KeywordNode alloc] init] autorelease];
+	[node addChild:[[[KeywordNode alloc] initWithKeyword:@"Anime"] autorelease]];
+	[node addChild:[[[KeywordNode alloc] initWithKeyword:@"Blogs"] autorelease]];
+	NSData* emptyKeywordNode = [NSKeyedArchiver archivedDataWithRootObject:node];
+	[defaultPrefs setObject:emptyKeywordNode forKey:@"KeywordTree"];
 	
 	// Default keywords for the Keyword Inspector
 	NSArray* keywordInspectorDefaults = [NSArray arrayWithObjects:
@@ -521,11 +531,18 @@
 		 [[NSBundle mainBundle] builtInPlugInsPath] bundleExtension:@"cqvPref"];
         
         // Set which panes are included, and their order.
-        [prefs setPanesOrder:[NSArray arrayWithObjects:@"General", @"Sort Manager", @"Updating", @"A Non-Existent Preference Pane", nil]];
+        [prefs setPanesOrder:[NSArray arrayWithObjects:@"General",
+			@"Sort Manager", @"Keywords", @"Updating", 
+			@"A Non-Existent Preference Pane", nil]];
     }
     
     // Show the preferences window.
     [prefs showPreferencesWindow];
+}
+
+-(IBAction)deleteFileClicked:(id)sender
+{
+	[self deleteThisFile];
 }
 
 @end

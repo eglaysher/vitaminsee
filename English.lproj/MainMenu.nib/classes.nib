@@ -2,7 +2,7 @@
     IBClasses = (
         {
             ACTIONS = {
-                deleteThisFile = id; 
+                deleteFileClicked = id; 
                 goBack = id; 
                 goEnclosingFolder = id; 
                 goForward = id; 
@@ -11,6 +11,7 @@
                 scaleViewSliderMoved = id; 
                 showPreferences = id; 
                 showSortManager = id; 
+                zoomToFit = id; 
             }; 
             CLASS = CQViewController; 
             LANGUAGE = ObjC; 
@@ -25,7 +26,6 @@
                 scaleSlider = NSSlider; 
                 scaleView = NSView; 
                 scrollView = NSScrollView; 
-                sortManagerController = SortManagerController; 
                 sortingManager = NSPanel; 
                 viewAsIconsController = ViewIconViewController; 
                 viewerWindow = NSWindow; 
