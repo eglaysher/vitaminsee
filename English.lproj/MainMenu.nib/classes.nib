@@ -12,6 +12,7 @@
                 goToHomeFolder = id; 
                 goToPicturesFolder = id; 
                 openFolder = id; 
+                revealInFinder = id; 
                 showPreferences = id; 
                 toggleKeywordManager = id; 
                 toggleSortManager = id; 

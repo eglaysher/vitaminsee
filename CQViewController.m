@@ -45,9 +45,10 @@
 
   * Comments (or yank it out!)
   * Disable comments on things we can't comment on.
-
+  * Placeholder for folders.
   * Validate menu items
   * Icons for VitaminSee
+  * Reveal in Finder
 */
 
 //////////////////////////////////////////////////////// WHAT NEEDS TO BE DONE:
@@ -64,17 +65,13 @@
   * Legality of using Apple icons? Modification? NO!
  */
 
-/*
-   NSString different function not pathComponenets.
- 
+/* NSString different function not pathComponenets. 
    The Mac OSX File System -[NSFileManager displayNameAtPath:]
- 
-    VITAMIN SEE
  */
 
 /* FIRST MILESTONE GOALS (Note that the milestones have gone apeshit...)
   * Work on making things feature complete.
-  * Placeholder for folders.
+  * Goto folder sheet
   * Integrated Help
 */
 
@@ -95,6 +92,7 @@
 
 /* FOURTH MILESTONE GOALS
   * GIF/PNG keywords and comments.    
+  * JPEG comments
   * Integrate into the [Computer name]/[Macintosh HD]/.../ hiearachy...
   * Transparent Zip/Rar support
   * Change arrow key behaviour - scroll around in image if possible in NSScrollView
@@ -292,6 +290,12 @@
 -(IBAction)closeWindow:(id)sender
 {
 	[mainVitaminSeeWindow close];
+}
+
+-(IBAction)revealInFinder:(id)sender
+{
+	[[NSWorkspace sharedWorkspace] selectFile:currentImageFile
+					 inFileViewerRootedAtPath:@""];
 }
 
 -(IBAction)goEnclosingFolder:(id)sender
@@ -511,29 +515,21 @@
 	else
 		[fileSizeLabel setObjectValue:[NSNumber 
 			numberWithInt:[newCurrentFile fileSize]]];
+
+	[imageTaskManager setScaleProportionally:scaleProportionally];
+	[imageTaskManager setScaleRatio:scaleRatio];
+	[imageTaskManager setContentViewSize:[scrollView contentSize]];
 	
-	if([newCurrentFile isImage])
-	{
-		[imageTaskManager setScaleProportionally:scaleProportionally];
-		[imageTaskManager setScaleRatio:scaleRatio];
-		[imageTaskManager setContentViewSize:[scrollView contentSize]];
-		
-		[imageTaskManager displayImageWithPath:newCurrentFile];
-	}
-	else
-	{
-//		NSLog(@"Not displaying %@", newCurrentFile);
-		// Set the label to "---" since this isn't an image...
+	[imageTaskManager displayImageWithPath:newCurrentFile];
+	
+	if(![newCurrentFile isImage])
 		[imageSizeLabel setStringValue:@"---"];
-	}
 	
 	// Alert all the plugins of the new file:
 	NSEnumerator* e = [loadedFilePlugins objectEnumerator];
 	id <FileManagerPlugin> plugin;
 	while(plugin = [e nextObject])
-	{
 		[plugin fileSetTo:newCurrentFile];
-	}
 
 	[self redraw];
 }
@@ -614,8 +610,11 @@
 	
 	scaleRatio = scale;
 
-	[imageSizeLabel setStringValue:[NSString stringWithFormat:@"%i x %i", 
-		x, y]];
+	if([currentImageFile isDir])
+		[imageSizeLabel setStringValue:@"---"];
+	else
+		[imageSizeLabel setStringValue:[NSString stringWithFormat:@"%i x %i", 
+			x, y]];
 }
 
 -(void)setIcon

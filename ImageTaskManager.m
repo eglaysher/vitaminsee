@@ -355,7 +355,19 @@
 	// Before we aquire our internal lock, tell the main application to start
 	// spinning...
 	[cqViewController startProgressIndicator:nil];
+
+	if([path isDir])
+	{
+		// We are working with a directory.
+		NSImage* image = [[NSWorkspace sharedWorkspace] iconForFile:path];
+		[image setSize:NSMakeSize(128, 128)];
 		
+		[image retain];
+		[self sendDisplayCommandWithImage:image width:128 height:128];
+		[image release];
+		return;
+	}
+	
 	// [NSString stringWithFormat:@"Displaying %@...", [path lastPathComponent]]];		
 
 	NSImageRep* imageRep;

@@ -92,6 +92,9 @@
 -(IBAction)openFolder:(id)sender;
 -(IBAction)closeWindow:(id)sender;
 
+// View menu options
+-(IBAction)revealInFinder:(id)sender;
+
 // Go menu actions
 -(IBAction)goEnclosingFolder:(id)sender;
 -(IBAction)goBack:(id)sender;
