@@ -74,12 +74,22 @@
 
 /////////////////////////////////////////////////////////// POST CONTEST GOALS:
 
+/* WHER I GO FROM HERE
+  * First Milestone
+    * Transparent Zip/Rar support
+    * Fit to height/Fit to width
+    * Integrate into the [Computer name]/[Macintosh HD]/.../ hiearachy...
+  * Second Milestone
+    * Clean up Pluginlayer
+    * Build a plugin interfaceSegment ViewAsIcons and all that code into a plugin bundle
+    * 
+ */
+
 /* SECOND MILESTONE GOALS
+ * Transparent Zip/Rar support
  * Redo left panel as loadable bundle with an NSTableView
  * Image search (Loadable bundle)
  * Duplicate search (Loadable bundle)
- * Integrate into the [Computer name]/[Macintosh HD]/.../ hiearachy...
- * Transparent Zip/Rar support
  * Split *thumbnailing* off into it's own thread? (Image display/preload stays
    in it's own thread, instead of making image display in one and thumbnailing
    and preloading in the other...)
