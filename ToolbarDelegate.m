@@ -24,12 +24,7 @@ static NSString* ActualSizeToolbarID = @"Actual Size Toolbar Identifier";
 	NSToolbar* toolbar = [[[NSToolbar alloc] initWithIdentifier:MainViewerWindowToolbarIdentifier] autorelease];
 	[toolbar setAllowsUserCustomization:YES];
 	[toolbar setAutosavesConfiguration:YES];
-	[toolbar setDelegate:self];
-	
-	// Setup the toolbar views to be retained and owned by THIS CONTROLLER. 
-	// We do NOT want them to get GCed.
-	[scaleView retain];
-	[scaleView removeFromSuperview];
+	[toolbar setDelegate:self];	
 	
 	[viewerWindow setToolbar:toolbar];
 }

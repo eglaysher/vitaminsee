@@ -2,16 +2,18 @@
     IBClasses = (
         {
             ACTIONS = {
+                closeWindow = id; 
                 deleteFileClicked = id; 
                 goBack = id; 
                 goEnclosingFolder = id; 
                 goForward = id; 
-                scaleView100Pressed = id; 
-                scaleViewPPressed = id; 
-                scaleViewSliderMoved = id; 
+                goToFolder = id; 
+                goToHomeFolder = id; 
+                goToPicturesFolder = id; 
                 showKeywordManager = id; 
                 showPreferences = id; 
                 showSortManager = id; 
+                showVitaminSee = id; 
                 zoomToFit = id; 
             }; 
             CLASS = CQViewController; 
@@ -20,12 +22,13 @@
                 currentFileViewHolder = NSView; 
                 directoryDropdown = NSPopUpButton; 
                 fileSizeLabel = NSTextField; 
+                homeFolderMenuItem = NSMenuItem; 
                 imageSizeLabel = NSTextField; 
                 imageViewer = NSImageView; 
+                mainVitaminSeeWindow = NSWindow; 
+                pictureFolderMenuItem = NSMenuItem; 
                 progressCurrentTask = NSTextField; 
                 progressIndicator = NSProgressIndicator; 
-                scaleSlider = NSSlider; 
-                scaleView = NSView; 
                 scrollView = NSScrollView; 
                 viewAsIconsController = ViewIconViewController; 
                 viewerWindow = NSWindow; 

@@ -19,6 +19,13 @@
 */
 @interface CQViewController : NSObject <ImageDisplayer>
 {
+	IBOutlet NSWindow* mainVitaminSeeWindow;
+	
+	// Menu items we need to attatch items to
+	IBOutlet NSMenuItem* homeFolderMenuItem;
+	IBOutlet NSMenuItem* pictureFolderMenuItem;
+	
+	
     IBOutlet NSImageView *imageViewer;
 	IBOutlet NSTextField * fileSizeLabel;
 	IBOutlet NSTextField * imageSizeLabel;
@@ -28,10 +35,6 @@
 	// Integrated plugins.
 	NSWindowController* _sortManagerController;
 	NSWindowController* _keywordManagerController;
-	
-	// Scale view controls
-	IBOutlet NSView* scaleView;
-	IBOutlet NSSlider* scaleSlider;
 
 	// File view components:
 	// * 
@@ -80,19 +83,22 @@
 // Redraws the text
 - (void)redraw;
 
+// File menu options
+-(IBAction)closeWindow:(id)sender;
+
 // Go menu actions
 -(IBAction)goEnclosingFolder:(id)sender;
 -(IBAction)goBack:(id)sender;
 -(IBAction)goForward:(id)sender;
+// ----------------------
+-(IBAction)goToHomeFolder:(id)sender;
+-(IBAction)goToPicturesFolder:(id)sender;
+// ----------------------
+-(IBAction)goToFolder:(id)sender;
 
-
+-(IBAction)showVitaminSee:(id)sender;
 -(IBAction)showSortManager:(id)sender;
 -(IBAction)showKeywordManager:(id)sender;
-
-// Scaling stuff
-- (IBAction)scaleView100Pressed:(id)sender;
-- (IBAction)scaleViewPPressed:(id)sender;
-- (IBAction)scaleViewSliderMoved:(id)sender;
 
 -(void)zoomToFit:(id)sender;
 

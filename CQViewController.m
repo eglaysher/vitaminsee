@@ -61,8 +61,13 @@
 
 /* FIRST MILESTONE GOALS (Note that the milestones have gone apeshit...)
   * File renaming (Inspector!)
-  * Comments
+  * Comments (or yank it out!)
+  * Cmd-O opens == double click.
+  * Disable comments on things we can't comment on.
+  * Icons for VitaminSee
   * Work on making things feature complete.
+  * Validate menu items
+  * command-1 should TOGGLE the display of windows...
   * Integrated Help
 */
 
@@ -70,9 +75,6 @@
   Non-required improvements that would be a good idea:
   * Prioritize thumbnail loading to currently visible files...
   * Fit to height/Fit to width
-  * Cmd-O opens == double click.
-  * Disable comments on things we can't comment on.
-  * Icons for VitaminSee
   */
 
 /////////////////////////////////////////////////////////// POST CONTEST GOALS:
@@ -162,6 +164,16 @@
 	// Use our file size formatter for formating the "[image size]" text label
 	FileSizeFormatter* fsFormatter = [[[FileSizeFormatter alloc] init] autorelease];
 	[[fileSizeLabel cell] setFormatter:fsFormatter];
+	
+	// Set up the menu icons
+	NSImage* img = [[NSWorkspace sharedWorkspace] iconForFile:NSHomeDirectory()];
+	[img setSize:NSMakeSize(16, 16)];
+	[homeFolderMenuItem setImage:img];
+
+	img = [[NSWorkspace sharedWorkspace] iconForFile:
+		[NSHomeDirectory() stringByAppendingPathComponent:@"Pictures"]];
+	[img setSize:NSMakeSize(16, 16)];
+	[pictureFolderMenuItem setImage:img];
 	
 	[self setupToolbar];
 	[self zoomToFit:self];
@@ -265,6 +277,11 @@
 	}
 }
 
+-(IBAction)closeWindow:(id)sender
+{
+	[mainVitaminSeeWindow close];
+}
+
 -(IBAction)goEnclosingFolder:(id)sender
 {
 	int count = [currentDirectoryComponents count] - 1;
@@ -286,6 +303,23 @@
 {
 	[pathManager redo];
 //	[self updateButtons];
+}
+
+-(IBAction)goToHomeFolder:(id)sender
+{
+	[self setCurrentDirectory:NSHomeDirectory() file:nil];
+}
+
+-(IBAction)goToPicturesFolder:(id)sender
+{
+	[self setCurrentDirectory:[NSHomeDirectory() stringByAppendingPathComponent:@"Pictures"]
+						 file:nil];
+}
+
+-(IBAction)goToFolder:(id)sender
+{
+	// fixme: stub.
+	NSLog(@"Something happened.");
 }
 
 -(NSWindowController*)sortManagerController
@@ -343,6 +377,11 @@
 	return _keywordManagerController;
 }
 
+-(IBAction)showVitaminSee:(id)sender
+{
+	[mainVitaminSeeWindow makeKeyAndOrderFront:self];
+//showWindow:self];
+}
 
 -(IBAction)showSortManager:(id)sender
 {	
@@ -453,30 +492,6 @@
 	
 	if([currentImageFile isImage])
 		[imageTaskManager displayImageWithPath:currentImageFile];
-}
-
-- (IBAction)scaleView100Pressed:(id)sender
-{
-	// Set our scale ratio to 1.0.
-	scaleProportionally = YES;
-	scaleRatio = 1.0;
-	[scaleSlider setFloatValue:1.0];
-	[self redraw];
-}
-
-// Method set the current view to proporotional scaling
-- (IBAction)scaleViewPPressed:(id)sender
-{
-	scaleProportionally = NO;
-	[self redraw];
-}
-
-// Called whenever the slider in ScaleView is moved. Resizes the image
-- (IBAction)scaleViewSliderMoved:(id)sender
-{
-	scaleProportionally = YES;
-	scaleRatio = [sender floatValue];
-	[self redraw];
 }
 
 -(void)zoomIn:(id)sender
