@@ -17,7 +17,6 @@
 #import "ImmutableToMutableTransformer.h"
 #import "SS_PrefsController.h"
 #import "KeywordNode.h"
-#import "ThumbnailManager.h"
 
 @implementation VitaminSEEController
 
@@ -184,14 +183,22 @@
 	_sortManagerController = nil;
 	
 	// 
-	pathManager = [[NSUndoManager alloc] init];	
+	pathManager = [[NSUndoManager alloc] init];
+	
+	// Now we start work on thread communication.
+	NSPort *port1 = [NSPort port];
+	NSPort *port2 = [NSPort port];
+	NSConnection* kitConnection = [[NSConnection alloc] 
+		initWithReceivePort:port1 sendPort:port2];
+	[kitConnection setRootObject:self];
+	
+	NSArray *portArray = [NSArray arrayWithObjects:port2, port1, nil];
 	
 	// Launch the other thread and tell it to connect back to us.
-	imageTaskManager = [[ImageTaskManager alloc] initWithController:self];
-	thumbnailManager = [[ThumbnailManager alloc] initWithController:self];
+	imageTaskManager = [[ImageTaskManager alloc] initWithPortArray:portArray];
 	
 	// Now that we have our task manager, tell everybody to use it.
-	[viewAsIconsController setThumbnailManager:thumbnailManager];
+	[viewAsIconsController setImageTaskManager:imageTaskManager];
 	
 	// set our current directory 
 	[self setCurrentDirectory:[[NSUserDefaults standardUserDefaults] 
@@ -240,7 +247,7 @@
 	
 	// Clear the thumbnails being displayed.
 	if(![newCurrentDirectory isEqualTo:currentDirectory])
-		[thumbnailManager clearThumbnailQueue];
+		[imageTaskManager clearThumbnailQueue];
 	
 	// Set the current Directory
 	[currentDirectory release];
@@ -647,8 +654,8 @@
 
 -(void)setIcon
 {
-	NSImage* thumbnail = [thumbnailManager getCurrentThumbnail];
-	id cell = [thumbnailManager getCurrentThumbnailCell];
+	NSImage* thumbnail = [imageTaskManager getCurrentThumbnail];
+	id cell = [imageTaskManager getCurrentThumbnailCell];
 	
 	[cell setIconImage:thumbnail];
 	[viewAsIconsController updateCell:cell];
@@ -658,27 +665,23 @@
 }
 
 // Progress indicator control
--(void)startProgressIndicator
+-(void)startProgressIndicator:(NSString*)statusText
 {
 	[progressIndicator setHidden:NO];
 	[progressIndicator startAnimation:self];
+	
+	if(statusText)
+	{
+		[progressCurrentTask setHidden:NO];
+		[progressCurrentTask setStringValue:statusText];
+	}
 }
 
 -(void)stopProgressIndicator
 {
 	[progressIndicator stopAnimation:self];
 	[progressIndicator setHidden:YES];
-}
-
--(void)setStatusLine:(NSString*)status
-{
-	if(status)
-	{
-		[progressCurrentTask setHidden:NO];
-		[progressCurrentTask setStringValue:status];
-	}
-	else
-		[progressCurrentTask setHidden:YES];
+	[progressCurrentTask setHidden:YES];
 }
 
 -(IBAction)showPreferences:(id)sender

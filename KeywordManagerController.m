@@ -79,8 +79,15 @@
 
 -(IBAction)fileChanged:(id)sender
 {
+	NSString* path = [currentPath stringByDeletingLastPathComponent];
+//	NSString* current
+
+	// fixme: Get renaming working.
+//	NSLog(@"New value is %@", [sender stringValue]);
+	
 	[pluginLayer renameThisFileTo:[sender stringValue]];
 }
+
 
 -(void)loadKeywordsIntoTextViewFromList
 {

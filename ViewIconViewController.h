@@ -9,7 +9,7 @@
 #import <Cocoa/Cocoa.h>
 
 @class VitaminSEEController;
-@class ThumbnailManager;
+@class ImageTaskManager;
 
 @interface ViewIconViewController : NSObject {
 	IBOutlet VitaminSEEController* controller;
@@ -20,12 +20,11 @@
 	NSString* currentDirectory;
 	NSMutableArray* fileList;
 	
-	ThumbnailManager* thumbnailManager;
-//	ImageTaskManager* imageTaskManager;
+	ImageTaskManager* imageTaskManager;
 }
 
 -(BOOL)canDelete;
--(void)setThumbnailManager:(ThumbnailManager*)itm;
+-(void)setImageTaskManager:(ImageTaskManager*)itm;
 
 -(void)setCurrentDirectory:(NSString*)path;
 -(NSView*)view;

@@ -20,6 +20,7 @@
 
 @interface ImageTaskManager (Private)
 -(id)evictImages;
+-(void)doBuildIcon:(NSDictionary*)options;
 -(void)doPreloadImage:(NSString*)path;
 -(void)doDisplayImage:(NSString*)imageToDisplay;
 -(BOOL)newDisplayCommandInQueue;
@@ -32,7 +33,7 @@
 // 141.213.4.4
 // 141.213.4.5
 
--(id)initWithController:(id)parentController;
+-(id)initWithPortArray:(NSArray*)portArray
 {
 	if(self = [super init])
 	{
@@ -41,16 +42,10 @@
 		pthread_cond_init(&conditionLock, NULL);
 		
 		imageCache = [[NSMutableDictionary alloc] init];
+		thumbnailQueue = [[NSMutableArray alloc] init];
 		preloadQueue = [[NSMutableArray alloc] init];
-
-		// Now we start work on thread communication.
-		NSPort *port1 = [NSPort port];
-		NSPort *port2 = [NSPort port];
-		NSConnection* kitConnection = [[NSConnection alloc] 
-			initWithReceivePort:port1 sendPort:port2];
-		[kitConnection setRootObject:parentController];
 		
-		NSArray *portArray = [NSArray arrayWithObjects:port2, port1, nil];		
+		thumbnailLoadingPosition = 0;
 		
 		// spawn off a new thread
 		[NSThread detachNewThreadSelector:@selector(taskHandlerThread:) 
@@ -71,6 +66,7 @@
 	
 	// destroy our mutexed data!
 	[imageCache release];
+	[thumbnailQueue release];
 	[preloadQueue release];
 }
 
@@ -94,7 +90,8 @@
 		
 		// Let's wait for stuff
 		pthread_mutex_lock(&taskQueueLock);
-		while(fileToDisplayPath == nil && [preloadQueue count] == 0)
+		while(fileToDisplayPath == nil && [thumbnailQueue count] == 0 &&
+			  [preloadQueue count] == 0)
 		{
 			if(pthread_cond_wait(&conditionLock, &taskQueueLock))
 				NSLog(@"Invalid wait!?");
@@ -110,6 +107,19 @@
 			pthread_mutex_unlock(&taskQueueLock);
 			
 			[self doDisplayImage:path];
+		}
+		else if([thumbnailQueue count])
+		{
+			if(thumbnailLoadingPosition > [thumbnailQueue count])
+				thumbnailLoadingPosition = 0;
+			
+			NSDictionary* action = [[thumbnailQueue 
+				objectAtIndex:thumbnailLoadingPosition] retain];
+			[thumbnailQueue removeObjectAtIndex:thumbnailLoadingPosition];
+			pthread_mutex_unlock(&taskQueueLock);
+			
+			[self doBuildIcon:action];
+			[action release];
 		}
 		else if([preloadQueue count])
 		{
@@ -130,6 +140,14 @@
 	}
 	
 	[npool release];
+}
+
+-(void)setShouldBuildIcon:(BOOL)newShouldBuildIcon
+{
+	// fixme: Maybe this should be atomic.
+	pthread_mutex_lock(&imageScalingProperties);
+	shouldBuildIcon = newShouldBuildIcon;
+	pthread_mutex_unlock(&imageScalingProperties);
 }
 
 -(void)setSmoothing:(int)newSmoothing
@@ -191,6 +209,30 @@
 	pthread_mutex_unlock(&taskQueueLock);
 }
 
+-(void)buildThumbnail:(NSString*)path forCell:(id)cell
+{
+	NSDictionary* currentTask = [NSDictionary dictionaryWithObjectsAndKeys:
+		@"PreloadImage", @"Type", path, @"Path",
+		cell, @"Cell", nil];
+	
+	pthread_mutex_lock(&taskQueueLock);
+	//	NSLog(@"Going to preload: %@", path);
+	// Add the object
+	[thumbnailQueue addObject:currentTask];
+	
+	// Note that we are OUT of here...
+	pthread_cond_signal(&conditionLock);
+	pthread_mutex_unlock(&taskQueueLock);	
+}
+
+-(void)setThumbnailLoadingPosition:(int)newPosition
+{
+	pthread_mutex_lock(&taskQueueLock);
+	if(newPosition < [thumbnailQueue count])
+		thumbnailLoadingPosition = newPosition;
+	pthread_mutex_unlock(&taskQueueLock);
+}
+
 -(NSImage*)getCurrentImageWithWidth:(int*)width height:(int*)height scale:(float*)scale
 {
 	if(width)
@@ -201,6 +243,23 @@
 		*scale = currentImageScale;
 	
 	return currentImage;
+}
+
+-(id)getCurrentThumbnailCell
+{
+	return currentIconCell;
+}
+
+-(NSImage*)getCurrentThumbnail
+{
+	return currentIconFamilyThumbnail;
+}
+
+-(void)clearThumbnailQueue
+{
+	pthread_mutex_lock(&taskQueueLock);
+	[thumbnailQueue removeAllObjects];
+	pthread_mutex_unlock(&taskQueueLock);
 }
 
 @end
@@ -233,6 +292,45 @@
 	}
 }
 
+-(void)doBuildIcon:(NSDictionary*)options
+{
+	NSString* path = [options objectForKey:@"Path"];
+	NSImage* thumbnail;
+	IconFamily* iconFamily;
+	BOOL building = NO;
+	
+	pthread_mutex_lock(&imageScalingProperties);
+	BOOL localShouldBuild = shouldBuildIcon;
+	pthread_mutex_unlock(&imageScalingProperties);
+	
+	// Build the thumbnail and set it to the file...
+	if([path isImage] && ![IconFamily fileHasCustomIcon:path] && localShouldBuild)
+	{
+		building = YES;
+		[vitaminSEEController startProgressIndicator:[NSString 
+			stringWithFormat:@"Building thumbnail for %@...", [path lastPathComponent]]];
+		// I don't think there IS an autorelease...
+		NSImage* image = [[NSImage alloc] initWithContentsOfFile:path];
+		iconFamily = [IconFamily iconFamilyWithThumbnailsOfImage:image];
+		[iconFamily setAsCustomIconForFile:path];
+		// Must retain
+		thumbnail = [[iconFamily imageWithAllReps] retain];
+	}
+	else
+	{
+		thumbnail = [path iconImageOfSize:NSMakeSize(128, 128)];
+	}
+	
+	currentIconFamilyThumbnail = thumbnail;
+	currentIconCell = [options objectForKey:@"Cell"];
+	[vitaminSEEController setIcon];
+	
+	if(building)
+	{
+		[vitaminSEEController stopProgressIndicator];
+	}
+}
+
 -(void)doPreloadImage:(NSString*)path
 {
 	pthread_mutex_lock(&imageCacheLock);
@@ -256,7 +354,7 @@
 {
 	// Before we aquire our internal lock, tell the main application to start
 	// spinning...
-	[vitaminSEEController startProgressIndicator];
+	[vitaminSEEController startProgressIndicator:nil];
 
 	if([path isDir])
 	{
