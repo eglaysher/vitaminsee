@@ -74,14 +74,15 @@ createRowsForColumn:(int)column
 	int count = [fileList count];
 	[matrix setMode:NSListModeMatrix];
 	[matrix renewRows:count columns:1];
+//	[sender setPathSeparator:@" "];
 	
 	id userDeffault = [NSUserDefaults standardUserDefaults];
 	BOOL displayThumbnails = [[userDeffault objectForKey:@"DisplayThumbnails"] boolValue];
 	BOOL buildThumbnails = [[userDeffault objectForKey:@"GenerateThumbnails"] boolValue];
 
 	// Tell the imageTaskManager if it should actually build the thumbnails
-	[imageTaskManager setShouldBuildIcon:buildThumbnails];
-	
+	[imageTaskManager setShouldBuildIcon:buildThumbnails];	
+
 	for(i = 0; i < count; ++i)
 	{
 		id cell = [matrix cellAtRow:i column:0];
@@ -129,7 +130,8 @@ willDisplayCell:(id)cell
 -(void)singleClick:(NSBrowser*)sender
 {
 	// grab the image path
-	NSString* absolutePath = [[sender path] fileWithPath:currentDirectory];
+	NSString* absolutePath = [[currentDirectory stringByAppendingPathComponent:
+		[sender path]] stringByStandardizingPath];
 	NSMutableArray* preloadList = [NSMutableArray array];	
 	
 	[controller setCurrentFile:absolutePath];
@@ -150,7 +152,8 @@ willDisplayCell:(id)cell
 	
 		while(curFile = [dirEnum nextObject])
 		{
-			NSString* currentFileWithPath = [curFile fileWithPath:currentDirectory];
+			NSString* currentFileWithPath = [currentDirectory 
+				stringByAppendingPathComponent:curFile];
 			if([currentFileWithPath isImage])
 			{
 				[preloadList addObject:currentFileWithPath];
@@ -183,7 +186,8 @@ willDisplayCell:(id)cell
 -(void)doubleClick:(NSBrowser*)sender
 {
 	// Double clicking sets the directory...if it's a directory
-	NSString* absolutePath = [[ourBrowser path] fileWithPath:currentDirectory];
+	NSString* absolutePath = [[currentDirectory stringByAppendingPathComponent:
+		[ourBrowser path]] stringByStandardizingPath];
 	
 	if([absolutePath isDir])
 	{
@@ -317,14 +321,17 @@ willDisplayCell:(id)cell
 
 -(void)rebuildInternalFileArray
 {
+	NSLog(@"Current directoy is  %@", currentDirectory);
 	NSArray* directoryContents = [[NSFileManager defaultManager] 
 		directoryContentsAtPath:currentDirectory];
 	NSEnumerator* dirEnum = [directoryContents objectEnumerator];
 	NSMutableArray* myFileList = [NSMutableArray arrayWithCapacity:[directoryContents count]];
-	NSString* curFile;
-	while(curFile = [dirEnum nextObject])
+	NSString* curPath;
+	while(curPath = [dirEnum nextObject])
 	{
-		NSString* currentFileWithPath = [curFile fileWithPath:currentDirectory];
+		//Assumption: curFile[0] == '/'.
+		NSString* currentFileWithPath = [[currentDirectory 
+			stringByAppendingPathComponent:curPath] stringByStandardizingPath];
 		if(([currentFileWithPath isDir] || [currentFileWithPath isImage]) &&
 		   [currentFileWithPath isVisible])
 			[myFileList addObject:currentFileWithPath];

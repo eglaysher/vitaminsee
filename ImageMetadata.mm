@@ -8,7 +8,7 @@
 
 #import "ImageMetadata.h"
 
-#import <Exiv2/iptc.hpp>
+#import "iptc.hpp"
 #include <string>
 
 using namespace std;

@@ -15,6 +15,6 @@
 -(BOOL)isReadable;
 -(BOOL)isLink;
 -(int)fileSize;
--(NSString*)fileWithPath:(NSString*)containingDirectory;
+//-(NSString*)fileWithPath:(NSString*)containingDirectory;
 - (NSImage*)iconImageOfSize:(NSSize)size;
 @end

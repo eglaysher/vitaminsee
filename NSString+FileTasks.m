@@ -89,19 +89,19 @@
 				traverseLink:YES] objectForKey:NSFileSize] intValue];
 }
 
--(NSString*)fileWithPath:(NSString*)containingDirectory
-{
-	NSString* ret;
-	// If the final character in containingDirectory is a '/', then just concat
-	// the two. Otherwise add the '/'.
-	
-	if([containingDirectory characterAtIndex:([containingDirectory length] - 1)] == '/')
-		ret = [NSString stringWithFormat:@"%@%@", containingDirectory, self];
-	else
-		ret = [NSString stringWithFormat:@"%@/%@", containingDirectory, self];
-	
-	return [ret stringByStandardizingPath];
-}
+//-(NSString*)fileWithPath:(NSString*)containingDirectory
+//{
+//	NSString* ret;
+//	// If the final character in containingDirectory is a '/', then just concat
+//	// the two. Otherwise add the '/'.
+//	
+//	if([containingDirectory characterAtIndex:([containingDirectory length] - 1)] == '/')
+//		ret = [NSString stringWithFormat:@"%@%@", containingDirectory, self];
+//	else
+//		ret = [NSString stringWithFormat:@"%@/%@", containingDirectory, self];
+//	
+//	return [ret stringByStandardizingPath];
+//}
 
 // We don't return an autoreleased NSImage since autoreleased things don't seem
 // to be released properly across threads.

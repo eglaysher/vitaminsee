@@ -79,8 +79,12 @@
 	FSRef targetFileFSRef;
 	SInt16 file;
     Handle hExistingCustomIcon;
-	if(![path getFSRef:&targetFileFSRef createFileIfNecessary:NO])
+//	if(![path getFSRef:&targetFileFSRef createFileIfNecessary:NO])
+//		return NO;
+
+	if(FSPathMakeRef((UInt8 *)[path fileSystemRepresentation], &targetFileFSRef, NULL) != noErr)
 		return NO;
+
 	if(FSGetCatalogInfo(&targetFileFSRef, kFSCatInfoNone, NULL, NULL, 
 						&targetFileFSSpec, &parentDirectoryFSRef) != noErr)
 		return NO;

@@ -283,7 +283,6 @@ pthread_mutex_t imageTaskLock;
 	[currentDirectoryComponents release];
 	currentDirectoryComponents = [newCurrentDirectory pathComponents];
 	[currentDirectoryComponents retain];
-
 	
 	// Make an NSMenu with all the path components
 	NSEnumerator* e = [currentDirectoryComponents reverseObjectEnumerator];
@@ -603,14 +602,14 @@ pthread_mutex_t imageTaskLock;
 	[imageTaskManager setScaleProportionally:scaleProportionally];
 	[imageTaskManager setScaleRatio:scaleRatio];
 	[imageTaskManager setContentViewSize:[scrollView contentSize]];
-	
-	if([currentImageFile isImage])
+
+	if(!currentImageFile)
+		[imageViewer setImage:nil];	
+	else
 	{
 		[self startProgressIndicator];
 		[imageTaskManager displayImageWithPath:currentImageFile];
 	}
-	else if(!currentImageFile)
-		[imageViewer setImage:nil];
 }
 
 -(IBAction)zoomIn:(id)sender
