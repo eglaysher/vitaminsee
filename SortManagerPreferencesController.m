@@ -24,6 +24,9 @@
 	[panel setCanChooseDirectories:YES];
 	[panel setCanChooseFiles:NO];
 	[panel setAllowsMultipleSelection:YES];
+	[panel setCanCreateDirectories:YES];
+	[panel setPrompt:@"Add"];
+	[panel setTitle:@"Add paths to Sort Manager"];
 	
 	int result = [panel runModalForDirectory:[NSHomeDirectory() 
 		stringByAppendingPathComponent:@"Pictures"]

@@ -268,10 +268,8 @@ willDisplayCell:(id)cell
 	{
 		[fileList removeObjectAtIndex:high];
 
-		// Known problem: Deleting a file doesn't affect the scroll bar.
-		// Solution: Don't use an NSBrowser. (I'll be rewriting this as a 
-		//           loadable bundle with an NSTableView...)
 		[[ourBrowser matrixInColumn:0] removeRow:high];
+		[[ourBrowser matrixInColumn:0] sizeToCells];
 		[ourBrowser setNeedsDisplay];
 		
 		if([fileList count] == 0)

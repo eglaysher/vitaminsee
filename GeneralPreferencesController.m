@@ -20,6 +20,8 @@
 	[oPanel setCanChooseDirectories:YES];
 	[oPanel setCanChooseFiles:NO];
 	[oPanel setAllowsMultipleSelection:NO];
+	[oPanel setTitle:@"Change startup folder"];
+	[oPanel setPrompt:@"Change"];
 	
 	NSString* currentDirectory = [[NSUserDefaults standardUserDefaults]
 		objectForKey:@"DefaultStartupPath"];
