@@ -45,6 +45,7 @@
 
 -(BOOL)isDir
 {
+	// fixme: Think about replacing this with an lstat based line for even more speed...
 	BOOL isDir = NO;
     BOOL exists = [[NSFileManager defaultManager] fileExistsAtPath:self
 													   isDirectory:&isDir];
@@ -60,7 +61,8 @@
 		[fileExtentsion isEqualToString:@"GIF"] ||
 		[fileExtentsion isEqualToString:@"TIF"] ||
 		[fileExtentsion isEqualToString:@"TIFF"] ||
-		[fileExtentsion isEqualToString:@"BMP"];
+		[fileExtentsion isEqualToString:@"BMP"] ||
+		[fileExtentsion isEqualToString:@"ICNS"];
 }
 
 -(BOOL)isVisible

@@ -70,6 +70,7 @@
  * * Stop assuming people have a "Pictures" folder. Some people have broken out
  *   of Apple's heiarchy, so don't make assumptions.
  * * Windows Bitmap support
+ * * ICNS support
  */
 
 /// For Version 0.6
@@ -79,7 +80,6 @@
 // * Finder notifications (a.k.a. there is no excuse to make the user refresh)
 // * Solidify the plugin layer
 // * Undo/Redo on sort manager/rename, et cetera
-// * Icns support
 
 // For Version 0.7
 // * Transparent archive support
@@ -106,7 +106,6 @@
     * Responding to UI events
   * FileDisplay
     * Knows about the current directory. Draws stuff. Et cetera.
-
 */
 
 

@@ -184,7 +184,8 @@
 		[preloadQueue removeObjectAtIndex:0];
 	
 	// Add the object
-	[preloadQueue addObject:path];
+	if(![[[path pathExtension] uppercaseString] isEqual:@"ICNS"])
+		[preloadQueue addObject:path];
 	
 	// Note that we are OUT of here...
 	pthread_cond_signal(&conditionLock);
@@ -273,8 +274,19 @@
 		
 		return;
 	}
-	
-	// [NSString stringWithFormat:@"Displaying %@...", [path lastPathComponent]]];		
+	else if([[[path pathExtension] uppercaseString] isEqual:@"ICNS"])
+	{
+		NSImage* image = [[NSImage alloc] initWithContentsOfFile:path];
+		NSSize size = [image size];
+		
+		[self sendDisplayCommandWithImage:image width:size.width height:size.height];
+		[image release];
+		
+		// Stop the spinner
+		[vitaminSEEController stopProgressIndicator];
+		
+		return;
+	}
 
 	NSImageRep* imageRep;
 	pthread_mutex_lock(&imageCacheLock);
