@@ -76,7 +76,7 @@
 
 -(void)taskHandlerThread:(id)portArray
 {
-	NSDictionary* currentTask;
+//	NSDictionary* currentTask;
 	
 	// Okay, first we get the distributed object VitaminSEEController up and running...
 	NSAutoreleasePool *npool = [[NSAutoreleasePool alloc] init];

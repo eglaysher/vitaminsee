@@ -38,7 +38,6 @@
 	IBOutlet NSMenuItem* homeFolderMenuItem;
 	IBOutlet NSMenuItem* pictureFolderMenuItem;
 	
-	
     IBOutlet NSImageView *imageViewer;
 	IBOutlet NSTextField * fileSizeLabel;
 	IBOutlet NSTextField * imageSizeLabel;
@@ -52,6 +51,7 @@
 
 	// File view components:
 	// * 
+//	id <FileView> currentFileView;
 	IBOutlet NSPopUpButton* directoryDropdown;
 	IBOutlet NSView* currentFileViewHolder;
 	NSView* currentFileView;
@@ -96,9 +96,9 @@
 
 -(id)loadComponentFromBundle:(NSString*)path;
 
--(NSWindowController*)sortManagerController;
--(NSWindowController*)keywordManagerController;
--(NSWindowController*)gotoFolderController;
+-(id)sortManagerController;
+-(id)keywordManagerController;
+-(id)gotoFolderController;
 
 // Moving about in 
 - (void)setCurrentDirectory:(NSString*)newCurrentDirectory file:(NSString*)newCurrentFile;

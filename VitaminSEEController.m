@@ -10,7 +10,7 @@
 #import "ImageTaskManager.h"
 #import "Util.h"
 #import "NSString+FileTasks.h"
-#import "NSView+Set_and_get.h"
+#import "AppKitAdditions.h"
 #import "PluginLayer.h"
 #import "SortManagerController.h"
 #import "IconFamily.h"
@@ -18,6 +18,7 @@
 #import "SS_PrefsController.h"
 #import "KeywordNode.h"
 #import "ThumbnailManager.h"
+#import "GotoSheetController.h"
 
 //pthread_mutex_t imageTaskLock;
 
@@ -60,12 +61,22 @@
   * Icons for KeywordManager in Preferences (but it's even worse)
 */
 
-//////////////////////////////////////////////////////// WHAT NEEDS TO BE DONE:
+////////////////////////////////////////////////// WHERE TO GO FROM HERE...
 
-/* FIRST MILESTONE GOALS (Note that the milestones have gone apeshit...)
-  * Work on making things feature complete.
-  * Shave about 50k off of filesize by s/icns/png/;
+// * Redo left panel as loadable bundle with an NSTableView
+// * Create an image database feature
+// * Add metadata for PNG and GIF
+
+/* Okay, refactoring responsibilities:
+  * VitaminSEEController is responsible for ONLY:
+    * Displaying the image
+    * Knowing the name of the current image
+    * Responding to UI events
+  * FileDisplay
+    * Knows about the current directory
+
 */
+
 
 /**
   Non-required improvements that would be a good idea:
@@ -75,7 +86,6 @@
 /////////////////////////////////////////////////////////// POST CONTEST GOALS:
 
 /* SECOND MILESTONE GOALS
- * Redo left panel as loadable bundle with an NSTableView
  * Image search (Loadable bundle)
  * Duplicate search (Loadable bundle)
  * Integrate into the [Computer name]/[Macintosh HD]/.../ hiearachy...
@@ -390,10 +400,10 @@
 
 -(IBAction)goToFolder:(id)sender
 {
-	[(id)[self gotoFolderController] showSheet:mainVitaminSeeWindow
-								  initialValue:@""
-										target:self
-									  selector:@selector(finishedGotoFolder:)];
+	[[self gotoFolderController] showSheet:mainVitaminSeeWindow
+							  initialValue:@""
+									target:self
+								  selector:@selector(finishedGotoFolder:)];
 }
 
 -(void)finishedGotoFolder:(NSString*)done
@@ -427,7 +437,7 @@
 	return component;
 }
 	
--(NSWindowController*)sortManagerController
+-(id)sortManagerController
 {
 	if(!_sortManagerController)
 	{
@@ -443,7 +453,7 @@
 	return _sortManagerController;
 }
 
--(NSWindowController*)keywordManagerController
+-(id)keywordManagerController
 {
 	if(!_keywordManagerController)
 	{
@@ -461,7 +471,7 @@
 	return _keywordManagerController;
 }
 
--(NSWindowController*)gotoFolderController
+-(id)gotoFolderController
 {
 	if(!_gotoFolderController)
 	{
@@ -676,10 +686,8 @@
 	float scale;
 	NSImage* image = [imageTaskManager getCurrentImageWithWidth:&x height:&y 
 														  scale:&scale];
-//	pthread_mutex_lock(&imageTaskLock);
-		[imageViewer setImage:image];
-		[imageViewer setFrameSize:[image size]];
-//	pthread_mutex_unlock(&imageTaskLock);
+	[imageViewer setImage:image];
+	[imageViewer setFrameSize:[image size]];
 	
 	scaleRatio = scale;
 

@@ -34,10 +34,10 @@
 	
 	if(bytes < 1024)
 		return [NSString stringWithFormat:@"%qi bytes", bytes];
-	else if(bytes < 10485676)
+	else if(bytes < 1048567)
 		return [NSString stringWithFormat:@"%qi Kb", bytes/1024];
 	else if(bytes < 1073741824)
-		return [NSString stringWithFormat:@"%qi Mb", bytes/10485676];
+		return [NSString stringWithFormat:@"%qi Mb", bytes/1048567];
 	else
 		return [NSString stringWithFormat:@"%qi Gb", bytes/1073741824];
 }

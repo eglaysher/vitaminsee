@@ -10,12 +10,19 @@
 
 @protocol FileView
 
--(void)fileSetTo:(NSString*)newFile;
+-(void)setPluginLayer:(PluginLayer*)pl;
 
--(NSView*)view;
-
-
-// Things for the go menu
+// Capabilities
+-(BOOL)canSetCurrentDirectory;
 -(BOOL)canGoEnclosingFolder;
+
+-(void)setCurrentDirectory:(NSString*)directory;
+
+// Files need to be added and removed from lists.
+-(void)removeFile:(NSString*)path;
+-(void)addFile:(NSString*)path;
+
+// View that gets displayed on the left hand side
+-(NSView*)view;
 
 @end

@@ -7,10 +7,10 @@
 	objects = {
 		080E96DDFE201D6D7F000001 = {
 			children = (
+				8BC8F96507F211F900C66290,
+				8BC8F96607F211F900C66290,
 				8B3CB1A207EA82CE0086353C,
 				8B3CB1A307EA82CE0086353C,
-				8BEC495507DE40AC003868DD,
-				8BEC495607DE40AC003868DD,
 				8B443AF907D7E0AB00C4D8E9,
 				8B443AFA07D7E0AB00C4D8E9,
 				8BA124AC07D2816300614FF4,
@@ -19,16 +19,8 @@
 				8B56209C07CEA204005990E1,
 				8B6D015407CB23A0009A76DA,
 				8B6D015507CB23A0009A76DA,
-				8B2D867207C824B500CDAFED,
-				8B2D867307C824B500CDAFED,
-				8B87410F07BA9D9F00EF7923,
-				8B87411007BA9D9F00EF7923,
-				8BF72B0607B9E78F003A3C82,
-				8BF72B0507B9E78F003A3C82,
 				8BF72A8707B9D14C003A3C82,
 				8BF72A8807B9D14C003A3C82,
-				8BF72A6307B9C986003A3C82,
-				8BF72A6407B9C986003A3C82,
 				8B5D5E2907B8215E00957950,
 				8B5D5E2A07B8215E00957950,
 				8B4A5A8F07B74EDC00F30E03,
@@ -128,6 +120,7 @@
 				8BA1243507D26EC700614FF4,
 				8BEA491707D7A73E001ADD2E,
 				8B8363A307E0E88E00F3C880,
+				8BC8F94807F2102000C66290,
 			);
 			isa = PBXGroup;
 			name = Products;
@@ -156,6 +149,7 @@
 			mainGroup = 29B97314FDCFA39411CA2CEA;
 			projectDirPath = "";
 			targets = (
+				8BC8F94707F2102000C66290,
 				8B8363A207E0E88E00F3C880,
 				8BEA491607D7A73E001ADD2E,
 				8B5620BE07CEA5A5005990E1,
@@ -205,6 +199,7 @@
 		};
 		29B97317FDCFA39411CA2CEA = {
 			children = (
+				8BB7F55C07F0B9B200668047,
 				8BC27DA707ECF9B300B56836,
 				8BBC35E907E222BF007C3B6B,
 				8BBC35D607E221D4007C3B6B,
@@ -330,24 +325,17 @@
 //8B2
 //8B3
 //8B4
-		8B2D867207C824B500CDAFED = {
-			fileEncoding = 4;
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.h;
-			path = "NSAttributedString+Truncation.h";
+		8B09C53707F21CB20098F878 = {
+			children = (
+				8BC8F95107F2106D00C66290,
+			);
+			isa = PBXVariantGroup;
+			name = ViewAsIconsView.nib;
 			refType = 4;
 			sourceTree = "<group>";
 		};
-		8B2D867307C824B500CDAFED = {
-			fileEncoding = 4;
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.objc;
-			path = "NSAttributedString+Truncation.m";
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		8B2D867507C824B600CDAFED = {
-			fileRef = 8B2D867307C824B500CDAFED;
+		8B09C53807F21CB20098F878 = {
+			fileRef = 8B09C53707F21CB20098F878;
 			isa = PBXBuildFile;
 			settings = {
 			};
@@ -1046,7 +1034,7 @@
 			isa = PBXFileReference;
 			lastKnownFileType = text.xml;
 			name = "SortManager-Info.plist";
-			path = "/Users/elliot/Projects/VitaminSEE/SortManager-Info.plist";
+			path = "/Users/elliot/Projects/VitaminSEE-bugfix/SortManager-Info.plist";
 			refType = 0;
 			sourceTree = "<absolute>";
 		};
@@ -1171,6 +1159,7 @@
 		};
 		8B6D010807CB178F009A76DA = {
 			children = (
+				8BC8F93807F20EC700C66290,
 				8B83632D07E0DD3D00F3C880,
 				8BC727C707CF1E82003103C0,
 				8BC727C207CF1D18003103C0,
@@ -1367,7 +1356,7 @@
 			isa = PBXFileReference;
 			lastKnownFileType = text.xml;
 			name = "SortManagerPreferences-Info.plist";
-			path = "/Users/elliot/Projects/VitaminSEE/SortManagerPreferences-Info.plist";
+			path = "/Users/elliot/Projects/VitaminSEE-bugfix/SortManagerPreferences-Info.plist";
 			refType = 0;
 			sourceTree = "<absolute>";
 		};
@@ -1394,6 +1383,8 @@
 				8B5620E107CEA6F1005990E1,
 				8B561D9307CE7627005990E1,
 				8B6D020307CB32CD009A76DA,
+				8BB7F55D07F0B9B200668047,
+				8BC8F96707F211F900C66290,
 			);
 			isa = PBXCopyFilesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1640,7 +1631,7 @@
 			isa = PBXFileReference;
 			lastKnownFileType = text.xml;
 			name = "GotoFolderSheet-Info.plist";
-			path = "/Users/elliot/Projects/VitaminSEE/GotoFolderSheet-Info.plist";
+			path = "/Users/elliot/Projects/VitaminSEE-bugfix/GotoFolderSheet-Info.plist";
 			refType = 0;
 			sourceTree = "<absolute>";
 		};
@@ -1791,7 +1782,7 @@
 			isa = PBXFileReference;
 			lastKnownFileType = text.xml;
 			name = "KeywordManagerPreferences-Info.plist";
-			path = "/Users/elliot/Projects/VitaminSEE/KeywordManagerPreferences-Info.plist";
+			path = "/Users/elliot/Projects/VitaminSEE-bugfix/KeywordManagerPreferences-Info.plist";
 			refType = 0;
 			sourceTree = "<absolute>";
 		};
@@ -2053,7 +2044,7 @@
 			isa = PBXFileReference;
 			lastKnownFileType = text.xml;
 			name = "GeneralPreferences-Info.plist";
-			path = "/Users/elliot/Projects/VitaminSEE/GeneralPreferences-Info.plist";
+			path = "/Users/elliot/Projects/VitaminSEE-bugfix/GeneralPreferences-Info.plist";
 			refType = 0;
 			sourceTree = "<absolute>";
 		};
@@ -2087,6 +2078,20 @@
 		};
 		8BAF0F4E07CE6E5200B0C832 = {
 			fileRef = 8BAF0F4C07CE6E5200B0C832;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8BB7F55C07F0B9B200668047 = {
+			explicitFileType = text;
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			path = Changelog;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8BB7F55D07F0B9B200668047 = {
+			fileRef = 8BB7F55C07F0B9B200668047;
 			isa = PBXBuildFile;
 			settings = {
 			};
@@ -2222,6 +2227,154 @@
 			path = English.lproj/KeywordManagerPreferences.nib;
 			refType = 4;
 			sourceTree = "<group>";
+		};
+		8BC8F93807F20EC700C66290 = {
+			children = (
+				8B87410F07BA9D9F00EF7923,
+				8B87411007BA9D9F00EF7923,
+				8BF72B0607B9E78F003A3C82,
+				8BF72B0507B9E78F003A3C82,
+				8B09C53707F21CB20098F878,
+				8BC8F94907F2102000C66290,
+			);
+			isa = PBXGroup;
+			name = ViewAsIconsFileView;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8BC8F94407F2102000C66290 = {
+			buildActionMask = 2147483647;
+			files = (
+				8B09C53807F21CB20098F878,
+			);
+			isa = PBXResourcesBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8BC8F94507F2102000C66290 = {
+			buildActionMask = 2147483647;
+			files = (
+			);
+			isa = PBXSourcesBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8BC8F94607F2102000C66290 = {
+			buildActionMask = 2147483647;
+			files = (
+			);
+			isa = PBXFrameworksBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8BC8F94707F2102000C66290 = {
+			buildPhases = (
+				8BC8F94407F2102000C66290,
+				8BC8F94507F2102000C66290,
+				8BC8F94607F2102000C66290,
+			);
+			buildRules = (
+			);
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = "ViewAsIconsFileView-Info.plist";
+				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "-framework Foundation -framework AppKit";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ViewAsIconsFileView;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = "-Wmost -Wno-four-char-constants -Wno-unknown-pragmas";
+			};
+			dependencies = (
+			);
+			isa = PBXNativeTarget;
+			name = ViewAsIconsFileView;
+			productName = ViewAsIconsFileView;
+			productReference = 8BC8F94807F2102000C66290;
+			productSettingsXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
+<!DOCTYPE plist PUBLIC \"-//Apple Computer//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">
+<plist version=\"1.0\">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>English</string>
+	<key>CFBundleExecutable</key>
+	<string>ViewAsIconsFileView</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.yourcompany.ViewAsIconsFileView</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
+	<key>CFBundleVersion</key>
+	<string>1.0</string>
+</dict>
+</plist>
+";
+			productType = "com.apple.product-type.bundle";
+		};
+		8BC8F94807F2102000C66290 = {
+			explicitFileType = wrapper.cfbundle;
+			includeInIndex = 0;
+			isa = PBXFileReference;
+			path = ViewAsIconsFileView.bundle;
+			refType = 3;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		8BC8F94907F2102000C66290 = {
+			isa = PBXFileReference;
+			lastKnownFileType = text.xml;
+			path = "ViewAsIconsFileView-Info.plist";
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8BC8F94B07F2103100C66290 = {
+			containerPortal = 29B97313FDCFA39411CA2CEA;
+			isa = PBXContainerItemProxy;
+			proxyType = 1;
+			remoteGlobalIDString = 8BC8F94707F2102000C66290;
+			remoteInfo = ViewAsIconsFileView;
+		};
+		8BC8F94C07F2103100C66290 = {
+			isa = PBXTargetDependency;
+			target = 8BC8F94707F2102000C66290;
+			targetProxy = 8BC8F94B07F2103100C66290;
+		};
+		8BC8F95107F2106D00C66290 = {
+			isa = PBXFileReference;
+			lastKnownFileType = wrapper.nib;
+			name = English;
+			path = English.lproj/ViewAsIconsView.nib;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8BC8F96507F211F900C66290 = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			path = AppKitAdditions.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8BC8F96607F211F900C66290 = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
+			path = AppKitAdditions.m;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8BC8F96707F211F900C66290 = {
+			fileRef = 8BC8F96507F211F900C66290;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8BC8F96807F211F900C66290 = {
+			fileRef = 8BC8F96607F211F900C66290;
+			isa = PBXBuildFile;
+			settings = {
+			};
 		};
 		8BD011D807A99DFB00AA4BAA = {
 			fileEncoding = 30;
@@ -2374,7 +2527,7 @@
 			isa = PBXFileReference;
 			lastKnownFileType = text.xml;
 			name = "KeywordManager-Info.plist";
-			path = "/Users/elliot/Projects/VitaminSEE/KeywordManager-Info.plist";
+			path = "/Users/elliot/Projects/VitaminSEE-bugfix/KeywordManager-Info.plist";
 			refType = 0;
 			sourceTree = "<absolute>";
 		};
@@ -2435,50 +2588,6 @@
 		};
 		8BEA4A7C07D7D0BF001ADD2E = {
 			fileRef = 8BA124AD07D2816300614FF4;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
-		8BEC495507DE40AC003868DD = {
-			fileEncoding = 4;
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.h;
-			path = "NSWorkspace+GrowlAdditions.h";
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		8BEC495607DE40AC003868DD = {
-			fileEncoding = 4;
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.objc;
-			path = "NSWorkspace+GrowlAdditions.m";
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		8BEC495807DE40AC003868DD = {
-			fileRef = 8BEC495607DE40AC003868DD;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
-		8BF72A6307B9C986003A3C82 = {
-			fileEncoding = 30;
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.h;
-			path = "NSView+Set_and_get.h";
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		8BF72A6407B9C986003A3C82 = {
-			fileEncoding = 30;
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.objc;
-			path = "NSView+Set_and_get.m";
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		8BF72A6607B9C986003A3C82 = {
-			fileRef = 8BF72A6407B9C986003A3C82;
 			isa = PBXBuildFile;
 			settings = {
 			};
@@ -2562,6 +2671,9 @@
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = VitaminSEE_Prefix.pch;
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				GCC_WARN_UNUSED_VALUE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				PREBINDING = YES;
@@ -2575,6 +2687,7 @@
 				8BA1243907D26F1500614FF4,
 				8BEA495707D7A9D0001ADD2E,
 				8B8364CE07E0EEAE00F3C880,
+				8BC8F94C07F2103100C66290,
 			);
 			isa = PBXNativeTarget;
 			name = VitaminSEE;
@@ -2627,18 +2740,15 @@
 				8B4A5A9407B74EDC00F30E03,
 				8B4A5A9607B74EDC00F30E03,
 				8B5D5E2C07B8215E00957950,
-				8BF72A6607B9C986003A3C82,
 				8BF72A8A07B9D14C003A3C82,
 				8BF72B0807B9E790003A3C82,
 				8B87411207BA9DA000EF7923,
 				8BC6662B07BFCF890075F57F,
-				8B2D867507C824B600CDAFED,
 				8B6D015707CB23A0009A76DA,
 				8B6D01C207CB2EA2009A76DA,
 				8B56209E07CEA204005990E1,
 				8BA124AF07D2816300614FF4,
 				8B443AFC07D7E0AB00C4D8E9,
-				8BEC495807DE40AC003868DD,
 				8B4A470E07EA2C4700C1D2A0,
 				8B4A471007EA2C4700C1D2A0,
 				8B4A471307EA2C4700C1D2A0,
@@ -2654,6 +2764,7 @@
 				8B4A472807EA2C4700C1D2A0,
 				8B4A472A07EA2C4700C1D2A0,
 				8B3CB1A507EA82CE0086353C,
+				8BC8F96807F211F900C66290,
 			);
 			isa = PBXSourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;

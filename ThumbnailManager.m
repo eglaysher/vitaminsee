@@ -62,7 +62,7 @@
 
 -(void)taskHandlerThread:(id)portArray
 {
-	NSDictionary* currentTask;
+//	NSDictionary* currentTask;
 	
 	// Okay, first we get the distributed object VitaminSEEController up and running...
 	NSAutoreleasePool *npool = [[NSAutoreleasePool alloc] init];
@@ -190,6 +190,7 @@
 		[iconFamily setAsCustomIconForFile:path];
 		// Must retain
 		thumbnail = [[iconFamily imageWithAllReps] retain];
+		[image release];
 	}
 	else
 		thumbnail = [path iconImageOfSize:NSMakeSize(128, 128)];

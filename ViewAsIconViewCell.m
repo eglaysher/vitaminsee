@@ -7,7 +7,7 @@
 //
 
 #import "ViewAsIconViewCell.h"
-#import "NSAttributedString+Truncation.h"
+#import "AppKitAdditions.h"
 #import "NSString+FileTasks.h"
 #import "VitaminSEEController.h"
 

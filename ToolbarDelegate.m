@@ -9,7 +9,7 @@
 #import "ToolbarDelegate.h"
 #import "ViewIconViewController.h"
 #import "NSString+FileTasks.h"
-#import "NSWorkspace+GrowlAdditions.h"
+#import "AppKitAdditions.h"
 
 // Our Viewer's ID
 static NSString* MainViewerWindowToolbarIdentifier = @"Main Viewere Window Toolbar Identifier";
