@@ -2,7 +2,7 @@
     IBClasses = (
         {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
         {
-            ACTIONS = {showHelp = id; }; 
+            ACTIONS = {changeDefaultDirectory = id; showHelp = id; }; 
             CLASS = GeneralPreferencesController; 
             LANGUAGE = ObjC; 
             OUTLETS = {prefView = NSView; }; 
