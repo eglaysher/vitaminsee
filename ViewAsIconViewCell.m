@@ -120,7 +120,8 @@
     return theSize;
 }
 
-- (void)drawInteriorWithFrame:(NSRect)cellFrame inView:(NSView *)controlView {
+- (void)drawInteriorWithFrame:(NSRect)cellFrame inView:(NSView *)controlView 
+{
 	NSSize	imageSize = NSMakeSize(128, 128); //[iconImage size];
 	NSRect	imageFrame, highlightRect, textFrame;
 	
@@ -129,7 +130,7 @@
 	
 	// Divide the cell into 2 parts, the image part (on the left) and the text part.
 	NSDivideRect(cellFrame, &imageFrame, &textFrame, 
-				 128 + 4.0 * 2.0, 
+				 128 + 4.0 * 2.0,
 				 NSMinYEdge);
 	imageFrame.origin.x += (cellFrame.size.width - imageSize.width) / 2.0;
 	imageFrame.size = imageSize;
@@ -148,7 +149,10 @@
 		//			[[NSColor s] set];
 		[[self highlightColorInView: controlView] set];
 		NSRectFill(cellFrame);
-	} 
+	}
+	
+//	NSLog(@"File: %@ in {{%f,%f}", [thisCellsFullPath lastPathComponent],
+//		  imageFrame.origin.x, imageFrame.origin.y);
 	
 	// Blit the image.
 	pthread_mutex_lock(&imageTaskLock);

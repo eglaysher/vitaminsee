@@ -88,6 +88,8 @@ createRowsForColumn:(int)column
 		[cell setCellPropertiesFromPath:currentFile];
 		if(displayThumbnails || [currentFile isDir])
 			[imageTaskManager buildThumbnail:currentFile forCell:cell];
+//		else
+//			[cell setIconImage:[currentFile iconImageOfSize:NSMakeSize(128,128)]];
 	}
 }
 
@@ -111,6 +113,13 @@ createRowsForColumn:(int)column
 	NSMutableArray* preloadList = [NSMutableArray array];	
 	
 	[controller setCurrentFile:absolutePath];
+	
+	// Hi! My name is UGLY HACK. I'm here because Apple's NSScrollView has a
+	// subtle bug about the areas needed to visually redrawn, so we have to 
+	// redisplay THE WHOLE ENCHILADA when we scroll since there's a 1/5~ish
+	// chance that the location where the top image cell would be will be the 
+	// target drawing location of two or three cells.
+	[ourBrowser setNeedsDisplay];
 	
 	// If this is a directory, preload the first file of
 	if([absolutePath isDir])
@@ -274,6 +283,8 @@ createRowsForColumn:(int)column
 {
 	[[ourBrowser matrixInColumn:0] updateCell:cell];
 	[ourBrowser updateCell:cell];
+
+	//	[ourBrowser setNeedsDisplay];
 }
 
 -(void)makeFirstResponderTo:(NSWindow*)window

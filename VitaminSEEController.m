@@ -575,12 +575,6 @@ pthread_mutex_t imageTaskLock;
 	else
 		[fileSizeLabel setObjectValue:[NSNumber 
 			numberWithInt:[newCurrentFile fileSize]]];
-
-	[imageTaskManager setScaleProportionally:scaleProportionally];
-	[imageTaskManager setScaleRatio:scaleRatio];
-	[imageTaskManager setContentViewSize:[scrollView contentSize]];
-	
-	[imageTaskManager displayImageWithPath:newCurrentFile];
 	
 	if(![newCurrentFile isImage])
 		[imageSizeLabel setStringValue:@"---"];
