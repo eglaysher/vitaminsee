@@ -31,6 +31,7 @@
 	[self setStringValue:[thisCellsFullPath lastPathComponent]];
 	
 	// We are going to have to do something with images here...
+//	NSLog(@"Verifying path %@", thisCellsFullPath);
 	[self setEnabled:[thisCellsFullPath isReadable]];
 	
 	// In the ViewAsIconView, there are no left directories...

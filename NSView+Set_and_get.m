@@ -36,15 +36,15 @@
 	// Replace or insert subview if not the right one already
 	if (0 == [subviews count])
 	{
-		NSLog(@"Adding single subview");
+//		NSLog(@"Adding single subview");
 		[self addSubview:inView];		// ANY WAY TO AUTO-RESIZE IT?
 	}
 	else if ([subviews objectAtIndex:0] != inView)
 	{
 		NSView *oldSubview = [subviews objectAtIndex:0];
 		NSRect frame = [oldSubview frame];
-		NSLog(@"frame.origin.[%f, %f] frame.size.[%f, %f] ", frame.origin.x, frame.origin.y,
-			  frame.size.width, frame.size.height);
+//		NSLog(@"frame.origin.[%f, %f] frame.size.[%f, %f] ", frame.origin.x, frame.origin.y,
+//			  frame.size.width, frame.size.height);
 		frame.origin.x = frame.origin.y = 0;
 		frame.size.width -= 6;
 		frame.size.height -= 6;
@@ -58,7 +58,7 @@
 "*/
 - (id) subview
 {
-	NSLog(@"Getting subview...");
+//	NSLog(@"Getting subview...");
 	id result = nil;
 	NSArray *subviews = [self subviews];
 	if ([subviews count])

@@ -41,7 +41,7 @@
 	else
 		return [NSString stringWithFormat:@"%qi Gb", bytes/1073741824];
 
-	NSLog(@"Falling off the end of the world!");
+//	NSLog(@"Falling off the end of the world!");
 }
 
 -(BOOL)getObjectValue:(id *)obj forString:(NSString *)string 

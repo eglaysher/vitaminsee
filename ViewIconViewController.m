@@ -33,7 +33,7 @@
 	currentDirectory = path;
 	
 	//	NSString* currentDirectory = 
-	NSLog(@"VieAsIconsDelegate: Setting internal path to %@", path);
+//	NSLog(@"VieAsIconsDelegate: Setting internal path to %@", path);
 
 	[self rebuildInternalFileArray];
 	
@@ -61,9 +61,8 @@ willDisplayCell:(id)cell
 		  atRow:(int)row
 		 column:(int)column 
 {
-// Okay, now I have to screw with the cells...
+	// Set the properties of this cell.
 	[(ViewAsIconViewCell*)cell setCellPropertiesFromPath:[fileList objectAtIndex:row]];
-//setTitle:[[fileList objectAtIndex:row] lastPathComponent]];
 }
 
 -(void)singleClick:(NSBrowser*)sender
@@ -121,14 +120,50 @@ willDisplayCell:(id)cell
 	
 	if([absolutePath isDir])
 	{
-		// Get the first image in the directory:
-
-		
+		// Get the first image in the directory:		
 		[controller setCurrentDirectory:absolutePath];
 	}
 	
 	// [controller setCurrentDirectory:] will call [self setCurrentDirectory:] which
 	// will manage all our stuff...
+}
+
+-(void)removeFileFromList:(NSString*)absolutePath
+{
+//	NSMatrix* matrix = [ourBrowser matrixInColumn:0];
+//	int matrixRows = [matrix numberOfRows];
+//	int i;
+//	for(i = 0; i < matrixRows; ++i)
+//	{
+//		if([[[matrix cellAtRow:i column:0] cellPath] isEqual:absolutePath])
+//		{
+//			NSLog(@"Removing row number %d", i);
+//			break;
+//		}
+//	}
+
+	int filesInDir = [fileList count];
+	int i;
+	for(i = 0; i < filesInDir; ++i)
+		if([[fileList objectAtIndex:i] isEqual:absolutePath])
+		{
+			NSLog(@"Removing row number %d", i);
+			[fileList removeObjectAtIndex:i];
+			[ourBrowser reloadColumn:0];
+			break;
+		}
+}
+
+-(void)selectFile:(NSString*)fileToSelect
+{
+//	NSLog(@"Setting filetoselect to %@", fileToSelect);
+	[ourBrowser setPath:[NSString pathWithComponents:[NSArray arrayWithObjects:
+		@"/", [fileToSelect lastPathComponent], nil]]];
+//	[[ourBrowser window] makeFirstResponder:ourBrowser];
+	
+	// Why the HELL doesn't that work!?
+//	[ourBrowser setNeedsDisplay];
+//	[[ourBrowser window] makeFirstResponder:ourBrowser];
 }
 
 @end
@@ -146,15 +181,15 @@ willDisplayCell:(id)cell
 		NSString* currentFileWithPath = [curFile fileWithPath:currentDirectory];
 		if([currentFileWithPath isDir] || [currentFileWithPath isImage])
 			[myFileList addObject:currentFileWithPath];
-		else
-			NSLog(@"Rejecting %@", curFile);
+//		else
+//			NSLog(@"Rejecting %@", curFile);
 	}
 	
 	// Now sort the list since some filesystems (*cough*SAMBA*cough*) don't
 	// present files sorted alphabetically...
 //	[fileList sortUsingSelector:@selector(compare:)];
 	
-	NSLog(@"Here's the list of files in this directory: %@", myFileList);
+//	NSLog(@"Here's the list of files in this directory: %@", myFileList);
 
 	[fileList release];
 	[myFileList retain];

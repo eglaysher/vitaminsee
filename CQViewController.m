@@ -8,7 +8,6 @@
 #import "ViewIconViewController.h"
 #import "ImageTaskManager.h"
 #import "Util.h"
-#import "PointerWrapper.h"
 #import "NSString+FileTasks.h"
 #import "NSView+Set_and_get.h"
 
@@ -19,7 +18,7 @@
  * Rework FSBrowserCell's 
  - (void)drawInteriorWithFrame:(NSRect)cellFrame inView:(NSView *)controlView;
 	for my own purposes
- * More speed hacks!?
+ * Find out the legality of using Apple icons...
  * Implement the backHistory/forwardHistory!
  * All kinds of file operations.
    * Delete files
@@ -32,11 +31,10 @@
 + (void)initialize 
 {
     NSMutableDictionary *defaultPrefs = [NSMutableDictionary dictionary];
-	[defaultPrefs setObject:@"/Users/elliot/Pictures/Wallpaper/Nature Wallpaper"
-					 forKey:@"DefaultStartupPath"];
-	//
-	//@"/Users/elliot/Pictures/4chan/Straight Up Ero"  
-    [[NSUserDefaults standardUserDefaults] registerDefaults: defaultPrefs];
+	[defaultPrefs setObject:[NSHomeDirectory() stringByAppendingPathComponent:
+		@"Pictures/Wallpaper/Nature Wallpaper"] forKey:@"DefaultStartupPath"];
+    
+	[[NSUserDefaults standardUserDefaults] registerDefaults: defaultPrefs];
 }
 
 - (void)awakeFromNib
@@ -141,11 +139,61 @@
 	
 }
 
+-(IBAction)deleteThisFile:(id)sender
+{
+	NSString* fileToDelete = currentImageFile;
+	
+	// We need the next file after this so we have something to select after
+	// we delete this file.
+	NSArray* directoryContents = [[NSFileManager defaultManager] 
+			directoryContentsAtPath:currentDirectory];
+	int numberOfContents = [directoryContents count];
+	NSEnumerator* dirEnum = [directoryContents objectEnumerator];
+	NSString* nextFile;
+	NSString* nextFileWithFullPath;
+	while(nextFile = [dirEnum nextObject])
+	{
+		nextFileWithFullPath = [nextFile fileWithPath:currentDirectory];
+		if([nextFileWithFullPath isEqual:currentImageFile])
+		{
+			// fixme: I need to handle the case with the last file.
+			nextFile = [[dirEnum nextObject] fileWithPath:currentDirectory];
+			break;
+		}
+	}
+	// fixme: I don't handle the case where I have the last file. Menu needs disablement...
+	if(numberOfContents == 1)
+		nextFile = nil;
+
+	// We move the current file to the trash.
+	int tag;
+	[[NSWorkspace sharedWorkspace] performFileOperation:NSWorkspaceRecycleOperation
+												 source:currentDirectory
+											destination:@""
+												  files:[NSArray arrayWithObject:[currentImageFile lastPathComponent]]
+													tag:&tag];
+
+	[viewAsIconsController removeFileFromList:currentImageFile];
+	
+	if(nextFile)
+	{
+		[viewAsIconsController selectFile:nextFile];
+	
+		// Finally, we set the file to the next file so we display something
+		[self setCurrentFile:nextFile];
+	}
+}
+
 -(BOOL)validateMenuItem:(NSMenuItem *)theMenuItem
 {
     BOOL enable = [self respondsToSelector:[theMenuItem action]]; //handle general case.
 	
-    if ([theMenuItem action] == @selector(goEnclosingFolder:))
+	if([theMenuItem action] == @selector(deleteThisFile:))
+	{
+		enable = currentImageFile != nil;
+	}
+	// GO FOLDER
+    else if ([theMenuItem action] == @selector(goEnclosingFolder:))
     {
 		// You can go up as long as there is a thing to go back on...
         enable = [currentDirectoryComponents count] > 1;
@@ -173,6 +221,7 @@
 - (void)setCurrentFile:(NSString*)newCurrentFile
 {
 	currentImageFile = newCurrentFile;
+	[currentImageFile retain];
 	
 	// Okay, we don't know what kind of thing we have been passed, so let's
 	BOOL isDir = [newCurrentFile isDir];
@@ -183,7 +232,7 @@
 			numberWithInt:[newCurrentFile fileSize]]];
 
 	// Release the old image...
-	[currentImageRep release];
+//	[currentImageRep release];
 	
 	if([newCurrentFile isImage])
 	{
@@ -197,8 +246,8 @@
 	{
 		// Send preload messages first (since next line doesn't access the
 		// cache.)
-		currentImageRep = [[[newCurrentFile iconImageOfSize:NSMakeSize(128,128)]
-			bestRepresentationForDevice:nil] retain];
+//		currentImageRep = [[[newCurrentFile iconImageOfSize:NSMakeSize(128,128)]
+//			bestRepresentationForDevice:nil] retain];
 
 		// Set the label to "---"
 		[imageSizeLabel setStringValue:@"---"];
@@ -220,6 +269,7 @@
 	[imageTaskManager setScaleProportionally:scaleProportionally];
 	[imageTaskManager setScaleRatio:scaleRatio];
 	[imageTaskManager setContentViewSize:[scrollView contentSize]];
+//	NSLog(@"CurrentImageFile: %@", currentImageFile);
 	
 	if([currentImageFile isImage])
 	{
@@ -262,12 +312,17 @@
 	[self redraw];
 }
 
+-(void)splitViewDidResizeSubviews:(NSNotification*)notification
+{
+	[self redraw];
+}
+
 -(void)displayImage
 {
 	// Get a copy of the current display image from the ImageTaskManager
 	NSImage* image = [imageTaskManager getCurrentImage];
-	NSLog(@"Image is %@", image);
-	NSLog(@"Image is proxy: %d", [image isProxy]);
+//	NSLog(@"Image is %@", image);
+//	NSLog(@"Image is proxy: %d", [image isProxy]);
 //	NSLog(@"Main thread got a display image command! Image is %@", image);
 	[imageViewer setImage:image];
 	[imageViewer setFrameSize:[image size]];
@@ -276,5 +331,7 @@
 	[imageSizeLabel setStringValue:[NSString stringWithFormat:@"%i x %i", 
 		x, y]];
 }
+
+
 
 @end

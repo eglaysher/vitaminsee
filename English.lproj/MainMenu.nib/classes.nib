@@ -2,6 +2,7 @@
     IBClasses = (
         {
             ACTIONS = {
+                deleteThisFile = id; 
                 goBack = id; 
                 goEnclosingFolder = id; 
                 goForward = id; 

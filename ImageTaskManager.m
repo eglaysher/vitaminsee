@@ -140,7 +140,7 @@
 	pthread_mutex_lock(&imageScalingProperties);
 	scaleRatio = newScaleRatio;
 	pthread_mutex_unlock(&imageScalingProperties);
-	NSLog(@"Our scale ratio %f, come in %f", scaleRatio, newScaleRatio);
+//	NSLog(@"Our scale ratio %f, come in %f", scaleRatio, newScaleRatio);
 }
 
 -(void)setScaleProportionally:(BOOL)newScaleProportionally
@@ -148,7 +148,7 @@
 	pthread_mutex_lock(&imageScalingProperties);
 	scaleProportionally = newScaleProportionally;
 	pthread_mutex_unlock(&imageScalingProperties);
-	NSLog(@"Our scale prop %d, come in %d", scaleProportionally, newScaleProportionally);
+//	NSLog(@"Our scale prop %d, come in %d", scaleProportionally, newScaleProportionally);
 }
 
 -(void)setContentViewSize:(NSSize)newContentViewSize
@@ -156,7 +156,7 @@
 	pthread_mutex_lock(&imageScalingProperties);
 	contentViewSize = newContentViewSize;
 	pthread_mutex_unlock(&imageScalingProperties);	
-	NSLog(@"[%f, %f]", contentViewSize.width, contentViewSize.height);
+//	NSLog(@"[%f, %f]", contentViewSize.width, contentViewSize.height);
 }
 
 -(void)displayImageWithPath:(NSString*)path
@@ -170,7 +170,7 @@
 	for(i = [taskQueue count] - 1; i > -1; i--)
 		if([[[taskQueue objectAtIndex:i] objectForKey:@"Type"] isEqualTo:@"DisplayImage"])
 		{
-			NSLog(@"Removing old display task...");
+//			NSLog(@"Removing old display task...");
 			[taskQueue removeObjectAtIndex:i];
 		}
 	
@@ -188,7 +188,7 @@
 		@"PreloadImage", @"Type", path, @"Path", nil];
 
 	pthread_mutex_lock(&taskQueueLock);
-	NSLog(@"Going to preload: %@", path);
+//	NSLog(@"Going to preload: %@", path);
 	// Add the object
 	[taskQueue addObject:currentTask];
 	
@@ -219,7 +219,7 @@
 	if(!cacheEntry)
 	{
 		pthread_mutex_unlock(&imageCacheLock);
-		NSLog(@"'%@' isn't in the cache. Loading...", path);
+//		NSLog(@"'%@' isn't in the cache. Loading...", path);
 		// Load the file, since it obviously hasn't been loaded.
 		imageRep = [NSImageRep imageRepWithContentsOfFile:path];
 		cacheEntry = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -232,8 +232,8 @@
 		// Add the image to the cache so subsquent hits won't require reloading...
 		[imageCache setObject:cacheEntry forKey:path];
 	}
-	else
-		NSLog(@"Using cached version of '%@'", path);
+//	else
+//		NSLog(@"Using cached version of '%@'", path);
 	
 	imageRep = [cacheEntry objectForKey:@"Image"];
 	
@@ -323,8 +323,8 @@
 		// Add the image to the cache so subsquent hits won't require reloading...
 		[imageCache setObject:cacheEntry forKey:path];
 	}
-	else
-		NSLog(@"Using cached version of '%@'", path);
+//	else
+//		NSLog(@"Using cached version of '%@'", path);
 	
 	imageRep = [cacheEntry objectForKey:@"Image"];
 	
@@ -361,7 +361,7 @@
 									   imageY, canScaleProportionally, ratioToScale,
 									   &canGetAwayWithQuickRender);
 	
-	NSLog(@"DispalyX: %d, DisplayY: %d", display.width, display.height);
+//	NSLog(@"DispalyX: %d, DisplayY: %d", display.width, display.height);
 	
 	NSImage* imageToRet;
 	if(imageRepIsAnimated(imageRep) || canGetAwayWithQuickRender)

@@ -16,7 +16,7 @@
 	IBOutlet NSView* ourView;
 	
 	NSString* currentDirectory;
-	NSArray* fileList;
+	NSMutableArray* fileList;
 }
 
 -(NSView*)view;

@@ -14,8 +14,8 @@ struct DS buildImageSize(int boxWidth, int boxHeight, int imageWidth, int imageH
 					BOOL canScaleProportionally, float ratioToScale,
 					BOOL*canGetAwayWithQuickRender)
 {
-	NSLog(@"Going to build size with box:[%d,%d] image:[%d, %d] canScale:%d ratio:%f",
-		  boxWidth, boxHeight, imageWidth, imageHeight, canScaleProportionally, ratioToScale);
+//	NSLog(@"Going to build size with box:[%d,%d] image:[%d, %d] canScale:%d ratio:%f",
+//		  boxWidth, boxHeight, imageWidth, imageHeight, canScaleProportionally, ratioToScale);
 	struct DS display;
 	
 	if(canScaleProportionally == YES)
@@ -34,8 +34,8 @@ struct DS buildImageSize(int boxWidth, int boxHeight, int imageWidth, int imageH
 		// NSImageView.
 		float heightRatio = buildRatio(boxHeight, imageHeight);
 		float widthRatio = buildRatio(boxWidth, imageWidth);
-		NSLog(@"Image:[%d, %d] Box:[%d,%d]", imageWidth, imageHeight, boxWidth, boxHeight);
-		NSLog(@"Ratios: [%f, %f]", heightRatio, widthRatio);
+//		NSLog(@"Image:[%d, %d] Box:[%d,%d]", imageWidth, imageHeight, boxWidth, boxHeight);
+//		NSLog(@"Ratios: [%f, %f]", heightRatio, widthRatio);
 		if(imageWidth <= boxWidth && imageHeight <= boxHeight)
 		{
 			// The image is smaller then the conrentSize and we should just
@@ -70,9 +70,9 @@ struct DS buildImageSize(int boxWidth, int boxHeight, int imageWidth, int imageH
 					display.height = imageHeight * ratio;
 					break;
 				}
-				else
-					NSLog(@"[%d, %d] > [%d, %d]", (int)(imageWidth * ratio),
-						  (int)(imageHeight * ratio), boxWidth, boxHeight);
+//				else
+//					NSLog(@"[%d, %d] > [%d, %d]", (int)(imageWidth * ratio),
+//						  (int)(imageHeight * ratio), boxWidth, boxHeight);
 			}
 		}
 	}	
@@ -84,8 +84,8 @@ float buildRatio(int first, int second)
 {
 	float firstRatio = (float)(first) / (float)(second);
 	float secondRatio = (float)(second) / (float)(first);
-	NSLog(@"ratios going in: [%d, %d] firstRatio:%f secondRatio:%f", first, 
-		  second, firstRatio, secondRatio);
+//	NSLog(@"ratios going in: [%d, %d] firstRatio:%f secondRatio:%f", first, 
+//		  second, firstRatio, secondRatio);
 	return min(secondRatio, firstRatio);
 }
 

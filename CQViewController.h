@@ -69,6 +69,8 @@
 -(IBAction)goBack:(id)sender;
 -(IBAction)goForward:(id)sender;
 
+-(IBAction)deleteThisFile:(id)sender;
+
 // Scaling stuff
 - (IBAction)scaleView100Pressed:(id)sender;
 - (IBAction)scaleViewPPressed:(id)sender;

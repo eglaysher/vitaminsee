@@ -36,7 +36,7 @@ static NSString* ScaleViewToolbarID = @"Scale view control Toolbar Identifier";
 	  itemForItemIdentifier:(NSString *)itemIdent
   willBeInsertedIntoToolbar:(BOOL) willBeInserted
 {
-	NSLog(@"toolbar:%@ itemForItemIdentifier:%@", toolbar, itemIdent);
+//	NSLog(@"toolbar:%@ itemForItemIdentifier:%@", toolbar, itemIdent);
 	NSToolbarItem* item = [[[NSToolbarItem alloc] initWithItemIdentifier:itemIdent] autorelease];
 	if([itemIdent isEqual:ScaleViewToolbarID])
 	{
@@ -44,7 +44,7 @@ static NSString* ScaleViewToolbarID = @"Scale view control Toolbar Identifier";
 		[item setPaletteLabel:@"Scale"];
 		[item setToolTip:@"Scale ratio of the image being displayed"];
 		[item setView:scaleView];
-		NSLog(@"scaleView: %@", scaleView);
+//		NSLog(@"scaleView: %@", scaleView);
 		[item setMinSize:NSMakeSize(NSWidth([scaleView frame]), NSHeight([scaleView frame]))];
 		[item setMaxSize:NSMakeSize(NSWidth([scaleView frame]), NSHeight([scaleView frame]))];
 		
@@ -71,7 +71,7 @@ static NSString* ScaleViewToolbarID = @"Scale view control Toolbar Identifier";
 	else
 		item = nil;
 
-	NSLog(@"Returning %@", item);
+//	NSLog(@"Returning %@", item);
 	return item;
 }
 
