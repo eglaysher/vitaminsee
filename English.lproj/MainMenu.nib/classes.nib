@@ -70,6 +70,7 @@
                 openFolder = id; 
                 referesh = id; 
                 revealInFinder = id; 
+                showGPL = id; 
                 showPreferences = id; 
                 toggleKeywordManager = id; 
                 toggleSortManager = id; 

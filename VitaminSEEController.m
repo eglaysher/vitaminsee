@@ -517,10 +517,17 @@
 		enable = mainWindowVisible && [viewAsIconsController canDelete];
 	}
 	// View Menu
-	else if ([theMenuItem action] == @selector(actualSize:) ||
-			 [theMenuItem action] == @selector(zoomIn:) ||
-			 [theMenuItem action] == @selector(zoomOut:) ||
-			 [theMenuItem action] == @selector(zoomToFit:))
+	else if ([theMenuItem action] == @selector(actualSize:))
+	{
+		enable = mainWindowVisible && [currentImageFile isImage] && 
+			!(scaleProportionally && scaleRatio == 1.0);
+	}
+	else if([theMenuItem action] == @selector(zoomToFit:))
+	{
+		enable = mainWindowVisible && [currentImageFile isImage] && scaleProportionally;
+	}
+	else if ([theMenuItem action] == @selector(zoomIn:) ||
+			 [theMenuItem action] == @selector(zoomOut:))
 	{
 		enable = mainWindowVisible && [currentImageFile isImage];
 	}
@@ -740,6 +747,13 @@
 -(IBAction)deleteFileClicked:(id)sender
 {
 	[self deleteThisFile];
+}
+
+-(IBAction)showGPL:(id)sender
+{
+	[[NSWorkspace sharedWorkspace] openFile:[[NSBundle mainBundle] 
+		pathForResource:@"GPL"
+				 ofType:@"txt"]];
 }
 
 @end

@@ -205,6 +205,7 @@
 		};
 		29B97317FDCFA39411CA2CEA = {
 			children = (
+				8BC27DA707ECF9B300B56836,
 				8BBC35E907E222BF007C3B6B,
 				8BBC35D607E221D4007C3B6B,
 				8BBC34B907E13E52007C3B6B,
@@ -418,12 +419,6 @@
 			path = ThumbnailManager.m;
 			refType = 4;
 			sourceTree = "<group>";
-		};
-		8B3CB1A407EA82CE0086353C = {
-			fileRef = 8B3CB1A207EA82CE0086353C;
-			isa = PBXBuildFile;
-			settings = {
-			};
 		};
 		8B3CB1A507EA82CE0086353C = {
 			fileRef = 8B3CB1A307EA82CE0086353C;
@@ -1399,7 +1394,6 @@
 				8B5620E107CEA6F1005990E1,
 				8B561D9307CE7627005990E1,
 				8B6D020307CB32CD009A76DA,
-				8B3CB1A407EA82CE0086353C,
 			);
 			isa = PBXCopyFilesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2160,6 +2154,26 @@
 			settings = {
 			};
 		};
+		8BC27DA707ECF9B300B56836 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = text;
+			path = GPL.txt;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8BC27DA807ECF9B300B56836 = {
+			fileRef = 8BC27DA707ECF9B300B56836;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8BC27DFA07ECF9C100B56836 = {
+			fileRef = 8B3CB1A207EA82CE0086353C;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
 		8BC6662807BFCF880075F57F = {
 			fileEncoding = 30;
 			isa = PBXFileReference;
@@ -2578,6 +2592,8 @@
 		8D1107290486CEB800E47090 = {
 			buildActionMask = 2147483647;
 			files = (
+				8BC27DFA07ECF9C100B56836,
+				8BC27DA807ECF9B300B56836,
 				8BBC35EA07E222BF007C3B6B,
 				8BBC35D707E221D4007C3B6B,
 				8BBC34BA07E13E53007C3B6B,

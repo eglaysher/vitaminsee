@@ -164,10 +164,17 @@ static NSString* GotoHomeID = @"Goto Home Toolbar Identifier";
 	{
 		enable = [viewAsIconsController canDelete];
 	}
+	else if ([identifier isEqual:ActualSizeToolbarID])
+	{
+		enable = [currentImageFile isImage] && !(scaleProportionally && 
+			scaleRatio == 1.0);
+	}
+	else if ([identifier isEqual:ZoomToFitToolbarID])
+	{
+		enable = [currentImageFile isImage] && scaleProportionally; // && scaleRatio == 1.0;
+	}
     else if ([identifier isEqual:ZoomInToolbarID] || 
 			 [identifier isEqual:ZoomOutToolbarID] ||
-			 [identifier isEqual:ZoomToFitToolbarID] ||
-			 [identifier isEqual:ActualSizeToolbarID] ||
 			 [identifier isEqual:ViewInPreviewToolbarID])
 	{
 		// We can only do these actions if the file is an image.

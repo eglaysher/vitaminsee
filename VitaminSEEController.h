@@ -151,4 +151,6 @@
 
 -(IBAction)showPreferences:(id)sender;
 -(IBAction)deleteFileClicked:(id)sender;
+
+-(IBAction)showGPL:(id)sender;
 @end
