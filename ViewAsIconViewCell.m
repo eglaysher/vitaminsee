@@ -20,9 +20,7 @@
 
 // Taking 0.1% of a function that takes 7.0% of runtime. We can optimize out these
 // variables.
-NSSize	IMAGE_SIZE = {128.0f, 128.0f};
-
-//NSMakeSize(128, 128);
+NSSize IMAGE_SIZE = {128.0f, 128.0f};
 
 @implementation ViewAsIconViewCell
 
@@ -34,6 +32,7 @@ NSSize	IMAGE_SIZE = {128.0f, 128.0f};
 		[self setWraps:YES];
 		[self setAlignment:NSCenterTextAlignment];
 		[self resetTitleCache];
+		loadOwnIconOnDisplay = NO;
 	}
 	return self;
 }
@@ -76,19 +75,20 @@ NSSize	IMAGE_SIZE = {128.0f, 128.0f};
 
 	[self setStringValue:[thisCellsFullPath lastPathComponent]];
 	
-	if([path isDir])
-		[self setIconImage:[[NSWorkspace sharedWorkspace] iconForFileType:
-			NSFileTypeForHFSTypeCode(kGenericFolderIcon)]];
-	else
-		[self setIconImage:[[NSWorkspace sharedWorkspace] iconForFileType:
-			[path pathExtension]]];
+	// If we are responsible for loading our own icon, then load it.
+	if(loadOwnIconOnDisplay)
+		[self setIconImage:[path iconImageOfSize:IMAGE_SIZE]];
 	
 	// We are going to have to do something with images here...
 	[self setEnabled:[thisCellsFullPath isReadable]];
 	
 	// In the ViewAsIconView, there are no left directories...
-	[self setLeaf:YES]; 
-	
+	[self setLeaf:YES];	
+}
+
+-(void)loadOwnIconOnDisplay
+{
+	loadOwnIconOnDisplay = YES;	
 }
 
 - (void)setIconImage:(NSImage*)image {
@@ -97,7 +97,7 @@ NSSize	IMAGE_SIZE = {128.0f, 128.0f};
 	[iconImage retain];
     
     // Make sure the image is going to display at the size we want.
-    [iconImage setSize: NSMakeSize(ICON_SIZE,ICON_SIZE)];
+    [iconImage setSize:IMAGE_SIZE];
 }
 
 - (NSImage*)iconImage {

@@ -19,6 +19,7 @@
 
 	float cachedTitleWidth;
 	NSString* cachedCellTitle;
+	bool loadOwnIconOnDisplay;
 }
 
 -(void)setCellPropertiesFromPath:(NSString*)path;
@@ -29,4 +30,5 @@
 
 -(void)resetTitleCache;
 
+-(void)loadOwnIconOnDisplay;
 @end

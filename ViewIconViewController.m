@@ -11,6 +11,7 @@
 #import "VitaminSEEController.h"
 #import "NSString+FileTasks.h"
 #import "ImageTaskManager.h"
+#import "IconFamily.h"
 
 @interface ViewIconViewController (Private)
 -(void)rebuildInternalFileArray;
@@ -86,11 +87,33 @@ createRowsForColumn:(int)column
 		id cell = [matrix cellAtRow:i column:0];
 		NSString* currentFile = [fileList objectAtIndex:i];
 		[cell setCellPropertiesFromPath:currentFile];
-		if(displayThumbnails && [currentFile isImage])
+		if(displayThumbnails && [currentFile isImage] && 
+		   ![IconFamily fileHasCustomIcon:currentFile])
+		{
+			// Put in a placeholder icon (the default filetype icon) for now.
+			// It'll be replaced later. I'd prefer to defer this work, but that
+			// would require hard changes. Besides, -iconForFileType is cheap.
+			[cell setIconImage:[[NSWorkspace sharedWorkspace] iconForFileType:
+				[currentFile pathExtension]]];
+			
 			[imageTaskManager buildThumbnail:currentFile forCell:cell];
+		}
 		else
-			[cell setIconImage:[currentFile iconImageOfSize:NSMakeSize(128,128)]];
+		{
+			[cell loadOwnIconOnDisplay];
+		}
 	}
+}
+
+- (void)browser:(NSBrowser *)sender 
+willDisplayCell:(id)cell 
+		  atRow:(int)row
+		 column:(int)column
+{
+//	NSLog(@"Going to display cell: %@", [cell cellPath]);
+	NSString* currentFile = [fileList objectAtIndex:row];
+	[cell setCellPropertiesFromPath:currentFile];
+	[[sender matrixInColumn:0] updateCell:cell];
 }
 
 - (void)clearCache
@@ -100,10 +123,7 @@ createRowsForColumn:(int)column
 	int numberOfRows = [matrix numberOfRows];
 	int i;
 	for(i = 0; i < numberOfRows; ++i)
-	{
-//		NSLog(@"Reset title caache");
 		[[matrix cellAtRow:i column:0] resetTitleCache];
-	}
 }
 
 -(void)singleClick:(NSBrowser*)sender
@@ -175,6 +195,9 @@ createRowsForColumn:(int)column
 	// will manage all our stuff...
 }
 
+
+// I should really make a SortedArray datastructure, since I repeat the binary
+// search way to many times...
 -(void)renameFile:(NSString*)absolutePath to:(NSString*)newPath
 {
 	int low = -1;
@@ -202,12 +225,9 @@ createRowsForColumn:(int)column
 	{
 		[fileList replaceObjectAtIndex:high withObject:newPath];
 		[fileList sortUsingSelector:@selector(caseInsensitiveCompare:)];
-		
-//		NSLog(@"FileList: %@", fileList);
-		
+				
 		[ourBrowser loadColumnZero];
 		[ourBrowser setPath:[newPath lastPathComponent]];
-//		[[ourBrowser matrixInColumn:0] addRo
 	}	
 }
 
