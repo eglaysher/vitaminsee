@@ -7,6 +7,8 @@
 	objects = {
 		080E96DDFE201D6D7F000001 = {
 			children = (
+				8B443AF907D7E0AB00C4D8E9,
+				8B443AFA07D7E0AB00C4D8E9,
 				8BA124AC07D2816300614FF4,
 				8BA124AD07D2816300614FF4,
 				8B56209B07CEA204005990E1,
@@ -77,6 +79,7 @@
 //104
 		1058C7A0FEA54F0111CA2CBB = {
 			children = (
+				8B3FBC2207D8CA1300D94965,
 				8B5EB13407CD254F00B43D06,
 				1058C7A1FEA54F0111CA2CBB,
 			);
@@ -338,6 +341,48 @@
 		};
 		8B2D867507C824B600CDAFED = {
 			fileRef = 8B2D867307C824B500CDAFED;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B3FBC2207D8CA1300D94965 = {
+			isa = PBXFileReference;
+			lastKnownFileType = wrapper.framework;
+			name = Exiv2.framework;
+			path = /Users/elliot/Library/Frameworks/Exiv2.framework;
+			refType = 0;
+			sourceTree = "<absolute>";
+		};
+		8B3FBC2307D8CA1300D94965 = {
+			fileRef = 8B3FBC2207D8CA1300D94965;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B443AF907D7E0AB00C4D8E9 = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			path = ImageMetadata.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B443AFA07D7E0AB00C4D8E9 = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.objcpp;
+			path = ImageMetadata.mm;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B443AFB07D7E0AB00C4D8E9 = {
+			fileRef = 8B443AF907D7E0AB00C4D8E9;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B443AFC07D7E0AB00C4D8E9 = {
+			fileRef = 8B443AFA07D7E0AB00C4D8E9;
 			isa = PBXBuildFile;
 			settings = {
 			};
@@ -1655,7 +1700,6 @@
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
 				INFOPLIST_FILE = "KeywordManager-Info.plist";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
-				OPTIMIZATION_CFLAGS = "";
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "-framework Foundation -framework AppKit";
 				OTHER_REZFLAGS = "";
@@ -1886,6 +1930,7 @@
 			buildRules = (
 			);
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = /Users/elliot/Library/Frameworks;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = CQView_Prefix.pch;
@@ -1940,6 +1985,7 @@
 				8BEA491E07D7A7BE001ADD2E,
 				8B56209D07CEA204005990E1,
 				8BA124AE07D2816300614FF4,
+				8B443AFB07D7E0AB00C4D8E9,
 			);
 			isa = PBXResourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1978,6 +2024,7 @@
 				8B6D01C207CB2EA2009A76DA,
 				8B56209E07CEA204005990E1,
 				8BA124AF07D2816300614FF4,
+				8B443AFC07D7E0AB00C4D8E9,
 			);
 			isa = PBXSourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1995,6 +2042,7 @@
 			files = (
 				8D11072F0486CEB800E47090,
 				8B5EB13507CD254F00B43D06,
+				8B3FBC2307D8CA1300D94965,
 			);
 			isa = PBXFrameworksBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;

@@ -8,8 +8,20 @@
 
 #import "PluginLayer.h"
 #import "ViewIconViewController.h"
+#import "ImageMetadata.h"
 
 @implementation CQViewController (PluginLayer)
+
+-(NSMutableArray*)getKeywordsFromFile:(NSString*)file
+{
+	return [ImageMetadata getKeywordsFromFile:file];
+}
+
+-(void)setKeywords:(NSArray*)keywords forFile:(NSString*)file
+{
+	[ImageMetadata setKeywords:keywords forFile:file];
+	// fixme:
+}
 
 -(void)deleteThisFile
 {
@@ -33,6 +45,7 @@
 											destination:@""
 												  files:[NSArray arrayWithObject:[file lastPathComponent]]
 													tag:&tag];
+	
 	return tag;
 }
 

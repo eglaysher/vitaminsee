@@ -18,16 +18,20 @@
 	IBOutlet NSTextView* currentKeywordsTextView;
 	IBOutlet NSOutlineView* outlineView;
 	
-	CQViewController* pluginLayer;
+	CQViewController* pluginLayer;	
+	KeywordNode* keywordRoot;
+	
+	BOOL keywordsDirty;
 	NSString* currentPath;
 	NSMutableArray* keywords;
-	
-	KeywordNode* keywordRoot;
 }
 
 -(IBAction)cellClicked:(id)sender;
 -(IBAction)keywordTextViewChanged:(id)sender;
 -(IBAction)fileChanged:(id)sender;
+
+-(void)saveKeywords;
+-(void)loadKeywords;
 
 -(void)loadKeywordTree;
 -(void)loadKeywordsIntoTextViewFromList;

@@ -12,6 +12,9 @@
 
 @interface CQViewController (PluginLayer)
 
+-(NSMutableArray*)getKeywordsFromFile:(NSString*)file;
+-(void)setKeywords:(NSArray*)keywords forFile:(NSString*)file;
+
 -(void)renameThisFileTo:(NSString*)newName;
 
 -(void)deleteThisFile;

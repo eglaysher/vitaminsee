@@ -7,7 +7,7 @@
 //
 
 #import "KeywordManagerController.h"
-
+#import "PluginLayer.h"
 #import "KeywordNode.h"
 
 @implementation KeywordManagerController
@@ -47,6 +47,9 @@
 
 -(void)dealloc
 {
+	if(keywordsDirty)
+		[self saveKeywords];
+	
 	[keywords release];
 }
 
@@ -66,6 +69,7 @@
 	}
 
 	[self loadKeywordsIntoTextViewFromList];
+	keywordsDirty = YES;
 }
 
 -(IBAction)keywordTextViewChanged:(id)sender
@@ -105,6 +109,7 @@
 			[keywords addObject:trimmed];
 	}
 	
+	keywordsDirty = YES;
 	[outlineView reloadItem:keywordRoot reloadChildren:YES];
 	[outlineView setNeedsDisplay:YES];
 }
@@ -117,6 +122,40 @@
 	
 	// Inform the outlineView that it has to do a total redisplay.
 	[outlineView reloadData];
+}
+
+-(void)saveKeywords
+{
+	// Save the keywords to disk
+	[pluginLayer setKeywords:keywords forFile:currentPath];	
+	keywordsDirty = NO;
+}
+
+-(void)loadKeywords
+{
+	// Print out the key
+	keywordsDirty = NO;
+	id newkeywords = [pluginLayer getKeywordsFromFile:currentPath];
+	if(newkeywords)
+	{
+		// This file already has keywords. Use them.
+		[keywords release];
+		keywords = newkeywords;
+		[keywords retain];
+	}
+	else
+	{
+		// Allocate a new array since we don't have one
+		[keywords release];
+		keywords = [[NSMutableArray alloc] init];
+	}
+	
+	[outlineView reloadItem:keywordRoot reloadChildren:YES];
+	[outlineView setNeedsDisplay:YES];
+	
+	[self loadKeywordsIntoTextViewFromList];
+	
+	NSLog(@"New keywords: %@", newkeywords);	
 }
 
 /////////////////////////////////////////////////// NSTextView notification
@@ -172,6 +211,10 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
 
 -(void)fileSetTo:(NSString*)newPath
 {
+	// save the old data if needed
+	if(keywordsDirty)
+		[self saveKeywords];
+	
 	// Need to keep track of the current image.
 	[currentPath release];
 	currentPath = newPath;
@@ -180,6 +223,8 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
 	NSLog(@"Setting Keyword path to %@ in %@", [currentPath lastPathComponent],
 		  fileNameTextField);
 	[fileNameTextField setStringValue:[currentPath lastPathComponent]];
+	
+	[self loadKeywords];	
 }
 
 -(NSString*)name
