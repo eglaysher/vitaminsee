@@ -83,6 +83,8 @@ pthread_mutex_t imageTaskLock;
  * Split *thumbnailing* off into it's own thread? (Image display/preload stays
    in it's own thread, instead of making image display in one and thumbnailing
    and preloading in the other...)
+   * This causes problems with not enough CPU for both the thumbnailing/image
+     loading...
  */
 
 /* THIRD MILSTONE GOALS
@@ -115,8 +117,8 @@ pthread_mutex_t imageTaskLock;
 + (void)initialize 
 {
 	// Set up our custom NSValueTransformer
-	[NSValueTransformer setValueTransformer:[[[ImmutableToMutableTransformer alloc] init] autorelease]
-									forName:@"ImmutableToMutableTransformer"];
+	[NSValueTransformer setValueTransformer:[[[ImmutableToMutableTransformer 
+		alloc] init] autorelease] forName:@"ImmutableToMutableTransformer"];
 	
 	// Set up this application's default preferences	
     NSMutableDictionary *defaultPrefs = [NSMutableDictionary dictionary];
@@ -137,8 +139,8 @@ pthread_mutex_t imageTaskLock;
 	// Default sort manager array
 	NSArray* sortManagerPaths = [NSArray arrayWithObjects:
 		[NSDictionary dictionaryWithObjectsAndKeys:@"Pictures", @"Name",
-			[NSHomeDirectory() stringByAppendingPathComponent:@"Pictures"], @"Path", nil], 
-		nil];
+			[NSHomeDirectory() stringByAppendingPathComponent:@"Pictures"], 
+			@"Path", nil], nil];
 	[defaultPrefs setObject:sortManagerPaths forKey:@"SortManagerPaths"];
 	[defaultPrefs setObject:[NSNumber numberWithBool:YES] forKey:@"SortManagerInContextMenu"];
 	
@@ -154,7 +156,8 @@ pthread_mutex_t imageTaskLock;
 	
 	// Set up the scroll view on the right
 	id docView = [[scrollView documentView] retain];
-	id newClipView = [[SBCenteringClipView alloc] initWithFrame:[[scrollView contentView] frame]];
+	id newClipView = [[SBCenteringClipView alloc] initWithFrame:[[scrollView 
+		contentView] frame]];
 	[newClipView setBackgroundColor:[NSColor windowBackgroundColor]];
 	[scrollView setContentView:(NSClipView*)newClipView];
 	[newClipView release];
@@ -258,7 +261,8 @@ pthread_mutex_t imageTaskLock;
 	currentFileView = nextView;
 }
 
-- (void)setCurrentDirectory:(NSString*)newCurrentDirectory file:(NSString*)newCurrentFile
+- (void)setCurrentDirectory:(NSString*)newCurrentDirectory
+					   file:(NSString*)newCurrentFile
 {	
 	//
 	if(newCurrentDirectory && currentDirectory && 
@@ -375,8 +379,8 @@ pthread_mutex_t imageTaskLock;
 	if(![mainVitaminSeeWindow isVisible])
 		[self toggleVitaminSee:self];
 
-	[self setCurrentDirectory:[NSHomeDirectory() stringByAppendingPathComponent:@"Pictures"]
-						 file:nil];
+	[self setCurrentDirectory:[NSHomeDirectory() 
+		stringByAppendingPathComponent:@"Pictures"] file:nil];
 }
 
 -(IBAction)goToFolder:(id)sender
@@ -491,7 +495,7 @@ pthread_mutex_t imageTaskLock;
 
 -(BOOL)validateMenuItem:(NSMenuItem *)theMenuItem
 {
-    BOOL enable = [self respondsToSelector:[theMenuItem action]]; //handle general case.
+    BOOL enable = [self respondsToSelector:[theMenuItem action]];
 	BOOL mainWindowVisible = [mainVitaminSeeWindow isVisible];
 	
 	if([theMenuItem action] == @selector(openFolder:))
@@ -666,7 +670,8 @@ pthread_mutex_t imageTaskLock;
 	// Get the current image from the ImageTaskManager
 	int x, y;
 	float scale;
-	NSImage* image = [imageTaskManager getCurrentImageWithWidth:&x height:&y scale:&scale];
+	NSImage* image = [imageTaskManager getCurrentImageWithWidth:&x height:&y 
+														  scale:&scale];
 	pthread_mutex_lock(&imageTaskLock);
 		[imageViewer setImage:image];
 		[imageViewer setFrameSize:[image size]];
