@@ -11,6 +11,7 @@
 #import "NSString+FileTasks.h"
 #import "VitaminSEEController.h"
 
+#include <limits.h>
 
 #define ICON_INSET_VERT		2.0	/* The size of empty space between the icon end the top/bottom of the cell */ 
 #define ICON_SIZE 		128.0	/* Our Icons are ICON_SIZE x ICON_SIZE */
@@ -27,6 +28,7 @@
 		iconImage = nil;
 		[self setWraps:YES];
 		[self setAlignment:NSCenterTextAlignment];
+		[self resetTitleCache];
 	}
 	return self;
 }
@@ -48,6 +50,12 @@
 	[title release];
 	title = newTitle;
 	[title retain];
+	[self resetTitleCache];
+}
+
+-(void)resetTitleCache
+{
+	cachedTitleWidth = FLT_MAX;
 }
 
 -(void)setCellPropertiesFromPath:(NSString*)path
@@ -116,6 +124,7 @@
 	NSSize	imageSize = NSMakeSize(128, 128); //[iconImage size];
 	NSRect	imageFrame, highlightRect, textFrame;
 	
+//	[NSBezierPath clipRect:cellFrame];
 	// First, let's draw a frame around the cell
 	
 	// Divide the cell into 2 parts, the image part (on the left) and the text part.
@@ -129,55 +138,49 @@
 	
 	// Adjust the image frame top account for the fact that we may or may not be in a flipped control view, since when compositing
 	// the online documentation states: "The image will have the orientation of the base coordinate system, regardless of the destination coordinates".
-	if ([controlView isFlipped]) 
-		imageFrame.origin.y += imageSize.width; //ceil((textFrame.size.height + imageFrame.size.height) / 2);
-//	else 
-//		; // Something is wrong. We're supposed to only render in an NSMatrix...
-	
-	// Depending on the current state, set the color we will highlight with.
-	
+	// ASSUMPTION: WE ARE IN FLIPPED COORDINATES!
+	imageFrame.origin.y += imageSize.width; //ceil((textFrame.size.height + imageFrame.size.height) / 2);
+
 	// Highlighting is f'ing bork. Ask if we're the selected cell instead.
 	if ([(NSMatrix*)controlView selectedCell] == self) {
 		// use highlightColorInView instead of [NSColor selectedControlColor] since NSBrowserCell slightly dims all cells except those in the right most column.
 		// The return value from highlightColorInView will return the appropriate one for you. 
 		//			[[NSColor s] set];
 		[[self highlightColorInView: controlView] set];
-	} else {
-		[[NSColor controlBackgroundColor] set];
-	}
-	
-	// Draw the highligh, bu only the portion that won't be caught by the call to [super drawInteriorWithFrame:...] below.  No need to draw parts 2 times!
-	NSRectFill(cellFrame);
-
-	NSFrameRect(cellFrame);
+		NSRectFill(cellFrame);
+	} 
 	
 	// Blit the image.
-	if(iconImage)
+	pthread_mutex_lock(&imageTaskLock);
+		[iconImage compositeToPoint:imageFrame.origin operation:NSCompositeSourceOver];
+	pthread_mutex_unlock(&imageTaskLock);
+	
+	float newWidth = textFrame.size.width - 30.5f;
+
+	// Shark revealed that the -[NSAttributedString trunacteForWidth:] was
+	// eating up a bunch of CPU time, so we cache the display title.
+	if(newWidth < cachedTitleWidth)
 	{
-		pthread_mutex_lock(&imageTaskLock);
-			[iconImage compositeToPoint:imageFrame.origin operation:NSCompositeSourceOver];
-		pthread_mutex_unlock(&imageTaskLock);
+		// Create our string and store it.
+		NSAttributedString* aString = [[[[NSAttributedString alloc] 
+			initWithString:title] autorelease] truncateForWidth:newWidth];
+		cachedTitleWidth = [aString size].width;
+		[cachedCellTitle release];
+		cachedCellTitle = [[aString string] retain];
+
+		[self setStringValue:cachedCellTitle];
+		[self setAlignment:NSCenterTextAlignment];
+		[super drawInteriorWithFrame:textFrame inView:controlView];
+	
+		// Now we set the path back
+		[self setStringValue:title];
 	}
 	else
 	{
-		// Draw an empty frame...
-		[[NSColor blackColor] set];
-		imageFrame.origin.y -= imageSize.width;
-		NSFrameRect(imageFrame);
+		[self setStringValue:cachedCellTitle];
+		[super drawInteriorWithFrame:textFrame inView:controlView];
+		[self setStringValue:title];
 	}
-	
-	// Have NSBrowser kindly draw the text part, since it knows how to do that for us, no need to re-invent what it knows how to do.
-//	NSFrameRect(textFrame);
-	int newWidth = textFrame.size.width - 30;
-//	NSLog(@"Truncating to length of %d", newWidth);
-	[self setStringValue:[[[[[NSAttributedString alloc] 
-		initWithString:title] autorelease] truncateForWidth:newWidth] string]];
-	[self setAlignment:NSCenterTextAlignment];
-//	NSLog(@"Displaying %@", [self stringValue]);
-	[super drawInteriorWithFrame:textFrame inView:controlView];
-	
-	// Now we set the path back
-	[self setStringValue:title];
 }
 
 

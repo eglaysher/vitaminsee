@@ -16,6 +16,9 @@
 
 	NSImage* iconImage;
 	NSString* thisCellsFullPath;	
+
+	float cachedTitleWidth;
+	NSString* cachedCellTitle;
 }
 
 -(void)setCellPropertiesFromPath:(NSString*)path;
@@ -23,5 +26,7 @@
 -(NSString*)cellPath;
 
 -(void)setTitle:(NSString*)newTitle;
+
+-(void)resetTitleCache;
 
 @end

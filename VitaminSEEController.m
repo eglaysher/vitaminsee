@@ -354,11 +354,13 @@ pthread_mutex_t imageTaskLock;
 -(IBAction)goBack:(id)sender
 {
 	[pathManager undo];
+	[viewAsIconsController makeFirstResponderTo:mainVitaminSeeWindow];
 }
 
 -(IBAction)goForward:(id)sender
 {
 	[pathManager redo];
+	[viewAsIconsController makeFirstResponderTo:mainVitaminSeeWindow];
 }
 
 -(IBAction)goToHomeFolder:(id)sender
@@ -653,6 +655,7 @@ pthread_mutex_t imageTaskLock;
 // is moved.
 -(void)splitViewDidResizeSubviews:(NSNotification*)notification
 {
+	[viewAsIconsController clearCache];
 	[self redraw];
 }
 

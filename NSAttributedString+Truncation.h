@@ -30,5 +30,5 @@
 
 
 @interface NSAttributedString (Truncation)
--(NSAttributedString*)truncateForWidth:(int)inWidth;
+-(NSAttributedString*)truncateForWidth:(float)inWidth;
 @end

@@ -42,4 +42,5 @@
 
 -(void)makeFirstResponderTo:(NSWindow*)window;
 
+- (void)clearCache;
 @end

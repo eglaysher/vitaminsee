@@ -24,6 +24,7 @@
 	[ourBrowser setAction:@selector(singleClick:)];
 	[ourBrowser setDoubleAction:@selector(doubleClick:)];	
 	[ourBrowser setCellClass:[ViewAsIconViewCell class]];
+	[ourBrowser setDelegate:self];
 	
 	currentlySelectedCell = nil;
 }
@@ -82,12 +83,24 @@ createRowsForColumn:(int)column
 	
 	for(i = 0; i < count; ++i)
 	{
-//		NSLog(@"Loading...");
 		id cell = [matrix cellAtRow:i column:0];
 		NSString* currentFile = [fileList objectAtIndex:i];
 		[cell setCellPropertiesFromPath:currentFile];
 		if(displayThumbnails || [currentFile isDir])
 			[imageTaskManager buildThumbnail:currentFile forCell:cell];
+	}
+}
+
+- (void)clearCache
+{
+	// Reset the cells so they regenerate their cached titles...
+	id matrix = [ourBrowser matrixInColumn:0];
+	int numberOfRows = [matrix numberOfRows];
+	int i;
+	for(i = 0; i < numberOfRows; ++i)
+	{
+//		NSLog(@"Reset title caache");
+		[[matrix cellAtRow:i column:0] resetTitleCache];
 	}
 }
 
@@ -104,7 +117,6 @@ createRowsForColumn:(int)column
 	{
 		NSEnumerator* dirEnum = [[[NSFileManager defaultManager] 
 			directoryContentsAtPath:currentDirectory] objectEnumerator];
-//		NSMutableArray* myFileList = [[NSMutableArray array] retain];
 		NSString* curFile;
 	
 		while(curFile = [dirEnum nextObject])
@@ -217,8 +229,11 @@ createRowsForColumn:(int)column
 		NSLog(@"HUH!? %@ isn't in the current directory!?", absolutePath);
 	else
 	{
-//		NSLog(@"Removing row %d", high);
 		[fileList removeObjectAtIndex:high];
+
+		// Known problem: Deleting a file doesn't affect the scroll bar.
+		// Solution: Don't use an NSBrowser. (I'll be rewriting this as a 
+		//           loadable bundle with an NSTableView...)
 		[[ourBrowser matrixInColumn:0] removeRow:high];
 		[ourBrowser setNeedsDisplay];
 		
@@ -272,9 +287,10 @@ createRowsForColumn:(int)column
 
 -(void)rebuildInternalFileArray
 {
-	NSEnumerator* dirEnum = [[[NSFileManager defaultManager] 
-		directoryContentsAtPath:currentDirectory] objectEnumerator];
-	NSMutableArray* myFileList = [NSMutableArray array];
+	NSArray* directoryContents = [[NSFileManager defaultManager] 
+		directoryContentsAtPath:currentDirectory];
+	NSEnumerator* dirEnum = [directoryContents objectEnumerator];
+	NSMutableArray* myFileList = [NSMutableArray arrayWithCapacity:[directoryContents count]];
 	NSString* curFile;
 	while(curFile = [dirEnum nextObject])
 	{
