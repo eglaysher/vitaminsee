@@ -152,6 +152,13 @@
 	[viewAsIconsController setThumbnailManager:thumbnailManager];
 }
 
+-(void)dealloc
+{
+	[pathManager release];
+}
+
+////////////////////////////////////////////////////////// APPLICATION DELEGATE
+
 // This initialization can safely be delayed until after the main window has
 // been shown.
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
@@ -170,9 +177,31 @@
 	[viewAsIconsController makeFirstResponderTo:mainVitaminSeeWindow];
 }
 
--(void)dealloc
+-(BOOL)application:(NSApplication*)theApplication openFile:(NSString*)filename
 {
-	[pathManager release];
+//	NSLog(@"Opening file %@", filename);
+	
+	if([filename isImage])
+	{
+		// Show the window
+		if(![mainVitaminSeeWindow isVisible])
+			[self toggleVitaminSee:self];
+		
+		[self setCurrentDirectory:[filename stringByDeletingLastPathComponent] 
+							 file:filename];
+	}
+	else if([filename isDir])
+	{
+		// Show the window
+		if(![mainVitaminSeeWindow isVisible])
+			[self toggleVitaminSee:self];
+		
+		[self setCurrentDirectory:filename file:nil];
+	}
+	else
+		return NO;
+
+	return YES;
 }
 
 -(void)displayAlert:(NSString*)message informativeText:(NSString*)info helpAnchor:(NSString*)anchor
@@ -218,6 +247,8 @@
 - (void)setCurrentDirectory:(NSString*)newCurrentDirectory
 					   file:(NSString*)newCurrentFile
 {	
+	[self startProgressIndicator];
+	
 	//
 	if(newCurrentDirectory && currentDirectory && 
 	   ![currentDirectory isEqual:newCurrentDirectory])
