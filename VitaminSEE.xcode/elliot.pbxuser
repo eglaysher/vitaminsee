@@ -70,7 +70,7 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 134009989;
+			PBXPerProjectTemplateStateSaveDate = 134010327;
 			PBXPrepackagedSmartGroups_v2 = (
 				{
 					PBXTransientLocationAtTop = bottom;
@@ -247,19 +247,29 @@
 					};
 				},
 			);
-			PBXWorkspaceStateSaveDate = 134009989;
+			PBXWorkspaceStateSaveDate = 134010327;
 		};
 		perUserProjectItems = {
+			8B243BC207FCD63200AE035A = 8B243BC207FCD63200AE035A;
 			8B2BA23D07FCA15F00DEC151 = 8B2BA23D07FCA15F00DEC151;
 			8B2BA23E07FCA15F00DEC151 = 8B2BA23E07FCA15F00DEC151;
 			8B2BA24007FCA15F00DEC151 = 8B2BA24007FCA15F00DEC151;
 			8B2BA24107FCA15F00DEC151 = 8B2BA24107FCA15F00DEC151;
-			8B2BA30507FCC25E00DEC151 = 8B2BA30507FCC25E00DEC151;
 			8BA2290707FCD50100B9CCE1 = 8BA2290707FCD50100B9CCE1;
 		};
 		sourceControlManager = 8BC8F8E607F0EB7900C66290;
 		userBuildSettings = {
 		};
+	};
+	8B243BC207FCD63200AE035A = {
+		fRef = 8B56209C07CEA204005990E1;
+		isa = PBXTextBookmark;
+		name = "nailFor:(NSString*)path\n{\n\t[thumbnailMana";
+		rLen = 41;
+		rLoc = 3792;
+		rType = 0;
+		vrLen = 293;
+		vrLoc = 3566;
 	};
 	8B2BA23D07FCA15F00DEC151 = {
 		fRef = 8BD011D907A99DFB00AA4BAA;
@@ -301,16 +311,6 @@
 		vrLen = 441;
 		vrLoc = 2463;
 	};
-	8B2BA30507FCC25E00DEC151 = {
-		fRef = 8B56209C07CEA204005990E1;
-		isa = PBXTextBookmark;
-		name = "\t[thumbnailManager buildThumbnail:path];\n";
-		rLen = 41;
-		rLoc = 3792;
-		rType = 0;
-		vrLen = 135;
-		vrLoc = 3706;
-	};
 	8B3CB1A207EA82CE0086353C = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {705, 655}}";
@@ -351,9 +351,9 @@
 	};
 	8B56209C07CEA204005990E1 = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {769, 2575}}";
+			sepNavIntBoundsRect = "{{0, 0}, {769, 2591}}";
 			sepNavSelRange = "{3792, 41}";
-			sepNavVisRect = "{{0, 2333}, {666, 183}}";
+			sepNavVisRect = "{{0, 2336}, {666, 183}}";
 			sepNavWindowFrame = "{{107, 155}, {750, 502}}";
 		};
 	};

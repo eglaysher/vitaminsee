@@ -133,6 +133,7 @@
  * * See if I can solve the problem of the panel gaining focus.
  * * Undo/redo for moving files!
  * * Undo/redo for everything else.
+ * * Make localizable
  */
 
 + (void)initialize 
@@ -151,6 +152,7 @@
 	[defaultPrefs setObject:[NSNumber numberWithBool:YES] forKey:@"DisplayThumbnails"];
 	[defaultPrefs setObject:[NSNumber numberWithBool:YES] forKey:@"GenerateThumbnails"];
 	[defaultPrefs setObject:[NSNumber numberWithBool:NO] forKey:@"GenerateThumbnailsInArchives"];
+	[defaultPrefs setObject:[NSNumber numberWithBool:YES] forKey:@"PreloadImages"];
 
 	// Keyword preferences
 	KeywordNode* node = [[[KeywordNode alloc] initWithParent:nil keyword:@"Keywords"] autorelease];
@@ -648,10 +650,13 @@
 
 -(void)preloadFiles:(NSArray*)filesToPreload
 {
-	NSEnumerator* e = [filesToPreload objectEnumerator];
-	NSString* path;
-	while(path = [e nextObject])
-		[imageTaskManager preloadImage:path];
+	if([[[NSUserDefaults standardUserDefaults] objectForKey:@"PreloadImages"] boolValue])
+	{
+		NSEnumerator* e = [filesToPreload objectEnumerator];
+		NSString* path;
+		while(path = [e nextObject])
+			[imageTaskManager preloadImage:path];
+	}
 }
 
 -(void)redraw

@@ -1,8 +1,8 @@
 
 #import "DNDArrayController.h"
 
-NSString *CopiedRowsType = @"COPYIED_ROWS_TYPE";
-NSString *MovedRowsType = @"MOVED_ROWS_TYPE";
+NSString *CopiedRowsType = @"COPYIED_SORT_CONTROLLER_ROWS_TYPE";
+NSString *MovedRowsType = @"MOVED_SORT_CONTROLLER_ROWS_TYPE";
 
 @implementation DNDArrayController
 
