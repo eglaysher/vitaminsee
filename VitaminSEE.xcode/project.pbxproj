@@ -430,6 +430,19 @@
 			settings = {
 			};
 		};
+		8B46278107E24B050017B19D = {
+			isa = PBXFileReference;
+			lastKnownFileType = image.png;
+			path = SortManager.png;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B4627C607E24B150017B19D = {
+			fileRef = 8B46278107E24B050017B19D;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
 		8B4A5A8F07B74EDC00F30E03 = {
 			fileEncoding = 30;
 			isa = PBXFileReference;
@@ -779,6 +792,7 @@
 		};
 		8B6D010E07CB179C009A76DA = {
 			children = (
+				8B46278107E24B050017B19D,
 				8B6D020F07CB3312009A76DA,
 				8B6D021007CB3312009A76DA,
 				8B6D01F907CB327F009A76DA,
@@ -874,6 +888,7 @@
 		8B6D01F407CB327E009A76DA = {
 			buildActionMask = 2147483647;
 			files = (
+				8B4627C607E24B150017B19D,
 				8B6D01FC07CB329C009A76DA,
 				8BA124EA07D282E600614FF4,
 			);
@@ -2180,6 +2195,7 @@
 			buildSettings = {
 				DEPLOYMENT_POSTPROCESSING = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Exiv2/build";
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = VitaminSEE_Prefix.pch;

@@ -37,10 +37,10 @@
 
 		[self loadKeywordsIntoTextViewFromList];
 //		[currentKeywordsTextView insertText:@"One\nTwo\nThree\n"];
-		NSLog(@"TextView; %@", [currentKeywordsTextView string]);
+//		NSLog(@"TextView; %@", [currentKeywordsTextView string]);
 	}
 	
-	NSLog(@"Hi my name is %@", self);
+//	NSLog(@"Hi my name is %@", self);
 	
 	return self;
 }
@@ -59,12 +59,12 @@
 	NSString* keyword = [[sender selectedCell] title];
 	if([keywords containsObject:keyword])
 	{
-		NSLog(@"Removing keyword %@", keyword);
+//		NSLog(@"Removing keyword %@", keyword);
 		[keywords removeObject:keyword];
 	}
 	else
 	{
-		NSLog(@"Adding keyword %@", keyword);
+//		NSLog(@"Adding keyword %@", keyword);
 		[keywords addObject:keyword];
 	}
 
@@ -83,7 +83,7 @@
 //	NSString* current
 
 	// fixme: Get renaming working.
-	NSLog(@"New value is %@", [sender stringValue]);
+//	NSLog(@"New value is %@", [sender stringValue]);
 	
 	[pluginLayer renameThisFileTo:[sender stringValue]];
 }
@@ -157,7 +157,7 @@
 	
 	[self loadKeywordsIntoTextViewFromList];
 	
-	NSLog(@"New keywords: %@", newkeywords);	
+//	NSLog(@"New keywords: %@", newkeywords);	
 }
 
 /////////////////////////////////////////////////// NSTextView notification

@@ -53,29 +53,15 @@
   * Go to folder sheet.
 
   * Integrated Help
+  * Icon for SortManager (but it's crapy)
 */
 
 //////////////////////////////////////////////////////// WHAT NEEDS TO BE DONE:
 
-/* THINGS TO ASK AT THE COCOA MEETING:
-  * How to (properly) truncate the text in my NSCell...
-    * Don't?
-  * How to display the editing field in my NSCell so I can krunking get renaming
-    working...
-    * Integrated into inspector?
-  * Computer/Macintosh HD/... ? How do I do this? Do I need to make my own
-    internal VFSish system?
-    *
-  * Legality of using Apple icons? Modification? NO!
- */
-
-/* NSString different function not pathComponenets. 
-   The Mac OSX File System -[NSFileManager displayNameAtPath:]
- */
-
 /* FIRST MILESTONE GOALS (Note that the milestones have gone apeshit...)
   * Work on making things feature complete.
-  * Icons for SortManager and KeywordManager in Preferences.
+  * Icons for KeywordManager in Preferences.
+  * Shave about 50k off of filesize by s/icns/png/;
 */
 
 /**
@@ -92,9 +78,13 @@
  * Duplicate search (Loadable bundle)
  * Integrate into the [Computer name]/[Macintosh HD]/.../ hiearachy...
  * Transparent Zip/Rar support
+ * Split *thumbnailing* off into it's own thread? (Image display/preload stays
+   in it's own thread, instead of making image display in one and thumbnailing
+   and preloading in the other...)
  */
 
 /* THIRD MILSTONE GOALS
+ * Respond to finder notifications!
  * Draging of the picture
  * See "openHandCursor" and "closedHandCursor"
  * Fullscreen mode.
@@ -219,6 +209,22 @@
 -(void)dealloc
 {
 	[pathManager release];
+}
+
+-(void)displayAlert:(NSString*)message informativeText:(NSString*)info
+{
+	NSAlert *alert = [[[NSAlert alloc] init] autorelease];
+	[alert addButtonWithTitle:@"OK"];
+	[alert setMessageText:message];
+
+	if(info)
+		[alert setInformativeText:info];
+	
+	[alert setAlertStyle:NSWarningAlertStyle];
+	[alert beginSheetModalForWindow:mainVitaminSeeWindow
+					  modalDelegate:nil
+					 didEndSelector:nil
+						contextInfo:nil];
 }
 
 // ============================================================================
@@ -352,9 +358,6 @@
 
 -(IBAction)goToFolder:(id)sender
 {
-	// fixme: stub.
-	NSLog(@"Something happened.");
-
 	[[self gotoFolderController] showSheet:mainVitaminSeeWindow
 							  initialValue:@""
 									target:self
@@ -363,8 +366,6 @@
 
 -(void)finishedGotoFolder:(NSString*)done
 {
-	NSLog(@"DONE: %@", done);
-
 	if([done isDir])
 	{
 		// Valid directory! Let's set it!
@@ -388,9 +389,7 @@
 	{
 		Class windowControllerClass = [windowBundle principalClass];
 		if(windowControllerClass)
-		{
 			component = [[windowControllerClass alloc] init];
-		}
 	}
 	
 	return component;
@@ -406,7 +405,6 @@
 			_sortManagerController = loaded;
 			[_sortManagerController setPluginLayer:self];
 			[loadedFilePlugins addObject:_sortManagerController];
-
 		}		
 	}
 		
@@ -445,28 +443,27 @@
 	return _gotoFolderController;	
 }
 
+-(void)toggleVisible:(NSWindow*)window
+{
+	if([window isVisible])
+		[window close];
+	else
+		[window makeKeyAndOrderFront:self];	
+}
+
 -(IBAction)toggleVitaminSee:(id)sender
 {
-	if([mainVitaminSeeWindow isVisible])
-		[mainVitaminSeeWindow close];
-	else
-		[mainVitaminSeeWindow makeKeyAndOrderFront:self];
+	[self toggleVisible:mainVitaminSeeWindow];
 }
 
 -(IBAction)toggleSortManager:(id)sender
 {	
-	if([[[self sortManagerController] window] isVisible])
-		[[self sortManagerController] close];
-	else
-		[[self sortManagerController] showWindow:self];
+	[self toggleVisible:[[self sortManagerController] window]];
 }
 
 -(IBAction)toggleKeywordManager:(id)sender
 {
-	if([[[self keywordManagerController] window] isVisible])
-		[[self keywordManagerController] close];
-	else
-		[[self keywordManagerController] showWindow:self];
+	[self toggleVisible:[[self keywordManagerController] window]];
 }
 
 -(BOOL)validateMenuItem:(NSMenuItem *)theMenuItem

@@ -30,12 +30,12 @@
 								 caseSensitive:NO
 							  matchesIntoArray:&a
 								   filterTypes:nil];
-	NSLog(@"Paths: %@", a);
+//	NSLog(@"Paths: %@", a);
 }
 
 -(IBAction)type:(id)sender
 {
-	NSLog(@"type type type");
+//	NSLog(@"type type type");
 }
 
 -(IBAction)clickOK:(id)sender

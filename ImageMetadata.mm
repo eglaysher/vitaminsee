@@ -19,7 +19,7 @@ using namespace std;
 ////////////////////////////////// EXIV2 WRAPPER! //////////////////////////////
 +(NSMutableArray*)getKeywordsFromJPEGFile:(NSString*)file
 {
-	NSLog(@"Trying to load keywords from %@", file);
+//	NSLog(@"Trying to load keywords from %@", file);
 	
 	int rc;
 	Exiv2::IptcData iptcData;
@@ -33,7 +33,7 @@ using namespace std;
 	
 	if(rc)
 	{
-		NSLog(@"Probelm reading file or no keywords found.");
+//		NSLog(@"Probelm reading file or no keywords found.");
 		return nil;
 	}
 	
@@ -41,13 +41,13 @@ using namespace std;
 	Exiv2::IptcData::iterator end = iptcData.end();
 	for(Exiv2::IptcData::iterator md = iptcData.begin(); md != end; ++md)
 	{
-		NSLog(@"Checking typename %s", md->tagName().c_str());
+//		NSLog(@"Checking typename %s", md->tagName().c_str());
 		if(md->tagName() == "Keywords")
 		{
 			// This entry is a keyword. Add it to our list.
 			const char* keyVal = md->value().toString().c_str();
 			NSString* keyword = [NSString stringWithCString:keyVal];
-			NSLog(@"Found keyword: %@", keyword);
+//			NSLog(@"Found keyword: %@", keyword);
 			[keywords addObject:keyword];
 		}
 	}
@@ -57,7 +57,7 @@ using namespace std;
 
 +(void)setKeywords:(NSArray*)keywords forJPEGFile:(NSString*)file
 {
-	NSLog(@"Saving keywords!");
+//	NSLog(@"Saving keywords!");
 	// First, read the IPTC data for the file. We don't want to clobber other
 	// metadata.
 	Exiv2::IptcData iptcData;

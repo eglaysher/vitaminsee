@@ -7,6 +7,7 @@
 //
 
 #import "ToolbarDelegate.h"
+#import "ViewIconViewController.h"
 #import "NSString+FileTasks.h"
 #import "NSWorkspace+GrowlAdditions.h"
 
@@ -116,7 +117,7 @@ static NSString* GotoHomeID = @"Goto Home Toolbar Identifier";
 		[item setImage:[NSImage imageNamed:@"HomeFolderIcon"]];
 		[item setTarget:self];
 		[item setAction:@selector(goToHomeFolder:)];				
-	}	
+	}
 	else if([itemIdent isEqual:GotoPicturesID])
 	{
 		[item setLabel:@"Pictures"];

@@ -459,13 +459,32 @@
 		// to the screen for SPEED so it LOOKS like we are doing something.
 		imageToRet = [[[NSImage alloc] initWithSize:NSMakeSize(display.width,
 			display.height)] autorelease];
-		[imageToRet lockFocus];
+		
+		// This block could throw on a bad file. We catch and error
+		@try
 		{
-			[[NSGraphicsContext currentContext] 
-				setImageInterpolation:NSImageInterpolationNone];
-			[imageRep drawInRect:NSMakeRect(0,0,display.width,display.height)];
+			[imageToRet lockFocus];
+			{
+				[[NSGraphicsContext currentContext] 
+					setImageInterpolation:NSImageInterpolationNone];
+				[imageRep drawInRect:NSMakeRect(0,0,display.width,display.height)];
+			}
+			[imageToRet unlockFocus];		
 		}
-		[imageToRet unlockFocus];		
+		@catch(NSException* e)
+		{
+			// The image will still be locked, even if -lock fails.
+			[imageToRet unlockFocus];
+
+			// Alert the user to a problem
+			[vitaminSEEController displayAlert:[NSString stringWithFormat:
+				@"Can not display %@", [path lastPathComponent] ]
+							   informativeText:@"Please chcek that it's a valid file"
+				];
+			[vitaminSEEController stopProgressIndicator];
+			return;
+		}
+		
 //		NSLog(@"First pass of %@", path);
 		[self sendDisplayCommandWithImage:imageToRet width:imageX height:imageY];
 		
@@ -473,7 +492,7 @@
 		// command
 		if([self newDisplayCommandInQueue])
 		{
-			NSLog(@"Bailing because of new display command...");
+//			NSLog(@"Bailing because of new display command...");
 			return;
 		}
 		

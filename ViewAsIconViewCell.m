@@ -94,7 +94,7 @@
 
 -(void)setHighlighted:(BOOL)flag
 {
-	NSLog(@"Setting highlight!");
+//	NSLog(@"Setting highlight!");
 	[super setHighlighted:flag];
 	selected = flag;
 }

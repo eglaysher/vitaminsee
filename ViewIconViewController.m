@@ -182,7 +182,7 @@ createRowsForColumn:(int)column
 		[fileList replaceObjectAtIndex:high withObject:newPath];
 		[fileList sortUsingSelector:@selector(caseInsensitiveCompare:)];
 		
-		NSLog(@"FileList: %@", fileList);
+//		NSLog(@"FileList: %@", fileList);
 		
 		[ourBrowser loadColumnZero];
 		[ourBrowser setPath:[newPath lastPathComponent]];
@@ -217,7 +217,7 @@ createRowsForColumn:(int)column
 		NSLog(@"HUH!? %@ isn't in the current directory!?", absolutePath);
 	else
 	{
-		NSLog(@"Removing row %d", high);
+//		NSLog(@"Removing row %d", high);
 		[fileList removeObjectAtIndex:high];
 		[[ourBrowser matrixInColumn:0] removeRow:high];
 		[ourBrowser setNeedsDisplay];

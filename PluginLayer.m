@@ -53,8 +53,8 @@
 
 	if(ret)
 		[viewAsIconsController renameFile:currentImageFile to:newPath];
-	else
-		NSLog(@"Huh!?");
+//	else
+//		NSLog(@"Huh!?");
 }
 
 -(void)deleteThisFile
