@@ -11,7 +11,7 @@
 
 
 #define ICON_INSET_VERT		2.0	/* The size of empty space between the icon end the top/bottom of the cell */ 
-#define ICON_SIZE 		32.0	/* Our Icons are ICON_SIZE x ICON_SIZE */
+#define ICON_SIZE 		128.0	/* Our Icons are ICON_SIZE x ICON_SIZE */
 #define ICON_INSET_HORIZ	4.0	/* Distance to inset the icon from the left edge. */
 #define ICON_TEXT_SPACING	2.0	/* Distance between the end of the icon and the text part */
 
@@ -23,6 +23,8 @@
 	if(self = [super init])
 	{
 		iconImage = nil;
+		[self setWraps:YES];
+		[self setAlignment:NSCenterTextAlignment];
 	}
 	return self;
 }
@@ -83,48 +85,53 @@
 - (NSSize)cellSizeForBounds:(NSRect)aRect {
     // Make our cells a bit higher than normal to give some additional space for the icon to fit.
     NSSize theSize = [super cellSizeForBounds:aRect];
-    theSize.width += [[self iconImage] size].width + ICON_INSET_HORIZ + ICON_INSET_HORIZ;
-    theSize.height = ICON_SIZE + ICON_INSET_VERT * 2.0 + 20;
+    theSize.height += ICON_SIZE + ICON_INSET_VERT * 2.0 + 10;
     return theSize;
 }
 
-- (void)drawInteriorWithFrame:(NSRect)cellFrame inView:(NSView *)controlView {    
-	NSSize	imageSize = NSMakeSize(32, 32); //[iconImage size];
-        NSRect	imageFrame, highlightRect, textFrame;
-		
-		// Divide the cell into 2 parts, the image part (on the left) and the text part.
-		NSDivideRect(cellFrame, &imageFrame, &textFrame, ICON_INSET_HORIZ + ICON_TEXT_SPACING + imageSize.width, NSMinXEdge);
-        imageFrame.origin.x += ICON_INSET_HORIZ;
-        imageFrame.size = imageSize;
-		
-		// Adjust the image frame top account for the fact that we may or may not be in a flipped control view, since when compositing
-		// the online documentation states: "The image will have the orientation of the base coordinate system, regardless of the destination coordinates".
-        if ([controlView isFlipped]) imageFrame.origin.y += ceil((textFrame.size.height + imageFrame.size.height) / 2);
-        else imageFrame.origin.y += ceil((textFrame.size.height - imageFrame.size.height) / 2);
-		
-		// Depending on the current state, set the color we will highlight with.
-		
-		// Highlighting is f'ing bork. Ask if we're the selected cell instead.
-        if ([(NSMatrix*)controlView selectedCell] == self) {
-			// use highlightColorInView instead of [NSColor selectedControlColor] since NSBrowserCell slightly dims all cells except those in the right most column.
-			// The return value from highlightColorInView will return the appropriate one for you. 
-//			[[NSColor s] set];
-			[[self highlightColorInView: controlView] set];
-			NSLog(@"Highlighted!");
-        } else {
-			[[NSColor controlBackgroundColor] set];
-		}
-		
-		// Draw the highligh, bu only the portion that won't be caught by the call to [super drawInteriorWithFrame:...] below.  No need to draw parts 2 times!
-		highlightRect = NSMakeRect(NSMinX(cellFrame), NSMinY(cellFrame), NSWidth(cellFrame) - NSWidth(textFrame), NSHeight(cellFrame));
-		NSRectFill(highlightRect);
-		
-		// Blit the image.
-		if(iconImage)
-			[iconImage compositeToPoint:imageFrame.origin operation:NSCompositeSourceOver];
-		
-		// Have NSBrowser kindly draw the text part, since it knows how to do that for us, no need to re-invent what it knows how to do.
-		[super drawInteriorWithFrame:textFrame inView:controlView];
+- (void)drawInteriorWithFrame:(NSRect)cellFrame inView:(NSView *)controlView {
+	NSSize	imageSize = NSMakeSize(128, 128); //[iconImage size];
+	NSRect	imageFrame, highlightRect, textFrame;
+	
+	// Divide the cell into 2 parts, the image part (on the left) and the text part.
+	NSDivideRect(cellFrame, &imageFrame, &textFrame, 
+				 120, 
+				 NSMinYEdge);
+	imageFrame.origin.x += (cellFrame.size.width - imageSize.width) / 2.0;
+	imageFrame.size = imageSize;
+	
+	// Adjust the image frame top account for the fact that we may or may not be in a flipped control view, since when compositing
+	// the online documentation states: "The image will have the orientation of the base coordinate system, regardless of the destination coordinates".
+	if ([controlView isFlipped]) 
+		imageFrame.origin.y += imageSize.width; //ceil((textFrame.size.height + imageFrame.size.height) / 2);
+	else 
+		; // Something is wrong. We're supposed to only render in an NSMatrix...
+	
+	// Depending on the current state, set the color we will highlight with.
+	
+	// Highlighting is f'ing bork. Ask if we're the selected cell instead.
+	if ([(NSMatrix*)controlView selectedCell] == self) {
+		// use highlightColorInView instead of [NSColor selectedControlColor] since NSBrowserCell slightly dims all cells except those in the right most column.
+		// The return value from highlightColorInView will return the appropriate one for you. 
+		//			[[NSColor s] set];
+		[[self highlightColorInView: controlView] set];
+	} else {
+		[[NSColor controlBackgroundColor] set];
+	}
+	
+	// Draw the highligh, bu only the portion that won't be caught by the call to [super drawInteriorWithFrame:...] below.  No need to draw parts 2 times!
+	NSRectFill(cellFrame);
+	
+	// Blit the image.
+	if(iconImage)
+		[iconImage compositeToPoint:imageFrame.origin operation:NSCompositeSourceOver];
+	else
+	{
+		// Draw an empty frame...
+	}
+	
+	// Have NSBrowser kindly draw the text part, since it knows how to do that for us, no need to re-invent what it knows how to do.
+	[super drawInteriorWithFrame:textFrame inView:controlView];
 }
 
 

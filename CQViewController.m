@@ -31,6 +31,11 @@
     * Requires knowing about the first visible 
 
   * Cell drawing with advanced icon...
+    * There are a few problems with this code:
+      * Three line filenames wrap outside the view. Must truncate them.
+        * Take a look at the truncating code on cocoa.karelia.com...
+      * Sometimes the icon gets clipped by the text.
+
   * File renaming
 */
 
