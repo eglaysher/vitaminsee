@@ -258,13 +258,11 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateExpansionKey</key>
 							<array>
 								<string>29B97314FDCFA39411CA2CEA</string>
-								<string>8B6D010807CB178F009A76DA</string>
-								<string>1C37FBAC04509CD000000102</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>10</integer>
+									<integer>1</integer>
 									<integer>0</integer>
 								</array>
 							</array>
@@ -312,7 +310,7 @@
 										<key>PBXProjectModuleLabel</key>
 										<string>ImageMetadata.mm</string>
 										<key>bookmark</key>
-										<string>8B7BD1DB07DF8F030050FB25</string>
+										<string>8B7BD21907DFBDE30050FB25</string>
 										<key>history</key>
 										<array>
 											<string>8BEA4A8307D7D104001ADD2E</string>
@@ -436,7 +434,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>132091651.08368692</real>
+	<real>132103651.11087434</real>
 	<key>ToolbarDisplayMode</key>
 	<integer>2</integer>
 	<key>ToolbarIsVisible</key>
@@ -452,6 +450,7 @@
 	<key>WindowOrderList</key>
 	<array>
 		<string>8B7BD1D907DF8F000050FB25</string>
+		<string>1C0AD2B3069F1EA900FABCE6</string>
 		<string>/Users/elliot/Projects/VitaminSEE/VitaminSEE.xcode</string>
 	</array>
 	<key>WindowString</key>
@@ -484,7 +483,7 @@
 										<key>PBXProjectModuleLabel</key>
 										<string>NSWorkspace+GrowlAdditions.m</string>
 										<key>bookmark</key>
-										<string>8B7BD1DE07DF8F030050FB25</string>
+										<string>8B7BD21A07DFBDE30050FB25</string>
 										<key>history</key>
 										<array>
 											<string>8B7E7AF707C080A600687DEE</string>
@@ -904,8 +903,8 @@
 										<string>yes</string>
 										<key>sizes</key>
 										<array>
-											<string>{{0, 0}, {365, 167}}</string>
-											<string>{{0, 176}, {365, 267}}</string>
+											<string>{{0, 0}, {366, 167}}</string>
+											<string>{{0, 176}, {366, 267}}</string>
 										</array>
 									</dict>
 									<key>VerticalSplitView</key>
@@ -954,9 +953,9 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C0AD2B3069F1EA900FABCE6</string>
-				<string>8BCF85B107DF7F6F00B89B5A</string>
+				<string>8B7BD1FA07DFB8170050FB25</string>
 				<string>1CD0528B0623707200166675</string>
-				<string>8BCF85B207DF7F6F00B89B5A</string>
+				<string>8B7BD1FB07DFB8170050FB25</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.run</string>

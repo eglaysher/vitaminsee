@@ -208,6 +208,7 @@
 		};
 		29B97317FDCFA39411CA2CEA = {
 			children = (
+				8B7BD1E107DFB7A80050FB25,
 				8BAD1DAF07DE8F9E000CBEA0,
 				8BA124E207D282B300614FF4,
 				8B3ADCE207DD03740027CEB0,
@@ -978,6 +979,7 @@
 				8B5620E107CEA6F1005990E1,
 				8B561D9307CE7627005990E1,
 				8B6D020307CB32CD009A76DA,
+				8B7BD1E207DFB7A90050FB25,
 			);
 			isa = PBXCopyFilesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1070,6 +1072,25 @@
 		};
 		8B6FD33507B30B0F003F0000 = {
 			fileRef = 8B6FD33307B30B0F003F0000;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B7BD1E107DFB7A80050FB25 = {
+			isa = PBXFileReference;
+			lastKnownFileType = image.icns;
+			path = VitaminSEE.icns;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B7BD1E207DFB7A90050FB25 = {
+			fileRef = 8B7BD1E107DFB7A80050FB25;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B7BD1FC07DFB84B0050FB25 = {
+			fileRef = 8B7BD1E107DFB7A80050FB25;
 			isa = PBXBuildFile;
 			settings = {
 			};
@@ -1968,6 +1989,7 @@
 		8D1107290486CEB800E47090 = {
 			buildActionMask = 2147483647;
 			files = (
+				8B7BD1FC07DFB84B0050FB25,
 				8BAD1DC507DE8FD0000CBEA0,
 				8D11072A0486CEB800E47090,
 				8D11072B0486CEB800E47090,

@@ -6,8 +6,12 @@
 	<string>English</string>
 	<key>CFBundleExecutable</key>
 	<string>VitaminSEE</string>
+	<key>CFBundleHelpBookFolder</key>
+	<string>VitaminSEE Help</string>
+	<key>CFBundleHelpBookName</key>
+	<string>VitaminSEE Help</string>
 	<key>CFBundleIconFile</key>
-	<string></string>
+	<string>VitaminSEE</string>
 	<key>CFBundleIdentifier</key>
 	<string>org.elliotglaysher.VitaminSEE</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -22,9 +26,5 @@
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
-	<key>CFBundleHelpBookFolder</key>
-	<string>VitaminSEE Help</string>
-	<key>CFBundleHelpBookName</key>
-	<string>VitaminSEE Help</string>
 </dict>
 </plist>
