@@ -4,12 +4,17 @@
 
 @class ImageTaskManager;
 @class ViewIconViewController;
+@class PointerWrapper;
+
+@protocol ImageDisplayer 
+-(void)displayImage;
+@end
 
 /*!
 	@class CQViewController
 	@abstract Main Controller
 */
-@interface CQViewController : NSObject
+@interface CQViewController : NSObject <ImageDisplayer>
 {
     IBOutlet NSImageView *imageViewer;
 	IBOutlet NSTextField * fileSizeLabel;
@@ -71,5 +76,6 @@
 
 // Window delegate method to redraw the image when we resize...
 - (void)windowDidResize:(NSNotification*)notification;
+-(void)displayImage;
 
 @end

@@ -8,7 +8,7 @@
 #import "ViewIconViewController.h"
 #import "ImageTaskManager.h"
 #import "Util.h"
-
+#import "PointerWrapper.h"
 #import "NSString+FileTasks.h"
 #import "NSView+Set_and_get.h"
 
@@ -20,6 +20,7 @@
  - (void)drawInteriorWithFrame:(NSRect)cellFrame inView:(NSView *)controlView;
 	for my own purposes
  * More speed hacks!?
+ * Implement the backHistory/forwardHistory!
  * All kinds of file operations.
    * Delete files
    * et cetera! 
@@ -58,11 +59,23 @@
 	[[fileSizeLabel cell] setFormatter:fsFormatter];
 	
 	[self setupToolbar];
+	scaleProportionally = NO;
+
+	// First, we'll need to setup a network connection between ourself and our
+	// worker thread...
+	NSPort *port1 = [NSPort port];
+	NSPort *port2 = [NSPort port];
+	NSConnection* kitConnection = [[NSConnection alloc] 
+		initWithReceivePort:port1 sendPort:port2];
+	[kitConnection setRootObject:self];
 	
-	imageTaskManager = [[ImageTaskManager alloc] init];
+	NSArray *portArray = [NSArray arrayWithObjects:port2, port1, nil];
+	
+	// Launch the other thread and tell it to connect back to us.
+	imageTaskManager = [[ImageTaskManager alloc] initWithPortArray:portArray];
 	
 	[self setCurrentDirectory:[[NSUserDefaults standardUserDefaults] 
-		objectForKey:@"DefaultStartupPath"]];
+		objectForKey:@"DefaultStartupPath"]];		
 }
 
 // ============================================================================
@@ -159,6 +172,8 @@
 
 - (void)setCurrentFile:(NSString*)newCurrentFile
 {
+	currentImageFile = newCurrentFile;
+	
 	// Okay, we don't know what kind of thing we have been passed, so let's
 	BOOL isDir = [newCurrentFile isDir];
 	if(isDir)
@@ -172,14 +187,11 @@
 	
 	if([newCurrentFile isImage])
 	{
-		// This item is an image. Let's load it.
-		currentImageRep = [[imageTaskManager getImage:newCurrentFile] retain];
+		[imageTaskManager setScaleProportionally:scaleProportionally];
+		[imageTaskManager setScaleRatio:scaleRatio];
+		[imageTaskManager setContentViewSize:[scrollView contentSize]];
 		
-		// Set the label to the image size.
-		int x = [currentImageRep pixelsWide];
-		int y = [currentImageRep pixelsHigh];
-		[imageSizeLabel setStringValue:[NSString 
-			stringWithFormat:@"%i x %i", x, y]];
+		[imageTaskManager displayImageWithPath:newCurrentFile];
 	}
 	else
 	{
@@ -205,103 +217,18 @@
 
 -(void)redraw
 {
-	// Size of picture
-	int imageX = [currentImageRep pixelsWide];
-	int imageY = [currentImageRep pixelsHigh];
-	NSSize contentSize = [scrollView contentSize];
-	int boxWidth = contentSize.width;
-	int boxHeight = contentSize.height;
-	int displayX, displayY;
-	BOOL canGetAwayWithQuickRender = NO;
+	[imageTaskManager setScaleProportionally:scaleProportionally];
+	[imageTaskManager setScaleRatio:scaleRatio];
+	[imageTaskManager setContentViewSize:[scrollView contentSize]];
 	
-	if(scaleProportionally == YES)
+	if([currentImageFile isImage])
 	{
-		// Set the size of the image to the size of the image scaled by our 
-		// ratio and then tell the imageViewer to scale it to that size.
-		displayX = imageX * scaleRatio;
-		displayY = imageY * scaleRatio;
-		if(displayX < boxWidth && displayY < boxHeight)
-			canGetAwayWithQuickRender = YES; 
+		[imageTaskManager displayImageWithPath:currentImageFile];
 	}
 	else
 	{
-		// Set the size of the display version of the image so that it fits 
-		// within the constraints of the NSScaleView that contains this 
-		// NSImageView.
-		float heightRatio = buildRatio(boxHeight, imageY);
-		float widthRatio = buildRatio(boxWidth, imageX);
-		if(imageX <= boxWidth && imageY <= boxHeight)
-		{
-			// The image is smaller then the conrentSize and we should just
-			// use the size of the image.
-			displayX = imageX;
-			displayY = imageY;
-			canGetAwayWithQuickRender = YES;
-		}
-		else
-		{
-			// The image needs to be scaled to fit in the box. Go through the
-			// two possible ratios in terms of biggest first and check to
-			// see if they work. We sort an array of the two values so we make
-			// sure we aren't scaling smaller then what can be displayed on the
-			// screen
-			canGetAwayWithQuickRender = NO;
-			
-			NSMutableArray* ratios = [NSMutableArray arrayWithObjects:[NSNumber 
-				numberWithFloat:heightRatio], [NSNumber numberWithFloat:widthRatio], nil];
-			[ratios sortUsingSelector:@selector(compare:)];
-			NSEnumerator* e = [ratios reverseObjectEnumerator];
-			NSNumber* num;
-			while(num = [e nextObject])
-			{
-				float ratio = [num floatValue];
-				if((int)(imageX * ratio) <= boxWidth &&
-				   (int)(imageY * ratio) <= boxHeight)
-				{
-					// We've found the ratio to use. Get out of this loop...
-					displayX = imageX * ratio;
-					displayY = imageY * ratio;
-					break;
-				}
-			}
-		}
-	}
-	
-	if(imageRepIsAnimated(currentImageRep) || canGetAwayWithQuickRender)
-	{
-		// Draw the image by just making an NSImage from the imageRep. This is
-		// done when the image will fit in the viewport, or when we are 
-		// rendering an animated GIF.
-		NSImageRep* imageRep = [[currentImageRep copy] autorelease];
-		NSImage* image = [[[NSImage alloc] init] autorelease];
-		[image addRepresentation:imageRep];
-		
-		// Scale it anyway, because some pictures LIE about their size.
-		[image setScalesWhenResized:YES];
-		[image setSize:NSMakeSize(displayX, displayY)];
-
-		[imageViewer setFrameSize:NSMakeSize(displayX, displayY)];
-		[imageViewer setAnimates:YES];
-		[imageViewer setImage:image];
-	}
-	else
-	{
-		// Draw the image onto a new NSImage using smooth scaling. This is done
-		// whenever the image isn't animated so that the picture will have 
-		// some antialiasin lovin' applied to it.
-		[imageViewer setFrameSize:NSMakeSize(displayX, displayY)];
-		NSImage* newImage = [[[NSImage alloc] initWithSize:NSMakeSize(displayX,
-			displayY)] autorelease];
-		[newImage lockFocus];
-		{
-			[[NSGraphicsContext currentContext] 
-				setImageInterpolation:NSImageInterpolationHigh];
-			[currentImageRep drawInRect:NSMakeRect(0,0,displayX,displayY)];
-		}
-		[newImage unlockFocus];
-		
-		// set our image.
-		[imageViewer setImage:newImage];
+//		[imageViewer setImage:[[currentImageFile iconImageOfSize:NSMakeSize(128,128)]
+//			bestRepresentationForDevice:nil]];
 	}
 }
 
@@ -333,6 +260,21 @@
 -(void)windowDidResize:(NSNotification*)notification
 {
 	[self redraw];
+}
+
+-(void)displayImage
+{
+	// Get a copy of the current display image from the ImageTaskManager
+	NSImage* image = [imageTaskManager getCurrentImage];
+	NSLog(@"Image is %@", image);
+	NSLog(@"Image is proxy: %d", [image isProxy]);
+//	NSLog(@"Main thread got a display image command! Image is %@", image);
+	[imageViewer setImage:image];
+	[imageViewer setFrameSize:[image size]];
+	int x = [image size].width;
+	int y = [image size].height;
+	[imageSizeLabel setStringValue:[NSString stringWithFormat:@"%i x %i", 
+		x, y]];
 }
 
 @end

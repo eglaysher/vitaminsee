@@ -9,7 +9,13 @@
 #import <Cocoa/Cocoa.h>
 
 #define min(a,b) (((a)<(b))?(a):(b))
-
-float buildRatio(float first, float second);
+struct DS {
+	int width;
+	int height;
+};
+struct DS buildImageSize(int boxWidth, int boxHeight, int imageWidth, int imageHeight,
+					  BOOL canScaleProportionally, float ratioToScale,
+					  BOOL*canGetAwayWithQuickRender);
+float buildRatio(int first, int second);
 BOOL imageRepIsAnimated(NSImageRep* rep);
 NSImage* buildImageFromNormalFile(NSString* path, NSSize size);

@@ -10,6 +10,8 @@
 
 #import <pthread.h>
 
+
+
 @interface ImageTaskManager : NSObject {
 	pthread_mutex_t taskQueueLock;
 	NSMutableArray* taskQueue;
@@ -18,9 +20,25 @@
 	NSMutableDictionary* imageCache;
 	
 	pthread_cond_t conditionLock;
+	
+	NSSize contentViewSize;
+	float scaleRatio;
+	BOOL scaleProportionally;
+	pthread_mutex_t imageScalingProperties;
+	
+	NSImage* currentImage;
+	
+	id cqViewController;
 }
+
+-(id)initWithPortArray:(NSArray*)portArray;
 
 -(NSImageRep*)getImage:(NSString*)path;
 -(void)preloadImage:(NSString*)path;
+-(void)displayImageWithPath:(NSString*)path;
+
+-(void)setScaleRatio:(float)newScaleRatio;
+-(void)setScaleProportionally:(BOOL)newScaleProportionally;
+-(void)setContentViewSize:(NSSize)newContentViewSize;
 
 @end
