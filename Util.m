@@ -14,8 +14,8 @@ struct DS buildImageSize(int boxWidth, int boxHeight, int imageWidth, int imageH
 						 BOOL canScaleProportionally, float ratioToScale,
 						 BOOL*canGetAwayWithQuickRender, float* ratioUsed)
 {
-	NSLog(@"Going to build size with box:[%d,%d] image:[%d, %d] canScale:%d ratio:%f",
-		  boxWidth, boxHeight, imageWidth, imageHeight, canScaleProportionally, ratioToScale);
+//	NSLog(@"Going to build size with box:[%d,%d] image:[%d, %d] canScale:%d ratio:%f",
+//		  boxWidth, boxHeight, imageWidth, imageHeight, canScaleProportionally, ratioToScale);
 	struct DS display;
 	
 	if(canScaleProportionally == YES)

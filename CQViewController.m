@@ -21,14 +21,15 @@
   * Select child folder on "Go Enclosing folder"
   * Actual size zoom button
   * Modify IconFamily to have a black line around thumbnail.
+  * Implement backHistory/forwardHistory
  */
 
 // WHAT NEEDS TO BE DONE:
 
 /* FIRST MILESTONE GOALS
-  * Implement backHistory/forwardHistory
-    * Halfway done. Test in a NSFW environment...
   * Jumping into the middle of a list will start loading the thumbnails there...
+    * Requires knowing about the first visible 
+
   * Cell drawing with advanced icon...
   * File renaming
 */
@@ -77,7 +78,8 @@
 {
 	// Set up the file viewer on the left
 	[self setViewAsView:[viewAsIconsController view]];
-	[viewerWindow setInitialFirstResponder:[viewAsIconsController view]];	
+	[viewAsIconsController awakeFromNib];
+	[viewerWindow setInitialFirstResponder:[viewAsIconsController view]];
 	
 	// Set up the scroll view on the right
 	id docView = [[scrollView documentView] retain];

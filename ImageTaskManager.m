@@ -276,7 +276,7 @@
 	}
 	else
 	{
-		thumbnail = [path iconImageOfSize:NSMakeSize(16, 16)];
+		thumbnail = [path iconImageOfSize:NSMakeSize(128, 128)];
 	}
 	
 	currentIconFamilyThumbnail = thumbnail;
@@ -368,7 +368,7 @@
 									   imageY, canScaleProportionally, ratioToScale,
 									   &canGetAwayWithQuickRender, &currentImageScale);
 	
-	NSLog(@"Image:[%d, %d] Dispaly:[%d, %d]", imageX, imageY, display.width, display.height);
+//	NSLog(@"Image:[%d, %d] Dispaly:[%d, %d]", imageX, imageY, display.width, display.height);
 	
 	NSImage* imageToRet;
 	if(imageRepIsAnimated(imageRep) || canGetAwayWithQuickRender)

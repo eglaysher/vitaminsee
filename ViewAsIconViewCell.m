@@ -11,7 +11,7 @@
 
 
 #define ICON_INSET_VERT		2.0	/* The size of empty space between the icon end the top/bottom of the cell */ 
-#define ICON_SIZE 		16.0	/* Our Icons are ICON_SIZE x ICON_SIZE */
+#define ICON_SIZE 		32.0	/* Our Icons are ICON_SIZE x ICON_SIZE */
 #define ICON_INSET_HORIZ	4.0	/* Distance to inset the icon from the left edge. */
 #define ICON_TEXT_SPACING	2.0	/* Distance between the end of the icon and the text part */
 
@@ -68,17 +68,28 @@
     return iconImage;
 }
 
+-(void)setHighlighted:(BOOL)flag
+{
+	NSLog(@"Setting highlight!");
+	[super setHighlighted:flag];
+	selected = flag;
+}
+
+-(BOOL)isHighlighted
+{
+	return selected;
+}
+
 - (NSSize)cellSizeForBounds:(NSRect)aRect {
     // Make our cells a bit higher than normal to give some additional space for the icon to fit.
     NSSize theSize = [super cellSizeForBounds:aRect];
     theSize.width += [[self iconImage] size].width + ICON_INSET_HORIZ + ICON_INSET_HORIZ;
-    theSize.height = ICON_SIZE + ICON_INSET_VERT * 2.0;
+    theSize.height = ICON_SIZE + ICON_INSET_VERT * 2.0 + 20;
     return theSize;
 }
 
 - (void)drawInteriorWithFrame:(NSRect)cellFrame inView:(NSView *)controlView {    
-    if (iconImage != nil) {
-        NSSize	imageSize = [iconImage size];
+	NSSize	imageSize = NSMakeSize(32, 32); //[iconImage size];
         NSRect	imageFrame, highlightRect, textFrame;
 		
 		// Divide the cell into 2 parts, the image part (on the left) and the text part.
@@ -92,10 +103,14 @@
         else imageFrame.origin.y += ceil((textFrame.size.height - imageFrame.size.height) / 2);
 		
 		// Depending on the current state, set the color we will highlight with.
-        if ([self isHighlighted]) {
+		
+		// Highlighting is f'ing bork. Ask if we're the selected cell instead.
+        if ([(NSMatrix*)controlView selectedCell] == self) {
 			// use highlightColorInView instead of [NSColor selectedControlColor] since NSBrowserCell slightly dims all cells except those in the right most column.
 			// The return value from highlightColorInView will return the appropriate one for you. 
+//			[[NSColor s] set];
 			[[self highlightColorInView: controlView] set];
+			NSLog(@"Highlighted!");
         } else {
 			[[NSColor controlBackgroundColor] set];
 		}
@@ -105,56 +120,12 @@
 		NSRectFill(highlightRect);
 		
 		// Blit the image.
-        [iconImage compositeToPoint:imageFrame.origin operation:NSCompositeSourceOver];
+		if(iconImage)
+			[iconImage compositeToPoint:imageFrame.origin operation:NSCompositeSourceOver];
 		
 		// Have NSBrowser kindly draw the text part, since it knows how to do that for us, no need to re-invent what it knows how to do.
 		[super drawInteriorWithFrame:textFrame inView:controlView];
-    } else {
-		// Atleast draw something if we couldn't find an icon.  You may want to do something more intelligent.
-    	[super drawInteriorWithFrame:cellFrame inView:controlView];
-    }
 }
-
-
-//- (void)selectWithFrame:(NSRect)aRect inView:(NSView *)controlView
-//				 editor:(NSText *)textObj delegate:(id)anObject start:(int)selStart
-//				 length:(int)selLength 
-//{
-//	NSLog(@"selectWithFrame");
-//	[super selectWithFrame:aRect inView:controlView editor:textObj delegate:anObject
-//					 start:selStart length:selLength];
-//	
-//	// Mark this as an editable entry
-////	[self setCellAttriubte:NSCellEditable to:YES];
-//}
-
-//-(void)endEditing:(NSText*)textObj
-//{
-//	[super endEditing:textObj];
-//
-//	[self setEditable:NO];
-//}
-
-//- (void)editWithFrame:(NSRect)aRect inView:(NSView *)controlView
-//			   editor:(NSText *)textObj delegate:(id)anObject 
-//				event:(NSEvent*)theEvent
-//{
-//	[super editWithFram:aRect inView:controlView editor:textObj delegate:anObject
-//				  event:theEvent];
-//	
-//	[self isEditable:NO];
-//}
-
-//
-//- (void)selectWithFrame:(NSRect)aRect inView:(NSView *)controlView
-//				 editor:(NSText *)textObj delegate:(id)anObject start:(int)selStart
-//				 length:(int)selLength {
-//    NSRect NewRect = NSMakeRect(aRect.origin.x + 20,aRect.origin.y +
-//								3,aRect.size.width,14);
-//    [super selectWithFrame:NewRect inView:controlView editor:textObj
-//				  delegate:anObject start:selStart length:selLength];
-//    [textObj setFont:[self font]];
-//}
 
 
 @end

@@ -23,6 +23,7 @@
 	[ourBrowser setTarget:self];
 	[ourBrowser setAction: @selector(singleClick:)];
 	[ourBrowser setDoubleAction: @selector(doubleClick:)];	
+	[ourBrowser setCellClass:[ViewAsIconViewCell class]];
 	
 	currentlySelectedCell = nil;
 }
@@ -64,8 +65,11 @@ createRowsForColumn:(int)column
 {
 	int i;
 	int count = [fileList count];
-	
-	[matrix setCellClass:[ViewAsIconViewCell class]];
+//	[ourBrowser setCellClass:[ViewAsIconViewCell class]];
+//
+//	
+//	[matrix setCellClass:[ViewAsIconViewCell class]];
+	[matrix setMode:NSListModeMatrix];
 	[matrix renewRows:count columns:1];
 	for(i = 0; i < count; ++i)
 	{
@@ -75,17 +79,11 @@ createRowsForColumn:(int)column
 	}
 }
 
--(void)browserDidScroll:(NSBrowser*)sender
-{
-//	id firstCell = [sender 
-//	[sender 
-}
-
 -(void)singleClick:(NSBrowser*)sender
 {
 	// grab the image path
 	NSString* absolutePath = [[sender path] fileWithPath:currentDirectory];
-	NSMutableArray* preloadList = [NSMutableArray array];
+	NSMutableArray* preloadList = [NSMutableArray array];	
 	
 	[controller setCurrentFile:absolutePath];
 	

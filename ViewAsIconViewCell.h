@@ -11,6 +11,9 @@
 @class ImageTaskManager;
 
 @interface ViewAsIconViewCell : NSBrowserCell {
+	NSString* title;
+	BOOL selected;
+
 	NSImage* iconImage;
 	NSString* thisCellsFullPath;	
 }
@@ -18,5 +21,6 @@
 -(void)setCellPropertiesFromPath:(NSString*)path;
 -(void)setIconImage:(NSImage*)image;
 -(NSString*)cellPath;
+
 
 @end
