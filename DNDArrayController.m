@@ -12,8 +12,6 @@ NSString *MovedRowsType = @"MOVED_ROWS_TYPE";
     [tableView registerForDraggedTypes:
 		[NSArray arrayWithObjects:CopiedRowsType, MovedRowsType, nil]];
     [tableView setAllowsMultipleSelection:YES];
-	NSLog(@"DND is awaking!");
-	NSLog(@"TV: %@", tableView);
 }
 
 - (BOOL)tableView:(NSTableView *)tv
@@ -22,8 +20,6 @@ NSString *MovedRowsType = @"MOVED_ROWS_TYPE";
 {
 	// declare our own pasteboard types
     NSArray *typesArray = [NSArray arrayWithObjects:CopiedRowsType, MovedRowsType, nil];
-	
-	NSLog(@"getting typesarrat");
 	
 	/*
 	 Since these rows don't make sense outside of this application, tell the
@@ -67,7 +63,6 @@ NSString *MovedRowsType = @"MOVED_ROWS_TYPE";
     // the current row (contrast NSTableViewDropOn) 
     [tv setDropRow:row dropOperation:NSTableViewDropAbove];
 	
-	NSLog(@"Drag op: %d", dragOp);
     return dragOp;
 }
 
