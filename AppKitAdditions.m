@@ -177,6 +177,8 @@ zeroing in on the optimum length.
 - (void) setSubview:(NSView *)inView
 {
 	NSArray *subviews = [self subviews];
+
+	NSLog(@"In view: %@", inView);
 	
 	// Replace or insert subview if not the right one already
 	if (0 == [subviews count])
@@ -188,9 +190,9 @@ zeroing in on the optimum length.
 	{
 		NSView *oldSubview = [subviews objectAtIndex:0];
 		NSRect frame = [oldSubview frame];
-		frame.origin.x = frame.origin.y = 0;
-		frame.size.width -= 6;
-		frame.size.height -= 6;
+//		frame.origin.x = frame.origin.y = 0;
+//		frame.size.width -= 6;
+//		frame.size.height -= 6;
 		[oldSubview removeFromSuperview];
 		[inView setFrame:frame];
 		[self addSubview:inView];

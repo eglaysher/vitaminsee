@@ -31,6 +31,6 @@
 -(int)moveFile:(NSString*)file to:(NSString*)destination;
 -(int)copyFile:(NSString*)file to:(NSString*)destination;
 
-//-(void)generateThumbnailFor:(NSString*)path;
+-(void)generateThumbnailFor:(NSString*)path;
 
 @end

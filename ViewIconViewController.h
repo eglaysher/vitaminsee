@@ -13,20 +13,22 @@
 @class ThumbnailManager;
 
 @interface ViewIconViewController : NSObject {
-
-	IBOutlet VitaminSEEController* controller;
+	IBOutlet NSPopUpButton* directoryDropdown;
 	IBOutlet NSBrowser* ourBrowser;
 	IBOutlet NSView* ourView;
+
+//	PluginLayer* pluginLayer;
+	VitaminSEEController* controller;
 	
 	NSCell* currentlySelectedCell;
 	NSString* currentDirectory;
-	NSMutableArray* fileList;
-	
-	ThumbnailManager* thumbnailManager;
-//	ImageTaskManager* imageTaskManager;
+	NSMutableArray* fileList;	
+//	ThumbnailManager* thumbnailManager;
 }
 
--(void)setThumbnailManager:(ThumbnailManager*)itm;
+-(id)initWithController:(VitaminSEEController*)c;
+
+//-(void)setThumbnailManager:(ThumbnailManager*)itm;
 
 -(BOOL)canDelete;
 

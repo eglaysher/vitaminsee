@@ -13,6 +13,7 @@
 #import "NSString+FileTasks.h"
 #import "ThumbnailManager.h"
 #import "IconFamily.h"
+#import "PluginLayer.h"
 
 @interface ViewIconViewController (Private)
 -(void)rebuildInternalFileArray;
@@ -20,32 +21,41 @@
 
 @implementation ViewIconViewController
 
-//-(id)init
-//{
-//	if(self = [super init])
-//	{
--(void)awakeFromNib
+-(id)initWithController:(VitaminSEEController*)c
 {
-	[ourBrowser setTarget:self];
+	if(self = [super init])
+	{
+		[NSBundle loadNibNamed:@"ViewAsIconsView" owner:self];
+
+		[ourBrowser setTarget:self];
 		[ourBrowser setAction:@selector(singleClick:)];
 		[ourBrowser setDoubleAction:@selector(doubleClick:)];	
 		[ourBrowser setCellClass:[ViewAsIconViewCell class]];
 		[ourBrowser setDelegate:self];
 		
 		currentlySelectedCell = nil;
+		
+		// Note: Do not retain parent.
+		controller = c;
 	}
+
+	return self;
+}
 	
-//	return self;
+//-(void)awakeFromNib
+//{
+//	[ourBrowser setTarget:self];
+//	[ourBrowser setAction:@selector(singleClick:)];
+//	[ourBrowser setDoubleAction:@selector(doubleClick:)];	
+//	[ourBrowser setCellClass:[ViewAsIconViewCell class]];
+//	[ourBrowser setDelegate:self];
+//	
+//	currentlySelectedCell = nil;
 //}
 
 -(BOOL)canDelete
 {
 	return [fileList count] > 0;
-}
-
--(void)setThumbnailManager:(ThumbnailManager*)itm
-{
-	thumbnailManager = itm;
 }
 
 -(void)setCurrentDirectory:(NSString*)path
@@ -69,7 +79,7 @@
 
 -(NSView*)view
 {
-	return ourBrowser;
+	return ourView;
 }
 
 // Delegate method for our browser. We are an active delegate so we can message
@@ -87,7 +97,7 @@ createRowsForColumn:(int)column
 	BOOL buildThumbnails = [[userDeffault objectForKey:@"GenerateThumbnails"] boolValue];
 
 	// Tell the imageTaskManager if it should actually build the thumbnails
-	[thumbnailManager setShouldBuildIcon:buildThumbnails];	
+//	[thumbnailManager setShouldBuildIcon:buildThumbnails];	
 
 	for(i = 0; i < count; ++i)
 	{
@@ -104,8 +114,9 @@ createRowsForColumn:(int)column
 			// would require hard changes. Besides, -iconForFileType is cheap.
 			[cell setIconImage:[[NSWorkspace sharedWorkspace] iconForFileType:
 				[currentFile pathExtension]]];
-			
-			[thumbnailManager buildThumbnail:currentFile];
+
+			[controller generateThumbnailFor:currentFile];
+//			[thumbnailManager buildThumbnail:currentFile];
 		}
 		else
 			[cell loadOwnIconOnDisplay];

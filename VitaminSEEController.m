@@ -173,8 +173,9 @@
 - (void)awakeFromNib
 {
 	// Set up the file viewer on the left
+	viewAsIconsController = [[ViewIconViewController alloc] initWithController:self];
 	[self setViewAsView:[viewAsIconsController view]];
-	[viewAsIconsController awakeFromNib];
+//	[viewAsIconsController awakeFromNib];
 	[viewerWindow setInitialFirstResponder:[viewAsIconsController view]];
 	
 	// Set up the scroll view on the right
@@ -221,7 +222,7 @@
 	thumbnailManager = [[ThumbnailManager alloc] initWithController:self];
 	
 	// Now that we have our task manager, tell everybody to use it.
-	[viewAsIconsController setThumbnailManager:thumbnailManager];
+//	[viewAsIconsController setThumbnailManager:thumbnailManager];
 }
 
 -(void)dealloc
@@ -283,7 +284,8 @@
 
 	if(info)
 		[alert setInformativeText:info];
-	
+
+	// If we have a help anchor, set things up so a help button is available.
 	if(anchor)
 	{
 		[alert setHelpAnchor:anchor];

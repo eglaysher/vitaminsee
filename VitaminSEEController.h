@@ -22,6 +22,13 @@
 -(void)setStatusText:(NSString*)statusText;
 @end
 
+/* Plugin dictionary structure
+ {
+	'PluginName' => id
+ }
+
+ */
+
 /*!
 	@class VitaminSEEController
 	@abstract Main Controller

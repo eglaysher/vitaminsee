@@ -1484,6 +1484,12 @@
 			settings = {
 			};
 		};
+		8B78BBD607FDEC7900274803 = {
+			fileRef = 8B09C53707F21CB20098F878;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
 		8B7BD1E107DFB7A80050FB25 = {
 			isa = PBXFileReference;
 			lastKnownFileType = image.icns;
@@ -2724,6 +2730,7 @@
 		8D1107290486CEB800E47090 = {
 			buildActionMask = 2147483647;
 			files = (
+				8B78BBD607FDEC7900274803,
 				8BC27DA807ECF9B300B56836,
 				8BBC35EA07E222BF007C3B6B,
 				8BBC35D707E221D4007C3B6B,

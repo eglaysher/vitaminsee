@@ -1,47 +1,5 @@
 {
     IBClasses = (
-        {
-            ACTIONS = {
-                actualSize = id; 
-                closeWindow = id; 
-                deleteFileClicked = id; 
-                goBack = id; 
-                goEnclosingFolder = id; 
-                goForward = id; 
-                goToFolder = id; 
-                goToHomeFolder = id; 
-                goToPicturesFolder = id; 
-                openFolder = id; 
-                revealInFinder = id; 
-                showPreferences = id; 
-                toggleKeywordManager = id; 
-                toggleSortManager = id; 
-                toggleVitaminSee = id; 
-                zoomIn = id; 
-                zoomOut = id; 
-                zoomToFit = id; 
-            }; 
-            CLASS = CQViewController; 
-            LANGUAGE = ObjC; 
-            OUTLETS = {
-                currentFileViewHolder = NSView; 
-                directoryDropdown = NSPopUpButton; 
-                fileSizeLabel = NSTextField; 
-                gotoFolderSheet = NSWindow; 
-                gotoPath = NSTextField; 
-                homeFolderMenuItem = NSMenuItem; 
-                imageSizeLabel = NSTextField; 
-                imageViewer = NSImageView; 
-                mainVitaminSeeWindow = NSWindow; 
-                pictureFolderMenuItem = NSMenuItem; 
-                progressCurrentTask = NSTextField; 
-                progressIndicator = NSProgressIndicator; 
-                scrollView = NSScrollView; 
-                viewAsIconsController = ViewIconViewController; 
-                viewerWindow = NSWindow; 
-            }; 
-            SUPERCLASS = NSObject; 
-        }, 
         {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
         {
             ACTIONS = {copyButtonPushed = id; moveButtonPushed = id; }; 
@@ -49,12 +7,6 @@
             LANGUAGE = ObjC; 
             OUTLETS = {mainController = CQViewController; }; 
             SUPERCLASS = NSWindowController; 
-        }, 
-        {
-            CLASS = ViewIconViewController; 
-            LANGUAGE = ObjC; 
-            OUTLETS = {controller = CQViewController; ourBrowser = NSBrowser; ourView = NSView; }; 
-            SUPERCLASS = NSObject; 
         }, 
         {
             ACTIONS = {
