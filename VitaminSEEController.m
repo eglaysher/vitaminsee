@@ -19,7 +19,7 @@
 #import "KeywordNode.h"
 #import "ThumbnailManager.h"
 
-pthread_mutex_t imageTaskLock;
+//pthread_mutex_t imageTaskLock;
 
 @implementation VitaminSEEController
 
@@ -191,7 +191,7 @@ pthread_mutex_t imageTaskLock;
 	
 	// This lock is used to ensure that Carbon parts of out code don't screw up
 	// and cause deadlock. 
-	pthread_mutex_init(&imageTaskLock, 0);
+	//pthread_mutex_init(&imageTaskLock, 0);
 	
 	// Use an Undo manager to manage moving back and forth.
 	pathManager = [[NSUndoManager alloc] init];	
@@ -669,10 +669,10 @@ pthread_mutex_t imageTaskLock;
 	float scale;
 	NSImage* image = [imageTaskManager getCurrentImageWithWidth:&x height:&y 
 														  scale:&scale];
-	pthread_mutex_lock(&imageTaskLock);
+//	pthread_mutex_lock(&imageTaskLock);
 		[imageViewer setImage:image];
 		[imageViewer setFrameSize:[image size]];
-	pthread_mutex_unlock(&imageTaskLock);
+//	pthread_mutex_unlock(&imageTaskLock);
 	
 	scaleRatio = scale;
 

@@ -551,18 +551,56 @@
 		return NO;
 	}
 	
-	pthread_mutex_lock(&imageTaskLock);
-		result = SetIconFamilyData( hIconFamily, elementType, hRawData );
-	pthread_mutex_unlock(&imageTaskLock);
-    DisposeHandle( hRawData );
-	
-    if (result != noErr)
-	{
-		NSLog(@"SetIconFamilyData() returned error %d", result);
-		return NO;
-	}
+	// This is the entrance point to a LARGE hack. Apparently, SetIconFamilyData
+	// isn't thread safe. I've gotten deadlocks both with my own code (which
+	// lead me to mutex this section) and Apple's interface drawing code (which
+	// is much more rare, but I want thread safety damnit!). Therefore, go 
+	// through this hack to get SetIconFamilyData running on the main thread
+	// where it won't do any damage.
+	[self performInvocation:hIconFamily osType:elementType handle:hRawData];
+    DisposeHandle( hRawData );	
 	
     return YES;
+}
+
+-(OSErr)performInvocation:(IconFamilyHandle)iconFamily osType:(OSType)iconType
+				   handle:(Handle)h
+{
+	SEL aSelector = @selector(setIconFamilyData:osType:handle:);
+	NSInvocation *invocation;
+	invocation = [NSInvocation invocationWithMethodSignature:
+		[self methodSignatureForSelector:aSelector]];
+	
+	[invocation setSelector:aSelector];
+	[invocation setArgument:&iconFamily atIndex:2];
+	[invocation setArgument:&iconType atIndex:3];
+	[invocation setArgument:&h atIndex:4];
+	
+	[self performSelectorOnMainThread:@selector(handleInvocation:) 
+						   withObject:invocation 
+						waitUntilDone:YES];	
+	return 0;
+}
+
+-(OSErr)handleInvocation:(NSInvocation*)a
+{
+	[a invokeWithTarget:self];
+	return 0;
+}
+
+-(OSErr)setIconFamilyData:(IconFamilyHandle)iconFamily osType:(OSType)iconType
+				   handle:(Handle)h
+{
+	OSErr result = SetIconFamilyData(iconFamily, iconType, h);
+	
+	// I would pass the return value back, except I have no clue how to do it,
+	// and all the functions are ignoring the return code anyway.
+	// Damned, performSelectorOnMainThread:! Not having a return value...
+	if (result != noErr)
+	{
+		NSLog(@"SetIconFamilyData() returned error %d", result);
+	}
+	return result;
 }
 
 - (BOOL) setAsCustomIconForFile:(NSString*)path

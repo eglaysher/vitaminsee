@@ -77,7 +77,6 @@ createRowsForColumn:(int)column
 //	[sender setPathSeparator:@" "];
 	
 	id userDeffault = [NSUserDefaults standardUserDefaults];
-	BOOL displayThumbnails = [[userDeffault objectForKey:@"DisplayThumbnails"] boolValue];
 	BOOL buildThumbnails = [[userDeffault objectForKey:@"GenerateThumbnails"] boolValue];
 
 	// Tell the imageTaskManager if it should actually build the thumbnails
@@ -88,8 +87,10 @@ createRowsForColumn:(int)column
 		id cell = [matrix cellAtRow:i column:0];
 		NSString* currentFile = [fileList objectAtIndex:i];
 		[cell setCellPropertiesFromPath:currentFile];
-		if(displayThumbnails && [currentFile isImage] && 
-		   ![IconFamily fileHasCustomIcon:currentFile])
+	
+		// This doesn't properly detect the existance of a thumbnail...
+		if(buildThumbnails && [currentFile isImage] && 
+		   ![IconFamily fileHasCustomIcon:currentFile] )
 		{
 			// Put in a placeholder icon (the default filetype icon) for now.
 			// It'll be replaced later. I'd prefer to defer this work, but that
@@ -97,10 +98,13 @@ createRowsForColumn:(int)column
 			[cell setIconImage:[[NSWorkspace sharedWorkspace] iconForFileType:
 				[currentFile pathExtension]]];
 			
+			NSLog(@"Requesting %@", currentFile);
+			
 			[thumbnailManager buildThumbnail:currentFile forCell:cell];
 		}
 		else
 		{
+			NSLog(@"No request for %@", currentFile);
 			[cell loadOwnIconOnDisplay];
 		}
 	}

@@ -16,6 +16,15 @@
 #import <Cocoa/Cocoa.h>
 #import <Carbon/Carbon.h>
 
+// This modification is to create a struct that we can pass back to the main
+// thread
+//struct MainThreadCommunication
+//{
+//	IconFamilyHandle iconFamily;
+//	OSType iconType;
+//	Handle h;
+//};
+
 // This class is a Cocoa/Objective-C wrapper for the Mac OS X Carbon API's
 // "icon family" data type.  Its main purpose is to enable Cocoa applications
 // to easily create custom file icons from NSImage instances, and thus take
@@ -173,6 +182,12 @@
 // class method, so you don't need an instance of IconFamily to invoke it.)
 
 + (BOOL) removeCustomIconFromFile:(NSString*)path;
+
+-(OSErr)performInvocation:(IconFamilyHandle)iconFamily osType:(OSType)iconType
+				   handle:(Handle)h;
+-(OSErr)handleInvocation:(NSInvocation*)a;
+-(OSErr)setIconFamilyData:(IconFamilyHandle)iconFamily osType:(OSType)iconType
+				   handle:(Handle)h;
 
 @end
 

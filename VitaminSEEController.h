@@ -4,7 +4,7 @@
 
 #import <pthread.h>
 
-extern pthread_mutex_t imageTaskLock;
+//extern pthread_mutex_t imageTaskLock;
 
 @class ImageTaskManager;
 @class ThumbnailManager;
