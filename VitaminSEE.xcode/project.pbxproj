@@ -1326,6 +1326,7 @@
 			files = (
 				8B5380E307DD86D000BA7CFF,
 				8BA1256007D2849A00614FF4,
+				8BDEE8D907E7818A0024BF72,
 			);
 			isa = PBXResourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1854,6 +1855,7 @@
 		};
 		8BC727C707CF1E82003103C0 = {
 			children = (
+				8BDEE8D807E781890024BF72,
 				8BA1243A07D26F2A00614FF4,
 				8BA1243B07D26F2A00614FF4,
 				8BA124E407D282C200614FF4,
@@ -1890,6 +1892,19 @@
 		};
 		8BD011DB07A99DFB00AA4BAA = {
 			fileRef = 8BD011D907A99DFB00AA4BAA;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8BDEE8D807E781890024BF72 = {
+			isa = PBXFileReference;
+			lastKnownFileType = image.png;
+			path = KeywordManager.png;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8BDEE8D907E7818A0024BF72 = {
+			fileRef = 8BDEE8D807E781890024BF72;
 			isa = PBXBuildFile;
 			settings = {
 			};

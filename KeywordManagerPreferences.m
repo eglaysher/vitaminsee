@@ -95,7 +95,7 @@
 {
 	// Fix this...
     return [[[NSImage alloc] initWithContentsOfFile:
-        [[NSBundle bundleForClass:[self class]] pathForImageResource:@"General_Prefs"]
+        [[NSBundle bundleForClass:[self class]] pathForImageResource:@"KeywordManager"]
         ] autorelease];
 }
 
