@@ -8,11 +8,11 @@
 
 #import <Cocoa/Cocoa.h>
 
-@class CQViewController;
+@class VitaminSEEController;
 @class ImageTaskManager;
 
 @interface ViewIconViewController : NSObject {
-	IBOutlet CQViewController* controller;
+	IBOutlet VitaminSEEController* controller;
 	IBOutlet NSBrowser* ourBrowser;
 	IBOutlet NSView* ourView;
 	

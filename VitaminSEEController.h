@@ -1,4 +1,4 @@
-/* CQViewController */
+/* VitaminSEEController */
 
 #import <Cocoa/Cocoa.h>
 
@@ -14,10 +14,10 @@
 @end
 
 /*!
-	@class CQViewController
+	@class VitaminSEEController
 	@abstract Main Controller
 */
-@interface CQViewController : NSObject <ImageDisplayer>
+@interface VitaminSEEController : NSObject <ImageDisplayer>
 {
 	IBOutlet NSWindow* mainVitaminSeeWindow;
 	

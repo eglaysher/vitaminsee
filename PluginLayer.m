@@ -10,7 +10,7 @@
 #import "ViewIconViewController.h"
 #import "ImageMetadata.h"
 
-@implementation CQViewController (PluginLayer)
+@implementation VitaminSEEController (PluginLayer)
 
 // I want to support keywords and comments in PNGs and GIFs, but that would
 // require that I write a block of code with libpng and libgif to read and

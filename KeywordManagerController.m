@@ -233,7 +233,7 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
 
 //////////////////////////////////////////////// Protocol: FileManagerPlugin
 
--(void)setPluginLayer:(CQViewController*)layer
+-(void)setPluginLayer:(VitaminSEEController*)layer
 {
 	pluginLayer = layer;
 }
@@ -249,8 +249,6 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
 	currentPath = newPath;
 	[currentPath retain];
 	
-	NSLog(@"Setting Keyword path to %@ in %@", [currentPath lastPathComponent],
-		  fileNameTextField);
 	[fileNameTextField setStringValue:[currentPath lastPathComponent]];
 
 	// Let's check if we can set keywords

@@ -9,7 +9,7 @@
 #import "ImageTaskManager.h"
 #import "Util.h"
 #import "IconFamily.h"
-#import "CQViewController.h"
+#import "VitaminSEEController.h"
 #import "NSString+FileTasks.h"
 
 #define CACHE_SIZE 3
@@ -74,14 +74,14 @@
 {
 	NSDictionary* currentTask;
 	
-	// Okay, first we get the distributed object CQViewController up and running...
+	// Okay, first we get the distributed object VitaminSEEController up and running...
 	NSAutoreleasePool *npool = [[NSAutoreleasePool alloc] init];
 	NSConnection *serverConnection = [NSConnection
 		connectionWithReceivePort:[portArray objectAtIndex:0]
 						 sendPort:[portArray objectAtIndex:1]];
 	
-	cqViewController = [serverConnection rootProxy];
-	[cqViewController setProtocolForProxy:@protocol(ImageDisplayer)];
+	vitaminSEEController = [serverConnection rootProxy];
+	[vitaminSEEController setProtocolForProxy:@protocol(ImageDisplayer)];
 	
 	// Handle queue
 	while(1)
@@ -307,7 +307,7 @@
 	if([path isImage] && ![IconFamily fileHasCustomIcon:path] && localShouldBuild)
 	{
 		building = YES;
-		[cqViewController startProgressIndicator:[NSString 
+		[vitaminSEEController startProgressIndicator:[NSString 
 			stringWithFormat:@"Building thumbnail for %@...", [path lastPathComponent]]];
 		// I don't think there IS an autorelease...
 		NSImage* image = [[NSImage alloc] initWithContentsOfFile:path];
@@ -323,11 +323,11 @@
 	
 	currentIconFamilyThumbnail = thumbnail;
 	currentIconCell = [options objectForKey:@"Cell"];
-	[cqViewController setIcon];
+	[vitaminSEEController setIcon];
 	
 	if(building)
 	{
-		[cqViewController stopProgressIndicator];
+		[vitaminSEEController stopProgressIndicator];
 	}
 }
 
@@ -354,7 +354,7 @@
 {
 	// Before we aquire our internal lock, tell the main application to start
 	// spinning...
-	[cqViewController startProgressIndicator:nil];
+	[vitaminSEEController startProgressIndicator:nil];
 
 	if([path isDir])
 	{
@@ -504,7 +504,7 @@
 	}
 	
 	// An image has been displayed so stop the spinner
-	[cqViewController stopProgressIndicator];	
+	[vitaminSEEController stopProgressIndicator];	
 }
 
 -(BOOL)newDisplayCommandInQueue
@@ -525,7 +525,7 @@
 	currentImageWidth = width;
 	currentImageHeight = height;
 	
-	[cqViewController displayImage];
+	[vitaminSEEController displayImage];
 }
 
 @end

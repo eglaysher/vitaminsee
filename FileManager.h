@@ -9,11 +9,11 @@
 
 #import <Cocoa/Cocoa.h>
 
-@class CQViewController;
+@class VitaminSEEController;
 
 @protocol FileManagerPlugin
 
--(void)setPluginLayer:(CQViewController*)pluginLayer;
+-(void)setPluginLayer:(VitaminSEEController*)pluginLayer;
 
 // File changed
 -(void)fileSetTo:(NSString*)newPath;

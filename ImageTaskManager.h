@@ -11,6 +11,7 @@
 #import <pthread.h>
 
 @class IconFamily;
+@class VitaminSEEController;
 
 @interface ImageTaskManager : NSObject {
 	// TASK QUEUE:
@@ -39,7 +40,7 @@
 	id currentIconCell;
 	int thumbnailLoadingPosition;
 	
-	id cqViewController;
+	id vitaminSEEController;
 	
 	bool shouldBuildIcon;
 }

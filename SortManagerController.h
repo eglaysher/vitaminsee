@@ -6,7 +6,7 @@
 
 @interface SortManagerController : NSWindowController <FileManagerPlugin>
 {
-	CQViewController* pluginLayer;
+	VitaminSEEController* pluginLayer;
 }
 
 // Actions from the form

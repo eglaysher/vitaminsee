@@ -6,9 +6,9 @@
 //  Copyright 2005 __MyCompanyName__. All rights reserved.
 //
 
-#import "CQViewController.h"
+#import "VitaminSEEController.h"
 
-@interface CQViewController (ToolbarDelegate)
+@interface VitaminSEEController (ToolbarDelegate)
 
 -(void)setupToolbar;
 

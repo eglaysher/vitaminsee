@@ -8,9 +8,9 @@
 
 #import <Cocoa/Cocoa.h>
 
-#import "CQViewController.h"
+#import "VitaminSEEController.h"
 
-@interface CQViewController (PluginLayer)
+@interface VitaminSEEController (PluginLayer)
 
 -(BOOL)supportsKeywords:(NSString*)file;
 -(NSMutableArray*)getKeywordsFromFile:(NSString*)file;

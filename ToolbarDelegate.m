@@ -18,7 +18,7 @@ static NSString* ZoomOutToolbarID = @"Zoom out Toolbar Identifier";
 static NSString* ZoomToFitToolbarID = @"Zoom to Fit Toolbar Identifier";
 static NSString* ActualSizeToolbarID = @"Actual Size Toolbar Identifier";
 
-@implementation CQViewController (ToolbarDelegate)
+@implementation VitaminSEEController (ToolbarDelegate)
 
 -(void)setupToolbar {
 	// Create the toolbar

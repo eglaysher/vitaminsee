@@ -36,7 +36,7 @@
 	[pluginLayer copyThisFile:destination];
 }
 
--(void)setPluginLayer:(CQViewController*)layer
+-(void)setPluginLayer:(VitaminSEEController*)layer
 {
 	pluginLayer = layer;
 }

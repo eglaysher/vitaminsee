@@ -8,7 +8,7 @@
 
 #import "ViewIconViewController.h"
 #import "ViewAsIconViewCell.h"
-#import "CQViewController.h"
+#import "VitaminSEEController.h"
 #import "NSString+FileTasks.h"
 #import "ImageTaskManager.h"
 

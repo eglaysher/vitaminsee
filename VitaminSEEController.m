@@ -1,4 +1,4 @@
-#import "CQViewController.h"
+#import "VitaminSEEController.h"
 #import "ToolbarDelegate.h"
 
 //#import "FSNodeInfo.h"
@@ -18,7 +18,7 @@
 #import "SS_PrefsController.h"
 #import "KeywordNode.h"
 
-@implementation CQViewController
+@implementation VitaminSEEController
 
 /////////////////////////////////////////////////////////// WHAT HAS BEEN DONE:
 /**

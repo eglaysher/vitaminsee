@@ -18,7 +18,7 @@
 	IBOutlet NSTextView* currentKeywordsTextView;
 	IBOutlet NSOutlineView* outlineView;
 	
-	CQViewController* pluginLayer;	
+	VitaminSEEController* pluginLayer;	
 	KeywordNode* keywordRoot;
 	
 	BOOL keywordsDirty;

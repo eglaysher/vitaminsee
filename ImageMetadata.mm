@@ -9,8 +9,6 @@
 #import "ImageMetadata.h"
 
 #import <Exiv2/iptc.hpp>
-//#import <Exiv2/
-
 #include <string>
 
 using namespace std;
@@ -23,8 +21,16 @@ using namespace std;
 {
 	NSLog(@"Trying to load keywords from %@", file);
 	
+	int rc;
 	Exiv2::IptcData iptcData;
-	int rc = iptcData.read([file fileSystemRepresentation]);
+	try {
+		rc = iptcData.read([file fileSystemRepresentation]);
+	}
+	catch(Exiv2::Error& e) {
+		NSLog(@"Hey, there was an internal error in the Exiv2 library: %s", 
+			  e.message().c_str());
+	}
+	
 	if(rc)
 	{
 		NSLog(@"Probelm reading file or no keywords found.");

@@ -181,7 +181,16 @@ namespace Exiv2 {
                 sizeData = getUShort(pRead, bigEndian);
                 pRead += 2;
             }
-            rc = readData(dataSet, record, pRead, sizeData);
+			
+			try 
+			{
+				rc = readData(dataSet, record, pRead, sizeData);
+			} 
+			catch(Error& e)
+			{
+				// don't do anything. Let's just go on to the next field.
+			}
+			
             if( rc ) return rc;
             pRead += sizeData;
         }
