@@ -205,6 +205,7 @@
 		};
 		29B97317FDCFA39411CA2CEA = {
 			children = (
+				8BB7F55C07F0B9B200668047,
 				8BC27DA707ECF9B300B56836,
 				8BBC35E907E222BF007C3B6B,
 				8BBC35D607E221D4007C3B6B,
@@ -1392,6 +1393,7 @@
 				8B5620E107CEA6F1005990E1,
 				8B561D9307CE7627005990E1,
 				8B6D020307CB32CD009A76DA,
+				8BB7F55D07F0B9B200668047,
 			);
 			isa = PBXCopyFilesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2082,6 +2084,20 @@
 		};
 		8BAF0F4E07CE6E5200B0C832 = {
 			fileRef = 8BAF0F4C07CE6E5200B0C832;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8BB7F55C07F0B9B200668047 = {
+			explicitFileType = text;
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			path = Changelog;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8BB7F55D07F0B9B200668047 = {
+			fileRef = 8BB7F55C07F0B9B200668047;
 			isa = PBXBuildFile;
 			settings = {
 			};

@@ -1,0 +1,16 @@
+
+0.5.1 Bugfix Release
+--------------------
+* Fixed displaying of wrong filesize on files over 1 Megabyte.
+* Fixed CRITICAL memory leak in thumbnailing code that was causing the program
+  to crash.
+
+0.5 Final
+---------
+* Cosmetic changes (HIG compliance)
+* Add a "Known Issues" page to the help
+* Make the GPL a Help menu item
+
+0.5 Release Canidate 2
+----------------------
+* Fixed deadlock that would occur every half hour or so.

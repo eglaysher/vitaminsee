@@ -60,69 +60,7 @@
   * Icons for KeywordManager in Preferences (but it's even worse)
 */
 
-//////////////////////////////////////////////////////// WHAT NEEDS TO BE DONE:
-
-/* FIRST MILESTONE GOALS (Note that the milestones have gone apeshit...)
-  * Work on making things feature complete.
-  * Shave about 50k off of filesize by s/icns/png/;
-*/
-
-/**
-  Non-required improvements that would be a good idea:
-  * Fit to height/Fit to width
-  */
-
-/////////////////////////////////////////////////////////// POST CONTEST GOALS:
-
-/* WHER I GO FROM HERE
-  * First Milestone
-    * Transparent Zip/Rar support
-    * Fit to height/Fit to width
-    * Integrate into the [Computer name]/[Macintosh HD]/.../ hiearachy...
-  * Second Milestone
-    * Clean up Pluginlayer
-    * Build a plugin interfaceSegment ViewAsIcons and all that code into a plugin bundle
-    * 
- */
-
-/* SECOND MILESTONE GOALS
- * Transparent Zip/Rar support
- * Redo left panel as loadable bundle with an NSTableView
- * Image search (Loadable bundle)
- * Duplicate search (Loadable bundle)
- * Split *thumbnailing* off into it's own thread? (Image display/preload stays
-   in it's own thread, instead of making image display in one and thumbnailing
-   and preloading in the other...)
-   * This causes problems with not enough CPU for both the thumbnailing/image
-     loading...
- */
-
-/* THIRD MILSTONE GOALS
- * Respond to finder notifications!
- * Draging of the picture
- * See "openHandCursor" and "closedHandCursor"
- * Fullscreen mode.
- * Make Go to folder modal when main window isn't open.
- */
-
-/* FOURTH MILESTONE GOALS
-  * GIF/PNG keywords and comments.    
-  * JPEG comments
-  * Change arrow key behaviour - scroll around in image if possible in NSScrollView
-    and switch images
-    * Julius says see "CDisplay" (Comics Viewer)
-*/
-
-/* POST 1.0 GOALS
-  * Move almost EVERYTHING into their own component bundles for lazy loading...
-    * Sort manager
-    * Keyword manager
-    * Including View as Icon view!
-  * View as list view
-  * View as browser view...
-  * Duplicate detector
-  * Image Search
-*/
+////////////////////////////////////////// BUGS IN STABLE THAT NEED TO BE FIXED
 
 + (void)initialize 
 {

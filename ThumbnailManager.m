@@ -190,6 +190,7 @@
 		[iconFamily setAsCustomIconForFile:path];
 		// Must retain
 		thumbnail = [[iconFamily imageWithAllReps] retain];
+		[image release];
 	}
 	else
 		thumbnail = [path iconImageOfSize:NSMakeSize(128, 128)];
