@@ -6,6 +6,7 @@
 #import "FileSizeFormatter.h"
 #import "SBCenteringClipView.h"
 
+#import "ImageTaskManager.h"
 #import "Util.h"
 
 @implementation CQViewController
@@ -26,9 +27,10 @@
 + (void)initialize 
 {
     NSMutableDictionary *defaultPrefs = [NSMutableDictionary dictionary];
-	[defaultPrefs setObject:@"/Users/elliot/Pictures/4chan/Straight Up Ero"  
+	[defaultPrefs setObject:@"/Users/elliot/Pictures/"
 					 forKey:@"DefaultStartupPath"];
-	//@"/Users/elliot/Pictures/" 
+	//
+	//@"/Users/elliot/Pictures/4chan/Straight Up Ero"  
     [[NSUserDefaults standardUserDefaults] registerDefaults: defaultPrefs];
 }
 
@@ -58,6 +60,8 @@
 	[[fileSizeLabel cell] setFormatter:fsFormatter];
 	
 	[self setupToolbar];
+	
+	imageTaskManager = [[ImageTaskManager alloc] init];
 }
 
 
@@ -92,8 +96,8 @@
 		if([fsNode isImage])
 		{
 			// This item is an image. Let's load it.
-			currentImageRep = [[NSImageRep imageRepWithContentsOfFile:[fsNode 
-				absolutePath]] retain];
+			currentImageRep = [[imageTaskManager getImage:[fsNode absolutePath]] retain];
+			[self preloadNextFiles:browser];
 			
 			// Set the label to the image size.
 			int x = [currentImageRep pixelsWide];
@@ -113,6 +117,22 @@
     }
     
 	[self redraw];
+}
+
+-(void)preloadNextFiles:(NSBrowser*)browser 
+{
+	int numberOfImagesToPreload = 1 + 3;
+	int selectedColumn = [browser selectedColumn];
+	int selectedRow = [browser selectedRowInColumn:selectedColumn];
+	int i;
+	for(i = selectedRow + 1; i < selectedRow + numberOfImagesToPreload; ++i)
+	{
+		id node = [[browser loadedCellAtRow:i column:selectedColumn] nodeInfo];
+		if([node isImage])
+		{
+			[imageTaskManager preloadImage:[node absolutePath]];
+		}
+	}
 }
 
 - browserDoubleClick:(id)browser {

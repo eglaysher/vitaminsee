@@ -75,7 +75,8 @@
     NSMutableArray *subNodes = [NSMutableArray array];
     
     while ((subNodePath=[subNodePaths nextObject])) {
-        FSNodeInfo *node = [FSNodeInfo nodeWithParent:self atRelativePath: subNodePath];
+		NSString* fullPath = [NSString stringWithFormat:@"%@/%@", [self absolutePath], subNodePath];
+        FSNodeInfo *node = [FSNodeInfo nodeWithParent:nil atRelativePath:fullPath];
         [subNodes addObject: node];
     }
     return subNodes;

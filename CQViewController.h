@@ -2,6 +2,8 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class ImageTaskManager;
+
 /*!
 	@class CQViewController
 	@abstract Main Controller
@@ -30,6 +32,7 @@
 	bool scaleProportionally;
 	float scaleRatio;
 	
+	ImageTaskManager* imageTaskManager;
 }
 
 /*!

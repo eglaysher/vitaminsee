@@ -69,6 +69,8 @@
 
 - (void)dealloc {
     [iconImage release];
+	[path release];
+	[infoNode release];
     iconImage = nil;
     [super dealloc];
 }
@@ -77,6 +79,9 @@
     // Given a particular FSNodeInfo object set up our display properties.
     NSString *stringValue = [node lastPathComponent];
     
+	path = [[node absolutePath] retain];
+	infoNode = [node retain];
+	
     // Set the text part.   FSNode will format the string (underline, bold, etc...) based on various properties of the file.
     [self setAttributedStringValue: [[[NSAttributedString alloc] initWithString:stringValue attributes:[FSBrowserCell stringAttributesForNode:node]] autorelease]];
     
@@ -100,6 +105,16 @@
 
 - (NSImage*)iconImage {
     return iconImage;
+}
+
+- (NSString*)absolutePath
+{
+	return path;
+}
+
+- (FSNodeInfo*)nodeInfo
+{
+	return infoNode;
 }
 
 - (NSSize)cellSizeForBounds:(NSRect)aRect {

@@ -7,14 +7,19 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class FSNodeInfo;
+
 @interface FSBrowserCell : NSBrowserCell { 
 @private
     NSImage *iconImage;
+	NSString *path;
+	FSNodeInfo *infoNode;
 }
 
 - (void)setAttributedStringValueFromFSNodeInfo:(FSNodeInfo*)node;
 - (void)setIconImage: (NSImage *)image;
 - (NSImage*)iconImage;
-
+- (NSString*)absolutePath;
+- (FSNodeInfo*)nodeInfo;
 @end
 
