@@ -61,7 +61,13 @@
 
 ////////////////////////////////////////////////// WHERE TO GO FROM HERE...
 
+/// For Version 0.6
 // * Redo left panel as loadable bundle with an NSTableView
+//   * Requires a working plugin layer...
+// * Finder notifications
+// * Transparent archive support
+
+// For Version 0.7
 // * Create an image database feature
 // * Add metadata for PNG and GIF
 
@@ -173,6 +179,7 @@
 	[docView release];
 	
 	[imageViewer setAnimates:YES];
+	[imageViewer setImage:nil];	
 	
 	// Use our file size formatter for formating the "[image size]" text label
 	FileSizeFormatter* fsFormatter = [[[FileSizeFormatter alloc] init] autorelease];
@@ -710,6 +717,7 @@
 	float scale;
 	NSImage* image = [imageTaskManager getCurrentImageWithWidth:&x height:&y 
 														  scale:&scale];
+
 	[imageViewer setImage:image];
 	[imageViewer setFrameSize:[image size]];
 	
@@ -725,10 +733,13 @@
 -(void)setIcon
 {
 	NSImage* thumbnail = [thumbnailManager getCurrentThumbnail];
-	id cell = [thumbnailManager getCurrentThumbnailCell];
+//	id cell = [thumbnailManager getCurrentThumbnailCell];
+	NSString* path = [thumbnailManager getCurrentPath];
 
-	[cell setIconImage:thumbnail];
-	[viewAsIconsController updateCell:cell];
+	[viewAsIconsController setThumbnail:thumbnail forFile:path];
+	
+//	[cell setIconImage:thumbnail];
+//	[viewAsIconsController updateCell:cell];
 	
 	// Release the current icon
 	[thumbnail release];

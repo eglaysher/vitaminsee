@@ -16,7 +16,7 @@
 	pthread_cond_t conditionLock;		
 	
 	NSImage* currentIconFamilyThumbnail;
-	id currentIconCell;
+	NSString* currentPath;
 	int thumbnailLoadingPosition;
 	
 	id vitaminSEEController;
@@ -26,13 +26,14 @@
 
 -(id)initWithController:(id)parrentController;
 
--(void)buildThumbnail:(NSString*)path forCell:(id)cell;
+
+-(void)buildThumbnail:(NSString*)path;
 -(void)clearThumbnailQueue;
 
 -(void)setShouldBuildIcon:(BOOL)newShouldBuildIcon;
 -(void)setThumbnailLoadingPosition:(int)newPosition;
 
--(id)getCurrentThumbnailCell;
+-(NSString*)getCurrentPath;
 -(NSImage*)getCurrentThumbnail;
 -(void)clearThumbnailQueue;
 

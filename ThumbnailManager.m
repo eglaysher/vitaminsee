@@ -121,11 +121,10 @@
 	pthread_mutex_unlock(&imageScalingProperties);
 }
 
--(void)buildThumbnail:(NSString*)path forCell:(id)cell
+-(void)buildThumbnail:(NSString*)path
 {
 	NSDictionary* currentTask = [NSDictionary dictionaryWithObjectsAndKeys:
-		@"PreloadImage", @"Type", path, @"Path",
-		cell, @"Cell", nil];
+		@"PreloadImage", @"Type", path, @"Path", nil];
 	
 	pthread_mutex_lock(&taskQueueLock);
 	//	NSLog(@"Going to preload: %@", path);
@@ -145,9 +144,9 @@
 	pthread_mutex_unlock(&taskQueueLock);
 }
 
--(id)getCurrentThumbnailCell
+-(NSString*)getCurrentPath
 {
-	return currentIconCell;
+	return currentPath;
 }
 
 -(NSImage*)getCurrentThumbnail
@@ -196,7 +195,8 @@
 		thumbnail = [path iconImageOfSize:NSMakeSize(128, 128)];
 	
 	currentIconFamilyThumbnail = thumbnail;
-	currentIconCell = [options objectForKey:@"Cell"];
+	currentPath = path;
+//	currentIconCell = [options objectForKey:@"Cell"];
 	[vitaminSEEController setIcon];
 	
 	if(building)

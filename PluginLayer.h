@@ -15,22 +15,22 @@
 
 @interface VitaminSEEController (PluginLayer)
 
+// Keyword functions
 -(BOOL)supportsKeywords:(NSString*)file;
 -(NSMutableArray*)getKeywordsFromFile:(NSString*)file;
 -(void)setKeywords:(NSArray*)keywords forFile:(NSString*)file;
 
 -(BOOL)renameThisFileTo:(NSString*)newName;
 
+-(NSString*)currentFile;
 -(void)deleteThisFile;
--(int)deleteFile:(NSString*)file;
-
 -(void)moveThisFile:(NSString*)destination;
--(int)moveFile:(NSString*)file to:(NSString*)destination;
-
 -(void)copyThisFile:(NSString*)destination;
+
+-(int)deleteFile:(NSString*)file;
+-(int)moveFile:(NSString*)file to:(NSString*)destination;
 -(int)copyFile:(NSString*)file to:(NSString*)destination;
 
 //-(void)generateThumbnailFor:(NSString*)path;
-//-(void)setThumbnailTo:(NSString*)path;
 
 @end

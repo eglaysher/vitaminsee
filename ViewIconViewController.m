@@ -105,7 +105,7 @@ createRowsForColumn:(int)column
 			[cell setIconImage:[[NSWorkspace sharedWorkspace] iconForFileType:
 				[currentFile pathExtension]]];
 			
-			[thumbnailManager buildThumbnail:currentFile forCell:cell];
+			[thumbnailManager buildThumbnail:currentFile];
 		}
 		else
 			[cell loadOwnIconOnDisplay];
@@ -214,12 +214,20 @@ willDisplayCell:(id)cell
 	unsigned index = [fileList binarySearchFor:absolutePath 
 		withSortSelector:@selector(caseInsensitiveCompare:)];
 
+	NSMatrix* matrix = [ourBrowser matrixInColumn:0];
 	if(index != NSNotFound)
 	{
+		if(index == [matrix selectedRow])
+		{
+			NSString* file = [self nameOfNextFile];
+			[self selectFile:file];
+			[controller setCurrentFile:file];
+		}
+			
 		[fileList removeObjectAtIndex:index];
 
-		[[ourBrowser matrixInColumn:0] removeRow:index];
-		[[ourBrowser matrixInColumn:0] sizeToCells];
+		[matrix removeRow:index];
+		[matrix sizeToCells];
 		[ourBrowser setNeedsDisplay];
 		
 		if([fileList count] == 0)
@@ -230,23 +238,33 @@ willDisplayCell:(id)cell
 
 -(void)addFile:(NSString*)path
 {
-	unsigned index = [fileList lowerBoundToInsert:path withSortSelector:@selector(caseInsensitiveCompare:)];
+	if([currentDirectory isEqual:[path stringByDeletingLastPathComponent]])
+	{
+		unsigned index = [fileList lowerBoundToInsert:path 
+						 withSortSelector:@selector(caseInsensitiveCompare:)];
 	
-	if(index != [fileList count])
-		[fileList insertObject:path atIndex:index];
-	else
-		[fileList addObject:path];
+		if(index != [fileList count])
+			[fileList insertObject:path atIndex:index];
+		else
+			[fileList addObject:path];
 	
-	NSMatrix* m = [ourBrowser matrixInColumn:0];
-	[m insertRow:index];
-	// FIXME: This needs to be generalized. What happens if this file doesn't have
-	// a thumbnail, a thumbnail request is generated, the file is moved, and then
-	// the thumbnail comes in!?
-	[[m cellAtRow:index column:0] loadOwnIconOnDisplay];
-	[self browser:ourBrowser willDisplayCell:[m cellAtRow:index column:0] 
-			atRow:index column:0];
-	[m sizeToCells];
-	[ourBrowser setNeedsDisplay];
+		NSMatrix* m = [ourBrowser matrixInColumn:0];
+		[m insertRow:index];
+		
+		// FIXME: This needs to be generalized. What happens if this file doesn't have
+		// a thumbnail, a thumbnail request is generated, the file is moved, and then
+		// the thumbnail comes in!?
+		[[m cellAtRow:index column:0] loadOwnIconOnDisplay];
+		[self browser:ourBrowser willDisplayCell:[m cellAtRow:index column:0] 
+				atRow:index column:0];
+		[m sizeToCells];
+	
+		// Select this file.
+		[m selectCellAtRow:index column:0];
+		[controller setCurrentFile:[fileList objectAtIndex:index]];
+		
+		[ourBrowser setNeedsDisplay];
+	}
 }
 
 // Returns the path of the next cell that would be selected if the current cell
@@ -272,8 +290,10 @@ willDisplayCell:(id)cell
 -(void)selectFile:(NSString*)fileToSelect
 {
 	if(fileToSelect)
+	{
 		[ourBrowser setPath:[NSString pathWithComponents:[NSArray arrayWithObjects:
 			@"/", [fileToSelect lastPathComponent], nil]]];
+	}
 }
 
 -(void)updateCell:(id)cell
@@ -284,6 +304,19 @@ willDisplayCell:(id)cell
 -(void)makeFirstResponderTo:(NSWindow*)window
 {
 	[window makeFirstResponder:ourBrowser];
+}
+
+-(void)setThumbnail:(NSImage*)image 
+			forFile:(NSString*)path
+{
+	unsigned index = [fileList binarySearchFor:path 
+							  withSortSelector:@selector(caseInsensitiveCompare:)];
+	if(index != NSNotFound)
+	{
+		id cell = [[ourBrowser matrixInColumn:0] cellAtRow:index column:0];
+		[cell setIconImage:image];
+		[ourBrowser setNeedsDisplay];
+	}
 }
 
 @end

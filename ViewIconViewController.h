@@ -13,6 +13,7 @@
 @class ThumbnailManager;
 
 @interface ViewIconViewController : NSObject {
+
 	IBOutlet VitaminSEEController* controller;
 	IBOutlet NSBrowser* ourBrowser;
 	IBOutlet NSView* ourView;
@@ -25,8 +26,9 @@
 //	ImageTaskManager* imageTaskManager;
 }
 
--(BOOL)canDelete;
 -(void)setThumbnailManager:(ThumbnailManager*)itm;
+
+-(BOOL)canDelete;
 
 -(void)setCurrentDirectory:(NSString*)path;
 -(NSView*)view;
@@ -35,9 +37,9 @@
 -(void)singleClick:(NSBrowser*)sender;
 -(void)doubleClick:(NSBrowser*)sender;
 
-//-(void)renameFile:(NSString*)absolutePath to:(NSString*)newPath;
 -(void)removeFile:(NSString*)absolutePath;
 -(void)addFile:(NSString*)path;
+
 -(NSString*)nameOfNextFile;
 -(void)selectFile:(NSString*)fileToSelect;
 -(void)updateCell:(id)cell;
@@ -45,5 +47,8 @@
 -(void)makeFirstResponderTo:(NSWindow*)window;
 
 -(void)clearCache;
+-(void)setThumbnail:(NSImage*)image 
+			forFile:(NSString*)path;
+
 
 @end

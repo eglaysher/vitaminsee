@@ -9,6 +9,7 @@
 #import "PluginLayer.h"
 #import "ViewIconViewController.h"
 #import "ImageMetadata.h"
+#import "ThumbnailManager.h"
 
 @implementation VitaminSEEController (PluginLayer)
 
@@ -38,7 +39,11 @@
 -(void)setKeywords:(NSArray*)keywords forFile:(NSString*)file
 {
 	[ImageMetadata setKeywords:keywords forJPEGFile:file];
-	// fixme:
+}
+
+-(NSString*)currentFile
+{
+	return currentImageFile;
 }
 
 -(BOOL)renameThisFileTo:(NSString*)newName
@@ -62,25 +67,26 @@
 {
 	// Delete the current file...
 	[self deleteFile:currentImageFile];
-	
-	// fixme: Functionate/refactor this.
-	NSString* nextFile = [viewAsIconsController nameOfNextFile];
-	[viewAsIconsController removeFile:currentImageFile];
-	[viewAsIconsController selectFile:nextFile];
-	
-	[self setCurrentFile:nextFile];
 }
 
 -(int)deleteFile:(NSString*)file
 {
 	// We move the current file to the trash.
+	BOOL worked;
 	int tag;
 
-	[[NSWorkspace sharedWorkspace] performFileOperation:NSWorkspaceRecycleOperation
+	worked = [[NSWorkspace sharedWorkspace] performFileOperation:NSWorkspaceRecycleOperation
 												 source:[file stringByDeletingLastPathComponent]
 											destination:@""
 												  files:[NSArray arrayWithObject:[file lastPathComponent]]
 													tag:&tag];
+
+	if(worked)
+	{
+		[viewAsIconsController removeFile:currentImageFile];
+	}
+	else
+		AlertSoundPlay();
 	
 	return tag;
 }
@@ -93,24 +99,23 @@
 -(int)moveFile:(NSString*)file to:(NSString*)destination
 {
 	int tag = 0;
+	BOOL worked = NO;
 	if(![destination isEqual:[file stringByDeletingLastPathComponent]])
 	{
-		NSString* nextFile = [viewAsIconsController nameOfNextFile];
-
-		[[NSWorkspace sharedWorkspace]
+		worked = [[NSWorkspace sharedWorkspace]
 			performFileOperation:NSWorkspaceMoveOperation
 						  source:[file stringByDeletingLastPathComponent]
 					 destination:destination
 						   files:[NSArray arrayWithObject:[file lastPathComponent]]
 							 tag:&tag];
 
-		// fixme: Use fileIsInView:
-		
 		// Remove the current file from 
-		[viewAsIconsController removeFile:currentImageFile];
-		[viewAsIconsController selectFile:nextFile];
-		
-		[self setCurrentFile:nextFile];		
+		if(worked)
+		{
+			[viewAsIconsController removeFile:currentImageFile];
+		}
+		else
+			AlertSoundPlay();
 	}
 	return tag;
 }
@@ -123,9 +128,10 @@
 -(int)copyFile:(NSString*)file to:(NSString*)destination
 {
 	int tag = 0;
+	BOOL worked = NO;
 	if(![destination isEqual:[file stringByDeletingLastPathComponent]])
 	{
-		[[NSWorkspace sharedWorkspace] 
+		worked = [[NSWorkspace sharedWorkspace] 
 			performFileOperation:NSWorkspaceCopyOperation
 						  source:[file stringByDeletingLastPathComponent]
 					 destination:destination 
@@ -133,10 +139,20 @@
 							 tag:&tag];
 		
 		// Calculate the destination name
-		NSString* destinationFullPath = [destination stringByAppendingString:[file lastPathComponent]];
-		[viewAsIconsController addFile:destinationFullPath];
+		if(worked)
+		{
+			NSString* destinationFullPath = [destination stringByAppendingString:[file lastPathComponent]];
+			[viewAsIconsController addFile:destinationFullPath];
+		}
+		else
+			AlertSoundPlay();
 	}
 	return tag;
+}
+
+-(void)generateThumbnailFor:(NSString*)path
+{
+	[thumbnailManager buildThumbnail:path];
 }
 
 @end
