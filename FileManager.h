@@ -9,12 +9,22 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class CQViewController;
+
 @protocol FileManagerPlugin
 
-// Most 
--(void)showWindow;
+-(void)setPluginLayer:(CQViewController*)pluginLayer;
 
-// File Manager Plugins can optionally put 
+// File changed
+-(void)fileSetTo:(NSString*)newPath;
+
+// Get the plugin name
+-(NSString*)name;
+
+// Most plugins will have a show window
+-(void)activate;
+
+// Context menu items for this plugin.
 -(NSArray*)contextMenuItems;
 
 @end

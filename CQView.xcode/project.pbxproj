@@ -7,14 +7,12 @@
 	objects = {
 		080E96DDFE201D6D7F000001 = {
 			children = (
+				8B56209B07CEA204005990E1,
+				8B56209C07CEA204005990E1,
 				8B6D015407CB23A0009A76DA,
 				8B6D015507CB23A0009A76DA,
-				8BC6662807BFCF880075F57F,
-				8BC6662907BFCF880075F57F,
 				8B2D867207C824B500CDAFED,
 				8B2D867307C824B500CDAFED,
-				8B7E79BC07C0269C00687DEE,
-				8B7E79BD07C0269C00687DEE,
 				8B87410F07BA9D9F00EF7923,
 				8B87411007BA9D9F00EF7923,
 				8BF72B0507B9E78F003A3C82,
@@ -118,6 +116,7 @@
 				8D1107320486CEB800E47090,
 				8B6D01F807CB327E009A76DA,
 				8BAF0F3E07CE6DAA00B0C832,
+				8B5620BF07CEA5A5005990E1,
 			);
 			isa = PBXGroup;
 			name = Products;
@@ -146,6 +145,7 @@
 			mainGroup = 29B97314FDCFA39411CA2CEA;
 			projectDirPath = "";
 			targets = (
+				8B5620BE07CEA5A5005990E1,
 				8BAF0F3D07CE6DAA00B0C832,
 				8B6D01F707CB327E009A76DA,
 				8D1107260486CEB800E47090,
@@ -423,6 +423,186 @@
 			settings = {
 			};
 		};
+		8B56209107CEA09E005990E1 = {
+			children = (
+				8BC6662807BFCF880075F57F,
+				8BC6662907BFCF880075F57F,
+				8B5620C007CEA5A5005990E1,
+				8B5620B807CEA594005990E1,
+			);
+			isa = PBXGroup;
+			name = SortManager;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B56209B07CEA204005990E1 = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			path = PluginLayer.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B56209C07CEA204005990E1 = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
+			path = PluginLayer.m;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B56209D07CEA204005990E1 = {
+			fileRef = 8B56209B07CEA204005990E1;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B56209E07CEA204005990E1 = {
+			fileRef = 8B56209C07CEA204005990E1;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B5620B807CEA594005990E1 = {
+			isa = PBXFileReference;
+			lastKnownFileType = wrapper.nib;
+			path = SortManager.nib;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B5620BB07CEA5A5005990E1 = {
+			buildActionMask = 2147483647;
+			files = (
+				8B5620C907CEA6A4005990E1,
+				8B5620CA07CEA6A4005990E1,
+			);
+			isa = PBXResourcesBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B5620BC07CEA5A5005990E1 = {
+			buildActionMask = 2147483647;
+			files = (
+				8B5620CB07CEA6AD005990E1,
+			);
+			isa = PBXSourcesBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B5620BD07CEA5A5005990E1 = {
+			buildActionMask = 2147483647;
+			files = (
+				8B5620CE07CEA6C1005990E1,
+			);
+			isa = PBXFrameworksBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B5620BE07CEA5A5005990E1 = {
+			buildPhases = (
+				8B5620BB07CEA5A5005990E1,
+				8B5620BC07CEA5A5005990E1,
+				8B5620BD07CEA5A5005990E1,
+			);
+			buildRules = (
+			);
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = "SortManager-Info.plist";
+				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "-framework Foundation -framework AppKit";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = SortManager;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = "-Wmost -Wno-four-char-constants -Wno-unknown-pragmas";
+				WRAPPER_EXTENSION = cqvPlugin;
+			};
+			dependencies = (
+			);
+			isa = PBXNativeTarget;
+			name = SortManager;
+			productName = SortManager;
+			productReference = 8B5620BF07CEA5A5005990E1;
+			productSettingsXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
+<!DOCTYPE plist PUBLIC \"-//Apple Computer//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">
+<plist version=\"1.0\">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>English</string>
+	<key>CFBundleExecutable</key>
+	<string>SortManager</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.yourcompany.SortManager</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
+	<key>CFBundleVersion</key>
+	<string>1.0</string>
+</dict>
+</plist>
+";
+			productType = "com.apple.product-type.bundle";
+		};
+		8B5620BF07CEA5A5005990E1 = {
+			explicitFileType = wrapper.cfbundle;
+			includeInIndex = 0;
+			isa = PBXFileReference;
+			path = SortManager.cqvPlugin;
+			refType = 3;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		8B5620C007CEA5A5005990E1 = {
+			isa = PBXFileReference;
+			lastKnownFileType = text.xml;
+			name = "SortManager-Info.plist";
+			path = "/Users/elliot/Projects/CQView/SortManager-Info.plist";
+			refType = 0;
+			sourceTree = "<absolute>";
+		};
+		8B5620C907CEA6A4005990E1 = {
+			fileRef = 8B5620C007CEA5A5005990E1;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B5620CA07CEA6A4005990E1 = {
+			fileRef = 8B5620B807CEA594005990E1;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B5620CB07CEA6AD005990E1 = {
+			fileRef = 8BC6662907BFCF880075F57F;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B5620CE07CEA6C1005990E1 = {
+			fileRef = 1058C7A1FEA54F0111CA2CBB;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B5620E107CEA6F1005990E1 = {
+			fileRef = 8B5620BF07CEA5A5005990E1;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B5620E207CEA700005990E1 = {
+			containerPortal = 29B97313FDCFA39411CA2CEA;
+			isa = PBXContainerItemProxy;
+			proxyType = 1;
+			remoteGlobalIDString = 8B5620BE07CEA5A5005990E1;
+			remoteInfo = SortManager;
+		};
+		8B5620E307CEA700005990E1 = {
+			isa = PBXTargetDependency;
+			target = 8B5620BE07CEA5A5005990E1;
+			targetProxy = 8B5620E207CEA700005990E1;
+		};
 		8B5767C007BD1CE800068A64 = {
 			isa = PBXFileReference;
 			lastKnownFileType = image.tiff;
@@ -521,6 +701,7 @@
 		8B6D010807CB178F009A76DA = {
 			children = (
 				8B6D011307CB185E009A76DA,
+				8B56209107CEA09E005990E1,
 				8B6D010E07CB179C009A76DA,
 			);
 			isa = PBXGroup;
@@ -760,6 +941,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				8B5620E107CEA6F1005990E1,
 				8B561D9307CE7627005990E1,
 				8B6D020307CB32CD009A76DA,
 			);
@@ -905,34 +1087,6 @@
 		};
 		8B7C0C3D07B5FEB5005DB6FF = {
 			fileRef = 8B7C0C3B07B5FEB5005DB6FF;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
-		8B7E79BC07C0269C00687DEE = {
-			fileEncoding = 4;
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.h;
-			path = FileOperations.h;
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		8B7E79BD07C0269C00687DEE = {
-			fileEncoding = 4;
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.objc;
-			path = FileOperations.m;
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		8B7E79BE07C0269C00687DEE = {
-			fileRef = 8B7E79BC07C0269C00687DEE;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
-		8B7E79BF07C0269C00687DEE = {
-			fileRef = 8B7E79BD07C0269C00687DEE;
 			isa = PBXBuildFile;
 			settings = {
 			};
@@ -1316,6 +1470,7 @@
 			dependencies = (
 				8B6D025607CBC6A8009A76DA,
 				8B561D9F07CE767A005990E1,
+				8B5620E307CEA700005990E1,
 			);
 			isa = PBXNativeTarget;
 			name = CQView;
@@ -1345,7 +1500,6 @@
 				8B5767C407BD1CE900068A64,
 				8B5767C507BD1CE900068A64,
 				8BC6662A07BFCF880075F57F,
-				8B7E79BE07C0269C00687DEE,
 				8BC8BA0707C32D32003705C3,
 				8B2D867407C824B500CDAFED,
 				8B6D011707CB190B009A76DA,
@@ -1355,6 +1509,7 @@
 				8B6D021107CB3312009A76DA,
 				8B6D02EB07CBFC89009A76DA,
 				8B5EB15007CD3B3E00B43D06,
+				8B56209D07CEA204005990E1,
 			);
 			isa = PBXResourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1388,10 +1543,10 @@
 				8BF72B0807B9E790003A3C82,
 				8B87411207BA9DA000EF7923,
 				8BC6662B07BFCF890075F57F,
-				8B7E79BF07C0269C00687DEE,
 				8B2D867507C824B600CDAFED,
 				8B6D015707CB23A0009A76DA,
 				8B6D01C207CB2EA2009A76DA,
+				8B56209E07CEA204005990E1,
 			);
 			isa = PBXSourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;

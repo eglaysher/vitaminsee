@@ -1,14 +1,28 @@
 //
-//  FileOperations.m
+//  PluginLayer.m
 //  CQView
 //
-//  Created by Elliot on 2/13/05.
+//  Created by Elliot on 2/24/05.
 //  Copyright 2005 __MyCompanyName__. All rights reserved.
 //
 
-#import "FileOperations.h"
+#import "PluginLayer.h"
+#import "ViewIconViewController.h"
 
-@implementation CQViewController (FileOperations)
+@implementation CQViewController (PluginLayer)
+
+-(void)deleteThisFile
+{
+	// Delete the current file...
+	[self deleteFile:currentImageFile];
+	
+	// fixme: Functionate/refactor this.
+	NSString* nextFile = [viewAsIconsController nameOfNextFile];
+	[viewAsIconsController removeFileFromList:currentImageFile];
+	[viewAsIconsController selectFile:nextFile];
+	
+	[self setCurrentFile:nextFile];
+}
 
 -(int)deleteFile:(NSString*)file
 {
@@ -20,6 +34,19 @@
 												  files:[NSArray arrayWithObject:[file lastPathComponent]]
 													tag:&tag];
 	return tag;
+}
+
+-(void)moveThisFile:(NSString*)destination
+{
+	if(![destination isEqual:currentDirectory])
+	{
+		NSString* nextFile = [viewAsIconsController nameOfNextFile];
+		[self moveFile:currentImageFile to:destination];
+		[viewAsIconsController removeFileFromList:currentImageFile];
+		[viewAsIconsController selectFile:nextFile];
+		
+		[self setCurrentFile:nextFile];
+	}
 }
 
 -(int)moveFile:(NSString*)file to:(NSString*)destination
@@ -34,6 +61,12 @@
 												  files:[NSArray arrayWithObject:[file lastPathComponent]]
 													tag:&tag];
 	return tag;
+}
+
+-(void)copyThisFile:(NSString*)destination
+{
+	if(![destination isEqual:currentDirectory])
+		[self copyFile:currentImageFile to:destination];
 }
 
 -(int)copyFile:(NSString*)file to:(NSString*)destination

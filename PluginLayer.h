@@ -1,8 +1,8 @@
 //
-//  FileOperations.h
+//  PluginLayer.h
 //  CQView
 //
-//  Created by Elliot on 2/13/05.
+//  Created by Elliot on 2/24/05.
 //  Copyright 2005 __MyCompanyName__. All rights reserved.
 //
 
@@ -10,8 +10,17 @@
 
 #import "CQViewController.h"
 
-@interface CQViewController (FileOperations)
+@interface CQViewController (PluginLayer)
+
+-(void)renameThisFileTo:(NSString*)newName;
+
+-(void)deleteThisFile;
 -(int)deleteFile:(NSString*)file;
+
+-(void)moveThisFile:(NSString*)destination;
 -(int)moveFile:(NSString*)file to:(NSString*)destination;
+
+-(void)copyThisFile:(NSString*)destination;
 -(int)copyFile:(NSString*)file to:(NSString*)destination;
+
 @end

@@ -27,7 +27,7 @@
 
 	// Floating NSPanels
 	IBOutlet NSPanel* sortingManager;
-	IBOutlet SortManagerController* sortManagerController;
+	SortManagerController* _sortManagerController;
 	
 	// Scale view controls
 	IBOutlet NSView* scaleView;
@@ -64,6 +64,8 @@
 	SS_PrefsController *prefs;
 }
 
+-(NSWindowController*)sortManagerController;
+
 // Moving about in 
 - (void)setCurrentDirectory:(NSString*)newCurrentDirectory file:(NSString*)newCurrentFile;
 - (void)setCurrentFile:(NSString*)newCurrentFile;
@@ -80,9 +82,6 @@
 -(IBAction)goBack:(id)sender;
 -(IBAction)goForward:(id)sender;
 
--(IBAction)deleteThisFile:(id)sender;
--(void)moveThisFile:(NSString*)destination;
--(void)copyThisFile:(NSString*)destination;
 
 -(IBAction)showSortManager:(id)sender;
 
@@ -90,6 +89,8 @@
 - (IBAction)scaleView100Pressed:(id)sender;
 - (IBAction)scaleViewPPressed:(id)sender;
 - (IBAction)scaleViewSliderMoved:(id)sender;
+
+-(void)zoomToFit:(id)sender;
 
 // Window delegate method to redraw the image when we resize...
 - (void)windowDidResize:(NSNotification*)notification;

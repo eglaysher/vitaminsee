@@ -11,7 +11,7 @@
 #import "Util.h"
 #import "NSString+FileTasks.h"
 #import "NSView+Set_and_get.h"
-#import "FileOperations.h"
+#import "PluginLayer.h"
 #import "SortManagerController.h"
 #import "IconFamily.h"
 #import "ImmutableToMutableTransformer.h"
@@ -28,7 +28,8 @@
   * Icons in path viewer [to emphasise that they are folders.
   * Cell drawing
   * Sort manager
- */
+  * Preferences [Pretty much done. I can add new stuff when I want...]
+*/
 
 /** Bugs fixed:
   * Highlighting gets screwed up when deleting a file...
@@ -54,22 +55,15 @@
    The Mac OSX File System -[NSFileManager displayNameAtPath:]
  */
 
-/* FIRST MILESTONE GOALS
+/* FIRST MILESTONE GOALS (Note that the milestones have gone apeshit...)
   * File renaming (Inspector!)
-*/
-
-/* SECOND MILESTONE GOALS
-  * Preferences
-    * Working on it
-  * Change arrow key behaviour - scroll around in image if possible in NSScrollView
-    and switch images
-    * Julius says see "CDisplay" (Comics Viewer)
+  * Keywords
+    * Use an Outline View! i.e.
 */
 
 /* THIRD MILSTONE GOALS
   * Draging of the picture
     * See "openHandCursor" and "closedHandCursor"
-  * Drag and drop
   * Fullscreen
   * Integrated help
 */
@@ -83,15 +77,12 @@
 /////////////////////////////////////////////////////////// POST CONTEST GOALS:
 
 /* FOURTH MILESTONE GOALS
-  * Keywords
-    * Use an Outline View! i.e.
-      * [Series]
-        * [Da_Capo]
-		  * Nemu_Asakura
-		  * Miharu_...
     
   * Integrate into the [Computer name]/[Macintosh HD]/.../ hiearachy...
   * Transparent Zip/Rar support
+  * Change arrow key behaviour - scroll around in image if possible in NSScrollView
+    and switch images
+    * Julius says see "CDisplay" (Comics Viewer)
 */
 
 /* POST 1.0 GOALS
@@ -164,6 +155,9 @@
 	
 	[self setupToolbar];
 	[self zoomToFit:self];
+	
+	// Set our plugins to nil
+	_sortManagerController = nil;
 	
 	// 
 	pathManager = [[NSUndoManager alloc] init];
@@ -283,41 +277,32 @@
 //	[self updateButtons];
 }
 
--(void)moveThisFile:(NSString*)destination
+-(NSWindowController*)sortManagerController
 {
-	if(![destination isEqual:currentDirectory])
+	if(!_sortManagerController)
 	{
-		NSString* nextFile = [viewAsIconsController nameOfNextFile];
-		[self moveFile:currentImageFile to:destination];
-		[viewAsIconsController removeFileFromList:currentImageFile];
-		[viewAsIconsController selectFile:nextFile];
+		NSLog(@"Looking for bundle");
+		NSString *bundlePath = [[[NSBundle mainBundle] builtInPlugInsPath]
+			stringByAppendingPathComponent:@"SortManager.cqvPlugin"];
+		NSBundle *windowBundle = [NSBundle bundleWithPath:bundlePath];
 		
-		[self setCurrentFile:nextFile];
+		if(windowBundle)
+		{
+			Class windowControllerClass = [windowBundle principalClass];
+			if(windowControllerClass)
+			{
+				_sortManagerController = [[windowControllerClass alloc] init];
+				[_sortManagerController setPluginLayer:self];
+			}
+		}
 	}
-}
-
--(void)copyThisFile:(NSString*)destination
-{
-	if(![destination isEqual:currentDirectory])
-		[self copyFile:currentImageFile to:destination];
-}
-
--(IBAction)deleteThisFile:(id)sender
-{
-	// Delete the current file...
-	[self deleteFile:currentImageFile];
-
-	// fixme: Functionate/refactor this.
-	NSString* nextFile = [viewAsIconsController nameOfNextFile];
-	[viewAsIconsController removeFileFromList:currentImageFile];
-	[viewAsIconsController selectFile:nextFile];
-	
-	[self setCurrentFile:nextFile];
+		
+	return _sortManagerController;
 }
 
 -(IBAction)showSortManager:(id)sender
-{
-	[sortManagerController showWindow:self];
+{	
+	[[self sortManagerController] showWindow:self];
 }
 
 -(BOOL)validateMenuItem:(NSMenuItem *)theMenuItem

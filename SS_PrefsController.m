@@ -343,6 +343,9 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:name forKey:Last_Pane_Defaults_Key];
     
+	// Update toolbar
+	[prefsToolbar setSelectedItemIdentifier:name];
+	
     return YES;
 }
 
@@ -427,7 +430,6 @@ float ToolbarHeightForWindow(NSWindow *window)
     }
 }
 
-
 - (NSToolbarDisplayMode)toolbarDisplayMode
 {
     return toolbarDisplayMode;
@@ -477,6 +479,11 @@ float ToolbarHeightForWindow(NSWindow *window)
 - (NSToolbarItem *)toolbar:(NSToolbar *)toolbar itemForItemIdentifier:(NSString *)itemIdentifier willBeInsertedIntoToolbar:(BOOL)flag
 {
     return [prefsToolbarItems objectForKey:itemIdentifier];
+}
+
+-(NSArray*)toolbarSelectableItemIdentifiers:(NSToolbar*)toolbar
+{
+	return panesOrder;
 }
 
 
