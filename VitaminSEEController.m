@@ -161,7 +161,7 @@
 
 // This initialization can safely be delayed until after the main window has
 // been shown.
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
+- (void)applicationWillFinishLaunching:(NSNotification *)aNotification
 {
 	// Whirl ourselves
 	[self startProgressIndicator];
@@ -178,9 +178,7 @@
 }
 
 -(BOOL)application:(NSApplication*)theApplication openFile:(NSString*)filename
-{
-//	NSLog(@"Opening file %@", filename);
-	
+{	
 	if([filename isImage])
 	{
 		// Show the window
