@@ -18,4 +18,6 @@
 
 -(IBAction)add:(id)sender;
 
+-(IBAction)showHelp:(id)sender;
+
 @end

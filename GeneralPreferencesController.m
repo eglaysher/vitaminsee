@@ -12,6 +12,13 @@
 @implementation GeneralPreferencesController
 /////////////////////////////////////////// Protocol: SS_PreferencePaneProtocol
 
+// GENERAL_PREFERENCES_ANCHOR
+-(IBAction)showHelp:(id)sender
+{
+	[[NSHelpManager sharedHelpManager] openHelpAnchor:@"GENERAL_PREFERENCES_ANCHOR"
+											   inBook:@"VitaminSEE Help"];
+}
+
 +(NSArray*)preferencePanes
 {
 	return [NSArray arrayWithObjects:[[[GeneralPreferencesController alloc]

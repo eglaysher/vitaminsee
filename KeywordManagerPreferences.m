@@ -26,9 +26,8 @@
 // Forum actions
 -(IBAction)showHelp:(id)sender
 {
-	// blah
-//	[[NSHelpManager sharedHelpManager] openHelpAnchor:<#(NSString *)anchor#> 
-//   inBook:<#(NSString *)book#>];
+	[[NSHelpManager sharedHelpManager] openHelpAnchor:@"KEYWORD_MANAGER_PREFERENCES_ANCHOR"
+											   inBook:@"VitaminSEE Help"];
 }
 
 -(IBAction)addKeyword:(id)sender

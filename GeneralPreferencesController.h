@@ -15,4 +15,6 @@
 	IBOutlet NSView* prefView;
 }
 
+-(IBAction)showHelp:(id)sender;
+
 @end
