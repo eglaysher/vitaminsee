@@ -116,17 +116,11 @@
 	[defaultPrefs setObject:[NSNumber numberWithBool:NO] forKey:@"GenerateThumbnailsInArchives"];
 
 	// Keyword preferences
-	KeywordNode* node = [[[KeywordNode alloc] init] autorelease];
+	KeywordNode* node = [[[KeywordNode alloc] initWithKeyword:@"Keywords"] autorelease];
 	[node addChild:[[[KeywordNode alloc] initWithKeyword:@"Anime"] autorelease]];
 	[node addChild:[[[KeywordNode alloc] initWithKeyword:@"Blogs"] autorelease]];
 	NSData* emptyKeywordNode = [NSKeyedArchiver archivedDataWithRootObject:node];
 	[defaultPrefs setObject:emptyKeywordNode forKey:@"KeywordTree"];
-	
-	// Default keywords for the Keyword Inspector
-	NSArray* keywordInspectorDefaults = [NSArray arrayWithObjects:
-		[NSDictionary dictionaryWithObjectsAndKeys:@"Photograph", @"Keyword", 
-			nil], nil];
-	[defaultPrefs setObject:keywordInspectorDefaults forKey:@"CommonKeywords"];
 	
 	// Default sort manager array
 	NSArray* sortManagerPaths = [NSArray arrayWithObjects:

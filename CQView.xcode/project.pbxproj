@@ -1122,6 +1122,7 @@
 		8BA1243207D26EC700614FF4 = {
 			buildActionMask = 2147483647;
 			files = (
+				8BEA47F507D69F30001ADD2E,
 				8BA1243D07D26F2A00614FF4,
 			);
 			isa = PBXSourcesBuildPhase;
@@ -1147,7 +1148,6 @@
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
 				INFOPLIST_FILE = "KeywordManagerPreferences-Info.plist";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
-				OPTIMIZATION_CFLAGS = "";
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "-framework Foundation -framework AppKit";
 				OTHER_REZFLAGS = "";
@@ -1606,6 +1606,12 @@
 		};
 		8BE97E2607ACD46B005D384C = {
 			fileRef = 8BE97E2407ACD46B005D384C;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8BEA47F507D69F30001ADD2E = {
+			fileRef = 8BA124AD07D2816300614FF4;
 			isa = PBXBuildFile;
 			settings = {
 			};

@@ -48,13 +48,13 @@
     if([decoder allowsKeyedCoding])
 	{
         // Can decode keys in any order
-		keyword = [[decoder decodeObjectForKey:@"Keyword"] copy];
-		children = [[decoder decodeObjectForKey:@"Children"] copy];
+		keyword = [[decoder decodeObjectForKey:@"Keyword"] mutableCopy];
+		children = [[decoder decodeObjectForKey:@"Children"] mutableCopy];
     } 
 	else
 	{		
-		keyword = [[decoder decodeObject] copy];
-		children = [[decoder decodeObject] copy];
+		keyword = [[decoder decodeObject] mutableCopy];
+		children = [[decoder decodeObject] mutableCopy];
     }
 	
     return self;

@@ -2,7 +2,7 @@
     IBClasses = (
         {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
         {
-            ACTIONS = {addCategory = id; addKeyword = id; remove = id; showHelp = id; }; 
+            ACTIONS = {addKeyword = id; remove = id; showHelp = id; }; 
             CLASS = KeywordManagerPreferences; 
             LANGUAGE = ObjC; 
             OUTLETS = {outlineView = NSOutlineView; prefView = NSView; }; 

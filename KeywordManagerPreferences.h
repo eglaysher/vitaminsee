@@ -19,8 +19,8 @@
 }
 
 -(IBAction)showHelp:(id)sender;
--(IBAction)addCategory:(id)sender;
 -(IBAction)addKeyword:(id)sender;
 -(IBAction)remove:(id)sender;
+-(void)saveKeywordsToUserDefaults;
 
 @end

@@ -32,19 +32,31 @@
 //   inBook:<#(NSString *)book#>];
 }
 
--(IBAction)addCategory:(id)sender
-{
-	// Add a category
-}
-
 -(IBAction)addKeyword:(id)sender
 {
+	NSLog(@"Sender: %@", sender);
+	id currentlySelectedItem = [outlineView itemAtRow:[outlineView selectedRow]];
+	NSLog(@"Currently selected item: %@", [currentlySelectedItem keyword]);
 	
+	[currentlySelectedItem addChild:[[[KeywordNode alloc] initWithKeyword:
+		@"NEW KEYWORD"] autorelease]];
+	[outlineView reloadItem:currentlySelectedItem reloadChildren:YES];
+	[outlineView expandItem:currentlySelectedItem];
+	// fixme: select new item.
+	//	[outlineView select
 }
 
 -(IBAction)remove:(id)sender
 {
-	
+	// Get the currently selected item.
+//	[outlineView
+}
+
+-(void)saveKeywordsToUserDefaults
+{
+	NSData* emptyKeywordNode = [NSKeyedArchiver archivedDataWithRootObject:keywordRoot];
+	[[NSUserDefaults standardUserDefaults] setObject:emptyKeywordNode
+											  forKey:@"KeywordTree"];
 }
 
 /////////////////////////////////////////// Protocol: SS_PreferencePaneProtocol
@@ -99,43 +111,47 @@
 ///////////////////////////////////////////// NSOutlineView Data Source methods
 
 - (int)outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(id)item {
-	if(item == nil)
-	{
-		NSLog(@"KR: %@", keywordRoot);
-		NSLog(@"The number Of children of <nil> is %d", [keywordRoot numberOfChildren]);
-		return [keywordRoot numberOfChildren];
-	}
-	else
-	{
-		NSLog(@"The number of children of %@ is %d", item, [item numberOfChildren]);
-		return [item numberOfChildren];
-	}
-//    return (item == nil) ? [keywordRoot numberOfChildren] : [item numberOfChildren];
+    return (item == nil) ? 1 : [item numberOfChildren];
 }
 
 - (BOOL)outlineView:(NSOutlineView *)outlineView isItemExpandable:(id)item {
-    return (item == nil) ? [keywordRoot numberOfChildren] : [item numberOfChildren];
+    return (item == nil) ? YES : [item numberOfChildren];
 }
 
 - (id)outlineView:(NSOutlineView *)outlineView child:(int)index ofItem:(id)item {
-	NSLog(@"KR: %@", keywordRoot);
-	id retVal = (item == nil) ? [[keywordRoot children] objectAtIndex:index] :
+	return (item == nil) ? keywordRoot :
 		[[item children] objectAtIndex:index];
-	NSLog(@"Item: %@", retVal);
-	return retVal;
 }
 
 - (id)outlineView:(NSOutlineView *)outlineView 
 objectValueForTableColumn:(NSTableColumn *)tableColumn 
 		   byItem:(id)item {
-    return (item == nil) ? 	@"/" : (id)[item keyword];
+    return (item == nil) ? 	@"Keywords" : (id)[item keyword];
 }
 
-// NSOutlinveView Delegate methods
+- (void)outlineView:(NSOutlineView*)outlineView
+	 setObjectValue:(id)object
+	 forTableColumn:(NSTableColumn*)tableColumn
+			 byItem:(id)item
+{
+	NSString* currentKeyword = [[item keyword] retain];
+	
+	NSLog(@"Changing %@ to %@", [item keyword], object);
+	[item setKeyword:(NSString*)object];
+	[outlineView reloadItem:item];
 
-- (BOOL)outlineView:(NSOutlineView *)outlineView shouldEditTableColumn:(NSTableColumn *)tableColumn item:(id)item {
-    return NO;
+	if(![currentKeyword isEqual:object])
+		[self saveKeywordsToUserDefaults];
+	
+	[currentKeyword release];
 }
 
+-(BOOL)outlineView:(NSOutlineView*)outlineView
+shouldEditTableColumn:(NSTableColumn*)tableColumn
+			  item:(id)item
+{
+	// Allow editing of any node other then the root node...
+	return (item != keywordRoot);
+}
 
 @end
