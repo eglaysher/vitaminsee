@@ -62,7 +62,7 @@
 }
 
 // Moving about in 
-- (void)setCurrentDirectory:(NSString*)newCurrentDirectory;
+- (void)setCurrentDirectory:(NSString*)newCurrentDirectory file:(NSString*)newCurrentFile;
 - (void)setCurrentFile:(NSString*)newCurrentFile;
 - (void)preloadFiles:(NSArray*)filesToPreload;
 

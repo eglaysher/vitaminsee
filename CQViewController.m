@@ -16,22 +16,39 @@
 #import "IconFamily.h"
 @implementation CQViewController
 
+// WHAT HAS BEEN DONE:
 /*
- TODO: 
- * Rework FSBrowserCell's 
- - (void)drawInteriorWithFrame:(NSRect)cellFrame inView:(NSView *)controlView;
-	for my own purposes
- * Keywords
- * Find out the legality of using Apple icons...
- * Implement the backHistory/forwardHistory!
- * All kinds of file operations.
-   * Rename files (this is proving to be kind of dificult!) (Done with delete/copy/etc)
- * Complete preferences for sort manager (the way GQView does it violates HIG)
- * Get drag on image for moving around an image...
- * Modify IconFamily to have a black line around the image...
- * Zoom is still screwing up in some places...
- * Integrate into the [Computer name]/[Macintosh HD]/.../ hiearachy...
+  * Select child folder on "Go Enclosing folder" 
  */
+
+// WHAT NEEDS TO BE DONE:
+
+/* FIRST MILESTONE GOALS
+  * Implement backHistory/forwardHistory
+  * Cell drawing with advanced icon...
+  * File renaming
+  * Actual size
+*/
+
+/* SECOND MILESTONE GOALS
+  * Preferences
+  * Sort manager
+  * Integrated help
+*/
+
+/* THIRD MILSTONE GOALS
+  * Drag and drop
+  * Fullscreen
+  * Modify IconFamily to have a black line around thumbnail.
+*/
+
+//// Post contest:
+
+/* FOURTH MILESTONE GOALS
+  * Keywords
+  * Integrate into the [Computer name]/[Macintosh HD]/.../ hiearachy...
+  * Transparent Zip/Rar support
+*/
 
 // Set up this application's default preferences
 + (void)initialize 
@@ -97,7 +114,8 @@
 	
 	// set our current directory 
 	[self setCurrentDirectory:[[NSUserDefaults standardUserDefaults] 
-		objectForKey:@"DefaultStartupPath"]];		
+		objectForKey:@"DefaultStartupPath"]
+						 file:nil];		
 }
 
 // ============================================================================
@@ -110,8 +128,10 @@
 	currentFileView = nextView;
 }
 
-- (void)setCurrentDirectory:(NSString*)newCurrentDirectory
+- (void)setCurrentDirectory:(NSString*)newCurrentDirectory file:(NSString*)newCurrentFile
 {
+	NSLog(@"Setting directory to %@ and file to %@", newCurrentDirectory, newCurrentFile);
+	
 	// Set the current Directory
 	[currentDirectory release];
 	currentDirectory = [newCurrentDirectory stringByStandardizingPath];
@@ -144,13 +164,23 @@
 	// appropriatly...
 	if(currentFileView == [viewAsIconsController view])
 		[viewAsIconsController setCurrentDirectory:newCurrentDirectory];
+	
+	if(newCurrentFile)
+	{
+		NSLog(@"Setting current file to %@", newCurrentFile);
+		[self setCurrentFile:newCurrentFile];
+		[viewAsIconsController selectFile:newCurrentFile];
+	}
 }
 
 -(IBAction)goEnclosingFolder:(id)sender
 {
 	int count = [currentDirectoryComponents count] - 1;
+	NSString* curDirCopy = [currentDirectory retain];
 	[self setCurrentDirectory:[NSString pathWithComponents:
-		[currentDirectoryComponents subarrayWithRange:NSMakeRange(0, count)]]];
+		[currentDirectoryComponents subarrayWithRange:NSMakeRange(0, count)]]
+						 file:curDirCopy];
+	[curDirCopy release];
 }
 
 -(IBAction)goBack:(id)sender
@@ -232,7 +262,11 @@
 {
 	NSString* newDirectory = [NSString pathWithComponents:
 		[currentDirectoryComponents subarrayWithRange:NSMakeRange(0,[sender tag])]];
-	[self setCurrentDirectory:newDirectory];
+	NSString* directoryToSelect = nil;
+	if([sender tag] < [currentDirectoryComponents count])
+		directoryToSelect = [NSString pathWithComponents:
+			[currentDirectoryComponents subarrayWithRange:NSMakeRange(0,[sender tag]+1)]];
+	[self setCurrentDirectory:newDirectory file:directoryToSelect];
 }
 
 - (void)setCurrentFile:(NSString*)newCurrentFile

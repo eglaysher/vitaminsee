@@ -12,6 +12,8 @@
 #import "CQViewController.h"
 #import "NSString+FileTasks.h"
 
+#define CACHE_SIZE 3
+
 @interface ImageTaskManager (Private)
 -(id)evictImages;
 -(void)doBuildIcon:(NSDictionary*)options;
@@ -165,6 +167,9 @@
 {	
 	pthread_mutex_lock(&taskQueueLock);
 
+	while([preloadQueue count] > CACHE_SIZE)
+		[preloadQueue removeObjectAtIndex:0];
+	
 	// Add the object
 	[preloadQueue addObject:path];
 	
@@ -216,7 +221,7 @@
 -(id)evictImages
 {
 	// ASSUMPTION: imageCacheLock is ALREADY locked!
-	if([imageCache count] > 3)
+	if([imageCache count] > CACHE_SIZE)
 	{
 		NSString* oldestPath = nil;
 		NSDate* oldestDate = [NSDate date]; // set oldest as now, so anything older
@@ -347,7 +352,7 @@
 									   imageY, canScaleProportionally, ratioToScale,
 									   &canGetAwayWithQuickRender);
 	
-//	NSLog(@"DispalyX: %d, DisplayY: %d", display.width, display.height);
+	NSLog(@"Image:[%d, %d] Dispaly:[%d, %d]", imageX, imageY, display.width, display.height);
 	
 	NSImage* imageToRet;
 	if(imageRepIsAnimated(imageRep) || canGetAwayWithQuickRender)
@@ -401,10 +406,10 @@
 		
 		// Now display the final image:
 		[self sendDisplayCommandWithImage:imageToRet width:imageX height:imageY];
-		
-		// An image has been displayed so stop the spinner
-		[cqViewController stopProgressIndicator];
 	}
+	
+	// An image has been displayed so stop the spinner
+	[cqViewController stopProgressIndicator];	
 }
 
 -(BOOL)newDisplayCommandInQueue

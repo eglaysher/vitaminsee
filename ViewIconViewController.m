@@ -131,7 +131,7 @@ createRowsForColumn:(int)column
 	if([absolutePath isDir])
 	{
 		// Get the first image in the directory:		
-		[controller setCurrentDirectory:absolutePath];
+		[controller setCurrentDirectory:absolutePath file:nil];
 	}
 	
 	// [controller setCurrentDirectory:] will call [self setCurrentDirectory:] which
