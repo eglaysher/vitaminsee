@@ -53,6 +53,14 @@
 	[keywords release];
 }
 
+-(void)windowDidLoad
+{
+	[super windowDidLoad];
+	
+	[self setShouldCascadeWindows:NO];
+	[self setWindowFrameAutosaveName:@"keywordManagerWindowPosition"];
+}
+
 ////////////////////////////////////////////////// Actions from the form
 -(IBAction)cellClicked:(id)sender
 {

@@ -14,6 +14,14 @@
 	return self;
 }
 
+-(void)windowDidLoad
+{
+	[super windowDidLoad];
+	
+	[self setShouldCascadeWindows:NO];
+	[self setWindowFrameAutosaveName:@"sortManagerWindowPosition"];
+}
+
 -(IBAction)moveButtonPushed:(id)sender
 {
 	int rowIndex = [sender selectedRow];

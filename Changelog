@@ -1,3 +1,16 @@
+0.5.3 Feature Release
+---------------------
+* Changed the SortManager so that the NSTableView takes up the entire window, 
+  and also, made it resizable. I was testing it the other day and the lack of 
+  resizing screwed things up.
+* Allow drag and drop reordering in the Sort Manager Preferences.
+
+0.5.2 Feature Release
+---------------------
+* You can now drag image files and folders to the VitaminSEE icon. I've
+  registered VitaminSEE as a handler for folders, JPEGS, GIFs and TIFFs. Now
+  all I need to do if figure out how to reigster with the Finder's "Open 
+  With..." menu...
 
 0.5.1 Bugfix Release
 --------------------

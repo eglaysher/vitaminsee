@@ -1175,6 +1175,8 @@
 		8B6D010E07CB179C009A76DA = {
 			children = (
 				8B46278107E24B050017B19D,
+				8B7DDCCA07F8E82400FE20E4,
+				8B7DDCCB07F8E82400FE20E4,
 				8B6D020F07CB3312009A76DA,
 				8B6D021007CB3312009A76DA,
 				8B6D01F907CB327F009A76DA,
@@ -1281,6 +1283,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B6D029007CBC865009A76DA,
+				8B7DDCCD07F8E82400FE20E4,
 			);
 			isa = PBXSourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1512,6 +1515,28 @@
 		};
 		8B7C0C3D07B5FEB5005DB6FF = {
 			fileRef = 8B7C0C3B07B5FEB5005DB6FF;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B7DDCCA07F8E82400FE20E4 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			path = DNDArrayController.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B7DDCCB07F8E82400FE20E4 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
+			path = DNDArrayController.m;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B7DDCCD07F8E82400FE20E4 = {
+			fileRef = 8B7DDCCB07F8E82400FE20E4;
 			isa = PBXBuildFile;
 			settings = {
 			};

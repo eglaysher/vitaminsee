@@ -15,7 +15,8 @@
 
 // I want to support keywords and comments in PNGs and GIFs, but that would
 // require that I write a block of code with libpng and libgif to read and
-// write those metadata blocks. Right now, there is no such program like exiv2…
+// write those metadata blocks. Right now, there is no such program like exiv2
+
 -(BOOL)supportsKeywords:(NSString*)file
 {
 	NSString* type = [[file pathExtension] uppercaseString];
@@ -61,6 +62,8 @@
 		[viewAsIconsController removeFile:currentImageFile];
 		[viewAsIconsController addFile:newPath];
 	}
+	else
+		AlertSoundPlay();
 }
 
 -(void)deleteThisFile

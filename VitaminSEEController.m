@@ -128,6 +128,13 @@
   * Image Search
 */
 
+/*
+ * Neccessary changes to the SortManager:
+ * * See if I can solve the problem of the panel gaining focus.
+ * * Undo/redo for moving files!
+ * * Undo/redo for everything else.
+ */
+
 + (void)initialize 
 {
 	// Set up our custom NSValueTransformer
@@ -224,7 +231,7 @@
 
 // This initialization can safely be delayed until after the main window has
 // been shown.
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
+- (void)applicationWillFinishLaunching:(NSNotification *)aNotification
 {
 	// Whirl ourselves
 	[self startProgressIndicator];
@@ -241,7 +248,7 @@
 }
 
 -(BOOL)application:(NSApplication*)theApplication openFile:(NSString*)filename
-{
+{	
 	if([filename isImage])
 	{
 		// Show the window
