@@ -5,6 +5,7 @@
 @class ImageTaskManager;
 @class ViewIconViewController;
 @class PointerWrapper;
+@class SortManagerController;
 
 @protocol ImageDisplayer 
 -(void)displayImage;
@@ -22,6 +23,10 @@
 	IBOutlet NSWindow* viewerWindow;
 	IBOutlet NSScrollView* scrollView;
 
+	// Floating NSPanels
+	IBOutlet NSPanel* sortingManager;
+	IBOutlet SortManagerController* sortManagerController;
+	
 	// Scale view controls
 	IBOutlet NSView* scaleView;
 	IBOutlet NSSlider* scaleSlider;
@@ -70,6 +75,8 @@
 -(IBAction)goForward:(id)sender;
 
 -(IBAction)deleteThisFile:(id)sender;
+
+-(IBAction)showSortManager:(id)sender;
 
 // Scaling stuff
 - (IBAction)scaleView100Pressed:(id)sender;

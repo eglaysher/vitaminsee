@@ -9,6 +9,7 @@
                 scaleView100Pressed = id; 
                 scaleViewPPressed = id; 
                 scaleViewSliderMoved = id; 
+                showSortManager = id; 
             }; 
             CLASS = CQViewController; 
             LANGUAGE = ObjC; 
@@ -21,12 +22,26 @@
                 scaleSlider = NSSlider; 
                 scaleView = NSView; 
                 scrollView = NSScrollView; 
+                sortManagerController = SortManagerController; 
+                sortingManager = NSPanel; 
                 viewAsIconsController = ViewIconViewController; 
                 viewerWindow = NSWindow; 
             }; 
             SUPERCLASS = NSObject; 
         }, 
         {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {
+            ACTIONS = {
+                actionButtonClicked = id; 
+                addButtonClicked = id; 
+                copyMoveSelectionChanged = id; 
+                removeButtonClicked = id; 
+            }; 
+            CLASS = SortManagerController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {mainController = CQViewController; }; 
+            SUPERCLASS = NSWindowController; 
+        }, 
         {
             CLASS = ViewIconViewController; 
             LANGUAGE = ObjC; 

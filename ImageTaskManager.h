@@ -27,6 +27,8 @@
 	pthread_mutex_t imageScalingProperties;
 	
 	NSImage* currentImage;
+	int currentImageWidth;
+	int currentImageHeight;
 	
 	id cqViewController;
 }
@@ -40,5 +42,7 @@
 -(void)setScaleRatio:(float)newScaleRatio;
 -(void)setScaleProportionally:(BOOL)newScaleProportionally;
 -(void)setContentViewSize:(NSSize)newContentViewSize;
+
+-(NSImage*)getCurrentImageWithWidth:(int*)width height:(int*)height;
 
 @end

@@ -15,6 +15,7 @@
 	IBOutlet NSBrowser* ourBrowser;
 	IBOutlet NSView* ourView;
 	
+	NSCell* currentlySelectedCell;
 	NSString* currentDirectory;
 	NSMutableArray* fileList;
 }

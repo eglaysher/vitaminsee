@@ -16,7 +16,7 @@
 -(void)doPreloadImage:(NSString*)path;
 -(void)doDisplayImage:(NSString*)imageToDisplay;
 -(BOOL)newDisplayCommandInQueue;
--(void)sendDisplayCommandWithImage:(NSImage*)image;
+-(void)sendDisplayCommandWithImage:(NSImage*)image width:(int)width height:(int)height;
 @end
 
 // This category is here because Distributed Objects are TOTALLY BRAIN DEAD.
@@ -242,6 +242,16 @@
 	return imageRep;
 }
 
+-(NSImage*)getCurrentImageWithWidth:(int*)width height:(int*)height
+{
+	if(width)
+		*width = currentImageWidth;
+	if(height)
+		*height = currentImageHeight;
+	
+	return currentImage;
+}
+
 @end
 
 @implementation ImageTaskManager (Private)
@@ -289,11 +299,6 @@
 		[imageCache setObject:dict forKey:path];
 	}
 	pthread_mutex_unlock(&imageCacheLock);	
-}
-
--(NSImage*)getCurrentImage
-{
-	return currentImage;
 }
 
 -(void)doDisplayImage:(NSString*)path
@@ -377,7 +382,7 @@
 		[imageToRet setSize:NSMakeSize(display.width, display.height)];
 		
 		[imageToRet retain];
-		[self sendDisplayCommandWithImage:imageToRet];
+		[self sendDisplayCommandWithImage:imageToRet width:imageX height:imageY];
 		[imageToRet release];
 	}
 	else
@@ -393,7 +398,7 @@
 			[imageRep drawInRect:NSMakeRect(0,0,display.width,display.height)];
 		}
 		[imageToRet unlockFocus];		
-		[self sendDisplayCommandWithImage:imageToRet];
+		[self sendDisplayCommandWithImage:imageToRet width:imageX height:imageY];
 		
 		// Now give us a chance to BAIL if we've already been given another display
 		// command
@@ -414,7 +419,7 @@
 		[imageToRet unlockFocus];
 		
 		// Now display the final image:
-		[self sendDisplayCommandWithImage:imageToRet];
+		[self sendDisplayCommandWithImage:imageToRet width:imageX height:imageY];
 	}	
 }
 
@@ -436,11 +441,15 @@
 	return retVal;
 }
 
--(void)sendDisplayCommandWithImage:(NSImage*)image
+-(void)sendDisplayCommandWithImage:(NSImage*)image width:(int)width height:(int)height
 {
 	[currentImage release];
 	[image retain];
 	currentImage = image;
+	
+	currentImageWidth = width;
+	currentImageHeight = height;
+	
 	[cqViewController displayImage];
 }
 

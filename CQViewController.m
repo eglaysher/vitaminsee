@@ -21,10 +21,11 @@
  * Find out the legality of using Apple icons...
  * Implement the backHistory/forwardHistory!
  * All kinds of file operations.
-   * Delete files
+   * Rename files (this is proving to be kind of dificult!)
    * et cetera! 
  * Complete sort manager (a la GQView)
  * Get drag on image for moving around an image...
+ * Modify IconFamily to have a black line around the image...
  */
 
 // Set up this application's default preferences
@@ -34,15 +35,27 @@
 	[defaultPrefs setObject:[NSHomeDirectory() stringByAppendingPathComponent:
 		@"Pictures/Wallpaper/Nature Wallpaper"] forKey:@"DefaultStartupPath"];
     
+	// Default sort manager array
+	NSArray* sortManagerPaths = [NSArray arrayWithObjects:
+		[NSDictionary dictionaryWithObjectsAndKeys:@"Pictures", @"Name",
+			[NSHomeDirectory() stringByAppendingPathComponent:@"Pictures"], @"Path", nil], 
+		[NSDictionary dictionaryWithObjectsAndKeys:@"4chan", @"Name",
+			[NSHomeDirectory() stringByAppendingPathComponent:@"4chan"], @"Path", nil], 
+		[NSDictionary dictionaryWithObjectsAndKeys:@"Wallpaper", @"Name",
+			[NSHomeDirectory() stringByAppendingPathComponent:@"Pictures/Wallpaper"], @"Path", nil], 
+		nil];
+	[defaultPrefs setObject:sortManagerPaths forKey:@"SortManagerPaths"];
+		
 	[[NSUserDefaults standardUserDefaults] registerDefaults: defaultPrefs];
 }
 
 - (void)awakeFromNib
 {
+	// Set up the file viewer on the left
 	[self setViewAsView:[viewAsIconsController view]];
 	[viewerWindow setInitialFirstResponder:[viewAsIconsController view]];	
 	
-	// Now set up the scroll view...
+	// Set up the scroll view on the right
 	id docView = [[scrollView documentView] retain];
 	id newClipView = [[SBCenteringClipView alloc] initWithFrame:[[scrollView contentView] frame]];
 	[newClipView setBackgroundColor:[NSColor windowBackgroundColor]];
@@ -53,14 +66,16 @@
 	
 	[imageViewer setAnimates:YES];
 	
+	// Use our file size formatter for formating the "[image size]" text label
 	FileSizeFormatter* fsFormatter = [[[FileSizeFormatter alloc] init] autorelease];
 	[[fileSizeLabel cell] setFormatter:fsFormatter];
 	
 	[self setupToolbar];
 	scaleProportionally = NO;
 
-	// First, we'll need to setup a network connection between ourself and our
-	// worker thread...
+	// 
+	
+	// Now we start work on thread communication.
 	NSPort *port1 = [NSPort port];
 	NSPort *port2 = [NSPort port];
 	NSConnection* kitConnection = [[NSConnection alloc] 
@@ -72,6 +87,7 @@
 	// Launch the other thread and tell it to connect back to us.
 	imageTaskManager = [[ImageTaskManager alloc] initWithPortArray:portArray];
 	
+	// set our current directory 
 	[self setCurrentDirectory:[[NSUserDefaults standardUserDefaults] 
 		objectForKey:@"DefaultStartupPath"]];		
 }
@@ -139,6 +155,28 @@
 	
 }
 
+-(void)moveThisFile:(NSString*)destination
+{
+	// fixme: We need to select the next file in this directory!
+	// fixme: Code organization: We should move all these file operations into
+	//        a category...
+	int tag;
+	[[NSWorkspace sharedWorkspace] performFileOperation:NSWorkspaceMoveOperation
+												 source:currentDirectory
+											destination:destination
+												  files:[NSArray arrayWithObject:[currentImageFile lastPathComponent]]
+													tag:&tag];
+	
+	[viewAsIconsController removeFileFromList:currentImageFile];
+}
+
+-(void)copyThisFile:(NSString*)destination
+{
+	
+}
+
+// fixme: The delete function grows at O(n) to the number of files in the directory.
+// This is bullshit.
 -(IBAction)deleteThisFile:(id)sender
 {
 	NSString* fileToDelete = currentImageFile;
@@ -182,6 +220,11 @@
 		// Finally, we set the file to the next file so we display something
 		[self setCurrentFile:nextFile];
 	}
+}
+
+-(IBAction)showSortManager:(id)sender
+{
+	[sortManagerController showWindow:self];
 }
 
 -(BOOL)validateMenuItem:(NSMenuItem *)theMenuItem
@@ -320,14 +363,13 @@
 -(void)displayImage
 {
 	// Get a copy of the current display image from the ImageTaskManager
-	NSImage* image = [imageTaskManager getCurrentImage];
+	int x, y;
+	NSImage* image = [imageTaskManager getCurrentImageWithWidth:&x height:&y];
 //	NSLog(@"Image is %@", image);
 //	NSLog(@"Image is proxy: %d", [image isProxy]);
 //	NSLog(@"Main thread got a display image command! Image is %@", image);
 	[imageViewer setImage:image];
 	[imageViewer setFrameSize:[image size]];
-	int x = [image size].width;
-	int y = [image size].height;
 	[imageSizeLabel setStringValue:[NSString stringWithFormat:@"%i x %i", 
 		x, y]];
 }

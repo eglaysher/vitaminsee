@@ -7,6 +7,8 @@
 	objects = {
 		080E96DDFE201D6D7F000001 = {
 			children = (
+				8BC6662807BFCF880075F57F,
+				8BC6662907BFCF880075F57F,
 				8B87410F07BA9D9F00EF7923,
 				8B87411007BA9D9F00EF7923,
 				8BF72B0507B9E78F003A3C82,
@@ -176,6 +178,7 @@
 				8B5767C207BD1CE900068A64,
 				8D1107310486CEB800E47090,
 				089C165CFE840E0CC02AAC07,
+				8B568D8907BFF8A000822FD2,
 				29B97318FDCFA39411CA2CEA,
 			);
 			isa = PBXGroup;
@@ -340,6 +343,19 @@
 		};
 		8B4A5A9607B74EDC00F30E03 = {
 			fileRef = 8B4A5A9207B74EDC00F30E03;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B568D8907BFF8A000822FD2 = {
+			isa = PBXFileReference;
+			lastKnownFileType = wrapper.nib;
+			path = Preferences.nib;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B568D8A07BFF8A000822FD2 = {
+			fileRef = 8B568D8907BFF8A000822FD2;
 			isa = PBXBuildFile;
 			settings = {
 			};
@@ -519,6 +535,34 @@
 		};
 		8B87411207BA9DA000EF7923 = {
 			fileRef = 8B87411007BA9D9F00EF7923;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8BC6662807BFCF880075F57F = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			path = SortManagerController.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8BC6662907BFCF880075F57F = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
+			path = SortManagerController.m;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8BC6662A07BFCF880075F57F = {
+			fileRef = 8BC6662807BFCF880075F57F;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8BC6662B07BFCF890075F57F = {
+			fileRef = 8BC6662907BFCF880075F57F;
 			isa = PBXBuildFile;
 			settings = {
 			};
@@ -719,6 +763,8 @@
 				8B5767C307BD1CE900068A64,
 				8B5767C407BD1CE900068A64,
 				8B5767C507BD1CE900068A64,
+				8BC6662A07BFCF880075F57F,
+				8B568D8A07BFF8A000822FD2,
 			);
 			isa = PBXResourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -751,6 +797,7 @@
 				8BF72A8A07B9D14C003A3C82,
 				8BF72B0807B9E790003A3C82,
 				8B87411207BA9DA000EF7923,
+				8BC6662B07BFCF890075F57F,
 			);
 			isa = PBXSourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;

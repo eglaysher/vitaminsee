@@ -11,6 +11,30 @@
 #import "CQViewController.h"
 #import "NSString+FileTasks.h"
 
+///////////////
+//@interface NSMatrixWithClickEditing : NSMatrix {
+//}
+//@end
+//
+//@implementation NSMatrixWithClickEditing
+//- (void)selectCellAtRow:(int)row column:(int)column
+//{
+//	NSLog(@"Select Cell at row:%d column:%d", row, column);
+//	// First, we need to know which item we are dealing with
+//	NSCell* cellToSelect = [super cellAtRow:row column:column];
+//	
+//	// We tell all selected cells that they aren't edited anymore
+//	NSEnumerator* e = [[self selectedCells] objectEnumerator];
+//	NSCell* cell;
+//	while(cell = [e nextObject])
+//		if([cell isEqualTo:cellToSelect])
+//			[cell setEditable:NO];
+//		
+//	[super selectCellAtRow:row column:column];
+//	[[super cellAtRow:row column:column] setEditable:YES];
+//}
+//@end
+
 @interface ViewIconViewController (Private)
 -(void)rebuildInternalFileArray;
 @end
@@ -22,6 +46,8 @@
 	[ourBrowser setTarget:self];
 	[ourBrowser setAction: @selector(singleClick:)];
 	[ourBrowser setDoubleAction: @selector(doubleClick:)];	
+	
+	currentlySelectedCell = nil;
 }
 
 -(void)setCurrentDirectory:(NSString*)path
@@ -39,6 +65,7 @@
 	
 	// Now reload the data
 	[ourBrowser setCellClass:[ViewAsIconViewCell class]];
+//	[ourBrowser setMatrixClass:[NSMatrixWithClickEditing class]];
 	[ourBrowser loadColumnZero];
 	
 	// Select the first file
@@ -65,13 +92,37 @@ willDisplayCell:(id)cell
 	[(ViewAsIconViewCell*)cell setCellPropertiesFromPath:[fileList objectAtIndex:row]];
 }
 
+//browser:selectRow:inColumn:
+//- (BOOL)browser:(NSBrowser *)sender selectRow:(int)row inColumn:(int)column
+//{
+//	// Okay, first we actually SELECT the row/column. We can't call
+//	// -[NSBrowser selectRow:inColumn:] because that function is calling US...
+//	[[sender matrixInColumn:column] selectCellAtRow:row column:0];
+//		
+//	NSLog(@"Setting to editable...");
+//	// Now we set the row/column cell to editable.
+//	[[sender loadedCellAtRow:row column:column] setEditable:YES];
+//	
+//	return YES;
+//}
+
 -(void)singleClick:(NSBrowser*)sender
 {
+	// Check to see if the user clicked on the cell already selected.
+//	id selectedCell = [sender selectedCell];
+//	if(selectedCell == currentlySelectedCell)
+//	{
+//		[self editCurrentCell:sender];
+//		return;
+//	}
+	
 	// grab the image path
 	NSString* absolutePath = [[sender path] fileWithPath:currentDirectory];
 	NSMutableArray* preloadList = [NSMutableArray array];
 	
 	[controller setCurrentFile:absolutePath];
+	
+//	currentlySelectedCell = selectedCell;
 	
 	// If this is a directory, preload the first file of
 	if([absolutePath isDir])
@@ -126,6 +177,36 @@ willDisplayCell:(id)cell
 	
 	// [controller setCurrentDirectory:] will call [self setCurrentDirectory:] which
 	// will manage all our stuff...
+}
+
+-(void)editCurrentCell:(NSBrowser*)sender
+{
+	NSCell *selectedCell = [sender selectedCell];
+	NSRect cellFrame;
+	NSMatrix *theMatrix;
+	int selectedRow, selectedColumn;
+	
+	//these might be slightly different depending on what cell you
+	// want to edit
+	selectedColumn = [sender selectedColumn];
+	selectedRow = [sender selectedRowInColumn:selectedColumn];
+	
+	theMatrix = [sender matrixInColumn:selectedColumn];
+	
+	//note that the matrix itself only has one column, so we pass in 0
+	cellFrame = [theMatrix cellFrameAtRow:selectedRow column:0];
+	[selectedCell setEditable:YES];
+	[selectedCell editWithFrame:cellFrame
+						 inView:theMatrix
+						 editor:[[sender window] fieldEditor:YES 
+												   forObject:selectedCell]
+		
+					   delegate:self
+						  event:nil]; 
+	[selectedCell setEditable:NO];
+//	[selectedCell update
+		[theMatrix updateCell:selectedCell];
+//	[theMatrix set`
 }
 
 -(void)removeFileFromList:(NSString*)absolutePath

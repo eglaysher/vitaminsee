@@ -13,6 +13,9 @@ static NSString* MainViewerWindowToolbarIdentifier = @"Main Viewere Window Toolb
 
 // Our 
 static NSString* ScaleViewToolbarID = @"Scale view control Toolbar Identifier";
+static NSString* ZoomOutToolbarID = @"Zoom out Toolbar Identifier";
+static NSString* ZoomInToolbarID = @"Zoom in Toolbar Identifier";
+static NSString* ZoomToFitToolbarID = @"Zoom to Fit Toolbar Identifier";
 
 @implementation CQViewController (ToolbarDelegate)
 
