@@ -13,6 +13,9 @@
 @interface SortManagerPreferencesController : NSObject <SS_PreferencePaneProtocol> 
 {
 	IBOutlet NSView* prefView;
+	IBOutlet NSArrayController* listOfDirectories;
 }
+
+-(IBAction)add:(id)sender;
 
 @end

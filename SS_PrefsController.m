@@ -62,7 +62,7 @@
 - (id)initWithPanesSearchPath:(NSString*)path bundleExtension:(NSString *)ext
 {
     if (self = [super init]) {
-        [self setDebug:YES];
+        [self setDebug:NO];
         preferencePanes = [[NSMutableDictionary alloc] init];
         panesOrder = [[NSMutableArray alloc] init];
         
@@ -242,7 +242,7 @@
                     NSEnumerator *enumerator = [panes objectEnumerator];
                     id <SS_PreferencePaneProtocol> aPane;
                     
-                    while (aPane = [enumerator nextObject]) {
+                    while (aPane = [enumerator nextObject]) {						
                         [panesOrder addObject:[aPane paneName]];
                         [preferencePanes setObject:aPane forKey:[aPane paneName]];
                     }

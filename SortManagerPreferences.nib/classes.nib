@@ -2,9 +2,10 @@
     IBClasses = (
         {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
         {
+            ACTIONS = {add = id; remove = id; }; 
             CLASS = SortManagerPreferencesController; 
             LANGUAGE = ObjC; 
-            OUTLETS = {prefView = NSView; }; 
+            OUTLETS = {listOfDirectories = NSArrayController; prefView = NSView; }; 
             SUPERCLASS = NSObject; 
         }
     ); 

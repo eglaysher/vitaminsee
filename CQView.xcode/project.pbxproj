@@ -43,7 +43,7 @@
 				8BD011D907A99DFB00AA4BAA,
 			);
 			isa = PBXGroup;
-			name = Classes;
+			name = "Main Program Classes";
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -193,7 +193,6 @@
 				8B5767C207BD1CE900068A64,
 				8D1107310486CEB800E47090,
 				089C165CFE840E0CC02AAC07,
-				8B568D8907BFF8A000822FD2,
 				29B97318FDCFA39411CA2CEA,
 			);
 			isa = PBXGroup;
@@ -390,13 +389,6 @@
 			settings = {
 			};
 		};
-		8B568D8907BFF8A000822FD2 = {
-			isa = PBXFileReference;
-			lastKnownFileType = wrapper.nib;
-			path = Preferences.nib;
-			refType = 4;
-			sourceTree = "<group>";
-		};
 		8B5767C007BD1CE800068A64 = {
 			isa = PBXFileReference;
 			lastKnownFileType = image.tiff;
@@ -545,12 +537,6 @@
 			refType = 4;
 			sourceTree = "<group>";
 		};
-		8B6D019907CB29EF009A76DA = {
-			fileRef = 8B6D019807CB29EF009A76DA;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
 		8B6D01C007CB2EA2009A76DA = {
 			fileEncoding = 30;
 			isa = PBXFileReference;
@@ -631,7 +617,6 @@
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
 				INFOPLIST_FILE = "SortManagerPreferences-Info.plist";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
-				OPTIMIZATION_CFLAGS = "";
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "-framework Foundation -framework AppKit";
 				OTHER_REZFLAGS = "";
@@ -1157,7 +1142,6 @@
 				8B2D867407C824B500CDAFED,
 				8B6D011707CB190B009A76DA,
 				8B6D015607CB23A0009A76DA,
-				8B6D019907CB29EF009A76DA,
 				8B6D01C307CB2EA2009A76DA,
 				8B6D01C907CB2EB3009A76DA,
 				8B6D021107CB3312009A76DA,

@@ -27,13 +27,20 @@
   * Implement backHistory/forwardHistory
   * Icons in path viewer [to emphasise that they are folders.
   * Cell drawing
-*/
+ */
 
 /** Bugs fixed:
   * Highlighting gets screwed up when deleting a file...
  */
 
 //////////////////////////////////////////////////////// WHAT NEEDS TO BE DONE:
+
+/* THINGS TO ASK AT THE COCOA MEETING:
+  * How to (properly) truncate the text in my NSCell...
+  * How to display the editing field in my NSCell so I can krunking get renaming
+    working...
+  * Legality of using Apple icons? Modification?
+ */
 
 /* FIRST MILESTONE GOALS
   * File renaming
@@ -95,7 +102,8 @@
 			[NSHomeDirectory() stringByAppendingPathComponent:@"Pictures/Wallpaper"], @"Path", nil], 
 		nil];
 	[defaultPrefs setObject:sortManagerPaths forKey:@"SortManagerPaths"];
-		
+	[defaultPrefs setObject:[NSNumber numberWithBool:YES] forKey:@"SortManagerInContextMenu"];
+	
 	[[NSUserDefaults standardUserDefaults] registerDefaults: defaultPrefs];
 }
 
@@ -170,9 +178,6 @@
 	   ![currentDirectory isEqual:newCurrentDirectory])
 		[[pathManager prepareWithInvocationTarget:self]
 			setCurrentDirectory:currentDirectory file:nil];
-//		[pathManager registerUndoWithTarget:self
-//								   selector:@selector(setCurrentDirectory:)
-//									 object:currentDirectory];
 	
 	// Clear the thumbnails being displayed.
 	if(![newCurrentDirectory isEqualTo:currentDirectory])

@@ -4,6 +4,24 @@
 
 @implementation SortManagerController
 
+// I would love to destory all this code with Cocoa bindings. Regretably, it 
+// seems that NSArrayController and NSActionCell don't play well together...
+
+-(void)awakeFromNib
+{
+	// We want to know if there is a possible change in the list of directories
+	// we show to the user...
+	[[NSNotificationCenter defaultCenter] addObserver:self
+											 selector:@selector(userDefaultsChanged:)
+												 name:NSUserDefaultsDidChangeNotification
+											   object:nil];
+}
+
+-(void)userDefaultsChanged:(id)sender
+{
+	[tableView reloadData];
+}
+
 - (IBAction)manageButtonClicked:(id)sender
 {
 	// fixme: do something.
