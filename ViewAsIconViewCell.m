@@ -61,6 +61,13 @@
 
 	[self setStringValue:[thisCellsFullPath lastPathComponent]];
 	
+	if([path isDir])
+		[self setIconImage:[[NSWorkspace sharedWorkspace] iconForFileType:
+			NSFileTypeForHFSTypeCode(kGenericFolderIcon)]];
+	else
+		[self setIconImage:[[NSWorkspace sharedWorkspace] iconForFileType:
+			[path pathExtension]]];
+	
 	// We are going to have to do something with images here...
 	[self setEnabled:[thisCellsFullPath isReadable]];
 	

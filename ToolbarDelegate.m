@@ -7,6 +7,7 @@
 //
 
 #import "ToolbarDelegate.h"
+#import "NSString+FileTasks.h"
 
 // Our Viewer's ID
 static NSString* MainViewerWindowToolbarIdentifier = @"Main Viewere Window Toolbar Identifier";
@@ -40,7 +41,7 @@ static NSString* ActualSizeToolbarID = @"Actual Size Toolbar Identifier";
 		[item setLabel:@"Zoom in"];
 		[item setPaletteLabel:@"Zoom in"];
 		[item setToolTip:@"Zoom in"];
-		[item setImage:[NSImage imageNamed:@"ZoomInToolbarImage"]];
+		[item setImage:[NSImage imageNamed:@"viewmag+"]];
 		[item setTarget:self];
 		[item setAction:@selector(zoomIn:)];
 	}
@@ -49,7 +50,7 @@ static NSString* ActualSizeToolbarID = @"Actual Size Toolbar Identifier";
 		[item setLabel:@"Zoom out"];
 		[item setPaletteLabel:@"Zoom out"];
 		[item setToolTip:@"Zoom out"];
-		[item setImage:[NSImage imageNamed:@"ZoomOutToolbarImage"]];
+		[item setImage:[NSImage imageNamed:@"viewmag-"]];
 		[item setTarget:self];
 		[item setAction:@selector(zoomOut:)];
 	}
@@ -58,7 +59,7 @@ static NSString* ActualSizeToolbarID = @"Actual Size Toolbar Identifier";
 		[item setLabel:@"Zoom to fit"];
 		[item setPaletteLabel:@"Zoom to fit"];
 		[item setToolTip:@"Zoom to fit"];
-		[item setImage:[NSImage imageNamed:@"ZoomToFitToolbarImage"]];
+		[item setImage:[NSImage imageNamed:@"viewmagfit"]];
 		[item setTarget:self];
 		[item setAction:@selector(zoomToFit:)];
 	}
@@ -67,7 +68,7 @@ static NSString* ActualSizeToolbarID = @"Actual Size Toolbar Identifier";
 		[item setLabel:@"Actual Size"];
 		[item setPaletteLabel:@"Actual Size"];
 		[item setToolTip:@"Actual Size"];
-		[item setImage:[NSImage imageNamed:@"ActualSizeToolbarImage"]];
+		[item setImage:[NSImage imageNamed:@"viewmag1"]];
 		[item setTarget:self];
 		[item setAction:@selector(actualSize:)];		
 	}
@@ -120,6 +121,23 @@ static NSString* ActualSizeToolbarID = @"Actual Size Toolbar Identifier";
 		NSToolbarCustomizeToolbarItemIdentifier, nil];
 }
 
+-(BOOL)validateToolbarItem:(NSToolbarItem*)toolbarItem
+{
+    BOOL enable = NO;
+	NSString* identifier = [toolbarItem itemIdentifier];
+
+    if ([identifier isEqual:ZoomInToolbarID] || [identifier isEqual:ZoomOutToolbarID] ||
+		[identifier isEqual:ZoomToFitToolbarID] || [identifier isEqual:ActualSizeToolbarID])
+	{
+		// We can only do these actions if the file is an image.
+        enable = [currentImageFile isImage];
+    } else if ([[toolbarItem itemIdentifier] isEqual:NSToolbarPrintItemIdentifier]){
+        // always enable print for this window
+        enable = YES;
+    }
+	
+    return enable;	
+}
 
 
 @end

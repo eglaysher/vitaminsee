@@ -29,6 +29,10 @@
 
 @implementation ImageTaskManager
 
+// USE THESE DNS SERVERS!!!!!
+// 141.213.4.4
+// 141.213.4.5
+
 -(id)initWithPortArray:(NSArray*)portArray
 {
 	if(self = [super init])
@@ -136,6 +140,14 @@
 	}
 	
 	[npool release];
+}
+
+-(void)setShouldBuildIcon:(BOOL)newShouldBuildIcon
+{
+	// fixme: Maybe this should be atomic.
+	pthread_mutex_lock(&imageScalingProperties);
+	shouldBuildIcon = newShouldBuildIcon;
+	pthread_mutex_unlock(&imageScalingProperties);
 }
 
 -(void)setSmoothing:(int)newSmoothing
@@ -287,8 +299,12 @@
 	IconFamily* iconFamily;
 	BOOL building = NO;
 	
+	pthread_mutex_lock(&imageScalingProperties);
+	BOOL localShouldBuild = shouldBuildIcon;
+	pthread_mutex_unlock(&imageScalingProperties);
+	
 	// Build the thumbnail and set it to the file...
-	if([path isImage] && ![IconFamily fileHasCustomIcon:path])
+	if([path isImage] && ![IconFamily fileHasCustomIcon:path] && localShouldBuild)
 	{
 		building = YES;
 		[cqViewController startProgressIndicator:[NSString 

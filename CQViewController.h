@@ -20,7 +20,6 @@
 @interface CQViewController : NSObject <ImageDisplayer>
 {
 	IBOutlet NSWindow* mainVitaminSeeWindow;
-	bool mainWindowVisible;
 	
 	// Menu items we need to attatch items to
 	IBOutlet NSMenuItem* homeFolderMenuItem;
@@ -34,10 +33,8 @@
 	IBOutlet NSScrollView* scrollView;
 
 	// Integrated plugins.
-	bool sortManagerVisible;
-	NSWindowController* _sortManagerController;
-	bool keyworManagerVisible;
-	NSWindowController* _keywordManagerController;
+	id _sortManagerController;
+	id _keywordManagerController;
 
 	// File view components:
 	// * 
@@ -92,6 +89,7 @@
 - (void)redraw;
 
 // File menu options
+-(IBAction)openFolder:(id)sender;
 -(IBAction)closeWindow:(id)sender;
 
 // Go menu actions
@@ -108,7 +106,10 @@
 -(IBAction)toggleSortManager:(id)sender;
 -(IBAction)toggleKeywordManager:(id)sender;
 
--(void)zoomToFit:(id)sender;
+-(IBAction)zoomIn:(id)sender;
+-(IBAction)zoomOut:(id)sender;
+-(IBAction)zoomToFit:(id)sender;
+-(IBAction)actualSize:(id)sender;
 
 // Window delegate method to redraw the image when we resize...
 - (void)windowDidResize:(NSNotification*)notification;

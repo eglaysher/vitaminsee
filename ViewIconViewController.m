@@ -67,12 +67,22 @@ createRowsForColumn:(int)column
 	int count = [fileList count];
 	[matrix setMode:NSListModeMatrix];
 	[matrix renewRows:count columns:1];
+	
+	id userDeffault = [NSUserDefaults standardUserDefaults];
+	BOOL displayThumbnails = [[userDeffault objectForKey:@"DisplayThumbnails"] boolValue];
+	BOOL buildThumbnails = [[userDeffault objectForKey:@"GenerateThumbnails"] boolValue];
+
+	// Tell the imageTaskManager if it should actually build the thumbnails
+	[imageTaskManager setShouldBuildIcon:buildThumbnails];
+	
 	for(i = 0; i < count; ++i)
 	{
 //		NSLog(@"Loading...");
 		id cell = [matrix cellAtRow:i column:0];
-		[cell setCellPropertiesFromPath:[fileList objectAtIndex:i]];
-		[imageTaskManager buildThumbnail:[fileList objectAtIndex:i] forCell:cell];
+		NSString* currentFile = [fileList objectAtIndex:i];
+		[cell setCellPropertiesFromPath:currentFile];
+		if(displayThumbnails || [currentFile isDir])
+			[imageTaskManager buildThumbnail:currentFile forCell:cell];
 	}
 }
 
@@ -127,7 +137,7 @@ createRowsForColumn:(int)column
 -(void)doubleClick:(NSBrowser*)sender
 {
 	// Double clicking sets the directory...if it's a directory
-	NSString* absolutePath = [[sender path] fileWithPath:currentDirectory];
+	NSString* absolutePath = [[ourBrowser path] fileWithPath:currentDirectory];
 	
 	if([absolutePath isDir])
 	{

@@ -41,6 +41,13 @@
   * Hide "." files...
   * command-1 should TOGGLE the display of windows...
   * File renaming (Inspector!)
+  * Cmd-O opens == double click.
+
+  * Comments (or yank it out!)
+  * Disable comments on things we can't comment on.
+
+  * Validate menu items
+  * Icons for VitaminSee
 */
 
 //////////////////////////////////////////////////////// WHAT NEEDS TO BE DONE:
@@ -66,13 +73,8 @@
  */
 
 /* FIRST MILESTONE GOALS (Note that the milestones have gone apeshit...)
-
-  * Comments (or yank it out!)
-  * Cmd-O opens == double click.
-  * Disable comments on things we can't comment on.
-  * Icons for VitaminSee
   * Work on making things feature complete.
-  * Validate menu items
+  * Placeholder for folders.
   * Integrated Help
 */
 
@@ -169,10 +171,6 @@
 	// Use our file size formatter for formating the "[image size]" text label
 	FileSizeFormatter* fsFormatter = [[[FileSizeFormatter alloc] init] autorelease];
 	[[fileSizeLabel cell] setFormatter:fsFormatter];
-	
-	sortManagerVisible = false;
-	keyworManagerVisible = false;
-	mainWindowVisible = true;
 	
 	// Set up the menu icons
 	NSImage* img = [[NSWorkspace sharedWorkspace] iconForFile:NSHomeDirectory()];
@@ -286,9 +284,13 @@
 	}
 }
 
+-(IBAction)openFolder:(id)sender;
+{
+	[viewAsIconsController doubleClick:nil];
+}
+
 -(IBAction)closeWindow:(id)sender
 {
-	mainWindowVisible = false;
 	[mainVitaminSeeWindow close];
 }
 
@@ -314,14 +316,14 @@
 
 -(IBAction)goToHomeFolder:(id)sender
 {
-	if(!mainWindowVisible)
+	if(![mainVitaminSeeWindow isVisible])
 		[self toggleVitaminSee:self];
 	[self setCurrentDirectory:NSHomeDirectory() file:nil];
 }
 
 -(IBAction)goToPicturesFolder:(id)sender
 {
-	if(!mainWindowVisible)
+	if(![mainVitaminSeeWindow isVisible])
 		[self toggleVitaminSee:self];
 
 	[self setCurrentDirectory:[NSHomeDirectory() stringByAppendingPathComponent:@"Pictures"]
@@ -408,51 +410,45 @@
 
 -(IBAction)toggleVitaminSee:(id)sender
 {
-	if(mainWindowVisible)
-	{
+	if([mainVitaminSeeWindow isVisible])
 		[mainVitaminSeeWindow close];
-		mainWindowVisible = false;
-	}
 	else
-	{
 		[mainVitaminSeeWindow makeKeyAndOrderFront:self];
-		mainWindowVisible = true;
-	}
-//showWindow:self];
 }
 
 -(IBAction)toggleSortManager:(id)sender
 {	
-	if(sortManagerVisible)
+	if([[[self sortManagerController] window] isVisible])
 	{
 		[[self sortManagerController] close];
-		sortManagerVisible = false;
 	}
 	else
 	{
 		[[self sortManagerController] showWindow:self];
-		sortManagerVisible = true;
 	}
 }
 
 -(IBAction)toggleKeywordManager:(id)sender
 {
-	if(keyworManagerVisible)
+	if([[[self keywordManagerController] window] isVisible])
 	{
 		[[self keywordManagerController] close];
-		keyworManagerVisible = false;
 	}
 	else
 	{
 		[[self keywordManagerController] showWindow:self];
-		keyworManagerVisible = true;
 	}
 }
 
 -(BOOL)validateMenuItem:(NSMenuItem *)theMenuItem
 {
     BOOL enable = [self respondsToSelector:[theMenuItem action]]; //handle general case.
+	BOOL mainWindowVisible = [mainVitaminSeeWindow isVisible];
 	
+	if([theMenuItem action] == @selector(openFolder:))
+	{
+		enable = mainWindowVisible && [currentImageFile isDir];
+	}
 	if([theMenuItem action] == @selector(closeWindow:))
 	{
 		enable = mainWindowVisible;
@@ -463,7 +459,15 @@
 		// fixme: this doesn't work...
 		enable = mainWindowVisible && (currentImageFile != nil);
 	}
-	// GO FOLDER
+	// View Menu
+	else if ([theMenuItem action] == @selector(actualSize:) ||
+			 [theMenuItem action] == @selector(zoomIn:) ||
+			 [theMenuItem action] == @selector(zoomOut:) ||
+			 [theMenuItem action] == @selector(zoomToFit:))
+	{
+		enable = mainWindowVisible && [currentImageFile isImage];
+	}
+	// Go Menu
     else if ([theMenuItem action] == @selector(goEnclosingFolder:))
     {
 		// You can go up as long as there is a thing to go back on...
@@ -554,28 +558,30 @@
 		[imageTaskManager displayImageWithPath:currentImageFile];
 }
 
--(void)zoomIn:(id)sender
+-(IBAction)zoomIn:(id)sender
 {
 	scaleProportionally = YES;
 	scaleRatio = scaleRatio + 0.10f;
 	[self redraw];
 }
 
--(void)zoomOut:(id)sender
+-(IBAction)zoomOut:(id)sender
 {
 	scaleProportionally = YES;
 	scaleRatio = scaleRatio - 0.10;
+	if(scaleRatio <= 0)
+		scaleRatio = 0.05;
 	[self redraw];
 }
 
--(void)zoomToFit:(id)sender
+-(IBAction)zoomToFit:(id)sender
 {
 	scaleProportionally = NO;
 	scaleRatio = 1.0;
 	[self redraw];
 }
 
--(void)actualSize:(id)sender
+-(IBAction)actualSize:(id)sender
 {
 	scaleProportionally = YES;
 	scaleRatio = 1.0;

@@ -2,6 +2,7 @@
     IBClasses = (
         {
             ACTIONS = {
+                actualSize = id; 
                 closeWindow = id; 
                 deleteFileClicked = id; 
                 goBack = id; 
@@ -10,10 +11,13 @@
                 goToFolder = id; 
                 goToHomeFolder = id; 
                 goToPicturesFolder = id; 
+                openFolder = id; 
                 showPreferences = id; 
                 toggleKeywordManager = id; 
                 toggleSortManager = id; 
                 toggleVitaminSee = id; 
+                zoomIn = id; 
+                zoomOut = id; 
                 zoomToFit = id; 
             }; 
             CLASS = CQViewController; 

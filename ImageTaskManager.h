@@ -40,6 +40,8 @@
 	int thumbnailLoadingPosition;
 	
 	id cqViewController;
+	
+	bool shouldBuildIcon;
 }
 
 -(id)initWithPortArray:(NSArray*)portArray;
@@ -49,6 +51,7 @@
 -(void)buildThumbnail:(NSString*)path forCell:(id)cell;
 -(void)clearThumbnailQueue;
 
+-(void)setShouldBuildIcon:(BOOL)newShouldBuildIcon;
 -(void)setSmoothing:(int)newSmoothing;
 -(void)setScaleRatio:(float)newScaleRatio;
 -(void)setScaleProportionally:(BOOL)newScaleProportionally;
