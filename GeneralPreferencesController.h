@@ -15,6 +15,7 @@
 	IBOutlet NSView* prefView;
 }
 
+-(IBAction)changeDefaultDirectory:(id)sender;
 -(IBAction)showHelp:(id)sender;
 
 @end

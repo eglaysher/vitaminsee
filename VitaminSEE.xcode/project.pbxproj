@@ -7,6 +7,8 @@
 	objects = {
 		080E96DDFE201D6D7F000001 = {
 			children = (
+				8B3CB1A207EA82CE0086353C,
+				8B3CB1A307EA82CE0086353C,
 				8BEC495507DE40AC003868DD,
 				8BEC495607DE40AC003868DD,
 				8B443AF907D7E0AB00C4D8E9,
@@ -397,6 +399,34 @@
 		};
 		8B32704007E137A400FBD945 = {
 			fileRef = 8B32703C07E137A400FBD945;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B3CB1A207EA82CE0086353C = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			path = ThumbnailManager.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B3CB1A307EA82CE0086353C = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
+			path = ThumbnailManager.m;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B3CB1A407EA82CE0086353C = {
+			fileRef = 8B3CB1A207EA82CE0086353C;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B3CB1A507EA82CE0086353C = {
+			fileRef = 8B3CB1A307EA82CE0086353C;
 			isa = PBXBuildFile;
 			settings = {
 			};
@@ -1369,6 +1399,7 @@
 				8B5620E107CEA6F1005990E1,
 				8B561D9307CE7627005990E1,
 				8B6D020307CB32CD009A76DA,
+				8B3CB1A407EA82CE0086353C,
 			);
 			isa = PBXCopyFilesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2613,6 +2644,7 @@
 				8B4A472607EA2C4700C1D2A0,
 				8B4A472807EA2C4700C1D2A0,
 				8B4A472A07EA2C4700C1D2A0,
+				8B3CB1A507EA82CE0086353C,
 			);
 			isa = PBXSourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;

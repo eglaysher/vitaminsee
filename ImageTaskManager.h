@@ -17,7 +17,6 @@
 	// TASK QUEUE:
 	pthread_mutex_t taskQueueLock;
 	NSString* fileToDisplayPath;
-	NSMutableArray* thumbnailQueue;
 	NSMutableArray* preloadQueue;
 	
 	pthread_mutex_t imageCacheLock;
@@ -41,26 +40,18 @@
 	int thumbnailLoadingPosition;
 	
 	id vitaminSEEController;
-	
-	bool shouldBuildIcon;
 }
 
--(id)initWithPortArray:(NSArray*)portArray;
+-(id)initWithController:(id)controller;
 
 -(void)preloadImage:(NSString*)path;
 -(void)displayImageWithPath:(NSString*)path;
--(void)buildThumbnail:(NSString*)path forCell:(id)cell;
--(void)clearThumbnailQueue;
 
--(void)setShouldBuildIcon:(BOOL)newShouldBuildIcon;
 -(void)setSmoothing:(int)newSmoothing;
 -(void)setScaleRatio:(float)newScaleRatio;
 -(void)setScaleProportionally:(BOOL)newScaleProportionally;
 -(void)setContentViewSize:(NSSize)newContentViewSize;
--(void)setThumbnailLoadingPosition:(int)newPosition;
 
 -(NSImage*)getCurrentImageWithWidth:(int*)width height:(int*)height scale:(float*)scale;
--(id)getCurrentThumbnailCell;
--(NSImage*)getCurrentThumbnail;
 
 @end

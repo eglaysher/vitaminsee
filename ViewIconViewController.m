@@ -10,7 +10,7 @@
 #import "ViewAsIconViewCell.h"
 #import "VitaminSEEController.h"
 #import "NSString+FileTasks.h"
-#import "ImageTaskManager.h"
+#import "ThumbnailManager.h"
 #import "IconFamily.h"
 
 @interface ViewIconViewController (Private)
@@ -35,9 +35,9 @@
 	return [fileList count] > 0;
 }
 
--(void)setImageTaskManager:(ImageTaskManager*)itm
+-(void)setThumbnailManager:(ThumbnailManager*)itm
 {
-	imageTaskManager = itm;
+	thumbnailManager = itm;
 }
 
 -(void)setCurrentDirectory:(NSString*)path
@@ -81,7 +81,7 @@ createRowsForColumn:(int)column
 	BOOL buildThumbnails = [[userDeffault objectForKey:@"GenerateThumbnails"] boolValue];
 
 	// Tell the imageTaskManager if it should actually build the thumbnails
-	[imageTaskManager setShouldBuildIcon:buildThumbnails];	
+	[thumbnailManager setShouldBuildIcon:buildThumbnails];	
 
 	for(i = 0; i < count; ++i)
 	{
@@ -97,7 +97,7 @@ createRowsForColumn:(int)column
 			[cell setIconImage:[[NSWorkspace sharedWorkspace] iconForFileType:
 				[currentFile pathExtension]]];
 			
-			[imageTaskManager buildThumbnail:currentFile forCell:cell];
+			[thumbnailManager buildThumbnail:currentFile forCell:cell];
 		}
 		else
 		{

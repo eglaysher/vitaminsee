@@ -17,6 +17,7 @@
 #import "ImmutableToMutableTransformer.h"
 #import "SS_PrefsController.h"
 #import "KeywordNode.h"
+#import "ThumbnailManager.h"
 
 pthread_mutex_t imageTaskLock;
 
@@ -194,22 +195,14 @@ pthread_mutex_t imageTaskLock;
 	pthread_mutex_init(&imageTaskLock, 0);
 	
 	// Use an Undo manager to manage moving back and forth.
-	pathManager = [[NSUndoManager alloc] init];
-	
-	// Now we start work on thread communication.
-	NSPort *port1 = [NSPort port];
-	NSPort *port2 = [NSPort port];
-	NSConnection* kitConnection = [[NSConnection alloc] 
-		initWithReceivePort:port1 sendPort:port2];
-	[kitConnection setRootObject:self];
-	
-	NSArray *portArray = [NSArray arrayWithObjects:port2, port1, nil];
+	pathManager = [[NSUndoManager alloc] init];	
 	
 	// Launch the other thread and tell it to connect back to us.
-	imageTaskManager = [[ImageTaskManager alloc] initWithPortArray:portArray];
+	imageTaskManager = [[ImageTaskManager alloc] initWithController:self];
+	thumbnailManager = [[ThumbnailManager alloc] initWithController:self];
 	
 	// Now that we have our task manager, tell everybody to use it.
-	[viewAsIconsController setImageTaskManager:imageTaskManager];
+	[viewAsIconsController setThumbnailManager:thumbnailManager];
 }
 
 // This initialization can safely be delayed until after the main window has
@@ -272,7 +265,7 @@ pthread_mutex_t imageTaskLock;
 	
 	// Clear the thumbnails being displayed.
 	if(![newCurrentDirectory isEqualTo:currentDirectory])
-		[imageTaskManager clearThumbnailQueue];
+		[thumbnailManager clearThumbnailQueue];
 	
 	// Set the current Directory
 	[currentDirectory release];
@@ -681,8 +674,8 @@ pthread_mutex_t imageTaskLock;
 
 -(void)setIcon
 {
-	NSImage* thumbnail = [imageTaskManager getCurrentThumbnail];
-	id cell = [imageTaskManager getCurrentThumbnailCell];
+	NSImage* thumbnail = [thumbnailManager getCurrentThumbnail];
+	id cell = [thumbnailManager getCurrentThumbnailCell];
 
 	[cell setIconImage:thumbnail];
 	[viewAsIconsController updateCell:cell];

@@ -10,7 +10,7 @@
 
 
 @class VitaminSEEController;
-@class ImageTaskManager;
+@class ThumbnailManager;
 
 @interface ViewIconViewController : NSObject {
 	IBOutlet VitaminSEEController* controller;
@@ -21,11 +21,12 @@
 	NSString* currentDirectory;
 	NSMutableArray* fileList;
 	
-	ImageTaskManager* imageTaskManager;
+	ThumbnailManager* thumbnailManager;
+//	ImageTaskManager* imageTaskManager;
 }
 
 -(BOOL)canDelete;
--(void)setImageTaskManager:(ImageTaskManager*)itm;
+-(void)setThumbnailManager:(ThumbnailManager*)itm;
 
 -(void)setCurrentDirectory:(NSString*)path;
 -(NSView*)view;

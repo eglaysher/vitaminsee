@@ -7,6 +7,7 @@
 extern pthread_mutex_t imageTaskLock;
 
 @class ImageTaskManager;
+@class ThumbnailManager;
 @class ViewIconViewController;
 @class PointerWrapper;
 @class SortManagerController;
@@ -15,6 +16,14 @@ extern pthread_mutex_t imageTaskLock;
 @protocol ImageDisplayer 
 -(void)displayImage;
 -(void)setIcon;
+-(void)displayImage;
+-(void)setIcon;
+
+// Progress indicator control
+-(void)startProgressIndicator;
+-(void)stopProgressIndicator;
+
+-(void)setStatusText:(NSString*)statusText;
 @end
 
 /*!
@@ -68,6 +77,7 @@ extern pthread_mutex_t imageTaskLock;
 	NSUndoManager* pathManager;
 	
 	ImageTaskManager* imageTaskManager;
+	ThumbnailManager* thumbnailManager;
 	
 	SS_PrefsController *prefs;
 	
@@ -129,6 +139,7 @@ extern pthread_mutex_t imageTaskLock;
 - (void)windowDidResize:(NSNotification*)notification;
 -(void)displayImage;
 -(void)setIcon;
+-(void)setStatusText:(NSString*)statusText;
 
 // Progress indicator control
 -(void)startProgressIndicator;
