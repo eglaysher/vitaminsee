@@ -9,6 +9,8 @@
 
 #import "AppKitAdditions.h"
 
+// This is mine
+// Copyright 2005 Elliot Glaysher, and GPLed.
 @implementation NSMutableArray (SortedMutableArray)
 
 -(unsigned)lowerBoundToInsert:(id)object withSortSelector:(SEL)sortSelector
@@ -184,15 +186,20 @@ zeroing in on the optimum length.
 	if (0 == [subviews count])
 	{
 		//		NSLog(@"Adding single subview");
+		NSRect frame = [self frame];
+		frame.origin.x = frame.origin.y = 0;
+//		frame.size.width -= 6;
+//		frame.size.height -= 6;
+		[inView setFrame:frame];
 		[self addSubview:inView];		// ANY WAY TO AUTO-RESIZE IT?
 	}
 	else if ([subviews objectAtIndex:0] != inView)
 	{
 		NSView *oldSubview = [subviews objectAtIndex:0];
 		NSRect frame = [oldSubview frame];
-//		frame.origin.x = frame.origin.y = 0;
-//		frame.size.width -= 6;
-//		frame.size.height -= 6;
+		frame.origin.x = frame.origin.y = 0;
+		frame.size.width -= 6;
+		frame.size.height -= 6;
 		[oldSubview removeFromSuperview];
 		[inView setFrame:frame];
 		[self addSubview:inView];

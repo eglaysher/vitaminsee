@@ -3,7 +3,7 @@
 //  CQView
 //
 //  Created by Elliot on 2/22/05.
-//  Copyright 2005 __MyCompanyName__. All rights reserved.
+//  Copyright 2005 Elliot Glaysher. All rights reserved.
 //
 
 #import "ImmutableToMutableTransformer.h"

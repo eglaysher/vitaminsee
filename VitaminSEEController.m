@@ -45,7 +45,7 @@
   * File renaming (Inspector!)
   * Cmd-O opens == double click.
 
-  * Comments (or yank it out!)
+  * Comments
   * Disable comments on things we can't comment on.
   * Placeholder for folders.
   * Validate menu items
@@ -61,15 +61,36 @@
 
 ////////////////////////////////////////////////// WHERE TO GO FROM HERE...
 
+
+/* Completed:
+ * * Speed. Entering a new directory is over an order of magnitude faster on
+ *   directories with lots of images!
+ *
+ */
+
 /// For Version 0.6
-// * Redo left panel as loadable bundle with an NSTableView
+// * Redo left panel as loadable bundle
 //   * Requires a working plugin layer...
-// * Finder notifications
-// * Transparent archive support
+//   * Mouse-wheel scrolling...
+// * Finder notifications (a.k.a. there is no excuse to make the user refresh)
+// * Solidify the plugin layer
+// * Undo/Redo on sort manager/rename, et cetera
 
 // For Version 0.7
+// * Transparent archive support
+// * Finder like shelf--allow DnD of folders onto the NSToolbar
+//   * How the HELL do I do this?!?! No clue!!!!!!!!!!
+
+// For Version 0.8
 // * Create an image database feature
 // * Add metadata for PNG and GIF
+// * 2 million% more complete metadata! Exif panel! IPTC panel!
+
+// For Version 0.9
+// * Fullscreen mode
+
+// For Version 1.0
+// * 
 
 /* Okay, refactoring responsibilities:
   * VitaminSEEController is responsible for ONLY:
@@ -90,42 +111,20 @@
 /////////////////////////////////////////////////////////// POST CONTEST GOALS:
 
 /* SECOND MILESTONE GOALS
- * Image search (Loadable bundle)
- * Duplicate search (Loadable bundle)
+ * Image search (Must be a loadable bundle!)
+ * Duplicate search (Must be a loadable bundle!)
  * Integrate into the [Computer name]/[Macintosh HD]/.../ hiearachy...
- * Transparent Zip/Rar support
- * Split *thumbnailing* off into it's own thread? (Image display/preload stays
-   in it's own thread, instead of making image display in one and thumbnailing
-   and preloading in the other...)
-   * This causes problems with not enough CPU for both the thumbnailing/image
-     loading...
- */
-
-/* THIRD MILSTONE GOALS
+ * Transparent Zip/Rar support (Must be a loadable bundle!)
  * Respond to finder notifications!
  * Draging of the picture
- * See "openHandCursor" and "closedHandCursor"
+ * * See "openHandCursor" and "closedHandCursor"
  * Fullscreen mode.
  * Make Go to folder modal when main window isn't open.
- */
-
-/* FOURTH MILESTONE GOALS
-  * GIF/PNG keywords and comments.    
-  * JPEG comments
-  * Change arrow key behaviour - scroll around in image if possible in NSScrollView
-    and switch images
-    * Julius says see "CDisplay" (Comics Viewer)
-*/
-
-/* POST 1.0 GOALS
-  * Move almost EVERYTHING into their own component bundles for lazy loading...
-    * Sort manager
-    * Keyword manager
-    * Including View as Icon view!
-  * View as list view
-  * View as browser view...
-  * Duplicate detector
-  * Image Search
+ * GIF/PNG keywords and comments.    
+ * JPEG comments
+ * Change arrow key behaviour - scroll around in image if possible in NSScrollView
+   and switch images
+   * Julius says see "CDisplay" (Comics Viewer)
 */
 
 /*

@@ -3,7 +3,7 @@
 //  CQView
 //
 //  Created by Elliot on 2/24/05.
-//  Copyright 2005 __MyCompanyName__. All rights reserved.
+//  Copyright 2005 Elliot Glaysher. All rights reserved.
 //
 
 #import <Cocoa/Cocoa.h>
@@ -31,6 +31,6 @@
 -(int)moveFile:(NSString*)file to:(NSString*)destination;
 -(int)copyFile:(NSString*)file to:(NSString*)destination;
 
--(void)generateThumbnailFor:(NSString*)path;
+-(void)generateThumbnailForFile:(NSString*)path;
 
 @end

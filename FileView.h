@@ -3,7 +3,7 @@
  *  CQView
  *
  *  Created by Elliot on 3/6/05.
- *  Copyright 2005 __MyCompanyName__. All rights reserved.
+ *  Copyright 2005 Elliot Glaysher. All rights reserved.
  *
  */
 
@@ -14,13 +14,12 @@
 
 -(BOOL)fileIsInView:(NSString*)fileIsInView;
 
--(BOOL)canDeleteCurrentFile;
-
 // Capabilities
+-(BOOL)canDeleteCurrentFile;
 -(BOOL)canSetCurrentDirectory;
 -(BOOL)canGoEnclosingFolder;
 
--(void)setCurrentDirectory:(NSString*)directory;
+-(void)setCurrentDirectory:(NSString*)directory file:(NSString*)file;
 
 // Files need to be added and removed from lists.
 -(void)removeFile:(NSString*)path;

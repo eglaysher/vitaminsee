@@ -3,7 +3,7 @@
 //  CQView
 //
 //  Created by Elliot on 2/24/05.
-//  Copyright 2005 __MyCompanyName__. All rights reserved.
+//  Copyright 2005 Elliot Glaysher. All rights reserved.
 //
 
 #import "PluginLayer.h"
@@ -153,8 +153,10 @@
 	return tag;
 }
 
--(void)generateThumbnailFor:(NSString*)path
+-(void)generateThumbnailForFile:(NSString*)path
 {
+	BOOL buildThumbnails = [[[NSUserDefaults standardUserDefaults] objectForKey:@"GenerateThumbnails"] boolValue];
+	[thumbnailManager setShouldBuildIcon:buildThumbnails];	
 	[thumbnailManager buildThumbnail:path];
 }
 

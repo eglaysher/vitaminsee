@@ -3,7 +3,7 @@
 //  CQView
 //
 //  Created by Elliot on 2/9/05.
-//  Copyright 2005 __MyCompanyName__. All rights reserved.
+//  Copyright 2005 Elliot Glaysher. All rights reserved.
 //
 
 #import <Cocoa/Cocoa.h>
@@ -19,7 +19,6 @@
 
 	float cachedTitleWidth;
 	NSString* cachedCellTitle;
-	bool loadOwnIconOnDisplay;
 }
 
 -(void)setCellPropertiesFromPath:(NSString*)path;
@@ -29,6 +28,4 @@
 -(void)setTitle:(NSString*)newTitle;
 
 -(void)resetTitleCache;
-
--(void)loadOwnIconOnDisplay;
 @end

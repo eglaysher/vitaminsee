@@ -3,7 +3,7 @@
 //  CQView
 //
 //  Created by Elliot on 2/9/05.
-//  Copyright 2005 __MyCompanyName__. All rights reserved.
+//  Copyright 2005 Elliot Glaysher. All rights reserved.
 //
 
 #import "ViewAsIconViewCell.h"
@@ -32,7 +32,6 @@ NSSize IMAGE_SIZE = {128.0f, 128.0f};
 		[self setWraps:YES];
 		[self setAlignment:NSCenterTextAlignment];
 		[self resetTitleCache];
-		loadOwnIconOnDisplay = NO;
 	}
 	return self;
 }
@@ -76,19 +75,13 @@ NSSize IMAGE_SIZE = {128.0f, 128.0f};
 	[self setStringValue:[thisCellsFullPath lastPathComponent]];
 	
 	// If we are responsible for loading our own icon, then load it.
-	if(loadOwnIconOnDisplay)
-		[self setIconImage:[path iconImageOfSize:IMAGE_SIZE]];
+	[self setIconImage:[path iconImageOfSize:IMAGE_SIZE]];
 	
 	// We are going to have to do something with images here...
 	[self setEnabled:[thisCellsFullPath isReadable]];
 	
 	// In the ViewAsIconView, there are no left directories...
 	[self setLeaf:YES];	
-}
-
--(void)loadOwnIconOnDisplay
-{
-	loadOwnIconOnDisplay = YES;	
 }
 
 - (void)setIconImage:(NSImage*)image {

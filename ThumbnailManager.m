@@ -170,7 +170,6 @@
 	NSString* path = [options objectForKey:@"Path"];
 	NSImage* thumbnail;
 	IconFamily* iconFamily;
-	BOOL building = NO;
 	
 	pthread_mutex_lock(&imageScalingProperties);
 	BOOL localShouldBuild = shouldBuildIcon;
@@ -179,29 +178,28 @@
 	// Build the thumbnail and set it to the file...
 	if([path isImage] && ![IconFamily fileHasCustomIcon:path] && localShouldBuild)
 	{
-		building = YES;
-//		NSLog(@"VSC: %@", vitaminSEEController);
 		[vitaminSEEController setStatusText:[NSString 
 			stringWithFormat:@"Building thumbnail for %@...", [path lastPathComponent]]];
+
 		// I don't think there IS an autorelease...
 		NSImage* image = [[NSImage alloc] initWithContentsOfFile:path];
+
+		// Set icon
 		iconFamily = [IconFamily iconFamilyWithThumbnailsOfImage:image];
-		[iconFamily setAsCustomIconForFile:path];
-		// Must retain
-		thumbnail = [[iconFamily imageWithAllReps] retain];
-		[image release];
-	}
-	else
-		thumbnail = [path iconImageOfSize:NSMakeSize(128, 128)];
-	
-	currentIconFamilyThumbnail = thumbnail;
-	currentPath = path;
-//	currentIconCell = [options objectForKey:@"Cell"];
-	[vitaminSEEController setIcon];
-	
-	if(building)
-	{
-		[vitaminSEEController setStatusText:nil];
+		if(iconFamily)
+		{
+			[iconFamily setAsCustomIconForFile:path];
+
+			// Must retain
+			thumbnail = [[iconFamily imageWithAllReps] retain];
+			[image release];
+
+			currentIconFamilyThumbnail = thumbnail;
+			currentPath = path;
+			[vitaminSEEController setIcon];
+
+			[vitaminSEEController setStatusText:nil];
+		}
 	}
 }
 

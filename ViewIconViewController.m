@@ -3,7 +3,7 @@
 //  CQView
 //
 //  Created by Elliot on 2/9/05.
-//  Copyright 2005 __MyCompanyName__. All rights reserved.
+//  Copyright 2005 Elliot Glaysher. All rights reserved.
 //
 
 #import "AppKitAdditions.h"
@@ -26,14 +26,6 @@
 	if(self = [super init])
 	{
 		[NSBundle loadNibNamed:@"ViewAsIconsView" owner:self];
-
-		[ourBrowser setTarget:self];
-		[ourBrowser setAction:@selector(singleClick:)];
-		[ourBrowser setDoubleAction:@selector(doubleClick:)];	
-		[ourBrowser setCellClass:[ViewAsIconViewCell class]];
-		[ourBrowser setDelegate:self];
-		
-		currentlySelectedCell = nil;
 		
 		// Note: Do not retain parent.
 		controller = c;
@@ -42,21 +34,74 @@
 	return self;
 }
 	
-//-(void)awakeFromNib
-//{
-//	[ourBrowser setTarget:self];
-//	[ourBrowser setAction:@selector(singleClick:)];
-//	[ourBrowser setDoubleAction:@selector(doubleClick:)];	
-//	[ourBrowser setCellClass:[ViewAsIconViewCell class]];
-//	[ourBrowser setDelegate:self];
-//	
-//	currentlySelectedCell = nil;
-//}
+-(void)awakeFromNib
+{
+	[ourBrowser setTarget:self];
+	[ourBrowser setAction:@selector(singleClick:)];
+	[ourBrowser setDoubleAction:@selector(doubleClick:)];	
+	[ourBrowser setCellClass:[ViewAsIconViewCell class]];
+	[ourBrowser setDelegate:self];
+	
+	currentlySelectedCell = nil;
+}
 
 -(BOOL)canDelete
 {
 	return [fileList count] > 0;
 }
+
+//- (void)setCurrentDirectory:(NSString*)newCurrentDirectory
+//					   file:(NSString*)newCurrentFile
+//{	
+//	[controller startProgressIndicator];
+//	
+//	//
+//	if(newCurrentDirectory && currentDirectory && 
+//	   ![currentDirectory isEqual:newCurrentDirectory])
+//		[[pathManager prepareWithInvocationTarget:self]
+//			setCurrentDirectory:currentDirectory file:nil];
+//	
+//	// Clear the thumbnails being displayed.
+//	if(![newCurrentDirectory isEqualTo:currentDirectory])
+//		
+//	
+//	// Set the current Directory
+//	[currentDirectory release];
+//	currentDirectory = [newCurrentDirectory stringByStandardizingPath];
+//	[currentDirectory retain];
+//	
+//	// Set the current paths components of the directory
+//	[currentDirectoryComponents release];
+//	currentDirectoryComponents = [newCurrentDirectory pathComponents];
+//	[currentDirectoryComponents retain];
+//	
+//	// Make an NSMenu with all the path components
+//	NSEnumerator* e = [currentDirectoryComponents reverseObjectEnumerator];
+//	NSString* currentComponent;
+//	NSMenu* newMenu = [[[NSMenu alloc] init] autorelease];
+//	NSMenuItem* newMenuItem;
+//	int currentTag = [currentDirectoryComponents count];
+//	while(currentComponent = [e nextObject]) {
+//		newMenuItem = [[[NSMenuItem alloc] initWithTitle:currentComponent
+//												  action:@selector(directoryMenuSelected:)
+//										   keyEquivalent:@""] autorelease];
+//		[newMenuItem setImage:[[NSString pathWithComponents:
+//			[currentDirectoryComponents subarrayWithRange:NSMakeRange(0, currentTag)]] 
+//			iconImageOfSize:NSMakeSize(16,16)]];
+//		[newMenuItem setTag:currentTag];
+//		currentTag--;
+//		[newMenu addItem:newMenuItem];
+//	}
+//	
+//	// Set this menu as the pull down...
+//	[directoryDropdown setMenu:newMenu];
+//	
+//	if(newCurrentFile)
+//	{
+//		[self setCurrentFile:newCurrentFile];
+//		[viewAsIconsController selectFile:newCurrentFile];
+//	}
+//}
 
 -(void)setCurrentDirectory:(NSString*)path
 {
@@ -82,55 +127,34 @@
 	return ourView;
 }
 
+- (int)browser:(NSBrowser *)sender numberOfRowsInColumn:(int)column
+{
+	return [fileList count];
+}
+
 // Delegate method for our browser. We are an active delegate so we can message
 // the ITM to build an icon for us
--(void)browser:(NSBrowser*)sender
-createRowsForColumn:(int)column
-	  inMatrix:(NSMatrix*)matrix
-{
-	int i;
-	int count = [fileList count];
-	[matrix setMode:NSListModeMatrix];
-	[matrix renewRows:count columns:1];
-	
-	id userDeffault = [NSUserDefaults standardUserDefaults];
-	BOOL buildThumbnails = [[userDeffault objectForKey:@"GenerateThumbnails"] boolValue];
-
-	// Tell the imageTaskManager if it should actually build the thumbnails
-//	[thumbnailManager setShouldBuildIcon:buildThumbnails];	
-
-	for(i = 0; i < count; ++i)
-	{
-		id cell = [matrix cellAtRow:i column:0];
-		NSString* currentFile = [fileList objectAtIndex:i];
-		[cell setCellPropertiesFromPath:currentFile];
-
-		// This doesn't properly detect the existance of a thumbnail...
-		if(buildThumbnails && [currentFile isImage] && 
-		   ![IconFamily fileHasCustomIcon:currentFile] )
-		{
-			// Put in a placeholder icon (the default filetype icon) for now.
-			// It'll be replaced later. I'd prefer to defer this work, but that
-			// would require hard changes. Besides, -iconForFileType is cheap.
-			[cell setIconImage:[[NSWorkspace sharedWorkspace] iconForFileType:
-				[currentFile pathExtension]]];
-
-			[controller generateThumbnailFor:currentFile];
-//			[thumbnailManager buildThumbnail:currentFile];
-		}
-		else
-			[cell loadOwnIconOnDisplay];
-
-//		[cell setLoaded:NO];
-	}
-}
+//-(void)browser:(NSBrowser*)sender
+//createRowsForColumn:(int)column
+//	  inMatrix:(NSMatrix*)matrix
+//{
+//	int i;
+//	int count = [fileList count];
+//	[matrix setMode:NSListModeMatrix];
+//	[matrix renewRows:count columns:1];
+//	
+//	id userDeffault = [NSUserDefaults standardUserDefaults];
+//	BOOL buildThumbnails = [[userDeffault objectForKey:@"GenerateThumbnails"] boolValue];
+//
+//	// Tell the imageTaskManager if it should actually build the thumbnails
+//	[thumbnailManager setShouldBuildIcon:buildThumbnails];
+//}
 
 - (void)browser:(NSBrowser *)sender 
 willDisplayCell:(id)cell 
 		  atRow:(int)row
 		 column:(int)column
 {
-//	NSLog(@"Going to display cell: %@", [cell cellPath]);
 	NSString* currentFile = [fileList objectAtIndex:row];
 	[cell setCellPropertiesFromPath:currentFile];
 	[[sender matrixInColumn:0] updateCell:cell];
@@ -143,7 +167,13 @@ willDisplayCell:(id)cell
 	int numberOfRows = [matrix numberOfRows];
 	int i;
 	for(i = 0; i < numberOfRows; ++i)
-		[[matrix cellAtRow:i column:0] resetTitleCache];
+	{
+		id cell = [matrix cellAtRow:i column:0];
+		if([cell respondsToSelector:@selector(setIconImage:)])
+		{
+			[cell resetTitleCache];
+		}
+	}
 }
 
 -(void)singleClick:(NSBrowser*)sender
@@ -180,6 +210,9 @@ willDisplayCell:(id)cell
 			}
 		}
 	}
+	
+	// fixme: Make this only load the NEXT or PREVIOUS picture. Don't load
+	// both up and down.
 	
 	// Get the previous and next file...
 	int selectedColumn = [sender selectedColumn];
@@ -265,7 +298,7 @@ willDisplayCell:(id)cell
 		// FIXME: This needs to be generalized. What happens if this file doesn't have
 		// a thumbnail, a thumbnail request is generated, the file is moved, and then
 		// the thumbnail comes in!?
-		[[m cellAtRow:index column:0] loadOwnIconOnDisplay];
+//		[[m cellAtRow:index column:0] loadOwnIconOnDisplay];
 		[self browser:ourBrowser willDisplayCell:[m cellAtRow:index column:0] 
 				atRow:index column:0];
 		[m sizeToCells];
@@ -324,9 +357,13 @@ willDisplayCell:(id)cell
 							  withSortSelector:@selector(caseInsensitiveCompare:)];
 	if(index != NSNotFound)
 	{
+		// Set this image if we've already tried to view it.
 		id cell = [[ourBrowser matrixInColumn:0] cellAtRow:index column:0];
-		[cell setIconImage:image];
-		[ourBrowser setNeedsDisplay];
+		if([cell respondsToSelector:@selector(setIconImage:)])
+		{
+			[cell setIconImage:image];
+			[ourBrowser setNeedsDisplay];
+		}
 	}
 }
 
@@ -335,7 +372,7 @@ willDisplayCell:(id)cell
 @implementation ViewIconViewController (Private)
 
 -(void)rebuildInternalFileArray
-{
+{	
 	NSArray* directoryContents = [[NSFileManager defaultManager] 
 		directoryContentsAtPath:currentDirectory];
 	NSEnumerator* dirEnum = [directoryContents objectEnumerator];
@@ -348,7 +385,10 @@ willDisplayCell:(id)cell
 			stringByAppendingPathComponent:curPath] stringByStandardizingPath];
 		if(([currentFileWithPath isDir] || [currentFileWithPath isImage]) &&
 		   [currentFileWithPath isVisible])
+		{			
 			[myFileList addObject:currentFileWithPath];
+			[controller generateThumbnailForFile:currentFileWithPath];
+		}
 	}
 	
 	// Now sort the list since some filesystems (*cough*SAMBA*cough*) don't
