@@ -33,8 +33,8 @@
 	int currentImageWidth;
 	int currentImageHeight;
 	
-	IconFamily* currentIconFamily;
 	NSImage* currentIconFamilyThumbnail;
+	id currentIconCell;
 	
 	id cqViewController;
 }
@@ -43,13 +43,14 @@
 
 -(void)preloadImage:(NSString*)path;
 -(void)displayImageWithPath:(NSString*)path;
--(void)buildThumbnailFor:(NSString*)path row:(int)row;
+-(void)buildThumbnail:(NSString*)path forCell:(id)cell;
 
 -(void)setScaleRatio:(float)newScaleRatio;
 -(void)setScaleProportionally:(BOOL)newScaleProportionally;
 -(void)setContentViewSize:(NSSize)newContentViewSize;
 
 -(NSImage*)getCurrentImageWithWidth:(int*)width height:(int*)height;
--(IconFamily*)getCurrentIconFamily;
+-(id)getCurrentThumbnailCell;
+-(NSImage*)getCurrentThumbnail;
 
 @end

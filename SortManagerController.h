@@ -9,8 +9,6 @@
     IBOutlet CQViewController *mainController;
 	IBOutlet NSMatrix* moveCopyMatrix;
 }
-
 - (IBAction)manageButtonClicked:(id)sender;
-- (IBAction)copyMoveSelectionChanged:(id)sender;
-- (IBAction)removeButtonClicked:(id)sender;
+
 @end

@@ -9,6 +9,7 @@
 
 @protocol ImageDisplayer 
 -(void)displayImage;
+-(void)setIcon;
 @end
 
 /*!
@@ -88,5 +89,6 @@
 // Window delegate method to redraw the image when we resize...
 - (void)windowDidResize:(NSNotification*)notification;
 -(void)displayImage;
+-(void)setIcon;
 
 @end

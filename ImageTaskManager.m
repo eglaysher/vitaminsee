@@ -10,6 +10,7 @@
 #import "Util.h"
 #import "IconFamily.h"
 #import "CQViewController.h"
+#import "NSString+FileTasks.h"
 
 @interface ImageTaskManager (Private)
 -(id)evictImages;
@@ -172,11 +173,11 @@
 	pthread_mutex_unlock(&taskQueueLock);
 }
 
--(void)buildThumbnailFor:(NSString*)path row:(int)row
+-(void)buildThumbnail:(NSString*)path forCell:(id)cell
 {
 	NSDictionary* currentTask = [NSDictionary dictionaryWithObjectsAndKeys:
 		@"PreloadImage", @"Type", path, @"Path",
-		[NSNumber numberWithInt:row], @"Row", nil];
+		cell, @"Cell", nil];
 	
 	pthread_mutex_lock(&taskQueueLock);
 	//	NSLog(@"Going to preload: %@", path);
@@ -198,9 +199,9 @@
 	return currentImage;
 }
 
--(IconFamily*)getCurrentIconFamily
+-(id)getCurrentThumbnailCell
 {
-	return currentIconFamily;
+	return currentIconCell;
 }
 
 -(NSImage*)getCurrentThumbnail
@@ -245,7 +246,7 @@
 	IconFamily* iconFamily;
 	
 	// Build the thumbnail and set it to the file...
-	if(![IconFamily fileHasCustomIcon:path])
+	if([path isImage] && ![IconFamily fileHasCustomIcon:path])
 	{
 		NSImage* image = [[[NSImage alloc] initWithContentsOfFile:path] autorelease];
 		iconFamily = [IconFamily iconFamilyWithThumbnailsOfImage:image];
@@ -254,12 +255,12 @@
 	}
 	else
 	{
-		thumbnail = [[path iconImageOfSize:NSMakeSize(16, 16)] retain];
+		thumbnail = [path iconImageOfSize:NSMakeSize(16, 16)];
 	}
 	
-	currentIconFamily = iconFamily;
 	currentIconFamilyThumbnail = thumbnail;
-	[cqViewController setIconFor:options];
+	currentIconCell = [options objectForKey:@"Cell"];
+	[cqViewController setIcon];
 }
 
 -(void)doPreloadImage:(NSString*)path

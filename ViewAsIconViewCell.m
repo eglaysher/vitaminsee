@@ -38,8 +38,6 @@
 }
 
 -(void)setCellPropertiesFromPath:(NSString*)path
-			withImageTaskManager:(ImageTaskManager*)imageTaskManager
-							 row:(int)row
 {
 	// Keep this path...
 	[thisCellsFullPath release];
@@ -50,13 +48,7 @@
 	
 	// For now, let's hard code the icon.
 	//[self setIcon:[[NSImage alloc] initWithSize:NSMakeSize(128, 128)]];
-	
-//	if(iconImage == nil)
-//	{
-//		[self setIconImage:[thisCellsFullPath iconImageOfSize:NSMakeSize(128, 128)]];
-//		[imageTaskManager buildThumbnailFor:path row:row];
-//	}
-	
+		
 	// We are going to have to do something with images here...
 	[self setEnabled:[thisCellsFullPath isReadable]];
 	

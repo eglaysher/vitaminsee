@@ -6,6 +6,7 @@
 #import "FileSizeFormatter.h"
 #import "SBCenteringClipView.h"
 #import "ViewIconViewController.h"
+#import "ViewAsIconViewCell.h"
 #import "ImageTaskManager.h"
 #import "Util.h"
 #import "NSString+FileTasks.h"
@@ -23,11 +24,9 @@
  * Find out the legality of using Apple icons...
  * Implement the backHistory/forwardHistory!
  * All kinds of file operations.
-   * Rename files (this is proving to be kind of dificult!)
-   * et cetera! 
- * Complete preferences for sort manager (a la GQView)
+   * Rename files (this is proving to be kind of dificult!) (Done with delete/copy/etc)
+ * Complete preferences for sort manager (the way GQView does it violates HIG)
  * Get drag on image for moving around an image...
- * Use IconFamily now
  * Modify IconFamily to have a black line around the image...
  */
 
@@ -171,18 +170,14 @@
 		[viewAsIconsController removeFileFromList:currentImageFile];
 		[viewAsIconsController selectFile:nextFile];
 		
-		if(nextFile)
-			[self setCurrentFile:nextFile];
+		[self setCurrentFile:nextFile];
 	}
 }
 
 -(void)copyThisFile:(NSString*)destination
 {
 	if(![destination isEqual:currentDirectory])
-	{
-		NSString* nextFile = [viewAsIconsController nameOfNextFile];
 		[self copyFile:currentImageFile to:destination];
-	}	
 }
 
 -(IBAction)deleteThisFile:(id)sender
@@ -210,6 +205,8 @@
 	
 	if([theMenuItem action] == @selector(deleteThisFile:))
 	{
+		// We can delete this file as long as we've selected a file.
+		// fixme: this doesn't work...
 		enable = currentImageFile != nil;
 	}
 	// GO FOLDER
@@ -245,14 +242,11 @@
 	
 	// Okay, we don't know what kind of thing we have been passed, so let's
 	BOOL isDir = [newCurrentFile isDir];
-	if(isDir)
+	if(newCurrentFile && isDir)
 		[fileSizeLabel setObjectValue:@"---"];
 	else
 		[fileSizeLabel setObjectValue:[NSNumber 
 			numberWithInt:[newCurrentFile fileSize]]];
-
-	// Release the old image...
-//	[currentImageRep release];
 	
 	if([newCurrentFile isImage])
 	{
@@ -264,12 +258,7 @@
 	}
 	else
 	{
-		// Send preload messages first (since next line doesn't access the
-		// cache.)
-//		currentImageRep = [[[newCurrentFile iconImageOfSize:NSMakeSize(128,128)]
-//			bestRepresentationForDevice:nil] retain];
-
-		// Set the label to "---"
+		// Set the label to "---" since this isn't an image...
 		[imageSizeLabel setStringValue:@"---"];
 	}
 
@@ -289,17 +278,9 @@
 	[imageTaskManager setScaleProportionally:scaleProportionally];
 	[imageTaskManager setScaleRatio:scaleRatio];
 	[imageTaskManager setContentViewSize:[scrollView contentSize]];
-//	NSLog(@"CurrentImageFile: %@", currentImageFile);
 	
 	if([currentImageFile isImage])
-	{
 		[imageTaskManager displayImageWithPath:currentImageFile];
-	}
-	else
-	{
-//		[imageViewer setImage:[[currentImageFile iconImageOfSize:NSMakeSize(128,128)]
-//			bestRepresentationForDevice:nil]];
-	}
 }
 
 - (IBAction)scaleView100Pressed:(id)sender
@@ -332,45 +313,33 @@
 	[self redraw];
 }
 
+// Redraw the window when the seperator between the file list and image view
+// is moved.
 -(void)splitViewDidResizeSubviews:(NSNotification*)notification
 {
 	[self redraw];
 }
 
+// Callback function for ImageTaskManager. Gets called when an image is to be
+// displayed in the window...
 -(void)displayImage
 {
-	// Get a copy of the current display image from the ImageTaskManager
+	// Get the current image from the ImageTaskManager
 	int x, y;
 	NSImage* image = [imageTaskManager getCurrentImageWithWidth:&x height:&y];
-//	NSLog(@"Image is %@", image);
-//	NSLog(@"Image is proxy: %d", [image isProxy]);
-//	NSLog(@"Main thread got a display image command! Image is %@", image);
 	[imageViewer setImage:image];
 	[imageViewer setFrameSize:[image size]];
 	[imageSizeLabel setStringValue:[NSString stringWithFormat:@"%i x %i", 
 		x, y]];
 }
 
--(void)setIconFor:(NSDictionary*)options
+-(void)setIcon
 {
-	NSString* path = [options objectForKey:@"Path"];
-	if([[path stringByDeletingLastPathComponent] isEqual:currentDirectory])
-	{
-		int row = [[options objectForKey:@"Row"] intValue];
-//		NSLog(@"Setting thumbnail for row %d", row);
-		IconFamily* iconFamily = [imageTaskManager getCurrentIconFamily];
-		NSImage* thumbnail = [imageTaskManager getCurrentThumbnail];
-//		NSLog(@"Current options dictionary: %@", path);
-		NSLog(@"Setting icon to %@", thumbnail);
-		[path retain];
-		[viewAsIconsController setThumbnail:thumbnail
-									forFile:path
-										row:row];
-		[thumbnail release];
-		[path release];
-	}
-//	else
-//		NSLog(@"Ignoring since we've moved on!");
+	NSImage* thumbnail = [imageTaskManager getCurrentThumbnail];
+	id cell = [imageTaskManager getCurrentThumbnailCell];
+	
+	[cell setIconImage:thumbnail];
+	[viewAsIconsController updateCell:cell];
 }
 
 

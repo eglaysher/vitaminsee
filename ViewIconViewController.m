@@ -51,15 +51,15 @@
 	[self singleClick:ourBrowser];
 	
 	// Now we build thumbnails for each image.
-	NSString* path;
-	int row = 0;
-	NSEnumerator* e = [fileList objectEnumerator];
-	while(path = [e nextObject])
-	{
-//		NSLog(@"Working with path %@", path);
-		[imageTaskManager buildThumbnailFor:path row:row];
-		row++;
-	}
+//	int row = 0;
+//	NSEnumerator* e = [fileList objectEnumerator];
+//	while(path = [e nextObject])
+//	{
+////		NSLog(@"Working with path %@", path);
+//		if([path isImage])
+//			[imageTaskManager buildThumbnailFor:path row:row];
+//		row++;
+//	}
 }
 
 -(NSView*)view
@@ -67,11 +67,8 @@
 	return ourBrowser;
 }
 
-// Implement the NSBrowser delegate protocal
-//- (int)browser:(NSBrowser *)sender numberOfRowsInColumn:(int)column {
-//	return [fileList count];
-//}
-
+// Delegate method for our browser. We are an active delegate so we can message
+// the ITM to build an icon for us
 -(void)browser:(NSBrowser*)sender
 createRowsForColumn:(int)column
 	  inMatrix:(NSMatrix*)matrix
@@ -81,18 +78,12 @@ createRowsForColumn:(int)column
 	
 	[matrix setCellClass:[ViewAsIconViewCell class]];
 	[matrix renewRows:count columns:1];
-}
-
-- (void)browser:(NSBrowser *)sender 
-willDisplayCell:(id)cell 
-		  atRow:(int)row
-		 column:(int)column 
-{
-	// Set the properties of this cell.
-//	NSLog(@"Setting properties for row %d", row);
-	[(ViewAsIconViewCell*)cell setCellPropertiesFromPath:[fileList objectAtIndex:row]
-									withImageTaskManager:imageTaskManager
-													 row:row];
+	for(i = 0; i < count; ++i)
+	{
+		id cell = [matrix cellAtRow:i column:0];
+		[cell setCellPropertiesFromPath:[fileList objectAtIndex:i]];
+		[imageTaskManager buildThumbnail:[fileList objectAtIndex:i] forCell:cell];
+	}
 }
 
 -(void)singleClick:(NSBrowser*)sender
@@ -239,26 +230,10 @@ willDisplayCell:(id)cell
 			@"/", [fileToSelect lastPathComponent], nil]]];
 }
 
--(void)setThumbnail:(NSImage*)thumbnail
-			forFile:(NSString*)file
-				row:(int)row
+-(void)updateCell:(id)cell
 {
-	NSMatrix* matrix = [ourBrowser matrixInColumn:0];
-//	NSLog(@"Image: %@Row: %d", thumbnail, row);
-	ViewAsIconViewCell* cell = [matrix cellAtRow:row column:0];
-//	NSLog(@"Cell: %@", cell);
-//	if([[cell cellPath] isEqual:file])
-//	{
-		[cell setIconImage:thumbnail];
-		[matrix putCell:cell atRow:row column:0];
-		[ourBrowser updateCell:cell];
-//	}
-//	else
-//	{
-//		NSLog(@"Mismatch: Cellpath: '%@' File: '%@' on row %d of %d rows", 
-//			  [cell cellPath], file, row, [matrix numberOfRows] - 1);
-////		NSLog(@"WARNING! cell/row mismatch!");
-//	}
+	[[ourBrowser matrixInColumn:0] updateCell:cell];
+	[ourBrowser updateCell:cell];
 }
 
 @end

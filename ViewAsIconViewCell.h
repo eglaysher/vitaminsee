@@ -15,9 +15,7 @@
 	NSString* thisCellsFullPath;	
 }
 
--(void)setCellPropertiesFromPath:(NSString*)path 
-			withImageTaskManager:(ImageTaskManager*)imageTaskManager 
-							 row:(int)row;
+-(void)setCellPropertiesFromPath:(NSString*)path;
 -(void)setIconImage:(NSImage*)image;
 -(NSString*)cellPath;
 
