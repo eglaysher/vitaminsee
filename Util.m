@@ -11,11 +11,11 @@
 #import <stdlib.h>
 
 struct DS buildImageSize(int boxWidth, int boxHeight, int imageWidth, int imageHeight,
-					BOOL canScaleProportionally, float ratioToScale,
-					BOOL*canGetAwayWithQuickRender)
+						 BOOL canScaleProportionally, float ratioToScale,
+						 BOOL*canGetAwayWithQuickRender)
 {
-//	NSLog(@"Going to build size with box:[%d,%d] image:[%d, %d] canScale:%d ratio:%f",
-//		  boxWidth, boxHeight, imageWidth, imageHeight, canScaleProportionally, ratioToScale);
+	NSLog(@"Going to build size with box:[%d,%d] image:[%d, %d] canScale:%d ratio:%f",
+		  boxWidth, boxHeight, imageWidth, imageHeight, canScaleProportionally, ratioToScale);
 	struct DS display;
 	
 	if(canScaleProportionally == YES)
@@ -24,35 +24,52 @@ struct DS buildImageSize(int boxWidth, int boxHeight, int imageWidth, int imageH
 		// ratio and then tell the imageViewer to scale it to that size.
 		display.width = imageWidth * ratioToScale;
 		display.height = imageHeight * ratioToScale;
-		if(display.width < boxWidth && display.height < boxHeight)
-			*canGetAwayWithQuickRender = YES; 
 	}
 	else
 	{
-		// Set the size of the display version of the image so that it fits 
-		// within the constraints of the NSScaleView that contains this 
-		// NSImageView.
-		float heightRatio = buildRatio(boxHeight, imageHeight);
-		float widthRatio = buildRatio(boxWidth, imageWidth);
 		if(imageWidth <= boxWidth && imageHeight <= boxHeight)
 		{
-			// The image is smaller then the conrentSize and we should just
-			// use the size of the image.
 			display.width = imageWidth;
 			display.height = imageHeight;
-			*canGetAwayWithQuickRender = YES;
+			*canGetAwayWithQuickRender = YES; 		
 		}
 		else
 		{
-			// The image needs to be scaled to fit in the box.
+			float heightRatio = buildRatio(boxHeight, imageHeight);
+			float widthRatio = buildRatio(boxWidth, imageWidth);
 			canGetAwayWithQuickRender = NO;
-
-			float ratio = min(heightRatio, widthRatio);
-			display.width = imageWidth * ratio;
-			display.height = imageHeight * ratio;
-		}
+			
+			// The image needs to be scaled to fit in the box. Go through the
+			// two possible ratios in terms of biggest first and check to
+			// see if they work. We sort an array of the two values so we make
+			// sure we aren't scaling smaller then what can be displayed on the
+			// screen
+			//
+			// Note to self: It's nonobvious, but fhe following is NOT equivlent to:
+			//    min(heightRatio, widthRatio);.
+			// This block finds the maximum safe scaleing ratio. Finding the minimum
+			// ratio will result in poorly scaled pictures sometimes...
+			NSMutableArray* ratios = [NSMutableArray arrayWithObjects:[NSNumber 
+			numberWithFloat:heightRatio], [NSNumber numberWithFloat:widthRatio],
+				nil];
+			[ratios sortUsingSelector:@selector(compare:)];
+			NSEnumerator* e = [ratios reverseObjectEnumerator];
+			NSNumber* num;
+			while(num = [e nextObject])
+			{
+				float ratio = [num floatValue];
+				//				NSLog(@"Current ratio: %f", ratio);
+				if((int)(imageWidth * ratio) <= boxWidth &&
+				   (int)(imageHeight * ratio) <= boxHeight)
+				{
+					// We've found the ratio to use. Get out of this loop...
+					display.width = imageWidth * ratio;
+					display.height = imageHeight * ratio;
+					break;
+				}
+			}		
+		}	
 	}	
-
 	return display;
 }
 
