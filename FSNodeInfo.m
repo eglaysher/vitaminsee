@@ -152,12 +152,26 @@
 	[iconFamily setAsCustomIconForFile:path];
 }
 
+-(NSImage*)getDefaultImage:(NSString*)path
+{
+	NSImage* nodeImage = [[NSWorkspace sharedWorkspace] iconForFile:path];
+	if(!nodeImage) {
+		nodeImage = [[NSWorkspace sharedWorkspace] iconForFileType:[path pathExtension]];
+	}
+	return nodeImage;
+}
+
 - (NSImage*)iconImageOfSize:(NSSize)size {
     NSString *path = [self absolutePath];
 	NSImage* nodeImage;
-
-	if([IconFamily fileHasCustomIcon:path])
-		nodeImage = [[IconFamily iconFamilyWithIconOfFile:path] imageWithAllReps];
+	
+	if([self isDirectory])
+		// If this is a directory, don't go through the big IconFamily process
+		// for speed...
+		nodeImage = [self getDefaultImage:path];
+	else if([IconFamily fileHasCustomIcon:path])
+		// We'll use ImageFamily for when we stop sucking.
+		nodeImage = [self getDefaultImage:path];
 	else
 	{
 		// No custom icon.
@@ -171,12 +185,7 @@
 		}
 		else
 		{
-			// Okay, so it's not an image and it doesn't have a thumbnail. Use default
-			// icon
-			nodeImage = [[NSWorkspace sharedWorkspace] iconForFile:path];
-			if(!nodeImage) {
-				nodeImage = [[NSWorkspace sharedWorkspace] iconForFileType:[path pathExtension]];
-			}
+			nodeImage = [self getDefaultImage:path];
 		}
 	}
 	[nodeImage setScalesWhenResized:YES];

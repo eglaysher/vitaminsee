@@ -65,6 +65,7 @@
 //104
 		1058C7A0FEA54F0111CA2CBB = {
 			children = (
+				8B4ECCA107B930F8003734A5,
 				1058C7A1FEA54F0111CA2CBB,
 			);
 			isa = PBXGroup;
@@ -335,6 +336,20 @@
 		};
 		8B4A5A9607B74EDC00F30E03 = {
 			fileRef = 8B4A5A9207B74EDC00F30E03;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B4ECCA107B930F8003734A5 = {
+			isa = PBXFileReference;
+			lastKnownFileType = wrapper.framework;
+			name = Accelerate.framework;
+			path = /System/Library/Frameworks/Accelerate.framework;
+			refType = 0;
+			sourceTree = "<absolute>";
+		};
+		8B4ECCA207B930F8003734A5 = {
+			fileRef = 8B4ECCA107B930F8003734A5;
 			isa = PBXBuildFile;
 			settings = {
 			};
@@ -690,6 +705,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D11072F0486CEB800E47090,
+				8B4ECCA207B930F8003734A5,
 			);
 			isa = PBXFrameworksBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;

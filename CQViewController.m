@@ -98,6 +98,8 @@
 		{
 			// This item is an image. Let's load it.
 			currentImageRep = [[imageTaskManager getImage:[fsNode absolutePath]] retain];
+			
+			// Preload the next possible files...
 			[self preloadNextFiles:browser];
 			
 			// Set the label to the image size.
@@ -108,32 +110,64 @@
 		}
 		else
 		{
+			// Send preload messages first (since next line doesn't access the
+			// cache.)
+			[self preloadNextFiles:browser];
+			
 			// This item isn't an image. Load it's icon.
 			currentImageRep = [[[fsNode iconImageOfSize:NSMakeSize(128,128)] 
 				bestRepresentationForDevice:nil] retain];
-			
 			// Set the label to "---"
 			[imageSizeLabel setStringValue:@"---"];
 		}
     }
     
-	[self redraw];
+	[self redraw];	
 }
 
 -(void)preloadNextFiles:(NSBrowser*)browser 
 {
-	int numberOfImagesToPreload = 1 + 3;
+	// Preload the image above and below this image (Usually, only one of those
+	// will be preloaded while the other will be ignored since it's already in
+	// the cache.)
 	int selectedColumn = [browser selectedColumn];
 	int selectedRow = [browser selectedRowInColumn:selectedColumn];
-	int i;
-	for(i = selectedRow + 1; i < selectedRow + numberOfImagesToPreload; ++i)
+	int toLoad;
+	
+	// Preload the previous file.
+	toLoad = selectedRow - 1;
+	id node = [[browser loadedCellAtRow:toLoad column:selectedColumn] nodeInfo];
+	if(node && [node isImage])
+		[imageTaskManager preloadImage:[node absolutePath]];
+	
+	// When we are dealing with a directory, we want to preload the first
+	// image in the directory so when the user hits right, it may already
+	// be loaded. So find the first visible file and then load the 
+	// file if it's an image file...
+	NSArray* arrayOfSubnodes = [[FSNodeInfo nodeWithParent:nil 
+											atRelativePath:[browser path]] subNodes];
+	NSEnumerator* e = [arrayOfSubnodes objectEnumerator];
+	FSNodeInfo* currentNode;
+	while(currentNode = [e nextObject])
 	{
-		id node = [[browser loadedCellAtRow:i column:selectedColumn] nodeInfo];
-		if([node isImage])
+		if([currentNode isVisible])
 		{
-			[imageTaskManager preloadImage:[node absolutePath]];
+			if([currentNode isImage])
+			{
+				NSString* firstFilePath = [currentNode absolutePath];				
+				NSLog(@"Going to prelad first file %@", firstFilePath);
+				[imageTaskManager preloadImage:firstFilePath];						
+			}
+			break;
 		}
 	}
+	
+	
+	// Preload the next file.
+	toLoad = selectedRow + 1;
+	node = [[browser loadedCellAtRow:(selectedRow + 1) column:selectedColumn] nodeInfo];
+	if(node && [node isImage])
+		[imageTaskManager preloadImage:[node absolutePath]];
 }
 
 - browserDoubleClick:(id)browser {
@@ -209,8 +243,6 @@
 		// Draw the image by just making an NSImage from the imageRep. This is
 		// done when the image will fit in the viewport, or when we are 
 		// rendering an animated GIF.
-		NSLog(@"Using simple rendering...");
-		NSLog(@"Image: [%i, %i] Display: [%i, %i]", imageX, imageY, displayX, displayY);
 		NSImageRep* imageRep = [[currentImageRep copy] autorelease];
 		NSImage* image = [[[NSImage alloc] init] autorelease];
 		[image addRepresentation:imageRep];
@@ -223,6 +255,25 @@
 		[imageViewer setAnimates:YES];
 		[imageViewer setImage:image];
 	}
+//	else if(1)
+//	{
+//		NSImageRep* imageRep = currentImageRep;
+//		int bpp = [imageRep bitsPerPixel]/8;
+//		
+//		// Build source buffer
+//		vImage_Buffer vbuf;
+//		initvImageFromNSBitmapRep(&vbuf, imageRep);
+//		
+//		// Build destination buffer
+//		vImage_Buffer destBuf;
+//		MyInitBuffer(&destBuf, displayY, displayX, bpp);
+//
+//		// Perform scaling
+//		vImageScale_ARGB8888(&vbuf, &destBuf, NULL, 0);
+//		
+//		// If there was no exception, then we're good to go.
+//		NSBitmapImageRep* destRep = [NSBitmapImageRep imageRepsWithD
+//	}
 	else
 	{
 		NSLog(@"Using full rendering...");

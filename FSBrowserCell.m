@@ -57,14 +57,22 @@
 
 @implementation FSBrowserCell
 
-+ (NSImage*)branchImage {
-    // Override the default branch image (we don't want the arrow).
-    return nil;
-}
+//+ (NSImage*)branchImage {
+//    // Override the default branch image (we don't want the arrow).
+//    return nil;
+//}
+//
+//+ (NSImage*)highlightedBranchImage {
+//    // Override the default branch image (we don't want the arrow).
+//    return nil;
+//}
 
-+ (NSImage*)highlightedBranchImage {
-    // Override the default branch image (we don't want the arrow).
-    return nil;
+-(id)init {
+	if(self = [super init]) {
+		// We have a mutex here so that we can guarentee the safety of setImage
+		// and image
+	}
+	return self;
 }
 
 - (void)dealloc {
@@ -86,7 +94,7 @@
     [self setAttributedStringValue: [[[NSAttributedString alloc] initWithString:stringValue attributes:[FSBrowserCell stringAttributesForNode:node]] autorelease]];
     
     // Set the image part.  FSNodeInfo knows how to look up the proper icon to use for a give file/directory.
-    [self setIconImage: [node iconImageOfSize:NSMakeSize(ICON_SIZE,ICON_SIZE)]];
+//    [self setIconImage:[node iconImageOfSize:NSMakeSize(ICON_SIZE,ICON_SIZE)]];
     
     // If we don't have access to the file, make sure the user can't select it!
     [self setEnabled: [node isReadable]];

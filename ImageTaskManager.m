@@ -96,10 +96,11 @@
 
 -(void)preloadImage:(NSString*)path
 {	
-	pthread_mutex_lock(&imageCacheLock);
 	NSDictionary* currentTask = [NSDictionary dictionaryWithObjectsAndKeys:
 		@"PreloadImage", @"Type", path, @"Path", nil];
 
+	pthread_mutex_lock(&imageCacheLock);
+	NSLog(@"Going to preload: %@", path);
 	// Add the object
 	[taskQueue addObject:currentTask];
 	
@@ -110,6 +111,18 @@
 
 -(NSImageRep*)getImage:(NSString*)path
 {
+	// First we check to see if there is a task to preload path. If there is,
+	// delete it.
+	pthread_mutex_lock(&taskQueueLock);
+	int i;
+	for(i = [taskQueue count] - 1; i > -1; i--)
+		if([[[taskQueue objectAtIndex:i] objectForKey:@"Path"] isEqualTo:path])
+		{
+			NSLog(@"Removing old task for %@", path);
+			[taskQueue removeObjectAtIndex:i];
+		}				
+	pthread_mutex_unlock(&taskQueueLock);
+	
 	NSImageRep* imageRep;
 	pthread_mutex_lock(&imageCacheLock);
 	NSDictionary* cacheEntry = [imageCache objectForKey:path];
@@ -117,17 +130,22 @@
 	// If the image isn't in the cache...
 	if(!cacheEntry)
 	{
+		pthread_mutex_unlock(&imageCacheLock);
+		NSLog(@"'%@' isn't in the cache. Loading...", path);
 		// Load the file, since it obviously hasn't been loaded.
 		imageRep = [NSImageRep imageRepWithContentsOfFile:path];
 		cacheEntry = [NSDictionary dictionaryWithObjectsAndKeys:
 			[NSDate date], @"Date", imageRep, @"Image", nil];
-				
+		
+		pthread_mutex_lock(&imageCacheLock);
 		// Evict an old cache entry
 		[self evictImages];
 		
 		// Add the image to the cache so subsquent hits won't require reloading...
 		[imageCache setObject:cacheEntry forKey:path];
 	}
+	else
+		NSLog(@"Using cached version of '%@'", path);
 	
 	imageRep = [cacheEntry objectForKey:@"Image"];
 	
@@ -143,7 +161,7 @@
 -(id)evictImages
 {
 	// ASSUMPTION: imageCacheLock is ALREADY locked!
-	if([imageCache count] > 5)
+	if([imageCache count] > 3)
 	{
 		NSString* oldestPath = nil;
 		NSDate* oldestDate = [NSDate date]; // set oldest as now, so anything older
@@ -172,11 +190,13 @@
 	// If the image hasn't already been loaded into the cache...
 	if(![imageCache objectForKey:path])
 	{
+		pthread_mutex_unlock(&imageCacheLock);
 		// Preload the image
 		NSImageRep* rep = [NSImageRep imageRepWithContentsOfFile:path];
 		NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:
 			[NSDate date], @"Date", rep, @"Image", nil];
 
+		pthread_mutex_lock(&imageCacheLock);
 		[self evictImages];
 		[imageCache setObject:dict forKey:path];
 	}
