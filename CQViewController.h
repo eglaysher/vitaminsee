@@ -75,6 +75,8 @@
 -(IBAction)goForward:(id)sender;
 
 -(IBAction)deleteThisFile:(id)sender;
+-(void)moveThisFile:(NSString*)destination;
+-(void)copyThisFile:(NSString*)destination;
 
 -(IBAction)showSortManager:(id)sender;
 

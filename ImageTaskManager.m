@@ -13,27 +13,11 @@
 
 @interface ImageTaskManager (Private)
 -(id)evictImages;
+-(void)doBuildIcon:(NSDictionary*)options;
 -(void)doPreloadImage:(NSString*)path;
 -(void)doDisplayImage:(NSString*)imageToDisplay;
 -(BOOL)newDisplayCommandInQueue;
 -(void)sendDisplayCommandWithImage:(NSImage*)image width:(int)width height:(int)height;
-@end
-
-// This category is here because Distributed Objects are TOTALLY BRAIN DEAD.
-// See; Problems with Distributed Objects by Andreas Mayer on the Cocoadev ML.
-@implementation NSImage (FixBraindeadCoder)
--(id)replacementObjectForPortCoder:(NSPortCoder*)encoder
-{
-	// We are returning bycopy whether we like it or not.
-	return self;
-//	if([encoder isBycopy])
-//	{
-//		NSLog(@"Woot! Bycopy!");
-//		return self;
-//	}
-//	NSLog(@"Huh!? not bycopy!?");
-//	return [super replacementObjectForProtCoder:encoder];
-}
 @end
 
 @implementation ImageTaskManager
@@ -47,7 +31,8 @@
 		pthread_cond_init(&conditionLock, NULL);
 		
 		imageCache = [[NSMutableDictionary alloc] init];
-		taskQueue = [[NSMutableArray alloc] init];
+		thumbnailQueue = [[NSMutableArray alloc] init];
+		preloadQueue = [[NSMutableArray alloc] init];
 		
 		// spawn off a new thread
 		[NSThread detachNewThreadSelector:@selector(taskHandlerThread:) 
@@ -68,7 +53,8 @@
 	
 	// destroy our mutexed data!
 	[imageCache release];
-	[taskQueue release];
+	[thumbnailQueue release];
+	[preloadQueue release];
 }
 
 -(void)taskHandlerThread:(id)portArray
@@ -91,56 +77,57 @@
 		
 		// Let's wait for stuff
 		pthread_mutex_lock(&taskQueueLock);
-		while([taskQueue count] == 0)
+		while(fileToDisplayPath == nil && [thumbnailQueue count] == 0 &&
+			  [preloadQueue count] == 0)
 		{
 			if(pthread_cond_wait(&conditionLock, &taskQueueLock))
 				NSLog(@"Invalid wait!?");
 		}
-
-		// Get a task out of our task queue...
-		currentTask = [[taskQueue objectAtIndex:0] retain];
-		[taskQueue removeObjectAtIndex:0];
-
-		// what kind of task is this?
-		NSString* type = [currentTask objectForKey:@"Type"];
-		NSString* path = [currentTask objectForKey:@"Path"];
-		pthread_mutex_unlock(&taskQueueLock);
 		
-		if([type isEqual:@"BuildIcon"])
+		// Okay, taskQueueLock is locked. Let's try individual tasks.
+		if(fileToDisplayPath != nil)
 		{
-			// Build an icon for this file.
-			NSImage* image = [[[NSImage alloc] initWithContentsOfFile:path] autorelease];
-			IconFamily* iconFamily = [IconFamily iconFamilyWithThumbnailsOfImage:image];
-			[iconFamily setAsCustomIconForFile:path];
+			// Unlock the mutex
+			NSString* path = [[fileToDisplayPath copy] autorelease];
+			[fileToDisplayPath release];
+			fileToDisplayPath = nil;
+			pthread_mutex_unlock(&taskQueueLock);
 			
-			// We need some kind of way to tell if this completed!
-		}
-		else if([type isEqual:@"PreloadImage"])
-		{
-			[self doPreloadImage:path];
-			// Load the ImageRep into the
-			// [self evictOldImage];
-		}
-		else if([type isEqual:@"DisplayImage"])
-		{
-//			[cqViewController displayImage:nil];
 			[self doDisplayImage:path];
 		}
+		else if([thumbnailQueue count])
+		{
+			NSDictionary* action = [[thumbnailQueue objectAtIndex:0] retain];
+			[thumbnailQueue removeObjectAtIndex:0];
+			pthread_mutex_unlock(&taskQueueLock);
+			
+			[self doBuildIcon:action];
+			[action release];
+		}
+		else if([preloadQueue count])
+		{
+			NSString* path = [[preloadQueue objectAtIndex:0] retain];
+			[preloadQueue removeObjectAtIndex:0];
+			pthread_mutex_unlock(&taskQueueLock);
+			
+			[self doPreloadImage:path];
+			[path release];
+		}
 		else
-			NSLog(@"WARNING! I don't know how to do task type '%@'", type);
+		{
+			// Unlock the mutex
+			pthread_mutex_unlock(&taskQueueLock);
+		}
 
-		[currentTask release];
 		[pool release];
 	}
 }
-
 
 -(void)setScaleRatio:(float)newScaleRatio
 {
 	pthread_mutex_lock(&imageScalingProperties);
 	scaleRatio = newScaleRatio;
 	pthread_mutex_unlock(&imageScalingProperties);
-//	NSLog(@"Our scale ratio %f, come in %f", scaleRatio, newScaleRatio);
 }
 
 -(void)setScaleProportionally:(BOOL)newScaleProportionally
@@ -148,7 +135,6 @@
 	pthread_mutex_lock(&imageScalingProperties);
 	scaleProportionally = newScaleProportionally;
 	pthread_mutex_unlock(&imageScalingProperties);
-//	NSLog(@"Our scale prop %d, come in %d", scaleProportionally, newScaleProportionally);
 }
 
 -(void)setContentViewSize:(NSSize)newContentViewSize
@@ -156,90 +142,50 @@
 	pthread_mutex_lock(&imageScalingProperties);
 	contentViewSize = newContentViewSize;
 	pthread_mutex_unlock(&imageScalingProperties);	
-//	NSLog(@"[%f, %f]", contentViewSize.width, contentViewSize.height);
 }
 
 -(void)displayImageWithPath:(NSString*)path
 {
-	NSDictionary* currentTask = [NSDictionary dictionaryWithObjectsAndKeys:
-		@"DisplayImage", @"Type", path, @"Path", nil];
-	
 	pthread_mutex_lock(&taskQueueLock);
-	// First we go through the task queue and remove other DisplayImage tasks
-	int i;
-	for(i = [taskQueue count] - 1; i > -1; i--)
-		if([[[taskQueue objectAtIndex:i] objectForKey:@"Type"] isEqualTo:@"DisplayImage"])
-		{
-//			NSLog(@"Removing old display task...");
-			[taskQueue removeObjectAtIndex:i];
-		}
 	
 	// Make this the NEXT thing we do.
-	[taskQueue insertObject:currentTask atIndex:0];
+	[fileToDisplayPath release];
+	[path retain];
+	fileToDisplayPath = path;
 	
 	// Note that we are OUT of here...
 	pthread_cond_signal(&conditionLock);
 	pthread_mutex_unlock(&taskQueueLock);
 }
 
+// fixme: make this function more intelligent so that it will remove items that
+// are going to get thrown away anyway...
 -(void)preloadImage:(NSString*)path
 {	
-	NSDictionary* currentTask = [NSDictionary dictionaryWithObjectsAndKeys:
-		@"PreloadImage", @"Type", path, @"Path", nil];
-
 	pthread_mutex_lock(&taskQueueLock);
-//	NSLog(@"Going to preload: %@", path);
+
 	// Add the object
-	[taskQueue addObject:currentTask];
+	[preloadQueue addObject:path];
 	
 	// Note that we are OUT of here...
 	pthread_cond_signal(&conditionLock);
 	pthread_mutex_unlock(&taskQueueLock);
 }
 
--(NSImageRep*)getImage:(NSString*)path
+-(void)buildThumbnailFor:(NSString*)path row:(int)row
 {
-	// First we check to see if there is a task to preload path. If there is,
-	// delete it.
-//	pthread_mutex_lock(&taskQueueLock);
-//	int i;
-//	for(i = [taskQueue count] - 1; i > -1; i--)
-//		if([[[taskQueue objectAtIndex:i] objectForKey:@"Path"] isEqualTo:path])
-//		{
-//			NSLog(@"Removing old task for %@", path);
-//			[taskQueue removeObjectAtIndex:i];
-//		}				
-//	pthread_mutex_unlock(&taskQueueLock);
+	NSDictionary* currentTask = [NSDictionary dictionaryWithObjectsAndKeys:
+		@"PreloadImage", @"Type", path, @"Path",
+		[NSNumber numberWithInt:row], @"Row", nil];
 	
-	NSImageRep* imageRep;
-	pthread_mutex_lock(&imageCacheLock);
-	NSDictionary* cacheEntry = [imageCache objectForKey:path];
+	pthread_mutex_lock(&taskQueueLock);
+	//	NSLog(@"Going to preload: %@", path);
+	// Add the object
+	[thumbnailQueue addObject:currentTask];
 	
-	// If the image isn't in the cache...
-	if(!cacheEntry)
-	{
-		pthread_mutex_unlock(&imageCacheLock);
-//		NSLog(@"'%@' isn't in the cache. Loading...", path);
-		// Load the file, since it obviously hasn't been loaded.
-		imageRep = [NSImageRep imageRepWithContentsOfFile:path];
-		cacheEntry = [NSDictionary dictionaryWithObjectsAndKeys:
-			[NSDate date], @"Date", imageRep, @"Image", nil];
-		
-		pthread_mutex_lock(&imageCacheLock);
-		// Evict an old cache entry
-		[self evictImages];
-		
-		// Add the image to the cache so subsquent hits won't require reloading...
-		[imageCache setObject:cacheEntry forKey:path];
-	}
-//	else
-//		NSLog(@"Using cached version of '%@'", path);
-	
-	imageRep = [cacheEntry objectForKey:@"Image"];
-	
-	// Unlock so braindeadness doesn't occur.
-	pthread_mutex_unlock(&imageCacheLock);
-	return imageRep;
+	// Note that we are OUT of here...
+	pthread_cond_signal(&conditionLock);
+	pthread_mutex_unlock(&taskQueueLock);	
 }
 
 -(NSImage*)getCurrentImageWithWidth:(int*)width height:(int*)height
@@ -250,6 +196,16 @@
 		*height = currentImageHeight;
 	
 	return currentImage;
+}
+
+-(IconFamily*)getCurrentIconFamily
+{
+	return currentIconFamily;
+}
+
+-(NSImage*)getCurrentThumbnail
+{
+	return currentIconFamilyThumbnail;
 }
 
 @end
@@ -280,6 +236,30 @@
 		// Let's get rid of the oldest path...
 		[imageCache removeObjectForKey:oldestPath];
 	}
+}
+
+-(void)doBuildIcon:(NSDictionary*)options
+{
+	NSString* path = [options objectForKey:@"Path"];
+	NSImage* thumbnail;
+	IconFamily* iconFamily;
+	
+	// Build the thumbnail and set it to the file...
+	if(![IconFamily fileHasCustomIcon:path])
+	{
+		NSImage* image = [[[NSImage alloc] initWithContentsOfFile:path] autorelease];
+		iconFamily = [IconFamily iconFamilyWithThumbnailsOfImage:image];
+		[iconFamily setAsCustomIconForFile:path];
+		thumbnail = [[iconFamily imageWithAllReps] retain];
+	}
+	else
+	{
+		thumbnail = [[path iconImageOfSize:NSMakeSize(16, 16)] retain];
+	}
+	
+	currentIconFamily = iconFamily;
+	currentIconFamilyThumbnail = thumbnail;
+	[cqViewController setIconFor:options];
 }
 
 -(void)doPreloadImage:(NSString*)path
@@ -420,23 +400,14 @@
 		
 		// Now display the final image:
 		[self sendDisplayCommandWithImage:imageToRet width:imageX height:imageY];
-	}	
+	}
 }
 
 -(BOOL)newDisplayCommandInQueue
 {
 	BOOL retVal = NO;
 	pthread_mutex_lock(&taskQueueLock);
-
-	NSEnumerator* e = [taskQueue objectEnumerator];
-	NSDictionary* dict;
-	while(dict = [e nextObject])
-		if([[dict objectForKey:@"Type"] isEqual:@"DisplayImage"])
-		{
-			retVal = YES;
-			break;
-		}
-	
+	retVal = fileToDisplayPath != nil;
 	pthread_mutex_unlock(&taskQueueLock);
 	return retVal;
 }

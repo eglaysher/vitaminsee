@@ -8,13 +8,17 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class ImageTaskManager;
 
 @interface ViewAsIconViewCell : NSBrowserCell {
 	NSImage* iconImage;
 	NSString* thisCellsFullPath;	
 }
 
--(void)setCellPropertiesFromPath:(NSString*)path;
+-(void)setCellPropertiesFromPath:(NSString*)path 
+			withImageTaskManager:(ImageTaskManager*)imageTaskManager 
+							 row:(int)row;
+-(void)setIconImage:(NSImage*)image;
 -(NSString*)cellPath;
 
 @end

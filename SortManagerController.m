@@ -1,18 +1,12 @@
 #import "SortManagerController.h"
 
+#import "FileOperations.h"
+
 @implementation SortManagerController
 
-- (IBAction)addButtonClicked:(id)sender
+- (IBAction)manageButtonClicked:(id)sender
 {
-}
-
-- (IBAction)copyMoveSelectionChanged:(id)sender
-{
-}
-
-- (IBAction)removeButtonClicked:(id)sender
-{
-	
+	// fixme: do something.
 }
 
 - (id)tableView:(NSTableView *)aTableView
@@ -46,16 +40,24 @@
 	NSDictionary* cellProperties = [[[NSUserDefaults standardUserDefaults] 
 		objectForKey:@"SortManagerPaths"] objectAtIndex:rowIndex];
 	NSString* destination = [cellProperties objectForKey:@"Path"];
-
-	NSLog(@"Moving current file to %@", destination);
-	
-	[mainController moveThisFile:destination];
-//	[mainController moveCurrentFileToPath:destination];
+	int column = [moveCopyMatrix selectedColumn];
+		
+	if(column == 0)
+	{
+//		NSLog(@"Moving current file to %@", destination);	
+		[mainController moveThisFile:destination];
+	}
+	else
+	{
+//		NSLog(@"Copying current file to %@", destination);
+		[mainController copyThisFile:destination];
+	}
 }
 
 - (int)numberOfRowsInTableView:(NSTableView *)aTableView
 {
     return [[[NSUserDefaults standardUserDefaults] objectForKey:@"SortManagerPaths"] count];
 }
+
 
 @end

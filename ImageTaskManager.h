@@ -10,11 +10,14 @@
 
 #import <pthread.h>
 
-
+@class IconFamily;
 
 @interface ImageTaskManager : NSObject {
+	// TASK QUEUE:
 	pthread_mutex_t taskQueueLock;
-	NSMutableArray* taskQueue;
+	NSString* fileToDisplayPath;
+	NSMutableArray* thumbnailQueue;
+	NSMutableArray* preloadQueue;
 	
 	pthread_mutex_t imageCacheLock;
 	NSMutableDictionary* imageCache;
@@ -30,19 +33,23 @@
 	int currentImageWidth;
 	int currentImageHeight;
 	
+	IconFamily* currentIconFamily;
+	NSImage* currentIconFamilyThumbnail;
+	
 	id cqViewController;
 }
 
 -(id)initWithPortArray:(NSArray*)portArray;
 
--(NSImageRep*)getImage:(NSString*)path;
 -(void)preloadImage:(NSString*)path;
 -(void)displayImageWithPath:(NSString*)path;
+-(void)buildThumbnailFor:(NSString*)path row:(int)row;
 
 -(void)setScaleRatio:(float)newScaleRatio;
 -(void)setScaleProportionally:(BOOL)newScaleProportionally;
 -(void)setContentViewSize:(NSSize)newContentViewSize;
 
 -(NSImage*)getCurrentImageWithWidth:(int*)width height:(int*)height;
+-(IconFamily*)getCurrentIconFamily;
 
 @end

@@ -18,6 +18,15 @@
 
 @implementation ViewAsIconViewCell
 
+-(id)init
+{
+	if(self = [super init])
+	{
+		iconImage = nil;
+	}
+	return self;
+}
+
 -(void)dealloc
 {
 	[thisCellsFullPath release];
@@ -29,6 +38,8 @@
 }
 
 -(void)setCellPropertiesFromPath:(NSString*)path
+			withImageTaskManager:(ImageTaskManager*)imageTaskManager
+							 row:(int)row
 {
 	// Keep this path...
 	[thisCellsFullPath release];
@@ -39,10 +50,14 @@
 	
 	// For now, let's hard code the icon.
 	//[self setIcon:[[NSImage alloc] initWithSize:NSMakeSize(128, 128)]];
-	[self setIconImage:[thisCellsFullPath iconImageOfSize:NSMakeSize(128, 128)]];
+	
+//	if(iconImage == nil)
+//	{
+//		[self setIconImage:[thisCellsFullPath iconImageOfSize:NSMakeSize(128, 128)]];
+//		[imageTaskManager buildThumbnailFor:path row:row];
+//	}
 	
 	// We are going to have to do something with images here...
-//	NSLog(@"Verifying path %@", thisCellsFullPath);
 	[self setEnabled:[thisCellsFullPath isReadable]];
 	
 	// In the ViewAsIconView, there are no left directories...

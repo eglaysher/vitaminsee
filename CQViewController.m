@@ -10,7 +10,9 @@
 #import "Util.h"
 #import "NSString+FileTasks.h"
 #import "NSView+Set_and_get.h"
-
+#import "FileOperations.h"
+#import "SortManagerController.h"
+#import "IconFamily.h"
 @implementation CQViewController
 
 /*
@@ -23,8 +25,9 @@
  * All kinds of file operations.
    * Rename files (this is proving to be kind of dificult!)
    * et cetera! 
- * Complete sort manager (a la GQView)
+ * Complete preferences for sort manager (a la GQView)
  * Get drag on image for moving around an image...
+ * Use IconFamily now
  * Modify IconFamily to have a black line around the image...
  */
 
@@ -73,6 +76,7 @@
 	[self setupToolbar];
 	scaleProportionally = NO;
 
+	
 	// 
 	
 	// Now we start work on thread communication.
@@ -86,6 +90,9 @@
 	
 	// Launch the other thread and tell it to connect back to us.
 	imageTaskManager = [[ImageTaskManager alloc] initWithPortArray:portArray];
+	
+	// Now that we have our task manager, tell everybody to use it.
+	[viewAsIconsController setImageTaskManager:imageTaskManager];
 	
 	// set our current directory 
 	[self setCurrentDirectory:[[NSUserDefaults standardUserDefaults] 
@@ -167,6 +174,15 @@
 		if(nextFile)
 			[self setCurrentFile:nextFile];
 	}
+}
+
+-(void)copyThisFile:(NSString*)destination
+{
+	if(![destination isEqual:currentDirectory])
+	{
+		NSString* nextFile = [viewAsIconsController nameOfNextFile];
+		[self copyFile:currentImageFile to:destination];
+	}	
 }
 
 -(IBAction)deleteThisFile:(id)sender
@@ -333,6 +349,28 @@
 	[imageViewer setFrameSize:[image size]];
 	[imageSizeLabel setStringValue:[NSString stringWithFormat:@"%i x %i", 
 		x, y]];
+}
+
+-(void)setIconFor:(NSDictionary*)options
+{
+	NSString* path = [options objectForKey:@"Path"];
+	if([[path stringByDeletingLastPathComponent] isEqual:currentDirectory])
+	{
+		int row = [[options objectForKey:@"Row"] intValue];
+//		NSLog(@"Setting thumbnail for row %d", row);
+		IconFamily* iconFamily = [imageTaskManager getCurrentIconFamily];
+		NSImage* thumbnail = [imageTaskManager getCurrentThumbnail];
+//		NSLog(@"Current options dictionary: %@", path);
+		NSLog(@"Setting icon to %@", thumbnail);
+		[path retain];
+		[viewAsIconsController setThumbnail:thumbnail
+									forFile:path
+										row:row];
+		[thumbnail release];
+		[path release];
+	}
+//	else
+//		NSLog(@"Ignoring since we've moved on!");
 }
 
 

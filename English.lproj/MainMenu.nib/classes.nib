@@ -32,14 +32,13 @@
         {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
         {
             ACTIONS = {
-                actionButtonClicked = id; 
-                addButtonClicked = id; 
                 copyMoveSelectionChanged = id; 
+                manageButtonClicked = id; 
                 removeButtonClicked = id; 
             }; 
             CLASS = SortManagerController; 
             LANGUAGE = ObjC; 
-            OUTLETS = {mainController = CQViewController; }; 
+            OUTLETS = {mainController = CQViewController; moveCopyMatrix = NSMatrix; }; 
             SUPERCLASS = NSWindowController; 
         }, 
         {
