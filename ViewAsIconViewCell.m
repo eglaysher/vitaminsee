@@ -18,6 +18,11 @@
 #define ICON_INSET_HORIZ	4.0	/* Distance to inset the icon from the left edge. */
 #define ICON_TEXT_SPACING	2.0	/* Distance between the end of the icon and the text part */
 
+// Taking 0.1% of a function that takes 7.0% of runtime. We can optimize out these
+// variables.
+NSSize	IMAGE_SIZE = {128.0f, 128.0f};
+
+//NSMakeSize(128, 128);
 
 @implementation ViewAsIconViewCell
 
@@ -84,8 +89,6 @@
 	// In the ViewAsIconView, there are no left directories...
 	[self setLeaf:YES]; 
 	
-//	// Allow editing of the cell...
-//	[self setCellAttribute:NSCellEditable to:YES];
 }
 
 - (void)setIconImage:(NSImage*)image {
@@ -120,41 +123,38 @@
     return theSize;
 }
 
+// WE ARE SPENDING 16% OF TOTAL RUNTIME HERE. OPTIMIZE THE FUCK OUT OF THIS!
 - (void)drawInteriorWithFrame:(NSRect)cellFrame inView:(NSView *)controlView 
 {
-	NSSize	imageSize = NSMakeSize(128, 128); //[iconImage size];
-	NSRect	imageFrame, highlightRect, textFrame;
-	
-//	[NSBezierPath clipRect:cellFrame];
-	// First, let's draw a frame around the cell
-	
+	// Make this a global constant?
+	NSRect	imageFrame, notTextFrame, textFrame;
+
 	// Divide the cell into 2 parts, the image part (on the left) and the text part.
-	NSDivideRect(cellFrame, &imageFrame, &textFrame, 
-				 128 + 4.0 * 2.0,
+	NSDivideRect(cellFrame, &notTextFrame, &textFrame, 
+				 128 + 4.0f * 2.0f,
 				 NSMinYEdge);
-	imageFrame.origin.x += (cellFrame.size.width - imageSize.width) / 2.0;
-	imageFrame.size = imageSize;
+	imageFrame = notTextFrame;
+//	imageFrame.origin.x += (cellFrame.size.width - IMAGE_SIZE.width) / 2.0f;
+	imageFrame.origin.x += (int)(cellFrame.size.width - IMAGE_SIZE.width) / 2;
+	imageFrame.size = IMAGE_SIZE;
 	
-	imageFrame.origin.y += 4.0;
+	imageFrame.origin.y += 4.0f;
 	
 	// Adjust the image frame top account for the fact that we may or may not be in a flipped control view, since when compositing
 	// the online documentation states: "The image will have the orientation of the base coordinate system, regardless of the destination coordinates".
 	// ASSUMPTION: WE ARE IN FLIPPED COORDINATES!
-	imageFrame.origin.y += imageSize.width; //ceil((textFrame.size.height + imageFrame.size.height) / 2);
+	imageFrame.origin.y += IMAGE_SIZE.width;
 
 	// Highlighting is f'ing bork. Ask if we're the selected cell instead.
 	if ([(NSMatrix*)controlView selectedCell] == self) {
 		// use highlightColorInView instead of [NSColor selectedControlColor] since NSBrowserCell slightly dims all cells except those in the right most column.
 		// The return value from highlightColorInView will return the appropriate one for you. 
-		//			[[NSColor s] set];
 		[[self highlightColorInView: controlView] set];
-		NSRectFill(cellFrame);
+		NSRectFill(notTextFrame);
 	}
 	
-//	NSLog(@"File: %@ in {{%f,%f}", [thisCellsFullPath lastPathComponent],
-//		  imageFrame.origin.x, imageFrame.origin.y);
-	
-	// Blit the image.
+	// Blit the image. We regretably have to lock on this since otherwise we
+	// have a FREQUENT deadlock with one of IconFamily's carbon functions.
 	pthread_mutex_lock(&imageTaskLock);
 		[iconImage compositeToPoint:imageFrame.origin operation:NSCompositeSourceOver];
 	pthread_mutex_unlock(&imageTaskLock);
@@ -162,29 +162,24 @@
 	float newWidth = textFrame.size.width - 30.5f;
 
 	// Shark revealed that the -[NSAttributedString trunacteForWidth:] was
-	// eating up a bunch of CPU time, so we cache the display title.
+	// eating up a bunch of CPU time, so we cache the display title. This 
+	// regretably won't help with the first display since we have no idea what
+	// textFrame.size is going to be, but it should speed up later later redraws
+	// (which there are quite a number of)
 	if(newWidth < cachedTitleWidth)
 	{
-		// Create our string and store it.
+		// Create our string and store it for later use.
 		NSAttributedString* aString = [[[[NSAttributedString alloc] 
 			initWithString:title] autorelease] truncateForWidth:newWidth];
 		cachedTitleWidth = [aString size].width;
 		[cachedCellTitle release];
 		cachedCellTitle = [[aString string] retain];
-
-		[self setStringValue:cachedCellTitle];
 		[self setAlignment:NSCenterTextAlignment];
-		[super drawInteriorWithFrame:textFrame inView:controlView];
+	}
 	
-		// Now we set the path back
-		[self setStringValue:title];
-	}
-	else
-	{
-		[self setStringValue:cachedCellTitle];
-		[super drawInteriorWithFrame:textFrame inView:controlView];
-		[self setStringValue:title];
-	}
+	[self setStringValue:cachedCellTitle];
+	[super drawInteriorWithFrame:textFrame inView:controlView];
+	[self setStringValue:title];
 }
 
 

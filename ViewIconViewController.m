@@ -86,10 +86,10 @@ createRowsForColumn:(int)column
 		id cell = [matrix cellAtRow:i column:0];
 		NSString* currentFile = [fileList objectAtIndex:i];
 		[cell setCellPropertiesFromPath:currentFile];
-		if(displayThumbnails || [currentFile isDir])
+		if(displayThumbnails && [currentFile isImage])
 			[imageTaskManager buildThumbnail:currentFile forCell:cell];
-//		else
-//			[cell setIconImage:[currentFile iconImageOfSize:NSMakeSize(128,128)]];
+		else
+			[cell setIconImage:[currentFile iconImageOfSize:NSMakeSize(128,128)]];
 	}
 }
 
@@ -282,8 +282,7 @@ createRowsForColumn:(int)column
 -(void)updateCell:(id)cell
 {
 	[[ourBrowser matrixInColumn:0] updateCell:cell];
-	[ourBrowser updateCell:cell];
-
+//	[ourBrowser updateCell:cell];
 	//	[ourBrowser setNeedsDisplay];
 }
 
