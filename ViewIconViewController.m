@@ -74,7 +74,6 @@ createRowsForColumn:(int)column
 	int count = [fileList count];
 	[matrix setMode:NSListModeMatrix];
 	[matrix renewRows:count columns:1];
-//	[sender setPathSeparator:@" "];
 	
 	id userDeffault = [NSUserDefaults standardUserDefaults];
 	BOOL buildThumbnails = [[userDeffault objectForKey:@"GenerateThumbnails"] boolValue];
@@ -98,15 +97,10 @@ createRowsForColumn:(int)column
 			[cell setIconImage:[[NSWorkspace sharedWorkspace] iconForFileType:
 				[currentFile pathExtension]]];
 			
-//			NSLog(@"Requesting %@", currentFile);
-			
 			[thumbnailManager buildThumbnail:currentFile forCell:cell];
 		}
 		else
-		{
-//			NSLog(@"No request for %@", currentFile);
 			[cell loadOwnIconOnDisplay];
-		}
 	}
 }
 
@@ -206,6 +200,14 @@ willDisplayCell:(id)cell
 
 // I should really make a SortedArray datastructure, since I repeat the binary
 // search way to many times...
+//
+// post-contest: to really fix this, I need to binary search and remove the old
+// file and binary search and add the new file. To both data strucutres. This
+// requires a SortedMutableArray as a prerequisite because I am NOT going to 
+// hand write another binary search... It'd be useful ALL over the place!
+//
+// So much of this code could be collapsed if I did the Right Thing[tm] and
+// made that class but I have no TIME since it is due MONDAY. 
 -(void)renameFile:(NSString*)absolutePath to:(NSString*)newPath
 {
 	int low = -1;
@@ -233,10 +235,12 @@ willDisplayCell:(id)cell
 	{
 		[fileList replaceObjectAtIndex:high withObject:newPath];
 		[fileList sortUsingSelector:@selector(caseInsensitiveCompare:)];
-				
+		
+		// fix here later.
 		[ourBrowser loadColumnZero];
 		[ourBrowser setPath:[newPath lastPathComponent]];
-	}	
+		[ourBrowser setNeedsDisplay];
+	}
 }
 
 // Binary search across our files for a certain node to remove. Much faster then
@@ -323,7 +327,6 @@ willDisplayCell:(id)cell
 
 -(void)rebuildInternalFileArray
 {
-//	NSLog(@"Current directoy is  %@", currentDirectory);
 	NSArray* directoryContents = [[NSFileManager defaultManager] 
 		directoryContentsAtPath:currentDirectory];
 	NSEnumerator* dirEnum = [directoryContents objectEnumerator];
