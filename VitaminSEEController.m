@@ -128,8 +128,6 @@
 	[[fileSizeLabel cell] setFormatter:fsFormatter];
 	
 	// Set up the menu icons
-	// CHNAGE THIS! It has to lookup and load the icons instead of just grabbing
-	// them form the Application bundle!
 	NSImage* img = [[NSWorkspace sharedWorkspace] iconForFile:NSHomeDirectory()];
 	[img setSize:NSMakeSize(16, 16)];
 	[homeFolderMenuItem setImage:img];
@@ -144,11 +142,7 @@
 	
 	// Set our plugins to nil
 	loadedFilePlugins = [[NSMutableArray alloc] init];
-	_sortManagerController = nil;
-	
-	// This lock is used to ensure that Carbon parts of out code don't screw up
-	// and cause deadlock. 
-	//pthread_mutex_init(&imageTaskLock, 0);
+	_sortManagerController = nil;	
 	
 	// Use an Undo manager to manage moving back and forth.
 	pathManager = [[NSUndoManager alloc] init];	
@@ -665,10 +659,8 @@
 	float scale;
 	NSImage* image = [imageTaskManager getCurrentImageWithWidth:&x height:&y 
 														  scale:&scale];
-//	pthread_mutex_lock(&imageTaskLock);
-		[imageViewer setImage:image];
-		[imageViewer setFrameSize:[image size]];
-//	pthread_mutex_unlock(&imageTaskLock);
+	[imageViewer setImage:image];
+	[imageViewer setFrameSize:[image size]];
 	
 	scaleRatio = scale;
 
