@@ -181,10 +181,15 @@ static NSString* GotoHomeID = @"Goto Home Toolbar Identifier";
 	{
 		// We can only do these actions if the file is an image.
         enable = [currentImageFile isImage];
-    } else if ([identifier isEqual:GotoPicturesID] ||
-			   [identifier isEqual:GotoHomeID])
+    }
+	else if ([identifier isEqual:GotoPicturesID])
 	{
-        // always enable print for this window
+		// Only enable the Pictures item if "~/Pictures" exists
+		enable = [[NSHomeDirectory() stringByAppendingPathComponent:@"Pictures"] isDir];
+	}
+	else if ([identifier isEqual:GotoHomeID])
+	{
+		// Always show home. If the user has deleted his
         enable = YES;
     }
 	

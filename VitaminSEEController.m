@@ -1,3 +1,5 @@
+#include <sys/stat.h>
+
 #import "VitaminSEEController.h"
 #import "ToolbarDelegate.h"
 
@@ -65,7 +67,9 @@
 /* Completed:
  * * Speed. Entering a new directory is over an order of magnitude faster on
  *   directories with lots of images!
- *
+ * * Stop assuming people have a "Pictures" folder. Some people have broken out
+ *   of Apple's heiarchy, so don't make assumptions.
+ * * Windows Bitmap support
  */
 
 /// For Version 0.6
@@ -75,11 +79,13 @@
 // * Finder notifications (a.k.a. there is no excuse to make the user refresh)
 // * Solidify the plugin layer
 // * Undo/Redo on sort manager/rename, et cetera
+// * Icns support
 
 // For Version 0.7
 // * Transparent archive support
 // * Finder like shelf--allow DnD of folders onto the NSToolbar
 //   * How the HELL do I do this?!?! No clue!!!!!!!!!!
+// * Fullscreen mode
 
 // For Version 0.8
 // * Create an image database feature
@@ -87,10 +93,11 @@
 // * 2 million% more complete metadata! Exif panel! IPTC panel!
 
 // For Version 0.9
-// * Fullscreen mode
+// * Image search
+// * Duplicate/similarity search
 
 // For Version 1.0
-// * 
+// ??????
 
 /* Okay, refactoring responsibilities:
   * VitaminSEEController is responsible for ONLY:
@@ -141,10 +148,20 @@
 	[NSValueTransformer setValueTransformer:[[[ImmutableToMutableTransformer 
 		alloc] init] autorelease] forName:@"ImmutableToMutableTransformer"];
 	
+	// Test to see if the user is a rebel and deleted the Pictures folder
+	struct stat buffer;
+	NSString* picturesFolder = [NSHomeDirectory() stringByAppendingPathComponent:@"Pictures"];
+	BOOL hasPictures = !(lstat([picturesFolder fileSystemRepresentation], &buffer)) &&
+		buffer.st_mode && S_IFDIR;
+	
 	// Set up this application's default preferences	
     NSMutableDictionary *defaultPrefs = [NSMutableDictionary dictionary];
-	[defaultPrefs setObject:[NSHomeDirectory() stringByAppendingPathComponent:
-		@"Pictures"] forKey:@"DefaultStartupPath"];
+
+	// Set the default path.
+	if(hasPictures)
+		[defaultPrefs setObject:picturesFolder forKey:@"DefaultStartupPath"];
+	else
+		[defaultPrefs setObject:NSHomeDirectory() forKey:@"DefaultStartupPath"];
     
 	// General preferences
 	[defaultPrefs setObject:[NSNumber numberWithInt:3] forKey:@"SmoothingTag"];
@@ -159,10 +176,17 @@
 	[defaultPrefs setObject:emptyKeywordNode forKey:@"KeywordTree"];
 	
 	// Default sort manager array
-	NSArray* sortManagerPaths = [NSArray arrayWithObjects:
-		[NSDictionary dictionaryWithObjectsAndKeys:@"Pictures", @"Name",
-			[NSHomeDirectory() stringByAppendingPathComponent:@"Pictures"], 
-			@"Path", nil], nil];
+	NSArray* sortManagerPaths;
+	if(hasPictures)
+		sortManagerPaths = [NSArray arrayWithObjects:
+			[NSDictionary dictionaryWithObjectsAndKeys:@"Pictures", @"Name",
+				[NSHomeDirectory() stringByAppendingPathComponent:@"Pictures"], 
+					@"Path", nil], nil];
+	else
+		sortManagerPaths = [NSArray arrayWithObjects:
+			[NSDictionary dictionaryWithObjectsAndKeys:@"Home", @"Name",
+				NSHomeDirectory(), @"Path", nil], nil];
+	
 	[defaultPrefs setObject:sortManagerPaths forKey:@"SortManagerPaths"];
 	[defaultPrefs setObject:[NSNumber numberWithBool:YES] forKey:@"SortManagerInContextMenu"];
 	
@@ -174,7 +198,6 @@
 	// Set up the file viewer on the left
 	viewAsIconsController = [[ViewIconViewController alloc] initWithController:self];
 	[self setViewAsView:[viewAsIconsController view]];
-//	[viewAsIconsController awakeFromNib];
 	[viewerWindow setInitialFirstResponder:[viewAsIconsController view]];
 	
 	// Set up the scroll view on the right
@@ -194,14 +217,22 @@
 	FileSizeFormatter* fsFormatter = [[[FileSizeFormatter alloc] init] autorelease];
 	[[fileSizeLabel cell] setFormatter:fsFormatter];
 	
-	// Set up the menu icons
+	// Set up the icon for Home. (Do this at runtime so the correct icon gets
+	// put up in the case of FileVault)
 	NSImage* img = [[NSWorkspace sharedWorkspace] iconForFile:NSHomeDirectory()];
 	[img setSize:NSMakeSize(16, 16)];
 	[homeFolderMenuItem setImage:img];
 
-	img = [[NSWorkspace sharedWorkspace] iconForFile:
-		[NSHomeDirectory() stringByAppendingPathComponent:@"Pictures"]];
-	[img setSize:NSMakeSize(16, 16)];
+	// Set up the icon for ~/Pictures. (Do this at runtime so that we don't get
+	// the default file icon in case "~/Pictures" doesn't exist.)
+	if([[NSHomeDirectory() stringByAppendingPathComponent:@"Pictures"] isDir])
+	{
+		img = [[NSWorkspace sharedWorkspace] iconForFile:
+			[NSHomeDirectory() stringByAppendingPathComponent:@"Pictures"]];
+		[img setSize:NSMakeSize(16, 16)];
+	}
+	else
+		img = [[NSImage alloc] initWithSize:NSMakeSize(16,16)];
 	[pictureFolderMenuItem setImage:img];
 	
 	[self setupToolbar];
@@ -214,12 +245,9 @@
 	// Use an Undo manager to manage moving back and forth.
 	pathManager = [[NSUndoManager alloc] init];	
 	
-	// Launch the other thread and tell it to connect back to us.
+	// Launch the other threads and tell them to connect back to us.
 	imageTaskManager = [[ImageTaskManager alloc] initWithController:self];
 	thumbnailManager = [[ThumbnailManager alloc] initWithController:self];
-	
-	// Now that we have our task manager, tell everybody to use it.
-//	[viewAsIconsController setThumbnailManager:thumbnailManager];
 }
 
 -(void)dealloc
@@ -601,6 +629,10 @@
 	else if ([theMenuItem action] == @selector(goForward:))
 	{
 		enable = mainWindowVisible && [pathManager canRedo];
+	}
+	else if ([theMenuItem action] == @selector(goToPicturesFolder:))
+	{
+		enable = [[NSHomeDirectory() stringByAppendingPathComponent:@"Pictures"] isDir];
 	}
 	else if ([theMenuItem action] == @selector(goToFolder:))
 	{

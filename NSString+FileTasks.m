@@ -59,7 +59,8 @@
 		[fileExtentsion isEqualToString:@"JPG"] || 
 		[fileExtentsion isEqualToString:@"GIF"] ||
 		[fileExtentsion isEqualToString:@"TIF"] ||
-		[fileExtentsion isEqualToString:@"TIFF"];	
+		[fileExtentsion isEqualToString:@"TIFF"] ||
+		[fileExtentsion isEqualToString:@"BMP"];
 }
 
 -(BOOL)isVisible
@@ -116,20 +117,20 @@
     }
     [nodeImage setSize: size];
     
-//    if ([self isLink]) {
-//        NSImage *arrowImage = [NSImage imageNamed: @"FSIconImage-LinkArrow"];
-//        NSImage *nodeImageWithArrow = [[[NSImage alloc] initWithSize: size] autorelease];
-//        
-//		[arrowImage setScalesWhenResized: YES];
-//		[arrowImage setSize: size];
-//		
-//        [nodeImageWithArrow lockFocus];
-//		[nodeImage compositeToPoint:NSZeroPoint operation:NSCompositeCopy];
-//        [arrowImage compositeToPoint:NSZeroPoint operation:NSCompositeSourceOver];
-//        [nodeImageWithArrow unlockFocus];
-//		
-//		nodeImage = nodeImageWithArrow;
-//    }
+    if ([self isLink]) {
+        NSImage *arrowImage = [NSImage imageNamed: @"FSIconImage-LinkArrow"];
+        NSImage *nodeImageWithArrow = [[[NSImage alloc] initWithSize: size] autorelease];
+        
+		[arrowImage setScalesWhenResized: YES];
+		[arrowImage setSize: size];
+		
+        [nodeImageWithArrow lockFocus];
+		[nodeImage compositeToPoint:NSZeroPoint operation:NSCompositeCopy];
+        [arrowImage compositeToPoint:NSZeroPoint operation:NSCompositeSourceOver];
+        [nodeImageWithArrow unlockFocus];
+		
+		nodeImage = nodeImageWithArrow;
+    }
     
     if (nodeImage==nil) {
         nodeImage = [NSImage imageNamed:@"FSIconImage-Default"];
