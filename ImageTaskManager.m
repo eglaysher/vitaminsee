@@ -406,7 +406,7 @@
 	NSImage* imageToRet;
 	if(smoothing == NO_SMOOTHING || imageRepIsAnimated(imageRep))
 	{
-		NSLog(@"Using quick rendering for %@...", path);
+//		NSLog(@"Using quick rendering for %@...", path);
 		// Draw the image by just making an NSImage from the imageRep. This is
 		// done when the image will have no smoothing, or when we are 
 		// rendering an animated GIF.
@@ -434,7 +434,7 @@
 			[imageRep drawInRect:NSMakeRect(0,0,display.width,display.height)];
 		}
 		[imageToRet unlockFocus];		
-		NSLog(@"First pass of %@", path);
+//		NSLog(@"First pass of %@", path);
 		[self sendDisplayCommandWithImage:imageToRet width:imageX height:imageY];
 		
 		// Now give us a chance to BAIL if we've already been given another display
@@ -455,13 +455,13 @@
 			switch(smoothing)
 			{
 				case LOW_SMOOTHING:
-					NSLog(@"Low smoothing!");
+//					NSLog(@"Low smoothing!");
 					[[NSGraphicsContext currentContext] 
 						setImageInterpolation:NSImageInterpolationLow];
 					break;
 				default:
 				case HIGH_SMOOTHING:
-					NSLog(@"High smoothing!");
+//					NSLog(@"High smoothing!");
 					[[NSGraphicsContext currentContext] 
 						setImageInterpolation:NSImageInterpolationHigh];
 			}
@@ -471,7 +471,7 @@
 		[imageToRet unlockFocus];
 		
 		// Now display the final image:
-		NSLog(@"Second pass of %@", path);
+//		NSLog(@"Second pass of %@", path);
 		[self sendDisplayCommandWithImage:imageToRet width:imageX height:imageY];
 	}
 	

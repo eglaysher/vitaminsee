@@ -116,9 +116,9 @@
 	[defaultPrefs setObject:[NSNumber numberWithBool:NO] forKey:@"GenerateThumbnailsInArchives"];
 
 	// Keyword preferences
-	KeywordNode* node = [[[KeywordNode alloc] initWithKeyword:@"Keywords"] autorelease];
-	[node addChild:[[[KeywordNode alloc] initWithKeyword:@"Anime"] autorelease]];
-	[node addChild:[[[KeywordNode alloc] initWithKeyword:@"Blogs"] autorelease]];
+	KeywordNode* node = [[[KeywordNode alloc] initWithParent:nil keyword:@"Keywords"] autorelease];
+	[node addChild:[[[KeywordNode alloc] initWithParent:node keyword:@"Anime"] autorelease]];
+	[node addChild:[[[KeywordNode alloc] initWithParent:node keyword:@"Blogs"] autorelease]];
 	NSData* emptyKeywordNode = [NSKeyedArchiver archivedDataWithRootObject:node];
 	[defaultPrefs setObject:emptyKeywordNode forKey:@"KeywordTree"];
 	
@@ -161,6 +161,7 @@
 	[self zoomToFit:self];
 	
 	// Set our plugins to nil
+	loadedFilePlugins = [[NSMutableArray alloc] init];
 	_sortManagerController = nil;
 	
 	// 
@@ -297,6 +298,9 @@
 			{
 				_sortManagerController = [[windowControllerClass alloc] init];
 				[_sortManagerController setPluginLayer:self];
+				
+				// Take note that we've loaded the plugin.
+				[loadedFilePlugins addObject:_sortManagerController];
 			}
 		}
 	}
@@ -304,9 +308,44 @@
 	return _sortManagerController;
 }
 
+-(NSWindowController*)keywordManagerController
+{
+	if(!_keywordManagerController)
+	{
+		NSLog(@"Looking for bundle");
+		NSString *bundlePath = [[[NSBundle mainBundle] builtInPlugInsPath]
+			stringByAppendingPathComponent:@"KeywordManager.cqvPlugin"];
+		NSBundle *windowBundle = [NSBundle bundleWithPath:bundlePath];
+		
+		if(windowBundle)
+		{
+			Class windowControllerClass = [windowBundle principalClass];
+			if(windowControllerClass)
+			{
+				_keywordManagerController = [[windowControllerClass alloc] init];
+				[_keywordManagerController setPluginLayer:self];
+
+				// Set the current image file.
+				[_keywordManagerController fileSetTo:currentImageFile];
+				
+				// Take note that we've loaded the plugin.
+				[loadedFilePlugins addObject:_keywordManagerController];
+			}
+		}
+	}
+	
+	return _keywordManagerController;
+}
+
+
 -(IBAction)showSortManager:(id)sender
 {	
 	[[self sortManagerController] showWindow:self];
+}
+
+-(IBAction)showKeywordManager:(id)sender
+{
+	[[self keywordManagerController] showWindow:self];
 }
 
 -(BOOL)validateMenuItem:(NSMenuItem *)theMenuItem
@@ -378,8 +417,16 @@
 		// Set the label to "---" since this isn't an image...
 		[imageSizeLabel setStringValue:@"---"];
 	}
+	
+	// Alert all the plugins of the new file:
+	NSEnumerator* e = [loadedFilePlugins objectEnumerator];
+	id <FileManagerPlugin> plugin;
+	while(plugin = [e nextObject])
+	{
+		[plugin fileSetTo:newCurrentFile];
+	}
 
-	[self redraw];	
+	[self redraw];
 }
 
 -(void)preloadFiles:(NSArray*)filesToPreload

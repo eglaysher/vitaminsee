@@ -4,8 +4,6 @@
 
 #import "FileManager.h"
 
-@class PluginLayer;
-
 @interface SortManagerController : NSWindowController <FileManagerPlugin>
 {
 	CQViewController* pluginLayer;

@@ -13,9 +13,11 @@
 {
 	NSString* keyword;
 	NSMutableArray* children;
+	KeywordNode* parent;
 }
 
--(id)initWithKeyword:(NSString*)inKeyword;
+-(id)initWithParent:(KeywordNode*)parent;
+-(id)initWithParent:(KeywordNode*)parent keyword:(NSString*)inKeyword;
 
 // NSCoding protocol
 - (id)initWithCoder:(NSCoder *)decoder;
@@ -24,9 +26,11 @@
 // Accessors...
 -(void)setKeyword:(NSString*)inKeyword;
 -(NSString*)keyword;
+-(KeywordNode*)parent;
 
 -(int)numberOfChildren;
 -(NSArray*)children;
 -(void)addChild:(id)child;
+-(void)removeChild:(id)child;
 
 @end

@@ -120,6 +120,7 @@
 				8BAF0F3E07CE6DAA00B0C832,
 				8B5620BF07CEA5A5005990E1,
 				8BA1243507D26EC700614FF4,
+				8BEA491707D7A73E001ADD2E,
 			);
 			isa = PBXGroup;
 			name = Products;
@@ -148,6 +149,7 @@
 			mainGroup = 29B97314FDCFA39411CA2CEA;
 			projectDirPath = "";
 			targets = (
+				8BEA491607D7A73E001ADD2E,
 				8B5620BE07CEA5A5005990E1,
 				8BA1243407D26EC700614FF4,
 				8BAF0F3D07CE6DAA00B0C832,
@@ -687,15 +689,10 @@
 		8B5EB14F07CD3B3E00B43D06 = {
 			isa = PBXFileReference;
 			lastKnownFileType = wrapper.nib;
-			path = KeywordManager.nib;
+			name = English;
+			path = English.lproj/KeywordManager.nib;
 			refType = 4;
 			sourceTree = "<group>";
-		};
-		8B5EB15007CD3B3E00B43D06 = {
-			fileRef = 8B5EB14F07CD3B3E00B43D06;
-			isa = PBXBuildFile;
-			settings = {
-			};
 		};
 		8B6D010807CB178F009A76DA = {
 			children = (
@@ -936,6 +933,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				8BEA491B07D7A78F001ADD2E,
 				8BA1253707D2845D00614FF4,
 				8B5620E107CEA6F1005990E1,
 				8B561D9307CE7627005990E1,
@@ -1514,7 +1512,10 @@
 		};
 		8BC727C207CF1D18003103C0 = {
 			children = (
-				8B5EB14F07CD3B3E00B43D06,
+				8BEA492107D7A7D7001ADD2E,
+				8BEA492207D7A7D7001ADD2E,
+				8BEA491807D7A73E001ADD2E,
+				8BEA491D07D7A7BE001ADD2E,
 			);
 			isa = PBXGroup;
 			name = KeywordManager;
@@ -1611,6 +1612,171 @@
 			};
 		};
 		8BEA47F507D69F30001ADD2E = {
+			fileRef = 8BA124AD07D2816300614FF4;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8BEA491307D7A73E001ADD2E = {
+			buildActionMask = 2147483647;
+			files = (
+				8BEA49BB07D7AD3D001ADD2E,
+				8BEA492307D7A7D7001ADD2E,
+			);
+			isa = PBXResourcesBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8BEA491407D7A73E001ADD2E = {
+			buildActionMask = 2147483647;
+			files = (
+				8BEA4A7C07D7D0BF001ADD2E,
+				8BEA492407D7A7D7001ADD2E,
+			);
+			isa = PBXSourcesBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8BEA491507D7A73E001ADD2E = {
+			buildActionMask = 2147483647;
+			files = (
+			);
+			isa = PBXFrameworksBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8BEA491607D7A73E001ADD2E = {
+			buildPhases = (
+				8BEA491307D7A73E001ADD2E,
+				8BEA491407D7A73E001ADD2E,
+				8BEA491507D7A73E001ADD2E,
+			);
+			buildRules = (
+			);
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = "KeywordManager-Info.plist";
+				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
+				OPTIMIZATION_CFLAGS = "";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "-framework Foundation -framework AppKit";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = KeywordManager;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = "-Wmost -Wno-four-char-constants -Wno-unknown-pragmas";
+				WRAPPER_EXTENSION = cqvPlugin;
+			};
+			dependencies = (
+			);
+			isa = PBXNativeTarget;
+			name = KeywordManager;
+			productName = KeywordManager;
+			productReference = 8BEA491707D7A73E001ADD2E;
+			productSettingsXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
+<!DOCTYPE plist PUBLIC \"-//Apple Computer//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">
+<plist version=\"1.0\">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>English</string>
+	<key>CFBundleExecutable</key>
+	<string>KeywordManager</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.yourcompany.KeywordManager</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
+	<key>CFBundleVersion</key>
+	<string>1.0</string>
+</dict>
+</plist>
+";
+			productType = "com.apple.product-type.bundle";
+		};
+		8BEA491707D7A73E001ADD2E = {
+			explicitFileType = wrapper.cfbundle;
+			includeInIndex = 0;
+			isa = PBXFileReference;
+			path = KeywordManager.cqvPlugin;
+			refType = 3;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		8BEA491807D7A73E001ADD2E = {
+			isa = PBXFileReference;
+			lastKnownFileType = text.xml;
+			name = "KeywordManager-Info.plist";
+			path = "/Users/elliot/Projects/CQView/KeywordManager-Info.plist";
+			refType = 0;
+			sourceTree = "<absolute>";
+		};
+		8BEA491B07D7A78F001ADD2E = {
+			fileRef = 8BEA491707D7A73E001ADD2E;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8BEA491D07D7A7BE001ADD2E = {
+			children = (
+				8B5EB14F07CD3B3E00B43D06,
+			);
+			isa = PBXVariantGroup;
+			name = KeywordManager.nib;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8BEA491E07D7A7BE001ADD2E = {
+			fileRef = 8BEA491D07D7A7BE001ADD2E;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8BEA492107D7A7D7001ADD2E = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			path = KeywordManagerController.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8BEA492207D7A7D7001ADD2E = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
+			path = KeywordManagerController.m;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8BEA492307D7A7D7001ADD2E = {
+			fileRef = 8BEA492107D7A7D7001ADD2E;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8BEA492407D7A7D7001ADD2E = {
+			fileRef = 8BEA492207D7A7D7001ADD2E;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8BEA495607D7A9D0001ADD2E = {
+			containerPortal = 29B97313FDCFA39411CA2CEA;
+			isa = PBXContainerItemProxy;
+			proxyType = 1;
+			remoteGlobalIDString = 8BEA491607D7A73E001ADD2E;
+			remoteInfo = KeywordManager;
+		};
+		8BEA495707D7A9D0001ADD2E = {
+			isa = PBXTargetDependency;
+			target = 8BEA491607D7A73E001ADD2E;
+			targetProxy = 8BEA495607D7A9D0001ADD2E;
+		};
+		8BEA49BB07D7AD3D001ADD2E = {
+			fileRef = 8BEA491D07D7A7BE001ADD2E;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8BEA4A7C07D7D0BF001ADD2E = {
 			fileRef = 8BA124AD07D2816300614FF4;
 			isa = PBXBuildFile;
 			settings = {
@@ -1733,6 +1899,7 @@
 				8B561D9F07CE767A005990E1,
 				8B5620E307CEA700005990E1,
 				8BA1243907D26F1500614FF4,
+				8BEA495707D7A9D0001ADD2E,
 			);
 			isa = PBXNativeTarget;
 			name = CQView;
@@ -1770,7 +1937,7 @@
 				8B6D01C907CB2EB3009A76DA,
 				8B6D021107CB3312009A76DA,
 				8BA124E307D282B300614FF4,
-				8B5EB15007CD3B3E00B43D06,
+				8BEA491E07D7A7BE001ADD2E,
 				8B56209D07CEA204005990E1,
 				8BA124AE07D2816300614FF4,
 			);

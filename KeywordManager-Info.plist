@@ -5,9 +5,9 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleExecutable</key>
-	<string>KeywordManagerPreferences</string>
+	<string>KeywordManager</string>
 	<key>CFBundleIdentifier</key>
-	<string>org.elliotglaysher.CQView.KeywordManagerPreferences</string>
+	<string>org.elliotglaysher.CQView.KeywordManager</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundlePackageType</key>
@@ -17,6 +17,6 @@
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
 	<key>NSPrincipalClass</key>
-	<string>KeywordManagerPreferences</string>
+	<string>KeywordManagerController</string>
 </dict>
 </plist>

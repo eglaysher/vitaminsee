@@ -9,6 +9,7 @@
                 scaleView100Pressed = id; 
                 scaleViewPPressed = id; 
                 scaleViewSliderMoved = id; 
+                showKeywordManager = id; 
                 showPreferences = id; 
                 showSortManager = id; 
                 zoomToFit = id; 
@@ -26,7 +27,6 @@
                 scaleSlider = NSSlider; 
                 scaleView = NSView; 
                 scrollView = NSScrollView; 
-                sortingManager = NSPanel; 
                 viewAsIconsController = ViewIconViewController; 
                 viewerWindow = NSWindow; 
             }; 

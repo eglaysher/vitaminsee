@@ -8,7 +8,6 @@
 
 #import "KeywordManagerPreferences.h"
 
-
 @implementation KeywordManagerPreferences
 
 -(void)awakeFromNib
@@ -34,12 +33,13 @@
 
 -(IBAction)addKeyword:(id)sender
 {
-	NSLog(@"Sender: %@", sender);
 	id currentlySelectedItem = [outlineView itemAtRow:[outlineView selectedRow]];
-	NSLog(@"Currently selected item: %@", [currentlySelectedItem keyword]);
+
+	// Add a new keyword with the currently selected node as the parent.
+	[currentlySelectedItem addChild:[[[KeywordNode alloc] initWithParent:currentlySelectedItem
+																 keyword:@"NEW KEYWORD"] autorelease]];
+	[self saveKeywordsToUserDefaults];
 	
-	[currentlySelectedItem addChild:[[[KeywordNode alloc] initWithKeyword:
-		@"NEW KEYWORD"] autorelease]];
 	[outlineView reloadItem:currentlySelectedItem reloadChildren:YES];
 	[outlineView expandItem:currentlySelectedItem];
 	// fixme: select new item.
@@ -49,7 +49,14 @@
 -(IBAction)remove:(id)sender
 {
 	// Get the currently selected item.
-//	[outlineView
+	id selectedItem = [outlineView itemAtRow:[outlineView selectedRow]];
+	id parent = [selectedItem parent];
+	[parent removeChild:selectedItem];
+	[self saveKeywordsToUserDefaults];
+	
+	// It's stupid, but we have to reload the whole tree. Reloading from the 
+	// parent node results in ghost items
+	[outlineView reloadItem:keywordRoot reloadChildren:YES];
 }
 
 -(void)saveKeywordsToUserDefaults
@@ -136,7 +143,7 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
 {
 	NSString* currentKeyword = [[item keyword] retain];
 	
-	NSLog(@"Changing %@ to %@", [item keyword], object);
+//	NSLog(@"Changing %@ to %@", [item keyword], object);
 	[item setKeyword:(NSString*)object];
 	[outlineView reloadItem:item];
 

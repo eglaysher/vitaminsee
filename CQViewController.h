@@ -25,9 +25,9 @@
 	IBOutlet NSWindow* viewerWindow;
 	IBOutlet NSScrollView* scrollView;
 
-	// Floating NSPanels
-	IBOutlet NSPanel* sortingManager;
-	SortManagerController* _sortManagerController;
+	// Integrated plugins.
+	NSWindowController* _sortManagerController;
+	NSWindowController* _keywordManagerController;
 	
 	// Scale view controls
 	IBOutlet NSView* scaleView;
@@ -62,6 +62,9 @@
 	ImageTaskManager* imageTaskManager;
 	
 	SS_PrefsController *prefs;
+	
+	// Loaded plugins:
+	NSMutableArray* loadedFilePlugins;
 }
 
 -(NSWindowController*)sortManagerController;
@@ -84,6 +87,7 @@
 
 
 -(IBAction)showSortManager:(id)sender;
+-(IBAction)showKeywordManager:(id)sender;
 
 // Scaling stuff
 - (IBAction)scaleView100Pressed:(id)sender;
