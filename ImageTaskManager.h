@@ -46,6 +46,7 @@
 -(void)preloadImage:(NSString*)path;
 -(void)displayImageWithPath:(NSString*)path;
 -(void)buildThumbnail:(NSString*)path forCell:(id)cell;
+-(void)clearThumbnailQueue;
 
 -(void)setScaleRatio:(float)newScaleRatio;
 -(void)setScaleProportionally:(BOOL)newScaleProportionally;

@@ -230,6 +230,13 @@
 	return currentIconFamilyThumbnail;
 }
 
+-(void)clearThumbnailQueue
+{
+	pthread_mutex_lock(&taskQueueLock);
+	[thumbnailQueue removeAllObjects];
+	pthread_mutex_unlock(&taskQueueLock);
+}
+
 @end
 
 @implementation ImageTaskManager (Private)
@@ -265,10 +272,14 @@
 	NSString* path = [options objectForKey:@"Path"];
 	NSImage* thumbnail;
 	IconFamily* iconFamily;
+	BOOL building = NO;
 	
 	// Build the thumbnail and set it to the file...
 	if([path isImage] && ![IconFamily fileHasCustomIcon:path])
 	{
+		building = YES;
+		[cqViewController startProgressIndicator:[NSString 
+			stringWithFormat:@"Building thumbnail for %@...", [path lastPathComponent]]];
 		NSImage* image = [[[NSImage alloc] initWithContentsOfFile:path] autorelease];
 		iconFamily = [IconFamily iconFamilyWithThumbnailsOfImage:image];
 		[iconFamily setAsCustomIconForFile:path];
@@ -282,6 +293,11 @@
 	currentIconFamilyThumbnail = thumbnail;
 	currentIconCell = [options objectForKey:@"Cell"];
 	[cqViewController setIcon];
+	
+	if(building)
+	{
+		[cqViewController stopProgressIndicator];
+	}
 }
 
 -(void)doPreloadImage:(NSString*)path
@@ -307,7 +323,9 @@
 {
 	// Before we aquire our internal lock, tell the main application to start
 	// spinning...
-	[cqViewController startProgressIndicator];
+	[cqViewController startProgressIndicator:nil];
+		
+	// [NSString stringWithFormat:@"Displaying %@...", [path lastPathComponent]]];		
 
 	NSImageRep* imageRep;
 	pthread_mutex_lock(&imageCacheLock);

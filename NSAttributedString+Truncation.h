@@ -1,12 +1,14 @@
-/*
- *  NSView+Set_and_get.h
- *  CQView
- *
- */
+//
+//  NSAttributedString+Truncation.h
+//  CQView
+//
+//  Created by Elliot on 2/19/05.
+//  Copyright 2005 __MyCompanyName__. All rights reserved.
+//
 
 // COPYRIGHT AND PERMISSION NOTICE
 //
-// Copyright © 2003 Karelia Software, LLC. All rights reserved.
+// Copyright ¬© 2003 Karelia Software, LLC. All rights reserved.
 //
 // Permission to use, copy, modify, and distribute this software for any purpose 
 // with or without fee is hereby granted, provided that the above copyright
@@ -26,7 +28,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface NSView (Set_and_get)
-- (void) setSubview:(NSView *)inView;
-- (id) subview;
+
+@interface NSAttributedString (Truncation)
+-(NSAttributedString*)truncateForWidth:(int)inWidth;
 @end

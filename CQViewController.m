@@ -22,21 +22,15 @@
   * Actual size zoom button
   * Modify IconFamily to have a black line around thumbnail.
   * Implement backHistory/forwardHistory
- */
+  * Icons in path viewer [to emphasise that they are folders.
+  * Cell drawing
+*/
 
 // WHAT NEEDS TO BE DONE:
 
 /* FIRST MILESTONE GOALS
-  * Jumping into the middle of a list will start loading the thumbnails there...
-    * Requires knowing about the first visible 
-
-  * Cell drawing with advanced icon...
-    * There are a few problems with this code:
-      * Three line filenames wrap outside the view. Must truncate them.
-        * Take a look at the truncating code on cocoa.karelia.com...
-      * Sometimes the icon gets clipped by the text.
-
   * File renaming
+  * Julius says see "CDisplay" (Comics Viewer)
 */
 
 /* SECOND MILESTONE GOALS
@@ -49,6 +43,12 @@
   * Drag and drop
   * Fullscreen
 */
+
+/**
+  Non-required improvements that would be a good idea:
+  * Prioritize thumbnail loading to currently visible files...
+  * Fit to height/Fit to width
+ */
 
 //// Post contest:
 
@@ -154,6 +154,10 @@
 //								   selector:@selector(setCurrentDirectory:)
 //									 object:currentDirectory];
 	
+	// Clear the thumbnails being displayed.
+	if(![newCurrentDirectory isEqualTo:currentDirectory])
+		[imageTaskManager clearThumbnailQueue];
+	
 	// Set the current Directory
 	[currentDirectory release];
 	currentDirectory = [newCurrentDirectory stringByStandardizingPath];
@@ -175,6 +179,9 @@
 		newMenuItem = [[[NSMenuItem alloc] initWithTitle:currentComponent
 												  action:@selector(directoryMenuSelected:)
 										   keyEquivalent:@""] autorelease];
+		[newMenuItem setImage:[[NSString pathWithComponents:
+			[currentDirectoryComponents subarrayWithRange:NSMakeRange(0, currentTag)]] 
+			iconImageOfSize:NSMakeSize(16,16)]];
 		[newMenuItem setTag:currentTag];
 		currentTag--;
 		[newMenu addItem:newMenuItem];
@@ -320,6 +327,7 @@
 	}
 	else
 	{
+		NSLog(@"Not displaying %@", newCurrentFile);
 		// Set the label to "---" since this isn't an image...
 		[imageSizeLabel setStringValue:@"---"];
 	}
@@ -437,16 +445,23 @@
 }
 
 // Progress indicator control
--(void)startProgressIndicator
+-(void)startProgressIndicator:(NSString*)statusText
 {
 	[progressIndicator setHidden:NO];
 	[progressIndicator startAnimation:self];
+	
+	if(statusText)
+	{
+		[progressCurrentTask setHidden:NO];
+		[progressCurrentTask setStringValue:statusText];
+	}
 }
 
 -(void)stopProgressIndicator
 {
 	[progressIndicator stopAnimation:self];
 	[progressIndicator setHidden:YES];
+	[progressCurrentTask setHidden:YES];
 }
 
 @end

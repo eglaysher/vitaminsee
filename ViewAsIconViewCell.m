@@ -45,9 +45,13 @@
 	[thisCellsFullPath release];
 	[path retain];
 	thisCellsFullPath = path;
+	
+	[title release];
+	title = [path lastPathComponent];
+	[title retain];
 
 	[self setStringValue:[thisCellsFullPath lastPathComponent]];
-		
+	
 	// We are going to have to do something with images here...
 	[self setEnabled:[thisCellsFullPath isReadable]];
 	
@@ -93,19 +97,23 @@
 	NSSize	imageSize = NSMakeSize(128, 128); //[iconImage size];
 	NSRect	imageFrame, highlightRect, textFrame;
 	
+	// First, let's draw a frame around the cell
+	
 	// Divide the cell into 2 parts, the image part (on the left) and the text part.
 	NSDivideRect(cellFrame, &imageFrame, &textFrame, 
-				 120, 
+				 128 + 4.0 * 2.0, 
 				 NSMinYEdge);
 	imageFrame.origin.x += (cellFrame.size.width - imageSize.width) / 2.0;
 	imageFrame.size = imageSize;
+	
+	imageFrame.origin.y += 4.0;
 	
 	// Adjust the image frame top account for the fact that we may or may not be in a flipped control view, since when compositing
 	// the online documentation states: "The image will have the orientation of the base coordinate system, regardless of the destination coordinates".
 	if ([controlView isFlipped]) 
 		imageFrame.origin.y += imageSize.width; //ceil((textFrame.size.height + imageFrame.size.height) / 2);
-	else 
-		; // Something is wrong. We're supposed to only render in an NSMatrix...
+//	else 
+//		; // Something is wrong. We're supposed to only render in an NSMatrix...
 	
 	// Depending on the current state, set the color we will highlight with.
 	
@@ -121,6 +129,8 @@
 	
 	// Draw the highligh, bu only the portion that won't be caught by the call to [super drawInteriorWithFrame:...] below.  No need to draw parts 2 times!
 	NSRectFill(cellFrame);
+
+	NSFrameRect(cellFrame);
 	
 	// Blit the image.
 	if(iconImage)
@@ -128,10 +138,23 @@
 	else
 	{
 		// Draw an empty frame...
+		[[NSColor blackColor] set];
+		imageFrame.origin.y -= imageSize.width;
+		NSFrameRect(imageFrame);
 	}
 	
 	// Have NSBrowser kindly draw the text part, since it knows how to do that for us, no need to re-invent what it knows how to do.
+//	NSFrameRect(textFrame);
+	int newWidth = textFrame.size.width - 30;
+//	NSLog(@"Truncating to length of %d", newWidth);
+	[self setStringValue:[[[[[NSAttributedString alloc] 
+		initWithString:title] autorelease] truncateForWidth:newWidth] string]];
+	[self setAlignment:NSCenterTextAlignment];
+//	NSLog(@"Displaying %@", [self stringValue]);
 	[super drawInteriorWithFrame:textFrame inView:controlView];
+	
+	// Now we set the path back
+	[self setStringValue:title];
 }
 
 

@@ -11,6 +11,19 @@
 		<integer>6</integer>
 	</array>
 	<key>IBSystem Version</key>
-	<string>7S215</string>
+	<string>7U16</string>
+	<key>IBUserGuides</key>
+	<dict>
+		<key>6</key>
+		<dict>
+			<key>guideLocations</key>
+			<array>
+				<string>Vertical:195.000000</string>
+				<string>Vertical:479.000000</string>
+			</array>
+			<key>guidesLocked</key>
+			<false/>
+		</dict>
+	</dict>
 </dict>
 </plist>

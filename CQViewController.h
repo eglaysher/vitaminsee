@@ -42,7 +42,8 @@
 	IBOutlet ViewIconViewController* viewAsIconsController;
 
 	IBOutlet NSProgressIndicator* progressIndicator;
-	
+	IBOutlet NSTextField * progressCurrentTask;
+		
 	// Actual application data--NOT OUTLETS!
 	NSImageRep* currentImageRep;
 	NSString* currentImageFile;
@@ -51,6 +52,7 @@
 	NSString* currentDirectory;
 
 	// Scale data
+//	ScalingMethod scaleMethod;
 	bool scaleProportionally;
 	float scaleRatio;
 
@@ -92,7 +94,7 @@
 -(void)setIcon;
 
 // Progress indicator control
--(void)startProgressIndicator;
+-(void)startProgressIndicator:(NSString*)statusText;
 -(void)stopProgressIndicator;
 
 @end
