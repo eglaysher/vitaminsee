@@ -209,24 +209,23 @@
 		// Draw the image by just making an NSImage from the imageRep. This is
 		// done when the image will fit in the viewport, or when we are 
 		// rendering an animated GIF.
+		NSLog(@"Using simple rendering...");
+		NSLog(@"Image: [%i, %i] Display: [%i, %i]", imageX, imageY, displayX, displayY);
 		NSImageRep* imageRep = [[currentImageRep copy] autorelease];
 		NSImage* image = [[[NSImage alloc] init] autorelease];
 		[image addRepresentation:imageRep];
-
-		if(displayX != imageX && displayY != imageY) {
-			// This image needs to be resized to fit. This code is only
-			// invoked when dealing with animated GIFs. Otherwise, we use the
-			// longer, interpolating rescaling code.
-			[image setScalesWhenResized:YES];
-			[image setSize:NSMakeSize(displayX, displayY)];
-		}
 		
+		// Scale it anyway, because some pictures LIE about their size.
+		[image setScalesWhenResized:YES];
+		[image setSize:NSMakeSize(displayX, displayY)];
+
 		[imageViewer setFrameSize:NSMakeSize(displayX, displayY)];
 		[imageViewer setAnimates:YES];
 		[imageViewer setImage:image];
 	}
 	else
 	{
+		NSLog(@"Using full rendering...");
 		// Draw the image onto a new NSImage using smooth scaling. This is done
 		// whenever the image isn't animated so that the picture will have 
 		// some antialiasin lovin' applied to it.
