@@ -135,7 +135,7 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
     return (item == nil) ? 	@"Keywords" : (id)[item keyword];
 }
 
-- (void)outlineView:(NSOutlineView*)outlineView
+- (void)outlineView:(NSOutlineView*)thisOutlineView
 	 setObjectValue:(id)object
 	 forTableColumn:(NSTableColumn*)tableColumn
 			 byItem:(id)item
@@ -144,7 +144,7 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
 	
 //	NSLog(@"Changing %@ to %@", [item keyword], object);
 	[item setKeyword:(NSString*)object];
-	[outlineView reloadItem:item];
+	[thisOutlineView reloadItem:item];
 
 	if(![currentKeyword isEqual:object])
 		[self saveKeywordsToUserDefaults];

@@ -53,6 +53,7 @@
 
 	if(ret)
 		[viewAsIconsController renameFile:currentImageFile to:newPath];
+
 //	else
 //		NSLog(@"Huh!?");
 }

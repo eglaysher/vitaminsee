@@ -62,6 +62,13 @@
 
 ////////////////////////////////////////// BUGS IN STABLE THAT NEED TO BE FIXED
 
+/*
+ * Neccessary changes to the SortManager:
+ * * See if I can solve the problem of the panel gaining focus.
+ * * Undo/redo for moving files!
+ * * Undo/redo for everything else.
+ */
+
 + (void)initialize 
 {
 	// Set up our custom NSValueTransformer

@@ -1,3 +1,9 @@
+0.5.3 Feature Release
+---------------------
+* Changed the SortManager so that the NSTableView takes up the entire window, 
+  and also, made it resizable. I was testing it the other day and the lack of 
+  resizing screwed things up.
+* Allow drag and drop reordering in the Sort Manager Preferences.
 
 0.5.2 Feature Release
 ---------------------

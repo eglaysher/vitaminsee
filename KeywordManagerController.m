@@ -53,6 +53,14 @@
 	[keywords release];
 }
 
+-(void)windowDidLoad
+{
+	[super windowDidLoad];
+	
+	[self setShouldCascadeWindows:NO];
+	[self setWindowFrameAutosaveName:@"keywordManagerWindowPosition"];
+}
+
 ////////////////////////////////////////////////// Actions from the form
 -(IBAction)cellClicked:(id)sender
 {
@@ -79,7 +87,7 @@
 
 -(IBAction)fileChanged:(id)sender
 {
-	NSString* path = [currentPath stringByDeletingLastPathComponent];
+//	NSString* path = [currentPath stringByDeletingLastPathComponent];
 //	NSString* current
 
 	// fixme: Get renaming working.
