@@ -62,6 +62,13 @@
 		[fileExtentsion isEqualToString:@"TIFF"];	
 }
 
+-(BOOL)isVisible
+{
+	// Make this as sophisticated for example to hide more files you don't think the user should see!
+    NSString *lastPathComponent = [self lastPathComponent];
+    return ([lastPathComponent length] ? ([lastPathComponent characterAtIndex:0]!='.') : NO);	
+}
+
 -(BOOL)isReadable
 {
 	return [[NSFileManager defaultManager] isReadableFileAtPath:self];

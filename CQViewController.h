@@ -20,6 +20,7 @@
 @interface CQViewController : NSObject <ImageDisplayer>
 {
 	IBOutlet NSWindow* mainVitaminSeeWindow;
+	bool mainWindowVisible;
 	
 	// Menu items we need to attatch items to
 	IBOutlet NSMenuItem* homeFolderMenuItem;
@@ -33,7 +34,9 @@
 	IBOutlet NSScrollView* scrollView;
 
 	// Integrated plugins.
+	bool sortManagerVisible;
 	NSWindowController* _sortManagerController;
+	bool keyworManagerVisible;
 	NSWindowController* _keywordManagerController;
 
 	// File view components:
@@ -68,6 +71,11 @@
 	
 	// Loaded plugins:
 	NSMutableArray* loadedFilePlugins;
+	
+	// Dynamically loaded interface elemenets.
+	// Goto sheet
+	IBOutlet NSWindow* gotoFolderSheet;
+	IBOutlet NSTextField* gotoPath;
 }
 
 -(NSWindowController*)sortManagerController;
@@ -96,9 +104,9 @@
 // ----------------------
 -(IBAction)goToFolder:(id)sender;
 
--(IBAction)showVitaminSee:(id)sender;
--(IBAction)showSortManager:(id)sender;
--(IBAction)showKeywordManager:(id)sender;
+-(IBAction)toggleVitaminSee:(id)sender;
+-(IBAction)toggleSortManager:(id)sender;
+-(IBAction)toggleKeywordManager:(id)sender;
 
 -(void)zoomToFit:(id)sender;
 

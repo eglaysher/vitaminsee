@@ -22,5 +22,6 @@
 -(void)setIconImage:(NSImage*)image;
 -(NSString*)cellPath;
 
+-(void)setTitle:(NSString*)newTitle;
 
 @end

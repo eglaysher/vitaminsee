@@ -37,6 +37,12 @@
   * Highlighting gets screwed up when deleting a file...
  */
 
+/** Polishes completed:
+  * Hide "." files...
+  * command-1 should TOGGLE the display of windows...
+  * File renaming (Inspector!)
+*/
+
 //////////////////////////////////////////////////////// WHAT NEEDS TO BE DONE:
 
 /* THINGS TO ASK AT THE COCOA MEETING:
@@ -60,14 +66,13 @@
  */
 
 /* FIRST MILESTONE GOALS (Note that the milestones have gone apeshit...)
-  * File renaming (Inspector!)
+
   * Comments (or yank it out!)
   * Cmd-O opens == double click.
   * Disable comments on things we can't comment on.
   * Icons for VitaminSee
   * Work on making things feature complete.
   * Validate menu items
-  * command-1 should TOGGLE the display of windows...
   * Integrated Help
 */
 
@@ -164,6 +169,10 @@
 	// Use our file size formatter for formating the "[image size]" text label
 	FileSizeFormatter* fsFormatter = [[[FileSizeFormatter alloc] init] autorelease];
 	[[fileSizeLabel cell] setFormatter:fsFormatter];
+	
+	sortManagerVisible = false;
+	keyworManagerVisible = false;
+	mainWindowVisible = true;
 	
 	// Set up the menu icons
 	NSImage* img = [[NSWorkspace sharedWorkspace] iconForFile:NSHomeDirectory()];
@@ -279,6 +288,7 @@
 
 -(IBAction)closeWindow:(id)sender
 {
+	mainWindowVisible = false;
 	[mainVitaminSeeWindow close];
 }
 
@@ -294,24 +304,26 @@
 
 -(IBAction)goBack:(id)sender
 {
-	// We can only do this if [backHistory count] > 1
 	[pathManager undo];
-//	[self updateButtons];
 }
 
 -(IBAction)goForward:(id)sender
 {
 	[pathManager redo];
-//	[self updateButtons];
 }
 
 -(IBAction)goToHomeFolder:(id)sender
 {
+	if(!mainWindowVisible)
+		[self toggleVitaminSee:self];
 	[self setCurrentDirectory:NSHomeDirectory() file:nil];
 }
 
 -(IBAction)goToPicturesFolder:(id)sender
 {
+	if(!mainWindowVisible)
+		[self toggleVitaminSee:self];
+
 	[self setCurrentDirectory:[NSHomeDirectory() stringByAppendingPathComponent:@"Pictures"]
 						 file:nil];
 }
@@ -320,7 +332,24 @@
 {
 	// fixme: stub.
 	NSLog(@"Something happened.");
+	
+//	if(!gotoFolderSheet)
+//		[NSBundle loadNibNamed:@"GoToFolderSheet" owner:self];
+//	
+//	[NSApp beginSheet:gotoFolderSheet
+//	   modalForWindow:mainVitaminSeeWindow
+//		modalDelegate:self
+//	   didEndSelector:@selector(sheetDidEnd:returnCode:contextInfo:)
+//		  contextInfo:nil];
 }
+
+//- (void)sheetDidEnd:(NSWindow*)sheet
+//		 returnCode:(int)returnCode 
+//		contextInfo:(void *)contextInfo
+//{
+//    [sheet orderOut:self];
+//	
+//}
 
 -(NSWindowController*)sortManagerController
 {
@@ -377,45 +406,76 @@
 	return _keywordManagerController;
 }
 
--(IBAction)showVitaminSee:(id)sender
+-(IBAction)toggleVitaminSee:(id)sender
 {
-	[mainVitaminSeeWindow makeKeyAndOrderFront:self];
+	if(mainWindowVisible)
+	{
+		[mainVitaminSeeWindow close];
+		mainWindowVisible = false;
+	}
+	else
+	{
+		[mainVitaminSeeWindow makeKeyAndOrderFront:self];
+		mainWindowVisible = true;
+	}
 //showWindow:self];
 }
 
--(IBAction)showSortManager:(id)sender
+-(IBAction)toggleSortManager:(id)sender
 {	
-	[[self sortManagerController] showWindow:self];
+	if(sortManagerVisible)
+	{
+		[[self sortManagerController] close];
+		sortManagerVisible = false;
+	}
+	else
+	{
+		[[self sortManagerController] showWindow:self];
+		sortManagerVisible = true;
+	}
 }
 
--(IBAction)showKeywordManager:(id)sender
+-(IBAction)toggleKeywordManager:(id)sender
 {
-	[[self keywordManagerController] showWindow:self];
+	if(keyworManagerVisible)
+	{
+		[[self keywordManagerController] close];
+		keyworManagerVisible = false;
+	}
+	else
+	{
+		[[self keywordManagerController] showWindow:self];
+		keyworManagerVisible = true;
+	}
 }
 
 -(BOOL)validateMenuItem:(NSMenuItem *)theMenuItem
 {
     BOOL enable = [self respondsToSelector:[theMenuItem action]]; //handle general case.
 	
-	if([theMenuItem action] == @selector(deleteThisFile:))
+	if([theMenuItem action] == @selector(closeWindow:))
+	{
+		enable = mainWindowVisible;
+	}
+	else if([theMenuItem action] == @selector(deleteFileClicked:))
 	{
 		// We can delete this file as long as we've selected a file.
 		// fixme: this doesn't work...
-		enable = currentImageFile != nil;
+		enable = mainWindowVisible && (currentImageFile != nil);
 	}
 	// GO FOLDER
     else if ([theMenuItem action] == @selector(goEnclosingFolder:))
     {
 		// You can go up as long as there is a thing to go back on...
-        enable = [currentDirectoryComponents count] > 1;
+        enable = mainWindowVisible && [currentDirectoryComponents count] > 1;
     }
     else if ([theMenuItem action] == @selector(goBack:))
     {
-        enable = [pathManager canUndo];
+        enable = mainWindowVisible && [pathManager canUndo];
     }
 	else if ([theMenuItem action] == @selector(goForward:))
 	{
-		enable = [pathManager canRedo];
+		enable = mainWindowVisible && [pathManager canRedo];
 	}
 	
     return enable;

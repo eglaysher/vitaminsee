@@ -41,6 +41,13 @@
 	return thisCellsFullPath;
 }
 
+-(void)setTitle:(NSString*)newTitle
+{
+	[title release];
+	title = newTitle;
+	[title retain];
+}
+
 -(void)setCellPropertiesFromPath:(NSString*)path
 {
 	// Keep this path...

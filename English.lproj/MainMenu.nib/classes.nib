@@ -10,10 +10,10 @@
                 goToFolder = id; 
                 goToHomeFolder = id; 
                 goToPicturesFolder = id; 
-                showKeywordManager = id; 
                 showPreferences = id; 
-                showSortManager = id; 
-                showVitaminSee = id; 
+                toggleKeywordManager = id; 
+                toggleSortManager = id; 
+                toggleVitaminSee = id; 
                 zoomToFit = id; 
             }; 
             CLASS = CQViewController; 
@@ -22,6 +22,8 @@
                 currentFileViewHolder = NSView; 
                 directoryDropdown = NSPopUpButton; 
                 fileSizeLabel = NSTextField; 
+                gotoFolderSheet = NSWindow; 
+                gotoPath = NSTextField; 
                 homeFolderMenuItem = NSMenuItem; 
                 imageSizeLabel = NSTextField; 
                 imageViewer = NSImageView; 

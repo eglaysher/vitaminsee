@@ -11,6 +11,7 @@
 @interface NSString (FileTasks)
 -(BOOL)isDir;
 -(BOOL)isImage;
+-(BOOL)isVisible;
 -(BOOL)isReadable;
 -(BOOL)isLink;
 -(int)fileSize;

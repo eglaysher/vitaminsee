@@ -41,6 +41,22 @@
 	// fixme:
 }
 
+-(BOOL)renameThisFileTo:(NSString*)newName
+{
+	// Rename the file.
+	NSString* newPath = [[currentImageFile stringByDeletingLastPathComponent] 
+		stringByAppendingPathComponent:newName];
+	
+	BOOL ret = [[NSFileManager defaultManager] movePath:currentImageFile
+												 toPath:newPath 
+												handler:nil];
+
+	if(ret)
+		[viewAsIconsController renameFile:currentImageFile to:newPath];
+	else
+		NSLog(@"Huh!?");
+}
+
 -(void)deleteThisFile
 {
 	// Delete the current file...

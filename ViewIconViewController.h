@@ -32,6 +32,7 @@
 -(void)singleClick:(NSBrowser*)sender;
 -(void)doubleClick:(NSBrowser*)sender;
 
+-(void)renameFile:(NSString*)absolutePath to:(NSString*)newPath;
 -(void)removeFileFromList:(NSString*)absolutePath;
 -(NSString*)nameOfNextFile;
 -(void)selectFile:(NSString*)fileToSelect;

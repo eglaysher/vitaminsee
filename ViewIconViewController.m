@@ -69,6 +69,7 @@ createRowsForColumn:(int)column
 	[matrix renewRows:count columns:1];
 	for(i = 0; i < count; ++i)
 	{
+//		NSLog(@"Loading...");
 		id cell = [matrix cellAtRow:i column:0];
 		[cell setCellPropertiesFromPath:[fileList objectAtIndex:i]];
 		[imageTaskManager buildThumbnail:[fileList objectAtIndex:i] forCell:cell];
@@ -136,6 +137,42 @@ createRowsForColumn:(int)column
 	
 	// [controller setCurrentDirectory:] will call [self setCurrentDirectory:] which
 	// will manage all our stuff...
+}
+
+-(void)renameFile:(NSString*)absolutePath to:(NSString*)newPath
+{
+	int low = -1;
+	int high = [fileList count];
+	int current;
+	
+	while(high - low > 1)
+	{
+		current = (high + low) / 2;
+		if([absolutePath caseInsensitiveCompare:[fileList objectAtIndex:current]] == 
+		   NSOrderedDescending)
+		{
+			low = current;
+		}
+		else
+		{
+			high = current;
+		}
+	}
+	
+	if(high == [fileList count] || [[fileList objectAtIndex:high] 
+		caseInsensitiveCompare:absolutePath] != NSOrderedSame)
+		NSLog(@"HUH!? %@ isn't in the current directory!?", absolutePath);
+	else
+	{
+		[fileList replaceObjectAtIndex:high withObject:newPath];
+		[fileList sortUsingSelector:@selector(caseInsensitiveCompare:)];
+		
+		NSLog(@"FileList: %@", fileList);
+		
+		[ourBrowser loadColumnZero];
+		[ourBrowser setPath:[newPath lastPathComponent]];
+//		[[ourBrowser matrixInColumn:0] addRo
+	}	
 }
 
 // Binary search across our files for a certain node to remove. Much faster then
@@ -215,7 +252,8 @@ createRowsForColumn:(int)column
 	while(curFile = [dirEnum nextObject])
 	{
 		NSString* currentFileWithPath = [curFile fileWithPath:currentDirectory];
-		if([currentFileWithPath isDir] || [currentFileWithPath isImage])
+		if(([currentFileWithPath isDir] || [currentFileWithPath isImage]) &&
+		   [currentFileWithPath isVisible])
 			[myFileList addObject:currentFileWithPath];
 	}
 	

@@ -204,6 +204,7 @@
 				8B5767C007BD1CE800068A64,
 				8B5767C107BD1CE900068A64,
 				8B5767C207BD1CE900068A64,
+				8B3AD8B807DB93970027CEB0,
 				8D1107310486CEB800E47090,
 				089C165CFE840E0CC02AAC07,
 				29B97318FDCFA39411CA2CEA,
@@ -342,6 +343,19 @@
 		};
 		8B2D867507C824B600CDAFED = {
 			fileRef = 8B2D867307C824B500CDAFED;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B3AD8B807DB93970027CEB0 = {
+			isa = PBXFileReference;
+			lastKnownFileType = wrapper.nib;
+			path = GoToFolderSheet.nib;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B3AD8B907DB93970027CEB0 = {
+			fileRef = 8B3AD8B807DB93970027CEB0;
 			isa = PBXBuildFile;
 			settings = {
 			};
@@ -2020,6 +2034,7 @@
 				8BA124AE07D2816300614FF4,
 				8B443AFB07D7E0AB00C4D8E9,
 				8BFA0B4D07DAF79C004F72AA,
+				8B3AD8B907DB93970027CEB0,
 			);
 			isa = PBXResourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;

@@ -84,6 +84,8 @@
 
 	// fixme: Get renaming working.
 	NSLog(@"New value is %@", [sender stringValue]);
+	
+	[pluginLayer renameThisFileTo:[sender stringValue]];
 }
 
 

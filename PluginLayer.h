@@ -16,7 +16,7 @@
 -(NSMutableArray*)getKeywordsFromFile:(NSString*)file;
 -(void)setKeywords:(NSArray*)keywords forFile:(NSString*)file;
 
--(void)renameThisFileTo:(NSString*)newName;
+-(BOOL)renameThisFileTo:(NSString*)newName;
 
 -(void)deleteThisFile;
 -(int)deleteFile:(NSString*)file;
