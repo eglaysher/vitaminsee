@@ -75,6 +75,9 @@ createRowsForColumn:(int)column
 	}
 }
 
+// browser:didScroll delegate method...
+
+
 -(void)singleClick:(NSBrowser*)sender
 {
 	// grab the image path

@@ -77,6 +77,7 @@
 //104
 		1058C7A0FEA54F0111CA2CBB = {
 			children = (
+				8B5EB13407CD254F00B43D06,
 				1058C7A1FEA54F0111CA2CBB,
 			);
 			isa = PBXGroup;
@@ -457,6 +458,33 @@
 			settings = {
 			};
 		};
+		8B5EB13407CD254F00B43D06 = {
+			isa = PBXFileReference;
+			lastKnownFileType = wrapper.framework;
+			name = Carbon.framework;
+			path = /System/Library/Frameworks/Carbon.framework;
+			refType = 0;
+			sourceTree = "<absolute>";
+		};
+		8B5EB13507CD254F00B43D06 = {
+			fileRef = 8B5EB13407CD254F00B43D06;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B5EB14F07CD3B3E00B43D06 = {
+			isa = PBXFileReference;
+			lastKnownFileType = wrapper.nib;
+			path = KeywordManager.nib;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B5EB15007CD3B3E00B43D06 = {
+			fileRef = 8B5EB14F07CD3B3E00B43D06;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
 		8B6D010807CB178F009A76DA = {
 			children = (
 				8B6D011307CB185E009A76DA,
@@ -473,6 +501,7 @@
 				8B6D021007CB3312009A76DA,
 				8B6D01F907CB327F009A76DA,
 				8B6D019807CB29EF009A76DA,
+				8B5EB14F07CD3B3E00B43D06,
 			);
 			isa = PBXGroup;
 			name = SortManagerPreferences;
@@ -1146,6 +1175,7 @@
 				8B6D01C907CB2EB3009A76DA,
 				8B6D021107CB3312009A76DA,
 				8B6D02EB07CBFC89009A76DA,
+				8B5EB15007CD3B3E00B43D06,
 			);
 			isa = PBXResourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1199,6 +1229,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D11072F0486CEB800E47090,
+				8B5EB13507CD254F00B43D06,
 			);
 			isa = PBXFrameworksBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;

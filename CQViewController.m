@@ -27,6 +27,7 @@
   * Implement backHistory/forwardHistory
   * Icons in path viewer [to emphasise that they are folders.
   * Cell drawing
+  * Sort manager
  */
 
 /** Bugs fixed:
@@ -37,20 +38,32 @@
 
 /* THINGS TO ASK AT THE COCOA MEETING:
   * How to (properly) truncate the text in my NSCell...
+    * Don't?
   * How to display the editing field in my NSCell so I can krunking get renaming
     working...
-  * Legality of using Apple icons? Modification?
+    * Integrated into inspector?
+  * Computer/Macintosh HD/... ? How do I do this? Do I need to make my own
+    internal VFSish system?
+    *
+  * Legality of using Apple icons? Modification? NO!
+ */
+
+/*
+   NSString different function not pathComponenets. 
+ 
+   The Mac OSX File System -[NSFileManager displayNameAtPath:]
  */
 
 /* FIRST MILESTONE GOALS
-  * File renaming
-  * Julius says see "CDisplay" (Comics Viewer)
+  * File renaming (Inspector!)
 */
 
 /* SECOND MILESTONE GOALS
   * Preferences
-  * Sort manager
-  * Integrated help
+    * Working on it
+  * Change arrow key behaviour - scroll around in image if possible in NSScrollView
+    and switch images
+    * Julius says see "CDisplay" (Comics Viewer)
 */
 
 /* THIRD MILSTONE GOALS
@@ -58,6 +71,7 @@
     * See "openHandCursor" and "closedHandCursor"
   * Drag and drop
   * Fullscreen
+* Integrated help
 */
 
 /**
@@ -81,6 +95,7 @@
     * Including View as Icon view!
   * View as list view
   * View as browser view...
+  * Duplicate detector
 */
 
 + (void)initialize 
