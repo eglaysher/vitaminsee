@@ -2,6 +2,10 @@
 
 #import <Cocoa/Cocoa.h>
 
+#import <pthread.h>
+
+extern pthread_mutex_t imageTaskLock;
+
 @class ImageTaskManager;
 @class ViewIconViewController;
 @class PointerWrapper;
@@ -127,7 +131,7 @@
 -(void)setIcon;
 
 // Progress indicator control
--(void)startProgressIndicator:(NSString*)statusText;
+-(void)startProgressIndicator;
 -(void)stopProgressIndicator;
 
 -(IBAction)showPreferences:(id)sender;

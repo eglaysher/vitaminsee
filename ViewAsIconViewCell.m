@@ -9,6 +9,7 @@
 #import "ViewAsIconViewCell.h"
 #import "NSAttributedString+Truncation.h"
 #import "NSString+FileTasks.h"
+#import "VitaminSEEController.h"
 
 
 #define ICON_INSET_VERT		2.0	/* The size of empty space between the icon end the top/bottom of the cell */ 
@@ -152,7 +153,11 @@
 	
 	// Blit the image.
 	if(iconImage)
-		[iconImage compositeToPoint:imageFrame.origin operation:NSCompositeSourceOver];
+	{
+		pthread_mutex_lock(&imageTaskLock);
+			[iconImage compositeToPoint:imageFrame.origin operation:NSCompositeSourceOver];
+		pthread_mutex_unlock(&imageTaskLock);
+	}
 	else
 	{
 		// Draw an empty frame...

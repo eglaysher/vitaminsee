@@ -307,7 +307,7 @@
 	if([path isImage] && ![IconFamily fileHasCustomIcon:path] && localShouldBuild)
 	{
 		building = YES;
-		[vitaminSEEController startProgressIndicator:[NSString 
+		[vitaminSEEController setStatusText:[NSString 
 			stringWithFormat:@"Building thumbnail for %@...", [path lastPathComponent]]];
 		// I don't think there IS an autorelease...
 		NSImage* image = [[NSImage alloc] initWithContentsOfFile:path];
@@ -327,7 +327,7 @@
 	
 	if(building)
 	{
-		[vitaminSEEController stopProgressIndicator];
+		[vitaminSEEController setStatusText:@""];
 	}
 }
 
@@ -354,7 +354,7 @@
 {
 	// Before we aquire our internal lock, tell the main application to start
 	// spinning...
-	[vitaminSEEController startProgressIndicator:nil];
+	[vitaminSEEController startProgressIndicator];
 
 	if([path isDir])
 	{

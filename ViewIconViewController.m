@@ -21,8 +21,8 @@
 -(void)awakeFromNib
 {
 	[ourBrowser setTarget:self];
-	[ourBrowser setAction: @selector(singleClick:)];
-	[ourBrowser setDoubleAction: @selector(doubleClick:)];	
+	[ourBrowser setAction:@selector(singleClick:)];
+	[ourBrowser setDoubleAction:@selector(doubleClick:)];	
 	[ourBrowser setCellClass:[ViewAsIconViewCell class]];
 	
 	currentlySelectedCell = nil;
@@ -261,9 +261,15 @@ createRowsForColumn:(int)column
 	[ourBrowser updateCell:cell];
 }
 
+-(void)makeFirstResponderTo:(NSWindow*)window
+{
+	[window makeFirstResponder:ourBrowser];
+}
+
 @end
 
 @implementation ViewIconViewController (Private)
+
 -(void)rebuildInternalFileArray
 {
 	NSEnumerator* dirEnum = [[[NSFileManager defaultManager] 
@@ -280,11 +286,12 @@ createRowsForColumn:(int)column
 	
 	// Now sort the list since some filesystems (*cough*SAMBA*cough*) don't
 	// present files sorted alphabetically and we do binary searches to avoid
-	// O(n) overhead.
-	[fileList sortUsingSelector:@selector(caseInsensitiveCompare:)];	
+	// O(n) overhead later on.
+	[myFileList sortUsingSelector:@selector(caseInsensitiveCompare:)];	
 
 	[fileList release];
 	[myFileList retain];
 	fileList = myFileList;
 }
+
 @end

@@ -15,6 +15,7 @@
 
 #import "IconFamily.h"
 #import "NSString+CarbonFSSpecCreation.h"
+#import "VitaminSEEController.h"
 
 @interface IconFamily (Internals)
 
@@ -546,7 +547,9 @@
 		return NO;
 	}
 	
-    result = SetIconFamilyData( hIconFamily, elementType, hRawData );
+	pthread_mutex_lock(&imageTaskLock);
+		result = SetIconFamilyData( hIconFamily, elementType, hRawData );
+	pthread_mutex_unlock(&imageTaskLock);
     DisposeHandle( hRawData );
 	
     if (result != noErr)

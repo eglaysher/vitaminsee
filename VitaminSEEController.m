@@ -18,6 +18,8 @@
 #import "SS_PrefsController.h"
 #import "KeywordNode.h"
 
+pthread_mutex_t imageTaskLock;
+
 @implementation VitaminSEEController
 
 /////////////////////////////////////////////////////////// WHAT HAS BEEN DONE:
@@ -166,6 +168,8 @@
 	[[fileSizeLabel cell] setFormatter:fsFormatter];
 	
 	// Set up the menu icons
+	// CHNAGE THIS! It has to lookup and load the icons instead of just grabbing
+	// them form the Application bundle!
 	NSImage* img = [[NSWorkspace sharedWorkspace] iconForFile:NSHomeDirectory()];
 	[img setSize:NSMakeSize(16, 16)];
 	[homeFolderMenuItem setImage:img];
@@ -182,7 +186,11 @@
 	loadedFilePlugins = [[NSMutableArray alloc] init];
 	_sortManagerController = nil;
 	
-	// 
+	// This lock is used to ensure that Carbon parts of out code don't screw up
+	// and cause deadlock. 
+	pthread_mutex_init(&imageTaskLock, 0);
+	
+	// Use an Undo manager to manage moving back and forth.
 	pathManager = [[NSUndoManager alloc] init];
 	
 	// Now we start work on thread communication.
@@ -199,11 +207,24 @@
 	
 	// Now that we have our task manager, tell everybody to use it.
 	[viewAsIconsController setImageTaskManager:imageTaskManager];
-	
+}
+
+// This initialization can safely be delayed until after the main window has
+// been shown.
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
+{
+	// Whirl ourselves
+	[self startProgressIndicator];
 	// set our current directory 
 	[self setCurrentDirectory:[[NSUserDefaults standardUserDefaults] 
 		objectForKey:@"DefaultStartupPath"]
-						 file:nil];		
+						 file:nil];
+	[self stopProgressIndicator];
+	[directoryDropdown setEnabled:YES];
+	
+	// Make the icon view the first responder since the previous enable
+	// makes directoryDropdown FR.
+	[viewAsIconsController makeFirstResponderTo:mainVitaminSeeWindow];
 }
 
 -(void)dealloc
@@ -358,10 +379,10 @@
 
 -(IBAction)goToFolder:(id)sender
 {
-	[[self gotoFolderController] showSheet:mainVitaminSeeWindow
-							  initialValue:@""
-									target:self
-								  selector:@selector(finishedGotoFolder:)];
+	[(id)[self gotoFolderController] showSheet:mainVitaminSeeWindow
+								  initialValue:@""
+										target:self
+									  selector:@selector(finishedGotoFolder:)];
 }
 
 -(void)finishedGotoFolder:(NSString*)done
@@ -584,7 +605,10 @@
 	[imageTaskManager setContentViewSize:[scrollView contentSize]];
 	
 	if([currentImageFile isImage])
+	{
+		[self startProgressIndicator];
 		[imageTaskManager displayImageWithPath:currentImageFile];
+	}
 	else if(!currentImageFile)
 		[imageViewer setImage:nil];
 }
@@ -640,8 +664,10 @@
 	int x, y;
 	float scale;
 	NSImage* image = [imageTaskManager getCurrentImageWithWidth:&x height:&y scale:&scale];
-	[imageViewer setImage:image];
-	[imageViewer setFrameSize:[image size]];
+	pthread_mutex_lock(&imageTaskLock);
+		[imageViewer setImage:image];
+		[imageViewer setFrameSize:[image size]];
+	pthread_mutex_unlock(&imageTaskLock);
 	
 	scaleRatio = scale;
 
@@ -656,7 +682,7 @@
 {
 	NSImage* thumbnail = [imageTaskManager getCurrentThumbnail];
 	id cell = [imageTaskManager getCurrentThumbnailCell];
-	
+
 	[cell setIconImage:thumbnail];
 	[viewAsIconsController updateCell:cell];
 	
@@ -665,23 +691,27 @@
 }
 
 // Progress indicator control
--(void)startProgressIndicator:(NSString*)statusText
+-(void)startProgressIndicator
 {
 	[progressIndicator setHidden:NO];
 	[progressIndicator startAnimation:self];
-	
-	if(statusText)
-	{
-		[progressCurrentTask setHidden:NO];
-		[progressCurrentTask setStringValue:statusText];
-	}
 }
 
 -(void)stopProgressIndicator
 {
 	[progressIndicator stopAnimation:self];
 	[progressIndicator setHidden:YES];
-	[progressCurrentTask setHidden:YES];
+}
+
+-(void)setStatusText:(NSString*)statusText
+{
+	if(statusText)
+	{
+		[progressCurrentTask setStringValue:statusText];		
+		[progressCurrentTask setHidden:NO];
+	}
+	else
+		[progressCurrentTask setHidden:YES];
 }
 
 -(IBAction)showPreferences:(id)sender
