@@ -98,13 +98,13 @@ createRowsForColumn:(int)column
 			[cell setIconImage:[[NSWorkspace sharedWorkspace] iconForFileType:
 				[currentFile pathExtension]]];
 			
-			NSLog(@"Requesting %@", currentFile);
+//			NSLog(@"Requesting %@", currentFile);
 			
 			[thumbnailManager buildThumbnail:currentFile forCell:cell];
 		}
 		else
 		{
-			NSLog(@"No request for %@", currentFile);
+//			NSLog(@"No request for %@", currentFile);
 			[cell loadOwnIconOnDisplay];
 		}
 	}
@@ -325,7 +325,7 @@ willDisplayCell:(id)cell
 
 -(void)rebuildInternalFileArray
 {
-	NSLog(@"Current directoy is  %@", currentDirectory);
+//	NSLog(@"Current directoy is  %@", currentDirectory);
 	NSArray* directoryContents = [[NSFileManager defaultManager] 
 		directoryContentsAtPath:currentDirectory];
 	NSEnumerator* dirEnum = [directoryContents objectEnumerator];

@@ -37,7 +37,7 @@
 		
 		NSArray *portArray = [NSArray arrayWithObjects:port2, port1, nil];		
 		
-		NSLog(@"PC: %@", parentController);
+//		NSLog(@"PC: %@", parentController);
 		
 		// spawn off a new thread
 		[NSThread detachNewThreadSelector:@selector(taskHandlerThread:) 
