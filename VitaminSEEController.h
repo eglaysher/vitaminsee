@@ -3,6 +3,7 @@
 #import <Cocoa/Cocoa.h>
 
 @class ImageTaskManager;
+@class ThumbnailManager;
 @class ViewIconViewController;
 @class PointerWrapper;
 @class SortManagerController;
@@ -64,6 +65,7 @@
 	NSUndoManager* pathManager;
 	
 	ImageTaskManager* imageTaskManager;
+	ThumbnailManager* thumbnailManager;
 	
 	SS_PrefsController *prefs;
 	
@@ -127,8 +129,9 @@
 -(void)setIcon;
 
 // Progress indicator control
--(void)startProgressIndicator:(NSString*)statusText;
+-(void)startProgressIndicator;
 -(void)stopProgressIndicator;
+-(void)setStatusLine:(NSString*)status;
 
 -(IBAction)showPreferences:(id)sender;
 -(IBAction)deleteFileClicked:(id)sender;
