@@ -12,3 +12,4 @@
 
 float buildRatio(float first, float second);
 BOOL imageRepIsAnimated(NSImageRep* rep);
+NSImage* buildImageFromNormalFile(NSString* path, NSSize size);

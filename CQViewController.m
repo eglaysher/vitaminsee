@@ -1,13 +1,16 @@
 #import "CQViewController.h"
 #import "ToolbarDelegate.h"
 
-#import "FSNodeInfo.h"
-#import "FSBrowserCell.h"
+//#import "FSNodeInfo.h"
+//#import "FSBrowserCell.h"
 #import "FileSizeFormatter.h"
 #import "SBCenteringClipView.h"
-
+#import "ViewIconViewController.h"
 #import "ImageTaskManager.h"
 #import "Util.h"
+
+#import "NSString+FileTasks.h"
+#import "NSView+Set_and_get.h"
 
 @implementation CQViewController
 
@@ -28,7 +31,7 @@
 + (void)initialize 
 {
     NSMutableDictionary *defaultPrefs = [NSMutableDictionary dictionary];
-	[defaultPrefs setObject:@"/Users/elliot/Pictures/"
+	[defaultPrefs setObject:@"/Users/elliot/Pictures/Wallpaper/Nature Wallpaper"
 					 forKey:@"DefaultStartupPath"];
 	//
 	//@"/Users/elliot/Pictures/4chan/Straight Up Ero"  
@@ -37,14 +40,8 @@
 
 - (void)awakeFromNib
 {
-	// Set the browser up for display...
-    [browser setTarget: self];
-    [browser setAction: @selector(browserSingleClick:)];
-    [browser setDoubleAction: @selector(browserDoubleClick:)];
-	[browser setCellClass: [FSBrowserCell class]];
-	[browser setMaxVisibleColumns:1];
-	[browser setPath:[[NSUserDefaults standardUserDefaults] 
-			objectForKey:@"DefaultStartupPath"]];
+	[self setViewAsView:[viewAsIconsController view]];
+	[viewerWindow setInitialFirstResponder:[viewAsIconsController view]];	
 	
 	// Now set up the scroll view...
 	id docView = [[scrollView documentView] retain];
@@ -63,115 +60,147 @@
 	[self setupToolbar];
 	
 	imageTaskManager = [[ImageTaskManager alloc] init];
+	
+	[self setCurrentDirectory:[[NSUserDefaults standardUserDefaults] 
+		objectForKey:@"DefaultStartupPath"]];
 }
 
-
 // ============================================================================
-//                           BROWSER METHODS
+//                         FILE VIEW SELECTION
 // ============================================================================
+// Changing the user interface
+- (void)setViewAsView:(NSView*)nextView
+{
+	[currentFileViewHolder setSubview:nextView];
+	currentFileView = nextView;
+}
 
--(IBAction)browserSingleClick:(id)browser {
-    NSImage *inspectorImage = nil;
-    
-    if ([[browser selectedCells] count]==1) {
-		// We have a single item selected
-        NSString *nodePath = [browser path];
-        FSNodeInfo *fsNode = [FSNodeInfo nodeWithParent:nil 
-										 atRelativePath:nodePath];
-        
-		id manager = [NSFileManager defaultManager];
-		NSDictionary *fattrs = [manager fileAttributesAtPath:nodePath
-												traverseLink:YES];
-		
-		// First, set the file size label.
-		BOOL isDir;
-		[manager fileExistsAtPath:[fsNode absolutePath] isDirectory:&isDir];
-		if(isDir)
-			[fileSizeLabel setObjectValue:@"---"];
-		else
-			[fileSizeLabel setObjectValue:[fattrs objectForKey:NSFileSize]];
-		
-		// Release the old image...
-		[currentImageRep release];
-		
-		if([fsNode isImage])
-		{
-			// This item is an image. Let's load it.
-			currentImageRep = [[imageTaskManager getImage:[fsNode absolutePath]] retain];
-			
-			// Preload the next possible files...
-			[self preloadNextFiles:browser];
-			
-			// Set the label to the image size.
-			int x = [currentImageRep pixelsWide];
-			int y = [currentImageRep pixelsHigh];
-			[imageSizeLabel setStringValue:[NSString 
-				stringWithFormat:@"%i x %i", x, y]];
-		}
-		else
-		{
-			// Send preload messages first (since next line doesn't access the
-			// cache.)
-			[self preloadNextFiles:browser];
-			
-			// This item isn't an image. Load it's icon.
-			currentImageRep = [[[fsNode iconImageOfSize:NSMakeSize(128,128)] 
-				bestRepresentationForDevice:nil] retain];
-			// Set the label to "---"
-			[imageSizeLabel setStringValue:@"---"];
-		}
+- (void)setCurrentDirectory:(NSString*)newCurrentDirectory
+{
+	// Set the current Directory
+	[currentDirectory release];
+	currentDirectory = [newCurrentDirectory stringByStandardizingPath];
+	[currentDirectory retain];
+	
+	// Set the current paths components of the directory
+	[currentDirectoryComponents release];
+	currentDirectoryComponents = [newCurrentDirectory pathComponents];
+	[currentDirectoryComponents retain];
+
+	// Make an NSMenu with all the path components
+	NSEnumerator* e = [currentDirectoryComponents reverseObjectEnumerator];
+	NSString* currentComponent;
+	NSMenu* newMenu = [[[NSMenu alloc] init] autorelease];
+	NSMenuItem* newMenuItem;
+	int currentTag = [currentDirectoryComponents count];
+	while(currentComponent = [e nextObject]) {
+		newMenuItem = [[[NSMenuItem alloc] initWithTitle:currentComponent
+												  action:@selector(directoryMenuSelected:)
+										   keyEquivalent:@""] autorelease];
+		[newMenuItem setTag:currentTag];
+		currentTag--;
+		[newMenu addItem:newMenuItem];
+	}
+
+	// Set this menu as the pull down...
+	[directoryDropdown setMenu:newMenu];
+	
+	// Now we figure out which view is currently in...view...and tell it to perform it's stuff
+	// appropriatly...
+	if(currentFileView == [viewAsIconsController view])
+		[viewAsIconsController setCurrentDirectory:newCurrentDirectory];
+}
+
+-(IBAction)goEnclosingFolder:(id)sender
+{
+	int count = [currentDirectoryComponents count] - 1;
+	[self setCurrentDirectory:[NSString pathWithComponents:
+		[currentDirectoryComponents subarrayWithRange:NSMakeRange(0, count)]]];
+}
+
+-(IBAction)goBack:(id)sender
+{
+	
+}
+
+-(IBAction)goForward:(id)sender
+{
+	
+}
+
+-(BOOL)validateMenuItem:(NSMenuItem *)theMenuItem
+{
+    BOOL enable = [self respondsToSelector:[theMenuItem action]]; //handle general case.
+	
+    if ([theMenuItem action] == @selector(goEnclosingFolder:))
+    {
+		// You can go up as long as there is a thing to go back on...
+        enable = [currentDirectoryComponents count] > 1;
     }
-    
+    else if ([theMenuItem action] == @selector(goBack:))
+    {
+        enable = [backHistory count] > 0;
+    }
+	else if ([theMenuItem action] == @selector(goForward:))
+	{
+		enable = [forwardHistory count] > 0;
+	}
+	
+    return enable;
+}
+
+-(void)directoryMenuSelected:(id)sender
+{
+	// Stub...
+	NSString* newDirectory = [NSString pathWithComponents:
+		[currentDirectoryComponents subarrayWithRange:NSMakeRange(0,[sender tag])]];
+	[self setCurrentDirectory:newDirectory];
+}
+
+- (void)setCurrentFile:(NSString*)newCurrentFile
+{
+	// Okay, we don't know what kind of thing we have been passed, so let's
+	BOOL isDir = [newCurrentFile isDir];
+	if(isDir)
+		[fileSizeLabel setObjectValue:@"---"];
+	else
+		[fileSizeLabel setObjectValue:[NSNumber 
+			numberWithInt:[newCurrentFile fileSize]]];
+
+	// Release the old image...
+	[currentImageRep release];
+	
+	if([newCurrentFile isImage])
+	{
+		// This item is an image. Let's load it.
+		currentImageRep = [[imageTaskManager getImage:newCurrentFile] retain];
+		
+		// Set the label to the image size.
+		int x = [currentImageRep pixelsWide];
+		int y = [currentImageRep pixelsHigh];
+		[imageSizeLabel setStringValue:[NSString 
+			stringWithFormat:@"%i x %i", x, y]];
+	}
+	else
+	{
+		// Send preload messages first (since next line doesn't access the
+		// cache.)
+		currentImageRep = [[[newCurrentFile iconImageOfSize:NSMakeSize(128,128)]
+			bestRepresentationForDevice:nil] retain];
+
+		// Set the label to "---"
+		[imageSizeLabel setStringValue:@"---"];
+	}
+
 	[self redraw];	
 }
 
--(void)preloadNextFiles:(NSBrowser*)browser 
+-(void)preloadFiles:(NSArray*)filesToPreload
 {
-	// Preload the image above and below this image (Usually, only one of those
-	// will be preloaded while the other will be ignored since it's already in
-	// the cache.)
-	int selectedColumn = [browser selectedColumn];
-	int selectedRow = [browser selectedRowInColumn:selectedColumn];
-	int toLoad;
-	
-	// Preload the previous file.
-	toLoad = selectedRow - 1;
-	id node = [[browser loadedCellAtRow:toLoad column:selectedColumn] nodeInfo];
-	if(node && [node isImage])
-		[imageTaskManager preloadImage:[node absolutePath]];
-	
-	// When we are dealing with a directory, we want to preload the first
-	// image in the directory so when the user hits right, it may already
-	// be loaded. So find the first visible file and then load the 
-	// file if it's an image file...
-	NSArray* arrayOfSubnodes = [[FSNodeInfo nodeWithParent:nil 
-											atRelativePath:[browser path]] subNodes];
-	NSEnumerator* e = [arrayOfSubnodes objectEnumerator];
-	FSNodeInfo* currentNode;
-	while(currentNode = [e nextObject])
-	{
-		if([currentNode isVisible])
-		{
-			if([currentNode isImage])
-			{
-				NSString* firstFilePath = [currentNode absolutePath];				
-				NSLog(@"Going to prelad first file %@", firstFilePath);
-				[imageTaskManager preloadImage:firstFilePath];						
-			}
-			break;
-		}
-	}
-	
-	
-	// Preload the next file.
-	toLoad = selectedRow + 1;
-	node = [[browser loadedCellAtRow:(selectedRow + 1) column:selectedColumn] nodeInfo];
-	if(node && [node isImage])
-		[imageTaskManager preloadImage:[node absolutePath]];
-}
-
-- browserDoubleClick:(id)browser {
-	//	NSLog(@"Double click on %@", browser);
+	NSEnumerator* e = [filesToPreload objectEnumerator];
+	NSString* path;
+	while(path = [e nextObject])
+		[imageTaskManager preloadImage:path];
 }
 
 -(void)redraw
@@ -255,28 +284,8 @@
 		[imageViewer setAnimates:YES];
 		[imageViewer setImage:image];
 	}
-//	else if(1)
-//	{
-//		NSImageRep* imageRep = currentImageRep;
-//		int bpp = [imageRep bitsPerPixel]/8;
-//		
-//		// Build source buffer
-//		vImage_Buffer vbuf;
-//		initvImageFromNSBitmapRep(&vbuf, imageRep);
-//		
-//		// Build destination buffer
-//		vImage_Buffer destBuf;
-//		MyInitBuffer(&destBuf, displayY, displayX, bpp);
-//
-//		// Perform scaling
-//		vImageScale_ARGB8888(&vbuf, &destBuf, NULL, 0);
-//		
-//		// If there was no exception, then we're good to go.
-//		NSBitmapImageRep* destRep = [NSBitmapImageRep imageRepsWithD
-//	}
 	else
 	{
-		NSLog(@"Using full rendering...");
 		// Draw the image onto a new NSImage using smooth scaling. This is done
 		// whenever the image isn't animated so that the picture will have 
 		// some antialiasin lovin' applied to it.

@@ -10,6 +10,10 @@
 
 #import "IconFamily.h"
 
+@interface ImageTaskManager (Private)
+-(id)evictImages;
+-(void)doPreloadImage:(NSString*)path;
+@end
 
 @implementation ImageTaskManager
 
@@ -113,15 +117,15 @@
 {
 	// First we check to see if there is a task to preload path. If there is,
 	// delete it.
-	pthread_mutex_lock(&taskQueueLock);
-	int i;
-	for(i = [taskQueue count] - 1; i > -1; i--)
-		if([[[taskQueue objectAtIndex:i] objectForKey:@"Path"] isEqualTo:path])
-		{
-			NSLog(@"Removing old task for %@", path);
-			[taskQueue removeObjectAtIndex:i];
-		}				
-	pthread_mutex_unlock(&taskQueueLock);
+//	pthread_mutex_lock(&taskQueueLock);
+//	int i;
+//	for(i = [taskQueue count] - 1; i > -1; i--)
+//		if([[[taskQueue objectAtIndex:i] objectForKey:@"Path"] isEqualTo:path])
+//		{
+//			NSLog(@"Removing old task for %@", path);
+//			[taskQueue removeObjectAtIndex:i];
+//		}				
+//	pthread_mutex_unlock(&taskQueueLock);
 	
 	NSImageRep* imageRep;
 	pthread_mutex_lock(&imageCacheLock);
