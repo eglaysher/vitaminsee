@@ -16,6 +16,7 @@
  * Rework FSBrowserCell's 
  - (void)drawInteriorWithFrame:(NSRect)cellFrame inView:(NSView *)controlView;
 	for my own purposes
+ * More speed hacks!?
  * All kinds of file operations.
    * Delete files
    * et cetera! 
@@ -148,6 +149,7 @@
 	int boxWidth = contentSize.width;
 	int boxHeight = contentSize.height;
 	int displayX, displayY;
+	BOOL canGetAwayWithQuickRender = NO;
 	
 	if(scaleProportionally == YES)
 	{
@@ -155,6 +157,8 @@
 		// ratio and then tell the imageViewer to scale it to that size.
 		displayX = imageX * scaleRatio;
 		displayY = imageY * scaleRatio;
+		if(displayX < boxWidth && displayY < boxHeight)
+			canGetAwayWithQuickRender = YES; 
 	}
 	else
 	{
@@ -169,6 +173,7 @@
 			// use the size of the image.
 			displayX = imageX;
 			displayY = imageY;
+			canGetAwayWithQuickRender = YES;
 		}
 		else
 		{
@@ -177,6 +182,8 @@
 			// see if they work. We sort an array of the two values so we make
 			// sure we aren't scaling smaller then what can be displayed on the
 			// screen
+			canGetAwayWithQuickRender = NO;
+			
 			NSMutableArray* ratios = [NSMutableArray arrayWithObjects:[NSNumber 
 				numberWithFloat:heightRatio], [NSNumber numberWithFloat:widthRatio], nil];
 			[ratios sortUsingSelector:@selector(compare:)];
@@ -197,16 +204,23 @@
 		}
 	}
 	
-	if(imageRepIsAnimated(currentImageRep))
+	if(imageRepIsAnimated(currentImageRep) || canGetAwayWithQuickRender)
 	{
-		// We know we have to resize the image representation. So let's build
-		// a new one 
+		// Draw the image by just making an NSImage from the imageRep. This is
+		// done when the image will fit in the viewport, or when we are 
+		// rendering an animated GIF.
 		NSImageRep* imageRep = [[currentImageRep copy] autorelease];
-		assert(imageRepIsAnimated(imageRep));
 		NSImage* image = [[[NSImage alloc] init] autorelease];
 		[image addRepresentation:imageRep];
-		[image setScalesWhenResized:YES];
-		[image setSize:NSMakeSize(displayX, displayY)];
+
+		if(displayX != imageX && displayY != imageY) {
+			// This image needs to be resized to fit. This code is only
+			// invoked when dealing with animated GIFs. Otherwise, we use the
+			// longer, interpolating rescaling code.
+			[image setScalesWhenResized:YES];
+			[image setSize:NSMakeSize(displayX, displayY)];
+		}
+		
 		[imageViewer setFrameSize:NSMakeSize(displayX, displayY)];
 		[imageViewer setAnimates:YES];
 		[imageViewer setImage:image];

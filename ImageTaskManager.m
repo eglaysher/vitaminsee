@@ -62,13 +62,10 @@
 				NSLog(@"Invalid wait!?");
 		}
 
-		NSLog(@"There are %i pending tasks", [taskQueue count]);
-		NSLog(@"The queue state is %@", taskQueue);
 		// Get a task out of our task queue...
 		currentTask = [[taskQueue objectAtIndex:0] retain];
 		[taskQueue removeObjectAtIndex:0];
 
-		NSLog(@"The current task is %@", currentTask);
 		// what kind of task is this?
 		NSString* type = [currentTask objectForKey:@"Type"];
 		NSString* path = [currentTask objectForKey:@"Path"];
@@ -105,7 +102,6 @@
 
 	// Add the object
 	[taskQueue addObject:currentTask];
-	NSLog(@"Adding task %@", currentTask);
 	
 	// Note that we are OUT of here...
 	pthread_cond_signal(&conditionLock);
@@ -121,8 +117,6 @@
 	// If the image isn't in the cache...
 	if(!cacheEntry)
 	{
-		NSLog(@"ImageRep wasn't there, but there are %i cache entries", [imageCache count]);
-
 		// Load the file, since it obviously hasn't been loaded.
 		imageRep = [NSImageRep imageRepWithContentsOfFile:path];
 		cacheEntry = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -134,8 +128,6 @@
 		// Add the image to the cache so subsquent hits won't require reloading...
 		[imageCache setObject:cacheEntry forKey:path];
 	}
-	else
-		NSLog(@"%@ was in the cache", path);
 	
 	imageRep = [cacheEntry objectForKey:@"Image"];
 	
@@ -180,7 +172,6 @@
 	// If the image hasn't already been loaded into the cache...
 	if(![imageCache objectForKey:path])
 	{
-		NSLog(@"Starting to Preload %@", path);		
 		// Preload the image
 		NSImageRep* rep = [NSImageRep imageRepWithContentsOfFile:path];
 		NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -188,7 +179,6 @@
 
 		[self evictImages];
 		[imageCache setObject:dict forKey:path];
-		NSLog(@"Finished Preloading %@", path);
 	}
 	pthread_mutex_unlock(&imageCacheLock);	
 }

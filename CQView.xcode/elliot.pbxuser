@@ -263,6 +263,24 @@
 			8B21DD5E07B8749B00538287 = 8B21DD5E07B8749B00538287;
 			8B21DDA307B87FC500538287 = 8B21DDA307B87FC500538287;
 			8B21DDA407B87FC500538287 = 8B21DDA407B87FC500538287;
+			8B6714CE07B8810100FF56F9 = 8B6714CE07B8810100FF56F9;
+			8B6714D107B8810300FF56F9 = 8B6714D107B8810300FF56F9;
+			8B6714D407B8811900FF56F9 = 8B6714D407B8811900FF56F9;
+			8B6714D507B8811A00FF56F9 = 8B6714D507B8811A00FF56F9;
+			8B6714D607B8819C00FF56F9 = 8B6714D607B8819C00FF56F9;
+			8B6714D707B8819E00FF56F9 = 8B6714D707B8819E00FF56F9;
+			8B6714D807B881DA00FF56F9 = 8B6714D807B881DA00FF56F9;
+			8B6714D907B881DB00FF56F9 = 8B6714D907B881DB00FF56F9;
+			8B6714DB07B8821700FF56F9 = 8B6714DB07B8821700FF56F9;
+			8B6714DC07B8821800FF56F9 = 8B6714DC07B8821800FF56F9;
+			8B6714DD07B8822800FF56F9 = 8B6714DD07B8822800FF56F9;
+			8B6714E007B8826E00FF56F9 = 8B6714E007B8826E00FF56F9;
+			8B6714E107B8826F00FF56F9 = 8B6714E107B8826F00FF56F9;
+			8B6714E207B8830200FF56F9 = 8B6714E207B8830200FF56F9;
+			8B6714E307B8830300FF56F9 = 8B6714E307B8830300FF56F9;
+			8B6714E407B8835C00FF56F9 = 8B6714E407B8835C00FF56F9;
+			8B6714E507B8835F00FF56F9 = 8B6714E507B8835F00FF56F9;
+			8B6714E807B8839E00FF56F9 = 8B6714E807B8839E00FF56F9;
 		};
 		sourceControlManager = 8BD0115E07A959A100AA4BAA;
 		userBuildSettings = {
@@ -303,7 +321,7 @@
 		isa = PBXTextBookmark;
 		name = "ImageTaskManager.m: 135";
 		rLen = 0;
-		rLoc = 3528;
+		rLoc = 3243;
 		rType = 0;
 		vrLen = 320;
 		vrLoc = 3368;
@@ -323,7 +341,7 @@
 		isa = PBXTextBookmark;
 		name = "\tif(![imageCache objectForKey:path])\n";
 		rLen = 37;
-		rLoc = 4544;
+		rLoc = 4217;
 		rType = 0;
 		vrLen = 257;
 		vrLoc = 4084;
@@ -340,7 +358,7 @@
 		isa = PBXTextBookmark;
 		name = "\tif(![imageCache objectForKey:path])\n";
 		rLen = 37;
-		rLoc = 4544;
+		rLoc = 4217;
 		rType = 0;
 		vrLen = 257;
 		vrLoc = 4084;
@@ -404,8 +422,188 @@
 			sepNavIntBoundsRect = "{{0, 0}, {711, 3136}}";
 			sepNavSelRange = "{1535, 0}";
 			sepNavVisRect = "{{0, 834}, {711, 428}}";
-			sepNavWindowFrame = "{{84, 176}, {750, 502}}";
+			sepNavWindowFrame = "{{61, 197}, {750, 502}}";
 		};
+	};
+	8B6714CE07B8810100FF56F9 = {
+		fRef = 8BD0120D07A9BBDA00AA4BAA;
+		isa = PBXTextBookmark;
+		name = "FSBrowserCell.m: 112";
+		rLen = 0;
+		rLoc = 4951;
+		rType = 0;
+		vrLen = 121;
+		vrLoc = 4859;
+	};
+	8B6714D107B8810300FF56F9 = {
+		fRef = 8BD0120D07A9BBDA00AA4BAA;
+		isa = PBXTextBookmark;
+		name = "FSBrowserCell.m: 112";
+		rLen = 0;
+		rLoc = 4951;
+		rType = 0;
+		vrLen = 121;
+		vrLoc = 4859;
+	};
+	8B6714D407B8811900FF56F9 = {
+		fRef = 8BD0120D07A9BBDA00AA4BAA;
+		isa = PBXTextBookmark;
+		name = "FSBrowserCell.m: 112";
+		rLen = 0;
+		rLoc = 4951;
+		rType = 0;
+		vrLen = 121;
+		vrLoc = 4859;
+	};
+	8B6714D507B8811A00FF56F9 = {
+		fRef = 8BD0120D07A9BBDA00AA4BAA;
+		isa = PBXTextBookmark;
+		name = "FSBrowserCell.m: 112";
+		rLen = 0;
+		rLoc = 4951;
+		rType = 0;
+		vrLen = 121;
+		vrLoc = 4859;
+	};
+	8B6714D607B8819C00FF56F9 = {
+		fRef = 8BD0120D07A9BBDA00AA4BAA;
+		isa = PBXTextBookmark;
+		name = "FSBrowserCell.m: 112";
+		rLen = 0;
+		rLoc = 4951;
+		rType = 0;
+		vrLen = 121;
+		vrLoc = 4859;
+	};
+	8B6714D707B8819E00FF56F9 = {
+		fRef = 8BD0120D07A9BBDA00AA4BAA;
+		isa = PBXTextBookmark;
+		name = "FSBrowserCell.m: 112";
+		rLen = 0;
+		rLoc = 4951;
+		rType = 0;
+		vrLen = 121;
+		vrLoc = 4859;
+	};
+	8B6714D807B881DA00FF56F9 = {
+		fRef = 8BD0120D07A9BBDA00AA4BAA;
+		isa = PBXTextBookmark;
+		name = "FSBrowserCell.m: 112";
+		rLen = 0;
+		rLoc = 4951;
+		rType = 0;
+		vrLen = 121;
+		vrLoc = 4859;
+	};
+	8B6714D907B881DB00FF56F9 = {
+		fRef = 8BD0120D07A9BBDA00AA4BAA;
+		isa = PBXTextBookmark;
+		name = "FSBrowserCell.m: 112";
+		rLen = 0;
+		rLoc = 4951;
+		rType = 0;
+		vrLen = 121;
+		vrLoc = 4859;
+	};
+	8B6714DB07B8821700FF56F9 = {
+		fRef = 8BD0120D07A9BBDA00AA4BAA;
+		isa = PBXTextBookmark;
+		name = "FSBrowserCell.m: 112";
+		rLen = 0;
+		rLoc = 4951;
+		rType = 0;
+		vrLen = 121;
+		vrLoc = 4859;
+	};
+	8B6714DC07B8821800FF56F9 = {
+		fRef = 8BD0120D07A9BBDA00AA4BAA;
+		isa = PBXTextBookmark;
+		name = "FSBrowserCell.m: 112";
+		rLen = 0;
+		rLoc = 4951;
+		rType = 0;
+		vrLen = 121;
+		vrLoc = 4859;
+	};
+	8B6714DD07B8822800FF56F9 = {
+		fRef = 8BD0120D07A9BBDA00AA4BAA;
+		isa = PBXTextBookmark;
+		name = "FSBrowserCell.m: 112";
+		rLen = 0;
+		rLoc = 4951;
+		rType = 0;
+		vrLen = 121;
+		vrLoc = 4859;
+	};
+	8B6714E007B8826E00FF56F9 = {
+		fRef = 8BD0120D07A9BBDA00AA4BAA;
+		isa = PBXTextBookmark;
+		name = "FSBrowserCell.m: 112";
+		rLen = 0;
+		rLoc = 4951;
+		rType = 0;
+		vrLen = 121;
+		vrLoc = 4859;
+	};
+	8B6714E107B8826F00FF56F9 = {
+		fRef = 8BD0120D07A9BBDA00AA4BAA;
+		isa = PBXTextBookmark;
+		name = "FSBrowserCell.m: 112";
+		rLen = 0;
+		rLoc = 4951;
+		rType = 0;
+		vrLen = 121;
+		vrLoc = 4859;
+	};
+	8B6714E207B8830200FF56F9 = {
+		fRef = 8BD0120D07A9BBDA00AA4BAA;
+		isa = PBXTextBookmark;
+		name = "FSBrowserCell.m: 112";
+		rLen = 0;
+		rLoc = 4951;
+		rType = 0;
+		vrLen = 121;
+		vrLoc = 4859;
+	};
+	8B6714E307B8830300FF56F9 = {
+		fRef = 8BD0120D07A9BBDA00AA4BAA;
+		isa = PBXTextBookmark;
+		name = "FSBrowserCell.m: 112";
+		rLen = 0;
+		rLoc = 4951;
+		rType = 0;
+		vrLen = 121;
+		vrLoc = 4859;
+	};
+	8B6714E407B8835C00FF56F9 = {
+		fRef = 8BD0120D07A9BBDA00AA4BAA;
+		isa = PBXTextBookmark;
+		name = "FSBrowserCell.m: 112";
+		rLen = 0;
+		rLoc = 4951;
+		rType = 0;
+		vrLen = 121;
+		vrLoc = 4859;
+	};
+	8B6714E507B8835F00FF56F9 = {
+		fRef = 8BD0120D07A9BBDA00AA4BAA;
+		isa = PBXTextBookmark;
+		name = "FSBrowserCell.m: 112";
+		rLen = 0;
+		rLoc = 4951;
+		rType = 0;
+		vrLen = 121;
+		vrLoc = 4859;
+	};
+	8B6714E807B8839E00FF56F9 = {
+		fRef = 8BD0120D07A9BBDA00AA4BAA;
+		isa = PBXTextBookmark;
+		name = "FSBrowserCell.m: 112";
+		rLen = 0;
+		rLoc = 4951;
+		rType = 0;
+		vrLen = 121;
+		vrLoc = 4859;
 	};
 	8B6FCF9807B1E200003F0000 = {
 		uiCtxt = {
@@ -556,7 +754,7 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1168, 3071}}";
 			sepNavSelRange = "{4951, 0}";
-			sepNavVisRect = "{{0, 1661}, {459, 183}}";
+			sepNavVisRect = "{{0, 1648}, {459, 183}}";
 			sepNavWindowFrame = "{{15, 239}, {750, 502}}";
 		};
 	};
