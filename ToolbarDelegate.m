@@ -45,7 +45,7 @@ static NSString* ViewInPreviewToolbarID = @"Reveal in Finder Toolbar Identifier"
 		[item setLabel:@"Zoom in"];
 		[item setPaletteLabel:@"Zoom in"];
 		[item setToolTip:@"Zoom in"];
-		[item setImage:[NSImage imageNamed:@"viewmag+"]];
+		[item setImage:[NSImage imageNamed:@"ZoomInToolbarImage"]];
 		[item setTarget:self];
 		[item setAction:@selector(zoomIn:)];
 	}
@@ -54,7 +54,7 @@ static NSString* ViewInPreviewToolbarID = @"Reveal in Finder Toolbar Identifier"
 		[item setLabel:@"Zoom out"];
 		[item setPaletteLabel:@"Zoom out"];
 		[item setToolTip:@"Zoom out"];
-		[item setImage:[NSImage imageNamed:@"viewmag-"]];
+		[item setImage:[NSImage imageNamed:@"ZoomOutToolbarImage"]];
 		[item setTarget:self];
 		[item setAction:@selector(zoomOut:)];
 	}
@@ -63,7 +63,7 @@ static NSString* ViewInPreviewToolbarID = @"Reveal in Finder Toolbar Identifier"
 		[item setLabel:@"Zoom to fit"];
 		[item setPaletteLabel:@"Zoom to fit"];
 		[item setToolTip:@"Zoom to fit"];
-		[item setImage:[NSImage imageNamed:@"viewmagfit"]];
+		[item setImage:[NSImage imageNamed:@"ZoomToFitToolbarImage"]];
 		[item setTarget:self];
 		[item setAction:@selector(zoomToFit:)];
 	}
@@ -72,7 +72,7 @@ static NSString* ViewInPreviewToolbarID = @"Reveal in Finder Toolbar Identifier"
 		[item setLabel:@"Actual Size"];
 		[item setPaletteLabel:@"Actual Size"];
 		[item setToolTip:@"Actual Size"];
-		[item setImage:[NSImage imageNamed:@"viewmag1"]];
+		[item setImage:[NSImage imageNamed:@"ActualSizeToolbarImage"]];
 		[item setTarget:self];
 		[item setAction:@selector(actualSize:)];		
 	}
@@ -94,46 +94,17 @@ static NSString* ViewInPreviewToolbarID = @"Reveal in Finder Toolbar Identifier"
 		[item setTarget:self];
 		[item setAction:@selector(viewInPreview:)];		
 	}
-//	if([itemIdent isEqual:ScaleViewToolbarID])
-//	{
-//		[item setLabel:@"Scale"];
-//		[item setPaletteLabel:@"Scale"];
-//		[item setToolTip:@"Scale ratio of the image being displayed"];
-//		[item setView:scaleView];
-//		[item setMinSize:NSMakeSize(NSWidth([scaleView frame]), NSHeight([scaleView frame]))];
-//		[item setMaxSize:NSMakeSize(NSWidth([scaleView frame]), NSHeight([scaleView frame]))];
-//		
-//		// Custom menu for when toolbar item is in text only mode (note that all functionality
-//		// in this mode is duplicated from Application menu...)
-//		NSMenu *submenu=[[[NSMenu alloc] init] autorelease];
-//
-//		// Set to 100%
-//		NSMenuItem *submenuItem=[[[NSMenuItem alloc] initWithTitle: @"Set scale to 1:1"
-//															action:@selector(scaleView100Pressed:)
-//													 keyEquivalent: @""] autorelease];
-//		[submenu addItem:submenuItem];
-//		submenuItem=[[[NSMenuItem alloc] initWithTitle: @"Scale proportionally"
-//												action:@selector(scaleViewPPressed:)
-//													 keyEquivalent: @""] autorelease];
-//		[submenu addItem:submenuItem];
-//		
-//		NSMenuItem *menuFormRep=[[[NSMenuItem alloc] init] autorelease];
-//		[submenuItem setTarget:self];
-//		[menuFormRep setSubmenu:submenu];
-//		[menuFormRep setTitle:[item label]];
-//		[item setMenuFormRepresentation:menuFormRep];
-//	}
 	else
 		item = nil;
 
-//	NSLog(@"Returning %@", item);
 	return item;
 }
 
 - (NSArray *) toolbarDefaultItemIdentifiers: (NSToolbar *) toolbar
 {
 	return [NSArray arrayWithObjects:RevealInFinderToolbarID, 
-		ViewInPreviewToolbarID, NSToolbarFlexibleSpaceItemIdentifier, 
+		ViewInPreviewToolbarID, NSToolbarSeparatorItemIdentifier,
+		NSToolbarFlexibleSpaceItemIdentifier, 
 		ZoomInToolbarID, ZoomOutToolbarID, ZoomToFitToolbarID, 
 		ActualSizeToolbarID, nil];
 }
