@@ -4,26 +4,18 @@
 <dict>
 	<key>IBDocumentLocation</key>
 	<string>69 53 356 240 0 0 1024 746 </string>
+	<key>IBEditorPositions</key>
+	<dict>
+		<key>5</key>
+		<string>327 340 370 342 0 0 1024 746 </string>
+	</dict>
 	<key>IBFramework Version</key>
 	<string>364.0</string>
 	<key>IBOpenObjects</key>
 	<array>
-		<integer>6</integer>
+		<integer>5</integer>
 	</array>
 	<key>IBSystem Version</key>
 	<string>7U16</string>
-	<key>IBUserGuides</key>
-	<dict>
-		<key>6</key>
-		<dict>
-			<key>guideLocations</key>
-			<array>
-				<string>Vertical:195.000000</string>
-				<string>Vertical:479.000000</string>
-			</array>
-			<key>guidesLocked</key>
-			<false/>
-		</dict>
-	</dict>
 </dict>
 </plist>

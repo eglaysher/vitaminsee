@@ -14,9 +14,12 @@
 #import "FileOperations.h"
 #import "SortManagerController.h"
 #import "IconFamily.h"
+#import "ImmutableToMutableTransformer.h"
+#import "SS_PrefsController.h"
+
 @implementation CQViewController
 
-// WHAT HAS BEEN DONE:
+/////////////////////////////////////////////////////////// WHAT HAS BEEN DONE:
 /**
   * Select child folder on "Go Enclosing folder"
   * Actual size zoom button
@@ -30,7 +33,7 @@
   * Highlighting gets screwed up when deleting a file...
  */
 
-// WHAT NEEDS TO BE DONE:
+//////////////////////////////////////////////////////// WHAT NEEDS TO BE DONE:
 
 /* FIRST MILESTONE GOALS
   * File renaming
@@ -56,7 +59,7 @@
   * Fit to height/Fit to width
  */
 
-//// Post contest:
+/////////////////////////////////////////////////////////// POST CONTEST GOALS:
 
 /* FOURTH MILESTONE GOALS
   * Keywords
@@ -64,9 +67,22 @@
   * Transparent Zip/Rar support
 */
 
-// Set up this application's default preferences
+/* POST 1.0 GOALS
+  * Move almost EVERYTHING into their own component bundles for lazy loading...
+    * Sort manager
+    * Keyword manager
+    * Including View as Icon view!
+  * View as list view
+  * View as browser view...
+*/
+
 + (void)initialize 
 {
+	// Set up our custom NSValueTransformer
+	[NSValueTransformer setValueTransformer:[[[ImmutableToMutableTransformer alloc] init] autorelease]
+									forName:@"ImmutableToMutableTransformer"];
+	
+	// Set up this application's default preferences	
     NSMutableDictionary *defaultPrefs = [NSMutableDictionary dictionary];
 	[defaultPrefs setObject:[NSHomeDirectory() stringByAppendingPathComponent:
 		@"Pictures/Wallpaper/Nature Wallpaper"] forKey:@"DefaultStartupPath"];
@@ -75,8 +91,6 @@
 	NSArray* sortManagerPaths = [NSArray arrayWithObjects:
 		[NSDictionary dictionaryWithObjectsAndKeys:@"Pictures", @"Name",
 			[NSHomeDirectory() stringByAppendingPathComponent:@"Pictures"], @"Path", nil], 
-		[NSDictionary dictionaryWithObjectsAndKeys:@"4chan", @"Name",
-			[NSHomeDirectory() stringByAppendingPathComponent:@"4chan"], @"Path", nil], 
 		[NSDictionary dictionaryWithObjectsAndKeys:@"Wallpaper", @"Name",
 			[NSHomeDirectory() stringByAppendingPathComponent:@"Pictures/Wallpaper"], @"Path", nil], 
 		nil];
@@ -471,6 +485,22 @@
 	[progressIndicator stopAnimation:self];
 	[progressIndicator setHidden:YES];
 	[progressCurrentTask setHidden:YES];
+}
+
+-(IBAction)showPreferences:(id)sender
+{
+	if (!prefs) {
+        // Determine path to the sample preference panes
+        
+        prefs = [[SS_PrefsController alloc] initWithPanesSearchPath:
+		 [[NSBundle mainBundle] builtInPlugInsPath] bundleExtension:@"cqvPref"];
+        
+        // Set which panes are included, and their order.
+        [prefs setPanesOrder:[NSArray arrayWithObjects:@"Sort Manager", @"General", @"Updating", @"A Non-Existent Preference Pane", nil]];
+    }
+    
+    // Show the preferences window.
+    [prefs showPreferencesWindow];
 }
 
 @end

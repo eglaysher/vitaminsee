@@ -9,6 +9,7 @@
                 scaleView100Pressed = id; 
                 scaleViewPPressed = id; 
                 scaleViewSliderMoved = id; 
+                showPreferences = id; 
                 showSortManager = id; 
             }; 
             CLASS = CQViewController; 

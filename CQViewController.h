@@ -6,6 +6,7 @@
 @class ViewIconViewController;
 @class PointerWrapper;
 @class SortManagerController;
+@class SS_PrefsController;
 
 @protocol ImageDisplayer 
 -(void)displayImage;
@@ -59,6 +60,8 @@
 	NSUndoManager* pathManager;
 	
 	ImageTaskManager* imageTaskManager;
+	
+	SS_PrefsController *prefs;
 }
 
 // Moving about in 
@@ -97,4 +100,5 @@
 -(void)startProgressIndicator:(NSString*)statusText;
 -(void)stopProgressIndicator;
 
+-(IBAction)showPreferences:(id)sender;
 @end
