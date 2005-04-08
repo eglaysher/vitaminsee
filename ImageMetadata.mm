@@ -15,9 +15,14 @@ using namespace std;
 
 @implementation ImageMetadata
 
+-(id)initWithPluginLayer:(PluginLayer*)pl
+{
+	// We don't really do or need anything.
+	return [self init];
+}
 
 ////////////////////////////////// EXIV2 WRAPPER! //////////////////////////////
-+(NSMutableArray*)getKeywordsFromJPEGFile:(NSString*)file
+-(NSMutableArray*)getKeywordsFromJPEGFile:(NSString*)file
 {
 //	NSLog(@"Trying to load keywords from %@", file);
 	
@@ -55,7 +60,7 @@ using namespace std;
 	return [keywords autorelease];
 }
 
-+(void)setKeywords:(NSArray*)keywords forJPEGFile:(NSString*)file
+-(void)setKeywords:(NSArray*)keywords forJPEGFile:(NSString*)file
 {
 //	NSLog(@"Saving keywords!");
 	// First, read the IPTC data for the file. We don't want to clobber other

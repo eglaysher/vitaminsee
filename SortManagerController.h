@@ -2,11 +2,11 @@
 
 #import <Cocoa/Cocoa.h>
 
-#import "FileManager.h"
+#import "CurrentFilePlugin.h"
 
 @class PluginLayer;
 
-@interface SortManagerController : NSWindowController <FileManagerPlugin>
+@interface SortManagerController : NSWindowController <CurrentFilePlugin>
 {
 	PluginLayer* pluginLayer;
 }

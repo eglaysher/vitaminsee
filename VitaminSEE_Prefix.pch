@@ -1,6 +1,8 @@
 //
-// Prefix header for all source files of the 'CQView' target in the 'CQView' project
+// Prefix header for all source files of the 'VitaminSEE' target in the 'VitaminSEE' project
 //
+
+//#define MAC_OS_X_VERSION_MIN_REQUIRED    MAC_OS_X_VERSION_10_3
 
 #ifdef __OBJC__
     #import <Cocoa/Cocoa.h>

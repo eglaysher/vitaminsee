@@ -1,5 +1,5 @@
 /*
- *  FileManager.h
+ *  CurrentFilePlugin.h
  *  CQView
  *
  *  Created by Elliot on 2/22/05.
@@ -13,7 +13,7 @@
 @class VitaminSEEController;
 @class PluginLayer;
 
-@protocol FileManagerPlugin <PluginBase>
+@protocol CurrentFilePlugin <PluginBase>
 
 // File changed
 -(void)fileSetTo:(NSString*)newPath;

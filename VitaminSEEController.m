@@ -201,8 +201,7 @@
 - (void)awakeFromNib
 {
 	// Set up the file viewer on the left
-	viewAsIconsController = [[ViewIconViewController alloc] initWithPluginLayer:
-		[PluginLayer pluginLayerWithController:self]];
+	viewAsIconsController = [self viewAsIconsControllerPlugin];
 	[self setViewAsView:[viewAsIconsController view]];
 	[viewerWindow setInitialFirstResponder:[viewAsIconsController view]];
 	
@@ -245,7 +244,9 @@
 	[self zoomToFit:self];
 	
 	// Set our plugins to nil
-	loadedPlugins = [[NSMutableArray alloc] init];
+	loadedBasePlugins = [[NSMutableDictionary alloc] init];
+	loadedViewPlugins = [[NSMutableDictionary alloc] init];
+	loadedCurrentFilePlugins = [[NSMutableDictionary alloc] init];
 	
 	// Use an Undo manager to manage moving back and forth.
 	pathManager = [[NSUndoManager alloc] init];	
@@ -435,7 +436,7 @@
 	}
 }
 	
--(id)loadComponentFromBundle:(NSString*)path
+-(id)loadComponentNamed:(NSString*)name fromBundle:(NSString*)path
 {
 	NSString *bundlePath = [[[NSBundle mainBundle] builtInPlugInsPath]
 			stringByAppendingPathComponent:path];
@@ -447,10 +448,23 @@
 		Class windowControllerClass = [windowBundle principalClass];
 		if(windowControllerClass)
 		{
-			if([windowControllerClass conformsToProtocol:@protocol(PluginBase)])
+			if([windowControllerClass conformsToProtocol:@protocol(CurrentFilePlugin)])
 			{
 				component = [[windowControllerClass alloc] initWithPluginLayer:
 					[PluginLayer pluginLayerWithController:self]];
+				[loadedCurrentFilePlugins setValue:component forKey:name];				
+			}
+			else if([windowControllerClass conformsToProtocol:@protocol(FileView)])
+			{
+				component = [[windowControllerClass alloc] initWithPluginLayer:
+					[PluginLayer pluginLayerWithController:self]];
+				[loadedViewPlugins setValue:component forKey:name];				
+			}
+			else if([windowControllerClass conformsToProtocol:@protocol(PluginBase)])
+			{
+				component = [[windowControllerClass alloc] initWithPluginLayer:
+					[PluginLayer pluginLayerWithController:self]];
+				[loadedBasePlugins setValue:component forKey:name];
 			}
 			else
 				NSLog(@"WARNING! Attempt to load plugin from '%@' that doesn't conform to PluginBase!",
@@ -463,28 +477,23 @@
 	
 -(id)sortManagerController
 {
-	id sortManager = [loadedPlugins objectForKey:@"SortManagerController"];
+	id sortManager = [loadedCurrentFilePlugins objectForKey:@"SortManagerController"];
 	if(!sortManager)
-	{
-		sortManager = [self loadComponentFromBundle:@"SortManager.cqvPlugin"];
-		if(sortManager)
-			[loadedPlugins setValue:sortManager forKey:@"SortManagerController"];
-	}
-		
+		sortManager = [self loadComponentNamed:@"SortManagerController"
+									fromBundle:@"SortManager.cqvPlugin"];
+
 	return sortManager;
 }
 
 -(id)keywordManagerController
 {
-	id keywordManager = [loadedPlugins objectForKey:@"KeywordManagerController"];
+	id keywordManager = [loadedCurrentFilePlugins objectForKey:@"KeywordManagerController"];
 	if(!keywordManager)
 	{
-		keywordManager = [self loadComponentFromBundle:@"KeywordManager.cqvPlugin"];
+		keywordManager = [self loadComponentNamed:@"KeywordManagerController"
+									   fromBundle:@"KeywordManager.cqvPlugin"];
 		if(keywordManager)
-		{
 			[keywordManager fileSetTo:currentImageFile];
-			[loadedPlugins setValue:keywordManager forKey:@"KeywordManagerController"];
-		}
 	}
 	
 	return keywordManager;
@@ -492,15 +501,30 @@
 
 -(id)gotoFolderController
 {
-	id gotoFolderController = [loadedPlugins objectForKey:@"GotoFolderController"];
+	id gotoFolderController = [loadedBasePlugins objectForKey:@"GotoFolderController"];
 	if(!gotoFolderController)
-	{
-		gotoFolderController = [self loadComponentFromBundle:@"GotoFolderSheet.bundle"];
-		if(gotoFolderController)
-			[loadedPlugins setValue:gotoFolderController forKey:@"GotoFolderController"];
-	}
-	
+		gotoFolderController = [self loadComponentNamed:@"GotoFolderController"
+											 fromBundle:@"GotoFolderSheet.bundle"];
 	return gotoFolderController;	
+}
+
+-(id)viewAsIconsControllerPlugin
+{
+	id viewAsIconsController = [loadedViewPlugins objectForKey:@"ViewAsIconsController"];
+	if(!viewAsIconsController)
+		viewAsIconsController = [self loadComponentNamed:@"ViewAsIconsController"
+											  fromBundle:@"ViewAsIconsFileView.bundle"];
+	return viewAsIconsController;
+}
+
+-(id)imageMetadataPlugin
+{
+	id imageMetadataPlugin = [loadedBasePlugins objectForKey:@"ImageMetadata"];
+	if(!imageMetadataPlugin)
+		imageMetadataPlugin = [self loadComponentNamed:@"ImageMetadata"
+											fromBundle:@"ImageMetadata.bundle"];
+	
+	return imageMetadataPlugin;
 }
 
 -(void)toggleVisible:(NSWindow*)window
@@ -613,8 +637,8 @@
 		[imageSizeLabel setStringValue:@"---"];
 	
 	// Alert all the plugins of the new file:
-	NSEnumerator* e = [loadedPlugins objectEnumerator];
-	id <FileManagerPlugin> plugin;
+	NSEnumerator* e = [loadedCurrentFilePlugins objectEnumerator];
+	id <CurrentFilePlugin> plugin;
 	while(plugin = [e nextObject])
 		[plugin fileSetTo:newCurrentFile];
 

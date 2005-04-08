@@ -32,14 +32,14 @@
 	NSString* type = [[file pathExtension] uppercaseString];
 
 	if([type isEqualTo:@"JPG"] || [type isEqualTo:@"JPEG"])
-		return [ImageMetadata getKeywordsFromJPEGFile:file];	
+		return [[self imageMetadataPlugin] getKeywordsFromJPEGFile:file];	
 //	else if([type isEqualTo:@"PNG"])
 //		return [ImageMetadata getKeywordsFromPNGFile:file];
 }
 
 -(void)setKeywords:(NSArray*)keywords forFile:(NSString*)file
 {
-	[ImageMetadata setKeywords:keywords forJPEGFile:file];
+	[[self imageMetadataPlugin] setKeywords:keywords forJPEGFile:file];
 }
 
 -(NSString*)currentFile

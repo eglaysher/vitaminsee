@@ -66,18 +66,27 @@
 	SS_PrefsController *prefs;	
 	
 	// Loaded plugins:
-	NSMutableDictionary* loadedPlugins;	
+//	NSMutableDictionary* loadedPlugins;
+	NSMutableDictionary* loadedBasePlugins;
+	NSMutableDictionary* loadedViewPlugins;
+	NSMutableDictionary* loadedCurrentFilePlugins;
+	//	NSMutableDictionary* loaded
+//		
+//		
+//		Plugins;	
 }
 
 -(void)displayAlert:(NSString*)message 
 	informativeText:(NSString*)info 
 		 helpAnchor:(NSString*)anchor;
 
--(id)loadComponentFromBundle:(NSString*)path;
+-(id)loadComponentNamed:(NSString*)name fromBundle:(NSString*)path;
 
 -(id)sortManagerController;
 -(id)keywordManagerController;
 -(id)gotoFolderController;
+-(id)viewAsIconsControllerPlugin;
+-(id)imageMetadataPlugin;
 
 // Moving about in 
 //- (void)setCurrentDirectory:(NSString*)newCurrentDirectory file:(NSString*)newCurrentFile;

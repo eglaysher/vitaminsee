@@ -8,11 +8,11 @@
 
 #import <Cocoa/Cocoa.h>
 
-#import "FileManager.h"
+#import "CurrentFilePlugin.h"
 
 @class KeywordNode;
 
-@interface KeywordManagerController : NSWindowController <FileManagerPlugin>
+@interface KeywordManagerController : NSWindowController <CurrentFilePlugin>
 {
 	IBOutlet NSTextField* fileNameTextField;
 	IBOutlet NSTextView* currentKeywordsTextView;

@@ -236,7 +236,7 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
 	[outlineView setNeedsDisplay];	
 }
 
-//////////////////////////////////////////////// Protocol: FileManagerPlugin
+/////////////////////////////////////////////////// Protocol: CurrentFilePlugin
 
 -(void)fileSetTo:(NSString*)newPath
 {

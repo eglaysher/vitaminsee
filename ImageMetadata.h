@@ -8,11 +8,13 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface ImageMetadata : NSObject 
+#import "PluginBase.h"
+
+@interface ImageMetadata : NSObject <PluginBase>
 {}
 
 // ObjC wrapper around exiv2. 
-+(NSMutableArray*)getKeywordsFromJPEGFile:(NSString*)file;
-+(void)setKeywords:(NSArray*)keywords forJPEGFile:(NSString*)file;
+-(NSMutableArray*)getKeywordsFromJPEGFile:(NSString*)file;
+-(void)setKeywords:(NSArray*)keywords forJPEGFile:(NSString*)file;
 
 @end

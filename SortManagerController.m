@@ -11,6 +11,7 @@
 	{
 		// stuff could go here.
 		pluginLayer = inPluginLayer;
+		[pluginLayer retain];
 	}
 	
 	return self;
@@ -57,7 +58,7 @@
 	// Ignore. We just use the "this file" commands in 
 }
 
-/////////////////////////////////////////////////// PROTOCOL: FileManagerPlugin
+/////////////////////////////////////////////////// PROTOCOL: CurrentFilePlugin
 -(NSString*)name
 {
 	return @"Sort Manager";
