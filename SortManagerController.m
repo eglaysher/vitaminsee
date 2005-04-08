@@ -3,15 +3,22 @@
 
 @implementation SortManagerController
 
--(id)init
+////////////////////////////////////////////////////////// PROTOCOL: PluginBase
+-(id)initWithPluginLayer:(PluginLayer*)inPluginLayer;
 {
 	// Load the nib file
 	if(self = [super initWithWindowNibName:@"SortManager"])
 	{
 		// stuff could go here.
+		pluginLayer = inPluginLayer;
 	}
 	
 	return self;
+}
+
+-(void)dealloc
+{
+	[pluginLayer release];
 }
 
 -(void)windowDidLoad
@@ -30,7 +37,8 @@
 	NSString* destination = [cellProperties objectForKey:@"Path"];	
 
 //	NSLog(@"Moving row %d, '%@'", rowIndex, destination);
-	[pluginLayer moveThisFile:destination];
+	[pluginLayer moveFile:[pluginLayer currentFile]
+					   to:destination];
 }
 
 -(IBAction)copyButtonPushed:(id)sender
@@ -40,13 +48,8 @@
 		objectForKey:@"SortManagerPaths"] objectAtIndex:rowIndex];
 	NSString* destination = [cellProperties objectForKey:@"Path"];
 
-//	NSLog(@"Copying row %d, '%@'", rowIndex, destination);
-	[pluginLayer copyThisFile:destination];
-}
-
--(void)setPluginLayer:(VitaminSEEController*)layer
-{
-	pluginLayer = layer;
+	[pluginLayer copyFile:[pluginLayer currentFile]
+					   to:destination];
 }
 
 -(void)fileSetTo:(NSString*)newPath
@@ -54,6 +57,7 @@
 	// Ignore. We just use the "this file" commands in 
 }
 
+/////////////////////////////////////////////////// PROTOCOL: FileManagerPlugin
 -(NSString*)name
 {
 	return @"Sort Manager";

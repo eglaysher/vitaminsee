@@ -7,6 +7,8 @@
 	objects = {
 		080E96DDFE201D6D7F000001 = {
 			children = (
+				8BFDA9740805C0980097504B,
+				8BFDA9750805C0980097504B,
 				8BC8F96507F211F900C66290,
 				8BC8F96607F211F900C66290,
 				8B3CB1A207EA82CE0086353C,
@@ -15,8 +17,6 @@
 				8B443AFA07D7E0AB00C4D8E9,
 				8BA124AC07D2816300614FF4,
 				8BA124AD07D2816300614FF4,
-				8B56209B07CEA204005990E1,
-				8B56209C07CEA204005990E1,
 				8B6D015407CB23A0009A76DA,
 				8B6D015507CB23A0009A76DA,
 				8BF72A8707B9D14C003A3C82,
@@ -39,6 +39,8 @@
 				8B6D01C107CB2EA2009A76DA,
 				8BD011D807A99DFB00AA4BAA,
 				8BD011D907A99DFB00AA4BAA,
+				8B56209B07CEA204005990E1,
+				8B56209C07CEA204005990E1,
 			);
 			isa = PBXGroup;
 			name = "Main Program Classes";
@@ -177,6 +179,7 @@
 		};
 		29B97315FDCFA39411CA2CEA = {
 			children = (
+				8BA098D80805C86B001FB2FD,
 				8BFA0B4C07DAF79C004F72AA,
 				8B6D011607CB190B009A76DA,
 				8B6D01C807CB2EB3009A76DA,
@@ -201,7 +204,7 @@
 			children = (
 				8B5279390801D48E0032F515,
 				8BB7F55C07F0B9B200668047,
-				8BC27DA707ECF9B300B56836,
+				8B6B0AA40804F50F007655EB,
 				8BBC35E907E222BF007C3B6B,
 				8BBC35D607E221D4007C3B6B,
 				8BBC34B907E13E52007C3B6B,
@@ -224,6 +227,7 @@
 		29B97318FDCFA39411CA2CEA = {
 			children = (
 				29B97319FDCFA39411CA2CEA,
+				8B6B0ACE0804F673007655EB,
 			);
 			isa = PBXVariantGroup;
 			name = MainMenu.nib;
@@ -850,6 +854,7 @@
 		8B5279390801D48E0032F515 = {
 			children = (
 				8B52793A0801D48E0032F515,
+				8B6B0AAF0804F551007655EB,
 			);
 			isa = PBXVariantGroup;
 			name = Credits.html;
@@ -945,7 +950,7 @@
 			fileEncoding = 4;
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.c.h;
-			path = PluginLayer.h;
+			path = "VitaminSEEController+PluginLayer.h";
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -953,7 +958,7 @@
 			fileEncoding = 4;
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.c.objc;
-			path = PluginLayer.m;
+			path = "VitaminSEEController+PluginLayer.m";
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -1179,6 +1184,48 @@
 			lastKnownFileType = wrapper.nib;
 			name = English;
 			path = English.lproj/KeywordManager.nib;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B6B0AA40804F50F007655EB = {
+			children = (
+				8BC27DA707ECF9B300B56836,
+				8B6B0AA60804F519007655EB,
+			);
+			isa = PBXVariantGroup;
+			name = GPL.txt;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B6B0AA50804F50F007655EB = {
+			fileRef = 8B6B0AA40804F50F007655EB;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B6B0AA60804F519007655EB = {
+			fileEncoding = 10;
+			isa = PBXFileReference;
+			lastKnownFileType = text;
+			name = Japanese;
+			path = Japanese.lproj/GPL.txt;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B6B0AAF0804F551007655EB = {
+			fileEncoding = 10;
+			isa = PBXFileReference;
+			lastKnownFileType = text.html;
+			name = Japanese;
+			path = Japanese.lproj/Credits.html;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B6B0ACE0804F673007655EB = {
+			isa = PBXFileReference;
+			lastKnownFileType = wrapper.nib;
+			name = Japanese;
+			path = Japanese.lproj/MainMenu.nib;
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -1412,6 +1459,8 @@
 				8B561D9307CE7627005990E1,
 				8B6D020307CB32CD009A76DA,
 				8BC8F96707F211F900C66290,
+				8BFDA9760805C0980097504B,
+				8BA098D90805C86B001FB2FD,
 			);
 			isa = PBXCopyFilesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1736,6 +1785,20 @@
 		};
 		8B87411207BA9DA000EF7923 = {
 			fileRef = 8B87411007BA9D9F00EF7923;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8BA098D80805C86B001FB2FD = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			path = PluginBase.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8BA098D90805C86B001FB2FD = {
+			fileRef = 8BA098D80805C86B001FB2FD;
 			isa = PBXBuildFile;
 			settings = {
 			};
@@ -2195,15 +2258,10 @@
 			fileEncoding = 30;
 			isa = PBXFileReference;
 			lastKnownFileType = text;
-			path = GPL.txt;
+			name = English;
+			path = English.lproj/GPL.txt;
 			refType = 4;
 			sourceTree = "<group>";
-		};
-		8BC27DA807ECF9B300B56836 = {
-			fileRef = 8BC27DA707ECF9B300B56836;
-			isa = PBXBuildFile;
-			settings = {
-			};
 		};
 		8BC6662807BFCF880075F57F = {
 			fileEncoding = 30;
@@ -2417,7 +2475,7 @@
 			sourceTree = "<group>";
 		};
 		8BD011D907A99DFB00AA4BAA = {
-			fileEncoding = 30;
+			fileEncoding = 4;
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.c.objc;
 			path = VitaminSEEController.m;
@@ -2676,6 +2734,34 @@
 			refType = 4;
 			sourceTree = "<group>";
 		};
+		8BFDA9740805C0980097504B = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			path = PluginLayer.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8BFDA9750805C0980097504B = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
+			path = PluginLayer.m;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8BFDA9760805C0980097504B = {
+			fileRef = 8BFDA9740805C0980097504B;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8BFDA9770805C0980097504B = {
+			fileRef = 8BFDA9750805C0980097504B;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
 //8B0
 //8B1
 //8B2
@@ -2703,7 +2789,7 @@
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = VitaminSEE_Prefix.pch;
-				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
 				GCC_WARN_UNUSED_VALUE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = Info.plist;
@@ -2734,7 +2820,7 @@
 				8B78BBD607FDEC7900274803,
 				8BB7F55D07F0B9B200668047,
 				8B5279710801D4CB0032F515,
-				8BC27DA807ECF9B300B56836,
+				8B6B0AA50804F50F007655EB,
 				8BBC35EA07E222BF007C3B6B,
 				8BBC35D707E221D4007C3B6B,
 				8BBC34BA07E13E53007C3B6B,
@@ -2799,6 +2885,7 @@
 				8B4A472A07EA2C4700C1D2A0,
 				8B3CB1A507EA82CE0086353C,
 				8BC8F96807F211F900C66290,
+				8BFDA9770805C0980097504B,
 			);
 			isa = PBXSourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;

@@ -21,17 +21,22 @@
 
 @implementation ViewIconViewController
 
--(id)initWithController:(VitaminSEEController*)c
+-(id)initWithPluginLayer:(PluginLayer*)inPluginLayer
 {
 	if(self = [super init])
 	{
 		[NSBundle loadNibNamed:@"ViewAsIconsView" owner:self];
-		
-		// Note: Do not retain parent.
-		controller = c;
+
+		pluginLayer = inPluginLayer;
+		[pluginLayer retain];
 	}
 
 	return self;
+}
+
+-(void)dealloc
+{
+	[pluginLayer release];
 }
 	
 -(void)awakeFromNib
@@ -45,17 +50,58 @@
 	currentlySelectedCell = nil;
 }
 
--(BOOL)canDelete
+//////////////////////////////////////////////////////////// PROTOCOL: FileView
+-(BOOL)fileIsInView:(NSString*)fileIsInView
 {
-	return [fileList count] > 0;
+	BOOL isCurDir = [currentDirectory isEqual:[fileIsInView stringByDeletingLastPathComponent]];
+	
+	if(isCurDir)
+	{
+		NSArray* cells = [ourBrowser selectedCells];
+		NSEnumerator* e = [cells objectEnumerator];
+		id cell;
+		while(cell = [e nextObject])
+			if([[cell cellPath] isEqual:fileIsInView])
+				return true;
+	}
+	
+	return false;
 }
 
-//- (void)setCurrentDirectory:(NSString*)newCurrentDirectory
-//					   file:(NSString*)newCurrentFile
-//{	
-//	[controller startProgressIndicator];
-//	
-//	//
+-(NSArray*)selectedFiles
+{
+	NSArray* selectedCells = [ourBrowser selectedCells];
+	NSMutableArray* selectedFiles = [NSMutableArray arrayWithCapacity:[selectedCells count]];
+
+	// Add the path of each cell to the array we're returning.
+	NSEnumerator* e = [selectedCells objectEnumerator];
+	id cell;
+	while(cell = [e nextObject])
+		[selectedFiles addObject:[cell cellPath]];
+	
+	return selectedFiles;
+}
+
+-(BOOL)canSetCurrentDirectory
+{
+	return YES;
+}
+
+-(BOOL)canGoEnclosingFolder
+{
+	return [currentDirectoryComponents count];
+}
+
+//-(BOOL)canDelete
+//{
+//	return [fileList count] > 0;
+//}
+
+- (void)setCurrentDirectory:(NSString*)newCurrentDirectory
+				currentFile:(NSString*)newCurrentFile
+{	
+	[pluginLayer startProgressIndicator];
+	
 //	if(newCurrentDirectory && currentDirectory && 
 //	   ![currentDirectory isEqual:newCurrentDirectory])
 //		[[pathManager prepareWithInvocationTarget:self]
@@ -63,63 +109,66 @@
 //	
 //	// Clear the thumbnails being displayed.
 //	if(![newCurrentDirectory isEqualTo:currentDirectory])
-//		
-//	
-//	// Set the current Directory
-//	[currentDirectory release];
-//	currentDirectory = [newCurrentDirectory stringByStandardizingPath];
-//	[currentDirectory retain];
-//	
-//	// Set the current paths components of the directory
-//	[currentDirectoryComponents release];
-//	currentDirectoryComponents = [newCurrentDirectory pathComponents];
-//	[currentDirectoryComponents retain];
-//	
-//	// Make an NSMenu with all the path components
-//	NSEnumerator* e = [currentDirectoryComponents reverseObjectEnumerator];
-//	NSString* currentComponent;
-//	NSMenu* newMenu = [[[NSMenu alloc] init] autorelease];
-//	NSMenuItem* newMenuItem;
-//	int currentTag = [currentDirectoryComponents count];
-//	while(currentComponent = [e nextObject]) {
-//		newMenuItem = [[[NSMenuItem alloc] initWithTitle:currentComponent
-//												  action:@selector(directoryMenuSelected:)
-//										   keyEquivalent:@""] autorelease];
-//		[newMenuItem setImage:[[NSString pathWithComponents:
-//			[currentDirectoryComponents subarrayWithRange:NSMakeRange(0, currentTag)]] 
-//			iconImageOfSize:NSMakeSize(16,16)]];
-//		[newMenuItem setTag:currentTag];
-//		currentTag--;
-//		[newMenu addItem:newMenuItem];
-//	}
-//	
-//	// Set this menu as the pull down...
-//	[directoryDropdown setMenu:newMenu];
-//	
-//	if(newCurrentFile)
-//	{
-//		[self setCurrentFile:newCurrentFile];
-//		[viewAsIconsController selectFile:newCurrentFile];
-//	}
-//}
-
--(void)setCurrentDirectory:(NSString*)path
-{
-	// If this method has been called, something outside of the ViewAsIcons 
-	// NSbrowser set the path, so we'll have to regenerate everything.
+	
+	// Set the current Directory
 	[currentDirectory release];
-	[path retain];
-	currentDirectory = path;
+	currentDirectory = [newCurrentDirectory stringByStandardizingPath];
+	[currentDirectory retain];
 	
+	// Set the current paths components of the directory
+	[currentDirectoryComponents release];
+	currentDirectoryComponents = [newCurrentDirectory pathComponents];
+	[currentDirectoryComponents retain];
+	
+	// Make an NSMenu with all the path components
+	NSEnumerator* e = [currentDirectoryComponents reverseObjectEnumerator];
+	NSString* currentComponent;
+	NSMenu* newMenu = [[[NSMenu alloc] init] autorelease];
+	NSMenuItem* newMenuItem;
+	int currentTag = [currentDirectoryComponents count];
+	while(currentComponent = [e nextObject]) {
+		newMenuItem = [[[NSMenuItem alloc] initWithTitle:currentComponent
+												  action:@selector(directoryMenuSelected:)
+										   keyEquivalent:@""] autorelease];
+		[newMenuItem setImage:[[NSString pathWithComponents:
+			[currentDirectoryComponents subarrayWithRange:NSMakeRange(0, currentTag)]] 
+			iconImageOfSize:NSMakeSize(16,16)]];
+		[newMenuItem setTag:currentTag];
+		[newMenuItem setTarget:self];
+		currentTag--;
+		[newMenu addItem:newMenuItem];
+	}
+	
+	// Set this menu as the pull down...
+	[directoryDropdown setMenu:newMenu];
+	[directoryDropdown setEnabled:YES];
+
 	[self rebuildInternalFileArray];
-	
+
 	// Now reload the data
 	[ourBrowser setCellClass:[ViewAsIconViewCell class]];
 	[ourBrowser loadColumnZero];
 	
 	// Select the first file
 	[ourBrowser selectRow:0 inColumn:0];
-	[self singleClick:ourBrowser];	
+	[self singleClick:ourBrowser];
+	
+//	if(newCurrentFile)
+//	{
+//		[self setCurrentFile:newCurrentFile];
+////		[viewAsIconsController selectFile:newCurrentFile];
+//	}
+}
+
+-(void)directoryMenuSelected:(id)sender
+{
+	NSString* newDirectory = [NSString pathWithComponents:
+		[currentDirectoryComponents subarrayWithRange:NSMakeRange(0,[sender tag])]];
+	NSString* directoryToSelect = nil;
+	if([sender tag] < [currentDirectoryComponents count])
+		directoryToSelect = [NSString pathWithComponents:
+			[currentDirectoryComponents subarrayWithRange:NSMakeRange(0,[sender tag]+1)]];
+	[self setCurrentDirectory:newDirectory currentFile:directoryToSelect];
 }
 
 -(NSView*)view
@@ -132,24 +181,6 @@
 	return [fileList count];
 }
 
-// Delegate method for our browser. We are an active delegate so we can message
-// the ITM to build an icon for us
-//-(void)browser:(NSBrowser*)sender
-//createRowsForColumn:(int)column
-//	  inMatrix:(NSMatrix*)matrix
-//{
-//	int i;
-//	int count = [fileList count];
-//	[matrix setMode:NSListModeMatrix];
-//	[matrix renewRows:count columns:1];
-//	
-//	id userDeffault = [NSUserDefaults standardUserDefaults];
-//	BOOL buildThumbnails = [[userDeffault objectForKey:@"GenerateThumbnails"] boolValue];
-//
-//	// Tell the imageTaskManager if it should actually build the thumbnails
-//	[thumbnailManager setShouldBuildIcon:buildThumbnails];
-//}
-
 - (void)browser:(NSBrowser *)sender 
 willDisplayCell:(id)cell 
 		  atRow:(int)row
@@ -157,7 +188,7 @@ willDisplayCell:(id)cell
 {
 	NSString* currentFile = [fileList objectAtIndex:row];
 	[cell setCellPropertiesFromPath:currentFile];
-	[[sender matrixInColumn:0] updateCell:cell];
+//	[[sender matrixInColumn:0] updateCell:cell];
 }
 
 - (void)clearCache
@@ -181,9 +212,9 @@ willDisplayCell:(id)cell
 	// grab the image path
 	NSString* absolutePath = [[currentDirectory stringByAppendingPathComponent:
 		[sender path]] stringByStandardizingPath];
-	NSMutableArray* preloadList = [NSMutableArray array];	
+//	NSMutableArray* preloadList = [NSMutableArray array];	
 	
-	[controller setCurrentFile:absolutePath];
+	[pluginLayer setCurrentFile:absolutePath];
 	
 	// Hi! My name is UGLY HACK. I'm here because Apple's NSScrollView has a
 	// subtle bug about the areas needed to visually redrawn, so we have to 
@@ -205,7 +236,7 @@ willDisplayCell:(id)cell
 				stringByAppendingPathComponent:curFile];
 			if([currentFileWithPath isImage])
 			{
-				[preloadList addObject:currentFileWithPath];
+				[pluginLayer preloadFile:currentFileWithPath];
 				break;
 			}
 		}
@@ -223,16 +254,13 @@ willDisplayCell:(id)cell
 	toLoad = selectedRow - 1;
 	id node = [[sender loadedCellAtRow:toLoad column:selectedColumn] cellPath];
 	if(node && [node isImage])
-		[preloadList addObject:node];
+		[pluginLayer preloadFile:node];
 	
 	// Next file
 	toLoad = selectedRow + 1;
 	node = [[sender loadedCellAtRow:toLoad column:selectedColumn] cellPath];
 	if(node && [node isImage])
-		[preloadList addObject:node];
-	
-	// Preload these files
-	[controller preloadFiles:preloadList];
+		[pluginLayer preloadFile:node];
 }
 
 -(void)doubleClick:(NSBrowser*)sender
@@ -244,7 +272,7 @@ willDisplayCell:(id)cell
 	if([absolutePath isDir])
 	{
 		// Get the first image in the directory:		
-		[controller setCurrentDirectory:absolutePath file:nil];
+		[self setCurrentDirectory:absolutePath currentFile:nil];
 	}
 	
 	// [controller setCurrentDirectory:] will call [self setCurrentDirectory:] which
@@ -265,7 +293,7 @@ willDisplayCell:(id)cell
 		{
 			NSString* file = [self nameOfNextFile];
 			[self selectFile:file];
-			[controller setCurrentFile:file];
+			[pluginLayer setCurrentFile:file];
 		}
 			
 		[fileList removeObjectAtIndex:index];
@@ -276,7 +304,7 @@ willDisplayCell:(id)cell
 		
 		if([fileList count] == 0)
 			// We better say no image.
-			[controller setCurrentFile:nil];
+			[pluginLayer setCurrentFile:nil];
 	}
 }
 
@@ -305,7 +333,7 @@ willDisplayCell:(id)cell
 	
 		// Select this file.
 		[m selectCellAtRow:index column:0];
-		[controller setCurrentFile:[fileList objectAtIndex:index]];
+		[pluginLayer setCurrentFile:[fileList objectAtIndex:index]];
 		
 		[ourBrowser setNeedsDisplay];
 	}
@@ -387,7 +415,7 @@ willDisplayCell:(id)cell
 		   [currentFileWithPath isVisible])
 		{			
 			[myFileList addObject:currentFileWithPath];
-			[controller generateThumbnailForFile:currentFileWithPath];
+			[pluginLayer generateThumbnailForFile:currentFileWithPath];
 		}
 	}
 	

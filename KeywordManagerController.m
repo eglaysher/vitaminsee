@@ -12,12 +12,15 @@
 
 @implementation KeywordManagerController
 
--(id)init
+-(id)initWithPluginLayer:(PluginLayer*)pl
 {
 	// Load the nib file
 	if(self = [super initWithWindowNibName:@"KeywordManager"])
 	{
 		keywords = [[NSMutableArray alloc] init];
+		
+		pluginLayer = pl;
+		[pluginLayer retain];
 		
 		// Before we thaw the window, we need to have a valid KeywordNode tree,
 		// so load them from the user defaults.
@@ -51,6 +54,7 @@
 		[self saveKeywords];
 	
 	[keywords release];
+	[pluginLayer release];
 }
 
 -(void)windowDidLoad
@@ -87,15 +91,8 @@
 
 -(IBAction)fileChanged:(id)sender
 {
-//	NSString* path = [currentPath stringByDeletingLastPathComponent];
-//	NSString* current
-
-	// fixme: Get renaming working.
-//	NSLog(@"New value is %@", [sender stringValue]);
-	
-	[pluginLayer renameThisFileTo:[sender stringValue]];
+	[pluginLayer renameFile:[pluginLayer currentFile] to:[sender stringValue]];
 }
-
 
 -(void)loadKeywordsIntoTextViewFromList
 {
@@ -240,11 +237,6 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
 }
 
 //////////////////////////////////////////////// Protocol: FileManagerPlugin
-
--(void)setPluginLayer:(VitaminSEEController*)layer
-{
-	pluginLayer = layer;
-}
 
 -(void)fileSetTo:(NSString*)newPath
 {

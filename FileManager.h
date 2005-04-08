@@ -8,12 +8,12 @@
  */
 
 #import <Cocoa/Cocoa.h>
+#import "PluginBase.h"
 
 @class VitaminSEEController;
+@class PluginLayer;
 
-@protocol FileManagerPlugin
-
--(void)setPluginLayer:(VitaminSEEController*)pluginLayer;
+@protocol FileManagerPlugin <PluginBase>
 
 // File changed
 -(void)fileSetTo:(NSString*)newPath;

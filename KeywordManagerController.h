@@ -17,8 +17,9 @@
 	IBOutlet NSTextField* fileNameTextField;
 	IBOutlet NSTextView* currentKeywordsTextView;
 	IBOutlet NSOutlineView* outlineView;
-	
-	VitaminSEEController* pluginLayer;	
+
+	PluginLayer* pluginLayer;
+//	VitaminSEEController* pluginLayer;	
 	KeywordNode* keywordRoot;
 	
 	BOOL keywordsDirty;

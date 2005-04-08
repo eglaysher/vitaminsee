@@ -7,21 +7,29 @@
  *
  */
 
+#import "PluginBase.h"
 
-@protocol FileView
+/*
+ A file view presents a set of files to the user. Multiple files can be selected,
+ but only one can be viewed at a time.
+ 
+ */
 
--(void)setPluginLayer:(PluginLayer*)pl;
+@protocol FileView <PluginBase>
 
+// File selection
 -(BOOL)fileIsInView:(NSString*)fileIsInView;
+-(NSArray*)selectedFiles;
 
 // Capabilities
--(BOOL)canDeleteCurrentFile;
 -(BOOL)canSetCurrentDirectory;
 -(BOOL)canGoEnclosingFolder;
 
--(void)setCurrentDirectory:(NSString*)directory file:(NSString*)file;
+// Setting and getting the file view
+-(void)setCurrentDirectory:(NSString*)directory currentFile:(NSString*)file;
 
 // Files need to be added and removed from lists.
+// fixme: Can I remove these if I force views to listen to NSWorkspace?
 -(void)removeFile:(NSString*)path;
 -(void)addFile:(NSString*)path;
 

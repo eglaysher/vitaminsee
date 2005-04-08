@@ -8,31 +8,30 @@
 
 #import <Cocoa/Cocoa.h>
 
+#import "FileView.h"
 
-@class VitaminSEEController;
+@class PluginLayer;
 @class ThumbnailManager;
 
-@interface ViewIconViewController : NSObject {
+@interface ViewIconViewController : NSObject <FileView> {
 	IBOutlet NSPopUpButton* directoryDropdown;
 	IBOutlet NSBrowser* ourBrowser;
 	IBOutlet NSView* ourView;
 
-//	PluginLayer* pluginLayer;
-	VitaminSEEController* controller;
+	PluginLayer* pluginLayer;
 	
 	NSCell* currentlySelectedCell;
 	NSString* currentDirectory;
+	NSArray* currentDirectoryComponents;
+	
 	NSMutableArray* fileList;	
-//	ThumbnailManager* thumbnailManager;
 }
-
--(id)initWithController:(VitaminSEEController*)c;
 
 //-(void)setThumbnailManager:(ThumbnailManager*)itm;
 
--(BOOL)canDelete;
+-(void)setCurrentDirectory:(NSString*)directory currentFile:(NSString*)file;
 
--(void)setCurrentDirectory:(NSString*)path;
+//-(void)setCurrentDirectory:(NSString*)path;
 -(NSView*)view;
 
 // Methods to handle clicks
@@ -41,6 +40,8 @@
 
 -(void)removeFile:(NSString*)absolutePath;
 -(void)addFile:(NSString*)path;
+
+-(void)directoryMenuSelected:(id)sender;
 
 -(NSString*)nameOfNextFile;
 -(void)selectFile:(NSString*)fileToSelect;

@@ -1,163 +1,99 @@
 //
 //  PluginLayer.m
-//  CQView
+//  VitaminSEE
 //
-//  Created by Elliot on 2/24/05.
-//  Copyright 2005 Elliot Glaysher. All rights reserved.
+//  Created by Elliot on 4/7/05.
+//  Copyright 2005 __MyCompanyName__. All rights reserved.
 //
 
 #import "PluginLayer.h"
-#import "ViewIconViewController.h"
-#import "ImageMetadata.h"
-#import "ThumbnailManager.h"
+#import "VitaminSEEController.h"
+#import "VitaminSEEController+PluginLayer.h"
 
-@implementation VitaminSEEController (PluginLayer)
+@implementation PluginLayer
 
-// I want to support keywords and comments in PNGs and GIFs, but that would
-// require that I write a block of code with libpng and libgif to read and
-// write those metadata blocks. Right now, there is no such program like exiv2
+-(id)initWithController:(VitaminSEEController*)inController
+{
+	if(self = [super init])
+	{
+		// Don't retain, because VitaminSEEController is the parent!
+		controller = inController;
+	}
+	
+	return self;
+}
 
++(id)pluginLayerWithController:(VitaminSEEController*)inController
+{
+	return [[[PluginLayer allocWithZone:NULL] initWithController:inController] autorelease];
+}
+
+// Metadata management functions (expand greatly!)
 -(BOOL)supportsKeywords:(NSString*)file
 {
-	NSString* type = [[file pathExtension] uppercaseString];
-	BOOL canKeyword = NO;
-	if([type isEqualTo:@"JPG"] || [type isEqualTo:@"JPEG"])
-		canKeyword = YES;
-	
-	return canKeyword;
+	return [controller supportsKeywords:file];
 }
 
 -(NSMutableArray*)getKeywordsFromFile:(NSString*)file
 {
-	NSString* type = [[file pathExtension] uppercaseString];
-
-	if([type isEqualTo:@"JPG"] || [type isEqualTo:@"JPEG"])
-		return [ImageMetadata getKeywordsFromJPEGFile:file];	
-//	else if([type isEqualTo:@"PNG"])
-//		return [ImageMetadata getKeywordsFromPNGFile:file];
+	return [controller getKeywordsFromFile:file];
 }
 
 -(void)setKeywords:(NSArray*)keywords forFile:(NSString*)file
 {
-	[ImageMetadata setKeywords:keywords forJPEGFile:file];
+	[controller setKeywords:keywords forFile:file];
 }
 
+// File Management functions
 -(NSString*)currentFile
 {
-	return currentImageFile;
+	return [controller currentFile];
 }
 
--(BOOL)renameThisFileTo:(NSString*)newName
+-(void)setCurrentFile:(NSString*)file
 {
-	// Rename the file.
-	NSString* newPath = [[currentImageFile stringByDeletingLastPathComponent] 
-		stringByAppendingPathComponent:newName];
-	
-	BOOL ret = [[NSFileManager defaultManager] movePath:currentImageFile
-												 toPath:newPath 
-												handler:nil];
-
-	if(ret)
-	{
-		[viewAsIconsController removeFile:currentImageFile];
-		[viewAsIconsController addFile:newPath];
-	}
-	else
-		AlertSoundPlay();
+	[controller setCurrentFile:file];
 }
 
--(void)deleteThisFile
+-(void)preloadFile:(NSString*)file
 {
-	// Delete the current file...
-	[self deleteFile:currentImageFile];
+	[controller preloadFile:file];
 }
 
 -(int)deleteFile:(NSString*)file
 {
-	// We move the current file to the trash.
-	BOOL worked;
-	int tag;
-
-	worked = [[NSWorkspace sharedWorkspace] performFileOperation:NSWorkspaceRecycleOperation
-												 source:[file stringByDeletingLastPathComponent]
-											destination:@""
-												  files:[NSArray arrayWithObject:[file lastPathComponent]]
-													tag:&tag];
-
-	if(worked)
-	{
-		[viewAsIconsController removeFile:currentImageFile];
-	}
-	else
-		AlertSoundPlay();
-	
-	return tag;
+	return [controller deleteFile:file];
 }
 
--(void)moveThisFile:(NSString*)destination
+-(int)moveFile:(NSString*)file to:(NSString*)destination;
 {
-	[self moveFile:currentImageFile to:destination];
-}
-
--(int)moveFile:(NSString*)file to:(NSString*)destination
-{
-	int tag = 0;
-	BOOL worked = NO;
-	if(![destination isEqual:[file stringByDeletingLastPathComponent]])
-	{
-		worked = [[NSWorkspace sharedWorkspace]
-			performFileOperation:NSWorkspaceMoveOperation
-						  source:[file stringByDeletingLastPathComponent]
-					 destination:destination
-						   files:[NSArray arrayWithObject:[file lastPathComponent]]
-							 tag:&tag];
-
-		// Remove the current file from 
-		if(worked)
-		{
-			[viewAsIconsController removeFile:currentImageFile];
-		}
-		else
-			AlertSoundPlay();
-	}
-	return tag;
-}
-
--(void)copyThisFile:(NSString*)destination
-{
-	[self copyFile:currentImageFile to:destination];
+	return [controller moveFile:file to:destination];
 }
 
 -(int)copyFile:(NSString*)file to:(NSString*)destination
 {
-	int tag = 0;
-	BOOL worked = NO;
-	if(![destination isEqual:[file stringByDeletingLastPathComponent]])
-	{
-		worked = [[NSWorkspace sharedWorkspace] 
-			performFileOperation:NSWorkspaceCopyOperation
-						  source:[file stringByDeletingLastPathComponent]
-					 destination:destination 
-						   files:[NSArray arrayWithObject:[file lastPathComponent]]
-							 tag:&tag];
-		
-		// Calculate the destination name
-		if(worked)
-		{
-			NSString* destinationFullPath = [destination stringByAppendingString:[file lastPathComponent]];
-			[viewAsIconsController addFile:destinationFullPath];
-		}
-		else
-			AlertSoundPlay();
-	}
-	return tag;
+	return [controller copyFile:file to:destination];
 }
 
+-(BOOL)renameFile:(NSString*)file to:(NSString*)newName
+{
+	return [controller renameFile:file to:newName];
+}
+
+// Thumbnail functions
 -(void)generateThumbnailForFile:(NSString*)path
 {
-	BOOL buildThumbnails = [[[NSUserDefaults standardUserDefaults] objectForKey:@"GenerateThumbnails"] boolValue];
-	[thumbnailManager setShouldBuildIcon:buildThumbnails];	
-	[thumbnailManager buildThumbnail:path];
+	[controller generateThumbnailForFile:path];
+}
+
+-(void)startProgressIndicator
+{
+	[controller startProgressIndicator];
+}
+
+-(void)stopProgressIndicator
+{
+	[controller stopProgressIndicator];
 }
 
 @end

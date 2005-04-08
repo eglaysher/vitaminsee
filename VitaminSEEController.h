@@ -22,13 +22,6 @@
 -(void)setStatusText:(NSString*)statusText;
 @end
 
-/* Plugin dictionary structure
- {
-	'PluginName' => id
- }
-
- */
-
 /*!
 	@class VitaminSEEController
 	@abstract Main Controller
@@ -48,22 +41,17 @@
 	IBOutlet NSScrollView* scrollView;
 
 	// File view components:
-	IBOutlet NSPopUpButton* directoryDropdown;
+//	IBOutlet NSPopUpButton* directoryDropdown;
 	IBOutlet NSView* currentFileViewHolder;
-	NSView* currentFileView;
 	
 	// * ViewAsImage specific components
-	IBOutlet ViewIconViewController* viewAsIconsController;
+	ViewIconViewController* viewAsIconsController;
 
 	IBOutlet NSProgressIndicator* progressIndicator;
 	IBOutlet NSTextField * progressCurrentTask;
 		
 	// Actual application data--NOT OUTLETS!
-//	NSImageRep* currentImageRep;
 	NSString* currentImageFile;
-
-	NSArray* currentDirectoryComponents;
-	NSString* currentDirectory;
 
 	// Scale data
 	bool scaleProportionally;
@@ -78,12 +66,7 @@
 	SS_PrefsController *prefs;	
 	
 	// Loaded plugins:
-	NSMutableArray* loadedFilePlugins;	
-
-	// Integrated plugins.
-	id _sortManagerController;
-	id _keywordManagerController;
-	id _gotoFolderController;	
+	NSMutableDictionary* loadedPlugins;	
 }
 
 -(void)displayAlert:(NSString*)message 
@@ -97,9 +80,9 @@
 -(id)gotoFolderController;
 
 // Moving about in 
-- (void)setCurrentDirectory:(NSString*)newCurrentDirectory file:(NSString*)newCurrentFile;
+//- (void)setCurrentDirectory:(NSString*)newCurrentDirectory file:(NSString*)newCurrentFile;
 - (void)setCurrentFile:(NSString*)newCurrentFile;
-- (void)preloadFiles:(NSArray*)filesToPreload;
+- (void)preloadFile:(NSString*)file;
 
 // Changing the user interface
 - (void)setViewAsView:(NSView*)viewToSet;

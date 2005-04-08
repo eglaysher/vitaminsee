@@ -48,45 +48,45 @@ static NSString* GotoHomeID = @"Goto Home Toolbar Identifier";
 	NSToolbarItem* item = [[[NSToolbarItem alloc] initWithItemIdentifier:itemIdent] autorelease];
 	if([itemIdent isEqual:ZoomInToolbarID])
 	{
-		[item setLabel:@"Zoom in"];
-		[item setPaletteLabel:@"Zoom in"];
-		[item setToolTip:@"Zoom in"];
+		[item setLabel:NSLocalizedString(@"Zoom in", @"Toolbar Item")];
+		[item setPaletteLabel:NSLocalizedString(@"Zoom in", @"Toolbar Item")];
+		[item setToolTip:NSLocalizedString(@"Zoom in", @"Toolbar Item")];
 		[item setImage:[NSImage imageNamed:@"ZoomInToolbarImage"]];
 		[item setTarget:self];
 		[item setAction:@selector(zoomIn:)];
 	}
 	else if([itemIdent isEqual:ZoomOutToolbarID])
 	{
-		[item setLabel:@"Zoom out"];
-		[item setPaletteLabel:@"Zoom out"];
-		[item setToolTip:@"Zoom out"];
+		[item setLabel:NSLocalizedString(@"Zoom out", @"Toolbar Item")];
+		[item setPaletteLabel:NSLocalizedString(@"Zoom out", @"Toolbar Item")];
+		[item setToolTip:NSLocalizedString(@"Zoom out", @"Toolbar Item")];
 		[item setImage:[NSImage imageNamed:@"ZoomOutToolbarImage"]];
 		[item setTarget:self];
 		[item setAction:@selector(zoomOut:)];
 	}
 	else if([itemIdent isEqual:ZoomToFitToolbarID])
 	{
-		[item setLabel:@"Zoom to fit"];
-		[item setPaletteLabel:@"Zoom to fit"];
-		[item setToolTip:@"Zoom to fit"];
+		[item setLabel:NSLocalizedString(@"Zoom to fit", @"Toolbar Item")];
+		[item setPaletteLabel:NSLocalizedString(@"Zoom to fit", @"Toolbar Item")];
+		[item setToolTip:NSLocalizedString(@"Zoom to fit", @"Toolbar Item")];
 		[item setImage:[NSImage imageNamed:@"ZoomToFitToolbarImage"]];
 		[item setTarget:self];
 		[item setAction:@selector(zoomToFit:)];
 	}
 	else if([itemIdent isEqual:ActualSizeToolbarID])
 	{
-		[item setLabel:@"Actual Size"];
-		[item setPaletteLabel:@"Actual Size"];
-		[item setToolTip:@"Actual Size"];
+		[item setLabel:NSLocalizedString(@"Actual Size", @"Toolbar Item")];
+		[item setPaletteLabel:NSLocalizedString(@"Actual Size", @"Toolbar Item")];
+		[item setToolTip:NSLocalizedString(@"Actual Size", @"Toolbar Item")];
 		[item setImage:[NSImage imageNamed:@"ActualSizeToolbarImage"]];
 		[item setTarget:self];
 		[item setAction:@selector(actualSize:)];		
 	}
 	else if([itemIdent isEqual:RevealInFinderToolbarID])
 	{
-		[item setLabel:@"Finder"];
-		[item setPaletteLabel:@"Reveal in Finder"];
-		[item setToolTip:@"Reveal in Finder"];
+		[item setLabel:NSLocalizedString(@"Finder", @"Toolbar Item")];
+		[item setPaletteLabel:NSLocalizedString(@"Reveal in Finder", @"Toolbar Item")];
+		[item setToolTip:NSLocalizedString(@"Reveal in Finder", @"Toolbar Item")];
 		// fixme: This slows stuff down. Perhaps I'd like to not suck?
 		[item setImage:[[NSWorkspace sharedWorkspace] iconForApplication:@"Finder"]];
 		[item setTarget:self];
@@ -94,9 +94,9 @@ static NSString* GotoHomeID = @"Goto Home Toolbar Identifier";
 	}
 	else if([itemIdent isEqual:ViewInPreviewToolbarID])
 	{
-		[item setLabel:@"Preview"];
-		[item setPaletteLabel:@"View in Preview"];
-		[item setToolTip:@"View in Preview"];
+		[item setLabel:NSLocalizedString(@"Preview", @"Toolbar Item")];
+		[item setPaletteLabel:NSLocalizedString(@"View in Preview", @"Toolbar Item")];
+		[item setToolTip:NSLocalizedString(@"View in Preview", @"Toolbar Item")];
 		// fixme: This slows stuff down. Perhaps I'd like to not suck?
 		[item setImage:[[NSWorkspace sharedWorkspace] iconForApplication:@"Preview"]];
 		[item setTarget:self];
@@ -104,27 +104,27 @@ static NSString* GotoHomeID = @"Goto Home Toolbar Identifier";
 	}
 	else if([itemIdent isEqual:MoveToTrashID])
 	{
-		[item setLabel:@"Delete"];
-		[item setPaletteLabel:@"Delete"];
-		[item setToolTip:@"Delete"];
+		[item setLabel:NSLocalizedString(@"Delete", @"Toolbar Item")];
+		[item setPaletteLabel:NSLocalizedString(@"Delete", @"Toolbar Item")];
+		[item setToolTip:NSLocalizedString(@"Delete", @"Toolbar Item")];
 		[item setImage:[NSImage imageNamed:@"ToolbarDeleteIcon"]];
 		[item setTarget:self];
 		[item setAction:@selector(deleteFileClicked:)];				
 	}
 	else if([itemIdent isEqual:GotoHomeID])
 	{
-		[item setLabel:@"Home"];
-		[item setPaletteLabel:@"Home"];
-		[item setToolTip:@"Home"];
+		[item setLabel:NSLocalizedString(@"Home", @"Toolbar Item")];
+		[item setPaletteLabel:NSLocalizedString(@"Home", @"Toolbar Item")];
+		[item setToolTip:NSLocalizedString(@"Home", @"Toolbar Item")];
 		[item setImage:[NSImage imageNamed:@"HomeFolderIcon"]];
 		[item setTarget:self];
 		[item setAction:@selector(goToHomeFolder:)];				
 	}
 	else if([itemIdent isEqual:GotoPicturesID])
 	{
-		[item setLabel:@"Pictures"];
-		[item setPaletteLabel:@"Pictures"];
-		[item setToolTip:@"Pictures"];
+		[item setLabel:NSLocalizedString(@"Pictures", @"Toolbar Item")];
+		[item setPaletteLabel:NSLocalizedString(@"Pictures", @"Toolbar Item")];
+		[item setToolTip:NSLocalizedString(@"Pictures", @"Toolbar Item")];
 		[item setImage:[NSImage imageNamed:@"ToolbarPicturesFolderIcon"]];
 		[item setTarget:self];
 		[item setAction:@selector(goToPicturesFolder:)];
@@ -160,11 +160,11 @@ static NSString* GotoHomeID = @"Goto Home Toolbar Identifier";
 
 	if([identifier isEqual:RevealInFinderToolbarID])
 	{
-		enable = [viewAsIconsController canDelete];
+		enable = [[viewAsIconsController selectedFiles] count];
 	}
 	else if([identifier isEqual:MoveToTrashID])
 	{
-		enable = [viewAsIconsController canDelete];
+		enable = [[viewAsIconsController selectedFiles] count];
 	}
 	else if ([identifier isEqual:ActualSizeToolbarID])
 	{
