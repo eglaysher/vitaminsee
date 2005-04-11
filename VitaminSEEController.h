@@ -117,6 +117,7 @@
 -(IBAction)goToPicturesFolder:(id)sender;
 // ----------------------
 -(IBAction)goToFolder:(id)sender;
+-(void)finishedGotoFolder:(NSString*)done;
 
 -(IBAction)toggleVitaminSee:(id)sender;
 -(IBAction)toggleSortManager:(id)sender;
@@ -141,4 +142,6 @@
 -(IBAction)deleteFileClicked:(id)sender;
 
 -(IBAction)showGPL:(id)sender;
+
+-(void)setDirectoryFromFavorites:(id)sender;
 @end

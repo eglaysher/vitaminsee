@@ -149,15 +149,19 @@
 	[ourBrowser setCellClass:[ViewAsIconViewCell class]];
 	[ourBrowser loadColumnZero];
 	
-	// Select the first file
-	[ourBrowser selectRow:0 inColumn:0];
-	[self singleClick:ourBrowser];
-	
-//	if(newCurrentFile)
-//	{
-//		[self setCurrentFile:newCurrentFile];
-////		[viewAsIconsController selectFile:newCurrentFile];
-//	}
+	if(newCurrentFile)
+	{
+		// Select the previous directory
+		[pluginLayer setCurrentFile:newCurrentFile];
+		[ourBrowser setPath:[NSString stringWithFormat:@"/%@", 
+			[newCurrentFile lastPathComponent]]];
+	}
+	else
+	{
+		// Select the first file on the list
+		[ourBrowser selectRow:0 inColumn:0];
+		[self singleClick:ourBrowser];
+	}	
 }
 
 -(void)directoryMenuSelected:(id)sender
@@ -393,6 +397,16 @@ willDisplayCell:(id)cell
 			[ourBrowser setNeedsDisplay];
 		}
 	}
+}
+
+-(void)goEnclosingFolder
+{
+	int count = [currentDirectoryComponents count] - 1;
+	NSString* curDirCopy = [currentDirectory retain];
+	[self setCurrentDirectory:[NSString pathWithComponents:
+		[currentDirectoryComponents subarrayWithRange:NSMakeRange(0, count)]]
+						 currentFile:curDirCopy];
+	[curDirCopy release];	
 }
 
 @end

@@ -27,6 +27,7 @@
 
 // Setting and getting the file view
 -(void)setCurrentDirectory:(NSString*)directory currentFile:(NSString*)file;
+-(void)goEnclosingFolder;
 
 // Files need to be added and removed from lists.
 // fixme: Can I remove these if I force views to listen to NSWorkspace?

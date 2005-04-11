@@ -6,6 +6,7 @@
 //  Copyright 2005 Elliot Glaysher. All rights reserved.
 //
 
+#import "FavoritesToolbarItem.h"
 #import "ToolbarDelegate.h"
 #import "ViewIconViewController.h"
 #import "NSString+FileTasks.h"
@@ -27,6 +28,8 @@ static NSString* MoveToTrashID = @"Move Item to Trash Toolbar Identifier";
 
 static NSString* GotoPicturesID = @"Goto Pictures Toolbar Identifier";
 static NSString* GotoHomeID = @"Goto Home Toolbar Identifier";
+
+static NSString* FavoritesID = @"Favorites Toolbar Identifier";
 
 @implementation VitaminSEEController (ToolbarDelegate)
 
@@ -129,6 +132,12 @@ static NSString* GotoHomeID = @"Goto Home Toolbar Identifier";
 		[item setTarget:self];
 		[item setAction:@selector(goToPicturesFolder:)];
 	}
+	else if([itemIdent isEqual:FavoritesID])
+	{
+		// FavoritesToolbarItem is special.
+		item = [[[FavoritesToolbarItem alloc] initWithItemIdentifier:itemIdent controller:self] autorelease];
+		NSLog(@"Item is : %@", item);
+	}
 	else
 		item = nil;
 
@@ -147,7 +156,7 @@ static NSString* GotoHomeID = @"Goto Home Toolbar Identifier";
 - (NSArray *) toolbarAllowedItemIdentifiers: (NSToolbar *) toolbar
 {
 	return [NSArray arrayWithObjects:RevealInFinderToolbarID, ViewInPreviewToolbarID, 
-		MoveToTrashID, GotoPicturesID, GotoHomeID, ZoomInToolbarID, ZoomOutToolbarID,
+		MoveToTrashID, GotoPicturesID, GotoHomeID, FavoritesID, ZoomInToolbarID, ZoomOutToolbarID,
 		ZoomToFitToolbarID, ActualSizeToolbarID, NSToolbarSeparatorItemIdentifier,
 		NSToolbarSpaceItemIdentifier, NSToolbarFlexibleSpaceItemIdentifier,
 		NSToolbarCustomizeToolbarItemIdentifier, nil];

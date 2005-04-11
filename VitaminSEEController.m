@@ -67,23 +67,37 @@
 
 
 /* Completed:
- * * Speed. Entering a new directory is over an order of magnitude faster on
- *   directories with lots of images!
+ * * Speed. 
+ * * * Entering a new directory is over an order of magnitude faster on
+ *     directories with lots of images! (It took 17 seconds to enter my 
+ *     Wallpaper directory with v0.5.3. Now it takes less then a second)
+ * * * Cut application bloat. Not everybody uses Keyword support, so don't
+ *     load it at startup. (Cuts 3/4 of a second off of startup)
  * * Stop assuming people have a "Pictures" folder. Some people have broken out
  *   of Apple's heiarchy, so don't make assumptions.
  * * Windows Bitmap support
  * * ICNS support
+ * * Redo left panel as loadable bundle
+ * * Requires a working plugin layer...
+ * * Solidify the plugin layer
  */
 
 /// For Version 0.6
-// * Redo left panel as loadable bundle
-//   * Requires a working plugin layer...
-//   * Mouse-wheel scrolling...
-// * Solidify the plugin layer
-// * Undo/Redo on sort manager/rename, et cetera
-// * Japanese Localization
-// * Check for file on remote volume.
 // * Favorites menu. (Consolidate with Sort Manager menu)
+//   * Validate each item
+//   * Make popup menu parallel to the bottom of the PopUpImage NSView.
+
+// * Undo/Redo on sort manager/rename, et cetera
+// * Check for file on remote volume.
+// * Cache control. How large?
+// * JFIF?
+//   * Really solve the previous problem and DEAL with JPEGs named PNGs, PNGs named GIFs, etc.
+// * Move to trash in wrong spot?
+// * Mouse grab scrolling when it doesn't fit.
+
+// * Japanese Localization
+// * No scroll bars on image view when it would otherwise fit.
+// * Mouse-wheel scrolling...
 
 // For Version 0.7
 // * Transparent archive support
@@ -378,12 +392,7 @@
 
 -(IBAction)goEnclosingFolder:(id)sender
 {
-//	int count = [currentDirectoryComponents count] - 1;
-//	NSString* curDirCopy = [currentDirectory retain];
-//	[viewAsIconsController setCurrentDirectory:[NSString pathWithComponents:
-//		[currentDirectoryComponents subarrayWithRange:NSMakeRange(0, count)]]
-//						 currentFile:curDirCopy];
-//	[curDirCopy release];
+	[viewAsIconsController goEnclosingFolder];
 }
 
 -(IBAction)goBack:(id)sender
@@ -425,15 +434,10 @@
 -(void)finishedGotoFolder:(NSString*)done
 {
 	if([done isDir])
-	{
-		// Valid directory! Let's set it!
 		[viewAsIconsController setCurrentDirectory:done currentFile:nil];
-	}
 	else
-	{
 		// Beep at the user...
 		AlertSoundPlay();
-	}
 }
 	
 -(id)loadComponentNamed:(NSString*)name fromBundle:(NSString*)path
@@ -510,11 +514,11 @@
 
 -(id)viewAsIconsControllerPlugin
 {
-	id viewAsIconsController = [loadedViewPlugins objectForKey:@"ViewAsIconsController"];
-	if(!viewAsIconsController)
-		viewAsIconsController = [self loadComponentNamed:@"ViewAsIconsController"
-											  fromBundle:@"ViewAsIconsFileView.bundle"];
-	return viewAsIconsController;
+	id plugin = [loadedViewPlugins objectForKey:@"ViewAsIconsController"];
+	if(!plugin)
+		plugin = [self loadComponentNamed:@"ViewAsIconsController"
+							   fromBundle:@"ViewAsIconsFileView.bundle"];
+	return plugin;
 }
 
 -(id)imageMetadataPlugin
@@ -779,7 +783,7 @@
         
         // Set which panes are included, and their order.
         [prefs setPanesOrder:[NSArray arrayWithObjects:@"General",
-			@"Sort Manager", @"Keywords", @"Updating", 
+			@"Favorites", @"Keywords", @"Updating", 
 			@"A Non-Existent Preference Pane", nil]];
     }
     
@@ -797,6 +801,11 @@
 	[[NSWorkspace sharedWorkspace] openFile:[[NSBundle mainBundle] 
 		pathForResource:@"GPL"
 				 ofType:@"txt"]];
+}
+
+-(void)setDirectoryFromFavorites:(id)sender
+{
+	
 }
 
 @end

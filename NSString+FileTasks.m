@@ -56,6 +56,7 @@
 {
 	NSString *fileExtentsion = [[self pathExtension] uppercaseString];
 	return [fileExtentsion isEqualToString:@"PNG"] || 
+		[fileExtentsion isEqualToString:@"JFIF"] ||
 		[fileExtentsion isEqualToString:@"JPEG"] ||
 		[fileExtentsion isEqualToString:@"JPG"] || 
 		[fileExtentsion isEqualToString:@"GIF"] ||

@@ -75,20 +75,18 @@
 
 - (NSString *)paneName
 {
-    return @"Sort Manager";
+    return @"Favorites";
 }
 
 - (NSImage *)paneIcon
 {
-	// Fix this...
-    return [[[NSImage alloc] initWithContentsOfFile:
-        [[NSBundle bundleForClass:[self class]] pathForImageResource:@"SortManager"]
-        ] autorelease];
+    return [[NSImage alloc] initWithContentsOfFile:
+		[[NSBundle mainBundle] pathForImageResource:@"ToolbarFavoritesIcon"]];
 }
 
 - (NSString *)paneToolTip
 {
-    return @"Sort Manager Preferences";
+    return @"Favorites";
 }
 
 - (BOOL)allowsHorizontalResizing

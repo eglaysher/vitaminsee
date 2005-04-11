@@ -103,6 +103,8 @@
 				<string>jpeg</string>
 				<string>JPG</string>
 				<string>JPEG</string>
+				<string>jfif</string>
+				<string>JFIF</string>
 			</array>
 			<key>CFBundleTypeMIMETypes</key>
 			<array>
