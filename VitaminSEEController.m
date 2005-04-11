@@ -6,6 +6,7 @@
 
 //#import "FSNodeInfo.h"
 //#import "FSBrowserCell.h"
+#import "FavoritesMenuDelegate.h"
 #import "FileSizeFormatter.h"
 #import "SBCenteringClipView.h"
 #import "ViewIconViewController.h"
@@ -23,6 +24,7 @@
 #import "ThumbnailManager.h"
 #import "GotoSheetController.h"
 #import "PluginLayer.h"
+#import "PathExistsValueTransformer.h"
 
 @implementation VitaminSEEController
 
@@ -80,12 +82,12 @@
  * * Redo left panel as loadable bundle
  * * Requires a working plugin layer...
  * * Solidify the plugin layer
+ * * Validate each folder in the Sort Manager just in case the user has deleted the folder.
+ * * Favorites menu (available as both an item on the Go menu and as a toolbar dropdown)
  */
 
 /// For Version 0.6
-// * Favorites menu. (Consolidate with Sort Manager menu)
-//   * Validate each item
-//   * Make popup menu parallel to the bottom of the PopUpImage NSView.
+// * Make popup menu parallel to the bottom of the PopUpImage NSView.
 
 // * Undo/Redo on sort manager/rename, et cetera
 // * Check for file on remote volume.
@@ -166,6 +168,8 @@
 	// Set up our custom NSValueTransformer
 	[NSValueTransformer setValueTransformer:[[[ImmutableToMutableTransformer 
 		alloc] init] autorelease] forName:@"ImmutableToMutableTransformer"];
+	[NSValueTransformer setValueTransformer:[[[PathExistsValueTransformer alloc]
+		init] autorelease] forName:@"PathExistsValueTransformer"];
 	
 	// Test to see if the user is a rebel and deleted the Pictures folder
 	struct stat buffer;
@@ -253,6 +257,12 @@
 	else
 		img = [[NSImage alloc] initWithSize:NSMakeSize(16,16)];
 	[pictureFolderMenuItem setImage:img];
+	
+	// Set up the Favorites Menu
+	NSMenu* favoritesMenu = [[[NSMenu alloc] init] autorelease];
+	favoritesMenuDelegate = [[FavoritesMenuDelegate alloc] initWithController:self];
+	[favoritesMenu setDelegate:favoritesMenuDelegate];
+	[favoritesMenuItem setSubmenu:favoritesMenu];
 	
 	[self setupToolbar];
 	[self zoomToFit:self];

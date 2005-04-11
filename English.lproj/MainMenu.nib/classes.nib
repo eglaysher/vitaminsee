@@ -22,6 +22,7 @@
                 openFolder = id; 
                 referesh = id; 
                 revealInFinder = id; 
+                setDirectoryFromFavorites = id; 
                 showGPL = id; 
                 showPreferences = id; 
                 toggleKeywordManager = id; 
@@ -36,10 +37,8 @@
             LANGUAGE = ObjC; 
             OUTLETS = {
                 currentFileViewHolder = NSView; 
-                directoryDropdown = NSPopUpButton; 
+                favoritesMenuItem = NSMenuItem; 
                 fileSizeLabel = NSTextField; 
-                gotoFolderSheet = NSWindow; 
-                gotoPath = NSTextField; 
                 homeFolderMenuItem = NSMenuItem; 
                 imageSizeLabel = NSTextField; 
                 imageViewer = NSImageView; 
@@ -48,7 +47,6 @@
                 progressCurrentTask = NSTextField; 
                 progressIndicator = NSProgressIndicator; 
                 scrollView = NSScrollView; 
-                viewAsIconsController = ViewIconViewController; 
                 viewerWindow = NSWindow; 
             }; 
             SUPERCLASS = NSObject; 

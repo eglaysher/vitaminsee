@@ -9,6 +9,7 @@
 @interface SortManagerController : NSWindowController <CurrentFilePlugin>
 {
 	PluginLayer* pluginLayer;
+	IBOutlet NSArrayController* pathsController;
 }
 
 // Actions from the form

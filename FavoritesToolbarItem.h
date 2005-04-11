@@ -10,10 +10,12 @@
 
 @class PopUpImage;
 @class VitaminSEEController;
+@class FavoritesMenuDelegate;
 
 @interface FavoritesToolbarItem : NSToolbarItem {
 	PopUpImage* popUpImage;
-	VitaminSEEController* controller;
+	NSMenu* favoritesMenu;
+	FavoritesMenuDelegate* favoritesMenuDelegate;
 }
 
 -(id)initWithItemIdentifier:(NSString*)itemIdent 

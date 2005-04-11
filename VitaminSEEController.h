@@ -8,6 +8,7 @@
 @class PointerWrapper;
 @class SortManagerController;
 @class SS_PrefsController;
+@class FavoritesMenuDelegate;
 
 @protocol ImageDisplayer 
 -(void)displayImage;
@@ -33,6 +34,8 @@
 	// Menu items we need to attatch items to
 	IBOutlet NSMenuItem* homeFolderMenuItem;
 	IBOutlet NSMenuItem* pictureFolderMenuItem;
+	IBOutlet NSMenuItem* favoritesMenuItem;
+	FavoritesMenuDelegate* favoritesMenuDelegate;
 	
     IBOutlet NSImageView *imageViewer;
 	IBOutlet NSTextField * fileSizeLabel;

@@ -74,4 +74,16 @@
 	return nil;
 }
 
+//////////////////////////////////////////////////////////// NSTable Datasource
+- (void) tableView: (NSTableView*) tableView willDisplayCell: (id) cell 
+	forTableColumn: (NSTableColumn*) tableColumn row: (int) row 
+{ 
+	// Manually bind each cell to it's corresponding location
+    NSDictionary* filter = [[pathsController arrangedObjects] objectAtIndex:row];
+    [cell bind:@"enabled" toObject:filter withKeyPath:@"Path" options:
+		[NSDictionary dictionaryWithObjectsAndKeys:@"PathExistsValueTransformer", @"NSValueTransformerName", nil]
+			];
+} 
+
+
 @end

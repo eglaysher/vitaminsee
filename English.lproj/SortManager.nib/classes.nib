@@ -5,6 +5,7 @@
             ACTIONS = {copyButtonPushed = id; moveButtonPushed = id; }; 
             CLASS = SortManagerController; 
             LANGUAGE = ObjC; 
+            OUTLETS = {pathsController = NSArrayController; }; 
             SUPERCLASS = NSWindowController; 
         }
     ); 

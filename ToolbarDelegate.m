@@ -136,7 +136,6 @@ static NSString* FavoritesID = @"Favorites Toolbar Identifier";
 	{
 		// FavoritesToolbarItem is special.
 		item = [[[FavoritesToolbarItem alloc] initWithItemIdentifier:itemIdent controller:self] autorelease];
-		NSLog(@"Item is : %@", item);
 	}
 	else
 		item = nil;
