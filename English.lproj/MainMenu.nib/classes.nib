@@ -1,6 +1,7 @@
 {
     IBClasses = (
         {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {CLASS = MyImageView; LANGUAGE = ObjC; SUPERCLASS = NSImageView; }, 
         {
             ACTIONS = {copyButtonPushed = id; moveButtonPushed = id; }; 
             CLASS = SortManagerController; 

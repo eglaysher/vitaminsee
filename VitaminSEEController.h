@@ -43,6 +43,8 @@
 	IBOutlet NSWindow* viewerWindow;
 	IBOutlet NSScrollView* scrollView;
 
+	NSCursor *handCursor;
+	
 	// File view components:
 //	IBOutlet NSPopUpButton* directoryDropdown;
 	IBOutlet NSView* currentFileViewHolder;

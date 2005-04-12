@@ -84,6 +84,7 @@
  * * Solidify the plugin layer
  * * Validate each folder in the Sort Manager just in case the user has deleted the folder.
  * * Favorites menu (available as both an item on the Go menu and as a toolbar dropdown)
+ * * Mouse grab scrolling when it doesn't fit.
  */
 
 /// For Version 0.6
@@ -95,7 +96,6 @@
 // * JFIF?
 //   * Really solve the previous problem and DEAL with JPEGs named PNGs, PNGs named GIFs, etc.
 // * Move to trash in wrong spot?
-// * Mouse grab scrolling when it doesn't fit.
 
 // * Japanese Localization
 // * No scroll bars on image view when it would otherwise fit.
@@ -274,6 +274,11 @@
 	
 	// Use an Undo manager to manage moving back and forth.
 	pathManager = [[NSUndoManager alloc] init];	
+	
+	// 
+	NSImage* image = [NSImage imageNamed:@"hand_open"];
+	NSLog(@"Image: %@", image);
+	handCursor = [[NSCursor alloc] initWithImage:image hotSpot:NSMakePoint(8, 8)];
 	
 	// Launch the other threads and tell them to connect back to us.
 	imageTaskManager = [[ImageTaskManager alloc] initWithController:self];
@@ -738,6 +743,13 @@
 
 	[imageViewer setImage:image];
 	[imageViewer setFrameSize:[image size]];
+	
+	// Set the correct cursor.
+	if([image size].width >= [scrollView contentSize].width ||
+	   [image size].height >= [scrollView contentSize].height)
+		[(NSScrollView*)[imageViewer superview] setDocumentCursor:handCursor];
+	else
+		[(NSScrollView*)[imageViewer superview] setDocumentCursor:nil];
 	
 	scaleRatio = scale;
 
