@@ -13,6 +13,8 @@ struct DS {
 	int width;
 	int height;
 };
+
+NSImageRep* loadImage(NSString* path);
 struct DS buildImageSize(int boxWidth, int boxHeight, int imageWidth, int imageHeight,
 					  BOOL canScaleProportionally, float ratioToScale,
 					  BOOL*canGetAwayWithQuickRender, float* ratioUsed);

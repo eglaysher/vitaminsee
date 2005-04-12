@@ -85,6 +85,8 @@
  * * Validate each folder in the Sort Manager just in case the user has deleted the folder.
  * * Favorites menu (available as both an item on the Go menu and as a toolbar dropdown)
  * * Mouse grab scrolling when it doesn't fit.
+ * * Misnamed files (JPEG files ending in GIF, PNG files ending in JPG) get displayed, instead
+ *   of an error.
  */
 
 /// For Version 0.6
@@ -93,8 +95,6 @@
 // * Undo/Redo on sort manager/rename, et cetera
 // * Check for file on remote volume.
 // * Cache control. How large?
-// * JFIF?
-//   * Really solve the previous problem and DEAL with JPEGs named PNGs, PNGs named GIFs, etc.
 // * Move to trash in wrong spot?
 
 // * Japanese Localization

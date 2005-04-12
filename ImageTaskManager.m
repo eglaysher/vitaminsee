@@ -242,7 +242,8 @@
 	{
 		pthread_mutex_unlock(&imageCacheLock);
 		// Preload the image
-		NSImageRep* rep = [NSImageRep imageRepWithContentsOfFile:path];
+//		NSImageRep* rep = [NSImageRep imageRepWithContentsOfFile:path];
+		NSImageRep* rep = loadImage(path);
 		NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:
 			[NSDate date], @"Date", rep, @"Image", nil];
 
@@ -299,7 +300,8 @@
 
 //		NSLog(@"Loading file '%@'", path);
 		// Load the file, since it obviously hasn't been loaded.
-		imageRep = [NSImageRep imageRepWithContentsOfFile:path];
+		imageRep = loadImage(path);
+//		[NSImageRep imageRepWithData:[NSData dataWithContentsOfFile:path]];
 		cacheEntry = [NSDictionary dictionaryWithObjectsAndKeys:
 			[NSDate date], @"Date", imageRep, @"Image", nil];
 		

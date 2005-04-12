@@ -10,6 +10,18 @@
 #import "NSString+FileTasks.h"
 #import <stdlib.h>
 
+NSImageRep* loadImage(NSString* path)
+{
+	NSData* imageData = [NSData dataWithContentsOfFile:path];
+
+	// Get the class that can handle this file.
+	Class imageRepClass = [NSImageRep imageRepClassForData:imageData];
+	if(!imageRepClass)
+		return nil;
+
+	return [imageRepClass imageRepWithData:imageData];
+}
+
 struct DS buildImageSize(int boxWidth, int boxHeight, int imageWidth, int imageHeight,
 						 BOOL canScaleProportionally, float ratioToScale,
 						 BOOL*canGetAwayWithQuickRender, float* ratioUsed)

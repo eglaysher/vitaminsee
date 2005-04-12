@@ -182,7 +182,7 @@
 			stringWithFormat:@"Building thumbnail for %@...", [path lastPathComponent]]];
 
 		// I don't think there IS an autorelease...
-		NSImage* image = [[NSImage alloc] initWithContentsOfFile:path];
+		NSImage* image = [[NSImage alloc] initWithData:[NSData dataWithContentsOfFile:path]];
 
 		// Set icon
 		iconFamily = [IconFamily iconFamilyWithThumbnailsOfImage:image];
