@@ -12,5 +12,4 @@
 @interface SBCenteringClipView : NSClipView {
 }
 -(void)centerDocument;
-
 @end

@@ -275,10 +275,8 @@
 	// Use an Undo manager to manage moving back and forth.
 	pathManager = [[NSUndoManager alloc] init];	
 	
-	// 
-	NSImage* image = [NSImage imageNamed:@"hand_open"];
-	NSLog(@"Image: %@", image);
-	handCursor = [[NSCursor alloc] initWithImage:image hotSpot:NSMakePoint(8, 8)];
+	handCursor = [[NSCursor alloc] initWithImage:[NSImage 
+		imageNamed:@"hand_open"] hotSpot:NSMakePoint(8, 8)];
 	
 	// Launch the other threads and tell them to connect back to us.
 	imageTaskManager = [[ImageTaskManager alloc] initWithController:self];
@@ -745,8 +743,8 @@
 	[imageViewer setFrameSize:[image size]];
 	
 	// Set the correct cursor.
-	if([image size].width >= [scrollView contentSize].width ||
-	   [image size].height >= [scrollView contentSize].height)
+	if([image size].width > [scrollView contentSize].width ||
+	   [image size].height > [scrollView contentSize].height)
 		[(NSScrollView*)[imageViewer superview] setDocumentCursor:handCursor];
 	else
 		[(NSScrollView*)[imageViewer superview] setDocumentCursor:nil];
@@ -823,11 +821,6 @@
 	[[NSWorkspace sharedWorkspace] openFile:[[NSBundle mainBundle] 
 		pathForResource:@"GPL"
 				 ofType:@"txt"]];
-}
-
--(void)setDirectoryFromFavorites:(id)sender
-{
-	
 }
 
 @end

@@ -148,5 +148,4 @@
 
 -(IBAction)showGPL:(id)sender;
 
--(void)setDirectoryFromFavorites:(id)sender;
 @end
