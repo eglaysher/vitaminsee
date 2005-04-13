@@ -7,6 +7,7 @@
 //
 
 #import "PathExistsValueTransformer.h"
+#import "NSString+FileTasks.h"
 
 
 @implementation PathExistsValueTransformer

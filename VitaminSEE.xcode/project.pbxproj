@@ -239,7 +239,6 @@
 		29B97318FDCFA39411CA2CEA = {
 			children = (
 				29B97319FDCFA39411CA2CEA,
-				8B6B0ACE0804F673007655EB,
 			);
 			isa = PBXVariantGroup;
 			name = MainMenu.nib;
@@ -1406,12 +1405,6 @@
 			refType = 4;
 			sourceTree = "<group>";
 		};
-		8B6710B1080C9BE00084EE5A = {
-			fileRef = 8B6710AF080C9BE00084EE5A;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
 		8B6710B2080C9BE00084EE5A = {
 			fileRef = 8B6710B0080C9BE00084EE5A;
 			isa = PBXBuildFile;
@@ -1484,14 +1477,6 @@
 			lastKnownFileType = text.html;
 			name = Japanese;
 			path = Japanese.lproj/Credits.html;
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		8B6B0ACE0804F673007655EB = {
-			isa = PBXFileReference;
-			lastKnownFileType = wrapper.nib;
-			name = Japanese;
-			path = Japanese.lproj/MainMenu.nib;
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -1725,7 +1710,6 @@
 				8B5620E107CEA6F1005990E1,
 				8B561D9307CE7627005990E1,
 				8B6D020307CB32CD009A76DA,
-				8B6710B1080C9BE00084EE5A,
 			);
 			isa = PBXCopyFilesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1810,12 +1794,6 @@
 		};
 		8B6FD33507B30B0F003F0000 = {
 			fileRef = 8B6FD33307B30B0F003F0000;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
-		8B78BBD607FDEC7900274803 = {
-			fileRef = 8B09C53707F21CB20098F878;
 			isa = PBXBuildFile;
 			settings = {
 			};
@@ -3109,7 +3087,6 @@
 				8B7E6D9E080B40EC00DD5466,
 				8B7E6D9D080B40EC00DD5466,
 				8B6A9178080784F40085334A,
-				8B78BBD607FDEC7900274803,
 				8BB7F55D07F0B9B200668047,
 				8B5279710801D4CB0032F515,
 				8B6B0AA50804F50F007655EB,

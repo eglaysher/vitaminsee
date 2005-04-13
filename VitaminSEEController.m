@@ -90,8 +90,6 @@
  */
 
 /// For Version 0.6
-// * Make popup menu parallel to the bottom of the PopUpImage NSView.
-
 // * Undo/Redo on sort manager/rename, et cetera
 // * Check for file on remote volume.
 // * Cache control. How large?

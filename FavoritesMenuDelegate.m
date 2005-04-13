@@ -8,6 +8,7 @@
 
 #import "FavoritesMenuDelegate.h"
 #import "VitaminSEEController.h"
+#import "NSString+FileTasks.h"
 
 @implementation FavoritesMenuDelegate
 
@@ -41,7 +42,7 @@ shouldCancel:(BOOL)shouldCancel
 	[item setTarget:self];
 
 	// Enable this if the path exists
-	[item setEnabled:[[d objectForKey:@"Path"] isDir]];
+	[item setEnabled:(BOOL)([[d objectForKey:@"Path"] isDir])];
 }
 
 -(void)setDirectoryFromFavorites:(id)menu
