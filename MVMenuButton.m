@@ -71,7 +71,6 @@
 		[toolbarItem setMinSize:NSMakeSize(24, 24)];
 		[toolbarItem setMaxSize:NSMakeSize(24, 24)];
 		[super setImage:smallImage];
-		
 	}
 	
 	//Reset the popup arrow path cache, we'll need to re-calculate it for the new size

@@ -24,9 +24,7 @@ using namespace std;
 ////////////////////////////////// EXIV2 WRAPPER! //////////////////////////////
 -(NSMutableArray*)getKeywordsFromJPEGFile:(NSString*)file
 {
-//	NSLog(@"Trying to load keywords from %@", file);
-	
-	int rc;
+	int rc = 0;
 	Exiv2::IptcData iptcData;
 	try {
 		rc = iptcData.read([file fileSystemRepresentation]);

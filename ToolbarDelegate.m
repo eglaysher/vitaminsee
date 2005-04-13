@@ -136,39 +136,8 @@ static NSString* FavoritesID = @"Favorites Toolbar Identifier";
 	else if([itemIdent isEqual:FavoritesID])
 	{
 		// FavoritesToolbarItem is special.
-		item = [[[FavoritesToolbarItem alloc] initWithItemIdentifier:itemIdent controller:self] autorelease];
-//		NSPopUpButton* popUpButton = [[[NSPopUpButton alloc] initWithFrame:NSMakeRect(0,0,70,32)
-//																 pullsDown:YES] autorelease];
-//		[popUpButton setBezelStyle:NSShadowlessSquareBezelStyle];
-//		[popUpButton setBordered:NO];
-//		[popUpButton setTitle:@""];
-//		NSPopUpButtonCell* popUpButtonCell = [popUpButton cell];
-//		NSImage* image = [NSImage imageNamed:@"ToolbarFavoritesIcon"];
-//		[image setScalesWhenResized:YES];
-//		[popUpButtonCell setImage:image];
-//
-//		
-//		[item setView:popUpButton];
-//		[item setMinSize:NSMakeSize(22,16)];
-//		[item setMaxSize:NSMakeSize(70,32)];		
-//		
-//		[item setLabel:NSLocalizedString(@"Favorites", @"Toolbar Item")];
-//		[item setPaletteLabel:NSLocalizedString(@"Favorites", @"Toolbar Item")];
-//		[item setToolTip:NSLocalizedString(@"Favorites", @"Toolbar Item")];
-//
-//		// Build menu
-//		NSMenu* favoritesMenu = [[NSMenu alloc] init];
-//		favoritesMenuDelegate = [[FavoritesMenuDelegate alloc] initWithController:self];
-//		[favoritesMenu setDelegate:favoritesMenuDelegate];
-//		
-//		// Set up menu for the popup image.
-//		[popUpButton setMenu:favoritesMenu];
-//		
-//		// Set up menu representation for item
-//		NSMenuItem* menuRepresentation = [[[NSMenuItem alloc] init] autorelease];
-//		[menuRepresentation setSubmenu:favoritesMenu];
-//		[menuRepresentation setTitle:@"Favorites"];
-//		[item setMenuFormRepresentation:menuRepresentation];
+		item = [[[FavoritesToolbarItem alloc] initWithItemIdentifier:itemIdent
+														  controller:self] autorelease];
 	}
 	else
 		item = nil;
