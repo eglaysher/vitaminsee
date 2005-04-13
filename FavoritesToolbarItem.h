@@ -8,12 +8,12 @@
 
 #import <Cocoa/Cocoa.h>
 
-@class PopUpImage;
+@class RYZImagePopUpButton;
 @class VitaminSEEController;
 @class FavoritesMenuDelegate;
 
 @interface FavoritesToolbarItem : NSToolbarItem {
-	PopUpImage* popUpImage;
+	RYZImagePopUpButton* popUpImage;
 	NSMenu* favoritesMenu;
 	FavoritesMenuDelegate* favoritesMenuDelegate;
 }
@@ -21,6 +21,6 @@
 -(id)initWithItemIdentifier:(NSString*)itemIdent 
 				 controller:(VitaminSEEController*)inCont;
 
--(void)rebuildFavoritesMenu;
-
+//-(void)rebuildFavoritesMenu;
+//-(void)setSizeMode:(NSToolbarSizeMode)size;
 @end

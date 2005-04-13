@@ -8,11 +8,14 @@
 	<dict>
 		<key>29</key>
 		<string>16 688 368 44 0 0 1024 746 </string>
+		<key>461</key>
+		<string>445 474 78 74 0 0 1024 746 </string>
 	</dict>
 	<key>IBFramework Version</key>
 	<string>364.0</string>
 	<key>IBOpenObjects</key>
 	<array>
+		<integer>461</integer>
 		<integer>21</integer>
 		<integer>29</integer>
 	</array>

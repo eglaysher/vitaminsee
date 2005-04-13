@@ -56,6 +56,8 @@
 
         /* By default, disable displaying the icon of the most recently selected item as our main image */
         [self setDisplaysIconOfSelectedItem:NO];
+
+		[self setPo
     }
     
     return self;
@@ -132,8 +134,8 @@
         /* Mouse event */
 		NSPoint newOrigin;
 		// fixme: this needs better alginment.
-		newOrigin.x = [theEvent locationInWindow].x; // - [self frame].origin.x;
-		newOrigin.y = [theEvent locationInWindow].y; // - [self frame].origin.y;
+		newOrigin.x = [[self superview] frame].origin.x + 5;
+		newOrigin.y = [[self window] frame].size.height - 50;
         evt = [NSEvent mouseEventWithType:[theEvent type]
 								 location:newOrigin
 							modifierFlags:[theEvent modifierFlags]
@@ -208,7 +210,7 @@
     NSSize frameSize = [self frame].size;
     NSSize iconSize = [self lastIconFrameSize];
     
-    NSRect iconDrawRect = NSMakeRect(0, 0, iconSize.width, iconSize.height);
+    NSRect iconDrawRect = NSMakeRect(0, 0, frameSize.width, frameSize.height);
     
     NSImage *itemImg = [[NSImage alloc] initWithSize:frameSize];
     
