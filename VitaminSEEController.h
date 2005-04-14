@@ -79,6 +79,7 @@
 //		
 //		
 //		Plugins;	
+	NSString* tmpDestination;
 }
 
 -(void)displayAlert:(NSString*)message 

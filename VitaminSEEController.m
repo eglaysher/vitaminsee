@@ -27,6 +27,12 @@
 #import "PathExistsValueTransformer.h"
 
 @implementation VitaminSEEController
+///////// TEST PLAN
+
+/*
+ * Moving a file into a directory where that file already exists.
+ */
+
 
 /////////////////////////////////////////////////////////// WHAT HAS BEEN DONE:
 /**
@@ -93,7 +99,8 @@
 
 /// For Version 0.6
 // * Undo/Redo on sort manager/rename, et cetera
-//   * WOOOOOOOTTTT!!!!
+//   * Check for overwriting files. Can't undo if we're overwriting them...
+//   * Fix copy undo!
 // * Check for file on remote volume.
 // * Clean up ViewIconViewController
 // * Cache control. How large?
@@ -106,6 +113,7 @@
 // * Transparent archive support
 // * Fit height/width
 // * Fullscreen mode
+// * Undo on delete.
 
 // For Version 0.8
 // * Create an image database feature

@@ -11,6 +11,10 @@
 #import "ImageMetadata.h"
 #import "ThumbnailManager.h"
 
+@interface VitaminSEEController (PluginLayerPrivate)
+-(BOOL)removeOverwriteFile:(NSString*)fileToOverwrite;
+@end
+
 @implementation VitaminSEEController (PluginLayer)
 
 // I want to support keywords and comments in PNGs and GIFs, but that would
@@ -76,29 +80,39 @@
 {
 	int tag = 0;
 	BOOL worked = NO;
+	BOOL canUndo = YES;
 	NSString* sourceDirectory = [file stringByDeletingLastPathComponent];
+	NSString* destinationPath = [destination stringByAppendingPathComponent:
+		[file lastPathComponent]];
+	
 	if(![destination isEqual:[file stringByDeletingLastPathComponent]])
 	{
-		worked = [[NSWorkspace sharedWorkspace]
-			performFileOperation:NSWorkspaceMoveOperation
-						  source:sourceDirectory
-					 destination:destination
-						   files:[NSArray arrayWithObject:[file lastPathComponent]]
-							 tag:&tag];
-
+		// First, we test to see if there's a file that's going to be overwritten...
+		if([[NSFileManager defaultManager] fileExistsAtPath:destinationPath])
+		{
+			if(![self removeOverwriteFile:destinationPath])
+				return 0;
+			else
+				canUndo = NO;
+		}
+		
+		worked = [[NSFileManager defaultManager] movePath:file
+												   toPath:destinationPath
+												  handler:nil];
+		
 		// Remove the current file from 
 		if(worked)
 		{
-			NSString* destinationFile = [destination 
-				stringByAppendingPathComponent:[file lastPathComponent]];
-
 			[viewAsIconsController removeFile:file];
-			[viewAsIconsController addFile:destinationFile];
-			[mainVitaminSeeWindow setViewsNeedDisplay:YES];
-			
-			[[[self undoManager] prepareWithInvocationTarget:self] 
-				moveFile:destinationFile
-					  to:sourceDirectory];
+			[viewAsIconsController addFile:destinationPath];
+//			[mainVitaminSeeWindow setViewsNeedDisplay:YES];
+
+			// Register the converse of this operation if we can undo. Because
+			// moving is reciporical, we don't need an unMove function.
+			if(canUndo)
+				[[[self undoManager] prepareWithInvocationTarget:self] 
+					moveFile:destinationPath
+						  to:sourceDirectory];
 		}
 		else
 			AlertSoundPlay();
@@ -113,20 +127,35 @@
 {
 	int tag = 0;
 	BOOL worked = NO;
+	BOOL canUndo = YES;
+	NSString* sourceDirectory = [file stringByDeletingLastPathComponent];
+	NSString* destinationPath = [destination stringByAppendingPathComponent:
+		[file lastPathComponent]];
+	
 	if(![destination isEqual:[file stringByDeletingLastPathComponent]])
 	{
-		worked = [[NSWorkspace sharedWorkspace] 
-			performFileOperation:NSWorkspaceCopyOperation
-						  source:[file stringByDeletingLastPathComponent]
-					 destination:destination 
-						   files:[NSArray arrayWithObject:[file lastPathComponent]]
-							 tag:&tag];
+		// First, we test to see if there's a file that's going to be overwritten...
+		if([[NSFileManager defaultManager] fileExistsAtPath:destinationPath])
+		{
+			if(![self removeOverwriteFile:destinationPath])
+				return 0;
+			else
+				canUndo = NO;
+		}
+		
+		worked = [[NSFileManager defaultManager] copyPath:file
+												   toPath:destinationPath
+												  handler:nil];
 		
 		// Calculate the destination name
 		if(worked)
 		{
-			NSString* destinationFullPath = [destination stringByAppendingString:[file lastPathComponent]];
-			[viewAsIconsController addFile:destinationFullPath];
+			[viewAsIconsController addFile:destinationPath];
+			
+			if(canUndo)
+				[[[self undoManager] prepareWithInvocationTarget:self] 
+					unCopyFile:
+					deleteFile:destinationPath];
 		}
 		else
 			AlertSoundPlay();
@@ -173,6 +202,35 @@
 -(NSUndoManager*)undoManager
 {
 	return [mainVitaminSeeWindow undoManager];
+}
+
+@end
+
+@implementation VitaminSEEController (PluginLayerPrivate)
+
+-(BOOL)removeOverwriteFile:(NSString*)fileToOverwrite
+{
+	// Okay, so the file already exists. Let's ask the user for guidance
+	NSString* text = [NSString stringWithFormat:
+		@"A file named '%@' already exists in the directory '%@'. This operation cannot be undone.", 
+		[fileToOverwrite lastPathComponent], 
+		[fileToOverwrite stringByDeletingLastPathComponent]];
+	NSAlert* alert = [NSAlert alertWithMessageText:@"Overwrite file?"
+									 defaultButton:@"Overwrite"
+								   alternateButton:@"Cancel"
+									   otherButton:nil
+						 informativeTextWithFormat:text];
+	
+	int result = [alert runModal];
+	
+	if(result ==  NSAlertDefaultReturn)
+	{
+		// Delete the offending file.
+		[[NSFileManager defaultManager] removeFileAtPath:fileToOverwrite handler:nil];
+		return YES;
+	}
+	else
+		return NO;
 }
 
 @end
