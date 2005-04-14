@@ -30,4 +30,7 @@
 
 -(void)generateThumbnailForFile:(NSString*)path;
 
+-(NSUndoManager*)pathManager;
+-(NSUndoManager*)undoManager;
+
 @end

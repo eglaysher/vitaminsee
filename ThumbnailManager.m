@@ -115,7 +115,6 @@
 
 -(void)setShouldBuildIcon:(BOOL)newShouldBuildIcon
 {
-	// fixme: Maybe this should be atomic.
 	pthread_mutex_lock(&imageScalingProperties);
 	shouldBuildIcon = newShouldBuildIcon;
 	pthread_mutex_unlock(&imageScalingProperties);

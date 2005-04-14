@@ -102,13 +102,13 @@
 {	
 	[pluginLayer startProgressIndicator];
 	
-//	if(newCurrentDirectory && currentDirectory && 
-//	   ![currentDirectory isEqual:newCurrentDirectory])
-//		[[pathManager prepareWithInvocationTarget:self]
-//			setCurrentDirectory:currentDirectory file:nil];
-//	
-//	// Clear the thumbnails being displayed.
-//	if(![newCurrentDirectory isEqualTo:currentDirectory])
+	if(currentDirectory && newCurrentDirectory && 
+	   ![currentDirectory isEqual:newCurrentDirectory])
+		[[[pluginLayer pathManager] prepareWithInvocationTarget:self]
+			setCurrentDirectory:currentDirectory currentFile:[pluginLayer currentFile]];
+
+	// Clear the thumbnails. They need to be regenerated...
+	[pluginLayer clearThumbnailQueue];
 	
 	// Set the current Directory
 	[currentDirectory release];
@@ -190,9 +190,7 @@ willDisplayCell:(id)cell
 		  atRow:(int)row
 		 column:(int)column
 {
-	NSString* currentFile = [fileList objectAtIndex:row];
-	[cell setCellPropertiesFromPath:currentFile];
-//	[[sender matrixInColumn:0] updateCell:cell];
+	[cell setCellPropertiesFromPath:[fileList objectAtIndex:row]];
 }
 
 - (void)clearCache
@@ -216,7 +214,6 @@ willDisplayCell:(id)cell
 	// grab the image path
 	NSString* absolutePath = [[currentDirectory stringByAppendingPathComponent:
 		[sender path]] stringByStandardizingPath];
-//	NSMutableArray* preloadList = [NSMutableArray array];	
 	
 	[pluginLayer setCurrentFile:absolutePath];
 	
@@ -299,11 +296,11 @@ willDisplayCell:(id)cell
 			[self selectFile:file];
 			[pluginLayer setCurrentFile:file];
 		}
-			
+		
 		[fileList removeObjectAtIndex:index];
 
-		[matrix removeRow:index];
-		[matrix sizeToCells];
+		// Tell our browser to redisplay
+		[ourBrowser reloadColumn:0];
 		[ourBrowser setNeedsDisplay];
 		
 		if([fileList count] == 0)
@@ -314,6 +311,9 @@ willDisplayCell:(id)cell
 
 -(void)addFile:(NSString*)path
 {
+	// FIXME: This needs to be generalized. What happens if this file doesn't have
+	// a thumbnail, a thumbnail request is generated, the file is moved, and then
+	// the thumbnail comes in!?	
 	if([currentDirectory isEqual:[path stringByDeletingLastPathComponent]])
 	{
 		unsigned index = [fileList lowerBoundToInsert:path 
@@ -323,23 +323,12 @@ willDisplayCell:(id)cell
 			[fileList insertObject:path atIndex:index];
 		else
 			[fileList addObject:path];
-	
-		NSMatrix* m = [ourBrowser matrixInColumn:0];
-		[m insertRow:index];
 		
-		// FIXME: This needs to be generalized. What happens if this file doesn't have
-		// a thumbnail, a thumbnail request is generated, the file is moved, and then
-		// the thumbnail comes in!?
-//		[[m cellAtRow:index column:0] loadOwnIconOnDisplay];
-		[self browser:ourBrowser willDisplayCell:[m cellAtRow:index column:0] 
-				atRow:index column:0];
-		[m sizeToCells];
-	
-		// Select this file.
-		[m selectCellAtRow:index column:0];
+		// Redisplay and select the added file
+		[ourBrowser reloadColumn:0];
+		[ourBrowser setPath:[NSString stringWithFormat:@"/%@", [path lastPathComponent]]];
+
 		[pluginLayer setCurrentFile:[fileList objectAtIndex:index]];
-		
-		[ourBrowser setNeedsDisplay];
 	}
 }
 
@@ -397,6 +386,8 @@ willDisplayCell:(id)cell
 			[ourBrowser setNeedsDisplay];
 		}
 	}
+	else
+		NSLog(@"Warning! %@ wasn't found when setting it's thumbnail!", path);
 }
 
 -(void)goEnclosingFolder
@@ -429,7 +420,6 @@ willDisplayCell:(id)cell
 		   [currentFileWithPath isVisible])
 		{			
 			[myFileList addObject:currentFileWithPath];
-			[pluginLayer generateThumbnailForFile:currentFileWithPath];
 		}
 	}
 	
@@ -438,6 +428,15 @@ willDisplayCell:(id)cell
 	// O(n) overhead later on.
 	[myFileList sortUsingSelector:@selector(caseInsensitiveCompare:)];	
 
+	// Now build thumbnails for each file in the directory (since we can be 
+	// confident they'll be built in order)
+	NSEnumerator* fileEnum = [myFileList objectEnumerator];
+	NSString* file;
+	while(file = [fileEnum nextObject])
+		if([file isImage])
+			[pluginLayer generateThumbnailForFile:file];
+	
+	// Now let's keep our new list of files.
 	[fileList release];
 	[myFileList retain];
 	fileList = myFileList;

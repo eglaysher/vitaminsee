@@ -85,6 +85,7 @@
 */
 -(void)generateThumbnailForFile:(NSString*)path;
 
+-(void)clearThumbnailQueue;
 
 ///////////////////////////////////////////////////////////////////// UI Control
 /*!
@@ -100,5 +101,14 @@
 				bottom right of the main window.
 */
 -(void)stopProgressIndicator;
+
+/*!
+    @method     -pathManager
+    @abstract   Returns an NSUndoManager that's connected to the back/forward
+				items on the Go menu
+*/
+-(NSUndoManager*)pathManager;
+
+-(NSUndoManager*)undoManager;
 
 @end

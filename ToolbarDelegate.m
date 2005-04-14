@@ -91,7 +91,6 @@ static NSString* FavoritesID = @"Favorites Toolbar Identifier";
 		[item setLabel:NSLocalizedString(@"Finder", @"Toolbar Item")];
 		[item setPaletteLabel:NSLocalizedString(@"Reveal in Finder", @"Toolbar Item")];
 		[item setToolTip:NSLocalizedString(@"Reveal in Finder", @"Toolbar Item")];
-		// fixme: This slows stuff down. Perhaps I'd like to not suck?
 		[item setImage:[[NSWorkspace sharedWorkspace] iconForApplication:@"Finder"]];
 		[item setTarget:self];
 		[item setAction:@selector(revealInFinder:)];
@@ -101,7 +100,6 @@ static NSString* FavoritesID = @"Favorites Toolbar Identifier";
 		[item setLabel:NSLocalizedString(@"Preview", @"Toolbar Item")];
 		[item setPaletteLabel:NSLocalizedString(@"View in Preview", @"Toolbar Item")];
 		[item setToolTip:NSLocalizedString(@"View in Preview", @"Toolbar Item")];
-		// fixme: This slows stuff down. Perhaps I'd like to not suck?
 		[item setImage:[[NSWorkspace sharedWorkspace] iconForApplication:@"Preview"]];
 		[item setTarget:self];
 		[item setAction:@selector(viewInPreview:)];		

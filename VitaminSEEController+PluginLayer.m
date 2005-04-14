@@ -76,11 +76,12 @@
 {
 	int tag = 0;
 	BOOL worked = NO;
+	NSString* sourceDirectory = [file stringByDeletingLastPathComponent];
 	if(![destination isEqual:[file stringByDeletingLastPathComponent]])
 	{
 		worked = [[NSWorkspace sharedWorkspace]
 			performFileOperation:NSWorkspaceMoveOperation
-						  source:[file stringByDeletingLastPathComponent]
+						  source:sourceDirectory
 					 destination:destination
 						   files:[NSArray arrayWithObject:[file lastPathComponent]]
 							 tag:&tag];
@@ -88,11 +89,23 @@
 		// Remove the current file from 
 		if(worked)
 		{
-			[viewAsIconsController removeFile:currentImageFile];
+			NSString* destinationFile = [destination 
+				stringByAppendingPathComponent:[file lastPathComponent]];
+
+			[viewAsIconsController removeFile:file];
+			[viewAsIconsController addFile:destinationFile];
+			[mainVitaminSeeWindow setViewsNeedDisplay:YES];
+			
+			[[[self undoManager] prepareWithInvocationTarget:self] 
+				moveFile:destinationFile
+					  to:sourceDirectory];
 		}
 		else
 			AlertSoundPlay();
 	}
+	else
+		AlertSoundPlay();
+	
 	return tag;
 }
 
@@ -145,6 +158,21 @@
 	BOOL buildThumbnails = [[[NSUserDefaults standardUserDefaults] objectForKey:@"GenerateThumbnails"] boolValue];
 	[thumbnailManager setShouldBuildIcon:buildThumbnails];	
 	[thumbnailManager buildThumbnail:path];
+}
+
+-(void)clearThumbnailQueue
+{
+	[thumbnailManager clearThumbnailQueue];
+}
+
+-(NSUndoManager*)pathManager
+{
+	return pathManager;
+}
+
+-(NSUndoManager*)undoManager
+{
+	return [mainVitaminSeeWindow undoManager];
 }
 
 @end

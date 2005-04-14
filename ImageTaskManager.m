@@ -174,8 +174,6 @@
 	pthread_mutex_unlock(&taskQueueLock);
 }
 
-// fixme: make this function more intelligent so that it will remove items that
-// are going to get thrown away anyway...
 -(void)preloadImage:(NSString*)path
 {	
 	pthread_mutex_lock(&taskQueueLock);

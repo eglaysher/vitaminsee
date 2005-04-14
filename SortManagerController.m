@@ -37,8 +37,8 @@
 		objectForKey:@"SortManagerPaths"] objectAtIndex:rowIndex];
 	NSString* destination = [cellProperties objectForKey:@"Path"];	
 
-//	NSLog(@"Moving row %d, '%@'", rowIndex, destination);
-	[pluginLayer moveFile:[pluginLayer currentFile]
+	id currentFile = [pluginLayer currentFile];
+	[pluginLayer moveFile:currentFile
 					   to:destination];
 }
 
@@ -83,7 +83,13 @@
     [cell bind:@"enabled" toObject:filter withKeyPath:@"Path" options:
 		[NSDictionary dictionaryWithObjectsAndKeys:@"PathExistsValueTransformer", @"NSValueTransformerName", nil]
 			];
-} 
+}
+
+//////////// 
+-(NSUndoManager*)windowWillReturnUndoManager:(id)window
+{
+	return [pluginLayer undoManager];
+}
 
 
 @end

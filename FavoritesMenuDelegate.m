@@ -42,7 +42,7 @@ shouldCancel:(BOOL)shouldCancel
 	[item setTarget:self];
 
 	// Enable this if the path exists
-	[item setEnabled:(BOOL)([[d objectForKey:@"Path"] isDir])];
+	[item setEnabled:[[d objectForKey:@"Path"] isDir]];
 }
 
 -(void)setDirectoryFromFavorites:(id)menu

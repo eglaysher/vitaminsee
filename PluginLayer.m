@@ -86,6 +86,11 @@
 	[controller generateThumbnailForFile:path];
 }
 
+-(void)clearThumbnailQueue
+{
+	[controller clearThumbnailQueue];
+}
+
 -(void)startProgressIndicator
 {
 	[controller startProgressIndicator];
@@ -94,6 +99,16 @@
 -(void)stopProgressIndicator
 {
 	[controller stopProgressIndicator];
+}
+
+-(NSUndoManager*)pathManager
+{
+	return [controller pathManager];
+}
+
+-(NSUndoManager*)undoManager
+{
+	return [controller undoManager];
 }
 
 @end

@@ -89,20 +89,21 @@
  *   of an error.
  */
 
+// * Stop building thumbnails when you leave a directory (finished?)
+
 /// For Version 0.6
 // * Undo/Redo on sort manager/rename, et cetera
+//   * WOOOOOOOTTTT!!!!
 // * Check for file on remote volume.
+// * Clean up ViewIconViewController
 // * Cache control. How large?
 // * Move to trash in wrong spot?
 
 // * Japanese Localization
-// * No scroll bars on image view when it would otherwise fit.
 // * Mouse-wheel scrolling...
 
 // For Version 0.7
 // * Transparent archive support
-// * Finder like shelf--allow DnD of folders onto the NSToolbar
-//   * How the HELL do I do this?!?! No clue!!!!!!!!!!
 // * Fit height/width
 // * Fullscreen mode
 
@@ -582,7 +583,6 @@
 	else if([theMenuItem action] == @selector(deleteFileClicked:))
 	{
 		// We can delete this file as long as we've selected a file.
-		// fixme: this doesn't work...
 		enable = mainWindowVisible && [[viewAsIconsController selectedFiles] count];
 	}
 	// View Menu
