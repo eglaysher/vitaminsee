@@ -29,6 +29,7 @@
 
 		pluginLayer = inPluginLayer;
 		[pluginLayer retain];
+		oldPosition = -1;
 	}
 
 	return self;
@@ -144,6 +145,8 @@
 	[directoryDropdown setEnabled:YES];
 
 	[self rebuildInternalFileArray];
+	
+	oldPosition = -1;
 
 	// Now reload the data
 	[ourBrowser setCellClass:[ViewAsIconViewCell class]];
@@ -182,6 +185,7 @@
 
 - (int)browser:(NSBrowser *)sender numberOfRowsInColumn:(int)column
 {
+	NSLog(@"We have %d items", [fileList count]);
 	return [fileList count];
 }
 
@@ -224,44 +228,36 @@ willDisplayCell:(id)cell
 	// target drawing location of two or three cells.
 	[ourBrowser setNeedsDisplay];
 	
-	// If this is a directory, preload the first file of
+	int preloadRow = -1;
+	int newPosition = [sender selectedRowInColumn:0];
 	if([absolutePath isDir])
 	{
-		NSEnumerator* dirEnum = [[[NSFileManager defaultManager] 
-			directoryContentsAtPath:currentDirectory] objectEnumerator];
-		NSString* curFile;
-	
-		while(curFile = [dirEnum nextObject])
-		{
-			NSString* currentFileWithPath = [currentDirectory 
-				stringByAppendingPathComponent:curFile];
-			if([currentFileWithPath isImage])
-			{
-				[pluginLayer preloadFile:currentFileWithPath];
-				break;
-			}
-		}
+		// If this is a directory, and the first file is an image, then preload it.
+		NSString* firstFile = [[[NSFileManager defaultManager] 
+			directoryContentsAtPath:currentDirectory] objectAtIndex:0];
+		if([firstFile isImage])
+			[pluginLayer preloadFile:firstFile];
+	}
+	else if(newPosition > oldPosition)
+	{
+		// We are moving down (positive) so preload the next file
+		preloadRow = newPosition + 1;
+	}
+	else if(newPosition < oldPosition)
+	{
+		// We are moving up (negative) so preload the previous file
+		preloadRow = newPosition - 1;
 	}
 	
-	// fixme: Make this only load the NEXT or PREVIOUS picture. Don't load
-	// both up and down.
-	
-	// Get the previous and next file...
-	int selectedColumn = [sender selectedColumn];
-	int selectedRow = [sender selectedRowInColumn:selectedColumn];
-	int toLoad;
-	
-	// Previous file
-	toLoad = selectedRow - 1;
-	id node = [[sender loadedCellAtRow:toLoad column:selectedColumn] cellPath];
-	if(node && [node isImage])
-		[pluginLayer preloadFile:node];
-	
-	// Next file
-	toLoad = selectedRow + 1;
-	node = [[sender loadedCellAtRow:toLoad column:selectedColumn] cellPath];
-	if(node && [node isImage])
-		[pluginLayer preloadFile:node];
+	if(preloadRow > -1)
+	{
+		id node = [[ourBrowser loadedCellAtRow:preloadRow column:0] cellPath];
+//		NSLog(@"Preloading %@", node);
+		if(node && [node isImage])
+			[pluginLayer preloadFile:node];
+	}
+
+	oldPosition = newPosition;
 }
 
 -(void)doubleClick:(NSBrowser*)sender
@@ -296,10 +292,15 @@ willDisplayCell:(id)cell
 			[self selectFile:file];
 			[pluginLayer setCurrentFile:file];
 		}
-		
-		[fileList removeObjectAtIndex:index];
 
-		// Tell our browser to redisplay
+		[fileList removeObjectAtIndex:index];
+		
+		// This really shouldn't be here, but -[NSBrowser reloadColumn:] has issues, and 
+		// this is the only workaround I can think of.
+		[[ourBrowser matrixInColumn:0] removeRow:index];
+		
+		// Tell our browser to redisplay. We can't rely on removing the row from the matrix
+		// (even if we update almost
 		[ourBrowser reloadColumn:0];
 		[ourBrowser setNeedsDisplay];
 		
@@ -414,8 +415,9 @@ willDisplayCell:(id)cell
 	while(curPath = [dirEnum nextObject])
 	{
 		//Assumption: curFile[0] == '/'.
-		NSString* currentFileWithPath = [[currentDirectory 
-			stringByAppendingPathComponent:curPath] stringByStandardizingPath];
+		NSString* currentFileWithPath = [currentDirectory 
+			stringByAppendingPathComponent:curPath];// stringByStandardizingPath];
+				
 		if(([currentFileWithPath isDir] || [currentFileWithPath isImage]) &&
 		   [currentFileWithPath isVisible])
 		{			

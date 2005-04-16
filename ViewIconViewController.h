@@ -25,6 +25,7 @@
 	NSArray* currentDirectoryComponents;
 	
 	NSMutableArray* fileList;	
+	int oldPosition;
 }
 
 //-(void)setThumbnailManager:(ThumbnailManager*)itm;

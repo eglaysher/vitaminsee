@@ -13,6 +13,7 @@
 
 @interface VitaminSEEController (PluginLayerPrivate)
 -(BOOL)removeOverwriteFile:(NSString*)fileToOverwrite;
+-(BOOL)unCopyFile:(NSString*)oldDestination from:(NSString*)oldSource;
 @end
 
 @implementation VitaminSEEController (PluginLayer)
@@ -55,23 +56,26 @@
 {
 	// We move the current file to the trash.
 	BOOL worked;
-	int tag;
+	int tag = 0;
 
-	// fixme: check return value of -[NSWorkspace getFileSystemInfoForPath]'s isUnmountable
-	// value
-	
-	worked = [[NSWorkspace sharedWorkspace] performFileOperation:NSWorkspaceRecycleOperation
-												 source:[file stringByDeletingLastPathComponent]
-											destination:@""
-												  files:[NSArray arrayWithObject:[file lastPathComponent]]
-													tag:&tag];
-
-	if(worked)
+	if([[NSFileManager defaultManager] fileExistsAtPath:file])
 	{
-		[viewAsIconsController removeFile:currentImageFile];
+		// fixme: check return value of -[NSWorkspace getFileSystemInfoForPath]'s isUnmountable
+		// value
+	
+		worked = [[NSWorkspace sharedWorkspace] performFileOperation:NSWorkspaceRecycleOperation
+															  source:[file stringByDeletingLastPathComponent]
+														 destination:@""
+															   files:[NSArray arrayWithObject:[file lastPathComponent]]
+																 tag:&tag];
+
+		if(worked)	
+		{
+			[viewAsIconsController removeFile:currentImageFile];
+		}
+		else
+			AlertSoundPlay();
 	}
-	else
-		AlertSoundPlay();
 	
 	return tag;
 }
@@ -84,11 +88,13 @@
 	NSString* sourceDirectory = [file stringByDeletingLastPathComponent];
 	NSString* destinationPath = [destination stringByAppendingPathComponent:
 		[file lastPathComponent]];
+	NSFileManager* fileManager = [NSFileManager defaultManager];
 	
-	if(![destination isEqual:[file stringByDeletingLastPathComponent]])
+	if(![destination isEqual:[file stringByDeletingLastPathComponent]] &&
+	   [fileManager fileExistsAtPath:file])
 	{
 		// First, we test to see if there's a file that's going to be overwritten...
-		if([[NSFileManager defaultManager] fileExistsAtPath:destinationPath])
+		if([fileManager fileExistsAtPath:destinationPath])
 		{
 			if(![self removeOverwriteFile:destinationPath])
 				return 0;
@@ -96,23 +102,25 @@
 				canUndo = NO;
 		}
 		
-		worked = [[NSFileManager defaultManager] movePath:file
-												   toPath:destinationPath
-												  handler:nil];
+		worked = [fileManager movePath:file
+								toPath:destinationPath
+							   handler:nil];
 		
 		// Remove the current file from 
 		if(worked)
 		{
 			[viewAsIconsController removeFile:file];
 			[viewAsIconsController addFile:destinationPath];
-//			[mainVitaminSeeWindow setViewsNeedDisplay:YES];
 
 			// Register the converse of this operation if we can undo. Because
 			// moving is reciporical, we don't need an unMove function.
 			if(canUndo)
+			{
+				[[self undoManager] setActionName:@"Move"];
 				[[[self undoManager] prepareWithInvocationTarget:self] 
 					moveFile:destinationPath
 						  to:sourceDirectory];
+			}
 		}
 		else
 			AlertSoundPlay();
@@ -131,11 +139,13 @@
 	NSString* sourceDirectory = [file stringByDeletingLastPathComponent];
 	NSString* destinationPath = [destination stringByAppendingPathComponent:
 		[file lastPathComponent]];
+	NSFileManager* fileManager = [NSFileManager defaultManager];
 	
-	if(![destination isEqual:[file stringByDeletingLastPathComponent]])
+	if(![destination isEqual:[file stringByDeletingLastPathComponent]] &&
+	   [fileManager fileExistsAtPath:file])
 	{
 		// First, we test to see if there's a file that's going to be overwritten...
-		if([[NSFileManager defaultManager] fileExistsAtPath:destinationPath])
+		if([fileManager fileExistsAtPath:destinationPath])
 		{
 			if(![self removeOverwriteFile:destinationPath])
 				return 0;
@@ -143,9 +153,9 @@
 				canUndo = NO;
 		}
 		
-		worked = [[NSFileManager defaultManager] copyPath:file
-												   toPath:destinationPath
-												  handler:nil];
+		worked = [fileManager copyPath:file
+								toPath:destinationPath
+							   handler:nil];
 		
 		// Calculate the destination name
 		if(worked)
@@ -153,9 +163,11 @@
 			[viewAsIconsController addFile:destinationPath];
 			
 			if(canUndo)
+			{
+				[[self undoManager] setActionName:@"Copy"];
 				[[[self undoManager] prepareWithInvocationTarget:self] 
-					unCopyFile:
-					deleteFile:destinationPath];
+					unCopyFile:destinationPath from:file];
+			}
 		}
 		else
 			AlertSoundPlay();
@@ -207,6 +219,37 @@
 @end
 
 @implementation VitaminSEEController (PluginLayerPrivate)
+
+-(BOOL)unCopyFile:(NSString*)oldDestination from:(NSString*)oldSource
+{
+	// Delete the oldSource
+	// Reminder: Download that O-zone song.
+	NSFileManager* fileManager = [NSFileManager defaultManager];
+	BOOL worked = NO;
+	
+	if([fileManager fileExistsAtPath:oldDestination])
+	{
+		worked = [[NSFileManager defaultManager] removeFileAtPath:oldDestination
+														  handler:nil];
+	
+		if(worked)
+			[viewAsIconsController removeFile:oldDestination];
+		else
+			AlertSoundPlay();
+	}
+	else
+		AlertSoundPlay();
+
+	// If the source exists, we can undo this operation...
+	if([fileManager fileExistsAtPath:oldSource])
+	{
+		[[self undoManager] setActionName:@"Copy"];
+		[[[self undoManager] prepareWithInvocationTarget:self]
+				copyFile:oldSource to:[oldDestination stringByDeletingLastPathComponent]];		
+	}
+	
+	return worked;
+}
 
 -(BOOL)removeOverwriteFile:(NSString*)fileToOverwrite
 {

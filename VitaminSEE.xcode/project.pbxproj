@@ -2646,7 +2646,8 @@
 			buildRules = (
 			);
 			buildSettings = {
-				DEPLOYMENT_POSTPROCESSING = YES;
+				COPY_PHASE_STRIP = NO;
+				DEPLOYMENT_POSTPROCESSING = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
 				INFOPLIST_FILE = "ViewAsIconsFileView-Info.plist";

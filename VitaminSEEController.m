@@ -81,6 +81,7 @@
  *     Wallpaper directory with v0.5.3. Now it takes less then a second)
  * * * Cut application bloat. Not everybody uses Keyword support, so don't
  *     load it at startup. (Cuts 3/4 of a second off of startup)
+ * * * More intelligent preloading behaviour in ViewIconViewController
  * * Stop assuming people have a "Pictures" folder. Some people have broken out
  *   of Apple's heiarchy, so don't make assumptions.
  * * Windows Bitmap support
@@ -93,27 +94,33 @@
  * * Mouse grab scrolling when it doesn't fit.
  * * Misnamed files (JPEG files ending in GIF, PNG files ending in JPG) get displayed, instead
  *   of an error.
+ * * Undo/Redo on sort manager/rename, et cetera
  */
 
 // * Stop building thumbnails when you leave a directory (finished?)
 
+// * Known issue: Copying a file, then deleting the copy, leaves the undo operation
+//   on the undo stack. I need to figure out how to fix this...
+
 /// For Version 0.6
-// * Undo/Redo on sort manager/rename, et cetera
-//   * Check for overwriting files. Can't undo if we're overwriting them...
-//   * Fix copy undo!
 // * Check for file on remote volume.
+// * Add undo to the rest of file operations?
+//   * Delete
+//   * Rename
 // * Clean up ViewIconViewController
 // * Cache control. How large?
 // * Move to trash in wrong spot?
 
 // * Japanese Localization
 // * Mouse-wheel scrolling...
+// * Dogfood it for at least a week and a half...
 
 // For Version 0.7
 // * Transparent archive support
 // * Fit height/width
 // * Fullscreen mode
 // * Undo on delete.
+// * UNIT TESTING!
 
 // For Version 0.8
 // * Create an image database feature
