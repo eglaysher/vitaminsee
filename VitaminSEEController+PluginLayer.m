@@ -54,6 +54,8 @@
 
 -(int)deleteFile:(NSString*)file
 {
+	[file retain];
+	
 	// We move the current file to the trash.
 	BOOL worked;
 	int tag = 0;
@@ -77,11 +79,15 @@
 			AlertSoundPlay();
 	}
 	
+	[file release];
+	
 	return tag;
 }
 
 -(int)moveFile:(NSString*)file to:(NSString*)destination
 {
+	[file retain];
+	
 	int tag = 0;
 	BOOL worked = NO;
 	BOOL canUndo = YES;
@@ -127,12 +133,17 @@
 	}
 	else
 		AlertSoundPlay();
+
+	[file release];
 	
 	return tag;
 }
 
 -(int)copyFile:(NSString*)file to:(NSString*)destination
 {
+	// Retain file since we change the current file
+	[file retain];
+	
 	int tag = 0;
 	BOOL worked = NO;
 	BOOL canUndo = YES;
@@ -172,26 +183,64 @@
 		else
 			AlertSoundPlay();
 	}
+
+	// Release file
+	[file release];
+	
 	return tag;
 }
 
 -(BOOL)renameFile:(NSString*)file to:(NSString*)destination
 {
+	// Retain file since we change the current file on success
+	[file retain];
+	
 	// Rename the file.
-	NSString* newPath = [[file stringByDeletingLastPathComponent] 
+	NSFileManager* fileManager = [NSFileManager defaultManager];
+	NSString* destinationPath = [[file stringByDeletingLastPathComponent] 
 		stringByAppendingPathComponent:destination];
+	BOOL worked = NO;
+	BOOL canUndo = YES;
 	
-	BOOL ret = [[NSFileManager defaultManager] movePath:file
-												 toPath:newPath 
-												handler:nil];
-	
-	if(ret)
+	if([fileManager fileExistsAtPath:file])
 	{
-		[viewAsIconsController removeFile:currentImageFile];
-		[viewAsIconsController addFile:newPath];
+		// First, we test to see if there's a file that's going to be overwritten...
+		if([fileManager fileExistsAtPath:destinationPath])
+		{
+			if(![self removeOverwriteFile:destinationPath])
+				return 0;
+			else
+				canUndo = NO;
+		}
+
+		NSLog(@"Moving %@ to %@", file, destinationPath);
+		worked = [[NSFileManager defaultManager] movePath:file
+												   toPath:destinationPath 
+												  handler:nil];
+
+		if(worked)
+		{
+			[viewAsIconsController removeFile:file];
+			[viewAsIconsController addFile:destinationPath];
+			
+			// fixme! file is often not of type NSString when undoing this!?
+			
+			if(canUndo)
+			{
+				[[self undoManager] setActionName:@"Rename"];
+				NSString* originalFilename = [file lastPathComponent];
+				[[[self undoManager] prepareWithInvocationTarget:self] 
+					renameFile:destinationPath to:originalFilename];
+			}
+		}
+		else
+			AlertSoundPlay();
 	}
-	else
-		AlertSoundPlay();
+	
+	// Release the old current file
+	[file release];
+
+	return worked;
 }
 
 -(void)generateThumbnailForFile:(NSString*)path
@@ -222,6 +271,8 @@
 
 -(BOOL)unCopyFile:(NSString*)oldDestination from:(NSString*)oldSource
 {
+	[oldDestination retain];
+	
 	// Delete the oldSource
 	// Reminder: Download that O-zone song.
 	NSFileManager* fileManager = [NSFileManager defaultManager];
@@ -247,6 +298,8 @@
 		[[[self undoManager] prepareWithInvocationTarget:self]
 				copyFile:oldSource to:[oldDestination stringByDeletingLastPathComponent]];		
 	}
+	
+	[oldDestination release];
 	
 	return worked;
 }

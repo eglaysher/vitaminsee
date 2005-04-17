@@ -111,6 +111,9 @@
 // * Cache control. How large?
 // * Move to trash in wrong spot?
 
+// * When entering a directory with no images, the spinner never stops.
+// * GIF animation speed.
+
 // * Japanese Localization
 // * Mouse-wheel scrolling...
 // * Dogfood it for at least a week and a half...

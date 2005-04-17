@@ -91,7 +91,9 @@
 
 -(IBAction)fileChanged:(id)sender
 {
-	[pluginLayer renameFile:[pluginLayer currentFile] to:[sender stringValue]];
+	BOOL worked = [pluginLayer renameFile:[pluginLayer currentFile] to:[sender stringValue]];
+	if(!worked)
+		[sender setStringValue:[[pluginLayer currentFile] lastPathComponent]];
 }
 
 -(void)loadKeywordsIntoTextViewFromList

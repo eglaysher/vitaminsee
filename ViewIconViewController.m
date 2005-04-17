@@ -252,7 +252,6 @@ willDisplayCell:(id)cell
 	if(preloadRow > -1)
 	{
 		id node = [[ourBrowser loadedCellAtRow:preloadRow column:0] cellPath];
-//		NSLog(@"Preloading %@", node);
 		if(node && [node isImage])
 			[pluginLayer preloadFile:node];
 	}
@@ -324,11 +323,16 @@ willDisplayCell:(id)cell
 			[fileList insertObject:path atIndex:index];
 		else
 			[fileList addObject:path];
+	
+		// Because 
+//		[[ourBrowser matrixInColumn:0] insertRow:<#(int)row#>]
 		
 		// Redisplay and select the added file
-		[ourBrowser reloadColumn:0];
+		[ourBrowser loadColumnZero];
+		NSLog(@"addFile:%@", path);
 		[ourBrowser setPath:[NSString stringWithFormat:@"/%@", [path lastPathComponent]]];
-
+		NSLog(@"after set path:%@", path);
+		
 		[pluginLayer setCurrentFile:[fileList objectAtIndex:index]];
 	}
 }
