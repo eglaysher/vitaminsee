@@ -1,10 +1,33 @@
+/////////////////////////////////////////////////////////////////////////
+// File:          $File$
+// Module:        SHORT DESCRIPTION OF YOUR FILE
+// Part of:       VitaminSEE
 //
-//  ImageTaskManager.m
-//  CQView
+// ID:            $Id$
+// Revision:      $Revision$
+// Last edited:   $Date$
+// Author:        $Author$
+// Copyright:     (c) 2005 Elliot Glaysher
+// Created:       2/7/05
 //
-//  Created by Elliot on 2/7/05.
-//  Copyright 2005 Elliot Glaysher. All rights reserved.
+/////////////////////////////////////////////////////////////////////////
 //
+// This library is free software; you can redistribute it and/or
+// modify it under the terms of the GNU Lesser General Public
+// License as published by the Free Software Foundation; either
+// version 2.1 of the License, or (at your option) any later version.
+//  
+// This library is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+// Lesser General Public License for more details.
+//  
+// You should have received a copy of the GNU Lesser General Public
+// License along with this library; if not, write to the Free Software
+// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  
+// USA
+//
+/////////////////////////////////////////////////////////////////////////
 
 #import "ImageTaskManager.h"
 #import "Util.h"
@@ -257,8 +280,21 @@
 	// Before we aquire our internal lock, tell the main application to start
 	// spinning...
 	[vitaminSEEController startProgressIndicator];
-
-	if([[[path pathExtension] uppercaseString] isEqual:@"ICNS"])
+	if([path isDir])
+	{
+		// We are working with a directory.
+		NSImage* image = [[NSWorkspace sharedWorkspace] iconForFile:path];
+		[image setSize:NSMakeSize(128, 128)];
+			
+		[image retain];
+		[self sendDisplayCommandWithImage:image width:128 height:128];
+		[image release];
+			
+		// An image has been displayed so stop the spinner
+		[vitaminSEEController stopProgressIndicator];	
+		return;
+	}
+	else if([[[path pathExtension] uppercaseString] isEqual:@"ICNS"])		
 	{
 		NSImage* image = [[NSImage alloc] initWithContentsOfFile:path];
 		NSSize size = [image size];
@@ -338,7 +374,6 @@
 	NSImage* imageToRet;
 	if(smoothing == NO_SMOOTHING || imageRepIsAnimated(imageRep))
 	{
-//		NSLog(@"Using quick rendering for %@...", path);
 		// Draw the image by just making an NSImage from the imageRep. This is
 		// done when the image will have no smoothing, or when we are 
 		// rendering an animated GIF.
@@ -385,16 +420,12 @@
 			return;
 		}
 		
-//		NSLog(@"First pass of %@", path);
 		[self sendDisplayCommandWithImage:imageToRet width:imageX height:imageY];
 		
 		// Now give us a chance to BAIL if we've already been given another display
 		// command
 		if([self newDisplayCommandInQueue])
-		{
-//			NSLog(@"Bailing because of new display command...");
 			return;
-		}
 		
 		// Draw the image onto a new NSImage using smooth scaling. This is done
 		// whenever the image isn't animated so that the picture will have 
@@ -406,13 +437,11 @@
 			switch(smoothing)
 			{
 				case LOW_SMOOTHING:
-//					NSLog(@"Low smoothing!");
 					[[NSGraphicsContext currentContext] 
 						setImageInterpolation:NSImageInterpolationLow];
 					break;
 				default:
 				case HIGH_SMOOTHING:
-//					NSLog(@"High smoothing!");
 					[[NSGraphicsContext currentContext] 
 						setImageInterpolation:NSImageInterpolationHigh];
 			}
@@ -422,7 +451,6 @@
 		[imageToRet unlockFocus];
 		
 		// Now display the final image:
-//		NSLog(@"Second pass of %@", path);
 		[self sendDisplayCommandWithImage:imageToRet width:imageX height:imageY];
 	}
 	

@@ -1,10 +1,33 @@
+/////////////////////////////////////////////////////////////////////////
+// File:          $File$
+// Module:        SHORT DESCRIPTION OF YOUR FILE
+// Part of:       VitaminSEE
 //
-//  ViewIconViewController.m
-//  CQView
+// ID:            $Id$
+// Revision:      $Revision$
+// Last edited:   $Date$
+// Author:        $Author$
+// Copyright:     (c) 2005 Elliot Glaysher
+// Created:       2/9/05
 //
-//  Created by Elliot on 2/9/05.
-//  Copyright 2005 Elliot Glaysher. All rights reserved.
+/////////////////////////////////////////////////////////////////////////
 //
+// This library is free software; you can redistribute it and/or
+// modify it under the terms of the GNU Lesser General Public
+// License as published by the Free Software Foundation; either
+// version 2.1 of the License, or (at your option) any later version.
+//  
+// This library is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+// Lesser General Public License for more details.
+//  
+// You should have received a copy of the GNU Lesser General Public
+// License along with this library; if not, write to the Free Software
+// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  
+// USA
+//
+/////////////////////////////////////////////////////////////////////////
 
 #import "AppKitAdditions.h"
 #import "ViewIconViewController.h"
@@ -127,13 +150,14 @@
 	NSMenu* newMenu = [[[NSMenu alloc] init] autorelease];
 	NSMenuItem* newMenuItem;
 	int currentTag = [currentDirectoryComponents count];
+	NSSize iconImageSize = NSMakeSize(16, 16);
 	while(currentComponent = [e nextObject]) {
 		newMenuItem = [[[NSMenuItem alloc] initWithTitle:currentComponent
 												  action:@selector(directoryMenuSelected:)
 										   keyEquivalent:@""] autorelease];
 		[newMenuItem setImage:[[NSString pathWithComponents:
 			[currentDirectoryComponents subarrayWithRange:NSMakeRange(0, currentTag)]] 
-			iconImageOfSize:NSMakeSize(16,16)]];
+			iconImageOfSize:iconImageSize]];
 		[newMenuItem setTag:currentTag];
 		[newMenuItem setTarget:self];
 		currentTag--;
@@ -152,6 +176,8 @@
 	[ourBrowser setCellClass:[ViewAsIconViewCell class]];
 	[ourBrowser loadColumnZero];
 	
+	[pluginLayer stopProgressIndicator];
+	
 	if(newCurrentFile)
 	{
 		// Select the previous directory
@@ -164,7 +190,7 @@
 		// Select the first file on the list
 		[ourBrowser selectRow:0 inColumn:0];
 		[self singleClick:ourBrowser];
-	}	
+	}
 }
 
 -(void)directoryMenuSelected:(id)sender
@@ -216,8 +242,9 @@ willDisplayCell:(id)cell
 -(void)singleClick:(NSBrowser*)sender
 {
 	// grab the image path
-	NSString* absolutePath = [[currentDirectory stringByAppendingPathComponent:
-		[sender path]] stringByStandardizingPath];
+	NSString* absolutePath = [currentDirectory stringByAppendingPathComponent:
+		[sender path]];
+	NSLog(@"Absolute path : %@", absolutePath);
 	
 	[pluginLayer setCurrentFile:absolutePath];
 	
@@ -230,15 +257,16 @@ willDisplayCell:(id)cell
 	
 	int preloadRow = -1;
 	int newPosition = [sender selectedRowInColumn:0];
-	if([absolutePath isDir])
-	{
-		// If this is a directory, and the first file is an image, then preload it.
-		NSString* firstFile = [[[NSFileManager defaultManager] 
-			directoryContentsAtPath:currentDirectory] objectAtIndex:0];
-		if([firstFile isImage])
-			[pluginLayer preloadFile:firstFile];
-	}
-	else if(newPosition > oldPosition)
+//	if([absolutePath isDir])
+//	{
+//		// If this is a directory, and the first file is an image, then preload it.
+//		NSString* firstFile = [[[NSFileManager defaultManager] 
+//			directoryContentsAtPath:currentDirectory] objectAtIndex:0];
+//		if([firstFile isImage])
+//			[pluginLayer preloadFile:firstFile];
+//	}
+//	else
+	if(newPosition > oldPosition)
 	{
 		// We are moving down (positive) so preload the next file
 		preloadRow = newPosition + 1;
@@ -262,8 +290,8 @@ willDisplayCell:(id)cell
 -(void)doubleClick:(NSBrowser*)sender
 {
 	// Double clicking sets the directory...if it's a directory
-	NSString* absolutePath = [[currentDirectory stringByAppendingPathComponent:
-		[ourBrowser path]] stringByStandardizingPath];
+	NSString* absolutePath = [currentDirectory stringByAppendingPathComponent:
+		[ourBrowser path]];
 	
 	if([absolutePath isDir])
 	{
@@ -420,7 +448,7 @@ willDisplayCell:(id)cell
 	{
 		//Assumption: curFile[0] == '/'.
 		NSString* currentFileWithPath = [currentDirectory 
-			stringByAppendingPathComponent:curPath];// stringByStandardizingPath];
+			stringByAppendingPathComponent:curPath];
 				
 		if(([currentFileWithPath isDir] || [currentFileWithPath isImage]) &&
 		   [currentFileWithPath isVisible])

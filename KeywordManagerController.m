@@ -92,6 +92,8 @@
 -(IBAction)fileChanged:(id)sender
 {
 	BOOL worked = [pluginLayer renameFile:[pluginLayer currentFile] to:[sender stringValue]];
+
+	// If the operation didn't work, then revert to the name before.
 	if(!worked)
 		[sender setStringValue:[[pluginLayer currentFile] lastPathComponent]];
 }
