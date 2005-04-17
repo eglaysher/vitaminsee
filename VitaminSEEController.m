@@ -683,16 +683,32 @@
 
 -(void)redraw
 {
-	[imageTaskManager setSmoothing:[[[NSUserDefaults standardUserDefaults]
-		objectForKey:@"SmoothingTag"] intValue]];
-	[imageTaskManager setScaleProportionally:scaleProportionally];
-	[imageTaskManager setScaleRatio:scaleRatio];
-	[imageTaskManager setContentViewSize:[scrollView contentSize]];
-
+	[imageSizeLabel setStringValue:@"---"];
+	
 	if(!currentImageFile)
+	{
+		// Set nothing.
 		[imageViewer setImage:nil];	
+	}
+	else if([currentImageFile isDir])
+	{
+		// Set the
+		NSImage* image = [[NSWorkspace sharedWorkspace] iconForFile:currentImageFile];
+		[image setSize:NSMakeSize(128, 128)];
+		[imageViewer setImage:image];
+
+		[(NSScrollView*)[imageViewer superview] setDocumentCursor:nil];		
+	}
 	else
 	{
+		// Tell the ImageTaskManager our current options
+		[imageTaskManager setSmoothing:[[[NSUserDefaults standardUserDefaults]
+		objectForKey:@"SmoothingTag"] intValue]];
+		[imageTaskManager setScaleProportionally:scaleProportionally];
+		[imageTaskManager setScaleRatio:scaleRatio];
+		[imageTaskManager setContentViewSize:[scrollView contentSize]];		
+		
+		// Tell the ImageTaskManager to load the file and contact us when done
 		[self startProgressIndicator];
 		[imageTaskManager displayImageWithPath:currentImageFile];
 	}

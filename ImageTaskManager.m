@@ -258,22 +258,7 @@
 	// spinning...
 	[vitaminSEEController startProgressIndicator];
 
-	if([path isDir])
-	{
-		// We are working with a directory.
-		NSImage* image = [[NSWorkspace sharedWorkspace] iconForFile:path];
-		[image setSize:NSMakeSize(128, 128)];
-		
-		[image retain];
-		[self sendDisplayCommandWithImage:image width:128 height:128];
-		[image release];
-		
-		// An image has been displayed so stop the spinner
-		[vitaminSEEController stopProgressIndicator];	
-		
-		return;
-	}
-	else if([[[path pathExtension] uppercaseString] isEqual:@"ICNS"])
+	if([[[path pathExtension] uppercaseString] isEqual:@"ICNS"])
 	{
 		NSImage* image = [[NSImage alloc] initWithContentsOfFile:path];
 		NSSize size = [image size];
