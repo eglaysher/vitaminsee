@@ -3,7 +3,7 @@
 // Module:        Main Controller Class
 // Part of:       VitaminSEE
 //
-// ID:            $Id$
+// ID:            $Id: VitaminSEEController.m 123 2005-04-18 00:21:02Z elliot $
 // Revision:      $Revision$
 // Last edited:   $Date$
 // Author:        $Author$
@@ -32,6 +32,7 @@
 #include <sys/stat.h>
 
 #import "VitaminSEEController.h"
+#import "VitaminSEEController+PluginLayer.h"
 #import "ToolbarDelegate.h"
 #import "ViewIconViewController.h"
 
@@ -129,8 +130,10 @@
  * * Rename undo
  */
 
+// TEST MORE:
 // * Stop building thumbnails when you leave a directory (finished?)
-
+// * s/applicationWillFinishLoading/applicationDidFinishLoading/ + detect
+//   if we've been told to select something.
 // * Known issue: Copying a file, then deleting the copy, leaves the undo operation
 //   on the undo stack. I need to figure out how to fix this...
 
@@ -141,7 +144,8 @@
 // * Clean up ViewIconViewController
 // * Cache control. How large?
 // * Move to trash in wrong spot?
-// * GIF animation speed.
+// * Toolbar customizations menu items
+// * cmd-t to add to Favorites
 
 // * Japanese Localization
 // * Mouse-wheel scrolling...
@@ -169,6 +173,9 @@
 
 // For Version 1.0
 // ??????
+
+// KNOWN ISSUES:
+// * GIF animation speed.
 
 /* Okay, refactoring responsibilities:
   * VitaminSEEController is responsible for ONLY:
@@ -289,8 +296,8 @@
 	FileSizeFormatter* fsFormatter = [[[FileSizeFormatter alloc] init] autorelease];
 	[[fileSizeLabel cell] setFormatter:fsFormatter];
 	
-	// Set up the icon for Home. (Do this at runtime so the correct icon gets
-	// put up in the case of FileVault)
+	// Set up the icon for Home. Get the icon for the directory so something like
+	// FileVault shows up...
 	NSImage* img = [[NSWorkspace sharedWorkspace] iconForFile:NSHomeDirectory()];
 	[img setSize:NSMakeSize(16, 16)];
 	[homeFolderMenuItem setImage:img];
@@ -299,9 +306,7 @@
 	// the default file icon in case "~/Pictures" doesn't exist.)
 	if([[NSHomeDirectory() stringByAppendingPathComponent:@"Pictures"] isDir])
 	{
-//		img = [[NSWorkspace sharedWorkspace] iconForFile:
-//			[NSHomeDirectory() stringByAppendingPathComponent:@"Pictures"]];
-		img = [NSImage imageNamed:@"ToolbarPicturesFolderIcon"];
+		img = [[[NSImage imageNamed:@"ToolbarPicturesFolderIcon"] copy] autorelease];
 		[img setScalesWhenResized:YES];
 		[img setSize:NSMakeSize(16, 16)];
 	}
@@ -332,6 +337,8 @@
 	// Launch the other threads and tell them to connect back to us.
 	imageTaskManager = [[ImageTaskManager alloc] initWithController:self];
 	thumbnailManager = [[ThumbnailManager alloc] initWithController:self];
+
+	setPathForFirstTime = NO;
 }
 
 -(void)dealloc
@@ -343,21 +350,21 @@
 
 // This initialization can safely be delayed until after the main window has
 // been shown.
-- (void)applicationWillFinishLaunching:(NSNotification *)aNotification
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-	// Whirl ourselves
-	[self startProgressIndicator];
-	// set our current directory 
-	[viewAsIconsController setCurrentDirectory:[[NSUserDefaults standardUserDefaults] 
-		objectForKey:@"DefaultStartupPath"] currentFile:nil];
-	[self stopProgressIndicator];
+	if(!setPathForFirstTime)
+	{
+		[self startProgressIndicator];
+		[viewAsIconsController setCurrentDirectory:[[NSUserDefaults standardUserDefaults] 
+			objectForKey:@"DefaultStartupPath"] currentFile:nil];
+		[self stopProgressIndicator];
+	}
 	
 	// Make the icon view the first responder since the previous enable
 	// makes directoryDropdown FR.
 	[viewAsIconsController makeFirstResponderTo:mainVitaminSeeWindow];
 }
 
-// fixme: Make this better
 -(BOOL)application:(NSApplication*)theApplication openFile:(NSString*)filename
 {	
 	if([filename isImage])
@@ -367,7 +374,7 @@
 			[self toggleVitaminSee:self];
 		
 		[viewAsIconsController setCurrentDirectory:[filename stringByDeletingLastPathComponent] 
-							 currentFile:filename];
+									   currentFile:filename];
 	}
 	else if([filename isDir])
 	{
@@ -380,6 +387,7 @@
 	else
 		return NO;
 
+	setPathForFirstTime = YES;
 	return YES;
 }
 
@@ -659,6 +667,20 @@
 	else if([theMenuItem action] == @selector(viewInPreview:))
 	{
 		enable = mainWindowVisible && [currentImageFile isImage];
+	}
+	else if([theMenuItem action] == @selector(toggleToolbarShown:))
+	{
+		enable = mainWindowVisible;
+		
+		// Set the menu item to the correct state
+		if([[mainVitaminSeeWindow toolbar] isVisible])
+			[theMenuItem setTitle:NSLocalizedString(@"Hide Toolbar", @"Text in View menu")];
+		else
+			[theMenuItem setTitle:NSLocalizedString(@"Show Toolbar", @"Text in View menu")];
+	}
+	else if([theMenuItem action] == @selector(runToolbarCustomizationPalette:))
+	{
+		enable = mainWindowVisible;
 	}
 	// Go Menu
     else if ([theMenuItem action] == @selector(goEnclosingFolder:))

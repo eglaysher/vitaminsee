@@ -57,12 +57,11 @@
 								 caseSensitive:NO
 							  matchesIntoArray:&a
 								   filterTypes:nil];
-//	NSLog(@"Paths: %@", a);
 }
 
 -(IBAction)type:(id)sender
 {
-//	NSLog(@"type type type");
+// Why isn't there anything here?
 }
 
 -(IBAction)clickOK:(id)sender

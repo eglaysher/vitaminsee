@@ -186,7 +186,7 @@ zeroing in on the optimum length.
 {
 	NSArray *subviews = [self subviews];
 
-	NSLog(@"In view: %@", inView);
+//	NSLog(@"In view: %@", inView);
 	
 	// Replace or insert subview if not the right one already
 	if (0 == [subviews count])

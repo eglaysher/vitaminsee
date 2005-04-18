@@ -4,7 +4,7 @@
 //                off to the main thread
 // Part of:       VitaminSEE
 //
-// ID:            $Id$
+// ID:            $Id: ImageTaskManager.m 123 2005-04-18 00:21:02Z elliot $
 // Revision:      $Revision$
 // Last edited:   $Date$
 // Author:        $Author$
@@ -413,9 +413,14 @@
 			[imageToRet unlockFocus];
 
 			// Alert the user to a problem
+			NSString* format = NSLocalizedString(@"Can not display %@", 
+				@"Error message: 'Can not display FILENAME'");
+			NSString* informativeText = NSLocalizedString(@"Please chcek that it's a valid file",
+				@"Localized informative text on can't load image error");
+			
 			[vitaminSEEController displayAlert:[NSString stringWithFormat:
-				@"Can not display %@", [path lastPathComponent] ]
-							   informativeText:@"Please chcek that it's a valid file"
+				format, [path lastPathComponent]]
+							   informativeText:informativeText
 									helpAnchor:@"IMAGE_WONT_LOAD_ANCHOR"];
 			[vitaminSEEController stopProgressIndicator];
 			return;

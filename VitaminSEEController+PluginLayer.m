@@ -31,6 +31,8 @@
 #import "ViewIconViewController.h"
 #import "ImageMetadata.h"
 #import "ThumbnailManager.h"
+#import "VitaminSEEController.h"
+#import "VitaminSEEController+PluginLayer.h"
 
 @interface VitaminSEEController (PluginLayerPrivate)
 -(BOOL)removeOverwriteFile:(NSString*)fileToOverwrite;
@@ -328,13 +330,20 @@
 -(BOOL)removeOverwriteFile:(NSString*)fileToOverwrite
 {
 	// Okay, so the file already exists. Let's ask the user for guidance
-	NSString* text = [NSString stringWithFormat:
-		@"A file named '%@' already exists in the directory '%@'. This operation cannot be undone.", 
-		[fileToOverwrite lastPathComponent], 
+	NSString* format = NSLocalizedString(@"An item named '%@' already exists in the directory '%@'. This operation cannot be undone.", 
+										 @"Warning message when user would overwrite a file");
+	NSString* messageText = NSLocalizedString(@"Overwrite file?", 
+		@"Warning message when user would overwrite a file");
+	NSString* overwriteButton = NSLocalizedString(@"Overwrite", 
+		@"Overwrite button in warning message");
+	NSString* cancelButton = NSLocalizedString(@"Cancel",
+		@"Overwrite button in warning message");
+	
+	NSString* text = [NSString stringWithFormat:format, [fileToOverwrite lastPathComponent], 
 		[fileToOverwrite stringByDeletingLastPathComponent]];
-	NSAlert* alert = [NSAlert alertWithMessageText:@"Overwrite file?"
-									 defaultButton:@"Overwrite"
-								   alternateButton:@"Cancel"
+	NSAlert* alert = [NSAlert alertWithMessageText:messageText
+									 defaultButton:overwriteButton
+								   alternateButton:cancelButton
 									   otherButton:nil
 						 informativeTextWithFormat:text];
 	

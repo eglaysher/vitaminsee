@@ -62,11 +62,7 @@
 		[self window];
 
 		[self loadKeywordsIntoTextViewFromList];
-//		[currentKeywordsTextView insertText:@"One\nTwo\nThree\n"];
-//		NSLog(@"TextView; %@", [currentKeywordsTextView string]);
 	}
-	
-//	NSLog(@"Hi my name is %@", self);
 	
 	return self;
 }
@@ -94,12 +90,10 @@
 	NSString* keyword = [[sender selectedCell] title];
 	if([keywords containsObject:keyword])
 	{
-//		NSLog(@"Removing keyword %@", keyword);
 		[keywords removeObject:keyword];
 	}
 	else
 	{
-//		NSLog(@"Adding keyword %@", keyword);
 		[keywords addObject:keyword];
 	}
 
@@ -114,11 +108,15 @@
 
 -(IBAction)fileChanged:(id)sender
 {
-	BOOL worked = [pluginLayer renameFile:[pluginLayer currentFile] to:[sender stringValue]];
+	if(![[sender stringValue] isEqual:[[pluginLayer currentFile] lastPathComponent]])
+	{
+		BOOL worked = [pluginLayer renameFile:[pluginLayer currentFile] 
+										   to:[sender stringValue]];
 
-	// If the operation didn't work, then revert to the name before.
-	if(!worked)
-		[sender setStringValue:[[pluginLayer currentFile] lastPathComponent]];
+		// If the operation didn't work, then revert to the name before.
+		if(!worked)
+			[sender setStringValue:[[pluginLayer currentFile] lastPathComponent]];
+	}
 }
 
 -(void)loadKeywordsIntoTextViewFromList
@@ -188,8 +186,6 @@
 	[outlineView setNeedsDisplay:YES];
 	
 	[self loadKeywordsIntoTextViewFromList];
-	
-//	NSLog(@"New keywords: %@", newkeywords);	
 }
 
 /////////////////////////////////////////////////// NSTextView notification
@@ -300,7 +296,7 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
 
 -(NSString*)name
 {
-	return @"Sort Manager";
+	return NSLocalizedString(@"Sort Manager", @"Localized name of preference pane in toolbar");
 }
 
 -(void)activate

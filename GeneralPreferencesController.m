@@ -42,8 +42,10 @@
 	[oPanel setCanChooseDirectories:YES];
 	[oPanel setCanChooseFiles:NO];
 	[oPanel setAllowsMultipleSelection:NO];
-	[oPanel setTitle:@"Change startup folder"];
-	[oPanel setPrompt:@"Change"];
+	[oPanel setTitle:NSLocalizedString(@"Change startup folder", 
+		@"Name in open dialog box when selecting new startup folder")];
+	[oPanel setPrompt:NSLocalizedString(@"Change", 
+		@"Action button in open dialog box")];
 	
 	NSString* currentDirectory = [[NSUserDefaults standardUserDefaults]
 		objectForKey:@"DefaultStartupPath"];
@@ -93,7 +95,7 @@
 
 - (NSString *)paneName
 {
-    return @"General";
+    return NSLocalizedString(@"General", @"Localized name of preference pane in toolbar");
 }
 
 - (NSImage *)paneIcon
@@ -106,7 +108,7 @@
 
 - (NSString *)paneToolTip
 {
-    return @"General Preferences";
+    return NSLocalizedString(@"General Preferences", @"Tooltip in toolbar");
 }
 
 - (BOOL)allowsHorizontalResizing

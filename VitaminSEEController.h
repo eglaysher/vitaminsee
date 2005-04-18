@@ -75,10 +75,8 @@
 	NSCursor *handCursor;
 	
 	// File view components:
-//	IBOutlet NSPopUpButton* directoryDropdown;
 	IBOutlet NSView* currentFileViewHolder;
 	
-	// * ViewAsImage specific components
 	ViewIconViewController* viewAsIconsController;
 
 	IBOutlet NSProgressIndicator* progressIndicator;
@@ -100,15 +98,13 @@
 	SS_PrefsController *prefs;	
 	
 	// Loaded plugins:
-//	NSMutableDictionary* loadedPlugins;
 	NSMutableDictionary* loadedBasePlugins;
 	NSMutableDictionary* loadedViewPlugins;
 	NSMutableDictionary* loadedCurrentFilePlugins;
-	//	NSMutableDictionary* loaded
-//		
-//		
-//		Plugins;	
+
 	NSString* tmpDestination;
+
+	BOOL setPathForFirstTime;
 }
 
 -(void)displayAlert:(NSString*)message 

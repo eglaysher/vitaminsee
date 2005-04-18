@@ -210,7 +210,6 @@
 
 - (int)browser:(NSBrowser *)sender numberOfRowsInColumn:(int)column
 {
-	NSLog(@"We have %d items", [fileList count]);
 	return [fileList count];
 }
 
@@ -243,7 +242,6 @@ willDisplayCell:(id)cell
 	// grab the image path
 	NSString* absolutePath = [currentDirectory stringByAppendingPathComponent:
 		[sender path]];
-	NSLog(@"Absolute path : %@", absolutePath);
 	
 	[pluginLayer setCurrentFile:absolutePath];
 	
@@ -254,17 +252,10 @@ willDisplayCell:(id)cell
 	// target drawing location of two or three cells.
 	[ourBrowser setNeedsDisplay];
 	
+	// Now we figure out which file we preload next.
 	int preloadRow = -1;
 	int newPosition = [sender selectedRowInColumn:0];
-//	if([absolutePath isDir])
-//	{
-//		// If this is a directory, and the first file is an image, then preload it.
-//		NSString* firstFile = [[[NSFileManager defaultManager] 
-//			directoryContentsAtPath:currentDirectory] objectAtIndex:0];
-//		if([firstFile isImage])
-//			[pluginLayer preloadFile:firstFile];
-//	}
-//	else
+
 	if(newPosition > oldPosition)
 	{
 		// We are moving down (positive) so preload the next file
@@ -297,9 +288,6 @@ willDisplayCell:(id)cell
 		// Get the first image in the directory:		
 		[self setCurrentDirectory:absolutePath currentFile:nil];
 	}
-	
-	// [controller setCurrentDirectory:] will call [self setCurrentDirectory:] which
-	// will manage all our stuff...
 }
 
 // Binary search across our files for a certain node to remove. Much faster then
@@ -338,9 +326,6 @@ willDisplayCell:(id)cell
 
 -(void)addFile:(NSString*)path
 {
-	// FIXME: This needs to be generalized. What happens if this file doesn't have
-	// a thumbnail, a thumbnail request is generated, the file is moved, and then
-	// the thumbnail comes in!?	
 	if([currentDirectory isEqual:[path stringByDeletingLastPathComponent]])
 	{
 		unsigned index = [fileList lowerBoundToInsert:path 
@@ -350,15 +335,14 @@ willDisplayCell:(id)cell
 			[fileList insertObject:path atIndex:index];
 		else
 			[fileList addObject:path];
-	
-		// Because 
-//		[[ourBrowser matrixInColumn:0] insertRow:<#(int)row#>]
+
+		// Add it to the list of files to thumbnail. Either it already has a 
+		// thumbnail
+		[pluginLayer generateThumbnailForFile:path];
 		
 		// Redisplay and select the added file
 		[ourBrowser loadColumnZero];
-		NSLog(@"addFile:%@", path);
 		[ourBrowser setPath:[NSString stringWithFormat:@"/%@", [path lastPathComponent]]];
-		NSLog(@"after set path:%@", path);
 		
 		[pluginLayer setCurrentFile:[fileList objectAtIndex:index]];
 	}

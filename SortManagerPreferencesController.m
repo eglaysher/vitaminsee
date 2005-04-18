@@ -47,8 +47,8 @@
 	[panel setCanChooseFiles:NO];
 	[panel setAllowsMultipleSelection:YES];
 	[panel setCanCreateDirectories:YES];
-	[panel setPrompt:@"Add"];
-	[panel setTitle:@"Add paths to Sort Manager"];
+	[panel setPrompt:NSLocalizedString(@"Add", @"Action button in add Favorite location open box")];
+	[panel setTitle:NSLocalizedString(@"Add paths to Sort Manager", @"Window title for open box")];
 	
 	int result = [panel runModalForDirectory:[NSHomeDirectory() 
 		stringByAppendingPathComponent:@"Pictures"]
@@ -97,7 +97,7 @@
 
 - (NSString *)paneName
 {
-    return @"Favorites";
+    return NSLocalizedString(@"Favorites", @"Localized name of preference pane in toolbar");
 }
 
 - (NSImage *)paneIcon
@@ -108,7 +108,7 @@
 
 - (NSString *)paneToolTip
 {
-    return @"Favorites";
+    return NSLocalizedString(@"Favorites", @"Localized tooltip");
 }
 
 - (BOOL)allowsHorizontalResizing

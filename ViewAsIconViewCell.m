@@ -122,7 +122,6 @@ NSSize IMAGE_SIZE = {128.0f, 128.0f};
 
 -(void)setHighlighted:(BOOL)flag
 {
-//	NSLog(@"Setting highlight!");
 	[super setHighlighted:flag];
 	selected = flag;
 }

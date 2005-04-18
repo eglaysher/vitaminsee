@@ -110,7 +110,7 @@
 
 - (NSString *)paneName
 {
-    return @"Keywords";
+    return NSLocalizedString(@"Keywords", @"Localized name of preference pane in toolbar");
 }
 
 - (NSImage *)paneIcon
@@ -123,7 +123,7 @@
 
 - (NSString *)paneToolTip
 {
-    return @"Keyword Preferences";
+    return NSLocalizedString(@"Keyword Preferences", @"Localized name of preference pane in toolbar");
 }
 
 - (BOOL)allowsHorizontalResizing
@@ -154,6 +154,7 @@
 - (id)outlineView:(NSOutlineView *)outlineView 
 objectValueForTableColumn:(NSTableColumn *)tableColumn 
 		   byItem:(id)item {
+	// Think about localizing the root of the keyword tree?
     return (item == nil) ? 	@"Keywords" : (id)[item keyword];
 }
 
