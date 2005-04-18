@@ -144,12 +144,9 @@
 // * Clean up ViewIconViewController
 // * Cache control. How large?
 // * Move to trash in wrong spot?
-// * Toolbar customizations menu items
 // * cmd-t to add to Favorites
 
 // * Japanese Localization
-// * Mouse-wheel scrolling...
-//   * Requires next/previous 
 // * Dogfood it for at least a week and a half...
 // * FIX THE HELP!
 
@@ -159,6 +156,8 @@
 // * Fullscreen mode
 // * Undo on delete. (0.7 by absolute latest!)
 // * DnD on the ViewIconViewController
+// * Mouse-wheel scrolling...
+//   * Requires next/previous 
 // * UNIT TESTING!
 
 // For Version 0.8
@@ -389,6 +388,23 @@
 
 	setPathForFirstTime = YES;
 	return YES;
+}
+
+- (BOOL)applicationShouldHandleReopen:(NSApplication *)theApplication 
+					hasVisibleWindows:(BOOL)hasVisibleWindows
+{
+	if(!hasVisibleWindows)
+	{
+		// Clear the current file being displayed (albeit offscreen)
+		[self setCurrentFile:nil];
+		
+		// Set the main window to the default directory
+		[viewAsIconsController setCurrentDirectory:[[NSUserDefaults standardUserDefaults] 
+			objectForKey:@"DefaultStartupPath"] currentFile:nil];
+
+		// Now display the window
+		[self toggleVitaminSee:self];
+	}
 }
 
 -(void)displayAlert:(NSString*)message informativeText:(NSString*)info 
