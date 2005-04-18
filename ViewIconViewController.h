@@ -69,7 +69,6 @@
 
 -(NSString*)nameOfNextFile;
 -(void)selectFile:(NSString*)fileToSelect;
--(void)updateCell:(id)cell;
 
 -(void)makeFirstResponderTo:(NSWindow*)window;
 

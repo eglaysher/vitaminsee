@@ -298,28 +298,25 @@ willDisplayCell:(id)cell
 		withSortSelector:@selector(caseInsensitiveCompare:)];
 
 	NSMatrix* matrix = [ourBrowser matrixInColumn:0];
+	NSString* newFile = 0;
 	if(index != NSNotFound)
 	{
 		if(index == [matrix selectedRow])
-		{
-			NSString* file = [self nameOfNextFile];
-			[self selectFile:file];
-			[pluginLayer setCurrentFile:file];
-		}
+			newFile = [self nameOfNextFile];
 
 		[fileList removeObjectAtIndex:index];
 		
-		// This really shouldn't be here, but -[NSBrowser reloadColumn:] has issues, and 
-		// this is the only workaround I can think of.
-		[[ourBrowser matrixInColumn:0] removeRow:index];
+		[ourBrowser loadColumnZero];
 		
-		// Tell our browser to redisplay. We can't rely on removing the row from the matrix
-		// (even if we update almost
-		[ourBrowser reloadColumn:0];
 		[ourBrowser setNeedsDisplay];
 		
-		if([fileList count] == 0)
-			// We better say no image.
+		// Set the next file
+		if(newFile)
+		{
+			[self selectFile:newFile];
+			[pluginLayer setCurrentFile:newFile];			
+		}
+		else
 			[pluginLayer setCurrentFile:nil];
 	}
 }
@@ -377,11 +374,6 @@ willDisplayCell:(id)cell
 	}
 }
 
--(void)updateCell:(id)cell
-{
-	[[ourBrowser matrixInColumn:0] updateCell:cell];
-}
-
 -(void)makeFirstResponderTo:(NSWindow*)window
 {
 	[window makeFirstResponder:ourBrowser];
@@ -402,8 +394,6 @@ willDisplayCell:(id)cell
 			[ourBrowser setNeedsDisplay];
 		}
 	}
-	else
-		NSLog(@"Warning! %@ wasn't found when setting it's thumbnail!", path);
 }
 
 -(void)goEnclosingFolder

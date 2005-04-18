@@ -30,6 +30,7 @@
 
 #import "SortManagerController.h"
 #import "PluginLayer.h"
+#import "NSString+FileTasks.h"
 
 @implementation SortManagerController
 
@@ -42,6 +43,7 @@
 		// stuff could go here.
 		pluginLayer = inPluginLayer;
 		[pluginLayer retain];
+		keyValues = [[NSMutableDictionary alloc] init];
 	}
 	
 	return self;
@@ -50,6 +52,7 @@
 -(void)dealloc
 {
 	[pluginLayer release];
+	[keyValues release];
 }
 
 -(void)windowDidLoad
@@ -85,7 +88,26 @@
 
 -(void)fileSetTo:(NSString*)newPath
 {
-	// Ignore. We just use the "this file" commands in 
+	NSNumber* valid;
+	
+	if(newPath)
+	{
+		[keyValues setValue:newPath forKey:@"CurrentFile"];
+		// Assumption: Any path passed in here that's not null is valid.
+		valid = [NSNumber numberWithBool:YES];
+	}
+	else
+	{
+		[keyValues setValue:@"" forKey:@"CurrentFile"];
+		valid = [NSNumber numberWithBool:NO];
+	}
+
+	if(![valid isEqual:[keyValues objectForKey:@"ValidDirectory"]])
+		[keyValues setValue:valid forKey:@"ValidDirectory"];
+	
+	// Now force a full redisplay
+	if([[tableView window] isVisible])
+		[tableView setNeedsDisplay:YES];
 }
 
 /////////////////////////////////////////////////// PROTOCOL: CurrentFilePlugin
@@ -111,8 +133,15 @@
 	// Manually bind each cell to it's corresponding location
     NSDictionary* filter = [[pathsController arrangedObjects] objectAtIndex:row];
     [cell bind:@"enabled" toObject:filter withKeyPath:@"Path" options:
-		[NSDictionary dictionaryWithObjectsAndKeys:@"PathExistsValueTransformer", @"NSValueTransformerName", nil]
-			];
+		[NSDictionary dictionaryWithObjectsAndKeys:@"PathExistsValueTransformer", 
+			@"NSValueTransformerName", nil]];
+	
+	// If the column isn't the final one
+	if(![[tableColumn identifier] isEqual:NSLocalizedString(@"Destination", 
+		@"Destination Column header (Must be the same as in the NIB!)")])
+	{
+		[cell bind:@"enabled2" toObject:keyValues withKeyPath:@"ValidDirectory" options:nil];
+	}
 }
 
 //////////// 

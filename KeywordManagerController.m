@@ -267,30 +267,44 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
 	if(keywordsDirty)
 		[self saveKeywords];
 	
-	// Need to keep track of the current image.
-	[currentPath release];
-	currentPath = newPath;
-	[currentPath retain];
-	
-	[fileNameTextField setStringValue:[currentPath lastPathComponent]];
-
-	// Let's check if we can set keywords
-	if([pluginLayer supportsKeywords:newPath])
+	if(newPath)
 	{
-		// First, make sure the relevant sections are enabled:
-		[outlineView setEnabled:YES];
-		[self enableAllCells];
-		[outlineView setNeedsDisplay:YES];
-		[currentKeywordsTextView setEditable:YES];
-		[self loadKeywords];			
+		// Need to keep track of the current image.
+		[currentPath release];
+		currentPath = newPath;
+		[currentPath retain];
+
+		[fileNameTextField setEnabled:YES];
+		[fileNameTextField setStringValue:[currentPath lastPathComponent]];
+
+		// Let's check if we can set keywords
+		if([pluginLayer supportsKeywords:newPath])
+		{
+			// First, make sure the relevant sections are enabled:
+			[outlineView setEnabled:YES];
+			[self enableAllCells];
+			[outlineView setNeedsDisplay:YES];
+			[currentKeywordsTextView setEditable:YES];
+			[self loadKeywords];			
+		}
+		else
+		{
+			// We can't deal with keywords so don't allow entry there
+			[outlineView setEnabled:NO];
+			[self disableAllCells];
+			[outlineView setNeedsDisplay:YES];
+			[currentKeywordsTextView setEditable:NO];
+		}
 	}
 	else
 	{
-		// We can't deal with keywords so don't allow entry there
+		// Disable everything
+		[fileNameTextField setStringValue:@""];
+		[fileNameTextField setEnabled:NO];
 		[outlineView setEnabled:NO];
 		[self disableAllCells];
 		[outlineView setNeedsDisplay:YES];
-		[currentKeywordsTextView setEditable:NO];
+		[currentKeywordsTextView setEditable:NO];		
 	}
 }
 

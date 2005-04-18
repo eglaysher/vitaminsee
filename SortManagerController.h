@@ -36,8 +36,10 @@
 
 @interface SortManagerController : NSWindowController <CurrentFilePlugin>
 {
-	PluginLayer* pluginLayer;
 	IBOutlet NSArrayController* pathsController;
+	IBOutlet NSTableView* tableView;
+	PluginLayer* pluginLayer;
+	NSMutableDictionary* keyValues;
 }
 
 // Actions from the form

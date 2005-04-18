@@ -5,7 +5,7 @@
             ACTIONS = {copyButtonPushed = id; moveButtonPushed = id; }; 
             CLASS = SortManagerController; 
             LANGUAGE = ObjC; 
-            OUTLETS = {pathsController = NSArrayController; }; 
+            OUTLETS = {pathsController = NSArrayController; tableView = NSTableView; }; 
             SUPERCLASS = NSWindowController; 
         }
     ); 

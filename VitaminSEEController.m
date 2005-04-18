@@ -393,7 +393,7 @@
 - (BOOL)applicationShouldHandleReopen:(NSApplication *)theApplication 
 					hasVisibleWindows:(BOOL)hasVisibleWindows
 {
-	if(!hasVisibleWindows)
+	if(![mainVitaminSeeWindow isVisible])
 	{
 		// Clear the current file being displayed (albeit offscreen)
 		[self setCurrentFile:nil];
@@ -405,6 +405,12 @@
 		// Now display the window
 		[self toggleVitaminSee:self];
 	}
+}
+
+- (void)windowWillClose:(NSNotification *)aNotification
+{
+	// Set the file to nil
+	[self setCurrentFile:nil];
 }
 
 -(void)displayAlert:(NSString*)message informativeText:(NSString*)info 
@@ -571,9 +577,11 @@
 {
 	id sortManager = [loadedCurrentFilePlugins objectForKey:@"SortManagerController"];
 	if(!sortManager)
+	{
 		sortManager = [self loadComponentNamed:@"SortManagerController"
 									fromBundle:@"SortManager.cqvPlugin"];
-
+		[sortManager fileSetTo:currentImageFile];
+	}
 	return sortManager;
 }
 
