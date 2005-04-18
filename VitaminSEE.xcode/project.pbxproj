@@ -353,28 +353,32 @@
 		8B32703907E137A400FBD945 = {
 			isa = PBXFileReference;
 			lastKnownFileType = image.tiff;
-			path = ZoomToFitToolbarImage.tiff;
+			name = ZoomToFitToolbarImage.tiff;
+			path = Resources/ZoomToFitToolbarImage.tiff;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		8B32703A07E137A400FBD945 = {
 			isa = PBXFileReference;
 			lastKnownFileType = image.tiff;
-			path = ZoomOutToolbarImage.tiff;
+			name = ZoomOutToolbarImage.tiff;
+			path = Resources/ZoomOutToolbarImage.tiff;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		8B32703B07E137A400FBD945 = {
 			isa = PBXFileReference;
 			lastKnownFileType = image.tiff;
-			path = ZoomInToolbarImage.tiff;
+			name = ZoomInToolbarImage.tiff;
+			path = Resources/ZoomInToolbarImage.tiff;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		8B32703C07E137A400FBD945 = {
 			isa = PBXFileReference;
 			lastKnownFileType = image.tiff;
-			path = ActualSizeToolbarImage.tiff;
+			name = ActualSizeToolbarImage.tiff;
+			path = Resources/ActualSizeToolbarImage.tiff;
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -1132,10 +1136,10 @@
 		};
 		8B56209107CEA09E005990E1 = {
 			children = (
+				8B5E14E908146FF900897347,
 				8BC6662807BFCF880075F57F,
 				8BC6662907BFCF880075F57F,
 				8B5620C007CEA5A5005990E1,
-				8BA124E707D282DA00614FF4,
 			);
 			isa = PBXGroup;
 			name = SortManager;
@@ -1164,19 +1168,11 @@
 			settings = {
 			};
 		};
-		8B5620B807CEA594005990E1 = {
-			isa = PBXFileReference;
-			lastKnownFileType = wrapper.nib;
-			name = English;
-			path = English.lproj/SortManager.nib;
-			refType = 4;
-			sourceTree = "<group>";
-		};
 		8B5620BB07CEA5A5005990E1 = {
 			buildActionMask = 2147483647;
 			files = (
 				8B5620C907CEA6A4005990E1,
-				8BA124E807D282DA00614FF4,
+				8B5E14EB08146FF900897347,
 			);
 			isa = PBXResourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1260,7 +1256,7 @@
 			isa = PBXFileReference;
 			lastKnownFileType = text.xml;
 			name = "SortManager-Info.plist";
-			path = "/Users/elliot/Projects/VitaminSEE-bugfix/SortManager-Info.plist";
+			path = "/Users/elliot/Projects/VitaminSEE-development-reorganization/Components/SortManager/SortManager-Info.plist";
 			refType = 0;
 			sourceTree = "<absolute>";
 		};
@@ -1470,16 +1466,74 @@
 			settings = {
 			};
 		};
-		8B5E14DC081465DE00897347 = {
-			isa = PBXFileReference;
-			lastKnownFileType = wrapper.nib;
+		8B5E14E00814662200897347 = {
+			children = (
+				8B5E14E10814662200897347,
+			);
+			isa = PBXVariantGroup;
 			name = GeneralPreferences.nib;
-			path = Components/GeneralPreferences/GeneralPreferences.nib;
+			path = "";
 			refType = 4;
 			sourceTree = "<group>";
 		};
-		8B5E14DD081465DE00897347 = {
-			fileRef = 8B5E14DC081465DE00897347;
+		8B5E14E10814662200897347 = {
+			isa = PBXFileReference;
+			lastKnownFileType = wrapper.nib;
+			name = English;
+			path = Components/GeneralPreferences/English.lproj/GeneralPreferences.nib;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B5E14E20814662200897347 = {
+			fileRef = 8B5E14E00814662200897347;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B5E14E908146FF900897347 = {
+			children = (
+				8B5E14EA08146FF900897347,
+			);
+			isa = PBXVariantGroup;
+			name = SortManager.nib;
+			path = "";
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B5E14EA08146FF900897347 = {
+			isa = PBXFileReference;
+			lastKnownFileType = wrapper.nib;
+			name = English;
+			path = Components/SortManager/English.lproj/SortManager.nib;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B5E14EB08146FF900897347 = {
+			fileRef = 8B5E14E908146FF900897347;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B5E14EE081470A600897347 = {
+			children = (
+				8B5E14EF081470A600897347,
+			);
+			isa = PBXVariantGroup;
+			name = SortManagerPreferences.nib;
+			path = "";
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B5E14EF081470A600897347 = {
+			isa = PBXFileReference;
+			lastKnownFileType = wrapper.nib;
+			name = English;
+			path = Components/SortManagerPreferences/English.lproj/SortManagerPreferences.nib;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B5E14F0081470A600897347 = {
+			fileRef = 8B5E14EE081470A600897347;
 			isa = PBXBuildFile;
 			settings = {
 			};
@@ -1523,7 +1577,8 @@
 		8B6A9177080784F40085334A = {
 			isa = PBXFileReference;
 			lastKnownFileType = image.icns;
-			path = ToolbarFavoritesIcon.icns;
+			name = ToolbarFavoritesIcon.icns;
+			path = Resources/ToolbarFavoritesIcon.icns;
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -1607,12 +1662,12 @@
 		};
 		8B6D010E07CB179C009A76DA = {
 			children = (
+				8B5E14EE081470A600897347,
 				8B7DDCCA07F8E82400FE20E4,
 				8B7DDCCB07F8E82400FE20E4,
 				8B6D020F07CB3312009A76DA,
 				8B6D021007CB3312009A76DA,
 				8B6D01F907CB327F009A76DA,
-				8BA124E907D282E600614FF4,
 			);
 			isa = PBXGroup;
 			name = SortManagerPreferences;
@@ -1622,11 +1677,11 @@
 		};
 		8B6D011307CB185E009A76DA = {
 			children = (
-				8B5E14DC081465DE00897347,
 				8B561DF807CE78F9005990E1,
 				8BAF0F4B07CE6E5200B0C832,
 				8BAF0F4C07CE6E5200B0C832,
 				8BAF0F3F07CE6DAA00B0C832,
+				8B5E14E00814662200897347,
 			);
 			isa = PBXGroup;
 			name = GeneralPreferences;
@@ -1663,14 +1718,6 @@
 			settings = {
 			};
 		};
-		8B6D019807CB29EF009A76DA = {
-			isa = PBXFileReference;
-			lastKnownFileType = wrapper.nib;
-			name = English;
-			path = English.lproj/SortManagerPreferences.nib;
-			refType = 4;
-			sourceTree = "<group>";
-		};
 		8B6D01C007CB2EA2009A76DA = {
 			fileEncoding = 30;
 			isa = PBXFileReference;
@@ -1705,7 +1752,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B6D01FC07CB329C009A76DA,
-				8BA124EA07D282E600614FF4,
+				8B5E14F0081470A600897347,
 			);
 			isa = PBXResourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1790,7 +1837,7 @@
 			isa = PBXFileReference;
 			lastKnownFileType = text.xml;
 			name = "SortManagerPreferences-Info.plist";
-			path = "/Users/elliot/Projects/VitaminSEE-bugfix/SortManagerPreferences-Info.plist";
+			path = "/Users/elliot/Projects/VitaminSEE-development-reorganization/Components/SortManagerPreferences/SortManagerPreferences-Info.plist";
 			refType = 0;
 			sourceTree = "<absolute>";
 		};
@@ -1833,7 +1880,8 @@
 			fileEncoding = 4;
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.c.h;
-			path = SortManagerPreferencesController.h;
+			name = SortManagerPreferencesController.h;
+			path = Components/SortManagerPreferences/SortManagerPreferencesController.h;
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -1841,7 +1889,8 @@
 			fileEncoding = 4;
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.c.objc;
-			path = SortManagerPreferencesController.m;
+			name = SortManagerPreferencesController.m;
+			path = Components/SortManagerPreferences/SortManagerPreferencesController.m;
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -1910,7 +1959,8 @@
 		8B7BD1E107DFB7A80050FB25 = {
 			isa = PBXFileReference;
 			lastKnownFileType = image.icns;
-			path = VitaminSEE.icns;
+			name = VitaminSEE.icns;
+			path = Resources/VitaminSEE.icns;
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -1946,7 +1996,8 @@
 			fileEncoding = 30;
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.c.h;
-			path = DNDArrayController.h;
+			name = DNDArrayController.h;
+			path = Components/SortManagerPreferences/DNDArrayController.h;
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -1954,7 +2005,8 @@
 			fileEncoding = 30;
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.c.objc;
-			path = DNDArrayController.m;
+			name = DNDArrayController.m;
+			path = Components/SortManagerPreferences/DNDArrayController.m;
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -1967,14 +2019,16 @@
 		8B7E6D9B080B40EC00DD5466 = {
 			isa = PBXFileReference;
 			lastKnownFileType = image.tiff;
-			path = hand_closed.tiff;
+			name = hand_closed.tiff;
+			path = Resources/hand_closed.tiff;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		8B7E6D9C080B40EC00DD5466 = {
 			isa = PBXFileReference;
 			lastKnownFileType = image.tiff;
-			path = hand_open.tiff;
+			name = hand_open.tiff;
+			path = Resources/hand_open.tiff;
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -2346,36 +2400,6 @@
 			settings = {
 			};
 		};
-		8BA124E707D282DA00614FF4 = {
-			children = (
-				8B5620B807CEA594005990E1,
-			);
-			isa = PBXVariantGroup;
-			name = SortManager.nib;
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		8BA124E807D282DA00614FF4 = {
-			fileRef = 8BA124E707D282DA00614FF4;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
-		8BA124E907D282E600614FF4 = {
-			children = (
-				8B6D019807CB29EF009A76DA,
-			);
-			isa = PBXVariantGroup;
-			name = SortManagerPreferences.nib;
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		8BA124EA07D282E600614FF4 = {
-			fileRef = 8BA124E907D282E600614FF4;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
 		8BA1253707D2845D00614FF4 = {
 			fileRef = 8BA1243507D26EC700614FF4;
 			isa = PBXBuildFile;
@@ -2411,7 +2435,7 @@
 			files = (
 				8BAF0F4407CE6E1800B0C832,
 				8B561DF907CE78F9005990E1,
-				8B5E14DD081465DE00897347,
+				8B5E14E20814662200897347,
 			);
 			isa = PBXResourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2552,7 +2576,8 @@
 		8BBC34B907E13E52007C3B6B = {
 			isa = PBXFileReference;
 			lastKnownFileType = image.icns;
-			path = ToolbarDeleteIcon.icns;
+			name = ToolbarDeleteIcon.icns;
+			path = Resources/ToolbarDeleteIcon.icns;
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -2565,7 +2590,8 @@
 		8BBC35D607E221D4007C3B6B = {
 			isa = PBXFileReference;
 			lastKnownFileType = image.icns;
-			path = ToolbarPicturesFolderIcon.icns;
+			name = ToolbarPicturesFolderIcon.icns;
+			path = Resources/ToolbarPicturesFolderIcon.icns;
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -2578,7 +2604,8 @@
 		8BBC35E907E222BF007C3B6B = {
 			isa = PBXFileReference;
 			lastKnownFileType = image.icns;
-			path = HomeFolderIcon.icns;
+			name = HomeFolderIcon.icns;
+			path = Resources/HomeFolderIcon.icns;
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -2601,7 +2628,8 @@
 			fileEncoding = 30;
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.c.h;
-			path = SortManagerController.h;
+			name = SortManagerController.h;
+			path = Components/SortManager/SortManagerController.h;
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -2609,7 +2637,8 @@
 			fileEncoding = 30;
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.c.objc;
-			path = SortManagerController.m;
+			name = SortManagerController.m;
+			path = Components/SortManager/SortManagerController.m;
 			refType = 4;
 			sourceTree = "<group>";
 		};
