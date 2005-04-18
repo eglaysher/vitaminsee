@@ -1929,7 +1929,8 @@
 			fileEncoding = 4;
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.c.h;
-			path = GotoSheetController.h;
+			name = GotoSheetController.h;
+			path = Components/GotoFolderSheet/GotoSheetController.h;
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -1937,7 +1938,8 @@
 			fileEncoding = 4;
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.c.objc;
-			path = GotoSheetController.m;
+			name = GotoSheetController.m;
+			path = Components/GotoFolderSheet/GotoSheetController.m;
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -2028,7 +2030,7 @@
 			isa = PBXFileReference;
 			lastKnownFileType = text.xml;
 			name = "GotoFolderSheet-Info.plist";
-			path = "/Users/elliot/Projects/VitaminSEE-bugfix/GotoFolderSheet-Info.plist";
+			path = "/Users/elliot/Projects/VitaminSEE-development-reorganization/Components/GotoFolderSheet/GotoFolderSheet-Info.plist";
 			refType = 0;
 			sourceTree = "<absolute>";
 		};
