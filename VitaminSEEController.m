@@ -1,6 +1,6 @@
 /////////////////////////////////////////////////////////////////////////
-// File:          $File$
-// Module:        SHORT DESCRIPTION OF YOUR FILE
+// File:          $Name$
+// Module:        Main Controller Class
 // Part of:       VitaminSEE
 //
 // ID:            $Id$
@@ -8,6 +8,7 @@
 // Last edited:   $Date$
 // Author:        $Author$
 // Copyright:     (c) 2005 Elliot Glaysher
+// Created:       1/30/05
 //
 /////////////////////////////////////////////////////////////////////////
 //

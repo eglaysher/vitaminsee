@@ -1,9 +1,8 @@
 /////////////////////////////////////////////////////////////////////////
-// File:          $File$
-// Module:        SHORT DESCRIPTION OF YOUR FILE
+// File:          $Name$
+// Module:        Implements the cell used in the ViewAsIconView browser.
 // Part of:       VitaminSEE
 //
-// ID:            $Id$
 // Revision:      $Revision$
 // Last edited:   $Date$
 // Author:        $Author$

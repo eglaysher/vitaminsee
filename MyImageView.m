@@ -1,3 +1,22 @@
+/////////////////////////////////////////////////////////////////////////
+// File:          $Name$
+// Module:        MyImageView: Implements hand grab scrolling
+// Part of:       VitaminSEE
+//
+// Revision:      $Revision$
+// Last edited:   $Date$
+// Copyright:     Matt Gemmell (I'm guessing here; there's no explicit
+//                attribution, but it comes from his source repository:
+//                http://www.scotlandsoftware.com/products/source/
+//
+/////////////////////////////////////////////////////////////////////////
+//
+// My modifications: Each function first checks to see if the contained image
+// is larger then the size of its container. If it's smaller or equal, then
+// behave normally. Otherwise, do what this code orriginally did: show the hand
+// cursor and allow dragging.
+//
+
 #import "MyImageView.h"
 
 @implementation MyImageView

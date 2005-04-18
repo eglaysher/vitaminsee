@@ -1,10 +1,14 @@
+/////////////////////////////////////////////////////////////////////////
+// File:          $Name$
+// Module:        All categories I've written or ripped off. Copyright in 
+//                implementation file.
+// Part of:       VitaminSEE
 //
-//  AppKitAdditions.h
-//  VitaminSEE
+// Revision:      $Revision$
+// Last edited:   $Date$
+// Created:       3/23/05
 //
-//  Created by Elliot on 3/23/05.
-//  Copyright 2005 Elliot Glaysher. All rights reserved.
-//
+/////////////////////////////////////////////////////////////////////////
 
 #import <Cocoa/Cocoa.h>
 

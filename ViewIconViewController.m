@@ -1,9 +1,8 @@
 /////////////////////////////////////////////////////////////////////////
-// File:          $File$
-// Module:        SHORT DESCRIPTION OF YOUR FILE
+// File:          $Name$
+// Module:        Implements the View as icons file browser
 // Part of:       VitaminSEE
 //
-// ID:            $Id$
 // Revision:      $Revision$
 // Last edited:   $Date$
 // Author:        $Author$

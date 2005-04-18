@@ -6,6 +6,9 @@
 //  Copyright 2005 Elliot Glaysher. All rights reserved.
 //
 
+// This is ripped off from somewhere but I don't remember. TODO: Find out where
+// this was stollen from.
+
 #import "ImmutableToMutableTransformer.h"
 
 

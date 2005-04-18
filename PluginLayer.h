@@ -1,13 +1,17 @@
+/////////////////////////////////////////////////////////////////////////
+// File:          $Name$
+// Module:        Plugin interface description.
+// Part of:       VitaminSEE
 //
-//  PluginLayer.h
-//  VitaminSEE
+// Revision:      $Revision$
+// Last edited:   $Date$
+// Author:        $Author$
+// Copyright:     (c) 2005 Elliot Glaysher
+// Created:       4/7/05
 //
-//  Created by Elliot on 4/7/05.
-//  Copyright 2005 __MyCompanyName__. All rights reserved.
-//
+/////////////////////////////////////////////////////////////////////////
 
 #import <Cocoa/Cocoa.h>
-#import "VitaminSEEController+PluginLayer.h"
 
 @class VitaminSEEController;
 

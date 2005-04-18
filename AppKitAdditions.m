@@ -1,8 +1,14 @@
+/////////////////////////////////////////////////////////////////////////
+// File:          $Name$
+// Module:        All the categories I've written or ripped off. Each block
+//                starts with it's respective copyright notice.
+// Part of:       VitaminSEE
 //
-//  AppKitAdditions.m
-//  VitaminSEE
+// Revision:      $Revision$
+// Last edited:   $Date$
+// Created:       3/23/05
 //
-//  Created by Elliot on 3/23/05.
+/////////////////////////////////////////////////////////////////////////
 //
 // This file is filled with other people's code so their copyright notices are
 // included with their code.

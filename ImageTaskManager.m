@@ -1,6 +1,7 @@
 /////////////////////////////////////////////////////////////////////////
 // File:          $File$
-// Module:        SHORT DESCRIPTION OF YOUR FILE
+// Module:        Loads and preloads images in a seperate thread and passes them
+//                off to the main thread
 // Part of:       VitaminSEE
 //
 // ID:            $Id$
