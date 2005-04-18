@@ -121,7 +121,7 @@
  * * Redo left panel as loadable bundle
  * * Requires a working plugin layer...
  * * Solidify the plugin layer
- * * Validate each folder in the Sort Manager just in case the user has deleted the folder.
+ * * Validate each folder in the Favorites just in case the user has deleted the folder.
  * * Favorites menu (available as both an item on the Go menu and as a toolbar dropdown)
  * * Mouse grab scrolling when it doesn't fit.
  * * Misnamed files (JPEG files ending in GIF, PNG files ending in JPG) get displayed, instead
@@ -129,25 +129,31 @@
  * * Undo/Redo on sort manager/rename, et cetera
  * * Rename undo
  * * "Add to Favorites" in File menu...
+ * * Don't display the default folder and then move to the next folder when 
+ *   run with a folder; go to that folder directly.
  */
 
 // TEST MORE:
-// * Stop building thumbnails when you leave a directory (finished?)
-// * s/applicationWillFinishLoading/applicationDidFinishLoading/ + detect
-//   if we've been told to select something.
 // * Known issue: Copying a file, then deleting the copy, leaves the undo operation
 //   on the undo stack. I need to figure out how to fix this...
 // * Move to trash in wrong spot?
 
 /// For Version 0.6
+// * Fix problem where cmd-1 doesn't set current file to plugins
+// * Fix KeywordManager to allow undo and connect with the main window controller.
+// * Cache control. How large?
+// * Dogfood it for at least a week and a half...
+// * FIX THE HELP!
+
+// For Version 0.6.1
+// * Japanese Localization
+//   * Requires localization of display names!
+//     * General Preferences needs some kind of DisplayNameValueTransformer
+//     * ViewAsIcons view needs ability to determine between display name and
+//       actual name
 // * Check for file on remote volume.
 // * Add undo to the rest of file operations?
 //   * Delete
-// * Clean up ViewIconViewController
-// * Cache control. How large?
-// * Japanese Localization
-// * Dogfood it for at least a week and a half...
-// * FIX THE HELP!
 
 // For Version 0.7
 // * Transparent archive support

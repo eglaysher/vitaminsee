@@ -323,4 +323,9 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
 	return nil;
 }
 
+-(NSUndoManager*)windowWillReturnUndoManager:(id)window
+{
+	return [pluginLayer undoManager];
+}
+
 @end
