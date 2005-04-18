@@ -337,21 +337,6 @@
 //8B2
 //8B3
 //8B4
-		8B09C53707F21CB20098F878 = {
-			children = (
-				8BC8F95107F2106D00C66290,
-			);
-			isa = PBXVariantGroup;
-			name = ViewAsIconsView.nib;
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		8B09C53807F21CB20098F878 = {
-			fileRef = 8B09C53707F21CB20098F878;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
 		8B2DF9F408137AD700A903A7 = {
 			children = (
 				8B3E9CA9080B154C009D39C6,
@@ -487,7 +472,8 @@
 			fileEncoding = 4;
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.c.h;
-			path = ImageMetadata.h;
+			name = ImageMetadata.h;
+			path = Components/ImageMetadata/ImageMetadata.h;
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -495,7 +481,8 @@
 			fileEncoding = 4;
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.cpp.objcpp;
-			path = ImageMetadata.mm;
+			name = ImageMetadata.mm;
+			path = Components/ImageMetadata/ImageMetadata.mm;
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -504,7 +491,7 @@
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.cpp.cpp;
 			name = canonmn.cpp;
-			path = Exiv2/canonmn.cpp;
+			path = Components/ImageMetadata/Exiv2/canonmn.cpp;
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -513,7 +500,7 @@
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.cpp.h;
 			name = canonmn.hpp;
-			path = Exiv2/canonmn.hpp;
+			path = Components/ImageMetadata/Exiv2/canonmn.hpp;
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -522,7 +509,7 @@
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.cpp.cpp;
 			name = datasets.cpp;
-			path = Exiv2/datasets.cpp;
+			path = Components/ImageMetadata/Exiv2/datasets.cpp;
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -531,7 +518,7 @@
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.cpp.h;
 			name = datasets.hpp;
-			path = Exiv2/datasets.hpp;
+			path = Components/ImageMetadata/Exiv2/datasets.hpp;
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -540,7 +527,7 @@
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.cpp.h;
 			name = error.hpp;
-			path = Exiv2/error.hpp;
+			path = Components/ImageMetadata/Exiv2/error.hpp;
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -549,7 +536,7 @@
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.cpp.cpp;
 			name = exif.cpp;
-			path = Exiv2/exif.cpp;
+			path = Components/ImageMetadata/Exiv2/exif.cpp;
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -558,7 +545,7 @@
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.cpp.h;
 			name = exif.hpp;
-			path = Exiv2/exif.hpp;
+			path = Components/ImageMetadata/Exiv2/exif.hpp;
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -567,7 +554,7 @@
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.cpp.cpp;
 			name = fujimn.cpp;
-			path = Exiv2/fujimn.cpp;
+			path = Components/ImageMetadata/Exiv2/fujimn.cpp;
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -576,7 +563,7 @@
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.cpp.h;
 			name = fujimn.hpp;
-			path = Exiv2/fujimn.hpp;
+			path = Components/ImageMetadata/Exiv2/fujimn.hpp;
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -585,7 +572,7 @@
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.cpp.cpp;
 			name = ifd.cpp;
-			path = Exiv2/ifd.cpp;
+			path = Components/ImageMetadata/Exiv2/ifd.cpp;
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -594,7 +581,7 @@
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.cpp.h;
 			name = ifd.hpp;
-			path = Exiv2/ifd.hpp;
+			path = Components/ImageMetadata/Exiv2/ifd.hpp;
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -603,7 +590,7 @@
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.cpp.cpp;
 			name = image.cpp;
-			path = Exiv2/image.cpp;
+			path = Components/ImageMetadata/Exiv2/image.cpp;
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -612,7 +599,7 @@
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.cpp.h;
 			name = image.hpp;
-			path = Exiv2/image.hpp;
+			path = Components/ImageMetadata/Exiv2/image.hpp;
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -621,7 +608,7 @@
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.cpp.cpp;
 			name = iptc.cpp;
-			path = Exiv2/iptc.cpp;
+			path = Components/ImageMetadata/Exiv2/iptc.cpp;
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -630,7 +617,7 @@
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.cpp.h;
 			name = iptc.hpp;
-			path = Exiv2/iptc.hpp;
+			path = Components/ImageMetadata/Exiv2/iptc.hpp;
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -639,7 +626,7 @@
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.cpp.cpp;
 			name = makernote.cpp;
-			path = Exiv2/makernote.cpp;
+			path = Components/ImageMetadata/Exiv2/makernote.cpp;
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -648,7 +635,7 @@
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.cpp.h;
 			name = makernote.hpp;
-			path = Exiv2/makernote.hpp;
+			path = Components/ImageMetadata/Exiv2/makernote.hpp;
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -657,7 +644,7 @@
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.cpp.cpp;
 			name = metadatum.cpp;
-			path = Exiv2/metadatum.cpp;
+			path = Components/ImageMetadata/Exiv2/metadatum.cpp;
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -666,7 +653,7 @@
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.cpp.h;
 			name = metadatum.hpp;
-			path = Exiv2/metadatum.hpp;
+			path = Components/ImageMetadata/Exiv2/metadatum.hpp;
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -675,7 +662,7 @@
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.cpp.cpp;
 			name = nikonmn.cpp;
-			path = Exiv2/nikonmn.cpp;
+			path = Components/ImageMetadata/Exiv2/nikonmn.cpp;
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -684,7 +671,7 @@
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.cpp.h;
 			name = nikonmn.hpp;
-			path = Exiv2/nikonmn.hpp;
+			path = Components/ImageMetadata/Exiv2/nikonmn.hpp;
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -693,7 +680,7 @@
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.cpp.h;
 			name = rcsid.hpp;
-			path = Exiv2/rcsid.hpp;
+			path = Components/ImageMetadata/Exiv2/rcsid.hpp;
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -702,7 +689,7 @@
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.cpp.cpp;
 			name = sigmamn.cpp;
-			path = Exiv2/sigmamn.cpp;
+			path = Components/ImageMetadata/Exiv2/sigmamn.cpp;
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -711,7 +698,7 @@
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.cpp.h;
 			name = sigmamn.hpp;
-			path = Exiv2/sigmamn.hpp;
+			path = Components/ImageMetadata/Exiv2/sigmamn.hpp;
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -720,7 +707,7 @@
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.cpp.cpp;
 			name = tags.cpp;
-			path = Exiv2/tags.cpp;
+			path = Components/ImageMetadata/Exiv2/tags.cpp;
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -729,7 +716,7 @@
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.cpp.h;
 			name = tags.hpp;
-			path = Exiv2/tags.hpp;
+			path = Components/ImageMetadata/Exiv2/tags.hpp;
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -738,7 +725,7 @@
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.cpp.cpp;
 			name = types.cpp;
-			path = Exiv2/types.cpp;
+			path = Components/ImageMetadata/Exiv2/types.cpp;
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -747,7 +734,7 @@
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.cpp.h;
 			name = types.hpp;
-			path = Exiv2/types.hpp;
+			path = Components/ImageMetadata/Exiv2/types.hpp;
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -756,7 +743,7 @@
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.cpp.cpp;
 			name = value.cpp;
-			path = Exiv2/value.cpp;
+			path = Components/ImageMetadata/Exiv2/value.cpp;
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -765,7 +752,7 @@
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.cpp.h;
 			name = value.hpp;
-			path = Exiv2/value.hpp;
+			path = Components/ImageMetadata/Exiv2/value.hpp;
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -941,9 +928,9 @@
 			isa = PBXFileReference;
 			lastKnownFileType = text.xml;
 			name = "ImageMetadata-Info.plist";
-			path = "/Users/elliot/Projects/VitaminSEE-development/ImageMetadata-Info.plist";
-			refType = 0;
-			sourceTree = "<absolute>";
+			path = "Components/ImageMetadata/ImageMetadata-Info.plist";
+			refType = 4;
+			sourceTree = "<group>";
 		};
 		8B4FDB5D080717700016CABC = {
 			fileRef = 8B4FDB5B0807174C0016CABC;
@@ -1317,6 +1304,39 @@
 				8B443AF907D7E0AB00C4D8E9,
 				8B443AFA07D7E0AB00C4D8E9,
 				8B4FDB5B0807174C0016CABC,
+				8B5E14B30814605500897347,
+			);
+			isa = PBXGroup;
+			name = ImageMetadata;
+			path = "";
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B5D5E2907B8215E00957950 = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			path = ImageTaskManager.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B5D5E2A07B8215E00957950 = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
+			path = ImageTaskManager.m;
+			refType = 4;
+			sourceTree = "<group>";
+			wrapsLines = 0;
+		};
+		8B5D5E2C07B8215E00957950 = {
+			fileRef = 8B5D5E2A07B8215E00957950;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B5E14B30814605500897347 = {
+			children = (
 				8B4A46F007EA2C4700C1D2A0,
 				8B4A46F107EA2C4700C1D2A0,
 				8B4A46F207EA2C4700C1D2A0,
@@ -1349,30 +1369,78 @@
 				8B4A470D07EA2C4700C1D2A0,
 			);
 			isa = PBXGroup;
-			name = ImageMetadata;
+			name = Exiv2;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B5E14BC0814615200897347 = {
+			children = (
+				8B5E14BD0814615200897347,
+			);
+			isa = PBXVariantGroup;
+			name = ViewAsIconsView.nib;
 			path = "";
 			refType = 4;
 			sourceTree = "<group>";
 		};
-		8B5D5E2907B8215E00957950 = {
-			fileEncoding = 4;
+		8B5E14BD0814615200897347 = {
 			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.h;
-			path = ImageTaskManager.h;
+			lastKnownFileType = wrapper.nib;
+			name = English;
+			path = Components/ViewAsIconsView/English.lproj/ViewAsIconsView.nib;
 			refType = 4;
 			sourceTree = "<group>";
 		};
-		8B5D5E2A07B8215E00957950 = {
-			fileEncoding = 4;
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.objc;
-			path = ImageTaskManager.m;
+		8B5E14BE0814615200897347 = {
+			fileRef = 8B5E14BC0814615200897347;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B5E14C7081462CB00897347 = {
+			children = (
+				8B5E14C8081462CB00897347,
+			);
+			isa = PBXVariantGroup;
+			name = KeywordManagerPreferences.nib;
+			path = "";
 			refType = 4;
 			sourceTree = "<group>";
-			wrapsLines = 0;
 		};
-		8B5D5E2C07B8215E00957950 = {
-			fileRef = 8B5D5E2A07B8215E00957950;
+		8B5E14C8081462CB00897347 = {
+			isa = PBXFileReference;
+			lastKnownFileType = wrapper.nib;
+			name = English;
+			path = Components/KeywordManagerPreferences/English.lproj/KeywordManagerPreferences.nib;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B5E14C9081462CB00897347 = {
+			fileRef = 8B5E14C7081462CB00897347;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B5E14D0081463A400897347 = {
+			children = (
+				8B5E14D1081463A400897347,
+			);
+			isa = PBXVariantGroup;
+			name = KeywordManager.nib;
+			path = "";
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B5E14D1081463A400897347 = {
+			isa = PBXFileReference;
+			lastKnownFileType = wrapper.nib;
+			name = English;
+			path = Components/KeywordManager/English.lproj/KeywordManager.nib;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B5E14D2081463A400897347 = {
+			fileRef = 8B5E14D0081463A400897347;
 			isa = PBXBuildFile;
 			settings = {
 			};
@@ -1390,14 +1458,6 @@
 			isa = PBXBuildFile;
 			settings = {
 			};
-		};
-		8B5EB14F07CD3B3E00B43D06 = {
-			isa = PBXFileReference;
-			lastKnownFileType = wrapper.nib;
-			name = English;
-			path = English.lproj/KeywordManager.nib;
-			refType = 4;
-			sourceTree = "<group>";
 		};
 		8B6710AF080C9BE00084EE5A = {
 			fileEncoding = 30;
@@ -2074,7 +2134,8 @@
 			fileEncoding = 4;
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.c.h;
-			path = ViewAsIconViewCell.h;
+			name = ViewAsIconViewCell.h;
+			path = Components/ViewAsIconsView/ViewAsIconViewCell.h;
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -2082,7 +2143,8 @@
 			fileEncoding = 4;
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.c.objc;
-			path = ViewAsIconViewCell.m;
+			name = ViewAsIconViewCell.m;
+			path = Components/ViewAsIconsView/ViewAsIconViewCell.m;
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -2098,8 +2160,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B5380E307DD86D000BA7CFF,
-				8BA1256007D2849A00614FF4,
 				8BDEE8D907E7818A0024BF72,
+				8B5E14C9081462CB00897347,
 			);
 			isa = PBXResourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2183,7 +2245,7 @@
 			isa = PBXFileReference;
 			lastKnownFileType = text.xml;
 			name = "KeywordManagerPreferences-Info.plist";
-			path = "/Users/elliot/Projects/VitaminSEE-bugfix/KeywordManagerPreferences-Info.plist";
+			path = "/Users/elliot/Projects/VitaminSEE-development-reorganization/Components/KeywordManagerPreferences/KeywordManagerPreferences-Info.plist";
 			refType = 0;
 			sourceTree = "<absolute>";
 		};
@@ -2203,7 +2265,8 @@
 			fileEncoding = 4;
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.c.h;
-			path = KeywordManagerPreferences.h;
+			name = KeywordManagerPreferences.h;
+			path = Components/KeywordManagerPreferences/KeywordManagerPreferences.h;
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -2211,7 +2274,8 @@
 			fileEncoding = 4;
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.c.objc;
-			path = KeywordManagerPreferences.m;
+			name = KeywordManagerPreferences.m;
+			path = Components/KeywordManagerPreferences/KeywordManagerPreferences.m;
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -2242,15 +2306,6 @@
 			isa = PBXBuildFile;
 			settings = {
 			};
-		};
-		8BA124E407D282C200614FF4 = {
-			children = (
-				8BC727C907CF1E9E003103C0,
-			);
-			isa = PBXVariantGroup;
-			name = KeywordManagerPreferences.nib;
-			refType = 4;
-			sourceTree = "<group>";
 		};
 		8BA124E507D282D200614FF4 = {
 			children = (
@@ -2299,12 +2354,6 @@
 		};
 		8BA1253707D2845D00614FF4 = {
 			fileRef = 8BA1243507D26EC700614FF4;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
-		8BA1256007D2849A00614FF4 = {
-			fileRef = 8BA124E407D282C200614FF4;
 			isa = PBXBuildFile;
 			settings = {
 			};
@@ -2572,10 +2621,10 @@
 		};
 		8BC727C207CF1D18003103C0 = {
 			children = (
+				8B5E14D0081463A400897347,
 				8BEA492107D7A7D7001ADD2E,
 				8BEA492207D7A7D7001ADD2E,
 				8BEA491807D7A73E001ADD2E,
-				8BEA491D07D7A7BE001ADD2E,
 			);
 			isa = PBXGroup;
 			name = KeywordManager;
@@ -2584,10 +2633,10 @@
 		};
 		8BC727C707CF1E82003103C0 = {
 			children = (
+				8B5E14C7081462CB00897347,
 				8BDEE8D807E781890024BF72,
 				8BA1243A07D26F2A00614FF4,
 				8BA1243B07D26F2A00614FF4,
-				8BA124E407D282C200614FF4,
 				8BA1243607D26EC700614FF4,
 			);
 			isa = PBXGroup;
@@ -2595,21 +2644,13 @@
 			refType = 4;
 			sourceTree = "<group>";
 		};
-		8BC727C907CF1E9E003103C0 = {
-			isa = PBXFileReference;
-			lastKnownFileType = wrapper.nib;
-			name = English;
-			path = English.lproj/KeywordManagerPreferences.nib;
-			refType = 4;
-			sourceTree = "<group>";
-		};
 		8BC8F93807F20EC700C66290 = {
 			children = (
+				8B5E14BC0814615200897347,
 				8B87411007BA9D9F00EF7923,
 				8B87410F07BA9D9F00EF7923,
 				8BF72B0607B9E78F003A3C82,
 				8BF72B0507B9E78F003A3C82,
-				8B09C53707F21CB20098F878,
 				8BC8F94907F2102000C66290,
 			);
 			isa = PBXGroup;
@@ -2621,7 +2662,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B4FDA11080713B00016CABC,
-				8B09C53807F21CB20098F878,
+				8B5E14BE0814615200897347,
 			);
 			isa = PBXResourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2705,7 +2746,8 @@
 		8BC8F94907F2102000C66290 = {
 			isa = PBXFileReference;
 			lastKnownFileType = text.xml;
-			path = "ViewAsIconsFileView-Info.plist";
+			name = "ViewAsIconsFileView-Info.plist";
+			path = "Components/ViewAsIconsView/ViewAsIconsFileView-Info.plist";
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -2720,14 +2762,6 @@
 			isa = PBXTargetDependency;
 			target = 8BC8F94707F2102000C66290;
 			targetProxy = 8BC8F94B07F2103100C66290;
-		};
-		8BC8F95107F2106D00C66290 = {
-			isa = PBXFileReference;
-			lastKnownFileType = wrapper.nib;
-			name = English;
-			path = English.lproj/ViewAsIconsView.nib;
-			refType = 4;
-			sourceTree = "<group>";
 		};
 		8BC8F96507F211F900C66290 = {
 			fileEncoding = 4;
@@ -2776,7 +2810,8 @@
 		8BDEE8D807E781890024BF72 = {
 			isa = PBXFileReference;
 			lastKnownFileType = image.png;
-			path = KeywordManager.png;
+			name = KeywordManager.png;
+			path = Components/KeywordManagerPreferences/KeywordManager.png;
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -2818,7 +2853,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B5380E207DD86BC00BA7CFF,
-				8BEA49BB07D7AD3D001ADD2E,
+				8B5E14D2081463A400897347,
 			);
 			isa = PBXResourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2902,7 +2937,7 @@
 			isa = PBXFileReference;
 			lastKnownFileType = text.xml;
 			name = "KeywordManager-Info.plist";
-			path = "/Users/elliot/Projects/VitaminSEE-bugfix/KeywordManager-Info.plist";
+			path = "/Users/elliot/Projects/VitaminSEE-development-reorganization/Components/KeywordManager/KeywordManager-Info.plist";
 			refType = 0;
 			sourceTree = "<absolute>";
 		};
@@ -2912,20 +2947,12 @@
 			settings = {
 			};
 		};
-		8BEA491D07D7A7BE001ADD2E = {
-			children = (
-				8B5EB14F07CD3B3E00B43D06,
-			);
-			isa = PBXVariantGroup;
-			name = KeywordManager.nib;
-			refType = 4;
-			sourceTree = "<group>";
-		};
 		8BEA492107D7A7D7001ADD2E = {
 			fileEncoding = 4;
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.c.h;
-			path = KeywordManagerController.h;
+			name = KeywordManagerController.h;
+			path = Components/KeywordManager/KeywordManagerController.h;
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -2933,7 +2960,8 @@
 			fileEncoding = 4;
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.c.objc;
-			path = KeywordManagerController.m;
+			name = KeywordManagerController.m;
+			path = Components/KeywordManager/KeywordManagerController.m;
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -2954,12 +2982,6 @@
 			isa = PBXTargetDependency;
 			target = 8BEA491607D7A73E001ADD2E;
 			targetProxy = 8BEA495607D7A9D0001ADD2E;
-		};
-		8BEA49BB07D7AD3D001ADD2E = {
-			fileRef = 8BEA491D07D7A7BE001ADD2E;
-			isa = PBXBuildFile;
-			settings = {
-			};
 		};
 		8BEA4A7C07D7D0BF001ADD2E = {
 			fileRef = 8BA124AD07D2816300614FF4;
@@ -2993,7 +3015,8 @@
 			fileEncoding = 4;
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.c.h;
-			path = ViewIconViewController.h;
+			name = ViewIconViewController.h;
+			path = Components/ViewAsIconsView/ViewIconViewController.h;
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -3001,7 +3024,8 @@
 			fileEncoding = 4;
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.c.objc;
-			path = ViewIconViewController.m;
+			name = ViewIconViewController.m;
+			path = Components/ViewAsIconsView/ViewIconViewController.m;
 			refType = 4;
 			sourceTree = "<group>";
 		};
