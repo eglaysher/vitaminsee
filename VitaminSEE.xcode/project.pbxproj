@@ -2524,14 +2524,14 @@
 				8BBE9AB907E0F1BB007EAE01,
 			);
 			isa = PBXVariantGroup;
-			name = GoToFolderSheet.nib;
-			path = "";
+			name = GotoFolderSheet;
+			path = Components/GotoFolderSheet;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		8BBE9AB907E0F1BB007EAE01 = {
 			isa = PBXFileReference;
-			lastKnownFileType = wrapper.nib;
+			lastKnownFileType = file;
 			name = English;
 			path = English.lproj/GoToFolderSheet.nib;
 			refType = 4;
