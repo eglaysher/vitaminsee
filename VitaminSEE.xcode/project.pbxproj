@@ -1119,7 +1119,8 @@
 		8B561DF807CE78F9005990E1 = {
 			isa = PBXFileReference;
 			lastKnownFileType = image.tiff;
-			path = General_Prefs.tiff;
+			name = General_Prefs.tiff;
+			path = Components/GeneralPreferences/General_Prefs.tiff;
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -1445,6 +1446,44 @@
 			settings = {
 			};
 		};
+		8B5E14D5081464D800897347 = {
+			children = (
+				8B5E14D6081464D800897347,
+			);
+			isa = PBXVariantGroup;
+			name = GoToFolderSheet.nib;
+			path = "";
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B5E14D6081464D800897347 = {
+			isa = PBXFileReference;
+			lastKnownFileType = wrapper.nib;
+			name = English;
+			path = Components/GotoFolderSheet/English.lproj/GoToFolderSheet.nib;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B5E14D7081464D800897347 = {
+			fileRef = 8B5E14D5081464D800897347;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B5E14DC081465DE00897347 = {
+			isa = PBXFileReference;
+			lastKnownFileType = wrapper.nib;
+			name = GeneralPreferences.nib;
+			path = Components/GeneralPreferences/GeneralPreferences.nib;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B5E14DD081465DE00897347 = {
+			fileRef = 8B5E14DC081465DE00897347;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
 		8B5EB13407CD254F00B43D06 = {
 			isa = PBXFileReference;
 			lastKnownFileType = wrapper.framework;
@@ -1583,11 +1622,11 @@
 		};
 		8B6D011307CB185E009A76DA = {
 			children = (
+				8B5E14DC081465DE00897347,
 				8B561DF807CE78F9005990E1,
 				8BAF0F4B07CE6E5200B0C832,
 				8BAF0F4C07CE6E5200B0C832,
 				8BAF0F3F07CE6DAA00B0C832,
-				8BA124E507D282D200614FF4,
 			);
 			isa = PBXGroup;
 			name = GeneralPreferences;
@@ -1975,7 +2014,7 @@
 		};
 		8B83632D07E0DD3D00F3C880 = {
 			children = (
-				8BBE9AB807E0F1BB007EAE01,
+				8B5E14D5081464D800897347,
 				8B83632E07E0DD5300F3C880,
 				8B83632F07E0DD5300F3C880,
 				8B8363A407E0E88E00F3C880,
@@ -2006,8 +2045,8 @@
 		8B83639F07E0E88E00F3C880 = {
 			buildActionMask = 2147483647;
 			files = (
-				8BBE9AD107E0F1DB007EAE01,
 				8B8363BC07E0E8B700F3C880,
+				8B5E14D7081464D800897347,
 			);
 			isa = PBXResourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2090,9 +2129,9 @@
 			isa = PBXFileReference;
 			lastKnownFileType = text.xml;
 			name = "GotoFolderSheet-Info.plist";
-			path = "/Users/elliot/Projects/VitaminSEE-development-reorganization/Components/GotoFolderSheet/GotoFolderSheet-Info.plist";
-			refType = 0;
-			sourceTree = "<absolute>";
+			path = "Components/GotoFolderSheet/GotoFolderSheet-Info.plist";
+			refType = 4;
+			sourceTree = "<group>";
 		};
 		8B8363BC07E0E8B700F3C880 = {
 			fileRef = 8B8363A407E0E88E00F3C880;
@@ -2245,9 +2284,9 @@
 			isa = PBXFileReference;
 			lastKnownFileType = text.xml;
 			name = "KeywordManagerPreferences-Info.plist";
-			path = "/Users/elliot/Projects/VitaminSEE-development-reorganization/Components/KeywordManagerPreferences/KeywordManagerPreferences-Info.plist";
-			refType = 0;
-			sourceTree = "<absolute>";
+			path = "Components/KeywordManagerPreferences/KeywordManagerPreferences-Info.plist";
+			refType = 4;
+			sourceTree = "<group>";
 		};
 		8BA1243807D26F1500614FF4 = {
 			containerPortal = 29B97313FDCFA39411CA2CEA;
@@ -2303,21 +2342,6 @@
 		};
 		8BA124AF07D2816300614FF4 = {
 			fileRef = 8BA124AD07D2816300614FF4;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
-		8BA124E507D282D200614FF4 = {
-			children = (
-				8BAF0F3707CE6D9800B0C832,
-			);
-			isa = PBXVariantGroup;
-			name = GeneralPreferences.nib;
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		8BA124E607D282D200614FF4 = {
-			fileRef = 8BA124E507D282D200614FF4;
 			isa = PBXBuildFile;
 			settings = {
 			};
@@ -2382,20 +2406,12 @@
 			settings = {
 			};
 		};
-		8BAF0F3707CE6D9800B0C832 = {
-			isa = PBXFileReference;
-			lastKnownFileType = wrapper.nib;
-			name = English;
-			path = English.lproj/GeneralPreferences.nib;
-			refType = 4;
-			sourceTree = "<group>";
-		};
 		8BAF0F3A07CE6DAA00B0C832 = {
 			buildActionMask = 2147483647;
 			files = (
 				8BAF0F4407CE6E1800B0C832,
-				8BA124E607D282D200614FF4,
 				8B561DF907CE78F9005990E1,
+				8B5E14DD081465DE00897347,
 			);
 			isa = PBXResourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2479,9 +2495,9 @@
 			isa = PBXFileReference;
 			lastKnownFileType = text.xml;
 			name = "GeneralPreferences-Info.plist";
-			path = "/Users/elliot/Projects/VitaminSEE-bugfix/GeneralPreferences-Info.plist";
-			refType = 0;
-			sourceTree = "<absolute>";
+			path = "Components/GeneralPreferences/GeneralPreferences-Info.plist";
+			refType = 4;
+			sourceTree = "<group>";
 		};
 		8BAF0F4407CE6E1800B0C832 = {
 			fileRef = 8BAF0F3F07CE6DAA00B0C832;
@@ -2499,7 +2515,8 @@
 			fileEncoding = 4;
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.c.h;
-			path = GeneralPreferencesController.h;
+			name = GeneralPreferencesController.h;
+			path = Components/GeneralPreferences/GeneralPreferencesController.h;
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -2507,7 +2524,8 @@
 			fileEncoding = 4;
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.c.objc;
-			path = GeneralPreferencesController.m;
+			name = GeneralPreferencesController.m;
+			path = Components/GeneralPreferences/GeneralPreferencesController.m;
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -2566,30 +2584,6 @@
 		};
 		8BBC35EA07E222BF007C3B6B = {
 			fileRef = 8BBC35E907E222BF007C3B6B;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
-		8BBE9AB807E0F1BB007EAE01 = {
-			children = (
-				8BBE9AB907E0F1BB007EAE01,
-			);
-			isa = PBXVariantGroup;
-			name = GotoFolderSheet;
-			path = Components/GotoFolderSheet;
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		8BBE9AB907E0F1BB007EAE01 = {
-			isa = PBXFileReference;
-			lastKnownFileType = file;
-			name = English;
-			path = English.lproj/GoToFolderSheet.nib;
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		8BBE9AD107E0F1DB007EAE01 = {
-			fileRef = 8BBE9AB807E0F1BB007EAE01;
 			isa = PBXBuildFile;
 			settings = {
 			};
@@ -2937,9 +2931,9 @@
 			isa = PBXFileReference;
 			lastKnownFileType = text.xml;
 			name = "KeywordManager-Info.plist";
-			path = "/Users/elliot/Projects/VitaminSEE-development-reorganization/Components/KeywordManager/KeywordManager-Info.plist";
-			refType = 0;
-			sourceTree = "<absolute>";
+			path = "Components/KeywordManager/KeywordManager-Info.plist";
+			refType = 4;
+			sourceTree = "<group>";
 		};
 		8BEA491B07D7A78F001ADD2E = {
 			fileRef = 8BEA491707D7A73E001ADD2E;
