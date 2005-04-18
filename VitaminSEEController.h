@@ -174,4 +174,7 @@
 
 -(IBAction)showGPL:(id)sender;
 
+-(IBAction)addCurrentDirectoryToFavorites:(id)sender;
+-(BOOL)isInFavorites:(NSString*)path;
+
 @end

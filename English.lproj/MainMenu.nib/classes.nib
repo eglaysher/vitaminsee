@@ -12,6 +12,7 @@
         {
             ACTIONS = {
                 actualSize = id; 
+                addCurrentDirectoryToFavorites = id; 
                 closeWindow = id; 
                 deleteFileClicked = id; 
                 goBack = id; 
@@ -23,7 +24,6 @@
                 openFolder = id; 
                 referesh = id; 
                 revealInFinder = id; 
-                setDirectoryFromFavorites = id; 
                 showGPL = id; 
                 showPreferences = id; 
                 toggleKeywordManager = id; 

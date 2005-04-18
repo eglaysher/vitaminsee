@@ -128,6 +128,7 @@
  *   of an error.
  * * Undo/Redo on sort manager/rename, et cetera
  * * Rename undo
+ * * "Add to Favorites" in File menu...
  */
 
 // TEST MORE:
@@ -136,6 +137,7 @@
 //   if we've been told to select something.
 // * Known issue: Copying a file, then deleting the copy, leaves the undo operation
 //   on the undo stack. I need to figure out how to fix this...
+// * Move to trash in wrong spot?
 
 /// For Version 0.6
 // * Check for file on remote volume.
@@ -143,9 +145,6 @@
 //   * Delete
 // * Clean up ViewIconViewController
 // * Cache control. How large?
-// * Move to trash in wrong spot?
-// * cmd-t to add to Favorites
-
 // * Japanese Localization
 // * Dogfood it for at least a week and a half...
 // * FIX THE HELP!
@@ -654,45 +653,51 @@
 {
     BOOL enable = [self respondsToSelector:[theMenuItem action]];
 	BOOL mainWindowVisible = [mainVitaminSeeWindow isVisible];
+	SEL action = [theMenuItem action];
 	
-	if([theMenuItem action] == @selector(openFolder:))
+	if(action == @selector(openFolder:))
 	{
 		enable = mainWindowVisible && [currentImageFile isDir];
 	}
-	if([theMenuItem action] == @selector(closeWindow:) ||
-	   [theMenuItem action] == @selector(referesh:))
+	if(action == @selector(closeWindow:) ||
+	   action == @selector(referesh:))
 	{
 		enable = mainWindowVisible;
 	}
-	else if([theMenuItem action] == @selector(deleteFileClicked:))
+	else if(action == @selector(addCurrentDirectoryToFavorites:))
+	{
+		enable = mainWindowVisible && [currentImageFile isDir] && 
+			[self isInFavorites:currentImageFile];
+	}
+	else if(action == @selector(deleteFileClicked:))
 	{
 		// We can delete this file as long as we've selected a file.
 		enable = mainWindowVisible && [[viewAsIconsController selectedFiles] count];
 	}
 	// View Menu
-	else if ([theMenuItem action] == @selector(actualSize:))
+	else if (action == @selector(actualSize:))
 	{
 		enable = mainWindowVisible && [currentImageFile isImage] && 
 			!(scaleProportionally && scaleRatio == 1.0);
 	}
-	else if([theMenuItem action] == @selector(zoomToFit:))
+	else if(action == @selector(zoomToFit:))
 	{
 		enable = mainWindowVisible && [currentImageFile isImage] && scaleProportionally;
 	}
-	else if ([theMenuItem action] == @selector(zoomIn:) ||
-			 [theMenuItem action] == @selector(zoomOut:))
+	else if (action == @selector(zoomIn:) ||
+			 action == @selector(zoomOut:))
 	{
 		enable = mainWindowVisible && [currentImageFile isImage];
 	}
-	else if([theMenuItem action] == @selector(revealInFinder:))
+	else if(action == @selector(revealInFinder:))
 	{
 		enable = mainWindowVisible && [[viewAsIconsController selectedFiles] count];
 	}
-	else if([theMenuItem action] == @selector(viewInPreview:))
+	else if(action == @selector(viewInPreview:))
 	{
 		enable = mainWindowVisible && [currentImageFile isImage];
 	}
-	else if([theMenuItem action] == @selector(toggleToolbarShown:))
+	else if(action == @selector(toggleToolbarShown:))
 	{
 		enable = mainWindowVisible;
 		
@@ -702,29 +707,29 @@
 		else
 			[theMenuItem setTitle:NSLocalizedString(@"Show Toolbar", @"Text in View menu")];
 	}
-	else if([theMenuItem action] == @selector(runToolbarCustomizationPalette:))
+	else if(action == @selector(runToolbarCustomizationPalette:))
 	{
 		enable = mainWindowVisible;
 	}
 	// Go Menu
-    else if ([theMenuItem action] == @selector(goEnclosingFolder:))
+    else if (action == @selector(goEnclosingFolder:))
     {
 		// You can go up as long as there is a thing to go back on...
         enable = mainWindowVisible && [viewAsIconsController canGoEnclosingFolder];
     }
-    else if ([theMenuItem action] == @selector(goBack:))
+    else if (action == @selector(goBack:))
     {
         enable = mainWindowVisible && [pathManager canUndo];
     }
-	else if ([theMenuItem action] == @selector(goForward:))
+	else if (action == @selector(goForward:))
 	{
 		enable = mainWindowVisible && [pathManager canRedo];
 	}
-	else if ([theMenuItem action] == @selector(goToPicturesFolder:))
+	else if (action == @selector(goToPicturesFolder:))
 	{
 		enable = [[NSHomeDirectory() stringByAppendingPathComponent:@"Pictures"] isDir];
 	}
-	else if ([theMenuItem action] == @selector(goToFolder:))
+	else if (action == @selector(goToFolder:))
 	{
 		enable = mainWindowVisible;
 	}
@@ -926,4 +931,39 @@
 				 ofType:@"txt"]];
 }
 
+-(IBAction)addCurrentDirectoryToFavorites:(id)sender
+{
+	// Adds the currently selected directory to the favorites menu
+	if([currentImageFile isDir])
+	{
+		NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
+		NSMutableArray* favoritesArray = [[userDefaults objectForKey:@"SortManagerPaths"] mutableCopy];
+		
+		NSDictionary* newItem = [NSDictionary dictionaryWithObjectsAndKeys:
+			[currentImageFile lastPathComponent], @"Name",
+			currentImageFile, @"Path", nil];
+		[favoritesArray addObject:newItem];
+		[userDefaults setValue:favoritesArray forKey:@"SortManagerPaths"];
+		
+		[favoritesArray release];
+	}
+}
+
+-(BOOL)isInFavorites:(NSString*)path
+{
+	BOOL enable = YES;
+	NSEnumerator* e = [[[NSUserDefaults standardUserDefaults]
+			objectForKey:@"SortManagerPaths"] objectEnumerator];
+	NSString* thisPath;
+	while(thisPath = [[e nextObject] objectForKey:@"Path"])
+	{
+		if([thisPath isEqual:path])
+		{
+			enable = NO;
+			break;
+		}
+	}
+	
+	return enable;
+}
 @end
