@@ -454,7 +454,8 @@
 			fileEncoding = 4;
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.c.h;
-			path = PathExistsValueTransformer.h;
+			name = PathExistsValueTransformer.h;
+			path = ValueTransformers/PathExistsValueTransformer.h;
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -462,7 +463,8 @@
 			fileEncoding = 4;
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.c.objc;
-			path = PathExistsValueTransformer.m;
+			name = PathExistsValueTransformer.m;
+			path = ValueTransformers/PathExistsValueTransformer.m;
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -882,7 +884,7 @@
 			buildSettings = {
 				DEPLOYMENT_POSTPROCESSING = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
-				INFOPLIST_FILE = "ImageMetadata-Info.plist";
+				INFOPLIST_FILE = "Components/ImageMetadata/ImageMetadata-Info.plist";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "-framework Foundation -framework AppKit";
@@ -1205,7 +1207,7 @@
 				DEPLOYMENT_POSTPROCESSING = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
-				INFOPLIST_FILE = "SortManager-Info.plist";
+				INFOPLIST_FILE = "Components/SortManager/SortManager-Info.plist";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "-framework Foundation -framework AppKit";
@@ -1256,9 +1258,9 @@
 			isa = PBXFileReference;
 			lastKnownFileType = text.xml;
 			name = "SortManager-Info.plist";
-			path = "/Users/elliot/Projects/VitaminSEE-development-reorganization/Components/SortManager/SortManager-Info.plist";
-			refType = 0;
-			sourceTree = "<absolute>";
+			path = "Components/SortManager/SortManager-Info.plist";
+			refType = 4;
+			sourceTree = "<group>";
 		};
 		8B5620C907CEA6A4005990E1 = {
 			fileRef = 8B5620C007CEA5A5005990E1;
@@ -1700,7 +1702,8 @@
 			fileEncoding = 4;
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.c.h;
-			path = ImmutableToMutableTransformer.h;
+			name = ImmutableToMutableTransformer.h;
+			path = ValueTransformers/ImmutableToMutableTransformer.h;
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -1708,7 +1711,8 @@
 			fileEncoding = 4;
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.c.objc;
-			path = ImmutableToMutableTransformer.m;
+			name = ImmutableToMutableTransformer.m;
+			path = ValueTransformers/ImmutableToMutableTransformer.m;
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -1786,7 +1790,7 @@
 				DEPLOYMENT_POSTPROCESSING = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
-				INFOPLIST_FILE = "SortManagerPreferences-Info.plist";
+				INFOPLIST_FILE = "Components/SortManagerPreferences/SortManagerPreferences-Info.plist";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "-framework Foundation -framework AppKit";
@@ -1837,9 +1841,9 @@
 			isa = PBXFileReference;
 			lastKnownFileType = text.xml;
 			name = "SortManagerPreferences-Info.plist";
-			path = "/Users/elliot/Projects/VitaminSEE-development-reorganization/Components/SortManagerPreferences/SortManagerPreferences-Info.plist";
-			refType = 0;
-			sourceTree = "<absolute>";
+			path = "Components/SortManagerPreferences/SortManagerPreferences-Info.plist";
+			refType = 4;
+			sourceTree = "<group>";
 		};
 		8B6D01FC07CB329C009A76DA = {
 			fileRef = 8B6D01F907CB327F009A76DA;
@@ -2133,7 +2137,7 @@
 				DEPLOYMENT_POSTPROCESSING = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
-				INFOPLIST_FILE = "GotoFolderSheet-Info.plist";
+				INFOPLIST_FILE = "Components/GotoFolderSheet/GotoFolderSheet-Info.plist";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "-framework Foundation -framework AppKit";
@@ -2287,7 +2291,7 @@
 				DEPLOYMENT_POSTPROCESSING = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
-				INFOPLIST_FILE = "KeywordManagerPreferences-Info.plist";
+				INFOPLIST_FILE = "Components/KeywordManagerPreferences/KeywordManagerPreferences-Info.plist";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "-framework Foundation -framework AppKit";
@@ -2468,7 +2472,7 @@
 				DEPLOYMENT_POSTPROCESSING = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
-				INFOPLIST_FILE = "GeneralPreferences-Info.plist";
+				INFOPLIST_FILE = "Components/GeneralPreferences/GeneralPreferences-Info.plist";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "-framework Foundation -framework AppKit";
@@ -2720,7 +2724,7 @@
 				DEPLOYMENT_POSTPROCESSING = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
-				INFOPLIST_FILE = "ViewAsIconsFileView-Info.plist";
+				INFOPLIST_FILE = "Components/ViewAsIconsView/ViewAsIconsFileView-Info.plist";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "-framework Foundation -framework AppKit";
@@ -2909,7 +2913,7 @@
 				DEPLOYMENT_POSTPROCESSING = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
-				INFOPLIST_FILE = "KeywordManager-Info.plist";
+				INFOPLIST_FILE = "Components/KeywordManager/KeywordManager-Info.plist";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "-framework Foundation -framework AppKit";
@@ -3112,6 +3116,7 @@
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
 				GCC_WARN_UNUSED_VALUE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = ValueTransformers;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				PREBINDING = YES;

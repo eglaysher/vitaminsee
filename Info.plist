@@ -21,6 +21,25 @@
 		<dict>
 			<key>CFBundleTypeExtensions</key>
 			<array>
+				<string>icns</string>
+				<string>ICNS</string>
+			</array>
+			<key>CFBundleTypeMIMETypes</key>
+			<array>
+				<string>image/icns</string>
+			</array>
+			<key>CFBundleTypeName</key>
+			<string>ICNS Icon</string>
+			<key>CFBundleTypeOSTypes</key>
+			<array>
+				<string>icns</string>
+			</array>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+		</dict>
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
 				<string>BMP</string>
 				<string>bmp</string>
 			</array>
