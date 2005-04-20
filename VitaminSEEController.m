@@ -137,29 +137,31 @@
 // * Known issue: Copying a file, then deleting the copy, leaves the undo operation
 //   on the undo stack. I need to figure out how to fix this...
 // * Move to trash in wrong spot?
+// * Fix problem where cmd-1 doesn't set current file to plugins
 
 /// For Version 0.6
-// * Fix problem where cmd-1 doesn't set current file to plugins
 // * Fix KeywordManager to allow undo and connect with the main window controller.
-// * Cache control. How large?
+// * Disable labels in KeywordManager (wishlist)
 // * Dogfood it for at least a week and a half...
 // * FIX THE HELP!
 
 // For Version 0.6.1
+// * Cache control. How large?
 // * Japanese Localization
 //   * Requires localization of display names!
 //     * General Preferences needs some kind of DisplayNameValueTransformer
 //     * ViewAsIcons view needs ability to determine between display name and
 //       actual name
 // * Check for file on remote volume.
-// * Add undo to the rest of file operations?
-//   * Delete
 
 // For Version 0.7
 // * Transparent archive support
 // * Fit height/width
 // * Fullscreen mode
 // * Undo on delete. (0.7 by absolute latest!)
+//   * Requires figuring out how the Mac trash system works; 
+//     NSWorkspaceRecycleOperation isn't behaving how the Finder behaves. Maybe
+//     the answer is in Carbon?
 // * DnD on the ViewIconViewController
 // * Mouse-wheel scrolling...
 //   * Requires next/previous 
@@ -398,14 +400,18 @@
 - (BOOL)applicationShouldHandleReopen:(NSApplication *)theApplication 
 					hasVisibleWindows:(BOOL)hasVisibleWindows
 {
+	NSLog(@"In applicationShouldHandleReopen");
 	if(![mainVitaminSeeWindow isVisible])
 	{
 		// Clear the current file being displayed (albeit offscreen)
-		[self setCurrentFile:nil];
+//		[self setCurrentFile:nil];
 		
 		// Set the main window to the default directory
-		[viewAsIconsController setCurrentDirectory:[[NSUserDefaults standardUserDefaults] 
-			objectForKey:@"DefaultStartupPath"] currentFile:nil];
+//		[viewAsIconsController setCurrentDirectory:[[NSUserDefaults standardUserDefaults] 
+//			objectForKey:@"DefaultStartupPath"] currentFile:nil];
+		
+		// Redisplay the current file
+//		[self setPluginCurrentFileTo:currentImageFile];
 
 		// Now display the window
 		[self toggleVitaminSee:self];
@@ -414,8 +420,9 @@
 
 - (void)windowWillClose:(NSNotification *)aNotification
 {
-	// Set the file to nil
-	[self setCurrentFile:nil];
+	// Tell all the plugins that there's no file.
+	[self setPluginCurrentFileTo:nil];
+//	self.setPluginCurrentFileTo(nil);
 }
 
 -(void)displayAlert:(NSString*)message informativeText:(NSString*)info 
@@ -642,7 +649,13 @@
 
 -(IBAction)toggleVitaminSee:(id)sender
 {
-	[self toggleVisible:mainVitaminSeeWindow];
+	if([mainVitaminSeeWindow isVisible])
+		[mainVitaminSeeWindow close];
+	else
+	{
+		[self setPluginCurrentFileTo:currentImageFile];
+		[mainVitaminSeeWindow makeKeyAndOrderFront:self];
+	}
 }
 
 -(IBAction)toggleSortManager:(id)sender
@@ -760,13 +773,18 @@
 	if(![newCurrentFile isImage])
 		[imageSizeLabel setStringValue:@"---"];
 	
+	[self setPluginCurrentFileTo:newCurrentFile];
+
+	[self redraw];
+}
+
+-(void)setPluginCurrentFileTo:(NSString*)newCurrentFile
+{
 	// Alert all the plugins of the new file:
 	NSEnumerator* e = [loadedCurrentFilePlugins objectEnumerator];
 	id <CurrentFilePlugin> plugin;
 	while(plugin = [e nextObject])
-		[plugin fileSetTo:newCurrentFile];
-
-	[self redraw];
+		[plugin fileSetTo:newCurrentFile];	
 }
 
 -(void)preloadFile:(NSString*)file

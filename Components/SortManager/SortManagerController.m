@@ -103,11 +103,13 @@
 	}
 
 	if(![valid isEqual:[keyValues objectForKey:@"ValidDirectory"]])
+	{
 		[keyValues setValue:valid forKey:@"ValidDirectory"];
 	
-	// Now force a full redisplay
-	if([[tableView window] isVisible])
-		[tableView setNeedsDisplay:YES];
+		// Now force a full redisplay
+		if([[tableView window] isVisible])
+			[tableView setNeedsDisplay:YES];
+	}
 }
 
 /////////////////////////////////////////////////// PROTOCOL: CurrentFilePlugin

@@ -7,8 +7,11 @@
             LANGUAGE = ObjC; 
             OUTLETS = {
                 currentKeywordsTextView = NSTextView; 
+                currentKeywordsTextViewLabel = NSTextField; 
                 fileNameTextField = NSTextField; 
+                fileNameTextFieldLabel = NSTextField; 
                 outlineView = NSOutlineView; 
+                outlineViewLabel = NSTextField; 
             }; 
             SUPERCLASS = NSWindowController; 
         }

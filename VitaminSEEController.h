@@ -122,6 +122,7 @@
 // Moving about in 
 //- (void)setCurrentDirectory:(NSString*)newCurrentDirectory file:(NSString*)newCurrentFile;
 - (void)setCurrentFile:(NSString*)newCurrentFile;
+-(void)setPluginCurrentFileTo:(NSString*)newCurrentFile;
 - (void)preloadFile:(NSString*)file;
 
 // Changing the user interface

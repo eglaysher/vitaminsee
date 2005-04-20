@@ -274,6 +274,7 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
 		currentPath = newPath;
 		[currentPath retain];
 
+		[fileNameTextFieldLabel setEnabled:YES];
 		[fileNameTextField setEnabled:YES];
 		[fileNameTextField setStringValue:[currentPath lastPathComponent]];
 
@@ -281,9 +282,12 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
 		if([pluginLayer supportsKeywords:newPath])
 		{
 			// First, make sure the relevant sections are enabled:
+			[outlineViewLabel setEnabled:YES];
 			[outlineView setEnabled:YES];
 			[self enableAllCells];
 			[outlineView setNeedsDisplay:YES];
+			
+			[currentKeywordsTextViewLabel setEnabled:YES];
 			[currentKeywordsTextView setEditable:YES];
 			[self loadKeywords];			
 		}
@@ -299,11 +303,18 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
 	else
 	{
 		// Disable everything
+		[fileNameTextFieldLabel setEnabled:NO];
 		[fileNameTextField setStringValue:@""];
 		[fileNameTextField setEnabled:NO];
+		
+		[outlineViewLabel setEnabled:NO];
 		[outlineView setEnabled:NO];
+		
 		[self disableAllCells];
+		
 		[outlineView setNeedsDisplay:YES];
+	
+		[currentKeywordsTextViewLabel setEnabled:NO];
 		[currentKeywordsTextView setEditable:NO];		
 	}
 }

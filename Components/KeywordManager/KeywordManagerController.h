@@ -36,8 +36,11 @@
 
 @interface KeywordManagerController : NSWindowController <CurrentFilePlugin>
 {
+	IBOutlet NSTextField* fileNameTextFieldLabel;
 	IBOutlet NSTextField* fileNameTextField;
+	IBOutlet NSTextField* currentKeywordsTextViewLabel;
 	IBOutlet NSTextView* currentKeywordsTextView;
+	IBOutlet NSTextField* outlineViewLabel;
 	IBOutlet NSOutlineView* outlineView;
 
 	PluginLayer* pluginLayer;
