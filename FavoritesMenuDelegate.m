@@ -47,7 +47,8 @@
 
 -(int)numberOfItemsInMenu:(NSMenu*)menu
 {
-	return [[[NSUserDefaults standardUserDefaults] objectForKey:@"SortManagerPaths"] count];
+	return [[[NSUserDefaults standardUserDefaults] 
+		objectForKey:@"SortManagerPaths"] count];
 }
 
 - (BOOL)menu:(NSMenu *)menu 
@@ -63,9 +64,11 @@ shouldCancel:(BOOL)shouldCancel
 	[item setKeyEquivalent:@""];
 	[item setRepresentedObject:[d objectForKey:@"Path"]];
 	[item setTarget:self];
+}
 
-	// Enable this if the path exists
-	[item setEnabled:[[d objectForKey:@"Path"] isDir]];
+-(BOOL)validateMenuItem:(NSMenuItem *)theMenuItem
+{
+	return [[theMenuItem representedObject] isDir];
 }
 
 -(void)setDirectoryFromFavorites:(id)menu
