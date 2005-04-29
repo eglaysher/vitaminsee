@@ -74,6 +74,7 @@
 	
 	[keywords release];
 	[pluginLayer release];
+	[super dealloc];
 }
 
 -(void)windowDidLoad
@@ -171,9 +172,9 @@
 	if(newkeywords)
 	{
 		// This file already has keywords. Use them.
+		[newkeywords retain];
 		[keywords release];
 		keywords = newkeywords;
-		[keywords retain];
 	}
 	else
 	{
@@ -270,9 +271,9 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
 	if(newPath)
 	{
 		// Need to keep track of the current image.
+		[newPath retain];
 		[currentPath release];
 		currentPath = newPath;
-		[currentPath retain];
 
 		[fileNameTextFieldLabel setEnabled:YES];
 		[fileNameTextField setEnabled:YES];

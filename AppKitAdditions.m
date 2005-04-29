@@ -59,6 +59,8 @@
 	{
 		high = NSNotFound;
 	}
+	else if(high == -1)
+		high = NSNotFound;
 	
 	return high;
 }

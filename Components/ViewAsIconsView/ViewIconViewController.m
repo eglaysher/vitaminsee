@@ -49,8 +49,9 @@
 	{
 		[NSBundle loadNibNamed:@"ViewAsIconsView" owner:self];
 
+		[inPluginLayer retain];
 		pluginLayer = inPluginLayer;
-		[pluginLayer retain];
+
 		oldPosition = -1;
 	}
 
@@ -60,6 +61,7 @@
 -(void)dealloc
 {
 	[pluginLayer release];
+	[super dealloc];
 }
 	
 -(void)awakeFromNib
@@ -115,11 +117,6 @@
 	return [currentDirectoryComponents count];
 }
 
-//-(BOOL)canDelete
-//{
-//	return [fileList count] > 0;
-//}
-
 - (void)setCurrentDirectory:(NSString*)newCurrentDirectory
 				currentFile:(NSString*)newCurrentFile
 {	
@@ -135,28 +132,34 @@
 	
 	// Set the current Directory
 	[currentDirectory release];
-	currentDirectory = [newCurrentDirectory stringByStandardizingPath];
-	[currentDirectory retain];
+	currentDirectory = [[newCurrentDirectory stringByStandardizingPath] retain];
 	
 	// Set the current paths components of the directory
 	[currentDirectoryComponents release];
-	currentDirectoryComponents = [newCurrentDirectory pathComponents];
-	[currentDirectoryComponents retain];
+	currentDirectoryComponents = [[newCurrentDirectory pathComponents] retain];
+
+	// We need the display names to present to the user.
+//	NSArray* displayNames = [[NSFileManager defaultManager] componentsToDisplayForPath:currentDirectory];
 	
 	// Make an NSMenu with all the path components
 	NSEnumerator* e = [currentDirectoryComponents reverseObjectEnumerator];
 	NSString* currentComponent;
 	NSMenu* newMenu = [[[NSMenu alloc] init] autorelease];
 	NSMenuItem* newMenuItem;
-	int currentTag = [currentDirectoryComponents count];
-	NSSize iconImageSize = NSMakeSize(16, 16);
+	int count = [currentDirectoryComponents count];
+	int currentTag = count;
 	while(currentComponent = [e nextObject]) {
+		// [displayNames objectAtIndex:currentTag - 1]
 		newMenuItem = [[[NSMenuItem alloc] initWithTitle:currentComponent
 												  action:@selector(directoryMenuSelected:)
 										   keyEquivalent:@""] autorelease];
-		[newMenuItem setImage:[[NSString pathWithComponents:
-			[currentDirectoryComponents subarrayWithRange:NSMakeRange(0, currentTag)]] 
-			iconImageOfSize:iconImageSize]];
+		
+		// Only load the image for the currently displayed image, since this
+		// is the only one that is initially displayed. Set the others in the
+		// validation method.
+		if(currentTag == count)
+			[newMenuItem setImage:[newCurrentDirectory iconImageOfSize:NSMakeSize(16,16)]];
+
 		[newMenuItem setTag:currentTag];
 		[newMenuItem setTarget:self];
 		currentTag--;
@@ -190,6 +193,21 @@
 		[ourBrowser selectRow:0 inColumn:0];
 		[self singleClick:ourBrowser];
 	}
+	
+	[[ourBrowser window] makeFirstResponder:ourBrowser];
+}
+
+-(BOOL)validateMenuItem:(NSMenuItem *)theMenuItem
+{
+	// Set up the image for this menu item if we haven't already assigned an
+	// image.
+	if(![theMenuItem image])
+	{
+		NSString* dirPath = [NSString pathWithComponents:
+			[currentDirectoryComponents subarrayWithRange:NSMakeRange(0, [theMenuItem tag])]];
+		[theMenuItem setImage:[dirPath iconImageOfSize:NSMakeSize(16, 16)]];
+	}
+	return YES;
 }
 
 -(void)directoryMenuSelected:(id)sender
@@ -245,12 +263,18 @@ willDisplayCell:(id)cell
 	
 	[pluginLayer setCurrentFile:absolutePath];
 	
-	// Hi! My name is UGLY HACK. I'm here because Apple's NSScrollView has a
-	// subtle bug about the areas needed to visually redrawn, so we have to 
-	// redisplay THE WHOLE ENCHILADA when we scroll since there's a 1/5~ish
-	// chance that the location where the top image cell would be will be the 
-	// target drawing location of two or three cells.
-	[ourBrowser setNeedsDisplay];
+	if(NSAppKitVersionNumber < 824.00f)
+	{
+		// Hi! My name is UGLY HACK. I'm here because Apple's NSScrollView has a
+		// subtle bug about the areas needed to visually redrawn, so we have to 
+		// redisplay THE WHOLE ENCHILADA when we scroll since there's a 1/5~ish
+		// chance that the location where the top image cell would be will be the 
+		// target drawing location of two or three cells.
+		//
+		// Thankfully, this was fixed in Tiger. But Tiger didn't give us an f'in
+		// AppKit version number for it.
+		[ourBrowser setNeedsDisplay];
+	}
 	
 	// Now we figure out which file we preload next.
 	int preloadRow = -1;
@@ -284,14 +308,10 @@ willDisplayCell:(id)cell
 		[ourBrowser path]];
 	
 	if([absolutePath isDir])
-	{
 		// Get the first image in the directory:		
 		[self setCurrentDirectory:absolutePath currentFile:nil];
-	}
 }
 
-// Binary search across our files for a certain node to remove. Much faster then
-// the previous linear search...
 -(void)removeFile:(NSString*)absolutePath
 {
 	unsigned index = [fileList binarySearchFor:absolutePath 
@@ -316,8 +336,10 @@ willDisplayCell:(id)cell
 			[self selectFile:newFile];
 			[pluginLayer setCurrentFile:newFile];			
 		}
-		else
+		else if([fileList count] == 0)
 			[pluginLayer setCurrentFile:nil];
+		else
+			[self selectFile:[pluginLayer currentFile]];
 	}
 }
 
@@ -349,29 +371,30 @@ willDisplayCell:(id)cell
 // were to be removed.
 -(NSString*)nameOfNextFile
 {
-	NSMatrix* matrix = [ourBrowser matrixInColumn:0];
-	int selected = [matrix selectedRow];
-	NSString* nextFile = nil;
+	NSString* currentFile = [pluginLayer currentFile];
+	NSString* nextFile;
+
+	int index = [fileList binarySearchFor:currentFile 
+							  withSortSelector:@selector(caseInsensitiveCompare:)];
+	int count = [fileList count];
 	
-	// Get either the next or the previous cell
-	id cell = [matrix cellAtRow:(selected + 1) column:0];
-	if(!cell)
-		cell = [matrix cellAtRow:(selected - 1) column:0];
-	
-	// If we got a cell
-	if(cell)
-		nextFile = [cell cellPath];
-	
+	if(index == NSNotFound)
+		nextFile = nil;
+	else if(index + 1 < count)
+		nextFile = [fileList objectAtIndex:(index + 1)];
+	else if(index - 1 >= 0)
+		nextFile = [fileList objectAtIndex:(index - 1)];
+	else
+		nextFile = nil;
+
 	return nextFile;
 }
 
 -(void)selectFile:(NSString*)fileToSelect
 {
 	if(fileToSelect)
-	{
 		[ourBrowser setPath:[NSString pathWithComponents:[NSArray arrayWithObjects:
 			@"/", [fileToSelect lastPathComponent], nil]]];
-	}
 }
 
 -(void)makeFirstResponderTo:(NSWindow*)window
@@ -379,8 +402,7 @@ willDisplayCell:(id)cell
 	[window makeFirstResponder:ourBrowser];
 }
 
--(void)setThumbnail:(NSImage*)image 
-			forFile:(NSString*)path
+-(void)setThumbnail:(NSImage*)image forFile:(NSString*)path
 {
 	unsigned index = [fileList binarySearchFor:path 
 							  withSortSelector:@selector(caseInsensitiveCompare:)];
@@ -411,7 +433,7 @@ willDisplayCell:(id)cell
 @implementation ViewIconViewController (Private)
 
 -(void)rebuildInternalFileArray
-{	
+{
 	NSArray* directoryContents = [[NSFileManager defaultManager] 
 		directoryContentsAtPath:currentDirectory];
 	NSEnumerator* dirEnum = [directoryContents objectEnumerator];
@@ -419,7 +441,6 @@ willDisplayCell:(id)cell
 	NSString* curPath;
 	while(curPath = [dirEnum nextObject])
 	{
-		//Assumption: curFile[0] == '/'.
 		NSString* currentFileWithPath = [currentDirectory 
 			stringByAppendingPathComponent:curPath];
 				
@@ -437,6 +458,12 @@ willDisplayCell:(id)cell
 
 	// Now build thumbnails for each file in the directory (since we can be 
 	// confident they'll be built in order)
+	// 
+	// fixme: future optimization: add something to the thumbnail manager/plugin
+	// layer that allows you just send an NSArray to it. This would save
+	// [cost of message dispatch] * 3 * (numberOfFilesInDirectory)...
+	// This wouldn't be worthless since shark says 25% of the time in this 
+	// function is here.
 	NSEnumerator* fileEnum = [myFileList objectEnumerator];
 	NSString* file;
 	while(file = [fileEnum nextObject])
@@ -444,8 +471,8 @@ willDisplayCell:(id)cell
 			[pluginLayer generateThumbnailForFile:file];
 	
 	// Now let's keep our new list of files.
-	[fileList release];
 	[myFileList retain];
+	[fileList release];
 	fileList = myFileList;
 }
 

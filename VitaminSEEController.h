@@ -70,6 +70,7 @@
 	IBOutlet NSTextField * fileSizeLabel;
 	IBOutlet NSTextField * imageSizeLabel;
 	IBOutlet NSWindow* viewerWindow;
+	IBOutlet NSSplitView* splitView;
 	IBOutlet NSScrollView* scrollView;
 
 	NSCursor *handCursor;
@@ -122,7 +123,7 @@
 // Moving about in 
 //- (void)setCurrentDirectory:(NSString*)newCurrentDirectory file:(NSString*)newCurrentFile;
 - (void)setCurrentFile:(NSString*)newCurrentFile;
--(void)setPluginCurrentFileTo:(NSString*)newCurrentFile;
+- (void)setPluginCurrentFileTo:(NSString*)newCurrentFile;
 - (void)preloadFile:(NSString*)file;
 
 // Changing the user interface
@@ -147,6 +148,8 @@
 // ----------------------
 -(IBAction)goToHomeFolder:(id)sender;
 -(IBAction)goToPicturesFolder:(id)sender;
+// ----------------------
+-(IBAction)fakeFavoritesMenuSelector:(id)sender;
 // ----------------------
 -(IBAction)goToFolder:(id)sender;
 -(void)finishedGotoFolder:(NSString*)done;

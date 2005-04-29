@@ -124,10 +124,10 @@
     NSString *path = self;
     NSImage *nodeImage = nil;
     
-    nodeImage = [[[NSWorkspace sharedWorkspace] iconForFile:path] retain];
+    nodeImage = [[NSWorkspace sharedWorkspace] iconForFile:path];
     if (!nodeImage) {
         // No icon for actual file, try the extension.
-        nodeImage = [[[NSWorkspace sharedWorkspace] iconForFileType:[path pathExtension]] retain];
+        nodeImage = [[NSWorkspace sharedWorkspace] iconForFileType:[path pathExtension]];
     }
     [nodeImage setSize: size];
     

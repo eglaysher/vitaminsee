@@ -5,7 +5,11 @@
             ACTIONS = {clickCancel = id; clickOK = id; completeText = id; type = id; }; 
             CLASS = GotoSheetController; 
             LANGUAGE = ObjC; 
-            OUTLETS = {folderName = NSTextField; target = id; }; 
+            OUTLETS = {
+                actionButton = NSButton; 
+                folderName = NSTextField; 
+                questionText = NSTextField; 
+            }; 
             SUPERCLASS = NSWindowController; 
         }
     ); 

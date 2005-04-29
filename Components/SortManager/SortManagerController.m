@@ -53,12 +53,14 @@
 {
 	[pluginLayer release];
 	[keyValues release];
+	[super dealloc];
 }
 
 -(void)windowDidLoad
 {
 	[super windowDidLoad];
 	
+	[(NSPanel*)[self window] setBecomesKeyOnlyIfNeeded:YES];	
 	[self setShouldCascadeWindows:NO];
 	[self setWindowFrameAutosaveName:@"sortManagerWindowPosition"];
 }

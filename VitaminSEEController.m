@@ -65,46 +65,7 @@
  * Moving a file into a directory where that file already exists.
  */
 
-
-/////////////////////////////////////////////////////////// WHAT HAS BEEN DONE:
-/**
-  * Select child folder on "Go Enclosing folder"
-  * Actual size zoom button
-  * Modify IconFamily to have a black line around thumbnail.
-  * Implement backHistory/forwardHistory
-  * Icons in path viewer [to emphasise that they are folders.
-  * Cell drawing
-  * Sort manager
-  * Preferences [Pretty much done. I can add new stuff when I want...]
-  * Keywords
-*/
-
-/** Bugs fixed:
-  * Highlighting gets screwed up when deleting a file...
-  */
-
-/** Polishes completed:
-  * Hide "." files...
-  * command-1 should TOGGLE the display of windows...
-  * File renaming (Inspector!)
-  * Cmd-O opens == double click.
-
-  * Comments
-  * Disable comments on things we can't comment on.
-  * Placeholder for folders.
-  * Validate menu items
-  * Icons for VitaminSee
-  * Reveal in Finder
-  * VitaminSEE icon.
-  * Go to folder sheet.
-
-  * Integrated Help
-  * Icon for SortManager (but it's crapy)
-  * Icons for KeywordManager in Preferences (but it's even worse)
-*/
-
 ////////////////////////////////////////////////// WHERE TO GO FROM HERE...
-
 
 /* Completed:
  * * Speed. 
@@ -112,7 +73,7 @@
  *     directories with lots of images! (It took 17 seconds to enter my 
  *     Wallpaper directory with v0.5.3. Now it takes less then a second)
  * * * Cut application bloat. Not everybody uses Keyword support, so don't
- *     load it at startup. (Cuts 3/4 of a second off of startup)
+ *     load it at startup.
  * * * More intelligent preloading behaviour in ViewIconViewController
  * * Stop assuming people have a "Pictures" folder. Some people have broken out
  *   of Apple's heiarchy, so don't make assumptions.
@@ -133,20 +94,17 @@
  *   run with a folder; go to that folder directly.
  */
 
-// TEST MORE:
-// * Known issue: Copying a file, then deleting the copy, leaves the undo operation
-//   on the undo stack. I need to figure out how to fix this...
-// * Move to trash in wrong spot?
-// * Fix problem where cmd-1 doesn't set current file to plugins
-
 /// For Version 0.6
-// * Fix KeywordManager to allow undo and connect with the main window controller.
-// * Disable labels in KeywordManager (wishlist)
 // * Dogfood it for at least a week and a half...
-// * FIX THE HELP!
 
 // For Version 0.6.1
+// * RBSplitView for the left column.
+//   * Contact Rainer Brockerhoff and ask him if he can dual liscence RBSplitView
+//     under CC-By-2.0 AND BSD (which he used to do). His webpage says no
+//     difference but CC-By-2.0 isn't GPL compatible.
 // * Cache control. How large?
+
+// For Version 0.6.2
 // * Japanese Localization
 //   * Requires localization of display names!
 //     * General Preferences needs some kind of DisplayNameValueTransformer
@@ -156,6 +114,9 @@
 
 // For Version 0.7
 // * Transparent archive support
+// * Have thumbnails scale down if right side is shrunk (rework NSBrowserCell
+//   subclass to use NSImageCell?)
+// * Make the left column hideable
 // * Fit height/width
 // * Fullscreen mode
 // * Undo on delete. (0.7 by absolute latest!)
@@ -182,6 +143,9 @@
 
 // KNOWN ISSUES:
 // * GIF animation speed.
+// * (Some) Animated GIFs broken in Tiger?
+// * Very rare Kotoeri crash at startup. No clue what's causing it.
+// * Disable labels in KeywordManager (wishlist)
 
 /* Okay, refactoring responsibilities:
   * VitaminSEEController is responsible for ONLY:
@@ -191,7 +155,6 @@
   * FileDisplay
     * Knows about the current directory. Draws stuff. Et cetera.
 */
-
 
 /**
   Non-required improvements that would be a good idea:
@@ -295,39 +258,13 @@
 	[scrollView setDocumentView:docView];
 	[docView release];
 	
-	[imageViewer setAnimates:YES];
-	[imageViewer setImage:nil];	
-	
 	// Use our file size formatter for formating the "[image size]" text label
 	FileSizeFormatter* fsFormatter = [[[FileSizeFormatter alloc] init] autorelease];
 	[[fileSizeLabel cell] setFormatter:fsFormatter];
 	
-	// Set up the icon for Home. Get the icon for the directory so something like
-	// FileVault shows up...
-	NSImage* img = [[NSWorkspace sharedWorkspace] iconForFile:NSHomeDirectory()];
-	[img setSize:NSMakeSize(16, 16)];
-	[homeFolderMenuItem setImage:img];
-
-	// Set up the icon for ~/Pictures. (Do this at runtime so that we don't get
-	// the default file icon in case "~/Pictures" doesn't exist.)
-	if([[NSHomeDirectory() stringByAppendingPathComponent:@"Pictures"] isDir])
-	{
-		img = [[[NSImage imageNamed:@"ToolbarPicturesFolderIcon"] copy] autorelease];
-		[img setScalesWhenResized:YES];
-		[img setSize:NSMakeSize(16, 16)];
-	}
-	else
-		img = [[NSImage alloc] initWithSize:NSMakeSize(16,16)];
-	[pictureFolderMenuItem setImage:img];
-	
-	// Set up the Favorites Menu
-	NSMenu* favoritesMenu = [[[NSMenu alloc] init] autorelease];
-	favoritesMenuDelegate = [[FavoritesMenuDelegate alloc] initWithController:self];
-	[favoritesMenu setDelegate:favoritesMenuDelegate];
-	[favoritesMenuItem setSubmenu:favoritesMenu];
-	
 	[self setupToolbar];
-	[self zoomToFit:self];
+	scaleProportionally = NO;
+	scaleRatio = 1.0;
 	
 	// Set our plugins to nil
 	loadedBasePlugins = [[NSMutableDictionary alloc] init];
@@ -336,9 +273,6 @@
 	
 	// Use an Undo manager to manage moving back and forth.
 	pathManager = [[NSUndoManager alloc] init];	
-	
-	handCursor = [[NSCursor alloc] initWithImage:[NSImage 
-		imageNamed:@"hand_open"] hotSpot:NSMakePoint(8, 8)];
 	
 	// Launch the other threads and tell them to connect back to us.
 	imageTaskManager = [[ImageTaskManager alloc] initWithController:self];
@@ -350,6 +284,7 @@
 -(void)dealloc
 {
 	[pathManager release];
+	[super dealloc];
 }
 
 ////////////////////////////////////////////////////////// APPLICATION DELEGATE
@@ -360,10 +295,8 @@
 {
 	if(!setPathForFirstTime)
 	{
-		[self startProgressIndicator];
 		[viewAsIconsController setCurrentDirectory:[[NSUserDefaults standardUserDefaults] 
 			objectForKey:@"DefaultStartupPath"] currentFile:nil];
-		[self stopProgressIndicator];
 	}
 	
 	// Make the icon view the first responder since the previous enable
@@ -403,16 +336,6 @@
 	NSLog(@"In applicationShouldHandleReopen");
 	if(![mainVitaminSeeWindow isVisible])
 	{
-		// Clear the current file being displayed (albeit offscreen)
-//		[self setCurrentFile:nil];
-		
-		// Set the main window to the default directory
-//		[viewAsIconsController setCurrentDirectory:[[NSUserDefaults standardUserDefaults] 
-//			objectForKey:@"DefaultStartupPath"] currentFile:nil];
-		
-		// Redisplay the current file
-//		[self setPluginCurrentFileTo:currentImageFile];
-
 		// Now display the window
 		[self toggleVitaminSee:self];
 	}
@@ -422,7 +345,6 @@
 {
 	// Tell all the plugins that there's no file.
 	[self setPluginCurrentFileTo:nil];
-//	self.setPluginCurrentFileTo(nil);
 }
 
 -(void)displayAlert:(NSString*)message informativeText:(NSString*)info 
@@ -464,7 +386,6 @@
 - (void)setViewAsView:(NSView*)nextView
 {
 	[currentFileViewHolder setSubview:nextView];
-//	currentFileView = nextView;
 }
 
 -(IBAction)openFolder:(id)sender;
@@ -527,6 +448,10 @@
 
 	[viewAsIconsController setCurrentDirectory:[NSHomeDirectory() 
 		stringByAppendingPathComponent:@"Pictures"] currentFile:nil];
+}
+
+-(IBAction)fakeFavoritesMenuSelector:(id)sender
+{
 }
 
 -(IBAction)goToFolder:(id)sender
@@ -678,8 +603,8 @@
 	{
 		enable = mainWindowVisible && [currentImageFile isDir];
 	}
-	if(action == @selector(closeWindow:) ||
-	   action == @selector(referesh:))
+	else if(action == @selector(closeWindow:) ||
+			action == @selector(referesh:))
 	{
 		enable = mainWindowVisible;
 	}
@@ -690,7 +615,6 @@
 	}
 	else if(action == @selector(deleteFileClicked:))
 	{
-		// We can delete this file as long as we've selected a file.
 		enable = mainWindowVisible && [[viewAsIconsController selectedFiles] count];
 	}
 	// View Menu
@@ -744,20 +668,58 @@
 	{
 		enable = mainWindowVisible && [pathManager canRedo];
 	}
+	else if (action == @selector(goToHomeFolder:))
+	{
+		// Set the icon if we don't have one yet.
+		if(![theMenuItem image])
+		{
+			NSImage* img = [[NSWorkspace sharedWorkspace] iconForFile:NSHomeDirectory()];
+			[img setSize:NSMakeSize(16, 16)];
+			[theMenuItem setImage:img];
+		}
+	}
 	else if (action == @selector(goToPicturesFolder:))
 	{
 		enable = [[NSHomeDirectory() stringByAppendingPathComponent:@"Pictures"] isDir];
+
+		// Set the icon if we haven't done so yet.
+		if(![theMenuItem image])
+		{
+			NSImage* img;
+			if(enable)
+			{
+				img = [[[NSImage imageNamed:@"ToolbarPicturesFolderIcon"] copy] autorelease];
+				[img setScalesWhenResized:YES];
+				[img setSize:NSMakeSize(16, 16)];
+			}
+			else
+				img = [[NSImage alloc] initWithSize:NSMakeSize(16,16)];
+			
+			[theMenuItem setImage:img];
+		}
 	}
 	else if (action == @selector(goToFolder:))
 	{
 		enable = mainWindowVisible;
 	}
-	
+	else if (action == @selector(fakeFavoritesMenuSelector:))
+	{
+		[theMenuItem setAction:nil];
+		
+		// Set up the Favorites Menu
+		NSMenu* favoritesMenu = [[[NSMenu alloc] init] autorelease];
+		favoritesMenuDelegate = [[FavoritesMenuDelegate alloc] initWithController:self];
+		[favoritesMenu setDelegate:favoritesMenuDelegate];
+		[theMenuItem setSubmenu:favoritesMenu];		
+	}
+
     return enable;
 }
 
 - (void)setCurrentFile:(NSString*)newCurrentFile
 {
+	// CHECK THIS OUT LATER!!!!
+	[newCurrentFile retain];
 	[currentImageFile release];
 	currentImageFile = newCurrentFile;
 	[currentImageFile retain];
@@ -873,11 +835,17 @@
 
 	[imageViewer setImage:image];
 	[imageViewer setFrameSize:[image size]];
+	[imageViewer setAnimates:YES];
 	
 	// Set the correct cursor.
 	if([image size].width > [scrollView contentSize].width ||
 	   [image size].height > [scrollView contentSize].height)
+	{
+		if(!handCursor)
+			handCursor = [[NSCursor alloc] initWithImage:[NSImage 
+				imageNamed:@"hand_open"] hotSpot:NSMakePoint(8, 8)];
 		[(NSScrollView*)[imageViewer superview] setDocumentCursor:handCursor];
+	}
 	else
 		[(NSScrollView*)[imageViewer superview] setDocumentCursor:nil];
 	
@@ -961,7 +929,8 @@
 	if([currentImageFile isDir])
 	{
 		NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
-		NSMutableArray* favoritesArray = [[userDefaults objectForKey:@"SortManagerPaths"] mutableCopy];
+		NSMutableArray* favoritesArray = [[userDefaults objectForKey:
+			@"SortManagerPaths"] mutableCopy];
 		
 		NSDictionary* newItem = [NSDictionary dictionaryWithObjectsAndKeys:
 			[currentImageFile lastPathComponent], @"Name",

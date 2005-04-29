@@ -62,8 +62,12 @@ NSSize IMAGE_SIZE = {128.0f, 128.0f};
 -(void)dealloc
 {
 	[title release];
+	unsigned refcount = [iconImage retainCount];
+	if(refcount > 1)
+		NSLog(@"WARNING! %@ has %d references", thisCellsFullPath, refcount);
 	[iconImage release];
 	[thisCellsFullPath release];
+	[super dealloc];
 }
 
 -(NSString*)cellPath
@@ -73,9 +77,9 @@ NSSize IMAGE_SIZE = {128.0f, 128.0f};
 
 -(void)setTitle:(NSString*)newTitle
 {
+	[newTitle retain];
 	[title release];
 	title = newTitle;
-	[title retain];
 	[self resetTitleCache];
 }
 
@@ -87,13 +91,12 @@ NSSize IMAGE_SIZE = {128.0f, 128.0f};
 -(void)setCellPropertiesFromPath:(NSString*)path
 {
 	// Keep this path...
-	[thisCellsFullPath release];
 	[path retain];
+	[thisCellsFullPath release];
 	thisCellsFullPath = path;
 	
 	[title release];
-	title = [path lastPathComponent];
-	[title retain];
+	title = [[path lastPathComponent] retain];
 
 	[self setStringValue:[thisCellsFullPath lastPathComponent]];
 	
@@ -104,13 +107,13 @@ NSSize IMAGE_SIZE = {128.0f, 128.0f};
 	[self setEnabled:[thisCellsFullPath isReadable]];
 	
 	// In the ViewAsIconView, there are no left directories...
-	[self setLeaf:YES];	
+	[self setLeaf:YES];
 }
 
 - (void)setIconImage:(NSImage*)image {
+	[image retain];
     [iconImage release];
     iconImage = image;
-	[iconImage retain];
     
     // Make sure the image is going to display at the size we want.
     [iconImage setSize:IMAGE_SIZE];
@@ -138,7 +141,6 @@ NSSize IMAGE_SIZE = {128.0f, 128.0f};
     return theSize;
 }
 
-// WE ARE SPENDING 16% OF TOTAL RUNTIME HERE. OPTIMIZE THE FUCK OUT OF THIS!
 - (void)drawInteriorWithFrame:(NSRect)cellFrame inView:(NSView *)controlView 
 {
 	// Make this a global constant?

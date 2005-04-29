@@ -63,6 +63,7 @@
 {
 	[keyword release];
 	[children release];
+	[super dealloc];
 }
 
 ///// Encoding...
@@ -108,9 +109,9 @@
 // Accessors...
 -(void)setKeyword:(NSString*)inKeyword
 {
+	[inKeyword retain];
 	[keyword release];
 	keyword = inKeyword;
-	[keyword retain];
 }
 
 -(NSString*)keyword

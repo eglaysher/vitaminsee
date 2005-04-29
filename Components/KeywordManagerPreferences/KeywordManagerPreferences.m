@@ -43,6 +43,7 @@
 -(void)dealloc
 {
 	[keywordRoot release];
+	[super dealloc];
 }
 
 // Forum actions
@@ -165,7 +166,6 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
 {
 	NSString* currentKeyword = [[item keyword] retain];
 	
-//	NSLog(@"Changing %@ to %@", [item keyword], object);
 	[item setKeyword:(NSString*)object];
 	[thisOutlineView reloadItem:item];
 

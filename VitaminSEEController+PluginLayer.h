@@ -50,6 +50,7 @@
 -(int)copyFile:(NSString*)file to:(NSString*)destination;
 
 -(void)generateThumbnailForFile:(NSString*)path;
+-(void)clearThumbnailQueue;
 
 -(NSUndoManager*)pathManager;
 -(NSUndoManager*)undoManager;

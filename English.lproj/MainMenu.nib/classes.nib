@@ -15,6 +15,7 @@
                 addCurrentDirectoryToFavorites = id; 
                 closeWindow = id; 
                 deleteFileClicked = id; 
+                fakeFavoritesMenuSelector = id; 
                 goBack = id; 
                 goEnclosingFolder = id; 
                 goForward = id; 
@@ -48,6 +49,7 @@
                 progressCurrentTask = NSTextField; 
                 progressIndicator = NSProgressIndicator; 
                 scrollView = NSScrollView; 
+                splitView = NSSplitView; 
                 viewerWindow = NSWindow; 
             }; 
             SUPERCLASS = NSObject; 

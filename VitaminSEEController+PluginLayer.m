@@ -170,7 +170,7 @@
 	int tag = 0;
 	BOOL worked = NO;
 	BOOL canUndo = YES;
-	NSString* sourceDirectory = [file stringByDeletingLastPathComponent];
+//	NSString* sourceDirectory = [file stringByDeletingLastPathComponent];
 	NSString* destinationPath = [destination stringByAppendingPathComponent:
 		[file lastPathComponent]];
 	NSFileManager* fileManager = [NSFileManager defaultManager];
@@ -236,7 +236,7 @@
 				canUndo = NO;
 		}
 
-		NSLog(@"Moving %@ to %@", file, destinationPath);
+//		NSLog(@"Moving %@ to %@", file, destinationPath);
 		worked = [[NSFileManager defaultManager] movePath:file
 												   toPath:destinationPath 
 												  handler:nil];

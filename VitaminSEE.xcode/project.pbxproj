@@ -1055,7 +1055,6 @@
 		8B5279390801D48E0032F515 = {
 			children = (
 				8B52793A0801D48E0032F515,
-				8B6B0AAF0804F551007655EB,
 			);
 			isa = PBXVariantGroup;
 			name = Credits.html;
@@ -1615,7 +1614,6 @@
 		8B6B0AA40804F50F007655EB = {
 			children = (
 				8BC27DA707ECF9B300B56836,
-				8B6B0AA60804F519007655EB,
 			);
 			isa = PBXVariantGroup;
 			name = GPL.txt;
@@ -1627,24 +1625,6 @@
 			isa = PBXBuildFile;
 			settings = {
 			};
-		};
-		8B6B0AA60804F519007655EB = {
-			fileEncoding = 10;
-			isa = PBXFileReference;
-			lastKnownFileType = text;
-			name = Japanese;
-			path = Japanese.lproj/GPL.txt;
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		8B6B0AAF0804F551007655EB = {
-			fileEncoding = 10;
-			isa = PBXFileReference;
-			lastKnownFileType = text.html;
-			name = Japanese;
-			path = Japanese.lproj/Credits.html;
-			refType = 4;
-			sourceTree = "<group>";
 		};
 		8B6D010807CB178F009A76DA = {
 			children = (

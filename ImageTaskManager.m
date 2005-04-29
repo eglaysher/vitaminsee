@@ -96,6 +96,7 @@
 	// destroy our mutexed data!
 	[imageCache release];
 	[preloadQueue release];
+	[super dealloc];
 }
 
 -(void)taskHandlerThread:(id)portArray
@@ -189,8 +190,8 @@
 	pthread_mutex_lock(&taskQueueLock);
 	
 	// Make this the NEXT thing we do.
-	[fileToDisplayPath release];
 	[path retain];
+	[fileToDisplayPath release];
 	fileToDisplayPath = path;
 	
 	// Note that we are OUT of here...
@@ -417,12 +418,12 @@
 				@"Error message: 'Can not display FILENAME'");
 			NSString* informativeText = NSLocalizedString(@"Please chcek that it's a valid file",
 				@"Localized informative text on can't load image error");
-			
+
+			[vitaminSEEController stopProgressIndicator];
 			[vitaminSEEController displayAlert:[NSString stringWithFormat:
 				format, [path lastPathComponent]]
 							   informativeText:informativeText
-									helpAnchor:@"IMAGE_WONT_LOAD_ANCHOR"];
-			[vitaminSEEController stopProgressIndicator];
+									helpAnchor:@"VITAMINSEE_IMAGE_WONT_LOAD_ANCHOR"];
 			return;
 		}
 		
@@ -475,8 +476,8 @@
 
 -(void)sendDisplayCommandWithImage:(NSImage*)image width:(int)width height:(int)height
 {
-	[currentImage release];
 	[image retain];
+	[currentImage release];
 	currentImage = image;
 	
 	currentImageWidth = width;

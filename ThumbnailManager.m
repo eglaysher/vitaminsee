@@ -87,6 +87,7 @@
 	
 	// destroy our mutexed data!
 	[thumbnailQueue release];
+	[super dealloc];
 }
 
 -(void)taskHandlerThread:(id)portArray

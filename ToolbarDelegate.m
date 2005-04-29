@@ -187,7 +187,6 @@ static NSString* FavoritesID = @"Favorites Toolbar Identifier";
 {
     BOOL enable = NO;
 	NSString* identifier = [toolbarItem itemIdentifier];
-//	NSLog(@"Validating %@", identifier);
 
 	if([identifier isEqual:RevealInFinderToolbarID])
 	{
@@ -220,7 +219,7 @@ static NSString* FavoritesID = @"Favorites Toolbar Identifier";
 	}
 	else if ([identifier isEqual:GotoHomeID])
 	{
-		// Always show home. If the user has deleted his
+		// Always show home. If the user has deleted his, then tough luck
         enable = YES;
     }
 	

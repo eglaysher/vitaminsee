@@ -78,6 +78,7 @@
 	[popUpImage release];
 	[favoritesMenu release];
 	[favoritesMenuDelegate release];
+	[super dealloc];
 }
 
 @end

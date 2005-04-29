@@ -67,11 +67,11 @@
 	}
 }
 
-// SORT_MANAGER_PREFERENCES_ANCHOR
 -(IBAction)showHelp:(id)sender
 {
-	[[NSHelpManager sharedHelpManager] openHelpAnchor:@"SORT_MANAGER_PREFERENCES_ANCHOR"
-											   inBook:@"VitaminSEE Help"];
+	[[NSHelpManager sharedHelpManager] 
+		openHelpAnchor:@"VITAMINSEE_FAVORITES_PREFERENCES_ANCHOR"
+				inBook:@"VitaminSEE Help"];
 }
 
 /////////////////////////////////////////// Protocol: SS_PreferencePaneProtocol

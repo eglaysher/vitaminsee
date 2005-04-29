@@ -82,8 +82,10 @@
 		selector:(SEL)selector
 {
 	// First, set the callbacks for later when OUR callbacks are called
+	[inTarget retain];
+	[target release];
 	target = inTarget;
-	[target retain];
+	
 	returnSelector = selector;
 	
 	// Clear the 
