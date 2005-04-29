@@ -211,7 +211,7 @@
 			stringWithFormat:@"Building thumbnail for %@...", [path lastPathComponent]]];
 
 		// I don't think there IS an autorelease...
-		NSImage* image = [[NSImage alloc] initWithData:[NSData dataWithContentsOfFile:path]];
+		NSImage* image = [[[NSImage alloc] initWithData:[NSData dataWithContentsOfFile:path]] autorelease];
 
 		// Set icon
 		iconFamily = [IconFamily iconFamilyWithThumbnailsOfImage:image];
@@ -221,7 +221,6 @@
 
 			// Must retain
 			thumbnail = [[iconFamily imageWithAllReps] retain];
-			[image release];
 
 			currentIconFamilyThumbnail = thumbnail;
 			currentPath = path;
@@ -229,7 +228,6 @@
 
 			[vitaminSEEController setStatusText:nil];
 		}
-		[image release];
 	}
 }
 

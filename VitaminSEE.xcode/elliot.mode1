@@ -232,8 +232,6 @@
 			<key>Layout</key>
 			<array>
 				<dict>
-					<key>BecomeActive</key>
-					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -271,18 +269,19 @@
 							<array>
 								<string>29B97314FDCFA39411CA2CEA</string>
 								<string>8B6D010807CB178F009A76DA</string>
-								<string>29B97317FDCFA39411CA2CEA</string>
+								<string>080E96DDFE201D6D7F000001</string>
 								<string>1C37FABC05509CD000000102</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>10</integer>
+									<integer>12</integer>
+									<integer>11</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 0}, {186, 338}}</string>
+							<string>{{0, 9}, {186, 338}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -346,6 +345,8 @@
 							<string>0pt</string>
 						</dict>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -382,9 +383,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>8B82FB3E0822B9A6002322FD</string>
+				<string>8B82FBD70822BFB6002322FD</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>8B82FB3F0822B9A6002322FD</string>
+				<string>8B82FBD80822BFB6002322FD</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -503,7 +504,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>136493478.893363</real>
+	<real>136495186.49900201</real>
 	<key>ToolbarDisplayMode</key>
 	<integer>2</integer>
 	<key>ToolbarIsVisible</key>
@@ -518,9 +519,14 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>8B82FB240822B3F8002322FD</string>
+		<string>8B82FBE60822C052002322FD</string>
+		<string>8B82FBE70822C052002322FD</string>
+		<string>8B91E5BF0820885E001E8521</string>
+		<string>8B82FBE40822C052002322FD</string>
+		<string>8B82FBDC0822BFCE002322FD</string>
 		<string>1C0AD2B3069F1EA900FABCE6</string>
 		<string>/Users/elliot/Projects/VitaminSEE-main/VitaminSEE.xcode</string>
+		<string>1CD10A99069EF8BA00B06720</string>
 	</array>
 	<key>WindowString</key>
 	<string>240 259 690 397 0 0 1024 746 </string>
@@ -601,8 +607,8 @@
 			<true/>
 			<key>TableOfContents</key>
 			<array>
-				<string>8B82FB240822B3F8002322FD</string>
-				<string>8B82FB250822B3F8002322FD</string>
+				<string>8B82FBDC0822BFCE002322FD</string>
+				<string>8B82FBDD0822BFCE002322FD</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -611,7 +617,7 @@
 			<key>WindowString</key>
 			<string>188 203 500 500 0 0 1024 746 </string>
 			<key>WindowToolGUID</key>
-			<string>8B82FB240822B3F8002322FD</string>
+			<string>8B82FBDC0822BFCE002322FD</string>
 			<key>WindowToolIsVisible</key>
 			<false/>
 		</dict>
@@ -644,8 +650,8 @@
 										<string>yes</string>
 										<key>sizes</key>
 										<array>
-											<string>{{0, 0}, {347, 190}}</string>
-											<string>{{0, 190}, {347, 191}}</string>
+											<string>{{0, 0}, {347, 187}}</string>
+											<string>{{0, 187}, {347, 194}}</string>
 										</array>
 									</dict>
 									<key>VerticalSplitView</key>
@@ -708,14 +714,14 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1CD10A99069EF8BA00B06720</string>
-				<string>8B91E5B80820885E001E8521</string>
+				<string>8B82FBDE0822C052002322FD</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>8B91E5B90820885E001E8521</string>
-				<string>8B91E5BA0820885E001E8521</string>
-				<string>8B91E5BB0820885E001E8521</string>
-				<string>8B91E5BC0820885E001E8521</string>
-				<string>8B91E5BD0820885E001E8521</string>
-				<string>8B91E5BE0820885E001E8521</string>
+				<string>8B82FBDF0822C052002322FD</string>
+				<string>8B82FBE00822C052002322FD</string>
+				<string>8B82FBE10822C052002322FD</string>
+				<string>8B82FBE20822C052002322FD</string>
+				<string>8B82FBE30822C052002322FD</string>
+				<string>8B82FBE40822C052002322FD</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debug</string>
@@ -724,7 +730,7 @@
 			<key>WindowToolGUID</key>
 			<string>1CD10A99069EF8BA00B06720</string>
 			<key>WindowToolIsVisible</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>FirstTimeWindowDisplayed</key>
@@ -869,7 +875,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>8B91E5BF0820885E001E8521</string>
-				<string>8B91E5C00820885E001E8521</string>
+				<string>8B82FBE50822C052002322FD</string>
 				<string>1C78EAAC065D492600B07095</string>
 			</array>
 			<key>WindowString</key>
@@ -914,8 +920,8 @@
 										<string>yes</string>
 										<key>sizes</key>
 										<array>
-											<string>{{0, 0}, {367, 168}}</string>
-											<string>{{0, 173}, {367, 270}}</string>
+											<string>{{0, 0}, {366, 168}}</string>
+											<string>{{0, 173}, {366, 270}}</string>
 										</array>
 									</dict>
 									<key>VerticalSplitView</key>
@@ -964,9 +970,9 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C0AD2B3069F1EA900FABCE6</string>
-				<string>8B82FB260822B3F8002322FD</string>
+				<string>8B82FBD90822BFB6002322FD</string>
 				<string>1CD0528B0623707200166675</string>
-				<string>8B82FB270822B3F8002322FD</string>
+				<string>8B82FBDA0822BFB6002322FD</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.run</string>

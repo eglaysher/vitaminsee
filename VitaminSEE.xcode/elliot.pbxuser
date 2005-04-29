@@ -9,7 +9,7 @@
 		};
 	};
 	29B97313FDCFA39411CA2CEA = {
-		activeBuildStyle = 4A9504CDFFE6A4B311CA0CBA;
+		activeBuildStyle = 4A9504CCFFE6A4B311CA0CBA;
 		activeExecutable = 8BC8F83207F0EB7000C66290;
 		activeTarget = 8D1107260486CEB800E47090;
 		addToTargets = (
@@ -160,7 +160,7 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 136491891;
+			PBXPerProjectTemplateStateSaveDate = 136495011;
 			PBXPrepackagedSmartGroups_v2 = (
 				{
 					PBXTransientLocationAtTop = bottom;
@@ -337,7 +337,7 @@
 					};
 				},
 			);
-			PBXWorkspaceStateSaveDate = 136491891;
+			PBXWorkspaceStateSaveDate = 136495011;
 		};
 		sourceControlManager = 8BC8F8E607F0EB7900C66290;
 		userBookmarkGroup = 8B2DF8EF0813757300A903A7;
@@ -373,9 +373,9 @@
 	};
 	8B3CB1A307EA82CE0086353C = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {734, 3760}}";
-			sepNavSelRange = "{6244, 6}";
-			sepNavVisRect = "{{0, 3470}, {734, 180}}";
+			sepNavIntBoundsRect = "{{0, 0}, {769, 3744}}";
+			sepNavSelRange = "{6418, 0}";
+			sepNavVisRect = "{{0, 3394}, {511, 350}}";
 			sepNavWindowFrame = "{{15, 239}, {750, 502}}";
 		};
 	};
@@ -1383,6 +1383,121 @@
 			{
 				level = 0;
 				path = "/Users/elliot/Projects/VitaminSEE/build/VitaminSEE.build/VitaminSEE.build/Objects-normal/ppc/FavoritesMenuDelegate.ob";
+				whenToLoad = 0;
+			},
+			{
+				level = 0;
+				path = "/Users/elliot/Projects/VitaminSEE-main/build/VitaminSEE.app/Contents/MacOS/VitaminSEE";
+				whenToLoad = 0;
+			},
+			{
+				level = 0;
+				path = "/Users/elliot/Projects/VitaminSEE-main/build/VitaminSEE.build/VitaminSEE.build/Objects-normal/ppc/ToolbarDelegate.ob";
+				whenToLoad = 0;
+			},
+			{
+				level = 0;
+				path = "/Users/elliot/Projects/VitaminSEE-main/build/VitaminSEE.build/VitaminSEE.build/Objects-normal/ppc/VitaminSEEController.ob";
+				whenToLoad = 0;
+			},
+			{
+				level = 0;
+				path = "/Users/elliot/Projects/VitaminSEE-main/build/VitaminSEE.build/VitaminSEE.build/Objects-normal/ppc/IconFamily.ob";
+				whenToLoad = 0;
+			},
+			{
+				level = 0;
+				path = "/Users/elliot/Projects/VitaminSEE-main/build/VitaminSEE.build/VitaminSEE.build/Objects-normal/ppc/NSString+CarbonFSSpecCreation.ob";
+				whenToLoad = 0;
+			},
+			{
+				level = 0;
+				path = "/Users/elliot/Projects/VitaminSEE-main/build/VitaminSEE.build/VitaminSEE.build/Objects-normal/ppc/ImageTaskManager.ob";
+				whenToLoad = 0;
+			},
+			{
+				level = 0;
+				path = "/Users/elliot/Projects/VitaminSEE-main/build/VitaminSEE.build/VitaminSEE.build/Objects-normal/ppc/NSString+FileTasks.ob";
+				whenToLoad = 0;
+			},
+			{
+				level = 0;
+				path = "/Users/elliot/Projects/VitaminSEE-main/build/VitaminSEE.build/VitaminSEE.build/Objects-normal/ppc/VitaminSEEController+PluginLayer.ob";
+				whenToLoad = 0;
+			},
+			{
+				level = 0;
+				path = "/Users/elliot/Projects/VitaminSEE-main/build/VitaminSEE.build/VitaminSEE.build/Objects-normal/ppc/ThumbnailManager.ob";
+				whenToLoad = 0;
+			},
+			{
+				level = 0;
+				path = "/Users/elliot/Projects/VitaminSEE-main/build/VitaminSEE.build/VitaminSEE.build/Objects-normal/ppc/AppKitAdditions.ob";
+				whenToLoad = 0;
+			},
+			{
+				level = 0;
+				path = "/Users/elliot/Projects/VitaminSEE-main/build/VitaminSEE.build/VitaminSEE.build/Objects-normal/ppc/main.ob";
+				whenToLoad = 0;
+			},
+			{
+				level = 0;
+				path = "/Users/elliot/Projects/VitaminSEE-main/build/VitaminSEE.build/VitaminSEE.build/Objects-normal/ppc/MyImageView.ob";
+				whenToLoad = 0;
+			},
+			{
+				level = 0;
+				path = "/Users/elliot/Projects/VitaminSEE-main/build/VitaminSEE.build/VitaminSEE.build/Objects-normal/ppc/ImmutableToMutableTransformer.ob";
+				whenToLoad = 0;
+			},
+			{
+				level = 0;
+				path = "/Users/elliot/Projects/VitaminSEE-main/build/VitaminSEE.build/VitaminSEE.build/Objects-normal/ppc/PathExistsValueTransformer.ob";
+				whenToLoad = 0;
+			},
+			{
+				level = 0;
+				path = "/Users/elliot/Projects/VitaminSEE-main/build/VitaminSEE.build/VitaminSEE.build/Objects-normal/ppc/KeywordNode.ob";
+				whenToLoad = 0;
+			},
+			{
+				level = 0;
+				path = "/Users/elliot/Projects/VitaminSEE-main/build/VitaminSEE.app/Contents/PlugIns/ViewAsIconsFileView.bundle/Contents/MacOS/ViewAsIconsFileView";
+				whenToLoad = 0;
+			},
+			{
+				level = 0;
+				path = "/Users/elliot/Projects/VitaminSEE-main/build/VitaminSEE.build/VitaminSEE.build/Objects-normal/ppc/PluginLayer.ob";
+				whenToLoad = 0;
+			},
+			{
+				level = 0;
+				path = "/Users/elliot/Projects/VitaminSEE-main/build/VitaminSEE.build/VitaminSEE.build/Objects-normal/ppc/SBCenteringClipView.ob";
+				whenToLoad = 0;
+			},
+			{
+				level = 0;
+				path = "/Users/elliot/Projects/VitaminSEE-main/build/VitaminSEE.build/VitaminSEE.build/Objects-normal/ppc/FileSizeFormatter.ob";
+				whenToLoad = 0;
+			},
+			{
+				level = 0;
+				path = "/Users/elliot/Projects/VitaminSEE-main/build/VitaminSEE.build/VitaminSEE.build/Objects-normal/ppc/Util.ob";
+				whenToLoad = 0;
+			},
+			{
+				level = 0;
+				path = "/Users/elliot/Projects/VitaminSEE-main/build/VitaminSEE.build/VitaminSEE.build/Objects-normal/ppc/FavoritesToolbarItem.ob";
+				whenToLoad = 0;
+			},
+			{
+				level = 0;
+				path = "/Users/elliot/Projects/VitaminSEE-main/build/VitaminSEE.build/VitaminSEE.build/Objects-normal/ppc/MVMenuButton.ob";
+				whenToLoad = 0;
+			},
+			{
+				level = 0;
+				path = "/Users/elliot/Projects/VitaminSEE-main/build/VitaminSEE.build/VitaminSEE.build/Objects-normal/ppc/FavoritesMenuDelegate.ob";
 				whenToLoad = 0;
 			},
 		);
