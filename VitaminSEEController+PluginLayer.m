@@ -119,7 +119,7 @@
 		[file lastPathComponent]];
 	NSFileManager* fileManager = [NSFileManager defaultManager];
 	
-	if(![destination isEqual:[file stringByDeletingLastPathComponent]] &&
+	if([destination caseInsensitiveCompare:[file stringByDeletingLastPathComponent]] != NSOrderedSame &&
 	   [fileManager fileExistsAtPath:file])
 	{
 		// First, we test to see if there's a file that's going to be overwritten...
@@ -175,7 +175,7 @@
 		[file lastPathComponent]];
 	NSFileManager* fileManager = [NSFileManager defaultManager];
 	
-	if(![destination isEqual:[file stringByDeletingLastPathComponent]] &&
+	if([destination caseInsensitiveCompare:[file stringByDeletingLastPathComponent]] != NSOrderedSame &&
 	   [fileManager fileExistsAtPath:file])
 	{
 		// First, we test to see if there's a file that's going to be overwritten...

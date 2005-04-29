@@ -98,11 +98,14 @@
 // * Dogfood it for at least a week and a half...
 
 // For Version 0.6.1
+// * Autosave main window position
+// * Close VS window, then open sort manager.
 // * RBSplitView for the left column.
 //   * Contact Rainer Brockerhoff and ask him if he can dual liscence RBSplitView
 //     under CC-By-2.0 AND BSD (which he used to do). His webpage says no
 //     difference but CC-By-2.0 isn't GPL compatible.
 // * Cache control. How large?
+// * Display names
 
 // For Version 0.6.2
 // * Japanese Localization
