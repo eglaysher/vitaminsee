@@ -1,3 +1,32 @@
+0.6 Release
+-----------
+* A couple of speed fixes:
+  * Entering a new directory is much faster. On my computer, entering a
+    directory of 746 images took 5 seconds in 0.5.3. Now it takes less then
+	a second.
+  * Cut application startup time by a small amount.
+  * More intelligent preloading behavior makes things "feel" faster.
+  * Tiger fixes a problem with the AppKit that was causing me to do more 
+    redraws then was neccessary. Slightly faster on Tiger (you'll notice it 
+	only if you scroll through your files on a low memory machine).
+* ICNS and Windows Bitmap (BMP) support.
+* Stop assuming people have a "~/Pictures" folder. Some people have broken
+  out of Apple's default hiearchy and we shouldn't make assumptions.
+* Finally get rid of that annoying graphical glitch where thumbnails aren't
+  drawn in certain circumstances.
+* When an image won't fit in the viewing area, the user can now drag the
+  image around with a hand cursor like they can in Preview.
+* Change "Sort Manager" preferences to "Favorites." These paths are now
+  used both in the Sort Manager and in the new "Favorite Locations" menu in 
+  the "Go" menu and its corresponding toolbar item.
+* Files with the wrong extentsion (JPEG files ending in GIF, PNG files
+  ending in JPEG) are loaded, instead of raising an error.
+* Move, Copy and Rename operations now check if they are overwriting a file
+  and warn the user. 
+* Move, Copy and Rename are now undoable. Undo for delete isn't implemented 
+  yet. (I'm having problems figuring out the trash system, but I'll get it
+  eventually).
+
 0.5.3 Feature Release
 ---------------------
 * Changed the SortManager so that the NSTableView takes up the entire window, 
@@ -29,4 +58,66 @@
 
 0.5 Release Canidate 2
 ----------------------
-* Fixed deadlock that would occur every half hour or so.
+* Fixed deadlock that would occur every half hour or so.=======
+0.6 Release
+-----------
+* A couple of speed fixes:
+  * Entering a new directory is much faster. On my computer, entering a
+    directory of 746 images took 5 seconds in 0.5.3. Now it takes less then
+	a second.
+  * Cut application startup time by a small amount.
+  * More intelligent preloading behavior makes things "feel" faster.
+  * Tiger fixes a problem with the AppKit that was causing me to do more 
+    redraws then was neccessary. Slightly faster on Tiger (you'll notice it 
+	only if you scroll through your files on a low memory machine).
+* ICNS and Windows Bitmap (BMP) support.
+* Stop assuming people have a "~/Pictures" folder. Some people have broken
+  out of Apple's default hiearchy and we shouldn't make assumptions.
+* Finally get rid of that annoying graphical glitch where thumbnails aren't
+  drawn in certain circumstances.
+* When an image won't fit in the viewing area, the user can now drag the image
+  around with a hand cursor like they can in Preview.
+* Change "Sort Manager" preferences to "Favorites." These paths are now used
+  both in the Sort Manager and in the new "Favorite Locations" menu in the "Go"
+  menu and its corresponding toolbar item.
+* Files with the wrong extentsion (JPEG files ending in GIF, PNG files ending 
+  in JPEG) are loaded, instead of raising an error.
+* Move, Copy and Rename operations now check if they are overwriting a file
+  and warn the user. 
+* Move, Copy and Rename are now undoable. Undo for delete isn't implemented 
+  yet. (I'm having problems figuring out the trash system, but I'll get it
+  eventually).
+
+
+0.5.3 Feature Release
+---------------------
+* Changed the SortManager so that the NSTableView takes up the entire window, 
+  and also, made it resizable. I was testing it the other day and the lack of 
+  resizing screwed things up.
+* Allow drag and drop reordering in the Sort Manager Preferences.
+* Ability to disable Preloading Images.
+* Update help to reflect new Preload Images option.
+* Credits.rtf -> Credits.html. Now with links instead of URLs!
+
+0.5.2 Feature Release
+---------------------
+* You can now drag image files and folders to the VitaminSEE icon. I've
+  registered VitaminSEE as a handler for folders, JPEGS, GIFs and TIFFs. Now
+  all I need to do if figure out how to reigster with the Finder's "Open 
+  With..." menu...
+
+0.5.1 Bugfix Release
+--------------------
+* Fixed displaying of wrong filesize on files over 1 Megabyte.
+* Fixed CRITICAL memory leak in thumbnailing code that was causing the program
+  to crash.
+
+0.5 Final
+---------
+* Cosmetic changes (HIG compliance)
+* Add a "Known Issues" page to the help
+* Make the GPL a Help menu item
+
+0.5 Release Canidate 2
+----------------------
+* Fixed deadlock that would occur every half hour or so.>>>>>>> .merge-right.r148

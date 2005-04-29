@@ -1,131 +1,137 @@
+/////////////////////////////////////////////////////////////////////////
+// File:          $Name$
+// Module:        implementation of the plugin layer
+// Part of:       VitaminSEE
 //
-//  PluginLayer.m
-//  CQView
+// Revision:      $Revision$
+// Last edited:   $Date$
+// Author:        $Author$
+// Copyright:     (c) 2005 Elliot Glaysher
+// Created:       4/7/05
 //
-//  Created by Elliot on 2/24/05.
-//  Copyright 2005 __MyCompanyName__. All rights reserved.
+/////////////////////////////////////////////////////////////////////////
 //
+// This library is free software; you can redistribute it and/or
+// modify it under the terms of the GNU Lesser General Public
+// License as published by the Free Software Foundation; either
+// version 2.1 of the License, or (at your option) any later version.
+//  
+// This library is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+// Lesser General Public License for more details.
+//  
+// You should have received a copy of the GNU Lesser General Public
+// License along with this library; if not, write to the Free Software
+// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  
+// USA
+//
+/////////////////////////////////////////////////////////////////////////
+
 
 #import "PluginLayer.h"
-#import "ViewIconViewController.h"
-#import "ImageMetadata.h"
+#import "VitaminSEEController.h"
+#import "VitaminSEEController+PluginLayer.h"
 
-@implementation VitaminSEEController (PluginLayer)
+@implementation PluginLayer
 
-// I want to support keywords and comments in PNGs and GIFs, but that would
-// require that I write a block of code with libpng and libgif to read and
-// write those metadata blocks. Right now, there is no such program like exiv2…
+-(id)initWithController:(VitaminSEEController*)inController
+{
+	if(self = [super init])
+	{
+		// Don't retain, because VitaminSEEController is the parent!
+		controller = inController;
+	}
+	
+	return self;
+}
+
++(id)pluginLayerWithController:(VitaminSEEController*)inController
+{
+	return [[[PluginLayer allocWithZone:NULL] initWithController:inController] autorelease];
+}
+
+// Metadata management functions (expand greatly!)
 -(BOOL)supportsKeywords:(NSString*)file
 {
-	NSString* type = [[file pathExtension] uppercaseString];
-	BOOL canKeyword = NO;
-	if([type isEqualTo:@"JPG"] || [type isEqualTo:@"JPEG"])
-		canKeyword = YES;
-	
-	return canKeyword;
+	return [controller supportsKeywords:file];
 }
 
 -(NSMutableArray*)getKeywordsFromFile:(NSString*)file
 {
-	NSString* type = [[file pathExtension] uppercaseString];
-
-	if([type isEqualTo:@"JPG"] || [type isEqualTo:@"JPEG"])
-		return [ImageMetadata getKeywordsFromJPEGFile:file];	
-//	else if([type isEqualTo:@"PNG"])
-//		return [ImageMetadata getKeywordsFromPNGFile:file];
+	return [controller getKeywordsFromFile:file];
 }
 
 -(void)setKeywords:(NSArray*)keywords forFile:(NSString*)file
 {
-	[ImageMetadata setKeywords:keywords forJPEGFile:file];
-	// fixme:
+	[controller setKeywords:keywords forFile:file];
 }
 
--(BOOL)renameThisFileTo:(NSString*)newName
+// File Management functions
+-(NSString*)currentFile
 {
-	// Rename the file.
-	NSString* newPath = [[currentImageFile stringByDeletingLastPathComponent] 
-		stringByAppendingPathComponent:newName];
-	
-	BOOL ret = [[NSFileManager defaultManager] movePath:currentImageFile
-												 toPath:newPath 
-												handler:nil];
-
-	if(ret)
-		[viewAsIconsController renameFile:currentImageFile to:newPath];
-
-//	else
-//		NSLog(@"Huh!?");
+	return [controller currentFile];
 }
 
--(void)deleteThisFile
+-(void)setCurrentFile:(NSString*)file
 {
-	// Delete the current file...
-	[self deleteFile:currentImageFile];
-	
-	// fixme: Functionate/refactor this.
-	NSString* nextFile = [viewAsIconsController nameOfNextFile];
-	[viewAsIconsController removeFileFromList:currentImageFile];
-	[viewAsIconsController selectFile:nextFile];
-	
-	[self setCurrentFile:nextFile];
+	[controller setCurrentFile:file];
+}
+
+-(void)preloadFile:(NSString*)file
+{
+	[controller preloadFile:file];
 }
 
 -(int)deleteFile:(NSString*)file
 {
-	// We move the current file to the trash.
-	int tag;
-	[[NSWorkspace sharedWorkspace] performFileOperation:NSWorkspaceRecycleOperation
-												 source:[file stringByDeletingLastPathComponent]
-											destination:@""
-												  files:[NSArray arrayWithObject:[file lastPathComponent]]
-													tag:&tag];
-	
-	return tag;
+	return [controller deleteFile:file];
 }
 
--(void)moveThisFile:(NSString*)destination
+-(int)moveFile:(NSString*)file to:(NSString*)destination;
 {
-	if(![destination isEqual:currentDirectory])
-	{
-		NSString* nextFile = [viewAsIconsController nameOfNextFile];
-		[self moveFile:currentImageFile to:destination];
-		[viewAsIconsController removeFileFromList:currentImageFile];
-		[viewAsIconsController selectFile:nextFile];
-		
-		[self setCurrentFile:nextFile];
-	}
-}
-
--(int)moveFile:(NSString*)file to:(NSString*)destination
-{
-	// fixme: We need to select the next file in this directory!
-	// fixme: Code organization: We should move all these file operations into
-	//        a category...
-	int tag;
-	[[NSWorkspace sharedWorkspace] performFileOperation:NSWorkspaceMoveOperation
-												 source:[file stringByDeletingLastPathComponent]
-											destination:destination
-												  files:[NSArray arrayWithObject:[file lastPathComponent]]
-													tag:&tag];
-	return tag;
-}
-
--(void)copyThisFile:(NSString*)destination
-{
-	if(![destination isEqual:currentDirectory])
-		[self copyFile:currentImageFile to:destination];
+	return [controller moveFile:file to:destination];
 }
 
 -(int)copyFile:(NSString*)file to:(NSString*)destination
 {
-	int tag;
-	[[NSWorkspace sharedWorkspace] performFileOperation:NSWorkspaceCopyOperation
-												 source:[file stringByDeletingLastPathComponent]
-											destination:destination
-												  files:[NSArray arrayWithObject:[file lastPathComponent]]
-													tag:&tag];
-	return tag;
+	return [controller copyFile:file to:destination];
+}
+
+-(BOOL)renameFile:(NSString*)file to:(NSString*)newName
+{
+	return [controller renameFile:file to:newName];
+}
+
+// Thumbnail functions
+-(void)generateThumbnailForFile:(NSString*)path
+{
+	[controller generateThumbnailForFile:path];
+}
+
+-(void)clearThumbnailQueue
+{
+	[controller clearThumbnailQueue];
+}
+
+-(void)startProgressIndicator
+{
+	[controller startProgressIndicator];
+}
+
+-(void)stopProgressIndicator
+{
+	[controller stopProgressIndicator];
+}
+
+-(NSUndoManager*)pathManager
+{
+	return [controller pathManager];
+}
+
+-(NSUndoManager*)undoManager
+{
+	return [controller undoManager];
 }
 
 @end

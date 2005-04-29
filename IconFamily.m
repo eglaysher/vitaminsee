@@ -486,7 +486,7 @@
 - (BOOL) setIconFamilyElement:(OSType)elementType fromBitmapImageRep:(NSBitmapImageRep*)bitmapImageRep
 {
     Handle hRawData = NULL;
-    OSErr result;
+//    OSErr result;
 
     switch (elementType) {
 	// 'it32' 128x128 32-bit RGB image

@@ -21,6 +21,44 @@
 		<dict>
 			<key>CFBundleTypeExtensions</key>
 			<array>
+				<string>icns</string>
+				<string>ICNS</string>
+			</array>
+			<key>CFBundleTypeMIMETypes</key>
+			<array>
+				<string>image/icns</string>
+			</array>
+			<key>CFBundleTypeName</key>
+			<string>ICNS Icon</string>
+			<key>CFBundleTypeOSTypes</key>
+			<array>
+				<string>icns</string>
+			</array>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+		</dict>
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>BMP</string>
+				<string>bmp</string>
+			</array>
+			<key>CFBundleTypeMIMETypes</key>
+			<array>
+				<string>image/bmp</string>
+			</array>
+			<key>CFBundleTypeName</key>
+			<string>Windows Bitmap Image</string>
+			<key>CFBundleTypeOSTypes</key>
+			<array>
+				<string>BMPf</string>
+			</array>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+		</dict>
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
 				<string>png</string>
 				<string>PNG</string>
 			</array>
@@ -84,6 +122,8 @@
 				<string>jpeg</string>
 				<string>JPG</string>
 				<string>JPEG</string>
+				<string>jfif</string>
+				<string>JFIF</string>
 			</array>
 			<key>CFBundleTypeMIMETypes</key>
 			<array>
@@ -116,7 +156,9 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>0.5.3</string>
+	<string>0.6 dev</string>
+	<key>LSMinimumSystemVersion</key>
+	<string>10.3</string>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>

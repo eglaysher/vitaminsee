@@ -1,10 +1,35 @@
-/* VitaminSEEController */
+/////////////////////////////////////////////////////////////////////////
+// File:          $Name$
+// Module:        Main Controller Class
+// Part of:       VitaminSEE
+//
+// Revision:      $Revision$
+// Last edited:   $Date$
+// Author:        $Author$
+// Copyright:     (c) 2005 Elliot Glaysher
+// Created:       1/30/05
+//
+/////////////////////////////////////////////////////////////////////////
+//
+// This library is free software; you can redistribute it and/or
+// modify it under the terms of the GNU Lesser General Public
+// License as published by the Free Software Foundation; either
+// version 2.1 of the License, or (at your option) any later version.
+//  
+// This library is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+// Lesser General Public License for more details.
+//  
+// You should have received a copy of the GNU Lesser General Public
+// License along with this library; if not, write to the Free Software
+// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  
+// USA
+//
+/////////////////////////////////////////////////////////////////////////
+
 
 #import <Cocoa/Cocoa.h>
-
-#import <pthread.h>
-
-//extern pthread_mutex_t imageTaskLock;
 
 @class ImageTaskManager;
 @class ThumbnailManager;
@@ -12,6 +37,7 @@
 @class PointerWrapper;
 @class SortManagerController;
 @class SS_PrefsController;
+@class FavoritesMenuDelegate;
 
 @protocol ImageDisplayer 
 -(void)displayImage;
@@ -37,73 +63,68 @@
 	// Menu items we need to attatch items to
 	IBOutlet NSMenuItem* homeFolderMenuItem;
 	IBOutlet NSMenuItem* pictureFolderMenuItem;
-	
+	IBOutlet NSMenuItem* favoritesMenuItem;
+	FavoritesMenuDelegate* favoritesMenuDelegate;
 	
     IBOutlet NSImageView *imageViewer;
 	IBOutlet NSTextField * fileSizeLabel;
 	IBOutlet NSTextField * imageSizeLabel;
 	IBOutlet NSWindow* viewerWindow;
+	IBOutlet NSSplitView* splitView;
 	IBOutlet NSScrollView* scrollView;
 
-	// Integrated plugins.
-	id _sortManagerController;
-	id _keywordManagerController;
-	id _gotoFolderController;
-
-	// File view components:
-	// * 
-	IBOutlet NSPopUpButton* directoryDropdown;
-	IBOutlet NSView* currentFileViewHolder;
-	NSView* currentFileView;
+	NSCursor *handCursor;
 	
-	// * ViewAsImage specific components
-	IBOutlet ViewIconViewController* viewAsIconsController;
+	// File view components:
+	IBOutlet NSView* currentFileViewHolder;
+	
+	ViewIconViewController* viewAsIconsController;
 
 	IBOutlet NSProgressIndicator* progressIndicator;
 	IBOutlet NSTextField * progressCurrentTask;
 		
 	// Actual application data--NOT OUTLETS!
-	NSImageRep* currentImageRep;
 	NSString* currentImageFile;
 
-	NSArray* currentDirectoryComponents;
-	NSString* currentDirectory;
-
 	// Scale data
-//	ScalingMethod scaleMethod;
 	bool scaleProportionally;
 	float scaleRatio;
 
 	NSUndoManager* pathManager;
 	
+	// Other threads that do work for us.
 	ImageTaskManager* imageTaskManager;
 	ThumbnailManager* thumbnailManager;
 	
-	SS_PrefsController *prefs;
+	SS_PrefsController *prefs;	
 	
 	// Loaded plugins:
-	NSMutableArray* loadedFilePlugins;
-	
-	// Dynamically loaded interface elemenets.
-	// Goto sheet
-	IBOutlet NSWindow* gotoFolderSheet;
-	IBOutlet NSTextField* gotoPath;
+	NSMutableDictionary* loadedBasePlugins;
+	NSMutableDictionary* loadedViewPlugins;
+	NSMutableDictionary* loadedCurrentFilePlugins;
+
+	NSString* tmpDestination;
+
+	BOOL setPathForFirstTime;
 }
 
 -(void)displayAlert:(NSString*)message 
 	informativeText:(NSString*)info 
 		 helpAnchor:(NSString*)anchor;
 
--(id)loadComponentFromBundle:(NSString*)path;
+-(id)loadComponentNamed:(NSString*)name fromBundle:(NSString*)path;
 
--(NSWindowController*)sortManagerController;
--(NSWindowController*)keywordManagerController;
--(NSWindowController*)gotoFolderController;
+-(id)sortManagerController;
+-(id)keywordManagerController;
+-(id)gotoFolderController;
+-(id)viewAsIconsControllerPlugin;
+-(id)imageMetadataPlugin;
 
 // Moving about in 
-- (void)setCurrentDirectory:(NSString*)newCurrentDirectory file:(NSString*)newCurrentFile;
+//- (void)setCurrentDirectory:(NSString*)newCurrentDirectory file:(NSString*)newCurrentFile;
 - (void)setCurrentFile:(NSString*)newCurrentFile;
-- (void)preloadFiles:(NSArray*)filesToPreload;
+- (void)setPluginCurrentFileTo:(NSString*)newCurrentFile;
+- (void)preloadFile:(NSString*)file;
 
 // Changing the user interface
 - (void)setViewAsView:(NSView*)viewToSet;
@@ -128,7 +149,10 @@
 -(IBAction)goToHomeFolder:(id)sender;
 -(IBAction)goToPicturesFolder:(id)sender;
 // ----------------------
+-(IBAction)fakeFavoritesMenuSelector:(id)sender;
+// ----------------------
 -(IBAction)goToFolder:(id)sender;
+-(void)finishedGotoFolder:(NSString*)done;
 
 -(IBAction)toggleVitaminSee:(id)sender;
 -(IBAction)toggleSortManager:(id)sender;
@@ -153,4 +177,8 @@
 -(IBAction)deleteFileClicked:(id)sender;
 
 -(IBAction)showGPL:(id)sender;
+
+-(IBAction)addCurrentDirectoryToFavorites:(id)sender;
+-(BOOL)isInFavorites:(NSString*)path;
+
 @end

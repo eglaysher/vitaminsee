@@ -236,7 +236,8 @@
             Class paneClass = NSClassFromString(paneName);
             if (!paneClass) {
                 paneClass = [paneBundle principalClass];
-                if ([paneClass conformsToProtocol:@protocol(SS_PreferencePaneProtocol)] && [paneClass isKindOfClass:[NSObject class]]) {
+                if ([paneClass conformsToProtocol:@protocol(SS_PreferencePaneProtocol)] &&
+					[paneClass isSubclassOfClass:[NSObject class]]) {
                     NSArray *panes = [paneClass preferencePanes];
                     
                     NSEnumerator *enumerator = [panes objectEnumerator];

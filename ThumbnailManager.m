@@ -1,3 +1,32 @@
+/////////////////////////////////////////////////////////////////////////
+// File:          $Name$
+// Module:        Seperate thread for building of thumbnails.
+// Part of:       VitaminSEE
+//
+// Revision:      $Revision$
+// Last edited:   $Date$
+// Author:        $Author$
+// Copyright:     (c) 2005 Elliot Glaysher
+// Created:       3/18/05
+//
+/////////////////////////////////////////////////////////////////////////
+//
+// This library is free software; you can redistribute it and/or
+// modify it under the terms of the GNU Lesser General Public
+// License as published by the Free Software Foundation; either
+// version 2.1 of the License, or (at your option) any later version.
+//  
+// This library is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+// Lesser General Public License for more details.
+//  
+// You should have received a copy of the GNU Lesser General Public
+// License along with this library; if not, write to the Free Software
+// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  
+// USA
+//
+/////////////////////////////////////////////////////////////////////////
 
 #import "ThumbnailManager.h"
 #import "Util.h"
@@ -58,11 +87,12 @@
 	
 	// destroy our mutexed data!
 	[thumbnailQueue release];
+	[super dealloc];
 }
 
 -(void)taskHandlerThread:(id)portArray
 {
-	NSDictionary* currentTask;
+//	NSDictionary* currentTask;
 	
 	// Okay, first we get the distributed object VitaminSEEController up and running...
 	NSAutoreleasePool *npool = [[NSAutoreleasePool alloc] init];
@@ -115,17 +145,15 @@
 
 -(void)setShouldBuildIcon:(BOOL)newShouldBuildIcon
 {
-	// fixme: Maybe this should be atomic.
 	pthread_mutex_lock(&imageScalingProperties);
 	shouldBuildIcon = newShouldBuildIcon;
 	pthread_mutex_unlock(&imageScalingProperties);
 }
 
--(void)buildThumbnail:(NSString*)path forCell:(id)cell
+-(void)buildThumbnail:(NSString*)path
 {
 	NSDictionary* currentTask = [NSDictionary dictionaryWithObjectsAndKeys:
-		@"PreloadImage", @"Type", path, @"Path",
-		cell, @"Cell", nil];
+		@"PreloadImage", @"Type", path, @"Path", nil];
 	
 	pthread_mutex_lock(&taskQueueLock);
 	//	NSLog(@"Going to preload: %@", path);
@@ -145,9 +173,9 @@
 	pthread_mutex_unlock(&taskQueueLock);
 }
 
--(id)getCurrentThumbnailCell
+-(NSString*)getCurrentPath
 {
-	return currentIconCell;
+	return currentPath;
 }
 
 -(NSImage*)getCurrentThumbnail
@@ -171,7 +199,6 @@
 	NSString* path = [options objectForKey:@"Path"];
 	NSImage* thumbnail;
 	IconFamily* iconFamily;
-	BOOL building = NO;
 	
 	pthread_mutex_lock(&imageScalingProperties);
 	BOOL localShouldBuild = shouldBuildIcon;
@@ -180,28 +207,29 @@
 	// Build the thumbnail and set it to the file...
 	if([path isImage] && ![IconFamily fileHasCustomIcon:path] && localShouldBuild)
 	{
-		building = YES;
-//		NSLog(@"VSC: %@", vitaminSEEController);
 		[vitaminSEEController setStatusText:[NSString 
 			stringWithFormat:@"Building thumbnail for %@...", [path lastPathComponent]]];
+
 		// I don't think there IS an autorelease...
-		NSImage* image = [[NSImage alloc] initWithContentsOfFile:path];
+		NSImage* image = [[NSImage alloc] initWithData:[NSData dataWithContentsOfFile:path]];
+
+		// Set icon
 		iconFamily = [IconFamily iconFamilyWithThumbnailsOfImage:image];
-		[iconFamily setAsCustomIconForFile:path];
-		// Must retain
-		thumbnail = [[iconFamily imageWithAllReps] retain];
+		if(iconFamily)
+		{
+			[iconFamily setAsCustomIconForFile:path];
+
+			// Must retain
+			thumbnail = [[iconFamily imageWithAllReps] retain];
+			[image release];
+
+			currentIconFamilyThumbnail = thumbnail;
+			currentPath = path;
+			[vitaminSEEController setIcon];
+
+			[vitaminSEEController setStatusText:nil];
+		}
 		[image release];
-	}
-	else
-		thumbnail = [path iconImageOfSize:NSMakeSize(128, 128)];
-	
-	currentIconFamilyThumbnail = thumbnail;
-	currentIconCell = [options objectForKey:@"Cell"];
-	[vitaminSEEController setIcon];
-	
-	if(building)
-	{
-		[vitaminSEEController setStatusText:nil];
 	}
 }
 

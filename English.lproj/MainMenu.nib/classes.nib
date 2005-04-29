@@ -1,48 +1,7 @@
 {
     IBClasses = (
-        {
-            ACTIONS = {
-                actualSize = id; 
-                closeWindow = id; 
-                deleteFileClicked = id; 
-                goBack = id; 
-                goEnclosingFolder = id; 
-                goForward = id; 
-                goToFolder = id; 
-                goToHomeFolder = id; 
-                goToPicturesFolder = id; 
-                openFolder = id; 
-                revealInFinder = id; 
-                showPreferences = id; 
-                toggleKeywordManager = id; 
-                toggleSortManager = id; 
-                toggleVitaminSee = id; 
-                zoomIn = id; 
-                zoomOut = id; 
-                zoomToFit = id; 
-            }; 
-            CLASS = CQViewController; 
-            LANGUAGE = ObjC; 
-            OUTLETS = {
-                currentFileViewHolder = NSView; 
-                directoryDropdown = NSPopUpButton; 
-                fileSizeLabel = NSTextField; 
-                gotoFolderSheet = NSWindow; 
-                gotoPath = NSTextField; 
-                homeFolderMenuItem = NSMenuItem; 
-                imageSizeLabel = NSTextField; 
-                imageViewer = NSImageView; 
-                mainVitaminSeeWindow = NSWindow; 
-                pictureFolderMenuItem = NSMenuItem; 
-                progressCurrentTask = NSTextField; 
-                progressIndicator = NSProgressIndicator; 
-                scrollView = NSScrollView; 
-                viewAsIconsController = ViewIconViewController; 
-                viewerWindow = NSWindow; 
-            }; 
-            SUPERCLASS = NSObject; 
-        }, 
         {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {CLASS = MyImageView; LANGUAGE = ObjC; SUPERCLASS = NSImageView; }, 
         {
             ACTIONS = {copyButtonPushed = id; moveButtonPushed = id; }; 
             CLASS = SortManagerController; 
@@ -51,16 +10,12 @@
             SUPERCLASS = NSWindowController; 
         }, 
         {
-            CLASS = ViewIconViewController; 
-            LANGUAGE = ObjC; 
-            OUTLETS = {controller = CQViewController; ourBrowser = NSBrowser; ourView = NSView; }; 
-            SUPERCLASS = NSObject; 
-        }, 
-        {
             ACTIONS = {
                 actualSize = id; 
+                addCurrentDirectoryToFavorites = id; 
                 closeWindow = id; 
                 deleteFileClicked = id; 
+                fakeFavoritesMenuSelector = id; 
                 goBack = id; 
                 goEnclosingFolder = id; 
                 goForward = id; 
@@ -84,10 +39,8 @@
             LANGUAGE = ObjC; 
             OUTLETS = {
                 currentFileViewHolder = NSView; 
-                directoryDropdown = NSPopUpButton; 
+                favoritesMenuItem = NSMenuItem; 
                 fileSizeLabel = NSTextField; 
-                gotoFolderSheet = NSWindow; 
-                gotoPath = NSTextField; 
                 homeFolderMenuItem = NSMenuItem; 
                 imageSizeLabel = NSTextField; 
                 imageViewer = NSImageView; 
@@ -96,7 +49,7 @@
                 progressCurrentTask = NSTextField; 
                 progressIndicator = NSProgressIndicator; 
                 scrollView = NSScrollView; 
-                viewAsIconsController = ViewIconViewController; 
+                splitView = NSSplitView; 
                 viewerWindow = NSWindow; 
             }; 
             SUPERCLASS = NSObject; 

@@ -1,10 +1,33 @@
+/////////////////////////////////////////////////////////////////////////
+// File:          $Name$
+// Module:        NSString additions. Most of these are from Apple, but some are
+//                mine.
+// Part of:       VitaminSEE
 //
-//  NSString+FileTasks.m
-//  CQView
+// Revision:      $Revision$
+// Last edited:   $Date$
+// Author:        $Author$
+// Copyright:     (c) 2005 Elliot Glaysher
+// Created:       2/9/05
 //
-//  Created by Elliot on 2/9/05.
-//  Copyright 2005 __MyCompanyName__. All rights reserved.
+/////////////////////////////////////////////////////////////////////////
 //
+// This library is free software; you can redistribute it and/or
+// modify it under the terms of the GNU Lesser General Public
+// License as published by the Free Software Foundation; either
+// version 2.1 of the License, or (at your option) any later version.
+//  
+// This library is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+// Lesser General Public License for more details.
+//  
+// You should have received a copy of the GNU Lesser General Public
+// License along with this library; if not, write to the Free Software
+// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  
+// USA
+//
+/////////////////////////////////////////////////////////////////////////
 
 /*
  IMPORTANT:  This Apple software is supplied to you by Apple Computer, Inc. ("Apple") in
@@ -45,21 +68,25 @@
 
 -(BOOL)isDir
 {
+	// fixme: Think about replacing this with an lstat based line for even more speed...
 	BOOL isDir = NO;
     BOOL exists = [[NSFileManager defaultManager] fileExistsAtPath:self
 													   isDirectory:&isDir];
-    return (exists && isDir);	
+    return (exists && isDir);
 }
 
 -(BOOL)isImage
 {
 	NSString *fileExtentsion = [[self pathExtension] uppercaseString];
 	return [fileExtentsion isEqualToString:@"PNG"] || 
+		[fileExtentsion isEqualToString:@"JFIF"] ||
 		[fileExtentsion isEqualToString:@"JPEG"] ||
 		[fileExtentsion isEqualToString:@"JPG"] || 
 		[fileExtentsion isEqualToString:@"GIF"] ||
 		[fileExtentsion isEqualToString:@"TIF"] ||
-		[fileExtentsion isEqualToString:@"TIFF"];	
+		[fileExtentsion isEqualToString:@"TIFF"] ||
+		[fileExtentsion isEqualToString:@"BMP"] ||
+		[fileExtentsion isEqualToString:@"ICNS"];
 }
 
 -(BOOL)isVisible
@@ -89,47 +116,35 @@
 				traverseLink:YES] objectForKey:NSFileSize] intValue];
 }
 
-//-(NSString*)fileWithPath:(NSString*)containingDirectory
-//{
-//	NSString* ret;
-//	// If the final character in containingDirectory is a '/', then just concat
-//	// the two. Otherwise add the '/'.
-//	
-//	if([containingDirectory characterAtIndex:([containingDirectory length] - 1)] == '/')
-//		ret = [NSString stringWithFormat:@"%@%@", containingDirectory, self];
-//	else
-//		ret = [NSString stringWithFormat:@"%@/%@", containingDirectory, self];
-//	
-//	return [ret stringByStandardizingPath];
-//}
-
 // We don't return an autoreleased NSImage since autoreleased things don't seem
 // to be released properly across threads.
+//
+// 4/16: The previous comment doesn't make sense. Was I drunk when I wrote that?
 - (NSImage*)iconImageOfSize:(NSSize)size {
     NSString *path = self;
     NSImage *nodeImage = nil;
     
-    nodeImage = [[[NSWorkspace sharedWorkspace] iconForFile:path] retain];
+    nodeImage = [[NSWorkspace sharedWorkspace] iconForFile:path];
     if (!nodeImage) {
         // No icon for actual file, try the extension.
-        nodeImage = [[[NSWorkspace sharedWorkspace] iconForFileType:[path pathExtension]] retain];
+        nodeImage = [[NSWorkspace sharedWorkspace] iconForFileType:[path pathExtension]];
     }
     [nodeImage setSize: size];
     
-//    if ([self isLink]) {
-//        NSImage *arrowImage = [NSImage imageNamed: @"FSIconImage-LinkArrow"];
-//        NSImage *nodeImageWithArrow = [[[NSImage alloc] initWithSize: size] autorelease];
-//        
-//		[arrowImage setScalesWhenResized: YES];
-//		[arrowImage setSize: size];
-//		
-//        [nodeImageWithArrow lockFocus];
-//		[nodeImage compositeToPoint:NSZeroPoint operation:NSCompositeCopy];
-//        [arrowImage compositeToPoint:NSZeroPoint operation:NSCompositeSourceOver];
-//        [nodeImageWithArrow unlockFocus];
-//		
-//		nodeImage = nodeImageWithArrow;
-//    }
+    if ([self isLink]) {
+        NSImage *arrowImage = [NSImage imageNamed: @"FSIconImage-LinkArrow"];
+        NSImage *nodeImageWithArrow = [[[NSImage alloc] initWithSize: size] autorelease];
+        
+		[arrowImage setScalesWhenResized: YES];
+		[arrowImage setSize: size];
+		
+        [nodeImageWithArrow lockFocus];
+		[nodeImage compositeToPoint:NSZeroPoint operation:NSCompositeCopy];
+        [arrowImage compositeToPoint:NSZeroPoint operation:NSCompositeSourceOver];
+        [nodeImageWithArrow unlockFocus];
+		
+		nodeImage = nodeImageWithArrow;
+    }
     
     if (nodeImage==nil) {
         nodeImage = [NSImage imageNamed:@"FSIconImage-Default"];

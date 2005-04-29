@@ -1,10 +1,34 @@
+/////////////////////////////////////////////////////////////////////////
+// File:          $File$
+// Module:        Loads and preloads images in a seperate thread and passes them
+//                off to the main thread
+// Part of:       VitaminSEE
 //
-//  ImageTaskManager.m
-//  CQView
+// ID:            $Id: ImageTaskManager.m 123 2005-04-18 00:21:02Z elliot $
+// Revision:      $Revision$
+// Last edited:   $Date$
+// Author:        $Author$
+// Copyright:     (c) 2005 Elliot Glaysher
+// Created:       2/7/05
 //
-//  Created by Elliot on 2/7/05.
-//  Copyright 2005 __MyCompanyName__. All rights reserved.
+/////////////////////////////////////////////////////////////////////////
 //
+// This library is free software; you can redistribute it and/or
+// modify it under the terms of the GNU Lesser General Public
+// License as published by the Free Software Foundation; either
+// version 2.1 of the License, or (at your option) any later version.
+//  
+// This library is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+// Lesser General Public License for more details.
+//  
+// You should have received a copy of the GNU Lesser General Public
+// License along with this library; if not, write to the Free Software
+// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  
+// USA
+//
+/////////////////////////////////////////////////////////////////////////
 
 #import "ImageTaskManager.h"
 #import "Util.h"
@@ -72,11 +96,12 @@
 	// destroy our mutexed data!
 	[imageCache release];
 	[preloadQueue release];
+	[super dealloc];
 }
 
 -(void)taskHandlerThread:(id)portArray
 {
-	NSDictionary* currentTask;
+//	NSDictionary* currentTask;
 	
 	// Okay, first we get the distributed object VitaminSEEController up and running...
 	NSAutoreleasePool *npool = [[NSAutoreleasePool alloc] init];
@@ -165,8 +190,8 @@
 	pthread_mutex_lock(&taskQueueLock);
 	
 	// Make this the NEXT thing we do.
-	[fileToDisplayPath release];
 	[path retain];
+	[fileToDisplayPath release];
 	fileToDisplayPath = path;
 	
 	// Note that we are OUT of here...
@@ -174,8 +199,6 @@
 	pthread_mutex_unlock(&taskQueueLock);
 }
 
-// fixme: make this function more intelligent so that it will remove items that
-// are going to get thrown away anyway...
 -(void)preloadImage:(NSString*)path
 {	
 	pthread_mutex_lock(&taskQueueLock);
@@ -184,7 +207,8 @@
 		[preloadQueue removeObjectAtIndex:0];
 	
 	// Add the object
-	[preloadQueue addObject:path];
+	if(![[[path pathExtension] uppercaseString] isEqual:@"ICNS"])
+		[preloadQueue addObject:path];
 	
 	// Note that we are OUT of here...
 	pthread_cond_signal(&conditionLock);
@@ -241,7 +265,8 @@
 	{
 		pthread_mutex_unlock(&imageCacheLock);
 		// Preload the image
-		NSImageRep* rep = [NSImageRep imageRepWithContentsOfFile:path];
+//		NSImageRep* rep = [NSImageRep imageRepWithContentsOfFile:path];
+		NSImageRep* rep = loadImage(path);
 		NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:
 			[NSDate date], @"Date", rep, @"Image", nil];
 
@@ -257,24 +282,33 @@
 	// Before we aquire our internal lock, tell the main application to start
 	// spinning...
 	[vitaminSEEController startProgressIndicator];
-
 	if([path isDir])
 	{
 		// We are working with a directory.
 		NSImage* image = [[NSWorkspace sharedWorkspace] iconForFile:path];
 		[image setSize:NSMakeSize(128, 128)];
-		
+			
 		[image retain];
 		[self sendDisplayCommandWithImage:image width:128 height:128];
 		[image release];
-		
+			
 		// An image has been displayed so stop the spinner
 		[vitaminSEEController stopProgressIndicator];	
+		return;
+	}
+	else if([[[path pathExtension] uppercaseString] isEqual:@"ICNS"])		
+	{
+		NSImage* image = [[NSImage alloc] initWithContentsOfFile:path];
+		NSSize size = [image size];
+		
+		[self sendDisplayCommandWithImage:image width:size.width height:size.height];
+		[image release];
+		
+		// Stop the spinner
+		[vitaminSEEController stopProgressIndicator];
 		
 		return;
 	}
-	
-	// [NSString stringWithFormat:@"Displaying %@...", [path lastPathComponent]]];		
 
 	NSImageRep* imageRep;
 	pthread_mutex_lock(&imageCacheLock);
@@ -287,7 +321,8 @@
 
 //		NSLog(@"Loading file '%@'", path);
 		// Load the file, since it obviously hasn't been loaded.
-		imageRep = [NSImageRep imageRepWithContentsOfFile:path];
+		imageRep = loadImage(path);
+//		[NSImageRep imageRepWithData:[NSData dataWithContentsOfFile:path]];
 		cacheEntry = [NSDictionary dictionaryWithObjectsAndKeys:
 			[NSDate date], @"Date", imageRep, @"Image", nil];
 		
@@ -341,7 +376,6 @@
 	NSImage* imageToRet;
 	if(smoothing == NO_SMOOTHING || imageRepIsAnimated(imageRep))
 	{
-//		NSLog(@"Using quick rendering for %@...", path);
 		// Draw the image by just making an NSImage from the imageRep. This is
 		// done when the image will have no smoothing, or when we are 
 		// rendering an animated GIF.
@@ -380,24 +414,25 @@
 			[imageToRet unlockFocus];
 
 			// Alert the user to a problem
-			[vitaminSEEController displayAlert:[NSString stringWithFormat:
-				@"Can not display %@", [path lastPathComponent] ]
-							   informativeText:@"Please chcek that it's a valid file"
-									helpAnchor:@"IMAGE_WONT_LOAD_ANCHOR"];
+			NSString* format = NSLocalizedString(@"Can not display %@", 
+				@"Error message: 'Can not display FILENAME'");
+			NSString* informativeText = NSLocalizedString(@"Please chcek that it's a valid file",
+				@"Localized informative text on can't load image error");
+
 			[vitaminSEEController stopProgressIndicator];
+			[vitaminSEEController displayAlert:[NSString stringWithFormat:
+				format, [path lastPathComponent]]
+							   informativeText:informativeText
+									helpAnchor:@"VITAMINSEE_IMAGE_WONT_LOAD_ANCHOR"];
 			return;
 		}
 		
-//		NSLog(@"First pass of %@", path);
 		[self sendDisplayCommandWithImage:imageToRet width:imageX height:imageY];
 		
 		// Now give us a chance to BAIL if we've already been given another display
 		// command
 		if([self newDisplayCommandInQueue])
-		{
-//			NSLog(@"Bailing because of new display command...");
 			return;
-		}
 		
 		// Draw the image onto a new NSImage using smooth scaling. This is done
 		// whenever the image isn't animated so that the picture will have 
@@ -409,13 +444,11 @@
 			switch(smoothing)
 			{
 				case LOW_SMOOTHING:
-//					NSLog(@"Low smoothing!");
 					[[NSGraphicsContext currentContext] 
 						setImageInterpolation:NSImageInterpolationLow];
 					break;
 				default:
 				case HIGH_SMOOTHING:
-//					NSLog(@"High smoothing!");
 					[[NSGraphicsContext currentContext] 
 						setImageInterpolation:NSImageInterpolationHigh];
 			}
@@ -425,7 +458,6 @@
 		[imageToRet unlockFocus];
 		
 		// Now display the final image:
-//		NSLog(@"Second pass of %@", path);
 		[self sendDisplayCommandWithImage:imageToRet width:imageX height:imageY];
 	}
 	
@@ -444,8 +476,8 @@
 
 -(void)sendDisplayCommandWithImage:(NSImage*)image width:(int)width height:(int)height
 {
-	[currentImage release];
 	[image retain];
+	[currentImage release];
 	currentImage = image;
 	
 	currentImageWidth = width;

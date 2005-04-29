@@ -3,7 +3,7 @@
 //  CQView
 //
 //  Created by Elliot on 1/27/05.
-//  Copyright __MyCompanyName__ 2005. All rights reserved.
+//  Copyright Elliot Glaysher 2005. All rights reserved.
 //
 
 #import <Cocoa/Cocoa.h>
