@@ -1,0 +1,37 @@
+Requirements:
+
+Objective Statement: CQView will be the definitive, open sourced, image viewer for the OSX platform.
+
+Full Features:
+* File list (an NSBrowser)
+  * [Selectable] Simple text entries
+  * [Selectable] Thumbnail plus text entry
+* Displays images intelligently
+  * First get stupid like working
+  * Then get a little smarter, like in Xsee
+  * Then get some more intelligent behaviour.
+* Play animated gifs (too many from 4chan that are fun!)
+* Fullscreen mode
+* Read from archives
+* EXIF/IPTC metadata edit
+* Lossless rotates
+* Batch operations (implement everything as a plugin so thing works)
+
+Completed Milestones:
+* First GUI that can display images from a directory list
+  * Milestone met: Feb 4th, 2005 1:36 AM.
+  * Features:
+    * Uses NSBrowser to navigate around filesystem.
+    * Displays images in an NSImageView embedded in an NSScrollView.
+  * Todo:
+    * Put this thing in CVS; I'm going to be screwing around with this
+      code for a lot longer then WallSelector...
+    * Some images don't come up with the right size; this has something
+      to do with DPI being used. Not sure what to do about this...
+
+Uncompleted Milestones:
+* A GUI that can scale around images...
+* Sort manager
+* Keyword editing/IPTC editor
+* Full-screen support
+* Plugin API with first plugins for rotation

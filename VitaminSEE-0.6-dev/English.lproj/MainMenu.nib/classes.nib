@@ -1,0 +1,59 @@
+{
+    IBClasses = (
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {CLASS = MyImageView; LANGUAGE = ObjC; SUPERCLASS = NSImageView; }, 
+        {
+            ACTIONS = {copyButtonPushed = id; moveButtonPushed = id; }; 
+            CLASS = SortManagerController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {mainController = CQViewController; }; 
+            SUPERCLASS = NSWindowController; 
+        }, 
+        {
+            ACTIONS = {
+                actualSize = id; 
+                addCurrentDirectoryToFavorites = id; 
+                closeWindow = id; 
+                deleteFileClicked = id; 
+                fakeFavoritesMenuSelector = id; 
+                goBack = id; 
+                goEnclosingFolder = id; 
+                goForward = id; 
+                goToFolder = id; 
+                goToHomeFolder = id; 
+                goToPicturesFolder = id; 
+                openFolder = id; 
+                referesh = id; 
+                revealInFinder = id; 
+                showGPL = id; 
+                showPreferences = id; 
+                toggleKeywordManager = id; 
+                toggleSortManager = id; 
+                toggleVitaminSee = id; 
+                viewInPreview = id; 
+                zoomIn = id; 
+                zoomOut = id; 
+                zoomToFit = id; 
+            }; 
+            CLASS = VitaminSEEController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {
+                currentFileViewHolder = NSView; 
+                favoritesMenuItem = NSMenuItem; 
+                fileSizeLabel = NSTextField; 
+                homeFolderMenuItem = NSMenuItem; 
+                imageSizeLabel = NSTextField; 
+                imageViewer = NSImageView; 
+                mainVitaminSeeWindow = NSWindow; 
+                pictureFolderMenuItem = NSMenuItem; 
+                progressCurrentTask = NSTextField; 
+                progressIndicator = NSProgressIndicator; 
+                scrollView = NSScrollView; 
+                splitView = NSSplitView; 
+                viewerWindow = NSWindow; 
+            }; 
+            SUPERCLASS = NSObject; 
+        }
+    ); 
+    IBVersion = 1; 
+}

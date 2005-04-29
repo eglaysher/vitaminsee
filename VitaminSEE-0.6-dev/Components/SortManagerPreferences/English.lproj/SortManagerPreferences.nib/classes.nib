@@ -1,0 +1,20 @@
+{
+    IBClasses = (
+        {
+            CLASS = DNDArrayController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {tableView = NSTableView; }; 
+            SUPERCLASS = NSArrayController; 
+        }, 
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {
+            ACTIONS = {add = id; showHelp = id; }; 
+            CLASS = SortManagerPreferencesController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {listOfDirectories = NSArrayController; prefView = NSView; }; 
+            SUPERCLASS = NSObject; 
+        }, 
+        {CLASS = SortManagerTableView; LANGUAGE = ObjC; SUPERCLASS = NSTableView; }
+    ); 
+    IBVersion = 1; 
+}
