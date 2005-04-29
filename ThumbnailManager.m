@@ -42,10 +42,6 @@
 
 @implementation ThumbnailManager
 
-// USE THESE DNS SERVERS!!!!!
-// 141.213.4.4
-// 141.213.4.5
-
 -(id)initWithController:(id)parentController
 {
 	if(self = [super init])
@@ -65,8 +61,6 @@
 		[kitConnection setRootObject:parentController];
 		
 		NSArray *portArray = [NSArray arrayWithObjects:port2, port1, nil];		
-		
-//		NSLog(@"PC: %@", parentController);
 		
 		// spawn off a new thread
 		[NSThread detachNewThreadSelector:@selector(taskHandlerThread:) 
@@ -160,7 +154,7 @@
 	// Add the object
 	[thumbnailQueue addObject:currentTask];
 	
-	// Note that we are OUT of here...
+	// Tell the worker thread that it has work to do.
 	pthread_cond_signal(&conditionLock);
 	pthread_mutex_unlock(&taskQueueLock);	
 }
@@ -205,13 +199,15 @@
 	pthread_mutex_unlock(&imageScalingProperties);
 	
 	// Build the thumbnail and set it to the file...
-	if([path isImage] && ![IconFamily fileHasCustomIcon:path] && localShouldBuild)
+	if(localShouldBuild && [[NSFileManager defaultManager] fileExistsAtPath:path] &&
+	    [path isImage] && ![IconFamily fileHasCustomIcon:path])
 	{
 		[vitaminSEEController setStatusText:[NSString 
 			stringWithFormat:@"Building thumbnail for %@...", [path lastPathComponent]]];
 
 		// I don't think there IS an autorelease...
-		NSImage* image = [[[NSImage alloc] initWithData:[NSData dataWithContentsOfFile:path]] autorelease];
+		NSImage* image = [[[NSImage alloc] initWithData:
+			[NSData dataWithContentsOfFile:path]] autorelease];
 
 		// Set icon
 		iconFamily = [IconFamily iconFamilyWithThumbnailsOfImage:image];
