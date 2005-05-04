@@ -35,6 +35,7 @@
 #import "VitaminSEEController+PluginLayer.h"
 #import "ToolbarDelegate.h"
 #import "ViewIconViewController.h"
+#import "EGPath.h"
 
 //#import "FSNodeInfo.h"
 //#import "FSBrowserCell.h"
@@ -57,6 +58,7 @@
 #import "GotoSheetController.h"
 #import "PluginLayer.h"
 #import "PathExistsValueTransformer.h"
+#import "FullDisplayNameValueTransformer.h"
 
 @implementation VitaminSEEController
 ///////// TEST PLAN
@@ -67,45 +69,21 @@
 
 ////////////////////////////////////////////////// WHERE TO GO FROM HERE...
 
-/* Completed:
- * * Speed. 
- * * * Entering a new directory is over an order of magnitude faster on
- *     directories with lots of images! (It took 17 seconds to enter my 
- *     Wallpaper directory with v0.5.3. Now it takes less then a second)
- * * * Cut application bloat. Not everybody uses Keyword support, so don't
- *     load it at startup.
- * * * More intelligent preloading behaviour in ViewIconViewController
- * * Stop assuming people have a "Pictures" folder. Some people have broken out
- *   of Apple's heiarchy, so don't make assumptions.
- * * Windows Bitmap support
- * * ICNS support
- * * Redo left panel as loadable bundle
- * * Requires a working plugin layer...
- * * Solidify the plugin layer
- * * Validate each folder in the Favorites just in case the user has deleted the folder.
- * * Favorites menu (available as both an item on the Go menu and as a toolbar dropdown)
- * * Mouse grab scrolling when it doesn't fit.
- * * Misnamed files (JPEG files ending in GIF, PNG files ending in JPG) get displayed, instead
- *   of an error.
- * * Undo/Redo on sort manager/rename, et cetera
- * * Rename undo
- * * "Add to Favorites" in File menu...
- * * Don't display the default folder and then move to the next folder when 
- *   run with a folder; go to that folder directly.
+/* COMPLETED:
+ * * Disable show/hide toolbar and customize toolbar when window isn't displayed...
+ * * Autosave main window position
+ * * Close VS window, then open sort manager.
+ * * Adding a thumbnail doesn't change a file's modification time (which makes
+ *   more sense since we aren't really modifying the file).
  */
 
-/// For Version 0.6
-// * Dogfood it for at least a week and a half...
-
 // For Version 0.6.1
-// * Autosave main window position
-// * Close VS window, then open sort manager.
 // * RBSplitView for the left column.
 //   * Contact Rainer Brockerhoff and ask him if he can dual liscence RBSplitView
 //     under CC-By-2.0 AND BSD (which he used to do). His webpage says no
 //     difference but CC-By-2.0 isn't GPL compatible.
 // * Cache control. How large?
-// * Display names
+// * Display names of files
 
 // For Version 0.6.2
 // * Japanese Localization
@@ -116,22 +94,24 @@
 // * Check for file on remote volume.
 
 // For Version 0.7
-// * Transparent archive support
+// * Fullscreen + Slideshow
 // * Have thumbnails scale down if right side is shrunk (rework NSBrowserCell
 //   subclass to use NSImageCell?)
-// * Make the left column hideable
-// * Fit height/width
-// * Fullscreen mode
 // * Undo on delete. (0.7 by absolute latest!)
 //   * Requires figuring out how the Mac trash system works; 
 //     NSWorkspaceRecycleOperation isn't behaving how the Finder behaves. Maybe
 //     the answer is in Carbon?
+
+// For Version 0.8
+// * Transparent archive support
+// * Fit height/width
+// * Fullscreen mode
 // * DnD on the ViewIconViewController
 // * Mouse-wheel scrolling...
 //   * Requires next/previous 
 // * UNIT TESTING!
 
-// For Version 0.8
+// For Version 0.9
 // * Create an image database feature
 // * Add metadata for PNG and GIF
 // * 2 million% more complete metadata! Exif panel! IPTC panel!
@@ -183,27 +163,23 @@
    * Julius says see "CDisplay" (Comics Viewer)
 */
 
-/*
- * Neccessary changes to the SortManager:
- * * See if I can solve the problem of the panel gaining focus.
- * * Undo/redo for moving files!
- * * Undo/redo for everything else.
- * * Make localizable
- */
-
 + (void)initialize 
 {
-	// Set up our custom NSValueTransformer
+	// Set up our custom NSValueTransformers
 	[NSValueTransformer setValueTransformer:[[[ImmutableToMutableTransformer 
 		alloc] init] autorelease] forName:@"ImmutableToMutableTransformer"];
 	[NSValueTransformer setValueTransformer:[[[PathExistsValueTransformer alloc]
 		init] autorelease] forName:@"PathExistsValueTransformer"];
+	[NSValueTransformer setValueTransformer:[[[FullDisplayNameValueTransformer
+		alloc] init] autorelease] forName:@"FullDisplayNameValueTransformer"];
 	
 	// Test to see if the user is a rebel and deleted the Pictures folder
-	struct stat buffer;
 	NSString* picturesFolder = [NSHomeDirectory() stringByAppendingPathComponent:@"Pictures"];
-	BOOL hasPictures = !(lstat([picturesFolder fileSystemRepresentation], &buffer)) &&
-		buffer.st_mode && S_IFDIR;
+	NSFileManager* fileManager = [NSFileManager defaultManager];
+	BOOL hasPictures, picturesFolderExists, picturesFolderIsDir;
+	picturesFolderExists = [fileManager fileExistsAtPath:picturesFolder 
+											 isDirectory:&picturesFolderIsDir];
+	hasPictures = picturesFolderExists && picturesFolderIsDir;
 	
 	// Set up this application's default preferences	
     NSMutableDictionary *defaultPrefs = [NSMutableDictionary dictionary];
@@ -231,12 +207,13 @@
 	if(hasPictures)
 		sortManagerPaths = [NSArray arrayWithObjects:
 			[NSDictionary dictionaryWithObjectsAndKeys:@"Pictures", @"Name",
-				[NSHomeDirectory() stringByAppendingPathComponent:@"Pictures"], 
-					@"Path", nil], nil];
+				[fileManager displayNameAtPath:[NSHomeDirectory() 
+					stringByAppendingPathComponent:@"Pictures"]], 
+						@"Path", nil], nil];
 	else
 		sortManagerPaths = [NSArray arrayWithObjects:
 			[NSDictionary dictionaryWithObjectsAndKeys:@"Home", @"Name",
-				NSHomeDirectory(), @"Path", nil], nil];
+				[fileManager displayNameAtPath:NSHomeDirectory()], @"Path", nil], nil];
 	
 	[defaultPrefs setObject:sortManagerPaths forKey:@"SortManagerPaths"];
 	[defaultPrefs setObject:[NSNumber numberWithBool:YES] forKey:@"SortManagerInContextMenu"];
@@ -298,8 +275,9 @@
 {
 	if(!setPathForFirstTime)
 	{
-		[viewAsIconsController setCurrentDirectory:[[NSUserDefaults standardUserDefaults] 
-			objectForKey:@"DefaultStartupPath"] currentFile:nil];
+		[viewAsIconsController setCurrentDirectory:[EGPathFilesystemPath 
+			pathWithPath:[[NSUserDefaults standardUserDefaults] 
+				objectForKey:@"DefaultStartupPath"]] currentFile:nil];
 	}
 	
 	// Make the icon view the first responder since the previous enable
@@ -310,13 +288,18 @@
 -(BOOL)application:(NSApplication*)theApplication openFile:(NSString*)filename
 {	
 	if([filename isImage])
-	{
-		// Show the window
-		if(![mainVitaminSeeWindow isVisible])
-			[self toggleVitaminSee:self];
+	{		
+		// Clear the current image. (Do this now since there's the possibility
+		// that the new image won't load in time for display latter on.)
+		[self setCurrentFile:nil];
 		
-		[viewAsIconsController setCurrentDirectory:[filename stringByDeletingLastPathComponent] 
+		[viewAsIconsController setCurrentDirectory:[EGPathFilesystemPath pathWithPath:[filename stringByDeletingLastPathComponent]]
 									   currentFile:filename];
+		
+		// Show the window if hidden. (Do this now so there isn't a flash from
+		// the previous directory) 
+		if(![mainVitaminSeeWindow isVisible])
+			[self toggleVitaminSee:self];		
 	}
 	else if([filename isDir])
 	{
@@ -324,7 +307,8 @@
 		if(![mainVitaminSeeWindow isVisible])
 			[self toggleVitaminSee:self];
 		
-		[viewAsIconsController setCurrentDirectory:filename currentFile:nil];
+		[viewAsIconsController setCurrentDirectory:[EGPathFilesystemPath pathWithPath:filename]
+									   currentFile:nil];
 	}
 	else
 		return NO;
@@ -404,7 +388,7 @@
 -(IBAction)referesh:(id)sender
 {
 	NSString* directory = [currentImageFile stringByDeletingLastPathComponent];
-	[viewAsIconsController setCurrentDirectory:directory
+	[viewAsIconsController setCurrentDirectory:[EGPathFilesystemPath pathWithPath:directory]
 								   currentFile:currentImageFile];
 }
 
@@ -441,7 +425,8 @@
 {
 	if(![mainVitaminSeeWindow isVisible])
 		[self toggleVitaminSee:self];
-	[viewAsIconsController setCurrentDirectory:NSHomeDirectory() currentFile:nil];
+	[viewAsIconsController setCurrentDirectory:[EGPathFilesystemPath pathWithPath:NSHomeDirectory()]
+								   currentFile:nil];
 }
 
 -(IBAction)goToPicturesFolder:(id)sender
@@ -449,8 +434,10 @@
 	if(![mainVitaminSeeWindow isVisible])
 		[self toggleVitaminSee:self];
 
-	[viewAsIconsController setCurrentDirectory:[NSHomeDirectory() 
-		stringByAppendingPathComponent:@"Pictures"] currentFile:nil];
+	[viewAsIconsController setCurrentDirectory:[EGPathFilesystemPath
+		pathWithPath:[NSHomeDirectory() 
+			stringByAppendingPathComponent:@"Pictures"]]
+								   currentFile:nil];
 }
 
 -(IBAction)fakeFavoritesMenuSelector:(id)sender
@@ -468,7 +455,20 @@
 -(void)finishedGotoFolder:(NSString*)done
 {
 	if([done isDir])
-		[viewAsIconsController setCurrentDirectory:done currentFile:nil];
+	{
+		// Clear the current image. (Do this now since there's the possibility
+		// that the new image won't load in time for display latter on.)
+		if(![mainVitaminSeeWindow isVisible])
+			[self setCurrentFile:nil];
+		
+		[viewAsIconsController setCurrentDirectory:[EGPathFilesystemPath pathWithPath:done]
+									   currentFile:nil];
+		
+		// Show the window if hidden. (Do this now so there isn't a flash from
+		// the previous directory)
+		if(![mainVitaminSeeWindow isVisible])
+			[self toggleVitaminSee:self];
+	}
 	else
 		// Beep at the user...
 		AlertSoundPlay();
@@ -520,7 +520,7 @@
 	{
 		sortManager = [self loadComponentNamed:@"SortManagerController"
 									fromBundle:@"SortManager.cqvPlugin"];
-		[sortManager fileSetTo:currentImageFile];
+		[sortManager fileSetTo:([mainVitaminSeeWindow isVisible] ? currentImageFile : nil )];
 	}
 	return sortManager;
 }
@@ -532,8 +532,7 @@
 	{
 		keywordManager = [self loadComponentNamed:@"KeywordManagerController"
 									   fromBundle:@"KeywordManager.cqvPlugin"];
-		if(keywordManager)
-			[keywordManager fileSetTo:currentImageFile];
+		[keywordManager fileSetTo:([mainVitaminSeeWindow isVisible] ? currentImageFile : nil )];
 	}
 	
 	return keywordManager;
@@ -962,4 +961,17 @@
 	
 	return enable;
 }
+
+// These two functions are here so that -[VitaminSEEController validateMenu:]
+// get's used.
+-(IBAction)toggleToolbarShown:(id)sender
+{
+	[mainVitaminSeeWindow toggleToolbarShown:sender];
+}
+
+-(IBAction)runToolbarCustomizationPalette:(id)sender
+{
+	[mainVitaminSeeWindow runToolbarCustomizationPalette:sender];
+}
+
 @end

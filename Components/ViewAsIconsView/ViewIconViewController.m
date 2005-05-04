@@ -36,6 +36,7 @@
 #import "ThumbnailManager.h"
 #import "IconFamily.h"
 #import "PluginLayer.h"
+#import "EGPath.h"
 
 @interface ViewIconViewController (Private)
 -(void)rebuildInternalFileArray;
@@ -112,58 +113,56 @@
 	return YES;
 }
 
--(BOOL)canGoEnclosingFolder
-{
-	return [currentDirectoryComponents count];
-}
-
-- (void)setCurrentDirectory:(NSString*)newCurrentDirectory
+- (void)setCurrentDirectory:(EGPath*)newCurrentDirectory
 				currentFile:(NSString*)newCurrentFile
 {	
 	[pluginLayer startProgressIndicator];
 	
+	assert(![newCurrentDirectory isKindOfClass:[NSString class]]);
+	
 	if(currentDirectory && newCurrentDirectory && 
 	   ![currentDirectory isEqual:newCurrentDirectory])
 		[[[pluginLayer pathManager] prepareWithInvocationTarget:self]
-			setCurrentDirectory:currentDirectory currentFile:[pluginLayer currentFile]];
+			setCurrentDirectory:currentDirectory
+					currentFile:[pluginLayer currentFile]];
 
 	// Clear the thumbnails. They need to be regenerated...
 	[pluginLayer clearThumbnailQueue];
 	
 	// Set the current Directory
 	[currentDirectory release];
-	currentDirectory = [[newCurrentDirectory stringByStandardizingPath] retain];
+	currentDirectory = [newCurrentDirectory retain];
 	
-	// Set the current paths components of the directory
-	[currentDirectoryComponents release];
-	currentDirectoryComponents = [[newCurrentDirectory pathComponents] retain];
-
 	// We need the display names to present to the user.
-//	NSArray* displayNames = [[NSFileManager defaultManager] componentsToDisplayForPath:currentDirectory];
+	NSArray* displayNames = [currentDirectory pathDisplayComponents];
+	NSArray* paths = [currentDirectory pathComponents];
 	
 	// Make an NSMenu with all the path components
-	NSEnumerator* e = [currentDirectoryComponents reverseObjectEnumerator];
-	NSString* currentComponent;
-	NSMenu* newMenu = [[[NSMenu alloc] init] autorelease];
-	NSMenuItem* newMenuItem;
-	int count = [currentDirectoryComponents count];
-	int currentTag = count;
-	while(currentComponent = [e nextObject]) {
-		// [displayNames objectAtIndex:currentTag - 1]
-		newMenuItem = [[[NSMenuItem alloc] initWithTitle:currentComponent
-												  action:@selector(directoryMenuSelected:)
-										   keyEquivalent:@""] autorelease];
+	NSMenu* newMenu = [[[NSMenu alloc] init] autorelease];	
+	unsigned count = [paths count];
+	unsigned i;
+	for(i = 0; i < count; ++i)
+	{
+		NSMenuItem* newMenuItem = [[[NSMenuItem alloc] 
+			initWithTitle:[displayNames objectAtIndex: count - i - 1]
+				   action:@selector(directoryMenuSelected:)
+			keyEquivalent:@""] autorelease];
 		
+		id currentPathRep = [paths objectAtIndex:count - i - 1];
+
 		// Only load the image for the currently displayed image, since this
 		// is the only one that is initially displayed. Set the others in the
 		// validation method.
-		if(currentTag == count)
-			[newMenuItem setImage:[newCurrentDirectory iconImageOfSize:NSMakeSize(16,16)]];
+		if(i == 0)
+		{
+			NSImage* img = [currentPathRep fileIcon];
+			[img setSize:NSMakeSize(16,16)];
+			[newMenuItem setImage:img];
+		}
 
-		[newMenuItem setTag:currentTag];
+		[newMenuItem setRepresentedObject:currentPathRep];
 		[newMenuItem setTarget:self];
-		currentTag--;
-		[newMenu addItem:newMenuItem];
+		[newMenu addItem:newMenuItem];		
 	}
 	
 	// Set this menu as the pull down...
@@ -203,22 +202,22 @@
 	// image.
 	if(![theMenuItem image])
 	{
-		NSString* dirPath = [NSString pathWithComponents:
-			[currentDirectoryComponents subarrayWithRange:NSMakeRange(0, [theMenuItem tag])]];
-		[theMenuItem setImage:[dirPath iconImageOfSize:NSMakeSize(16, 16)]];
+//		NSString* dirPath = [[theMenuItem representedObject] 
+//		[NSString pathWithComponents:
+//			[currentDirectoryComponents subarrayWithRange:NSMakeRange(0, [theMenuItem tag])]];
+		NSImage* image = [[theMenuItem representedObject] fileIcon];
+		[image setScalesWhenResized:YES];
+		[image setSize:NSMakeSize(16,16)];
+		[theMenuItem setImage:image];
 	}
 	return YES;
 }
 
 -(void)directoryMenuSelected:(id)sender
 {
-	NSString* newDirectory = [NSString pathWithComponents:
-		[currentDirectoryComponents subarrayWithRange:NSMakeRange(0,[sender tag])]];
-	NSString* directoryToSelect = nil;
-	if([sender tag] < [currentDirectoryComponents count])
-		directoryToSelect = [NSString pathWithComponents:
-			[currentDirectoryComponents subarrayWithRange:NSMakeRange(0,[sender tag]+1)]];
-	[self setCurrentDirectory:newDirectory currentFile:directoryToSelect];
+	id path = [sender representedObject];
+	[self setCurrentDirectory:path
+				  currentFile:nil];
 }
 
 -(NSView*)view
@@ -258,9 +257,8 @@ willDisplayCell:(id)cell
 -(void)singleClick:(NSBrowser*)sender
 {
 	// grab the image path
-	NSString* absolutePath = [currentDirectory stringByAppendingPathComponent:
-		[sender path]];
-	
+	NSString* absolutePath = [fileList objectAtIndex:[[ourBrowser matrixInColumn:0] selectedRow]];
+
 	[pluginLayer setCurrentFile:absolutePath];
 	
 	if(NSAppKitVersionNumber < 824.00f)
@@ -304,12 +302,16 @@ willDisplayCell:(id)cell
 -(void)doubleClick:(NSBrowser*)sender
 {
 	// Double clicking sets the directory...if it's a directory
-	NSString* absolutePath = [currentDirectory stringByAppendingPathComponent:
-		[ourBrowser path]];
+//	NSString* path = [ourBrowser path];
+	NSString* absolutePath = 
+		[fileList objectAtIndex:[[ourBrowser matrixInColumn:0] selectedRow]];	
+	
+//	NSLog(@"Path: %@", path);
+	NSLog(@"Absolute path: %@", absolutePath);
 	
 	if([absolutePath isDir])
 		// Get the first image in the directory:		
-		[self setCurrentDirectory:absolutePath currentFile:nil];
+		[self setCurrentDirectory:[pluginLayer pathWithPath:absolutePath] currentFile:nil];
 }
 
 -(void)removeFile:(NSString*)absolutePath
@@ -345,7 +347,7 @@ willDisplayCell:(id)cell
 
 -(void)addFile:(NSString*)path
 {
-	if([currentDirectory isEqual:[path stringByDeletingLastPathComponent]])
+	if([[currentDirectory fileSystemPath] isEqual:[path stringByDeletingLastPathComponent]])
 	{
 		unsigned index = [fileList lowerBoundToInsert:path 
 						 withSortSelector:@selector(caseInsensitiveCompare:)];
@@ -418,14 +420,19 @@ willDisplayCell:(id)cell
 	}
 }
 
+-(BOOL)canGoEnclosingFolder
+{
+	return [[currentDirectory pathDisplayComponents] count] > 1;
+}
+
 -(void)goEnclosingFolder
 {
-	int count = [currentDirectoryComponents count] - 1;
-	NSString* curDirCopy = [currentDirectory retain];
-	[self setCurrentDirectory:[NSString pathWithComponents:
-		[currentDirectoryComponents subarrayWithRange:NSMakeRange(0, count)]]
-						 currentFile:curDirCopy];
-	[curDirCopy release];	
+	NSArray* paths = [currentDirectory pathComponents];
+	EGPath* currentDirCopy = [currentDirectory retain];
+	NSLog(@"CurrentDirectory: %@", currentDirCopy);
+	[self setCurrentDirectory:[paths objectAtIndex:[paths count] - 2]
+				  currentFile:[currentDirCopy fileSystemPath]];
+	[currentDirCopy release];
 }
 
 @end
@@ -434,19 +441,18 @@ willDisplayCell:(id)cell
 
 -(void)rebuildInternalFileArray
 {
-	NSArray* directoryContents = [[NSFileManager defaultManager] 
-		directoryContentsAtPath:currentDirectory];
+	NSArray* directoryContents = [currentDirectory directoryContents];
 	NSEnumerator* dirEnum = [directoryContents objectEnumerator];
 	NSMutableArray* myFileList = [NSMutableArray arrayWithCapacity:[directoryContents count]];
-	NSString* curPath;
+	EGPath* curPath;
 	while(curPath = [dirEnum nextObject])
 	{
-		NSString* currentFileWithPath = [currentDirectory 
-			stringByAppendingPathComponent:curPath];
+		NSString* currentFileWithPath = [curPath fileSystemPath];
 				
 		if(([currentFileWithPath isDir] || [currentFileWithPath isImage]) &&
 		   [currentFileWithPath isVisible])
-		{			
+		{
+			// Before we  do ANYTHING, we make note of the file's modification time.
 			[myFileList addObject:currentFileWithPath];
 		}
 	}

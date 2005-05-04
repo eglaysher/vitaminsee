@@ -33,6 +33,8 @@
 #import "VitaminSEEController.h"
 #import "VitaminSEEController+PluginLayer.h"
 
+#import "EGPath.h"
+
 @implementation PluginLayer
 
 -(id)initWithController:(VitaminSEEController*)inController
@@ -132,6 +134,11 @@
 -(NSUndoManager*)undoManager
 {
 	return [controller undoManager];
+}
+
+-(EGPath*)pathWithPath:(NSString*)inPath
+{
+	return [EGPathFilesystemPath pathWithPath:inPath];
 }
 
 @end

@@ -1656,7 +1656,7 @@
 	8D1107310486CEB800E47090 = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {797, 2688}}";
-			sepNavSelRange = "{3792, 0}";
+			sepNavSelRange = "{3816, 0}";
 			sepNavVisRect = "{{0, 2259}, {705, 429}}";
 			sepNavWindowFrame = "{{15, 239}, {750, 502}}";
 		};

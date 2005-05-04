@@ -181,4 +181,7 @@
 -(IBAction)addCurrentDirectoryToFavorites:(id)sender;
 -(BOOL)isInFavorites:(NSString*)path;
 
+-(IBAction)toggleToolbarShown:(id)sender;
+-(IBAction)runToolbarCustomizationPalette:(id)sender;
+
 @end

@@ -35,6 +35,7 @@
 
 @class PluginLayer;
 @class ThumbnailManager;
+@class EGPath;
 
 @interface ViewIconViewController : NSObject <FileView> {
 	IBOutlet NSPopUpButton* directoryDropdown;
@@ -44,8 +45,7 @@
 	PluginLayer* pluginLayer;
 	
 	NSCell* currentlySelectedCell;
-	NSString* currentDirectory;
-	NSArray* currentDirectoryComponents;
+	EGPath* currentDirectory;
 	
 	NSMutableArray* fileList;	
 	int oldPosition;
@@ -53,7 +53,7 @@
 
 //-(void)setThumbnailManager:(ThumbnailManager*)itm;
 
--(void)setCurrentDirectory:(NSString*)directory currentFile:(NSString*)file;
+-(void)setCurrentDirectory:(EGPath*)directory currentFile:(NSString*)file;
 
 //-(void)setCurrentDirectory:(NSString*)path;
 -(NSView*)view;

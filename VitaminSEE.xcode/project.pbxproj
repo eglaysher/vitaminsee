@@ -7,6 +7,8 @@
 	objects = {
 		080E96DDFE201D6D7F000001 = {
 			children = (
+				CD76863C08283934006AE601,
+				CD76863D08283934006AE601,
 				8B6710AF080C9BE00084EE5A,
 				8B6710B0080C9BE00084EE5A,
 				8B7E6DA5080B419500DD5466,
@@ -208,6 +210,7 @@
 		};
 		29B97317FDCFA39411CA2CEA = {
 			children = (
+				CD76864F0829035F006AE601,
 				8B7E6D9B080B40EC00DD5466,
 				8B7E6D9C080B40EC00DD5466,
 				8B6A9177080784F40085334A,
@@ -343,6 +346,8 @@
 				8B3E9CAA080B154C009D39C6,
 				8B6D015407CB23A0009A76DA,
 				8B6D015507CB23A0009A76DA,
+				CD50A33C0826E74900414068,
+				CD50A33D0826E74900414068,
 			);
 			isa = PBXGroup;
 			name = "Value Transformers";
@@ -1089,7 +1094,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
-			shellScript = "#!/bin/sh\n\n# Clean shit up.\nfind \"$BUILD_ROOT/$WRAPPER_NAME\" -name '.svn' -prune -exec rm -rf '{}' ';'\nfind \"$BUILD_ROOT/$WRAPPER_NAME\" -name '.DS_Store' -prune -exec rm -rf '{}' ';'\n\n# Now strip the useless headers from the Framework.\nrm -f \"$BUILD_ROOT/$WRAPPER_NAME/Contents/Frameworks/Exiv2.framework/Versions/A/Headers/\"*.hpp\n";
+			shellScript = "#!/bin/sh\n\n# Clean shit up.\nfind \"$BUILD_ROOT/$WRAPPER_NAME\" -name '.svn' -prune -exec rm -rf '{}' ';'\nfind \"$BUILD_ROOT/$WRAPPER_NAME\" -name '.DS_Store' -prune -exec rm -rf '{}' ';'";
 		};
 		8B5380E207DD86BC00BA7CFF = {
 			fileRef = 8BEA491807D7A73E001ADD2E;
@@ -3140,6 +3145,7 @@
 				8BAD1DC507DE8FD0000CBEA0,
 				8D11072A0486CEB800E47090,
 				8D11072B0486CEB800E47090,
+				CD7686500829035F006AE601,
 			);
 			isa = PBXResourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3181,6 +3187,8 @@
 				8B3E9CAC080B154C009D39C6,
 				8B7E6DA8080B419500DD5466,
 				8B6710B2080C9BE00084EE5A,
+				CD50A33F0826E74900414068,
+				CD76863F08283934006AE601,
 			);
 			isa = PBXSourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3223,6 +3231,76 @@
 			path = VitaminSEE.app;
 			refType = 3;
 			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+//8D0
+//8D1
+//8D2
+//8D3
+//8D4
+//CD0
+//CD1
+//CD2
+//CD3
+//CD4
+		CD50A33C0826E74900414068 = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = FullDisplayNameValueTransformer.h;
+			path = ValueTransformers/FullDisplayNameValueTransformer.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CD50A33D0826E74900414068 = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
+			name = FullDisplayNameValueTransformer.m;
+			path = ValueTransformers/FullDisplayNameValueTransformer.m;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CD50A33F0826E74900414068 = {
+			fileRef = CD50A33D0826E74900414068;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		CD76863C08283934006AE601 = {
+			fileEncoding = "-2147483647";
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			path = EGPath.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CD76863D08283934006AE601 = {
+			fileEncoding = "-2147483647";
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
+			path = EGPath.m;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CD76863F08283934006AE601 = {
+			fileRef = CD76863D08283934006AE601;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		CD76864F0829035F006AE601 = {
+			isa = PBXFileReference;
+			lastKnownFileType = image.icns;
+			name = iMac.icns;
+			path = Resources/iMac.icns;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CD7686500829035F006AE601 = {
+			fileRef = CD76864F0829035F006AE601;
+			isa = PBXBuildFile;
+			settings = {
+			};
 		};
 	};
 	rootObject = 29B97313FDCFA39411CA2CEA;

@@ -25,10 +25,12 @@
                 openFolder = id; 
                 referesh = id; 
                 revealInFinder = id; 
+                runToolbarCustomizationPalette = id; 
                 showGPL = id; 
                 showPreferences = id; 
                 toggleKeywordManager = id; 
                 toggleSortManager = id; 
+                toggleToolbarShown = id; 
                 toggleVitaminSee = id; 
                 viewInPreview = id; 
                 zoomIn = id; 

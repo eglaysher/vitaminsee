@@ -620,7 +620,12 @@
     Handle hIconFamilyCopy;
 	NSDictionary *fileAttributes;
 	OSType existingType = kUnknownType, existingCreator = kUnknownType;
-        
+    
+	// Before we  do ANYTHING, we make note of the file's modification time.
+	NSDate* modificationDate = [[[NSFileManager defaultManager] fileAttributesAtPath:path traverseLink:NO] objectForKey:NSFileModificationDate];
+//	NSLog(@"Now is %@", [NSDate date]);
+//	NSLog(@"Modification date: %@", modificationDate);
+    
     // Get an FSRef and an FSSpec for the target file, and an FSRef for its parent directory that we can use in the FNNotify() call below.
     if (![path getFSRef:&targetFileFSRef createFileIfNecessary:NO])
 		return NO;
@@ -710,11 +715,20 @@
     result = FSpSetFInfo( &targetFileFSSpec, &finderInfo );
     if (result != noErr)
 		return NO;
-        
+    
+	// Now set the modification time back to when the file was actually last
+	// modified
+	NSDictionary* attributes = [NSDictionary dictionaryWithObjectsAndKeys:modificationDate, NSFileModificationDate, nil];
+	BOOL work = [[NSFileManager defaultManager] changeFileAttributes:attributes atPath:path];
+//	NSLog(@"Work: %d", work);
+    
     // Notify the system that the directory containing the file has changed, to give Finder the chance to find out about the file's new custom icon.
     result = FNNotify( &parentDirectoryFSRef, kFNDirectoryModifiedMessage, kNilOptions );
     if (result != noErr)
         return NO;
+	
+//	modificationDate = [[[NSFileManager defaultManager] fileAttributesAtPath:path traverseLink:NO] objectForKey:NSFileModificationDate];
+//	NSLog(@"Modification date: %@", modificationDate);
 	
     return YES;
 }
@@ -729,6 +743,8 @@
     FInfo finderInfo;
     Handle hExistingCustomIcon;
 
+	NSDate* modificationDate = [[[NSFileManager defaultManager] fileAttributesAtPath:path traverseLink:NO] objectForKey:NSFileModificationDate];
+	
     // Get an FSRef and an FSSpec for the target file, and an FSRef for its parent directory that we can use in the FNNotify() call below.
     if (![path getFSRef:&targetFileFSRef createFileIfNecessary:NO])
 		return NO;
@@ -766,11 +782,16 @@
     if (result != noErr)
         return NO;
 
+	// Now set the modification time back to when the file was actually last
+	// modified
+	NSDictionary* attributes = [NSDictionary dictionaryWithObjectsAndKeys:modificationDate, NSFileModificationDate, nil];
+	BOOL work = [[NSFileManager defaultManager] changeFileAttributes:attributes atPath:path];	
+	
     // Notify the system that the directory containing the file has changed, to give Finder the chance to find out about the file's new custom icon.
     result = FNNotify( &parentDirectoryFSRef, kFNDirectoryModifiedMessage, kNilOptions );
     if (result != noErr)
         return NO;
-	
+
     return YES;
 }
 

@@ -1,12 +1,12 @@
 /////////////////////////////////////////////////////////////////////////
 // File:          $Name$
-// Module:        ValueTransformer that returns true or false on whether a 
-//                directory exists or not.
+// Module:        ValueTransformer that changes a path from /Users/elliot... to
+//                Macintosh HD::Users::elliot::...
 // Part of:       VitaminSEE
 //
-// Revision:      $Revision$
-// Last edited:   $Date$
-// Author:        $Author$
+// Revision:      $Revision: 149 $
+// Last edited:   $Date: 2005-04-29 14:32:49 -0400 (Fri, 29 Apr 2005) $
+// Author:        $Author: elliot $
 // Copyright:     (c) 2005 Elliot Glaysher
 // Created:       4/11/05
 //
@@ -29,14 +29,13 @@
 //
 /////////////////////////////////////////////////////////////////////////
 
+#import "FullDisplayNameValueTransformer.h"
 
-#import "PathExistsValueTransformer.h"
-#import "NSString+FileTasks.h"
 
-@implementation PathExistsValueTransformer
+@implementation FullDisplayNameValueTransformer
 +(Class)transformedValueClass
 {
-	return [NSNumber class];
+	return [NSString class];
 }
 
 +(BOOL)allowsReverseTransformation
@@ -44,12 +43,23 @@
 	return NO;
 }
 
+// value input is of type "/Useres/elliot/..."
+// output is of type "Macintosh HD:Users:elliot:..."
 -(id)transformedValue:(id)value
 {
-	if([value isDir])
-		return [NSNumber numberWithBool:YES];
-	else
-		return [NSNumber numberWithBool:NO];
+	NSEnumerator* e = [[[NSFileManager defaultManager] 
+		componentsToDisplayForPath:value] objectEnumerator];
+	NSMutableString* displayPath = [[e nextObject] mutableCopy];
+	NSString* current;
+	
+	// For each additional component after the first, 
+	while(current = [e nextObject])
+	{
+		[displayPath appendString:@":"];
+		[displayPath appendString:current];
+	}
+	
+	return displayPath;
 }
 
 @end

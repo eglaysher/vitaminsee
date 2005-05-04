@@ -14,6 +14,7 @@
  but only one can be viewed at a time.
  
  */
+@class EGPath;
 
 @protocol FileView <PluginBase>
 
@@ -26,7 +27,7 @@
 -(BOOL)canGoEnclosingFolder;
 
 // Setting and getting the file view
--(void)setCurrentDirectory:(NSString*)directory currentFile:(NSString*)file;
+-(void)setCurrentDirectory:(EGPath*)directory currentFile:(NSString*)file;
 -(void)goEnclosingFolder;
 
 // Files need to be added and removed from lists.

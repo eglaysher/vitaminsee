@@ -14,6 +14,7 @@
 #import <Cocoa/Cocoa.h>
 
 @class VitaminSEEController;
+@class EGPath;
 
 @interface PluginLayer : NSObject {
 	VitaminSEEController* controller;
@@ -114,5 +115,8 @@
 -(NSUndoManager*)pathManager;
 
 -(NSUndoManager*)undoManager;
+
+// Object factory methods so that I don't have to link stuff into the plugins
+-(EGPath*)pathWithPath:(NSString*)inPath;
 
 @end

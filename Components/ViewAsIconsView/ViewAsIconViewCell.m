@@ -96,9 +96,10 @@ NSSize IMAGE_SIZE = {128.0f, 128.0f};
 	thisCellsFullPath = path;
 	
 	[title release];
-	title = [[path lastPathComponent] retain];
-
-	[self setStringValue:[thisCellsFullPath lastPathComponent]];
+	title = [[thisCellsFullPath lastPathComponent] retain]; 
+		
+	[self setStringValue:title];
+//	[self setRepresentedObject:thisCellsFullPath];
 	
 	// If we are responsible for loading our own icon, then load it.
 	[self setIconImage:[path iconImageOfSize:IMAGE_SIZE]];
@@ -170,8 +171,7 @@ NSSize IMAGE_SIZE = {128.0f, 128.0f};
 		NSRectFill(notTextFrame);
 	}
 	
-	// Blit the image. We regretably have to lock on this since otherwise we
-	// have a FREQUENT deadlock with one of IconFamily's carbon functions.
+	// Blit the image
 	[iconImage compositeToPoint:imageFrame.origin operation:NSCompositeSourceOver];
 	
 	float newWidth = textFrame.size.width - 30.5f;
@@ -184,8 +184,10 @@ NSSize IMAGE_SIZE = {128.0f, 128.0f};
 	if(newWidth < cachedTitleWidth)
 	{
 		// Create our string and store it for later use.
+		NSString* displayName = [[NSFileManager defaultManager] displayNameAtPath:
+			thisCellsFullPath];
 		NSAttributedString* aString = [[[[NSAttributedString alloc] 
-			initWithString:title] autorelease] truncateForWidth:newWidth];
+			initWithString:displayName] autorelease] truncateForWidth:newWidth];
 		cachedTitleWidth = [aString size].width;
 		[cachedCellTitle release];
 		cachedCellTitle = [[aString string] retain];

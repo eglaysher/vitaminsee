@@ -55,13 +55,14 @@
 										file:nil
 									   types:nil];
 	if(result == NSOKButton) {
+		NSFileManager* fileManager = [NSFileManager defaultManager];
 		NSArray *directoriesToAdd = [panel filenames];
 		NSEnumerator *e = [directoriesToAdd objectEnumerator];
 		NSString* path;
 		while(path = [e nextObject])
 		{
 			NSDictionary* dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:path,
-				@"Path", [path lastPathComponent], @"Name", nil];
+				@"Path", [fileManager displayNameAtPath:path], @"Name", nil];
 			[listOfDirectories addObject:dict];			
 		}
 	}
