@@ -130,6 +130,7 @@
 				8B8363A307E0E88E00F3C880,
 				8BC8F94807F2102000C66290,
 				8B4FDB5A0807174C0016CABC,
+				CDA6BDCE08297FBF007869CA,
 			);
 			isa = PBXGroup;
 			name = Products;
@@ -158,6 +159,7 @@
 			mainGroup = 29B97314FDCFA39411CA2CEA;
 			projectDirPath = "";
 			targets = (
+				CDA6BDCD08297FBF007869CA,
 				8B4FDB590807174C0016CABC,
 				8BC8F94707F2102000C66290,
 				8B8363A207E0E88E00F3C880,
@@ -1633,6 +1635,7 @@
 		};
 		8B6D010807CB178F009A76DA = {
 			children = (
+				CDA6BDB508297E90007869CA,
 				8B5B697407E82FF9001FC345,
 				8BC8F93807F20EC700C66290,
 				8B83632D07E0DD3D00F3C880,
@@ -1847,6 +1850,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				CDA6BF5308298558007869CA,
 				8B4FDB8A080719E60016CABC,
 				8B4FDB490807170F0016CABC,
 				8B8364B507E0E96A00F3C880,
@@ -3109,6 +3113,7 @@
 				WRAPPER_EXTENSION = app;
 			};
 			dependencies = (
+				CDA6BEF7082984ED007869CA,
 				8B6D025607CBC6A8009A76DA,
 				8B561D9F07CE767A005990E1,
 				8B5620E307CEA700005990E1,
@@ -3298,6 +3303,181 @@
 		};
 		CD7686500829035F006AE601 = {
 			fileRef = CD76864F0829035F006AE601;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		CDA6BDB508297E90007869CA = {
+			children = (
+				CDA6BDE708297FF8007869CA,
+				CDA6BDE808297FF8007869CA,
+				CDA6BE31082981F5007869CA,
+				CDA6BDDF08297FBF007869CA,
+			);
+			isa = PBXGroup;
+			name = AdvancedPreferences;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CDA6BDCA08297FBF007869CA = {
+			buildActionMask = 2147483647;
+			files = (
+				CDA6BDE608297FDE007869CA,
+				CDA6BE32082981F5007869CA,
+			);
+			isa = PBXResourcesBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CDA6BDCB08297FBF007869CA = {
+			buildActionMask = 2147483647;
+			files = (
+				CDA6BEEC0829845E007869CA,
+			);
+			isa = PBXSourcesBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CDA6BDCC08297FBF007869CA = {
+			buildActionMask = 2147483647;
+			files = (
+				CDA6BDE308297FD1007869CA,
+			);
+			isa = PBXFrameworksBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CDA6BDCD08297FBF007869CA = {
+			buildPhases = (
+				CDA6BDCA08297FBF007869CA,
+				CDA6BDCB08297FBF007869CA,
+				CDA6BDCC08297FBF007869CA,
+			);
+			buildRules = (
+			);
+			buildSettings = {
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = "AdvancedPreferences-Info.plist";
+				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
+				LIBRARY_STYLE = BUNDLE;
+				OPTIMIZATION_CFLAGS = "";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "-framework Foundation -framework AppKit";
+				OTHER_REZFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = AdvancedPreferences;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = "-Wmost -Wno-four-char-constants -Wno-unknown-pragmas";
+				WRAPPER_EXTENSION = cqvPref;
+			};
+			dependencies = (
+			);
+			isa = PBXNativeTarget;
+			name = AdvancedPreferences;
+			productName = AdvancedPreferences;
+			productReference = CDA6BDCE08297FBF007869CA;
+			productSettingsXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
+<!DOCTYPE plist PUBLIC \"-//Apple Computer//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">
+<plist version=\"1.0\">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>English</string>
+	<key>CFBundleExecutable</key>
+	<string>AdvancedPreferences</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.yourcompany.AdvancedPreferences</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
+	<key>CFBundleVersion</key>
+	<string>1.0</string>
+</dict>
+</plist>
+";
+			productType = "com.apple.product-type.bundle";
+		};
+		CDA6BDCE08297FBF007869CA = {
+			explicitFileType = wrapper.cfbundle;
+			includeInIndex = 0;
+			isa = PBXFileReference;
+			path = AdvancedPreferences.cqvPref;
+			refType = 3;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		CDA6BDDF08297FBF007869CA = {
+			isa = PBXFileReference;
+			lastKnownFileType = text.xml;
+			path = "AdvancedPreferences-Info.plist";
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CDA6BDE308297FD1007869CA = {
+			fileRef = 1058C7A1FEA54F0111CA2CBB;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		CDA6BDE608297FDE007869CA = {
+			fileRef = CDA6BDDF08297FBF007869CA;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		CDA6BDE708297FF8007869CA = {
+			fileEncoding = "-2147483647";
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = AdvancedPreferencesController.h;
+			path = Components/AdvancedPreferences/AdvancedPreferencesController.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CDA6BDE808297FF8007869CA = {
+			fileEncoding = "-2147483647";
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
+			name = AdvancedPreferencesController.m;
+			path = Components/AdvancedPreferences/AdvancedPreferencesController.m;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CDA6BE31082981F5007869CA = {
+			isa = PBXFileReference;
+			lastKnownFileType = wrapper.nib;
+			name = AdvancedPreferences.nib;
+			path = Components/AdvancedPreferences/AdvancedPreferences.nib;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CDA6BE32082981F5007869CA = {
+			fileRef = CDA6BE31082981F5007869CA;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		CDA6BEEC0829845E007869CA = {
+			fileRef = CDA6BDE808297FF8007869CA;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		CDA6BEF6082984ED007869CA = {
+			containerPortal = 29B97313FDCFA39411CA2CEA;
+			isa = PBXContainerItemProxy;
+			proxyType = 1;
+			remoteGlobalIDString = CDA6BDCD08297FBF007869CA;
+			remoteInfo = AdvancedPreferences;
+		};
+		CDA6BEF7082984ED007869CA = {
+			isa = PBXTargetDependency;
+			target = CDA6BDCD08297FBF007869CA;
+			targetProxy = CDA6BEF6082984ED007869CA;
+		};
+		CDA6BF5308298558007869CA = {
+			fileRef = CDA6BDCE08297FBF007869CA;
 			isa = PBXBuildFile;
 			settings = {
 			};

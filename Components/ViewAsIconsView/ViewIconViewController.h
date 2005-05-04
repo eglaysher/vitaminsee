@@ -59,8 +59,8 @@
 -(NSView*)view;
 
 // Methods to handle clicks
--(void)singleClick:(NSBrowser*)sender;
--(void)doubleClick:(NSBrowser*)sender;
+-(void)singleClick:(id)sender;
+-(void)doubleClick:(id)sender;
 
 -(void)removeFile:(NSString*)absolutePath;
 -(void)addFile:(NSString*)path;

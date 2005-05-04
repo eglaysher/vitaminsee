@@ -75,15 +75,18 @@
  * * Close VS window, then open sort manager.
  * * Adding a thumbnail doesn't change a file's modification time (which makes
  *   more sense since we aren't really modifying the file).
+ * * Hide stuff at the @"/" level.
  */
 
 // For Version 0.6.1
+// * Display names of files
+//   * Fix range error in Root directory
+// * Advanced controls
+// * Cache control. How large?
 // * RBSplitView for the left column.
 //   * Contact Rainer Brockerhoff and ask him if he can dual liscence RBSplitView
 //     under CC-By-2.0 AND BSD (which he used to do). His webpage says no
 //     difference but CC-By-2.0 isn't GPL compatible.
-// * Cache control. How large?
-// * Display names of files
 
 // For Version 0.6.2
 // * Japanese Localization
@@ -196,6 +199,7 @@
 	[defaultPrefs setObject:[NSNumber numberWithBool:YES] forKey:@"GenerateThumbnails"];
 	[defaultPrefs setObject:[NSNumber numberWithBool:NO] forKey:@"GenerateThumbnailsInArchives"];
 	[defaultPrefs setObject:[NSNumber numberWithBool:YES] forKey:@"PreloadImages"];
+	[defaultPrefs setObject:[NSNumber numberWithBool:NO] forKey:@"ShowHiddenFiles"];
 
 	// Keyword preferences
 	KeywordNode* node = [[[KeywordNode alloc] initWithParent:nil keyword:@"Keywords"] autorelease];
@@ -905,7 +909,7 @@
         
         // Set which panes are included, and their order.
         [prefs setPanesOrder:[NSArray arrayWithObjects:@"General",
-			@"Favorites", @"Keywords", @"Updating", 
+			@"Favorites", @"Keywords", @"Updating", @"Advanced",
 			@"A Non-Existent Preference Pane", nil]];
     }
     

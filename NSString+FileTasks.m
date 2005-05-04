@@ -64,6 +64,8 @@
 
 #import "NSString+FileTasks.h"
 
+static NSArray* hiddenFiles = 0;
+
 @implementation NSString (FileTasks)
 
 -(BOOL)isDir
@@ -91,9 +93,26 @@
 
 -(BOOL)isVisible
 {
+	if(!hiddenFiles)
+		hiddenFiles = [[NSArray arrayWithObjects:@".vol", @"automount",
+			@"bin", @"cores", @"Desktop DB", @"Desktop DF", @"Desktop Folder", @"dev",
+			@"etc", @"lost+found", @"mach", @"mach_kernel", @"mach.sym", @"opt",
+			@"private", @"sbin", @"tmp", @"Trash", @"usr", @"var", @"VM Storage",
+			@"Volumes", nil] retain];	
+	
 	// Make this as sophisticated for example to hide more files you don't think the user should see!
     NSString *lastPathComponent = [self lastPathComponent];
-    return ([lastPathComponent length] ? ([lastPathComponent characterAtIndex:0]!='.') : NO);	
+	NSString *curDir = [self stringByDeletingLastPathComponent];
+
+	BOOL shouldHide = NO;
+	if([curDir isEqual:@"/"])
+		shouldHide = [hiddenFiles containsObject:lastPathComponent];
+
+	if([[[NSUserDefaults standardUserDefaults] objectForKey:@"ShowHiddenFiles"]
+		boolValue])
+		return YES;
+	else
+		return !shouldHide && ([lastPathComponent length] ? ([lastPathComponent characterAtIndex:0]!='.') : NO);
 }
 
 -(BOOL)isReadable

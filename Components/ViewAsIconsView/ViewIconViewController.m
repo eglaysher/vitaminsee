@@ -156,6 +156,7 @@
 		if(i == 0)
 		{
 			NSImage* img = [currentPathRep fileIcon];
+			[img setScalesWhenResized:YES];
 			[img setSize:NSMakeSize(16,16)];
 			[newMenuItem setImage:img];
 		}
@@ -202,9 +203,6 @@
 	// image.
 	if(![theMenuItem image])
 	{
-//		NSString* dirPath = [[theMenuItem representedObject] 
-//		[NSString pathWithComponents:
-//			[currentDirectoryComponents subarrayWithRange:NSMakeRange(0, [theMenuItem tag])]];
 		NSImage* image = [[theMenuItem representedObject] fileIcon];
 		[image setScalesWhenResized:YES];
 		[image setSize:NSMakeSize(16,16)];
@@ -254,10 +252,14 @@ willDisplayCell:(id)cell
 	}
 }
 
--(void)singleClick:(NSBrowser*)sender
+-(void)singleClick:(id)sender
 {
 	// grab the image path
-	NSString* absolutePath = [fileList objectAtIndex:[[ourBrowser matrixInColumn:0] selectedRow]];
+	int index = [[ourBrowser matrixInColumn:0] selectedRow];
+	if(index == -1)
+		return;
+	
+	NSString* absolutePath = [fileList objectAtIndex:index];
 
 	[pluginLayer setCurrentFile:absolutePath];
 	
@@ -299,15 +301,11 @@ willDisplayCell:(id)cell
 	oldPosition = newPosition;
 }
 
--(void)doubleClick:(NSBrowser*)sender
+-(void)doubleClick:(id)sender
 {
 	// Double clicking sets the directory...if it's a directory
-//	NSString* path = [ourBrowser path];
 	NSString* absolutePath = 
 		[fileList objectAtIndex:[[ourBrowser matrixInColumn:0] selectedRow]];	
-	
-//	NSLog(@"Path: %@", path);
-	NSLog(@"Absolute path: %@", absolutePath);
 	
 	if([absolutePath isDir])
 		// Get the first image in the directory:		
@@ -429,7 +427,7 @@ willDisplayCell:(id)cell
 {
 	NSArray* paths = [currentDirectory pathComponents];
 	EGPath* currentDirCopy = [currentDirectory retain];
-	NSLog(@"CurrentDirectory: %@", currentDirCopy);
+	// fixme: Possible problem
 	[self setCurrentDirectory:[paths objectAtIndex:[paths count] - 2]
 				  currentFile:[currentDirCopy fileSystemPath]];
 	[currentDirCopy release];
