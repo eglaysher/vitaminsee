@@ -234,6 +234,9 @@
 -(id)evictImages
 {
 	// ASSUMPTION: imageCacheLock is ALREADY locked!
+	
+//	NSLog(@"Current state of the cache: %@", imageCache);
+	
 	if([imageCache count] > CACHE_SIZE)
 	{
 		NSString* oldestPath = nil;
@@ -253,6 +256,11 @@
 		}
 		
 		// Let's get rid of the oldest path...
+		id x = [[imageCache objectForKey:oldestPath] objectForKey:@"Image"];
+//		NSLog(@"  Deleting Address: %@", x);
+//		NSLog(@"Evicting %@ with a reference count of %d", oldestPath,
+//			  [[[imageCache objectForKey:oldestPath] objectForKey:@"Image"] retainCount]);
+		
 		[imageCache removeObjectForKey:oldestPath];
 	}
 }
@@ -265,16 +273,19 @@
 	{
 		pthread_mutex_unlock(&imageCacheLock);
 		// Preload the image
-//		NSImageRep* rep = [NSImageRep imageRepWithContentsOfFile:path];
 		NSImageRep* rep = loadImage(path);
-		NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:
-			[NSDate date], @"Date", rep, @"Image", nil];
+//		NSLog(@"Retaincount: %d",[rep retainCount]);
+		NSMutableDictionary* dict = [NSMutableDictionary 
+			dictionaryWithObjectsAndKeys:[NSDate date], @"Date", rep, @"Image",
+			nil];
 
+//		NSLog(@"Building Address: %@", rep);
+		
 		pthread_mutex_lock(&imageCacheLock);
 		[self evictImages];
 		[imageCache setObject:dict forKey:path];
 	}
-	pthread_mutex_unlock(&imageCacheLock);	
+	pthread_mutex_unlock(&imageCacheLock);
 }
 
 -(void)doDisplayImage:(NSString*)path
@@ -319,11 +330,9 @@
 	{
 		pthread_mutex_unlock(&imageCacheLock);
 
-//		NSLog(@"Loading file '%@'", path);
 		// Load the file, since it obviously hasn't been loaded.
 		imageRep = loadImage(path);
-//		[NSImageRep imageRepWithData:[NSData dataWithContentsOfFile:path]];
-		cacheEntry = [NSDictionary dictionaryWithObjectsAndKeys:
+		cacheEntry = [NSMutableDictionary dictionaryWithObjectsAndKeys:
 			[NSDate date], @"Date", imageRep, @"Image", nil];
 		
 		pthread_mutex_lock(&imageCacheLock);
@@ -333,8 +342,11 @@
 		// Add the image to the cache so subsquent hits won't require reloading...
 		[imageCache setObject:cacheEntry forKey:path];
 	}
-//	else
-//		NSLog(@"Using cached version of '%@'", path);
+	else
+	{
+		// Update the last time accessed
+		[cacheEntry setValue:[NSDate date] forKey:@"Date"];
+	}
 	
 	imageRep = [cacheEntry objectForKey:@"Image"];
 	

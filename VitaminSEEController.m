@@ -82,6 +82,7 @@
  */
 
 // For Version 0.6.1
+// * Fix the !$#@ memory leak
 // * Display names of files
 //   * Fix range error in Root directory
 // * Cache control. How large?

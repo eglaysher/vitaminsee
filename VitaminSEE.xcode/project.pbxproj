@@ -1084,20 +1084,6 @@
 			settings = {
 			};
 		};
-		8B53806907DD6F6D00BA7CFF = {
-			buildActionMask = 8;
-			files = (
-			);
-			inputPaths = (
-				VitaminSEE.app,
-			);
-			isa = PBXShellScriptBuildPhase;
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-			shellPath = /bin/sh;
-			shellScript = "#!/bin/sh\n\n# Clean shit up.\nfind \"$BUILD_ROOT/$WRAPPER_NAME\" -name '.svn' -prune -exec rm -rf '{}' ';'\nfind \"$BUILD_ROOT/$WRAPPER_NAME\" -name '.DS_Store' -prune -exec rm -rf '{}' ';'";
-		};
 		8B5380E207DD86BC00BA7CFF = {
 			fileRef = 8BEA491807D7A73E001ADD2E;
 			isa = PBXBuildFile;
@@ -1775,6 +1761,7 @@
 			buildRules = (
 			);
 			buildSettings = {
+				COPY_PHASE_STRIP = NO;
 				DEPLOYMENT_POSTPROCESSING = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
@@ -2123,6 +2110,7 @@
 			buildRules = (
 			);
 			buildSettings = {
+				COPY_PHASE_STRIP = NO;
 				DEPLOYMENT_POSTPROCESSING = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
@@ -2277,6 +2265,7 @@
 			buildRules = (
 			);
 			buildSettings = {
+				COPY_PHASE_STRIP = NO;
 				DEPLOYMENT_POSTPROCESSING = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
@@ -2710,7 +2699,7 @@
 			);
 			buildSettings = {
 				COPY_PHASE_STRIP = NO;
-				DEPLOYMENT_POSTPROCESSING = NO;
+				DEPLOYMENT_POSTPROCESSING = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
 				INFOPLIST_FILE = "Components/ViewAsIconsView/ViewAsIconsFileView-Info.plist";
@@ -2877,7 +2866,6 @@
 		8BEA491407D7A73E001ADD2E = {
 			buildActionMask = 2147483647;
 			files = (
-				8BEA4A7C07D7D0BF001ADD2E,
 				8BEA492407D7A7D7001ADD2E,
 			);
 			isa = PBXSourcesBuildPhase;
@@ -2899,6 +2887,7 @@
 			buildRules = (
 			);
 			buildSettings = {
+				COPY_PHASE_STRIP = NO;
 				DEPLOYMENT_POSTPROCESSING = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
@@ -2999,12 +2988,6 @@
 			target = 8BEA491607D7A73E001ADD2E;
 			targetProxy = 8BEA495607D7A9D0001ADD2E;
 		};
-		8BEA4A7C07D7D0BF001ADD2E = {
-			fileRef = 8BA124AD07D2816300614FF4;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
 		8BF72A8707B9D14C003A3C82 = {
 			fileEncoding = 4;
 			isa = PBXFileReference;
@@ -3091,7 +3074,6 @@
 				8D1107290486CEB800E47090,
 				8D11072C0486CEB800E47090,
 				8D11072E0486CEB800E47090,
-				8B53806907DD6F6D00BA7CFF,
 			);
 			buildRules = (
 			);
@@ -3355,11 +3337,13 @@
 			buildRules = (
 			);
 			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				DEPLOYMENT_POSTPROCESSING = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
-				INFOPLIST_FILE = "AdvancedPreferences-Info.plist";
+				INFOPLIST_FILE = "Components/AdvancedPreferences/AdvancedPreferences-Info.plist";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
 				LIBRARY_STYLE = BUNDLE;
 				OPTIMIZATION_CFLAGS = "";

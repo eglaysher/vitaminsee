@@ -198,19 +198,25 @@
 
 -(NSArray*)directoryContents
 {
-	NSMutableArray* childPaths = [[[[NSFileManager defaultManager] 
-		directoryContentsAtPath:fileSystemPath] mutableCopy] autorelease];
+	NSArray* childPaths = [[NSFileManager defaultManager] 
+		directoryContentsAtPath:fileSystemPath];
+	int count = [childPaths count];
+	NSMutableArray* fullChildPaths = [NSMutableArray arrayWithCapacity:count];
 
 	// Make sure these are full paths
-	int i, count = [childPaths count];
+	int i;
 	for(i = 0; i < count; ++i)
 	{
 		NSString* fullPath = [fileSystemPath stringByAppendingPathComponent:
 			[childPaths objectAtIndex:i]];
-		[childPaths replaceObjectAtIndex:i withObject:fullPath];
+		[fullChildPaths addObject:fullPath];
+		
+		// wow, looks like somebody didn't test the retain/release functionality
+		// in the standard library to well...
+//		[childPaths replaceObjectAtIndex:i withObject:fullPath];
 	}
 	
-	return [self buildEGPathArrayFromArrayOfNSStrings:childPaths];
+	return [self buildEGPathArrayFromArrayOfNSStrings:fullChildPaths];
 }
 
 -(NSString*)fileSystemPath
@@ -239,8 +245,8 @@
 
 -(NSArray*)pathDisplayComponents
 {
-	NSMutableArray* components = [[[NSFileManager defaultManager] 
-		componentsToDisplayForPath:fileSystemPath] mutableCopy];
+	NSMutableArray* components = [[[[NSFileManager defaultManager] 
+		componentsToDisplayForPath:fileSystemPath] mutableCopy] autorelease];
 	[components insertObject:[[EGPathRoot root] displayName] atIndex:0];
 	
 	return components;

@@ -8,16 +8,6 @@
 
 #import <Cocoa/Cocoa.h>
 
-enum PathType {
-	PATH_TYPE_ROOT,
-	PATH_TYPE_LOCALFILE,
-	PATH_TYPE_ARCHIVE
-};
-
-// [Root]
-// [Local Directory]
-// [Archive : [Parent path] ]
-
 @interface EGPath : NSObject {
 }
 

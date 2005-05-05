@@ -41,16 +41,18 @@ NSImageRep* loadImage(NSString* path)
 	Class imageRepClass = [NSImageRep imageRepClassForData:imageData];
 	if(!imageRepClass)
 		return nil;
+	
+	id imageRep = [[imageRepClass alloc] initWithData:imageData];
+	NSLog(@"image rep retain count in loadImage: %d", [imageRep retainCount]);
 
-	return [imageRepClass imageRepWithData:imageData];
+	// 
+	return [imageRep autorelease];
 }
 
 struct DS buildImageSize(int boxWidth, int boxHeight, int imageWidth, int imageHeight,
 						 BOOL canScaleProportionally, float ratioToScale,
 						 BOOL*canGetAwayWithQuickRender, float* ratioUsed)
 {
-//	NSLog(@"Going to build size with box:[%d,%d] image:[%d, %d] canScale:%d ratio:%f",
-//		  boxWidth, boxHeight, imageWidth, imageHeight, canScaleProportionally, ratioToScale);
 	struct DS display;
 	
 	if(canScaleProportionally == YES)
@@ -125,40 +127,4 @@ BOOL imageRepIsAnimated(NSImageRep* rep)
 		return YES;
 	else
 		return NO;
-}
-
-// FIXME: We need a working function to provide an image of files with crap...
-// 
-NSImage* buildImageFromNormalFile(NSString* path, NSSize size)
-{
-    NSImage *nodeImage = nil;
-    
-    nodeImage = [[NSWorkspace sharedWorkspace] iconForFile:path];
-    if (!nodeImage) {
-        // No icon for actual file, try the extension.
-        nodeImage = [[NSWorkspace sharedWorkspace] iconForFileType:[path pathExtension]];
-    }
-    [nodeImage setSize: size];
-	
-	if ([path isLink]) {
-        NSImage *arrowImage = [NSImage imageNamed: @"FSIconImage-LinkArrow"];
-        NSImage *nodeImageWithArrow = [[[NSImage alloc] initWithSize: size] autorelease];
-        
-        [arrowImage setScalesWhenResized: YES];
-        [arrowImage setSize: size];
-        
-        [nodeImageWithArrow lockFocus];
-        [nodeImage compositeToPoint:NSZeroPoint operation:NSCompositeCopy];
-        [arrowImage compositeToPoint:NSZeroPoint operation:NSCompositeSourceOver
-			];
-        [nodeImageWithArrow unlockFocus];
-        
-        nodeImage = nodeImageWithArrow;
-    }
-    
-    if (nodeImage==nil) {
-        nodeImage = [NSImage imageNamed:@"FSIconImage-Default"];
-    }
-    
-    return nodeImage;
 }
