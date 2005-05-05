@@ -233,7 +233,9 @@ willDisplayCell:(id)cell
 		  atRow:(int)row
 		 column:(int)column
 {
-	[cell setCellPropertiesFromPath:[fileList objectAtIndex:row]];
+	NSString* path = [fileList objectAtIndex:row];
+	[cell setCellPropertiesFromPath:path];
+	[cell setIconImage:[path iconImageOfSize:NSMakeSize(128,128)]];
 }
 
 - (void)clearCache
@@ -408,13 +410,8 @@ willDisplayCell:(id)cell
 							  withSortSelector:@selector(caseInsensitiveCompare:)];
 	if(index != NSNotFound)
 	{
-		// Set this image if we've already tried to view it.
-		id cell = [[ourBrowser matrixInColumn:0] cellAtRow:index column:0];
-		if([cell respondsToSelector:@selector(setIconImage:)])
-		{
-			[cell setIconImage:image];
-			[ourBrowser setNeedsDisplay];
-		}
+		[[ourBrowser loadedCellAtRow:index column:0] setIconImage:image];
+		[ourBrowser setNeedsDisplay];
 	}
 }
 

@@ -102,7 +102,7 @@ NSSize IMAGE_SIZE = {128.0f, 128.0f};
 //	[self setRepresentedObject:thisCellsFullPath];
 	
 	// If we are responsible for loading our own icon, then load it.
-	[self setIconImage:[path iconImageOfSize:IMAGE_SIZE]];
+//	[self setIconImage:[path iconImageOfSize:IMAGE_SIZE]];
 	
 	// We are going to have to do something with images here...
 	[self setEnabled:[thisCellsFullPath isReadable]];

@@ -68,8 +68,6 @@ shouldCancel:(BOOL)shouldCancel
 
 -(BOOL)validateMenuItem:(NSMenuItem *)theMenuItem
 {
-	NSLog(@"Represented object: %@", [theMenuItem representedObject]);
-//	NSLog(@"Isdir: %d", [[theMenuItem representedObject] isDir]);
 	return [[theMenuItem representedObject] isDir];
 }
 

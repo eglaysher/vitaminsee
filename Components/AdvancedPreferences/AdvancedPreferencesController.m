@@ -69,7 +69,7 @@
 - (NSImage *)paneIcon
 {
     return [[NSImage alloc] initWithContentsOfFile:
-		[[NSBundle mainBundle] pathForImageResource:@"ToolbarFavoritesIcon"]];
+		[[NSBundle mainBundle] pathForImageResource:@"AdvancedPreferences"]];
 }
 
 - (NSString *)paneToolTip

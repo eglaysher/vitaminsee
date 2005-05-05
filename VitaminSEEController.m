@@ -75,13 +75,15 @@
  * * Close VS window, then open sort manager.
  * * Adding a thumbnail doesn't change a file's modification time (which makes
  *   more sense since we aren't really modifying the file).
- * * Hide stuff at the @"/" level.
+ * * Option to show hidden files, plus hide stuff at the @"/" level by default.
+ * * Advanced preference pane
+ * * Thumbnails aren't displayed for files on remote server after generation (
+ *   this could be fixed with a relod, but now it's not a problem...)
  */
 
 // For Version 0.6.1
 // * Display names of files
 //   * Fix range error in Root directory
-// * Advanced controls
 // * Cache control. How large?
 // * RBSplitView for the left column.
 //   * Contact Rainer Brockerhoff and ask him if he can dual liscence RBSplitView

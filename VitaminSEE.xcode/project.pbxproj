@@ -3151,6 +3151,7 @@
 				8D11072A0486CEB800E47090,
 				8D11072B0486CEB800E47090,
 				CD7686500829035F006AE601,
+				CDA6C00D08299164007869CA,
 			);
 			isa = PBXResourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3309,6 +3310,7 @@
 		};
 		CDA6BDB508297E90007869CA = {
 			children = (
+				CDA6C00C08299163007869CA,
 				CDA6BDE708297FF8007869CA,
 				CDA6BDE808297FF8007869CA,
 				CDA6BE31082981F5007869CA,
@@ -3410,7 +3412,8 @@
 		CDA6BDDF08297FBF007869CA = {
 			isa = PBXFileReference;
 			lastKnownFileType = text.xml;
-			path = "AdvancedPreferences-Info.plist";
+			name = "AdvancedPreferences-Info.plist";
+			path = "Components/AdvancedPreferences/AdvancedPreferences-Info.plist";
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -3478,6 +3481,20 @@
 		};
 		CDA6BF5308298558007869CA = {
 			fileRef = CDA6BDCE08297FBF007869CA;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		CDA6C00C08299163007869CA = {
+			isa = PBXFileReference;
+			lastKnownFileType = image.png;
+			name = AdvancedPreferences.png;
+			path = Components/AdvancedPreferences/AdvancedPreferences.png;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CDA6C00D08299164007869CA = {
+			fileRef = CDA6C00C08299163007869CA;
 			isa = PBXBuildFile;
 			settings = {
 			};
