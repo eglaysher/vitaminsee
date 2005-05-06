@@ -137,8 +137,6 @@
 	return YES;
 }
 
-
-
 -(BOOL)isDirectory
 {
 	return YES;

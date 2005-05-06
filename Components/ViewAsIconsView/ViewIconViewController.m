@@ -261,7 +261,7 @@ willDisplayCell:(id)cell
 	if(index == -1)
 		return;
 	
-	NSString* absolutePath = [NSString stringWithString:[fileList objectAtIndex:index]];
+	NSString* absolutePath = [fileList objectAtIndex:index];
 
 	[pluginLayer setCurrentFile:absolutePath];
 	
@@ -306,8 +306,7 @@ willDisplayCell:(id)cell
 -(void)doubleClick:(id)sender
 {
 	// Double clicking sets the directory...if it's a directory
-	NSString* absolutePath = [NSString stringWithString:
-		[fileList objectAtIndex:[[ourBrowser matrixInColumn:0] selectedRow]]];	
+	NSString* absolutePath = [fileList objectAtIndex:[[ourBrowser matrixInColumn:0] selectedRow]];
 	
 	if([absolutePath isDir])
 		// Get the first image in the directory:		
@@ -365,7 +364,7 @@ willDisplayCell:(id)cell
 		[ourBrowser loadColumnZero];
 		[ourBrowser setPath:[NSString stringWithFormat:@"/%@", [path lastPathComponent]]];
 		
-		[pluginLayer setCurrentFile:[NSString stringWithString:[fileList objectAtIndex:index]]];
+		[pluginLayer setCurrentFile:[fileList objectAtIndex:index]];
 	}
 }
 
@@ -383,9 +382,9 @@ willDisplayCell:(id)cell
 	if(index == NSNotFound)
 		nextFile = nil;
 	else if(index + 1 < count)
-		nextFile = [NSString stringWithString:[fileList objectAtIndex:(index + 1)]];
+		nextFile = [fileList objectAtIndex:(index + 1)];
 	else if(index - 1 >= 0)
-		nextFile = [NSString stringWithString:[fileList objectAtIndex:(index - 1)]];
+		nextFile = [fileList objectAtIndex:(index - 1)];
 	else
 		nextFile = nil;
 
@@ -469,7 +468,7 @@ willDisplayCell:(id)cell
 	NSString* file;
 	while(file = [fileEnum nextObject])
 		if([file isImage])
-			[pluginLayer generateThumbnailForFile:[NSString stringWithString:file]];
+			[pluginLayer generateThumbnailForFile:file];
 	
 	// Now let's keep our new list of files.
 	[myFileList retain];
