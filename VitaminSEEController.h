@@ -38,6 +38,7 @@
 @class SortManagerController;
 @class SS_PrefsController;
 @class FavoritesMenuDelegate;
+@class RBSplitView;
 
 @protocol ImageDisplayer 
 -(void)displayImage;
@@ -70,7 +71,7 @@
 	IBOutlet NSTextField * fileSizeLabel;
 	IBOutlet NSTextField * imageSizeLabel;
 	IBOutlet NSWindow* viewerWindow;
-	IBOutlet NSSplitView* splitView;
+	IBOutlet RBSplitView* splitView;
 	IBOutlet NSScrollView* scrollView;
 
 	NSCursor *handCursor;

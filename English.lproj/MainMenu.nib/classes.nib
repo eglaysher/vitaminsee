@@ -51,7 +51,7 @@
                 progressCurrentTask = NSTextField; 
                 progressIndicator = NSProgressIndicator; 
                 scrollView = NSScrollView; 
-                splitView = NSSplitView; 
+                splitView = RBSplitView; 
                 viewerWindow = NSWindow; 
             }; 
             SUPERCLASS = NSObject; 

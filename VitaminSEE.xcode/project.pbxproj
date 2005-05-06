@@ -173,6 +173,7 @@
 		};
 		29B97314FDCFA39411CA2CEA = {
 			children = (
+				CD44162D082C1BCC003C01FD,
 				8B6D010807CB178F009A76DA,
 				8B2DF9F408137AD700A903A7,
 				080E96DDFE201D6D7F000001,
@@ -3177,6 +3178,8 @@
 				8B6710B2080C9BE00084EE5A,
 				CD50A33F0826E74900414068,
 				CD76863F08283934006AE601,
+				CD44164C082C1C67003C01FD,
+				CD44164E082C1C67003C01FD,
 			);
 			isa = PBXSourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3230,6 +3233,76 @@
 //CD2
 //CD3
 //CD4
+		CD44162D082C1BCC003C01FD = {
+			children = (
+				CD441646082C1C66003C01FD,
+				CD441647082C1C66003C01FD,
+				CD441648082C1C66003C01FD,
+				CD441649082C1C66003C01FD,
+				CD44164A082C1C66003C01FD,
+			);
+			isa = PBXGroup;
+			name = "Widgets And Additions";
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CD441646082C1C66003C01FD = {
+			fileEncoding = "-2147483647";
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = RBSplitSubview.h;
+			path = Widgets/RBSplitSubview.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CD441647082C1C66003C01FD = {
+			fileEncoding = "-2147483647";
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
+			name = RBSplitSubview.m;
+			path = Widgets/RBSplitSubview.m;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CD441648082C1C66003C01FD = {
+			fileEncoding = "-2147483647";
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = RBSplitView.h;
+			path = Widgets/RBSplitView.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CD441649082C1C66003C01FD = {
+			fileEncoding = "-2147483647";
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
+			name = RBSplitView.m;
+			path = Widgets/RBSplitView.m;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CD44164A082C1C66003C01FD = {
+			fileEncoding = "-2147483647";
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = RBSplitViewPrivateDefines.h;
+			path = Widgets/RBSplitViewPrivateDefines.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CD44164C082C1C67003C01FD = {
+			fileRef = CD441647082C1C66003C01FD;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		CD44164E082C1C67003C01FD = {
+			fileRef = CD441649082C1C66003C01FD;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
 		CD50A33C0826E74900414068 = {
 			fileEncoding = 4;
 			isa = PBXFileReference;

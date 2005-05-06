@@ -60,6 +60,9 @@
 #import "PathExistsValueTransformer.h"
 #import "FullDisplayNameValueTransformer.h"
 
+#import "RBSplitView.h"
+#import "RBSplitSubview.h"
+
 @implementation VitaminSEEController
 ///////// TEST PLAN
 
@@ -83,14 +86,13 @@
  */
 
 // For Version 0.6.1
-
 // * Display names of files
 //   * Fix range error in Root directory
 // * Cache control. How large?
 // * RBSplitView for the left column.
-//   * Contact Rainer Brockerhoff and ask him if he can dual liscence RBSplitView
-//     under CC-By-2.0 AND BSD (which he used to do). His webpage says no
-//     difference but CC-By-2.0 isn't GPL compatible.
+//   * Find why images don't display when left side eats screen
+//   * Figure out how to make it less flicery when resizing
+//   * Add previous/next controls
 
 // For Version 0.6.2
 // * Japanese Localization
@@ -253,6 +255,12 @@
 	[self setupToolbar];
 	scaleProportionally = NO;
 	scaleRatio = 1.0;
+	
+	// Set up our split view
+	[splitView setDelegate:self];
+	RBSplitSubview* leftView = [splitView subviewAtPosition:0];
+	[leftView setCanCollapse:YES];
+	[leftView setMinDimension:95 andMaxDimension:0];
 	
 	// Set our plugins to nil
 	loadedBasePlugins = [[NSMutableDictionary alloc] init];
@@ -819,7 +827,8 @@
 }
 
 // Redraw the window when the window resizes.
--(void)windowDidResize:(NSNotification*)notification
+//-(void)windowDidResize:(NSNotification*)notification
+-(void)didAdjustSubviews:(id)rbview
 {
 	[self redraw];
 }
