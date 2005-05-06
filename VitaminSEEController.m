@@ -79,10 +79,11 @@
  * * Advanced preference pane
  * * Thumbnails aren't displayed for files on remote server after generation (
  *   this could be fixed with a relod, but now it's not a problem...)
+ * * Fix the !$#@ memory leak
  */
 
 // For Version 0.6.1
-// * Fix the !$#@ memory leak
+
 // * Display names of files
 //   * Fix range error in Root directory
 // * Cache control. How large?
