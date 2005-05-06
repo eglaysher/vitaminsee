@@ -30,6 +30,10 @@
 -(NSAttributedString*)truncateForWidth:(float)inWidth;
 @end
 
+@interface NSString (Truncation)
+- (NSString *)truncateForWidth:(float) inWidth;
+@end
+
 // This category is also from Karelia Software.
 @interface NSView (Set_and_get)
 -(void)setSubview:(NSView *)inView;

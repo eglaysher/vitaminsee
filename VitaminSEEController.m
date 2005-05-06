@@ -731,7 +731,6 @@
 	[newCurrentFile retain];
 	[currentImageFile release];
 	currentImageFile = newCurrentFile;
-	[currentImageFile retain];
 	
 	// Okay, we don't know what kind of thing we have been passed, so let's
 	BOOL isDir = [newCurrentFile isDir];

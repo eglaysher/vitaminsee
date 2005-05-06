@@ -66,6 +66,7 @@ NSSize IMAGE_SIZE = {128.0f, 128.0f};
 	if(refcount > 1)
 		NSLog(@"WARNING! MEMORY LEAK! %@ has %d references", thisCellsFullPath, refcount);
 	[iconImage release];
+	[cachedCellTitle release];
 	[thisCellsFullPath release];
 	[super dealloc];
 }
@@ -91,9 +92,10 @@ NSSize IMAGE_SIZE = {128.0f, 128.0f};
 -(void)setCellPropertiesFromPath:(NSString*)path
 {
 	// Keep this path...
-	[path retain];
+//	[path retain];
+	NSString* tmp = [[NSString alloc] initWithString:path];
 	[thisCellsFullPath release];
-	thisCellsFullPath = path;
+	thisCellsFullPath = tmp;
 	
 	[title release];
 	title = [[thisCellsFullPath lastPathComponent] retain]; 
@@ -183,14 +185,12 @@ NSSize IMAGE_SIZE = {128.0f, 128.0f};
 	// (which there are quite a number of)
 	if(newWidth < cachedTitleWidth)
 	{
-		// Create our string and store it for later use.
 		NSString* displayName = [[NSFileManager defaultManager] displayNameAtPath:
 			thisCellsFullPath];
-		NSAttributedString* aString = [[[[NSAttributedString alloc] 
-			initWithString:displayName] autorelease] truncateForWidth:newWidth];
-		cachedTitleWidth = [aString size].width;
+
 		[cachedCellTitle release];
-		cachedCellTitle = [[aString string] retain];
+		cachedCellTitle = [[displayName truncateForWidth:newWidth] retain];
+
 		[self setAlignment:NSCenterTextAlignment];
 	}
 	

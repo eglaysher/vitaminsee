@@ -163,7 +163,7 @@
 
 		[newMenuItem setRepresentedObject:currentPathRep];
 		[newMenuItem setTarget:self];
-		[newMenu addItem:newMenuItem];		
+		[newMenu addItem:newMenuItem];	
 	}
 	
 	// Set this menu as the pull down...
@@ -261,7 +261,7 @@ willDisplayCell:(id)cell
 	if(index == -1)
 		return;
 	
-	NSString* absolutePath = [fileList objectAtIndex:index];
+	NSString* absolutePath = [NSString stringWithString:[fileList objectAtIndex:index]];
 
 	[pluginLayer setCurrentFile:absolutePath];
 	
@@ -306,8 +306,8 @@ willDisplayCell:(id)cell
 -(void)doubleClick:(id)sender
 {
 	// Double clicking sets the directory...if it's a directory
-	NSString* absolutePath = 
-		[fileList objectAtIndex:[[ourBrowser matrixInColumn:0] selectedRow]];	
+	NSString* absolutePath = [NSString stringWithString:
+		[fileList objectAtIndex:[[ourBrowser matrixInColumn:0] selectedRow]]];	
 	
 	if([absolutePath isDir])
 		// Get the first image in the directory:		
@@ -365,7 +365,7 @@ willDisplayCell:(id)cell
 		[ourBrowser loadColumnZero];
 		[ourBrowser setPath:[NSString stringWithFormat:@"/%@", [path lastPathComponent]]];
 		
-		[pluginLayer setCurrentFile:[fileList objectAtIndex:index]];
+		[pluginLayer setCurrentFile:[NSString stringWithString:[fileList objectAtIndex:index]]];
 	}
 }
 
@@ -383,9 +383,9 @@ willDisplayCell:(id)cell
 	if(index == NSNotFound)
 		nextFile = nil;
 	else if(index + 1 < count)
-		nextFile = [fileList objectAtIndex:(index + 1)];
+		nextFile = [NSString stringWithString:[fileList objectAtIndex:(index + 1)]];
 	else if(index - 1 >= 0)
-		nextFile = [fileList objectAtIndex:(index - 1)];
+		nextFile = [NSString stringWithString:[fileList objectAtIndex:(index - 1)]];
 	else
 		nextFile = nil;
 
@@ -406,7 +406,7 @@ willDisplayCell:(id)cell
 
 -(void)setThumbnail:(NSImage*)image forFile:(NSString*)path
 {
-	unsigned index = [fileList binarySearchFor:path 
+	unsigned index = [fileList binarySearchFor:path
 							  withSortSelector:@selector(caseInsensitiveCompare:)];
 	if(index != NSNotFound)
 	{
@@ -469,12 +469,21 @@ willDisplayCell:(id)cell
 	NSString* file;
 	while(file = [fileEnum nextObject])
 		if([file isImage])
-			[pluginLayer generateThumbnailForFile:file];
+			[pluginLayer generateThumbnailForFile:[NSString stringWithString:file]];
 	
 	// Now let's keep our new list of files.
 	[myFileList retain];
+
+//	NSLog(@"filelist retain count: %d", [fileList retainCount]);
+
+	fileEnum = [fileList objectEnumerator];
+	while(file = [fileEnum nextObject])
+		NSLog(@"Filename: %@, retainCount: %d", file, [file retainCount]);
 	[fileList release];
+	
 	fileList = myFileList;
+
+	NSLog(@"filelist retain count: %d", [fileList retainCount]);
 }
 
 @end

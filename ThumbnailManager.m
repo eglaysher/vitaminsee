@@ -37,7 +37,7 @@
 #define CACHE_SIZE 3
 
 @interface ThumbnailManager (Private)
--(void)doBuildIcon:(NSDictionary*)options;
+-(void)doBuildIcon:(NSString*)options;
 @end
 
 @implementation ThumbnailManager
@@ -114,16 +114,21 @@
 
 		if([thumbnailQueue count])
 		{
-			if(thumbnailLoadingPosition > [thumbnailQueue count])
-				thumbnailLoadingPosition = 0;
-			
-			NSDictionary* action = [[thumbnailQueue 
-				objectAtIndex:thumbnailLoadingPosition] retain];
-			[thumbnailQueue removeObjectAtIndex:thumbnailLoadingPosition];
+			NSString* path = [NSString stringWithString:[thumbnailQueue objectAtIndex:0]];
+			[thumbnailQueue removeObjectAtIndex:0];
 			pthread_mutex_unlock(&taskQueueLock);
 			
-			[self doBuildIcon:action];
-			[action release];
+			[self doBuildIcon:path];
+			if([path retainCount] > 1)
+			{
+				NSLog(@"Thumbnail image file retainCount: %d", [path retainCount]);
+			}
+
+			NSLog(@"There are %d in thumbnailQueue", [thumbnailQueue count]);
+//			int i, count = [thumbnailQueue count];
+//			for(i = 0; i < count; ++i)
+//				NSLog(@"%@ has retcount of %d", [thumbnailQueue objectAtIndex:i],
+//					  [[thumbnailQueue objectAtIndex:i] count]);
 		}
 		else
 		{
@@ -145,14 +150,11 @@
 }
 
 -(void)buildThumbnail:(NSString*)path
-{
-	NSDictionary* currentTask = [NSDictionary dictionaryWithObjectsAndKeys:
-		@"PreloadImage", @"Type", path, @"Path", nil];
-	
+{	
 	pthread_mutex_lock(&taskQueueLock);
-	//	NSLog(@"Going to preload: %@", path);
+
 	// Add the object
-	[thumbnailQueue addObject:currentTask];
+	[thumbnailQueue addObject:path];
 	
 	// Tell the worker thread that it has work to do.
 	pthread_cond_signal(&conditionLock);
@@ -188,9 +190,8 @@
 
 @implementation ThumbnailManager (Private)
 
--(void)doBuildIcon:(NSDictionary*)options
+-(void)doBuildIcon:(NSString*)path
 {
-	NSString* path = [options objectForKey:@"Path"];
 	NSImage* thumbnail;
 	IconFamily* iconFamily;
 	

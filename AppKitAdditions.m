@@ -14,6 +14,7 @@
 // included with their code.
 
 #import "AppKitAdditions.h"
+#import "Util.h"
 
 // This is mine
 // Copyright 2005 Elliot Glaysher, and GPLed.
@@ -74,6 +75,15 @@
 
 @end
 
+// -----------------------------------------------------------------------------
+//@implementation NSFileManager (DisplayNameFix)
+//
+//-(NSString*)displayNameAtPath:(NSString*)fileSystemPath
+//{
+//	return displayNameAtPath(fileSystemPath);
+//}
+//
+//@end
 
 // -----------------------------------------------------------------------------
 
@@ -155,6 +165,45 @@ zeroing in on the optimum length.
 }
 
 @end
+
+@implementation NSString (Truncation)
+/*"	Truncate a string, returning substring with "…" to fit in the given width.  
+Probably not the most efficient way of doing this; perhaps an optimization 
+would be to decide on the font of the "É" and compensate for that in the 
+width calculations; another would be to do a binary search on the length, 
+zeroing in on the optimum length.
+"*/
+- (NSString *)truncateForWidth:(float) inWidth
+{
+	NSString* result = self;
+	NSRange range;	
+	
+	// Commented out for leak testing...
+	if ([self sizeWithAttributes:0].width > inWidth)
+	{
+		if(!ellipsis)
+			ellipsis = [[NSString stringWithFormat:@"%C", 0x2026] retain];
+		
+		NSMutableString* newString = [NSMutableString stringWithString:self];
+		int curLength = [self length] - 1;	//start by chopping off at least one
+		
+		while ([newString sizeWithAttributes:0].width > inWidth)
+		{
+			// replace 2 characters with "…"
+			range = NSMakeRange( curLength - 1, 2);	
+			[newString replaceCharactersInRange:range withString:ellipsis];
+			curLength--;
+		}
+		result = newString;
+	}
+	else
+		result = [NSString stringWithString:self];
+	
+	return result;
+}
+
+@end
+
 
 // -----------------------------------------------------------------------------
 
