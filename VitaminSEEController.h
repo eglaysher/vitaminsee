@@ -139,10 +139,15 @@
 -(IBAction)referesh:(id)sender;
 
 // View menu options
+-(IBAction)toggleFileList:(id)sender;
+// ----------------------
 -(IBAction)revealInFinder:(id)sender;
 -(IBAction)viewInPreview:(id)sender;
 
 // Go menu actions
+-(IBAction)goNextFile:(id)sender;
+-(IBAction)goPreviousFile:(id)sender;
+// ----------------------
 -(IBAction)goEnclosingFolder:(id)sender;
 -(IBAction)goBack:(id)sender;
 -(IBAction)goForward:(id)sender;
@@ -165,7 +170,7 @@
 -(IBAction)actualSize:(id)sender;
 
 // Window delegate method to redraw the image when we resize...
-- (void)windowDidResize:(NSNotification*)notification;
+//- (void)windowDidResize:(NSNotification*)notification;
 -(void)displayImage;
 -(void)setIcon;
 -(void)setStatusText:(NSString*)statusText;

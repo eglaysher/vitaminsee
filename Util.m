@@ -43,7 +43,7 @@ NSImageRep* loadImage(NSString* path)
 		return nil;
 	
 	id imageRep = [[imageRepClass alloc] initWithData:imageData];
-	NSLog(@"image rep retain count in loadImage: %d", [imageRep retainCount]);
+//	NSLog(@"image rep retain count in loadImage: %d", [imageRep retainCount]);
 
 	// 
 	return [imageRep autorelease];

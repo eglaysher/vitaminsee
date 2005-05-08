@@ -19,6 +19,8 @@
                 goBack = id; 
                 goEnclosingFolder = id; 
                 goForward = id; 
+                goNextFile = id; 
+                goPreviousFile = id; 
                 goToFolder = id; 
                 goToHomeFolder = id; 
                 goToPicturesFolder = id; 
@@ -28,6 +30,7 @@
                 runToolbarCustomizationPalette = id; 
                 showGPL = id; 
                 showPreferences = id; 
+                toggleFileList = id; 
                 toggleKeywordManager = id; 
                 toggleSortManager = id; 
                 toggleToolbarShown = id; 

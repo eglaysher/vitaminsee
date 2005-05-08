@@ -50,8 +50,10 @@ static NSString* MoveToTrashID = @"Move Item to Trash Toolbar Identifier";
 
 static NSString* GotoPicturesID = @"Goto Pictures Toolbar Identifier";
 static NSString* GotoHomeID = @"Goto Home Toolbar Identifier";
-
 static NSString* FavoritesID = @"Favorites Toolbar Identifier";
+
+static NSString* NextPictureToolbarID = @"Next Picture Toolbar Identifier";
+static NSString* PreviousPictureToolbarID = @"Previous Picture Toolbar Identifier";
 
 @implementation VitaminSEEController (ToolbarDelegate)
 
@@ -161,6 +163,24 @@ static NSString* FavoritesID = @"Favorites Toolbar Identifier";
 		item = [[[FavoritesToolbarItem alloc] initWithItemIdentifier:itemIdent
 														  controller:self] autorelease];
 	}
+	else if([itemIdent isEqual:NextPictureToolbarID])
+	{
+		[item setLabel:NSLocalizedString(@"Next", @"Toolbar Item")];
+		[item setPaletteLabel:NSLocalizedString(@"Next", @"Toolbar Item")];
+		[item setToolTip:NSLocalizedString(@"Next", @"Toolbar Item")];
+		[item setImage:[NSImage imageNamed:@"NextToolbarImage"]];
+		[item setTarget:self];
+		[item setAction:@selector(goNextFile:)];
+	}
+	else if([itemIdent isEqual:PreviousPictureToolbarID])
+	{
+		[item setLabel:NSLocalizedString(@"Previous", @"Toolbar Item")];
+		[item setPaletteLabel:NSLocalizedString(@"Previous", @"Toolbar Item")];
+		[item setToolTip:NSLocalizedString(@"Previous", @"Toolbar Item")];
+		[item setImage:[NSImage imageNamed:@"PreviousToolbarImage"]];
+		[item setTarget:self];
+		[item setAction:@selector(goPreviousFile:)];		
+	}	
 	else
 		item = nil;
 
@@ -180,7 +200,8 @@ static NSString* FavoritesID = @"Favorites Toolbar Identifier";
 {
 	return [NSArray arrayWithObjects:RevealInFinderToolbarID, ViewInPreviewToolbarID, 
 		MoveToTrashID, GotoPicturesID, GotoHomeID, FavoritesID, ZoomInToolbarID, ZoomOutToolbarID,
-		ZoomToFitToolbarID, ActualSizeToolbarID, NSToolbarSeparatorItemIdentifier,
+		ZoomToFitToolbarID, ActualSizeToolbarID, NextPictureToolbarID, PreviousPictureToolbarID,
+		NSToolbarSeparatorItemIdentifier,
 		NSToolbarSpaceItemIdentifier, NSToolbarFlexibleSpaceItemIdentifier,
 		NSToolbarCustomizeToolbarItemIdentifier, nil];
 }
@@ -214,6 +235,14 @@ static NSString* FavoritesID = @"Favorites Toolbar Identifier";
 		// We can only do these actions if the file is an image.
         enable = [currentImageFile isImage];
     }
+	else if ([identifier isEqual:NextPictureToolbarID])
+	{
+		enable = [viewAsIconsController canGoNextFile];
+	}
+	else if ([identifier isEqual:PreviousPictureToolbarID])
+	{
+		enable = [viewAsIconsController canGoPreviousFile];
+	}
 	else if ([identifier isEqual:GotoPicturesID])
 	{
 		// Only enable the Pictures item if "~/Pictures" exists

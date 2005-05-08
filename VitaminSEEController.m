@@ -83,6 +83,7 @@
  * * Thumbnails aren't displayed for files on remote server after generation (
  *   this could be fixed with a relod, but now it's not a problem...)
  * * Fix the !$#@ memory leak
+ * * RBSplitView
  */
 
 // For Version 0.6.1
@@ -408,6 +409,16 @@
 								   currentFile:currentImageFile];
 }
 
+-(IBAction)toggleFileList:(id)sender
+{
+	RBSplitSubview* firstSplit = [splitView subviewAtPosition:0];
+	if ([firstSplit isCollapsed]) {
+		[firstSplit expandWithAnimation:NO withResize:NO];
+	} else {
+		[firstSplit collapseWithAnimation:NO withResize:NO];
+	}
+}
+
 -(IBAction)revealInFinder:(id)sender
 {
 	[[NSWorkspace sharedWorkspace] selectFile:currentImageFile
@@ -418,6 +429,16 @@
 {
 	[[NSWorkspace sharedWorkspace]	openFile:currentImageFile
 							 withApplication:@"Preview"];
+}
+
+-(IBAction)goPreviousFile:(id)sender
+{
+	[viewAsIconsController goPreviousFile];
+}
+
+-(IBAction)goNextFile:(id)sender
+{
+	[viewAsIconsController goNextFile];
 }
 
 -(IBAction)goEnclosingFolder:(id)sender
@@ -654,6 +675,15 @@
 	{
 		enable = mainWindowVisible && [[viewAsIconsController selectedFiles] count];
 	}
+	else if(action == @selector(toggleFileList:))
+	{
+		enable = mainWindowVisible;
+		
+		if([[splitView subviewAtPosition:0] isCollapsed])
+			[theMenuItem setTitle:NSLocalizedString(@"Show File List", @"Text in View menu")];
+		else
+			[theMenuItem setTitle:NSLocalizedString(@"Hide File List", @"Text in View menu")];
+	}
 	else if(action == @selector(viewInPreview:))
 	{
 		enable = mainWindowVisible && [currentImageFile isImage];
@@ -673,6 +703,14 @@
 		enable = mainWindowVisible;
 	}
 	// Go Menu
+	else if (action == @selector(goNextFile:))
+	{
+		enable = mainWindowVisible && [viewAsIconsController canGoNextFile];
+	}
+	else if (action == @selector(goPreviousFile:))
+	{
+		enable = mainWindowVisible && [viewAsIconsController canGoPreviousFile];
+	}
     else if (action == @selector(goEnclosingFolder:))
     {
 		// You can go up as long as there is a thing to go back on...
@@ -824,6 +862,11 @@
 	scaleProportionally = YES;
 	scaleRatio = 1.0;
 	[self redraw];
+}
+
+-(void)willAdjustSubviews:(id)rbview
+{
+	[imageViewer setImage:nil];
 }
 
 // Redraw the window when the window resizes.

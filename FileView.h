@@ -18,6 +18,13 @@
 
 @protocol FileView <PluginBase>
 
+// 
+-(BOOL)canGoNextFile;
+-(void)goNextFile;
+
+-(BOOL)canGoPreviousFile;
+-(void)goPreviousFile;
+
 // File selection
 -(BOOL)fileIsInView:(NSString*)fileIsInView;
 -(NSArray*)selectedFiles;

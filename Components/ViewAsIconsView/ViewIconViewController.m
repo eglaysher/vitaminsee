@@ -429,6 +429,51 @@ willDisplayCell:(id)cell
 	[currentDirCopy release];
 }
 
+-(BOOL)canGoNextFile 
+{
+	int index = [fileList binarySearchFor:[pluginLayer currentFile]
+						 withSortSelector:@selector(caseInsensitiveCompare:)];
+	
+	int count = [fileList count];
+	if(index < count - 1)
+		return YES;
+	else
+		return NO;
+}
+
+-(void)goNextFile
+{
+	int index = [fileList binarySearchFor:[pluginLayer currentFile]
+						 withSortSelector:@selector(caseInsensitiveCompare:)];
+	index++;
+	
+	// Select this file
+	[ourBrowser selectRow:index inColumn:0];
+	[self singleClick:ourBrowser];
+}
+
+-(BOOL)canGoPreviousFile
+{
+	int index = [fileList binarySearchFor:[pluginLayer currentFile]
+						 withSortSelector:@selector(caseInsensitiveCompare:)];
+
+	if(index > 0)
+		return YES;
+	else
+		return NO;
+}
+
+-(void)goPreviousFile
+{
+	int index = [fileList binarySearchFor:[pluginLayer currentFile]
+						 withSortSelector:@selector(caseInsensitiveCompare:)];
+	index--;
+	
+	// Select this file
+	[ourBrowser selectRow:index inColumn:0];
+	[self singleClick:ourBrowser];
+}
+
 @end
 
 @implementation ViewIconViewController (Private)
@@ -472,17 +517,10 @@ willDisplayCell:(id)cell
 	
 	// Now let's keep our new list of files.
 	[myFileList retain];
-
-//	NSLog(@"filelist retain count: %d", [fileList retainCount]);
-
-	fileEnum = [fileList objectEnumerator];
-	while(file = [fileEnum nextObject])
-		NSLog(@"Filename: %@, retainCount: %d", file, [file retainCount]);
-	[fileList release];
-	
+	[fileList release];	
 	fileList = myFileList;
 
-	NSLog(@"filelist retain count: %d", [fileList retainCount]);
+//	NSLog(@"filelist retain count: %d", [fileList retainCount]);
 }
 
 @end

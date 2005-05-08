@@ -256,7 +256,7 @@
 		}
 		
 		// Let's get rid of the oldest path...
-		id x = [[imageCache objectForKey:oldestPath] objectForKey:@"Image"];
+//		id x = [[imageCache objectForKey:oldestPath] objectForKey:@"Image"];
 //		NSLog(@"  Deleting Address: %@", x);
 //		NSLog(@"Evicting %@ with a reference count of %d", oldestPath,
 //			  [[[imageCache objectForKey:oldestPath] objectForKey:@"Image"] retainCount]);
@@ -273,13 +273,11 @@
 	{
 		pthread_mutex_unlock(&imageCacheLock);
 		// Preload the image
+		
 		NSImageRep* rep = loadImage(path);
-//		NSLog(@"Retaincount: %d",[rep retainCount]);
 		NSMutableDictionary* dict = [NSMutableDictionary 
 			dictionaryWithObjectsAndKeys:[NSDate date], @"Date", rep, @"Image",
 			nil];
-
-//		NSLog(@"Building Address: %@", rep);
 		
 		pthread_mutex_lock(&imageCacheLock);
 		[self evictImages];

@@ -213,6 +213,8 @@
 		};
 		29B97317FDCFA39411CA2CEA = {
 			children = (
+				CD44189A082EA2DC003C01FD,
+				CD44189B082EA2DC003C01FD,
 				CD76864F0829035F006AE601,
 				8B7E6D9B080B40EC00DD5466,
 				8B7E6D9C080B40EC00DD5466,
@@ -3135,6 +3137,8 @@
 				8D11072B0486CEB800E47090,
 				CD7686500829035F006AE601,
 				CDA6C00D08299164007869CA,
+				CD44189C082EA2DC003C01FD,
+				CD44189D082EA2DC003C01FD,
 			);
 			isa = PBXResourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3299,6 +3303,34 @@
 		};
 		CD44164E082C1C67003C01FD = {
 			fileRef = CD441649082C1C66003C01FD;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		CD44189A082EA2DC003C01FD = {
+			isa = PBXFileReference;
+			lastKnownFileType = image.tiff;
+			name = NextToolbarImage.tif;
+			path = Resources/NextToolbarImage.tif;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CD44189B082EA2DC003C01FD = {
+			isa = PBXFileReference;
+			lastKnownFileType = image.tiff;
+			name = PreviousToolbarImage.tif;
+			path = Resources/PreviousToolbarImage.tif;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CD44189C082EA2DC003C01FD = {
+			fileRef = CD44189A082EA2DC003C01FD;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		CD44189D082EA2DC003C01FD = {
+			fileRef = CD44189B082EA2DC003C01FD;
 			isa = PBXBuildFile;
 			settings = {
 			};
