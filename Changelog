@@ -19,7 +19,7 @@
 * Change "Sort Manager" preferences to "Favorites." These paths are now
   used both in the Sort Manager and in the new "Favorite Locations" menu in 
   the "Go" menu and its corresponding toolbar item.
-* Files with the wrong extentsion (JPEG files ending in GIF, PNG files
+* Files with the wrong extension (JPEG files ending in GIF, PNG files
   ending in JPEG) are loaded, instead of raising an error.
 * Move, Copy and Rename operations now check if they are overwriting a file
   and warn the user. 

@@ -17,6 +17,10 @@
 			<array>
 				<string>fold</string>
 			</array>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>public.directory</string>
+			</array>
 		</dict>
 		<dict>
 			<key>CFBundleTypeExtensions</key>
@@ -36,6 +40,10 @@
 			</array>
 			<key>CFBundleTypeRole</key>
 			<string>Viewer</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>com.apple.icns</string>
+			</array>
 		</dict>
 		<dict>
 			<key>CFBundleTypeExtensions</key>
@@ -55,6 +63,10 @@
 			</array>
 			<key>CFBundleTypeRole</key>
 			<string>Viewer</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>com.microsoft.bmp</string>
+			</array>
 		</dict>
 		<dict>
 			<key>CFBundleTypeExtensions</key>
@@ -74,6 +86,10 @@
 			</array>
 			<key>CFBundleTypeRole</key>
 			<string>Viewer</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>public.png</string>
+			</array>
 		</dict>
 		<dict>
 			<key>CFBundleTypeExtensions</key>
@@ -95,6 +111,10 @@
 			</array>
 			<key>CFBundleTypeRole</key>
 			<string>Viewer</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>public.tiff</string>
+			</array>
 		</dict>
 		<dict>
 			<key>CFBundleTypeExtensions</key>
@@ -114,6 +134,10 @@
 			</array>
 			<key>CFBundleTypeRole</key>
 			<string>Viewer</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>com.compuserve.gif</string>
+			</array>
 		</dict>
 		<dict>
 			<key>CFBundleTypeExtensions</key>
@@ -137,6 +161,10 @@
 			</array>
 			<key>CFBundleTypeRole</key>
 			<string>Viewer</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>public.jpeg</string>
+			</array>
 		</dict>
 	</array>
 	<key>CFBundleExecutable</key>
@@ -156,7 +184,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>0.6</string>
+	<string>0.6.1</string>
 	<key>LSMinimumSystemVersion</key>
 	<string>10.3</string>
 	<key>NSMainNibFile</key>

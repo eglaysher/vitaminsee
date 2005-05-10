@@ -1,5 +1,5 @@
 //
-//  RBSplitView.m version 1.1
+//  RBSplitView.m version 1.1.1
 //  RBSplitView
 //
 //  Created by Rainer Brockerhoff on 24/09/2004.
@@ -48,7 +48,6 @@ static NSCursor* cursors[RBSVCursorTypeCount] = {nil};
 		cursors[type] = [cursor retain];
 	}
 }
-
 
 // This class method clears the saved state(s) for a given autosave name from the defaults.
 + (void)removeStateUsingName:(NSString*)name {
@@ -101,7 +100,8 @@ static NSCursor* cursors[RBSVCursorTypeCount] = {nil};
 // is YES, it's then also called recursively for nested RBSplitViews. Returns YES if successful.
 // You must call restoreState explicity at least once before saveState will begin working.
 - (BOOL)saveState:(BOOL)recurse {
-	if (canSaveState&&[autosaveName length]) {
+// Saving the state is also disabled while dragging.
+	if (canSaveState&&![self isDragging]&&[autosaveName length]) {
 		[[NSUserDefaults standardUserDefaults] setObject:[self stringWithSavedState] forKey:[[self class] defaultsKeyForName:autosaveName isHorizontal:[self isHorizontal]]];
 		if (recurse) {
 			NSEnumerator* enumerator = [[self subviews] objectEnumerator];
@@ -249,6 +249,7 @@ static NSCursor* cursors[RBSVCursorTypeCount] = {nil};
     if (self) {
  		dividers = NULL;
 		isCoupled = YES;
+		isDragging = NO;
 		[self setVertical:YES];
 		[self setDivider:nil];
 		[self setAutosaveName:nil recursively:NO];
@@ -334,6 +335,11 @@ static NSCursor* cursors[RBSVCursorTypeCount] = {nil};
 // Returns YES if there's a pending adjustment.
 - (BOOL)mustAdjust {
 	return mustAdjust;
+}
+
+// Returns YES if we're in a dragging loop.
+- (BOOL)isDragging {
+	return isDragging;
 }
 
 // This pair of methods allows you to move the dividers for background windows while holding down
@@ -554,92 +560,6 @@ static NSCursor* cursors[RBSVCursorTypeCount] = {nil};
 	}
 }
 
-// This local function tries to expand the trailing subview.
-static void RBSVTryToExpandTrailing(RBSplitSubview* trailing,RBSplitSubview* leading,float delta) {
-// The mouse has to move over half of the expanded size (plus hysteresis) and the expansion shouldn't
-// reduce the leading subview to less than its minimum size. If it does, we try to collapse it first.
-// However, we don't collapse if that would cause the trailing subview to become larger than its maximum.
-	float limit = [trailing minDimension];
-	float dimension = [leading dimension];
-	if (limit>dimension) {
-		return;
-	}
-	limit += [leading minDimension];
-	if (limit>dimension) {
-		if ([leading canCollapse]&&(-delta>(0.5+HYSTERESIS)*dimension)&&([trailing maxDimension]<=dimension)) {
-			delta = -[leading RB___collapse];
-			[trailing changeDimensionBy:delta mayCollapse:NO];
-		}
-		return;
-	}
-// The trailing subview may be expanded normally. If it does expand, we shorten the leading subview.
-	delta = -[trailing changeDimensionBy:-delta mayCollapse:NO];
-	[leading changeDimensionBy:delta mayCollapse:NO];
-}
-
-// This local function tries to expand the leading subview (which is assumed to be collapsed).
-static void RBSVTryToExpandLeading(RBSplitSubview* trailing,RBSplitSubview* leading,float delta) {
-// The mouse has to move over half of the expanded size (plus hysteresis) and the expansion shouldn't
-// reduce the trailing subview to less than its minimum size. If it does, we try to collapse that first.
-// However, we don't collapse if that would cause the leading subview to become larger than its maximum.
-	float limit = [leading minDimension];
-	float dimension = [trailing dimension];
-	if (limit>dimension) {
-		return;
-	}
-	limit += [trailing minDimension];
-	if (limit>dimension) {
-		if (([trailing canCollapse])&&(delta>(0.5+HYSTERESIS)*dimension)&&([leading maxDimension]<=dimension)) {
-			delta = -[trailing RB___collapse];
-			[leading changeDimensionBy:delta mayCollapse:NO];
-		}
-		return;
-	}
-// The leading subview may be expanded normally. If it does expand, we shorten the trailing subview.
-	delta = -[leading changeDimensionBy:delta mayCollapse:NO];
-	[trailing changeDimensionBy:delta mayCollapse:NO];
-}
-
-// This local function tries to shorten the trailing subview. Both subviews are assumed to be expanded.
-// delta should be positive. If always is NO, the subview will be shortened only if it might also be
-// collapsed; otherwise, it's shortened as much as possible.
-static void RBSVTryToShortenTrailing(RBSplitSubview* trailing,RBSplitSubview* leading,float delta,BOOL always) {
-// We avoid making the leading subview larger than its maximum
-	float limit = [leading maxDimension]-[leading dimension];
-	if (delta>limit) {
-		if (always) {
-			delta = limit;
-		} else {
-			return;
-		}
-	}
-	BOOL ok = limit>=[trailing dimension];
-	if (always||ok) {
-		delta = -[trailing changeDimensionBy:-delta mayCollapse:ok];
-		[leading changeDimensionBy:delta mayCollapse:NO];
-	}
-}
-
-// This local function tries to shorten the leading subview. Both subviews are assumed to be expanded.
-// delta should be negative. If always is NO, the subview will be shortened only if it might also be
-// collapsed; otherwise, it's shortened as much as possible.
-static void RBSVTryToShortenLeading(RBSplitSubview* trailing,RBSplitSubview* leading,float delta,BOOL always) {
-// We avoid making the trailing subview larger than its maximum
-	float limit = [trailing maxDimension]-[trailing dimension];
-	if (-delta>limit) {
-		if (always) {
-			delta = -limit;
-		} else {
-			return;
-		}
-	}
-	BOOL ok = limit>=[leading dimension];
-	if (always||ok) {
-		delta = -[leading changeDimensionBy:delta mayCollapse:ok];
-		[trailing changeDimensionBy:delta mayCollapse:NO];
-	}
-}
-
 // This method handles dragging and double-clicking dividers with the mouse. While dragging, the
 // "closed hand" cursor is shown. Double clicks are handled separately. Nothing will happen if
 // no divider image is set.
@@ -669,16 +589,21 @@ static void RBSVTryToShortenLeading(RBSplitSubview* trailing,RBSplitSubview* lea
 			RBSplitView* leading = [subviews objectAtIndex:i];
 // trailing points at the subview immediately trailing the divider being tracked.
 			RBSplitView* trailing = [subviews objectAtIndex:i+1];
+			if ([delegate respondsToSelector:@selector(splitView:shouldHandleEvent:inDivider:betweenView:andView:)]) {
+				if (![delegate splitView:self shouldHandleEvent:theEvent inDivider:i betweenView:leading andView:trailing]) {
+					return;
+				}
+			}
 // If it's a double click, try to expand or collapse one of the neighboring subviews.
 			if ([theEvent clickCount]>1) {
 // If both are collapsed, we do nothing. If one of them is collapsed, we try to expand it.
 				if ([trailing isCollapsed]) {
 					if (![leading isCollapsed]) {
-						RBSVTryToExpandTrailing(trailing,leading,-[trailing dimension]);
+						[self RB___tryToExpandTrailing:trailing leading:leading delta:-[trailing dimension]];
 					}
 				} else {
 					if ([leading isCollapsed]) {
-						RBSVTryToExpandLeading(trailing,leading,[leading dimension]);
+						[self RB___tryToExpandLeading:leading divider:i trailing:trailing delta:[leading dimension]];
 					} else {
 // If neither are collapsed, we check if both are collapsible.
 						BOOL lcan = [leading canCollapse];
@@ -698,11 +623,11 @@ static void RBSVTryToShortenLeading(RBSplitSubview* trailing,RBSplitSubview* lea
 						}
 // At this point, we'll try to collapse the leading subview.
 						if (lcan) {
-							RBSVTryToShortenLeading(trailing,leading,-ldim,NO);
+							[self RB___tryToShortenLeading:leading divider:i trailing:trailing delta:-ldim always:NO];
 						}
 // If the leading subview didn't collapse for some reason, we try to collapse the trailing one.
 						if (!mustAdjust&&tcan) {
-							RBSVTryToShortenTrailing(trailing,leading,[trailing dimension],NO);
+							[self RB___tryToShortenTrailing:trailing divider:i leading:leading delta:[trailing dimension] always:NO];
 						}
 					}
 				}
@@ -743,9 +668,11 @@ static void RBSVTryToShortenLeading(RBSplitSubview* trailing,RBSplitSubview* lea
 				}
 // Now we loop handling mouse events until we get a mouse up event, while showing the drag cursor.
 				[[RBSplitView cursor:RBSVDragCursor] push];
+				[self RB___setDragging:YES];
 				while ((theEvent = [NSApp nextEventMatchingMask:NSLeftMouseDownMask|NSLeftMouseDraggedMask|NSLeftMouseUpMask untilDate:[NSDate distantFuture] inMode:NSEventTrackingRunLoopMode dequeue:YES])&&([theEvent type]!=NSLeftMouseUp)) {
 // Set up a local autorelease pool for the loop to prevent buildup of temporary objects.
 					NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
+					NSDisableScreenUpdates();
 // Track the mouse along the main coordinate. 
 					[self RB___trackMouseEvent:theEvent from:where withBase:NSZeroPoint inDivider:i];
 					if (ldiv!=NSNotFound) {
@@ -757,12 +684,12 @@ static void RBSVTryToShortenLeading(RBSplitSubview* trailing,RBSplitSubview* lea
 						[trailing RB___trackMouseEvent:theEvent from:[self convertPoint:twhere toView:trailing] withBase:NSZeroPoint inDivider:tdiv];
 					}
 					if (mustAdjust||[leading mustAdjust]||[trailing mustAdjust]) {
-// The mouse was dragged and the subviews changed, so we clear all fractions and adjust the subviews, as
+// The mouse was dragged and the subviews changed, so we must redisplay, as
 // several divider rectangles may have changed.
 						RBSplitView* sv = [self splitView];
 						[sv?sv:self adjustSubviews];
-// Display the changed view and adjust to the new cursor coordinate.
 						[super display];
+// Adjust to the new cursor coordinates.
 						DIM(where) = DIM(div->origin)+offset;
 						if ((ldiv!=NSNotFound)&&![leading isCollapsed]) {
 // Adjust for the leading nested RBSplitView's thumbs while it's not collapsed.
@@ -775,8 +702,10 @@ static void RBSVTryToShortenLeading(RBSplitSubview* trailing,RBSplitSubview* lea
 							OTHER(twhere) = OTHER(trect.origin)+toffset;
 						}
 					}
+					NSEnableScreenUpdates();
 					[pool release];
 				}
+				[self RB___setDragging:NO];
 // Redisplay the previous cursor.
 				[NSCursor pop];
 			}
@@ -842,29 +771,26 @@ static void RBSVTryToShortenLeading(RBSplitSubview* trailing,RBSplitSubview* lea
 
 // This method should be called only from within the splitView:wasResizedFrom:to: delegate method
 // to keep some specific subview the same size.
-- (void)adjustSubviewsExcepting:(RBSplitSubview*)exception {
-	if (![exception isCollapsed]) {
-		float savemin,savemax;
-		[exception RB___setMinAndMaxTo:[exception dimension] savingMin:&savemin andMax:&savemax];
-		[self RB___adjustSubviews];
-		[exception setMinDimension:savemin andMaxDimension:savemax];
-	}
+- (void)adjustSubviewsExcepting:(RBSplitSubview*)excepting {
+	[self RB___adjustSubviewsExcepting:[excepting isCollapsed]?nil:excepting];
 }
 
 // This method adjusts subviews and divider rectangles.
 - (void)adjustSubviews {
-	[self RB___adjustSubviews];
+	[self RB___adjustSubviewsExcepting:nil];
 }
 
 // This resets the appropriate cursors for each divider according to the orientation.
 // No cursors are shown if there is no divider image.
 - (void)resetCursorRects {
-	if (!dividers|![self divider]) {
+	if (!dividers) {
 		return;
 	}
+	id del = [delegate respondsToSelector:@selector(splitView:cursorRect:forDivider:)]?delegate:nil;
 	NSArray* subviews = [self RB___subviews];
 	int divcount = [subviews count]-1;
-	if (divcount<1) {
+	if ((divcount<1)||![self divider]) {
+		[del splitView:self cursorRect:NSZeroRect forDivider:0];
 		return;
 	}
 	int i;
@@ -882,7 +808,13 @@ static void RBSVTryToShortenLeading(RBSplitSubview* trailing,RBSplitSubview* lea
 			[sub  RB___addCursorRectsTo:self forDividerRect:dividers[i] thickness:divt];
 		}
 // Now add thedivider rectangle.
-		[self addCursorRect:dividers[i] cursor:cursor];
+		NSRect divrect = dividers[i];
+		if (del) {
+			divrect = [del splitView:self cursorRect:divrect forDivider:i];
+		}
+		if (!NSIsEmptyRect(divrect)) {
+			[self addCursorRect:divrect cursor:cursor];
+		}
 	}
 }
 
@@ -916,6 +848,7 @@ static void RBSVTryToShortenLeading(RBSplitSubview* trailing,RBSplitSubview* lea
 		NSData* data = nil;
 		float divt = 0.0;
 		isCoupled = YES;
+		isDragging = NO;
 		if ([coder allowsKeyedCoding]) {
 			isCoupled = [coder decodeBoolForKey:@"isCoupled"];
 			[self setDelegate:[coder decodeObjectForKey:@"delegate"]];
@@ -953,6 +886,26 @@ static void RBSVTryToShortenLeading(RBSplitSubview* trailing,RBSplitSubview* lea
 
 @implementation RBSplitView (RB___ViewAdditions)
 
+// This sets the dragging status flag. After clearing the flag, the state must be saved explicitly.
+- (void)RB___setDragging:(BOOL)flag {
+	BOOL save = isDragging&&!flag;
+	isDragging = flag;
+	if (save) {
+		[self saveState:YES];
+	}
+}
+
+// This returns the number of visible subviews.
+- (unsigned int)RB___numberOfSubviews {
+	unsigned int result = 0;
+	NSEnumerator* enumerator = [[self subviews] objectEnumerator];
+	RBSplitSubview* sub;
+	while ((sub = [enumerator nextObject])) {
+		++result;
+	}
+	return result;
+}
+
 // This returns the origin coordinate of the Nth divider.
 - (float)RB___dividerOrigin:(int)index {
 	float result = 0.0;
@@ -985,14 +938,14 @@ static void RBSVTryToShortenLeading(RBSplitSubview* trailing,RBSplitSubview* lea
 - (float)RB___dimensionWithoutDividers {
 	BOOL ishor = [self isHorizontal];
 	NSSize size = [self frame].size;
-	return MAX(1.0,DIM(size)-[self dividerThickness]*([self numberOfSubviews]-1));
+	return MAX(1.0,DIM(size)-[self dividerThickness]*([self RB___numberOfSubviews]-1));
 }
 
 // This method returns one of the divider rectangles, or NSZeroRect if the index is invalid.
 // If view is non-nil, the rect will be expressed in that view's coordinates. We assume
 // that view is a superview of self.
 - (NSRect)RB___dividerRect:(unsigned)index relativeToView:(RBSplitView*)view {
-	if (dividers&&(index<[self numberOfSubviews]-1)) {
+	if (dividers&&(index<[self RB___numberOfSubviews]-1)) {
 		NSRect result = dividers[index];
 		if (view&&(view!=self)) {
 			result = [self convertRect:result toView:view];
@@ -1009,7 +962,7 @@ static void RBSVTryToShortenLeading(RBSplitSubview* trailing,RBSplitSubview* lea
 	if (!dividers) {
 		return NSNotFound;
 	}
-	int divcount = [self numberOfSubviews]-1;
+	int divcount = [self RB___numberOfSubviews]-1;
 	if (divcount<1) {
 		return NSNotFound;
 	}
@@ -1031,6 +984,197 @@ static void RBSVTryToShortenLeading(RBSplitSubview* trailing,RBSplitSubview* lea
 - (void)RB___setMustClearFractions {
 	mustClearFractions = YES;
 }
+
+// This local method asks the delegate if we should resize the trailing subview or the window
+// when a divider is dragged.
+- (BOOL)RB___shouldResizeWindowForDivider:(unsigned int)index betweenView:(RBSplitSubview*)leading andView:(RBSplitSubview*)trailing willGrow:(BOOL)grow {
+	if ([delegate respondsToSelector:@selector(splitView:shouldResizeWindowForDivider:betweenView:andView:willGrow:)]) {
+		return [delegate splitView:self shouldResizeWindowForDivider:index betweenView:leading andView:trailing willGrow:grow];
+	}
+	return NO;
+}
+
+
+// This local method tries to expand the leading subview (which is assumed to be collapsed). Delta should be positive.
+- (void)RB___tryToExpandLeading:(RBSplitSubview*)leading divider:(unsigned int)index trailing:(RBSplitSubview*)trailing delta:(float)delta {
+	NSWindow* window = nil;
+	NSSize maxsize = NSZeroSize;
+	NSRect frame = NSZeroRect;
+	NSRect screen = NSZeroRect;
+	BOOL ishor = NO;
+// First we ask the delegate, if there's any, if the window should resize.
+	BOOL dowin = ([self RB___shouldResizeWindowForDivider:index betweenView:leading andView:trailing willGrow:YES]);
+	if (dowin) {
+// We initialize the other local variables only if we need them for the window.
+		ishor = [self isHorizontal];
+		window = [self window];
+		frame = [window frame];
+		maxsize = [window maxSize];
+		screen = [[NSScreen mainScreen] visibleFrame];
+	}
+// The mouse has to move over half of the expanded size (plus hysteresis) and the expansion shouldn't
+// reduce the trailing subview to less than its minimum size (or grow the window beyond its maximum).
+	float limit = [leading minDimension];
+	float dimension = 0.0;
+	if (dowin) {
+		dimension = MIN(DIM(maxsize)-DIM(frame.size),MAX(0.0,(ishor?frame.origin.y-screen.origin.y:(screen.origin.x+screen.size.width)-(frame.origin.x+frame.size.width))));
+	} else {
+		dimension = [trailing dimension];
+	}
+	if (limit>dimension) {
+		return;
+	}
+	limit += [trailing minDimension];
+	if (limit>dimension) {
+// If the trailing subview is going below its minimum, we try to collapse it first.
+// However, we don't collapse if that would cause the leading subview to become larger than its maximum.
+		if (!dowin&&(([trailing canCollapse])&&(delta>(0.5+HYSTERESIS)*dimension)&&([leading maxDimension]<=dimension))) {
+			delta = -[trailing RB___collapse];
+			[leading changeDimensionBy:delta mayCollapse:NO];
+		}
+		return;
+	}
+// The leading subview may be expanded normally.
+	delta = -[leading changeDimensionBy:delta mayCollapse:NO];
+	if (dowin) {
+// If it does expand, we widen the window.
+		DIM(frame.size) -= delta;
+		if (ishor) {
+			DIM(frame.origin) += delta;
+		}
+		[window setFrame:frame display:YES];
+		[self setMustAdjust];
+	} else {
+// If it does expand, we shorten the trailing subview.
+		[trailing changeDimensionBy:delta mayCollapse:NO];
+	}
+}
+
+// This local method tries to shorten the leading subview. Both subviews are assumed to be expanded.
+// delta should be negative. If always is NO, the subview will be shortened only if it might also be
+// collapsed; otherwise, it's shortened as much as possible.
+- (void)RB___tryToShortenLeading:(RBSplitSubview*)leading divider:(unsigned int)index trailing:(RBSplitSubview*)trailing delta:(float)delta always:(BOOL)always {
+	NSWindow* window = nil;
+	NSSize minsize = NSZeroSize;
+	NSRect frame = NSZeroRect;
+	BOOL ishor = NO;
+// First we ask the delegate, if there's any, if the window should resize.
+	BOOL dowin = ([self RB___shouldResizeWindowForDivider:index betweenView:leading andView:trailing willGrow:NO]);
+	if (dowin) {
+// We initialize the other local variables only if we need them for the window.
+		ishor = [self isHorizontal];
+		window = [self window];
+		frame = [window frame];
+		minsize = [window minSize];
+	}
+// We avoid making the trailing subview larger than its maximum, or the window smaller than its minimum.
+	float limit = 0.0;
+	if (dowin) {
+		limit = DIM(frame.size)-DIM(minsize);
+	} else {
+		limit = [trailing maxDimension]-[trailing dimension];
+	}
+	if (-delta>limit) {
+		if (always) {
+			delta = -limit;
+		} else {
+			return;
+		}
+	}
+	BOOL ok = limit>=[leading dimension];
+	if (always||ok) {
+// Resize leading.
+		delta = -[leading changeDimensionBy:delta mayCollapse:ok];
+		if (dowin) {
+// Resize the window.
+			DIM(frame.size) -= delta;
+			if (ishor) {
+				DIM(frame.origin) += delta;
+			}
+			[window setFrame:frame display:YES];
+			[self setMustAdjust];
+		} else {
+// Otherwise, resize trailing.
+			[trailing changeDimensionBy:delta mayCollapse:NO];
+		}
+	}
+}
+
+// This local method tries to shorten the trailing subview. Both subviews are assumed to be expanded.
+// delta should be positive. If always is NO, the subview will be shortened only if it might also be
+// collapsed; otherwise, it's shortened as much as possible.
+- (void)RB___tryToShortenTrailing:(RBSplitSubview*)trailing divider:(unsigned int)index leading:(RBSplitSubview*)leading delta:(float)delta always:(BOOL)always {
+	NSWindow* window = nil;
+	NSSize maxsize = NSZeroSize;
+	NSRect frame = NSZeroRect;
+	NSRect screen = NSZeroRect;
+	BOOL ishor = NO;
+// First we ask the delegate, if there's any, if the window should resize.
+	BOOL dowin = ([self RB___shouldResizeWindowForDivider:index betweenView:leading andView:trailing willGrow:YES]);
+	if (dowin) {
+// We initialize the other local variables only if we need them for the window.
+		ishor = [self isHorizontal];
+		window = [self window];
+		frame = [window frame];
+		maxsize = [window maxSize];
+		screen = [[NSScreen mainScreen] visibleFrame];
+	}
+// We avoid making the leading subview larger than its maximum, or the window larger than its maximum.
+	float limit = 0.0;
+	if (dowin) {
+		limit = MIN(DIM(maxsize)-DIM(frame.size),MAX(0.0,(ishor?frame.origin.y-screen.origin.y:(screen.origin.x+screen.size.width)-(frame.origin.x+frame.size.width))));
+	} else {
+		limit = [leading maxDimension]-[leading dimension];
+	}
+	if (delta>limit) {
+		if (always) {
+			delta = limit;
+		} else {
+			return;
+		}
+	}
+	BOOL ok = dowin||(limit>=[trailing dimension]);
+	if (always||ok) {
+		if (dowin) {
+// If we should resize the window, resize leading, then the window.
+			delta = [leading changeDimensionBy:delta mayCollapse:NO];
+			DIM(frame.size) += delta;
+			if (ishor) {
+				DIM(frame.origin) -= delta;
+			}
+			[window setFrame:frame display:YES];
+			[self setMustAdjust];
+		} else {
+// Otherwise, resize trailing, then leading.
+			delta = -[trailing changeDimensionBy:-delta mayCollapse:ok];
+			[leading changeDimensionBy:delta mayCollapse:NO];
+		}
+	}
+}
+
+// This method tries to expand the trailing subview (which is assumed to be collapsed).
+- (void)RB___tryToExpandTrailing:(RBSplitSubview*)trailing leading:(RBSplitSubview*)leading delta:(float)delta {
+// The mouse has to move over half of the expanded size (plus hysteresis) and the expansion shouldn't
+// reduce the leading subview to less than its minimum size. If it does, we try to collapse it first.
+// However, we don't collapse if that would cause the trailing subview to become larger than its maximum.
+	float limit = [trailing minDimension];
+	float dimension = [leading dimension];
+	if (limit>dimension) {
+		return;
+	}
+	limit += [leading minDimension];
+	if (limit>dimension) {
+		if ([leading canCollapse]&&(-delta>(0.5+HYSTERESIS)*dimension)&&([trailing maxDimension]<=dimension)) {
+			delta = -[leading RB___collapse];
+			[trailing changeDimensionBy:delta mayCollapse:NO];
+		}
+		return;
+	}
+// The trailing subview may be expanded normally. If it does expand, we shorten the leading subview.
+	delta = -[trailing changeDimensionBy:-delta mayCollapse:NO];
+	[leading changeDimensionBy:delta mayCollapse:NO];
+}
+
 
 // This method is called by the mouseDown:method for every tracking event. It's separated out as it's
 // called from the Interface Builder palette in a slightly different way, and also if you have a
@@ -1072,9 +1216,9 @@ static void RBSVTryToShortenLeading(RBSplitSubview* trailing,RBSplitSubview* lea
 		}
 // If the trailing subview is collapsed, it might be expanded if some conditions are met.
 		if ([trailing isCollapsed]) {
-			RBSVTryToExpandTrailing(trailing,firstLeading,delta);
+			[self RB___tryToExpandTrailing:trailing leading:firstLeading delta:delta];
 		} else {
-			RBSVTryToShortenLeading(trailing,firstLeading,delta,YES);
+			[self RB___tryToShortenLeading:firstLeading divider:index trailing:trailing delta:delta always:YES];
 		}
 	} else if (delta>0.0) {
 // Positive delta means the mouse is being moved right or downwards.
@@ -1091,10 +1235,10 @@ static void RBSVTryToShortenLeading(RBSplitSubview* trailing,RBSplitSubview* lea
 		}
 // If the leading subview is collapsed, it might be expanded if some conditions are met.
 		if ([leading isCollapsed]) {
-			RBSVTryToExpandLeading(firstTrailing,leading,delta);
+			[self RB___tryToExpandLeading:leading divider:index trailing:firstTrailing delta:delta];
 		} else {
 // The leading subview is not collapsed, so we try to shorten or even collapse it
-			RBSVTryToShortenTrailing(firstTrailing,leading,delta,YES);
+			[self RB___tryToShortenTrailing:firstTrailing divider:index leading:leading delta:delta always:YES];
 		}
 	}
 }
@@ -1190,7 +1334,7 @@ static void RBSVTryToShortenLeading(RBSplitSubview* trailing,RBSplitSubview* lea
 // least one expanded subview, and never make a subview smaller than its minimum dimension, or larger
 // than its maximum dimension.
 // We try to account for most unusual situations but this may fail under some circumstances. YMMV.
-- (void)RB___adjustSubviews {
+- (void)RB___adjustSubviewsExcepting:(RBSplitSubview*)excepting {
 	mustAdjust = NO;
 	NSArray* subviews = [self RB___subviews];
 	unsigned subcount = [subviews count];
@@ -1232,9 +1376,13 @@ static void RBSVTryToShortenLeading(RBSplitSubview* trailing,RBSplitSubview* lea
 		curr = &caches[i];
 		[[subviews objectAtIndex:i] RB___copyIntoCache:curr];
 	}
-// This is a counter to limit the outer loop to two iterations.
-	unsigned sanity = 0;
-	while (sanity++<2) {
+// This is a counter to limit the outer loop to three iterations (six if excepting is non-nil).
+	int sanity = excepting?-3:0;
+	while (sanity++<3) {
+// We try to accomodate the exception for the first group of loops, turn it off for the second.
+		if (sanity==1) {
+			excepting = nil;
+		}
 // newsize is the available space for actual subviews (so dividers don't count). It will be an integer.
 // Same as calling [self RB___dimensionWithoutDividers].
 		unsigned smallest = 0;
@@ -1293,6 +1441,7 @@ static void RBSVTryToShortenLeading(RBSplitSubview* trailing,RBSplitSubview* lea
 						float cursize = (curr->size+curr->fraction)*scale;
 // Check if we hit a limit. limit will contain either the max or min dimension, whichever was hit.
 						if (([curr->sub RB___animationData:NO resize:NO]&&((limit = curr->size)>0.0))||
+							((curr->sub==excepting)&&(limit = [curr->sub dimension]))||
 							(cursize<(limit = [curr->sub minDimension]))||
 							(cursize>(limit = [curr->sub maxDimension]))) {
 // If we hit a limit, we mark the view and set to repeat the loop; non-constrained subviews will
@@ -1335,7 +1484,7 @@ static void RBSVTryToShortenLeading(RBSplitSubview* trailing,RBSplitSubview* lea
 // until we're back into range, and then recalculate everything from the beginning.
 			for (i=0;i<subcount;i++) {
 				curr = &caches[i];
-				if (curr->constrain&&([curr->sub RB___animationData:NO resize:NO]==nil)&&[curr->sub canCollapse]) {
+				if (curr->constrain&&(curr->sub!=excepting)&&([curr->sub RB___animationData:NO resize:NO]==nil)&&[curr->sub canCollapse]) {
 					realsize -= curr->size;
 					if (realsize<1.0) {
 						break;
@@ -1367,7 +1516,7 @@ static void RBSVTryToShortenLeading(RBSplitSubview* trailing,RBSplitSubview* lea
 			break;
 		}
 	}
-// After passing through the outer loop twice, the frames may still be wrong, but there's nothing
+// After passing through the outer loop a few times, the frames may still be wrong, but there's nothing
 // else we can do about it. You probably should avoid this by some other means like setting a minimum
 // or maximum size for the window, for instance, or leaving at least one unlimited subview.
 //
@@ -1442,7 +1591,9 @@ static void RBSVTryToShortenLeading(RBSplitSubview* trailing,RBSplitSubview* lea
 	mustClearFractions = NO;
 	[[self window] invalidateCursorRectsForView:self];
 // Save the state for all subviews.
-	[self saveState:YES];
+	if (!isDragging) {
+		[self saveState:YES];
+	}
 // If we're a nested RBSplitView, also invalidate cursorRects for the superview.
 	RBSplitView* sv = [self couplingSplitView];
 	if (sv) {

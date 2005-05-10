@@ -11,6 +11,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import <Carbon/Carbon.h>
+#import <SystemConfiguration/SystemConfiguration.h>
 
 @interface EGPath (Private)
 -(NSArray*)buildEGPathArrayFromArrayOfNSStrings:(NSArray*)paths;

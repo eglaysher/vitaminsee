@@ -1,5 +1,5 @@
 //
-//  RBSplitView.h version 1.1
+//  RBSplitView.h version 1.1.1
 //  RBSplitView
 //
 //  Created by Rainer Brockerhoff on 24/09/2004.
@@ -34,6 +34,7 @@ typedef enum {
 	BOOL canSaveState;			// Set internally to allow saving subview state.
 	BOOL isCoupled;				// If YES, take some parameters from the containing RBSplitView, if any.
 	BOOL isAdjusting;			// Set internally while the subviews are being adjusted.
+	BOOL isDragging;			// Set internally while in a drag loop.
 }
 
 // These class methods get and set the cursor used for each type.
@@ -130,13 +131,16 @@ typedef enum {
 // Returns YES if there's a pending adjustment.
 - (BOOL)mustAdjust;
 
+// Returns YES if we're in a dragging loop.
+- (BOOL)isDragging;
+
 // Call this to recalculate all subview dimensions. Normally this is done automatically whenever
 // something relevant is changed, so you rarely will need to call this explicitly.
 - (void)adjustSubviews;
 
 // This method should be called only from within the splitView:wasResizedFrom:to: delegate method
 // to keep some specific subview the same size.
-- (void)adjustSubviewsExcepting:(RBSplitSubview*)exception;
+- (void)adjustSubviewsExcepting:(RBSplitSubview*)excepting;
 
 @end
 
@@ -175,6 +179,16 @@ typedef enum {
 // to collapse neither. If not implemented, the smaller subview will be collapsed.
 - (RBSplitSubview*)splitView:(RBSplitView*)sender collapseLeading:(RBSplitSubview*)leading orTrailing:(RBSplitSubview*)trailing;
 
+// This method will be called when a cursor rect is being set (inside resetCursorRects). The
+// proposed rect is passed in. Return the actual rect, or NSZeroRect to suppress cursor setting
+// for this divider. This won't be called for two-axis thumbs, however. The rects are in
+// sender's local coordinates.
+- (NSRect)splitView:(RBSplitView*)sender cursorRect:(NSRect)rect forDivider:(unsigned int)divider;
+
+// This method will be called whenever a mouse-down event is received in a divider. Return YES to have
+// the event handled by the split view, NO if you wish to ignore it or handle it in the delegate.
+- (BOOL)splitView:(RBSplitView*)sender shouldHandleEvent:(NSEvent*)theEvent inDivider:(unsigned int)divider betweenView:(RBSplitSubview*)leading andView:(RBSplitSubview*)trailing;
+
 // This method will be called just before a subview will be collapsed or expanded with animation.
 // Return the approximate time the animation should take, or 0.0 to disallow animation.
 // If not implemented, it will use the default of 0.2 seconds per 150 pixels.
@@ -184,11 +198,16 @@ typedef enum {
 // You'd normally use this to move some auxiliary view to keep it aligned with the subview.
 - (void)splitView:(RBSplitView*)sender changedFrameOfSubview:(RBSplitSubview*)subview from:(NSRect)fromRect to:(NSRect)toRect;
 
-// This method is called whenever the event handlers want to check if some point within the RBSplitView
+// This method is called whenever the event handlers want to check if some point within the RBSplitSubview
 // should act as an alternate drag view. Usually, the delegate will check the point (which is in sender's
-// local coordinates) against the frame of one or several auxiliary views, and return either NSNotFound or
-// a divider number.
-- (unsigned int)splitView:(RBSplitView*)sender dividerForPoint:(NSPoint)point;
+// local coordinates) against the frame of one or several auxiliary views, and return a valid divider number.
+// Returning NSNotFound means the point is not valid, returning -1 or -2 means that the window will
+// be resized along with the subview. Return -1 to grow the subview to the right, -2 to shrink it from the left.
+- (unsigned int)splitView:(RBSplitView*)sender dividerForPoint:(NSPoint)point inSubview:(RBSplitSubview*)subview;
+
+// This method is called continuously while a divider is dragged, just before the leading subview is resized.
+// Return NO to resize the trailing view by the same amount, YES to resize the containing window by the same amount.
+- (BOOL)splitView:(RBSplitView*)sender shouldResizeWindowForDivider:(unsigned int)divider betweenView:(RBSplitSubview*)leading andView:(RBSplitSubview*)trailing willGrow:(BOOL)grow;
 
 @end
 

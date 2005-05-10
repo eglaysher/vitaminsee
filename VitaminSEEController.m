@@ -84,18 +84,17 @@
  *   this could be fixed with a relod, but now it's not a problem...)
  * * Fix the !$#@ memory leak
  * * RBSplitView
+ * * UTI types for 10.4 conformance
+ * * Display names. Use the macintosh heiarchy instead of our own.
  */
 
 // For Version 0.6.1
-// * Display names of files
-//   * Fix range error in Root directory
-// * Cache control. How large?
 // * RBSplitView for the left column.
 //   * Find why images don't display when left side eats screen
-//   * Figure out how to make it less flicery when resizing
-//   * Add previous/next controls
+//   * Figure out how to make it less flickery when resizing
 
 // For Version 0.6.2
+// * Cache control. How large?
 // * Japanese Localization
 //   * Requires localization of display names!
 //     * General Preferences needs some kind of DisplayNameValueTransformer
@@ -262,6 +261,9 @@
 	RBSplitSubview* leftView = [splitView subviewAtPosition:0];
 	[leftView setCanCollapse:YES];
 	[leftView setMinDimension:95 andMaxDimension:0];
+//	RBSplitSubview* rightView = [splitView subviewAtPosition:0];
+//	[rightView setCanCollapse:NO];
+//	[rightView setMinDimension:25 andMaxDimension:0];
 	
 	// Set our plugins to nil
 	loadedBasePlugins = [[NSMutableDictionary alloc] init];

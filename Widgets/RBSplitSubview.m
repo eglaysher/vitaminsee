@@ -1,5 +1,5 @@
 //
-//  RBSplitSubview.m version 1.1
+//  RBSplitSubview.m version 1.1.1
 //  RBSplitView
 //
 //  Created by Rainer Brockerhoff on 19/11/2004.
@@ -32,7 +32,9 @@ static animationData* animation = NULL;
 	minDimension = 1.0;
 	maxDimension = WAYOUT;
 	identifier = @"";
+	previous = frame;
 	savedSize = frame.size;
+	actDivider = NSNotFound;
 	return self;
 }
 
@@ -202,7 +204,7 @@ static animationData* animation = NULL;
 - (BOOL)canCollapse {
 	BOOL result = canCollapse;
 	RBSplitView* sv = [self splitView];
-	if ([sv numberOfSubviews]<2) {
+	if ([sv RB___numberOfSubviews]<2) {
 		return NO;
 	}
 	id delegate = [sv delegate];
@@ -325,15 +327,10 @@ static animationData* animation = NULL;
 	NSSize size = [self frame].size;
 	BOOL ishor = [sv isHorizontal];
 	if (DIM(size)) {
-// We're not collapsed, save the minimum and maximum dimensions and set them temporarily
-// to the desired value while adjusting subviews.
-		float savemin,savemax;
-		value = [self RB___setMinAndMaxTo:value savingMin:&savemin andMax:&savemax];
+// We're not collapsed, set the size and adjust other subviews.
 		DIM(size) = value;
-		[self RB___setFrameSize:size withFraction:0.0];
-		[sv adjustSubviews];
-		minDimension = savemin;
-		maxDimension = savemax;
+		[self setFrameSize:size];
+		[sv adjustSubviewsExcepting:self];
 	} else {
 // We're collapsed, adjust the fraction so that we'll have the (approximately) correct
 // dimension after expanding.
@@ -429,6 +426,7 @@ static animationData* animation = NULL;
 	if (newdim!=olddim) {
 // The dimension has changed.
 		DIM(frame.size) = newdim;
+// We call super instead of self here to postpone adjusting subviews for nested splitviews.
 		[super setFrameSize:frame.size];
 		[sv RB___setMustClearFractions];
 		[sv setMustAdjust];
@@ -445,11 +443,18 @@ static animationData* animation = NULL;
 // within an alternate drag view.
 - (NSView*)hitTest:(NSPoint)aPoint {
 	RBSplitView* sv = [self splitView];
-	id delegate = [sv delegate];
-	if ([delegate respondsToSelector:@selector(splitView:dividerForPoint:)]&&([delegate splitView:sv dividerForPoint:aPoint]!=NSNotFound)) {
-		return self;
+	if ([self mouse:aPoint inRect:[self frame]]) {
+		id delegate = [sv delegate];
+		if ([delegate respondsToSelector:@selector(splitView:dividerForPoint:inSubview:)]) {
+			actDivider = [delegate splitView:sv dividerForPoint:aPoint inSubview:self];
+			if (actDivider<(int)([sv RB___numberOfSubviews]-1)) {
+				return self;
+			}
+		}
+		actDivider = NSNotFound;
+		return [super hitTest:aPoint];
 	}
-	return [super hitTest:aPoint];
+	return nil;
 }
 
 // This method handles clicking and dragging in an empty portion of the subview, or in an alternate
@@ -457,40 +462,39 @@ static animationData* animation = NULL;
 - (void)mouseDown:(NSEvent*)theEvent {
 	NSWindow* window = [self window];
 	NSPoint where = [theEvent locationInWindow];
-	RBSplitView* sv = [self splitView];
-	id delegate = [sv delegate];
-// First we check with the delegate if the mouse down was inside an alternate drag view.
-	if ([delegate respondsToSelector:@selector(splitView:dividerForPoint:)]) {
+	if (actDivider<NSNotFound) {
+// The mouse down was inside an alternate drag view; actDivider was just set in hitTest.
+		RBSplitView* sv = [self splitView];
 		NSPoint point = [sv convertPoint:where fromView:nil];
-// The delegate returns which divider we should drag.
-		unsigned int div = [delegate splitView:sv dividerForPoint:point];
-		if (div!=NSNotFound) {
-// If we get here, we should drag the divider.
-			[[RBSplitView cursor:RBSVDragCursor] push];
-			NSPoint base = NSZeroPoint;
+		[[RBSplitView cursor:RBSVDragCursor] push];
+		NSPoint base = NSZeroPoint;
 // Record the current divider coordinate.
-			float divc = [sv RB___dividerOrigin:div];
-			BOOL ishor = [sv isHorizontal];
+		float divc = [sv RB___dividerOrigin:actDivider];
+		BOOL ishor = [sv isHorizontal];
+		[sv RB___setDragging:YES];
 // Loop while the button is down.
-			while ((theEvent = [NSApp nextEventMatchingMask:NSLeftMouseDownMask|NSLeftMouseDraggedMask|NSLeftMouseUpMask untilDate:[NSDate distantFuture] inMode:NSEventTrackingRunLoopMode dequeue:YES])&&([theEvent type]!=NSLeftMouseUp)) {
+		while ((theEvent = [NSApp nextEventMatchingMask:NSLeftMouseDownMask|NSLeftMouseDraggedMask|NSLeftMouseUpMask untilDate:[NSDate distantFuture] inMode:NSEventTrackingRunLoopMode dequeue:YES])&&([theEvent type]!=NSLeftMouseUp)) {
 // Set up a local autorelease pool for the loop to prevent buildup of temporary objects.
-				NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
-// This does the actual divider movement.
-				[sv RB___trackMouseEvent:theEvent from:point withBase:base inDivider:div];
-				if ([sv mustAdjust]) {
+			NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
+			NSDisableScreenUpdates();
+// This does the actual movement.
+			[sv RB___trackMouseEvent:theEvent from:point withBase:base inDivider:actDivider];
+			if ([sv mustAdjust]) {
 // If something changed, we clear fractions and redisplay.
-					[sv RB___setMustClearFractions];
-					[sv display];
-				}
-// Change the drag point by the actual divider movement.
-				float newc = [sv RB___dividerOrigin:div];
-				DIM(point) += newc-divc;
-				divc = newc;
-				[pool release];
+				[sv RB___setMustClearFractions];
+				[sv display];
 			}
-			[NSCursor pop];
-			return;
+// Change the drag point by the actual amount moved.
+			float newc = [sv RB___dividerOrigin:actDivider];
+			DIM(point) += newc-divc;
+			divc = newc;
+			NSEnableScreenUpdates();
+			[pool release];
 		}
+		[sv RB___setDragging:NO];
+		[NSCursor pop];
+		actDivider = NSNotFound;
+		return;
 	}
 	if ([window isMovableByWindowBackground]&&![[self couplingSplitView] background]) {
 // If we get here, it's a textured (metal) window, the mouse has gone down on an empty portion
@@ -555,16 +559,17 @@ static animationData* animation = NULL;
 	minDimension = 1.0;
 	maxDimension = WAYOUT;
 	identifier = @"";
+	actDivider = NSNotFound;
     if ((self = [super initWithCoder:coder])) {
-		NSRect frame = [self frame];
-		savedSize = frame.size;
-		if (frame.origin.x>=WAYOUT) {
+		previous = [self frame];
+		savedSize = previous.size;
+		if (previous.origin.x>=WAYOUT) {
 // The subview was collapsed when encoded, so we correct the origin and collapse it.
 			BOOL ishor = [self splitViewIsHorizontal];
-			frame.origin.x -= WAYOUT;
-			DIM(frame.size) = 0.0;
-			[self setFrameOrigin:frame.origin];
-			[self setFrameSize:frame.size];
+			previous.origin.x -= WAYOUT;
+			DIM(previous.size) = 0.0;
+			[self setFrameOrigin:previous.origin];
+			[self setFrameSize:previous.size];
 		}
 		if ([coder allowsKeyedCoding]) {
 			[self setIdentifier:[coder decodeObjectForKey:@"identifier"]];
@@ -628,6 +633,7 @@ static animationData* animation = NULL;
 					animation->totalTime = total;
 					animation->finishTime = [NSDate timeIntervalSinceReferenceDate]+total;
 					animation->resizing = resize;
+					[sv RB___setDragging:YES];
 				}
 			} else if (animation) {
 				free(animation);
@@ -697,6 +703,7 @@ static animationData* animation = NULL;
 		[NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(RB___stepAnimation) object:nil];
 		free(animation);
 		animation = NULL;
+		[[self splitView] RB___setDragging:NO];
 		return YES;
 	}
 	return NO;
@@ -852,26 +859,28 @@ static animationData* animation = NULL;
 	}
 }
 
-// This pair of internal methods sets the subview's frame or size, and also store a fraction value
+// These internal methods set the subview's frame or size, and also store a fraction value
 // which is used to ensure repeatability when the whole split view is resized.
 - (void)RB___setFrame:(NSRect)rect withFraction:(double)value notify:(BOOL)notify {
-	NSRect before = NSZeroRect;
 	RBSplitView* sv = [self splitView];
 	id delegate = nil;
 	if (notify) {
 		delegate = [sv delegate];
 // If the delegate method isn't implemented, we ignore the delegate altogether.
 		if ([delegate respondsToSelector:@selector(splitView:changedFrameOfSubview:from:to:)]) {
-			before = [self frame];
+// If the rects are equal, the delegate isn't called.
+			if (NSEqualRects(previous,rect)) {
+				delegate = nil;
+			}
 		} else {
 			delegate = nil;
 		}
 	}
 	[sv setMustAdjust];
-	[self setFrameOrigin:rect.origin];
-	[self setFrameSize:rect.size];
+	[self setFrame:rect];
 	fraction = value;
-	[delegate splitView:sv changedFrameOfSubview:self from:before to:rect];
+	[delegate splitView:sv changedFrameOfSubview:self from:previous to:rect];
+	previous = rect;
 }
 
 - (void)RB___setFrameSize:(NSSize)size withFraction:(double)value {

@@ -422,6 +422,8 @@
 		{
 			// The image will still be locked, even if -lock fails.
 			[imageToRet unlockFocus];
+			
+			NSLog(@"Exception: %@:%@", [e name] , [e reason]);
 
 			// Alert the user to a problem
 			NSString* format = NSLocalizedString(@"Can not display %@", 

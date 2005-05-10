@@ -83,6 +83,7 @@
 //104
 		1058C7A0FEA54F0111CA2CBB = {
 			children = (
+				CDF1EA58082EA7AA00AA0441,
 				8B5EB13407CD254F00B43D06,
 				1058C7A1FEA54F0111CA2CBB,
 			);
@@ -3201,6 +3202,7 @@
 			files = (
 				8D11072F0486CEB800E47090,
 				8B5EB13507CD254F00B43D06,
+				CDF1EA59082EA7AA00AA0441,
 			);
 			isa = PBXFrameworksBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3583,6 +3585,20 @@
 		};
 		CDA6C00D08299164007869CA = {
 			fileRef = CDA6C00C08299163007869CA;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		CDF1EA58082EA7AA00AA0441 = {
+			isa = PBXFileReference;
+			lastKnownFileType = wrapper.framework;
+			name = SystemConfiguration.framework;
+			path = /System/Library/Frameworks/SystemConfiguration.framework;
+			refType = 0;
+			sourceTree = "<absolute>";
+		};
+		CDF1EA59082EA7AA00AA0441 = {
+			fileRef = CDF1EA58082EA7AA00AA0441;
 			isa = PBXBuildFile;
 			settings = {
 			};

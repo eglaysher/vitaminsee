@@ -1,5 +1,5 @@
 //
-//  RBSplitViewPrivateDefines.h version 1.1
+//  RBSplitViewPrivateDefines.h version 1.1.1
 //  RBSplitView
 //
 //  Created by Rainer Brockerhoff on 19/11/2004.
@@ -48,7 +48,8 @@ typedef struct animationData {
 	BOOL resizing;					// YES if we're resizing, NO if we're frozen
 } animationData;
 
-// The following methods are for internal use, and normally you'll never call or override them.
+// The following methods are for internal use, and you should never call or override them.
+// They'll probably vary wildy from version to version, too.
 
 @interface RBSplitSubview (RB___SubviewAdditions)
 
@@ -73,14 +74,21 @@ typedef struct animationData {
 
 @interface RBSplitView (RB___ViewAdditions)
 
+- (void)RB___setDragging:(BOOL)flag;
 - (float)RB___dividerOrigin:(int)index;
 - (NSArray*)RB___subviews;
-- (void)RB___adjustSubviews;
+- (unsigned int)RB___numberOfSubviews;
+- (void)RB___adjustSubviewsExcepting:(RBSplitSubview*)excepting;
 - (float)RB___dimensionWithoutDividers;
 - (float)RB___dividerThickness;
 - (void)RB___drawDivider:(NSImage*)anImage inRect:(NSRect)rect betweenView:(RBSplitSubview*)leading andView:(RBSplitSubview*)trailing;
 - (NSRect)RB___dividerRect:(unsigned)index relativeToView:(RBSplitView*)view;
 - (void)RB___setMustClearFractions;
+- (BOOL)RB___shouldResizeWindowForDivider:(unsigned int)index betweenView:(RBSplitSubview*)leading andView:(RBSplitSubview*)trailing willGrow:(BOOL)grow;
+- (void)RB___tryToExpandLeading:(RBSplitSubview*)leading divider:(unsigned int)index trailing:(RBSplitSubview*)trailing delta:(float)delta;
+- (void)RB___tryToShortenLeading:(RBSplitSubview*)leading divider:(unsigned int)index trailing:(RBSplitSubview*)trailing delta:(float)delta always:(BOOL)always;
+- (void)RB___tryToExpandTrailing:(RBSplitSubview*)trailing leading:(RBSplitSubview*)leading delta:(float)delta;
+- (void)RB___tryToShortenTrailing:(RBSplitSubview*)trailing divider:(unsigned int)index leading:(RBSplitSubview*)leading delta:(float)delta always:(BOOL)always;
 - (void)RB___trackMouseEvent:(NSEvent*)theEvent from:(NSPoint)where withBase:(NSPoint)base inDivider:(unsigned)index;
 - (void)RB___addCursorRectsTo:(RBSplitView*)masterView forDividerRect:(NSRect)rect thickness:(float)delta;
 - (unsigned)RB___dividerHitBy:(NSPoint)point relativeToView:(RBSplitView*)view thickness:(float)delta;
