@@ -191,7 +191,8 @@ static NSString* PreviousPictureToolbarID = @"Previous Picture Toolbar Identifie
 {
 	return [NSArray arrayWithObjects:RevealInFinderToolbarID, 
 		ViewInPreviewToolbarID, NSToolbarSeparatorItemIdentifier,
-		NSToolbarFlexibleSpaceItemIdentifier, 
+		NextPictureToolbarID, PreviousPictureToolbarID,
+		NSToolbarSeparatorItemIdentifier, NSToolbarFlexibleSpaceItemIdentifier, 
 		ZoomInToolbarID, ZoomOutToolbarID, ZoomToFitToolbarID, 
 		ActualSizeToolbarID, nil];
 }
