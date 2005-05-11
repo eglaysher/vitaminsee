@@ -86,14 +86,17 @@
  * * RBSplitView
  * * UTI types for 10.4 conformance
  * * Display names. Use the macintosh heiarchy instead of our own.
+ * * Splitview Autosave position
  */
 
 // For Version 0.6.1
+// * Fix documentation
 // * RBSplitView for the left column.
 //   * Find why images don't display when left side eats screen
 //   * Figure out how to make it less flickery when resizing
 
 // For Version 0.6.2
+// * Delete key in  sort manager preferences should do something. + UNDO!!!!
 // * Cache control. How large?
 // * Japanese Localization
 //   * Requires localization of display names!
@@ -265,6 +268,9 @@
 //	[rightView setCanCollapse:NO];
 //	[rightView setMinDimension:25 andMaxDimension:0];
 	
+	[splitView setAutosaveName:@"MainWindowSplitView" recursively:YES];
+	[splitView restoreState:YES];
+	
 	// Set our plugins to nil
 	loadedBasePlugins = [[NSMutableDictionary alloc] init];
 	loadedViewPlugins = [[NSMutableDictionary alloc] init];
@@ -283,6 +289,7 @@
 -(void)dealloc
 {
 	[pathManager release];
+	[splitView saveState:YES];
 	[super dealloc];
 }
 
@@ -868,7 +875,7 @@
 
 -(void)willAdjustSubviews:(id)rbview
 {
-	[imageViewer setImage:nil];
+//	[imageViewer setImage:nil];
 }
 
 // Redraw the window when the window resizes.
@@ -876,6 +883,11 @@
 -(void)didAdjustSubviews:(id)rbview
 {
 	[self redraw];
+}
+
+- (void)splitView:(RBSplitView*)sender wasResizedFrom:(float)oldDimension to:(float)newDimension
+{
+	NSLog(@"From: %f to %f", oldDimension, newDimension);
 }
 
 // Redraw the window when the seperator between the file list and image view
