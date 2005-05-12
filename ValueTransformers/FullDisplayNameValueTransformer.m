@@ -49,14 +49,24 @@
 {
 	NSEnumerator* e = [[[NSFileManager defaultManager] 
 		componentsToDisplayForPath:value] objectEnumerator];
-	NSMutableString* displayPath = [[e nextObject] mutableCopy];
-	NSString* current;
+	NSString* next = [e nextObject];
+	NSMutableString* displayPath;
 	
-	// For each additional component after the first, 
-	while(current = [e nextObject])
+	if(next)
 	{
-		[displayPath appendString:@":"];
-		[displayPath appendString:current];
+		displayPath = [[next mutableCopy] autorelease];
+		NSString* current;
+	
+		// For each additional component after the first, 
+		while(current = [e nextObject])
+		{
+			[displayPath appendString:@":"];
+			[displayPath appendString:current];
+		}
+	}
+	else
+	{
+		displayPath = [NSString stringWithFormat:@"Missing folder at %@", value];
 	}
 	
 	return displayPath;

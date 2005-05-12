@@ -91,13 +91,16 @@
 
 // 11th hour 0.6.1 fixes for ADA05:
 // * Foucs behaviour. (Hacked into a good enough state for ADA)
-// * Focus ring leaking on the sides. (Ugly hack. Take a look at the problems
-//   with drawing a focus ring while displaying a status message...
+// * Focus ring leaking on the sides. (Ugly hack in the nib)
 // * Find why images don't display when left side eats screen. (Hacked to work in -redraw)
 // * Updated to RBSplitView 1.1.2. Now MIT! woot.
+// * Handle disk eject!!!!
+
+// EMERGENCY TODO LIST:
+// * Fix documentation
+// * Do paperwork
 
 // Post 6.1 todo list
-// * Handle disk eject!!!!
 // * RBSplitView for the left column.
 //   * Figure out how to make it less flickery when resizing
 
@@ -225,13 +228,12 @@
 	if(hasPictures)
 		sortManagerPaths = [NSArray arrayWithObjects:
 			[NSDictionary dictionaryWithObjectsAndKeys:@"Pictures", @"Name",
-				[fileManager displayNameAtPath:[NSHomeDirectory() 
-					stringByAppendingPathComponent:@"Pictures"]], 
+				[NSHomeDirectory() stringByAppendingPathComponent:@"Pictures"], 
 						@"Path", nil], nil];
 	else
 		sortManagerPaths = [NSArray arrayWithObjects:
 			[NSDictionary dictionaryWithObjectsAndKeys:@"Home", @"Name",
-				[fileManager displayNameAtPath:NSHomeDirectory()], @"Path", nil], nil];
+				NSHomeDirectory(), @"Path", nil], nil];
 	
 	[defaultPrefs setObject:sortManagerPaths forKey:@"SortManagerPaths"];
 	[defaultPrefs setObject:[NSNumber numberWithBool:YES] forKey:@"SortManagerInContextMenu"];
