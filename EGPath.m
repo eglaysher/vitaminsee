@@ -180,7 +180,7 @@
 -(id)initWithPath:(NSString*)path
 {
 	if(self = [super init])
-		fileSystemPath = [path retain];
+		fileSystemPath = [[path stringByStandardizingPath] retain];
 	
 	return self;
 }

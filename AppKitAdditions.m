@@ -152,7 +152,7 @@ zeroing in on the optimum length.
 		int curLength = [self length] - 1;	//start by chopping off at least one
 		
 		[newString appendAttributedString:self];
-		while ([newString size].width > inWidth)
+		while ([newString size].width > inWidth && curLength > 2)
 		{
 			// replace 2 characters with "…"
 			range = NSMakeRange( curLength - 1, 2);	
@@ -187,7 +187,7 @@ zeroing in on the optimum length.
 		NSMutableString* newString = [NSMutableString stringWithString:self];
 		int curLength = [self length] - 1;	//start by chopping off at least one
 		
-		while ([newString sizeWithAttributes:0].width > inWidth)
+		while ([newString sizeWithAttributes:0].width > inWidth && curLength > 2)
 		{
 			// replace 2 characters with "…"
 			range = NSMakeRange( curLength - 1, 2);	

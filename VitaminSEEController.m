@@ -273,12 +273,14 @@
 	[splitView setDelegate:self];
 	RBSplitSubview* leftView = [splitView subviewAtPosition:0];
 	[leftView setCanCollapse:YES];
-	[leftView setMinDimension:95 andMaxDimension:0];
+	[leftView setMinDimension:92 andMaxDimension:0];
+	RBSplitSubview* rightView = [splitView subviewAtPosition:1];
+	[rightView setCanCollapse:NO];
+	[rightView setMinDimension:0 andMaxDimension:0];
 	
 	// Restore the settings for the split view
 	[splitView setAutosaveName:@"MainWindowSplitView" recursively:YES];
 	[splitView restoreState:YES];
-	
 	
 	// Set our plugins to nil
 	loadedBasePlugins = [[NSMutableDictionary alloc] init];
