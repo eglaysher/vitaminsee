@@ -1,3 +1,24 @@
+0.6.1 Release
+-------------
+* Present the filesystem to the user like the Mac filesystem, not the Unix filesystem.
+  (Use Machintosh HD:Users:name:... instead of /Users/name/ style paths.)
+* Disable show/hide toolbar and customize toolbar when window isn't displayed...
+* Autosave main window position
+* Disable buttons in sort manager when you close VS window and then open sort manager.
+* Adding a thumbnail doesn't change a file's modification time (which makes
+  more sense since we aren't really modifying the file; just adding a piece of
+  metadata on the filesystem).
+* Option to show hidden files; we now hide stuff at the @"/" level by default.
+* Advanced preference pane
+* Fix problem where thumbnails on remote servers weren't being displayed after
+  they were generated
+* Some memory leaks were fixed.
+* Now use RBSplitView to prevent that stupid crash that I reported last version.
+* Because of RBSplitView, there is a "Show/Hide File List" option in the View menu.
+* Tabbing between controls now works; Up/Down in the file list changes
+* Added Next/Previous items to the Go menu for navigation when the file list is hidden.
+* Use UTI types on 10.4.
+
 0.6 Release
 -----------
 * A couple of speed fixes:

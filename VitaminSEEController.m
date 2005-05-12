@@ -97,7 +97,6 @@
 // * Handle disk eject!!!!
 
 // EMERGENCY TODO LIST:
-// * Fix documentation
 // * Do paperwork
 
 // Post 6.1 todo list
