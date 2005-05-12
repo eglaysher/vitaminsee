@@ -64,9 +64,15 @@
 		[popUpImage setMenu:favoritesMenu];
 		
 		// Set up menu representation for item
-		NSMenuItem* menuRepresentation = [[[NSMenuItem alloc] init] autorelease];
-		[menuRepresentation setSubmenu:favoritesMenu];
+		menuRepresentation = [[NSMenuItem alloc] init];
+
+		NSImage* image = [[[NSImage imageNamed:@"ToolbarFavoritesIcon"] copy] autorelease];
+		[image setScalesWhenResized:YES];
+		[image setSize:NSMakeSize(16,16)];
+		[menuRepresentation setImage:image];		
+		
 		[menuRepresentation setTitle:@"Favorites"];
+//		[menuRepresentation setSubmenu:favoritesMenu];
 		[self setMenuFormRepresentation:menuRepresentation];		
 	}
 	
@@ -78,6 +84,7 @@
 	[popUpImage release];
 	[favoritesMenu release];
 	[favoritesMenuDelegate release];
+	[menuRepresentation release];
 	[super dealloc];
 }
 

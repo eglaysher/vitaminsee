@@ -38,6 +38,8 @@
 	MVMenuButton* popUpImage;
 	NSMenu* favoritesMenu;
 	FavoritesMenuDelegate* favoritesMenuDelegate;
+	
+	NSMenuItem* menuRepresentation;
 }
 
 -(id)initWithItemIdentifier:(NSString*)itemIdent 

@@ -99,6 +99,11 @@
 // EMERGENCY TODO LIST:
 // * Do paperwork
 
+// Doesn't work:
+// * Overflow menu for NSToolbarItem Favorites
+// * Text mode Favorites toolbar item is always leaves off the first item.
+//   ** Neither of these appear to be fixable until Apple fixes support for NSMenus delegate support **
+
 // Post 6.1 todo list
 // * RBSplitView for the left column.
 //   * Figure out how to make it less flickery when resizing
