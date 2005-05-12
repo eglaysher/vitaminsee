@@ -89,14 +89,17 @@
  * * Splitview Autosave position
  */
 
-// For Version 0.6.1
-// * Foucs behaviour.
-// * When image view is key, and the split view gets dragged, the split view's
-//   highlight "leaks".
+// 0.6.1 fixes:
+// * Foucs behaviour. (Hacked into a good enough state for ADA)
+// * Focus ring leaking on the sides. (Ugly hack. Take a look at the problems
+//   with drawing a focus ring while displaying a status message...
+// * Find why images don't display when left side eats screen. (Hacked to work in -redraw)
+
+
+
 
 // Post 6.1 todo list
 // * RBSplitView for the left column.
-//   * Find why images don't display when left side eats screen
 //   * Figure out how to make it less flickery when resizing
 
 // For Version 0.7
@@ -827,6 +830,12 @@
 
 -(void)redraw
 {
+	// UGLY HACK TO GET HIS WORKING BY ADA05!!!!
+	// There's an image cacheing exception if there's no place to place the image
+	// (this makes no sense), so hard code it so that this condition can't happen.
+	if([[splitView subviewAtPosition:1] dimension] < 20)
+		return;
+	
 	[imageSizeLabel setStringValue:@"---"];
 	
 	if(!currentImageFile)
@@ -970,12 +979,14 @@
 // Progress indicator control
 -(void)startProgressIndicator
 {
+	[scrollView setNeedsDisplay:YES];
 	[progressIndicator setHidden:NO];
 	[progressIndicator startAnimation:self];
 }
 
 -(void)stopProgressIndicator
 {
+	[scrollView setNeedsDisplay:YES];
 	[progressIndicator stopAnimation:self];
 	[progressIndicator setHidden:YES];
 }
@@ -989,6 +1000,8 @@
 	}
 	else
 		[progressCurrentTask setHidden:YES];
+
+	[scrollView setNeedsDisplay:YES];
 }
 
 -(IBAction)showPreferences:(id)sender
