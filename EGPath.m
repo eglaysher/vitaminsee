@@ -57,6 +57,11 @@
 	return nil;
 }
 
+-(BOOL)isRoot
+{
+	return NO;
+}
+
 -(BOOL)exists
 {
 	[self doesNotRecognizeSelector:_cmd];
@@ -134,6 +139,11 @@
 }
 
 -(BOOL)exists
+{
+	return YES;
+}
+
+-(BOOL)isRoot
 {
 	return YES;
 }

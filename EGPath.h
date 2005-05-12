@@ -18,6 +18,8 @@
 -(NSString*)displayName;
 -(NSString*)fileSystemPath;
 
+-(BOOL)isRoot;
+
 -(BOOL)exists;
 -(BOOL)isDirectory;
 

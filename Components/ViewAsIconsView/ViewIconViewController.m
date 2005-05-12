@@ -40,6 +40,8 @@
 
 @interface ViewIconViewController (Private)
 -(void)rebuildInternalFileArray;
+-(void)handleDidMountNotification:(id)notification;
+-(void)handleDidUnmountNotification:(id)notification;
 @end
 
 @implementation ViewIconViewController
@@ -54,6 +56,17 @@
 		pluginLayer = inPluginLayer;
 
 		oldPosition = -1;
+		
+		// Register for mounting/unmounting notifications
+		NSNotificationCenter* nc = [[NSWorkspace sharedWorkspace] notificationCenter];
+		[nc addObserver:self 
+			   selector:@selector(handleDidMountNotification:)
+				   name:NSWorkspaceDidMountNotification
+				 object:nil];
+		[nc addObserver:self
+			   selector:@selector(handleDidUnmountNotification:)
+				   name:NSWorkspaceDidUnmountNotification
+				 object:nil];		
 	}
 
 	return self;
@@ -61,6 +74,10 @@
 
 -(void)dealloc
 {
+	// Unregister for notifications
+	NSNotificationCenter* nc = [[NSWorkspace sharedWorkspace] notificationCenter];
+	[nc removeObserver:self];
+	
 	[pluginLayer release];
 	[super dealloc];
 }
@@ -528,6 +545,39 @@ willDisplayCell:(id)cell
 	fileList = myFileList;
 
 //	NSLog(@"filelist retain count: %d", [fileList retainCount]);
+}
+
+// Handle notifications
+-(void)handleDidMountNotification:(id)notification
+{
+	if([currentDirectory isRoot])
+	{	
+		// Rebuild list to reflect the mounted drive since we're in machine root.
+		[self rebuildInternalFileArray];
+		[ourBrowser loadColumnZero];
+		[ourBrowser selectRow:0 inColumn:0];
+		[self singleClick:ourBrowser];		
+	}
+}
+
+-(void)handleDidUnmountNotification:(id)notification
+{
+	NSString* unmountedPath = [[notification userInfo] objectForKey:@"NSDevicePath"];
+
+	if([currentDirectory isRoot])
+	{
+		// Rebuild list to reflect the mounted drive since we're in machine root.
+		[self rebuildInternalFileArray];
+		[ourBrowser loadColumnZero];
+		[ourBrowser selectRow:0 inColumn:0];
+		[self singleClick:ourBrowser];		
+	}
+	else if([[currentDirectory fileSystemPath] hasPrefix:unmountedPath])
+	{
+		// Drop back to root
+		[self setCurrentDirectory:[[currentDirectory pathComponents] objectAtIndex:0]
+					  currentFile:nil];
+	}
 }
 
 @end
