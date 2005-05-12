@@ -1919,7 +1919,8 @@
 			fileEncoding = 4;
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.c.h;
-			path = SBCenteringClipView.h;
+			name = SBCenteringClipView.h;
+			path = Widgets/SBCenteringClipView.h;
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -1927,7 +1928,8 @@
 			fileEncoding = 4;
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.c.objc;
-			path = SBCenteringClipView.m;
+			name = SBCenteringClipView.m;
+			path = Widgets/SBCenteringClipView.m;
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -2029,7 +2031,8 @@
 			fileEncoding = 30;
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.c.h;
-			path = MyImageView.h;
+			name = MyImageView.h;
+			path = Widgets/MyImageView.h;
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -2037,7 +2040,8 @@
 			fileEncoding = 30;
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.c.objc;
-			path = MyImageView.m;
+			name = MyImageView.m;
+			path = Widgets/MyImageView.m;
 			refType = 4;
 			sourceTree = "<group>";
 		};
