@@ -1,10 +1,10 @@
 //
-//  RBSplitViewPrivateDefines.h version 1.1.1
+//  RBSplitViewPrivateDefines.h version 1.1.2
 //  RBSplitView
 //
 //  Created by Rainer Brockerhoff on 19/11/2004.
 //  Copyright 2004,2005 Rainer Brockerhoff.
-//	Some Rights Reserved under the Creative Commons Attribution License, version 2.0.
+//	Some Rights Reserved under the Creative Commons Attribution License, version 2.0, and/or the MIT License.
 //
 
 // These defines are used only locally; no sense exporting them in the main header file where they might

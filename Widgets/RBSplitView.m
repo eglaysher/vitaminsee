@@ -1,10 +1,10 @@
 //
-//  RBSplitView.m version 1.1.1
+//  RBSplitView.m version 1.1.2
 //  RBSplitView
 //
 //  Created by Rainer Brockerhoff on 24/09/2004.
 //  Copyright 2004,2005 Rainer Brockerhoff.
-//	Some Rights Reserved under the Creative Commons Attribution License, version 2.0.
+//	Some Rights Reserved under the Creative Commons Attribution License, version 2.0, and/or the MIT License.
 //
 
 #import "RBSplitView.h"
@@ -116,21 +116,21 @@ static NSCursor* cursors[RBSVCursorTypeCount] = {nil};
 }
 
 // Restores the saved state of the subviews if there's a valid autosave name set. If the argument
-// is YES, it's first called recursively for nested RBSplitViews. Returns YES if successful.
+// is YES, it's also called recursively for nested RBSplitViews. Returns YES if successful.
 // It's good policy to call adjustSubviews immediately after calling restoreState.
 - (BOOL)restoreState:(BOOL)recurse {
 	BOOL result = NO;
-	canSaveState = YES;
 	if ([autosaveName length]) {
-		if (recurse) {
+		result = [self setStateFromString:[[NSUserDefaults standardUserDefaults] stringForKey:[[self class] defaultsKeyForName:autosaveName isHorizontal:[self isHorizontal]]]];
+		if (result&&recurse) {
 			NSEnumerator* enumerator = [[self subviews] objectEnumerator];
 			RBSplitSubview* sub;
 			while ((sub = [enumerator nextObject])) {
 				[[sub asSplitView] restoreState:YES];
 			}
 		}
-		result = [self setStateFromString:[[NSUserDefaults standardUserDefaults] stringForKey:[[self class] defaultsKeyForName:autosaveName isHorizontal:[self isHorizontal]]]];
 	}
+	canSaveState = YES;
 	return result;
 }
 
@@ -234,8 +234,7 @@ static NSCursor* cursors[RBSVCursorTypeCount] = {nil};
 				}
 				[sub RB___setHidden:hidden];
 			}
-			RBSplitView* sv = [super splitView];
-			[sv?sv:self setMustAdjust];
+			[self setMustAdjust];
 			return YES;
 		}
 	}
@@ -250,6 +249,7 @@ static NSCursor* cursors[RBSVCursorTypeCount] = {nil};
  		dividers = NULL;
 		isCoupled = YES;
 		isDragging = NO;
+		canSaveState = NO;
 		[self setVertical:YES];
 		[self setDivider:nil];
 		[self setAutosaveName:nil recursively:NO];
@@ -541,15 +541,15 @@ static NSCursor* cursors[RBSVCursorTypeCount] = {nil};
 // the delegate if implemented.
 - (void)setFrameSize:(NSSize)size {
 	NSSize oldsize = [self frame].size;
-	if (!NSEqualSizes(size,oldsize)) {
+//	if (!NSEqualSizes(size,oldsize)) {
 		[super setFrameSize:size];
 		[self setMustAdjust];
 		if ([delegate respondsToSelector:@selector(splitView:wasResizedFrom:to:)]) {
 			BOOL ishor = [self isHorizontal];
 			float olddim = DIM(oldsize);
 			float newdim = DIM(size);
-// The delegate is not called if the dimension hasn't changed.
-			if (newdim!=olddim) {
+// The delegate is not called if the dimension hasn't changed, or if state is being restored.
+			if ((newdim!=olddim)) {
 				[delegate splitView:self wasResizedFrom:olddim to:newdim];
 			}
 		}
@@ -557,7 +557,7 @@ static NSCursor* cursors[RBSVCursorTypeCount] = {nil};
 		if (mustAdjust&&!isAdjusting) {
 			[self adjustSubviews];
 		}
-	}
+//	}
 }
 
 // This method handles dragging and double-clicking dividers with the mouse. While dragging, the
@@ -722,6 +722,16 @@ static NSCursor* cursors[RBSVCursorTypeCount] = {nil};
 	return [super needsDisplay];
 }
 
+// We implement awakeFromNib to restore the state. This works if an autosaveName is set in the nib.
+- (void)awakeFromNib {
+	if ([[self superclass] instancesRespondToSelector:@selector(awakeFromNib)]) {
+		[super awakeFromNib];
+	}
+	if (![self splitView]) {
+		[self restoreState:YES];
+	}
+}
+
 // We check if subviews must be adjusted before redisplaying programmatically.
 - (void)display {
 	if (mustAdjust&&!isAdjusting) {
@@ -849,6 +859,7 @@ static NSCursor* cursors[RBSVCursorTypeCount] = {nil};
 		float divt = 0.0;
 		isCoupled = YES;
 		isDragging = NO;
+		canSaveState = NO;
 		if ([coder allowsKeyedCoding]) {
 			isCoupled = [coder decodeBoolForKey:@"isCoupled"];
 			[self setDelegate:[coder decodeObjectForKey:@"delegate"]];
@@ -891,7 +902,7 @@ static NSCursor* cursors[RBSVCursorTypeCount] = {nil};
 	BOOL save = isDragging&&!flag;
 	isDragging = flag;
 	if (save) {
-		[self saveState:YES];
+		[self saveState:NO];
 	}
 }
 
@@ -921,7 +932,7 @@ static NSCursor* cursors[RBSVCursorTypeCount] = {nil};
 	NSMutableArray* result = [NSMutableArray arrayWithArray:[self subviews]];
 	int i;
 	for (i=[result count]-1;i>=0;i--) {
-		NSView* view = [result objectAtIndex:i];
+		RBSplitSubview* view = [result objectAtIndex:i];
 		if ([view isHidden]) {
 			[result removeObjectAtIndex:i];
 		}
@@ -1579,10 +1590,13 @@ static NSCursor* cursors[RBSVCursorTypeCount] = {nil};
 			DIM(newframe.origin) += divt;
 		}
 	}
-// If there was at least one nested RBSplitView, we loop over the subviews and adjust those.
+// If there was at least one nested RBSplitView, we loop over the subviews and adjust those that need it.
 	for (i=nested;i<subcount;i++) {
 		curr = &caches[i];
-		[[curr->sub asSplitView] adjustSubviews];
+		RBSplitView* sv = [curr->sub asSplitView];
+		if ([sv mustAdjust]) {
+			[sv adjustSubviews];
+		}
 	}
 // Free the cache array.
 	free(caches);
@@ -1592,7 +1606,7 @@ static NSCursor* cursors[RBSVCursorTypeCount] = {nil};
 	[[self window] invalidateCursorRectsForView:self];
 // Save the state for all subviews.
 	if (!isDragging) {
-		[self saveState:YES];
+		[self saveState:NO];
 	}
 // If we're a nested RBSplitView, also invalidate cursorRects for the superview.
 	RBSplitView* sv = [self couplingSplitView];

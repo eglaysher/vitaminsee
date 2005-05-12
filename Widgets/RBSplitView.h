@@ -1,10 +1,10 @@
 //
-//  RBSplitView.h version 1.1.1
+//  RBSplitView.h version 1.1.2
 //  RBSplitView
 //
 //  Created by Rainer Brockerhoff on 24/09/2004.
 //  Copyright 2004,2005 Rainer Brockerhoff.
-//	Some Rights Reserved under the Creative Commons Attribution License, version 2.0.
+//	Some Rights Reserved under the Creative Commons Attribution License, version 2.0, and/or the MIT License.
 //
 
 #import "RBSplitSubview.h"

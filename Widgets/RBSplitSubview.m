@@ -1,10 +1,10 @@
 //
-//  RBSplitSubview.m version 1.1.1
+//  RBSplitSubview.m version 1.1.2
 //  RBSplitView
 //
 //  Created by Rainer Brockerhoff on 19/11/2004.
 //  Copyright 2004,2005 Rainer Brockerhoff.
-//	Some Rights Reserved under the Creative Commons Attribution License, version 2.0.
+//	Some Rights Reserved under the Creative Commons Attribution License, version 2.0, and/or the MIT License.
 //
 
 #import "RBSplitView.h"
@@ -32,7 +32,7 @@ static animationData* animation = NULL;
 	minDimension = 1.0;
 	maxDimension = WAYOUT;
 	identifier = @"";
-	previous = frame;
+	previous = NSZeroRect;
 	savedSize = frame.size;
 	actDivider = NSNotFound;
 	return self;
@@ -73,6 +73,7 @@ static animationData* animation = NULL;
 }
 
 // A hidden RBSplitSubview is not redrawn and is not considered for drawing dividers.
+// This won't work on before 10.3, though.
 - (void)setHidden:(BOOL)flag {
 	if ([self isHidden]!=flag) {
 		RBSplitView* sv = [self splitView];
@@ -553,14 +554,14 @@ static animationData* animation = NULL;
 }
 
 - (id)initWithCoder:(NSCoder*)coder {
-	fraction = 0.0;
-	canCollapse = NO;
-	notInLimits = NO;
-	minDimension = 1.0;
-	maxDimension = WAYOUT;
-	identifier = @"";
-	actDivider = NSNotFound;
     if ((self = [super initWithCoder:coder])) {
+		fraction = 0.0;
+		canCollapse = NO;
+		notInLimits = NO;
+		minDimension = 1.0;
+		maxDimension = WAYOUT;
+		identifier = @"";
+		actDivider = NSNotFound;
 		previous = [self frame];
 		savedSize = previous.size;
 		if (previous.origin.x>=WAYOUT) {
@@ -571,6 +572,7 @@ static animationData* animation = NULL;
 			[self setFrameOrigin:previous.origin];
 			[self setFrameSize:previous.size];
 		}
+		previous = NSZeroRect;
 		if ([coder allowsKeyedCoding]) {
 			[self setIdentifier:[coder decodeObjectForKey:@"identifier"]];
 			tag = [coder decodeIntForKey:@"tag"];
@@ -880,7 +882,7 @@ static animationData* animation = NULL;
 	[self setFrame:rect];
 	fraction = value;
 	[delegate splitView:sv changedFrameOfSubview:self from:previous to:rect];
-	previous = rect;
+	previous = delegate?rect:NSZeroRect;
 }
 
 - (void)RB___setFrameSize:(NSSize)size withFraction:(double)value {
