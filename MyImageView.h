@@ -13,10 +13,14 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class EGScrollView;
+
 @interface MyImageView : NSImageView
 {
     NSPoint startPt;
     NSPoint startOrigin;
+
+	IBOutlet EGScrollView* scrollView;
 }
 
 @end

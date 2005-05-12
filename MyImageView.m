@@ -16,13 +16,17 @@
 // behave normally. Otherwise, do what this code orriginally did: show the hand
 // cursor and allow dragging.
 //
+// 5/10/05: Adding code to make the image viewer accept key
 
 #import "MyImageView.h"
+#import "EGScrollView.h"
 
 @implementation MyImageView
 
 - (void)mouseDown:(NSEvent *)theEvent
 {
+	[scrollView noteMouseDown];
+	
 	NSSize imageSize = [[self image] size];
 	NSSize contentSize = [(NSScrollView*)[[self superview] superview] contentSize];
 	if(imageSize.height > contentSize.height || imageSize.width > contentSize.width)
@@ -32,7 +36,9 @@
 
 		NSCursor *grabCursor = [[NSCursor alloc] initWithImage:[NSImage 
 			imageNamed:@"hand_closed"] hotSpot:NSMakePoint(8, 8)];
-		[(NSScrollView*)[self superview] setDocumentCursor:grabCursor];
+		
+//		id superview = [[[self superview] superview] superview];
+		[scrollView setDocumentCursor:grabCursor];
 		[grabCursor release];
 	}
 }
@@ -50,7 +56,7 @@
 }
 
 - (void)mouseUp:(NSEvent *)theEvent
-{
+{	
 	NSSize imageSize = [[self image] size];
 	NSSize contentSize = [(NSScrollView*)[[self superview] superview] contentSize];
 	if(imageSize.height > contentSize.height || imageSize.width > contentSize.width)
@@ -61,5 +67,8 @@
 		[handCursor release];
 	}
 }
+
+// --------- My additions to accept key input
+
 
 @end

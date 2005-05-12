@@ -9,10 +9,6 @@
 			children = (
 				CD76863C08283934006AE601,
 				CD76863D08283934006AE601,
-				8B6710AF080C9BE00084EE5A,
-				8B6710B0080C9BE00084EE5A,
-				8B7E6DA5080B419500DD5466,
-				8B7E6DA6080B419500DD5466,
 				8B3E9C2D080B0FE5009D39C6,
 				8B3E9C2E080B0FE5009D39C6,
 				8B6A96F10807ABD10085334A,
@@ -35,8 +31,6 @@
 				8B4A5A9207B74EDC00F30E03,
 				8B7C0C3A07B5FEB4005DB6FF,
 				8B7C0C3B07B5FEB5005DB6FF,
-				8B6FD33207B30B0F003F0000,
-				8B6FD33307B30B0F003F0000,
 				8B6FCF9807B1E200003F0000,
 				8B6FCF9907B1E200003F0000,
 				8BE97E2307ACD46B005D384C,
@@ -1554,7 +1548,8 @@
 			fileEncoding = 30;
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.c.h;
-			path = MVMenuButton.h;
+			name = MVMenuButton.h;
+			path = Widgets/MVMenuButton.h;
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -1562,7 +1557,8 @@
 			fileEncoding = 30;
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.c.objc;
-			path = MVMenuButton.m;
+			name = MVMenuButton.m;
+			path = Widgets/MVMenuButton.m;
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -1850,6 +1846,7 @@
 				8B5620E107CEA6F1005990E1,
 				8B561D9307CE7627005990E1,
 				8B6D020307CB32CD009A76DA,
+				CDDBEB4608327E4300F934ED,
 			);
 			isa = PBXCopyFilesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3185,6 +3182,7 @@
 				CD76863F08283934006AE601,
 				CD44164C082C1C67003C01FD,
 				CD44164E082C1C67003C01FD,
+				CDDBEB4708327E4300F934ED,
 			);
 			isa = PBXSourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3241,11 +3239,19 @@
 //CD4
 		CD44162D082C1BCC003C01FD = {
 			children = (
+				8B6710AF080C9BE00084EE5A,
+				8B6710B0080C9BE00084EE5A,
+				8B7E6DA5080B419500DD5466,
+				8B7E6DA6080B419500DD5466,
+				8B6FD33207B30B0F003F0000,
+				8B6FD33307B30B0F003F0000,
 				CD441646082C1C66003C01FD,
 				CD441647082C1C66003C01FD,
 				CD441648082C1C66003C01FD,
 				CD441649082C1C66003C01FD,
 				CD44164A082C1C66003C01FD,
+				CDDBEB4408327E4300F934ED,
+				CDDBEB4508327E4300F934ED,
 			);
 			isa = PBXGroup;
 			name = "Widgets And Additions";
@@ -3585,6 +3591,36 @@
 		};
 		CDA6C00D08299164007869CA = {
 			fileRef = CDA6C00C08299163007869CA;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		CDDBEB4408327E4300F934ED = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = EGScrollView.h;
+			path = Widgets/EGScrollView.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CDDBEB4508327E4300F934ED = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
+			name = EGScrollView.m;
+			path = Widgets/EGScrollView.m;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CDDBEB4608327E4300F934ED = {
+			fileRef = CDDBEB4408327E4300F934ED;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		CDDBEB4708327E4300F934ED = {
+			fileRef = CDDBEB4508327E4300F934ED;
 			isa = PBXBuildFile;
 			settings = {
 			};

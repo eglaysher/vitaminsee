@@ -1,7 +1,13 @@
 {
     IBClasses = (
+        {CLASS = EGScrollView; LANGUAGE = ObjC; SUPERCLASS = NSScrollView; }, 
         {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
-        {CLASS = MyImageView; LANGUAGE = ObjC; SUPERCLASS = NSImageView; }, 
+        {
+            CLASS = MyImageView; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {scrollView = EGScrollView; }; 
+            SUPERCLASS = NSImageView; 
+        }, 
         {
             ACTIONS = {copyButtonPushed = id; moveButtonPushed = id; }; 
             CLASS = SortManagerController; 

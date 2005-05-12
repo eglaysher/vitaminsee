@@ -42,3 +42,4 @@ struct DS buildImageSize(int boxWidth, int boxHeight, int imageWidth, int imageH
 					  BOOL*canGetAwayWithQuickRender, float* ratioUsed);
 float buildRatio(int first, int second);
 BOOL imageRepIsAnimated(NSImageRep* rep);
+//BOOL floatEquals(float one, float two, float tolerance = 0.001);

@@ -90,22 +90,17 @@
  */
 
 // For Version 0.6.1
-// * Fix documentation
+// * Foucs behaviour.
+// * When image view is key, and the split view gets dragged, the split view's
+//   highlight "leaks".
+
+// Post 6.1 todo list
 // * RBSplitView for the left column.
 //   * Find why images don't display when left side eats screen
 //   * Figure out how to make it less flickery when resizing
 
-// For Version 0.6.2
-// * Delete key in  sort manager preferences should do something. + UNDO!!!!
-// * Cache control. How large?
-// * Japanese Localization
-//   * Requires localization of display names!
-//     * General Preferences needs some kind of DisplayNameValueTransformer
-//     * ViewAsIcons view needs ability to determine between display name and
-//       actual name
-// * Check for file on remote volume.
-
 // For Version 0.7
+// * Delete key in  sort manager preferences should do something. + UNDO!!!!
 // * Fullscreen + Slideshow
 // * Have thumbnails scale down if right side is shrunk (rework NSBrowserCell
 //   subclass to use NSImageCell?)
@@ -117,7 +112,6 @@
 // For Version 0.8
 // * Transparent archive support
 // * Fit height/width
-// * Fullscreen mode
 // * DnD on the ViewIconViewController
 // * Mouse-wheel scrolling...
 //   * Requires next/previous 
@@ -135,6 +129,15 @@
 
 // For Version 1.0
 // ??????
+
+// For Version 0.6.2
+// * Cache control. How large?
+// * Japanese Localization
+//   * Requires localization of display names!
+//     * General Preferences needs some kind of DisplayNameValueTransformer
+//     * ViewAsIcons view needs ability to determine between display name and
+//       actual name
+// * Check for file on remote volume.
 
 // KNOWN ISSUES:
 // * GIF animation speed.
@@ -239,6 +242,7 @@
 	// Set up the file viewer on the left
 	viewAsIconsController = [self viewAsIconsControllerPlugin];
 	[self setViewAsView:[viewAsIconsController view]];
+	[viewAsIconsController connectKeyFocus:scrollView];
 	[viewerWindow setInitialFirstResponder:[viewAsIconsController view]];
 	
 	// Set up the scroll view on the right
@@ -250,6 +254,9 @@
 	[newClipView release];
 	[scrollView setDocumentView:docView];
 	[docView release];
+	
+	// Set the scroll view to accept input
+	[scrollView setFocusRingType:NSFocusRingAbove];
 	
 	// Use our file size formatter for formating the "[image size]" text label
 	FileSizeFormatter* fsFormatter = [[[FileSizeFormatter alloc] init] autorelease];
@@ -264,12 +271,11 @@
 	RBSplitSubview* leftView = [splitView subviewAtPosition:0];
 	[leftView setCanCollapse:YES];
 	[leftView setMinDimension:95 andMaxDimension:0];
-//	RBSplitSubview* rightView = [splitView subviewAtPosition:0];
-//	[rightView setCanCollapse:NO];
-//	[rightView setMinDimension:25 andMaxDimension:0];
 	
+	// Restore the settings for the split view
 	[splitView setAutosaveName:@"MainWindowSplitView" recursively:YES];
 	[splitView restoreState:YES];
+	
 	
 	// Set our plugins to nil
 	loadedBasePlugins = [[NSMutableDictionary alloc] init];
@@ -885,9 +891,26 @@
 	[self redraw];
 }
 
+- (void)splitView:(RBSplitView*)sender didCollapse:(RBSplitSubview*)subview
+{
+	// When we collapse, give the image viewer focus
+	[scrollView setNextKeyView:nil];
+	[mainVitaminSeeWindow makeFirstResponder:scrollView];
+	[mainVitaminSeeWindow setViewsNeedDisplay:YES];
+}
+
+- (void)splitView:(RBSplitView*)sender didExpand:(RBSplitSubview*)subview 
+{
+	// When we expand, make the file view first responder
+	[viewAsIconsController makeFirstResponderTo:mainVitaminSeeWindow];
+	[viewAsIconsController connectKeyFocus:scrollView];
+	[mainVitaminSeeWindow setViewsNeedDisplay:YES];
+}
+
 - (void)splitView:(RBSplitView*)sender wasResizedFrom:(float)oldDimension to:(float)newDimension
 {
 	NSLog(@"From: %f to %f", oldDimension, newDimension);
+		[mainVitaminSeeWindow setViewsNeedDisplay:YES];
 }
 
 // Redraw the window when the seperator between the file list and image view

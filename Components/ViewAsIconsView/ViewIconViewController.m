@@ -76,6 +76,14 @@
 	currentlySelectedCell = nil;
 }
 
+-(void)connectKeyFocus:(id)nextFocus
+{
+	[directoryDropdown setNextKeyView:ourBrowser];
+	[ourBrowser setNextKeyView:nextFocus];
+	[nextFocus setNextKeyView:directoryDropdown];	
+//	NSLog(@"Previous key view to nextFocus: %@", [nextFocus previousKeyView]);
+}
+
 //////////////////////////////////////////////////////////// PROTOCOL: FileView
 -(BOOL)fileIsInView:(NSString*)fileIsInView
 {

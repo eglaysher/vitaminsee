@@ -128,3 +128,8 @@ BOOL imageRepIsAnimated(NSImageRep* rep)
 	else
 		return NO;
 }
+
+BOOL floatEquals(float one, float two, float tolerance)
+{
+	return fabs(one - two) < tolerance;
+}
