@@ -81,7 +81,6 @@
 	[directoryDropdown setNextKeyView:ourBrowser];
 	[ourBrowser setNextKeyView:nextFocus];
 	[nextFocus setNextKeyView:directoryDropdown];	
-//	NSLog(@"Previous key view to nextFocus: %@", [nextFocus previousKeyView]);
 }
 
 //////////////////////////////////////////////////////////// PROTOCOL: FileView

@@ -51,6 +51,8 @@
 	int oldPosition;
 }
 
+-(void)connectKeyFocus:(id)nextFocus;
+
 //-(void)setThumbnailManager:(ThumbnailManager*)itm;
 
 -(void)setCurrentDirectory:(EGPath*)directory currentFile:(NSString*)file;

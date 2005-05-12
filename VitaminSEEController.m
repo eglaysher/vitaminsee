@@ -909,8 +909,8 @@
 
 - (void)splitView:(RBSplitView*)sender wasResizedFrom:(float)oldDimension to:(float)newDimension
 {
-	NSLog(@"From: %f to %f", oldDimension, newDimension);
-		[mainVitaminSeeWindow setViewsNeedDisplay:YES];
+//	NSLog(@"From: %f to %f", oldDimension, newDimension);
+	[mainVitaminSeeWindow setViewsNeedDisplay:YES];
 }
 
 // Redraw the window when the seperator between the file list and image view
