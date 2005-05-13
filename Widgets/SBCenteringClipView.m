@@ -1,7 +1,18 @@
 
 #import "SBCenteringClipView.h"
+#import "EGScrollView.h"
 
 @implementation SBCenteringClipView
+
+-(void)setScrollView:(id)inScrollView
+{
+	scrollView = inScrollView;
+}
+
+- (void)mouseDown:(NSEvent *)theEvent
+{
+	[scrollView noteMouseDown];
+}
 
 // ----------------------------------------
 

@@ -259,6 +259,7 @@
 	id newClipView = [[SBCenteringClipView alloc] initWithFrame:[[scrollView 
 		contentView] frame]];
 	[newClipView setBackgroundColor:[NSColor windowBackgroundColor]];
+	[newClipView setScrollView:scrollView];
 	[scrollView setContentView:(NSClipView*)newClipView];
 	[newClipView release];
 	[scrollView setDocumentView:docView];

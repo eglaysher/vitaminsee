@@ -8,8 +8,9 @@
 
 #import <Cocoa/Cocoa.h>
 
-
 @interface SBCenteringClipView : NSClipView {
+	IBOutlet id scrollView;
 }
+-(void)setScrollView:(id)inScrollView;
 -(void)centerDocument;
 @end
