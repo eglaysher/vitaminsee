@@ -98,6 +98,7 @@
 
 // EMERGENCY TODO LIST:
 // * Do paperwork
+// * Fix focus ring on change dir. And anytime that something makesKeyOrder
 
 // Doesn't work:
 // * Overflow menu for NSToolbarItem Favorites
@@ -322,9 +323,7 @@
 				objectForKey:@"DefaultStartupPath"]] currentFile:nil];
 	}
 	
-	// Make the icon view the first responder since the previous enable
-	// makes directoryDropdown FR.
-	[viewAsIconsController makeFirstResponderTo:mainVitaminSeeWindow];
+	[self selectFirstResponder];
 }
 
 -(BOOL)application:(NSApplication*)theApplication openFile:(NSString*)filename
@@ -362,7 +361,7 @@
 - (BOOL)applicationShouldHandleReopen:(NSApplication *)theApplication 
 					hasVisibleWindows:(BOOL)hasVisibleWindows
 {
-	NSLog(@"In applicationShouldHandleReopen");
+//	NSLog(@"In applicationShouldHandleReopen");
 	if(![mainVitaminSeeWindow isVisible])
 	{
 		// Now display the window
@@ -420,6 +419,7 @@
 -(IBAction)openFolder:(id)sender;
 {
 	[viewAsIconsController doubleClick:nil];
+	[self selectFirstResponder];
 }
 
 -(IBAction)closeWindow:(id)sender
@@ -474,13 +474,15 @@
 -(IBAction)goBack:(id)sender
 {
 	[pathManager undo];
-	[viewAsIconsController makeFirstResponderTo:mainVitaminSeeWindow];
+	[self selectFirstResponder];
+//	[viewAsIconsController makeFirstResponderTo:mainVitaminSeeWindow];
 }
 
 -(IBAction)goForward:(id)sender
 {
 	[pathManager redo];
-	[viewAsIconsController makeFirstResponderTo:mainVitaminSeeWindow];
+	[self selectFirstResponder];
+//	[viewAsIconsController makeFirstResponderTo:mainVitaminSeeWindow];
 }
 
 -(IBAction)goToComputerFolder:(id)sender
@@ -930,15 +932,16 @@
 {
 	// When we collapse, give the image viewer focus
 	[scrollView setNextKeyView:nil];
-	[mainVitaminSeeWindow makeFirstResponder:scrollView];
-	[mainVitaminSeeWindow setViewsNeedDisplay:YES];
+	[self selectFirstResponder];
+//	[mainVitaminSeeWindow makeFirstResponder:scrollView];
 	[imageViewer setNextKeyView:imageViewer];
 }
 
 - (void)splitView:(RBSplitView*)sender didExpand:(RBSplitSubview*)subview 
 {
 	// When we expand, make the file view first responder
-	[viewAsIconsController makeFirstResponderTo:mainVitaminSeeWindow];
+	[self selectFirstResponder];
+//	[viewAsIconsController makeFirstResponderTo:mainVitaminSeeWindow];
 	[viewAsIconsController connectKeyFocus:scrollView];
 	[mainVitaminSeeWindow setViewsNeedDisplay:YES];
 }
@@ -1107,6 +1110,20 @@
 -(IBAction)runToolbarCustomizationPalette:(id)sender
 {
 	[mainVitaminSeeWindow runToolbarCustomizationPalette:sender];
+}
+
+-(void)selectFirstResponder
+{
+	// Make the icon view the first responder since the previous enable
+	// makes directoryDropdown FR.
+	if(![[splitView subviewAtPosition:0] isCollapsed])
+	{
+		[viewAsIconsController makeFirstResponderTo:mainVitaminSeeWindow];
+	}
+	else
+	{
+		[mainVitaminSeeWindow makeFirstResponder:scrollView];	
+	}
 }
 
 @end

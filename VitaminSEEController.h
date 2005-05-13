@@ -191,5 +191,6 @@
 
 -(IBAction)toggleToolbarShown:(id)sender;
 -(IBAction)runToolbarCustomizationPalette:(id)sender;
+-(void)selectFirstResponder;
 
 @end
