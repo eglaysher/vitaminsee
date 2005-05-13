@@ -31,6 +31,7 @@
 #import <Cocoa/Cocoa.h>
 
 @class ImageTaskManager;
+@class EGPath;
 
 @interface ViewAsIconViewCell : NSBrowserCell {
 	NSString* title;
@@ -38,12 +39,13 @@
 
 	NSImage* iconImage;
 	NSString* thisCellsFullPath;	
+	EGPath* thisCellsEGPath;
 
 	float cachedTitleWidth;
 	NSString* cachedCellTitle;
 }
 
--(void)setCellPropertiesFromPath:(NSString*)path;
+-(void)setCellPropertiesFromPath:(NSString*)path andEGPath:(EGPath*)egpath;
 -(void)setIconImage:(NSImage*)image;
 -(NSString*)cellPath;
 

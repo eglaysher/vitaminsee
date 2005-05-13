@@ -33,6 +33,7 @@
 #import "AppKitAdditions.h"
 #import "NSString+FileTasks.h"
 #import "VitaminSEEController.h"
+#import "EGPath.h"
 
 #include <limits.h>
 
@@ -68,6 +69,7 @@ NSSize IMAGE_SIZE = {128.0f, 128.0f};
 	[iconImage release];
 	[cachedCellTitle release];
 	[thisCellsFullPath release];
+	[thisCellsEGPath release];
 	[super dealloc];
 }
 
@@ -89,7 +91,7 @@ NSSize IMAGE_SIZE = {128.0f, 128.0f};
 	cachedTitleWidth = FLT_MAX;
 }
 
--(void)setCellPropertiesFromPath:(NSString*)path
+-(void)setCellPropertiesFromPath:(NSString*)path andEGPath:(EGPath*)egpath
 {
 	// Keep this path...
 //	[path retain];
@@ -100,6 +102,9 @@ NSSize IMAGE_SIZE = {128.0f, 128.0f};
 	[title release];
 	title = [[thisCellsFullPath lastPathComponent] retain]; 
 		
+	[thisCellsEGPath release];
+	thisCellsEGPath = [egpath retain];
+	
 	[self setStringValue:title];
 //	[self setRepresentedObject:thisCellsFullPath];
 	
@@ -185,8 +190,10 @@ NSSize IMAGE_SIZE = {128.0f, 128.0f};
 	// (which there are quite a number of)
 	if(newWidth < cachedTitleWidth)
 	{
-		NSString* displayName = [[NSFileManager defaultManager] displayNameAtPath:
-			thisCellsFullPath];
+		NSString* displayName = [thisCellsEGPath displayName];
+		
+//		[[NSFileManager defaultManager] displayNameAtPath:
+//			thisCellsFullPath];
 
 		[cachedCellTitle release];
 		cachedCellTitle = [[displayName truncateForWidth:newWidth] retain];

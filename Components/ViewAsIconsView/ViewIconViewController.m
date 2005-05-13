@@ -258,7 +258,7 @@ willDisplayCell:(id)cell
 		 column:(int)column
 {
 	NSString* path = [fileList objectAtIndex:row];
-	[cell setCellPropertiesFromPath:path];
+	[cell setCellPropertiesFromPath:path andEGPath:[pluginLayer pathWithPath:path]];
 	[cell setIconImage:[path iconImageOfSize:NSMakeSize(128,128)]];
 }
 
