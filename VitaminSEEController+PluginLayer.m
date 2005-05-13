@@ -329,8 +329,12 @@
 
 -(BOOL)removeOverwriteFile:(NSString*)fileToOverwrite
 {
+	NSString* destDir = [[NSValueTransformer valueTransformerForName:
+		@"FullDisplayNameValueTransformer"] transformedValue:
+		[fileToOverwrite stringByDeletingLastPathComponent]];
+	
 	// Okay, so the file already exists. Let's ask the user for guidance
-	NSString* format = NSLocalizedString(@"An item named '%@' already exists in the directory '%@'. This operation cannot be undone.", 
+	NSString* format = NSLocalizedString(@"An item named '%@' already exists in the folder '%@'. This operation cannot be undone.", 
 										 @"Warning message when user would overwrite a file");
 	NSString* messageText = NSLocalizedString(@"Overwrite file?", 
 		@"Warning message when user would overwrite a file");
@@ -340,7 +344,7 @@
 		@"Overwrite button in warning message");
 	
 	NSString* text = [NSString stringWithFormat:format, [fileToOverwrite lastPathComponent], 
-		[fileToOverwrite stringByDeletingLastPathComponent]];
+		destDir];
 	NSAlert* alert = [NSAlert alertWithMessageText:messageText
 									 defaultButton:overwriteButton
 								   alternateButton:cancelButton

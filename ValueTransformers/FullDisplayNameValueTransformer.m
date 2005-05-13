@@ -60,7 +60,7 @@
 		// For each additional component after the first, 
 		while(current = [e nextObject])
 		{
-			[displayPath appendString:@":"];
+			[displayPath appendString:@" : "];
 			[displayPath appendString:current];
 		}
 	}
