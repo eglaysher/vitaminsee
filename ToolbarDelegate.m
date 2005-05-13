@@ -48,6 +48,7 @@ static NSString* ViewInPreviewToolbarID = @"Reveal in Finder Toolbar Identifier"
 
 static NSString* MoveToTrashID = @"Move Item to Trash Toolbar Identifier";
 
+static NSString* GotoComputerID = @"Goto Computer Toolbar Identifier";
 static NSString* GotoPicturesID = @"Goto Pictures Toolbar Identifier";
 static NSString* GotoHomeID = @"Goto Home Toolbar Identifier";
 static NSString* FavoritesID = @"Favorites Toolbar Identifier";
@@ -139,6 +140,15 @@ static NSString* PreviousPictureToolbarID = @"Previous Picture Toolbar Identifie
 		[item setTarget:self];
 		[item setAction:@selector(deleteFileClicked:)];				
 	}
+	else if([itemIdent isEqual:GotoComputerID])
+	{
+		[item setLabel:NSLocalizedString(@"Computer", @"Toolbar Item")];
+		[item setPaletteLabel:NSLocalizedString(@"Computer", @"Toolbar Item")];
+		[item setToolTip:NSLocalizedString(@"Computer", @"Toolbar Item")];
+		[item setImage:[NSImage imageNamed:@"iMac"]];
+		[item setTarget:self];
+		[item setAction:@selector(goToComputerFolder:)];				
+	}	
 	else if([itemIdent isEqual:GotoHomeID])
 	{
 		[item setLabel:NSLocalizedString(@"Home", @"Toolbar Item")];
@@ -192,7 +202,7 @@ static NSString* PreviousPictureToolbarID = @"Previous Picture Toolbar Identifie
 	return [NSArray arrayWithObjects:RevealInFinderToolbarID, 
 		ViewInPreviewToolbarID, NSToolbarSeparatorItemIdentifier,
 		NextPictureToolbarID, PreviousPictureToolbarID,
-		NSToolbarSeparatorItemIdentifier, 
+		NSToolbarSeparatorItemIdentifier, GotoComputerID,
 		GotoHomeID, GotoPicturesID, FavoritesID, NSToolbarSeparatorItemIdentifier,
 		NSToolbarFlexibleSpaceItemIdentifier, 
 		ZoomInToolbarID, ZoomOutToolbarID, ZoomToFitToolbarID, 
@@ -202,7 +212,7 @@ static NSString* PreviousPictureToolbarID = @"Previous Picture Toolbar Identifie
 - (NSArray *) toolbarAllowedItemIdentifiers: (NSToolbar *) toolbar
 {
 	return [NSArray arrayWithObjects:RevealInFinderToolbarID, ViewInPreviewToolbarID, 
-		MoveToTrashID, GotoPicturesID, GotoHomeID, FavoritesID, ZoomInToolbarID, ZoomOutToolbarID,
+		MoveToTrashID, GotoComputerID, GotoHomeID, GotoPicturesID, FavoritesID, ZoomInToolbarID, ZoomOutToolbarID,
 		ZoomToFitToolbarID, ActualSizeToolbarID, NextPictureToolbarID, PreviousPictureToolbarID,
 		NSToolbarSeparatorItemIdentifier,
 		NSToolbarSpaceItemIdentifier, NSToolbarFlexibleSpaceItemIdentifier,
@@ -246,16 +256,20 @@ static NSString* PreviousPictureToolbarID = @"Previous Picture Toolbar Identifie
 	{
 		enable = [viewAsIconsController canGoPreviousFile];
 	}
+	else if ([identifier isEqual:GotoComputerID])
+	{
+		enable = YES;
+	}	
+	else if ([identifier isEqual:GotoHomeID])
+	{
+		// Always show home. If the user has deleted his, then tough luck
+        enable = YES;
+    }	
 	else if ([identifier isEqual:GotoPicturesID])
 	{
 		// Only enable the Pictures item if "~/Pictures" exists
 		enable = [[NSHomeDirectory() stringByAppendingPathComponent:@"Pictures"] isDir];
 	}
-	else if ([identifier isEqual:GotoHomeID])
-	{
-		// Always show home. If the user has deleted his, then tough luck
-        enable = YES;
-    }
 	
     return enable;	
 }
