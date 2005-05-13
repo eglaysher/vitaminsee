@@ -62,6 +62,7 @@
 	IBOutlet NSWindow* mainVitaminSeeWindow;
 	
 	// Menu items we need to attatch items to
+	IBOutlet NSMenuItem* computerFolderMenuItem;
 	IBOutlet NSMenuItem* homeFolderMenuItem;
 	IBOutlet NSMenuItem* pictureFolderMenuItem;
 	IBOutlet NSMenuItem* favoritesMenuItem;
@@ -152,6 +153,7 @@
 -(IBAction)goBack:(id)sender;
 -(IBAction)goForward:(id)sender;
 // ----------------------
+-(IBAction)goToComputerFolder:(id)sender;
 -(IBAction)goToHomeFolder:(id)sender;
 -(IBAction)goToPicturesFolder:(id)sender;
 // ----------------------

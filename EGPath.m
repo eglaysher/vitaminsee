@@ -202,7 +202,13 @@
 
 -(NSString*)displayName
 {
-	return [[NSFileManager defaultManager] displayNameAtPath:fileSystemPath];
+	if(![fileSystemPath isLink])
+		return [[NSFileManager defaultManager] displayNameAtPath:fileSystemPath];
+	else
+	{
+		NSLog(@"%@ is a link!", fileSystemPath);
+		return [fileSystemPath lastPathComponent];
+	}
 }
 
 -(NSArray*)directoryContents

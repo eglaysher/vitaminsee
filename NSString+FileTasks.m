@@ -123,7 +123,7 @@ static NSArray* hiddenFiles = 0;
 - (BOOL)isLink 
 {
     NSDictionary *fileAttributes = [[NSFileManager defaultManager] 
-		fileAttributesAtPath:self  traverseLink:NO];
+		fileAttributesAtPath:self traverseLink:NO];
     return [[fileAttributes objectForKey:NSFileType] 
 		isEqualToString:NSFileTypeSymbolicLink];
 }

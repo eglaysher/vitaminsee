@@ -483,6 +483,14 @@
 	[viewAsIconsController makeFirstResponderTo:mainVitaminSeeWindow];
 }
 
+-(IBAction)goToComputerFolder:(id)sender
+{
+	if(![mainVitaminSeeWindow isVisible])
+		[self toggleVitaminSee:self];	
+	[viewAsIconsController setCurrentDirectory:[EGPathRoot root]
+								   currentFile:nil];
+}
+
 -(IBAction)goToHomeFolder:(id)sender
 {
 	if(![mainVitaminSeeWindow isVisible])
@@ -749,6 +757,17 @@
 	{
 		enable = mainWindowVisible && [pathManager canRedo];
 	}
+	else if (action == @selector(goToComputerFolder:))
+	{
+		// Set the icon if we don't have one yet.
+		if(![theMenuItem image])
+		{
+			NSImage* img = [[[NSImage imageNamed:@"iMac"] copy] autorelease];
+			[img setScalesWhenResized:YES];
+			[img setSize:NSMakeSize(16, 16)];
+			[theMenuItem setImage:img];
+		}
+	}	
 	else if (action == @selector(goToHomeFolder:))
 	{
 		// Set the icon if we don't have one yet.

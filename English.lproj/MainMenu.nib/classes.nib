@@ -27,6 +27,7 @@
                 goForward = id; 
                 goNextFile = id; 
                 goPreviousFile = id; 
+                goToComputerFolder = id; 
                 goToFolder = id; 
                 goToHomeFolder = id; 
                 goToPicturesFolder = id; 
@@ -49,6 +50,7 @@
             CLASS = VitaminSEEController; 
             LANGUAGE = ObjC; 
             OUTLETS = {
+                computerFolderMenuItem = NSMenuItem; 
                 currentFileViewHolder = NSView; 
                 favoritesMenuItem = NSMenuItem; 
                 fileSizeLabel = NSTextField; 
