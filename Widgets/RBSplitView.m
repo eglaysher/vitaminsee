@@ -689,6 +689,7 @@ static NSCursor* cursors[RBSVCursorTypeCount] = {nil};
 						RBSplitView* sv = [self splitView];
 						[sv?sv:self adjustSubviews];
 						[super display];
+						div = &dividers[i];
 // Adjust to the new cursor coordinates.
 						DIM(where) = DIM(div->origin)+offset;
 						if ((ldiv!=NSNotFound)&&![leading isCollapsed]) {
