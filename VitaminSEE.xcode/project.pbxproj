@@ -208,6 +208,7 @@
 		};
 		29B97317FDCFA39411CA2CEA = {
 			children = (
+				CDF0E2A408359F5A00652BEC,
 				CD44189A082EA2DC003C01FD,
 				CD44189B082EA2DC003C01FD,
 				CD76864F0829035F006AE601,
@@ -239,6 +240,7 @@
 		29B97318FDCFA39411CA2CEA = {
 			children = (
 				29B97319FDCFA39411CA2CEA,
+				CDF0E23D08353AFA00652BEC,
 			);
 			isa = PBXVariantGroup;
 			name = MainMenu.nib;
@@ -1060,6 +1062,7 @@
 		8B5279390801D48E0032F515 = {
 			children = (
 				8B52793A0801D48E0032F515,
+				CDF0E2520835605800652BEC,
 			);
 			isa = PBXVariantGroup;
 			name = Credits.html;
@@ -1128,6 +1131,7 @@
 		};
 		8B56209107CEA09E005990E1 = {
 			children = (
+				CDF0E2800835781700652BEC,
 				8B5E14E908146FF900897347,
 				8BC6662807BFCF880075F57F,
 				8BC6662907BFCF880075F57F,
@@ -1165,6 +1169,7 @@
 			files = (
 				8B5620C907CEA6A4005990E1,
 				8B5E14EB08146FF900897347,
+				CDF0E2810835781700652BEC,
 			);
 			isa = PBXResourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1485,6 +1490,7 @@
 		8B5E14E908146FF900897347 = {
 			children = (
 				8B5E14EA08146FF900897347,
+				CDF0E2790835615B00652BEC,
 			);
 			isa = PBXVariantGroup;
 			name = SortManager.nib;
@@ -1607,6 +1613,7 @@
 		8B6B0AA40804F50F007655EB = {
 			children = (
 				8BC27DA707ECF9B300B56836,
+				CDF0E24C0835603600652BEC,
 			);
 			isa = PBXVariantGroup;
 			name = GPL.txt;
@@ -3141,6 +3148,7 @@
 				CDA6C00D08299164007869CA,
 				CD44189C082EA2DC003C01FD,
 				CD44189D082EA2DC003C01FD,
+				CDF0E2A508359F5A00652BEC,
 			);
 			isa = PBXResourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3628,6 +3636,104 @@
 			isa = PBXBuildFile;
 			settings = {
 			};
+		};
+		CDF0E23D08353AFA00652BEC = {
+			isa = PBXFileReference;
+			lastKnownFileType = wrapper.nib;
+			name = Japanese;
+			path = Japanese.lproj/MainMenu.nib;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CDF0E24C0835603600652BEC = {
+			isa = PBXFileReference;
+			lastKnownFileType = text;
+			name = Japanese;
+			path = Japanese.lproj/GPL.txt;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CDF0E2520835605800652BEC = {
+			isa = PBXFileReference;
+			lastKnownFileType = text.html;
+			name = Japanese;
+			path = Japanese.lproj/Credits.html;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CDF0E2790835615B00652BEC = {
+			isa = PBXFileReference;
+			lastKnownFileType = wrapper.nib;
+			name = Japanese;
+			path = Components/SortManager/Japanese.lproj/SortManager.nib;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CDF0E27E0835781000652BEC = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = text.plist.strings;
+			name = English;
+			path = Components/SortManager/English.lproj/Localizable.strings;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CDF0E2800835781700652BEC = {
+			children = (
+				CDF0E27E0835781000652BEC,
+				CDF0E2820835781C00652BEC,
+			);
+			isa = PBXVariantGroup;
+			name = Localizable.strings;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CDF0E2810835781700652BEC = {
+			fileRef = CDF0E2800835781700652BEC;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		CDF0E2820835781C00652BEC = {
+			isa = PBXFileReference;
+			lastKnownFileType = text.plist.strings;
+			name = Japanese;
+			path = Components/SortManager/Japanese.lproj/Localizable.strings;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CDF0E2A208359F5200652BEC = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = text.plist.strings;
+			name = English;
+			path = English.lproj/Localizable.strings;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CDF0E2A408359F5A00652BEC = {
+			children = (
+				CDF0E2A208359F5200652BEC,
+				CDF0E2A608359F6100652BEC,
+			);
+			isa = PBXVariantGroup;
+			name = Localizable.strings;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CDF0E2A508359F5A00652BEC = {
+			fileRef = CDF0E2A408359F5A00652BEC;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		CDF0E2A608359F6100652BEC = {
+			isa = PBXFileReference;
+			lastKnownFileType = text.plist.strings;
+			name = Japanese;
+			path = Japanese.lproj/Localizable.strings;
+			refType = 4;
+			sourceTree = "<group>";
 		};
 		CDF1EA58082EA7AA00AA0441 = {
 			isa = PBXFileReference;

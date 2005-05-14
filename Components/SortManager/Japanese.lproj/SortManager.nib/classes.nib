@@ -1,0 +1,13 @@
+{
+    IBClasses = (
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {
+            ACTIONS = {copyButtonPushed = id; moveButtonPushed = id; }; 
+            CLASS = SortManagerController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {pathsController = NSArrayController; tableView = NSTableView; }; 
+            SUPERCLASS = NSWindowController; 
+        }
+    ); 
+    IBVersion = 1; 
+}

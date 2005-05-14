@@ -96,21 +96,20 @@
 // * Updated to RBSplitView 1.1.2. Now MIT! woot.
 // * Handle disk eject!!!!
 
-// EMERGENCY TODO LIST:
-// * Do paperwork
-// * Fix focus ring on change dir. And anytime that something makesKeyOrder
-
-// Doesn't work:
-// * Overflow menu for NSToolbarItem Favorites
-// * Text mode Favorites toolbar item is always leaves off the first item.
+// For Veresion 0.6.2
+// * Japanese Localization
+//   * Requires localization of display names!
+//     * General Preferences needs some kind of DisplayNameValueTransformer
+//     * ViewAsIcons view needs ability to determine between display name and
+//       actual name
+// * Fix sym-linnk behavor.
+// * If possible
+//   * Overflow menu for NSToolbarItem Favorites
+//   * Text mode Favorites toolbar item is always leaves off the first item.
 //   ** Neither of these appear to be fixable until Apple fixes support for NSMenus delegate support **
 
-// Post 6.1 todo list
-// * RBSplitView for the left column.
-//   * Figure out how to make it less flickery when resizing
-
 // For Version 0.7
-// * Delete key in  sort manager preferences should do something. + UNDO!!!!
+// * Delete key in sort manager preferences should do something. + UNDO!!!!
 // * Fullscreen + Slideshow
 // * Have thumbnails scale down if right side is shrunk (rework NSBrowserCell
 //   subclass to use NSImageCell?)
@@ -118,6 +117,8 @@
 //   * Requires figuring out how the Mac trash system works; 
 //     NSWorkspaceRecycleOperation isn't behaving how the Finder behaves. Maybe
 //     the answer is in Carbon?
+// * Working Open with other application function
+// * More thumbnail operations
 
 // For Version 0.8
 // * Transparent archive support
@@ -142,11 +143,6 @@
 
 // For Version 0.6.2
 // * Cache control. How large?
-// * Japanese Localization
-//   * Requires localization of display names!
-//     * General Preferences needs some kind of DisplayNameValueTransformer
-//     * ViewAsIcons view needs ability to determine between display name and
-//       actual name
 // * Check for file on remote volume.
 
 // KNOWN ISSUES:
