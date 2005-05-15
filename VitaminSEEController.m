@@ -73,28 +73,8 @@
 ////////////////////////////////////////////////// WHERE TO GO FROM HERE...
 
 /* COMPLETED:
- * * Disable show/hide toolbar and customize toolbar when window isn't displayed...
- * * Autosave main window position
- * * Close VS window, then open sort manager.
- * * Adding a thumbnail doesn't change a file's modification time (which makes
- *   more sense since we aren't really modifying the file).
- * * Option to show hidden files, plus hide stuff at the @"/" level by default.
- * * Advanced preference pane
- * * Thumbnails aren't displayed for files on remote server after generation (
- *   this could be fixed with a relod, but now it's not a problem...)
- * * Fix the !$#@ memory leak
- * * RBSplitView
- * * UTI types for 10.4 conformance
- * * Display names. Use the macintosh heiarchy instead of our own.
- * * Splitview Autosave position
+ * Fix overflow mode on the Favorites NSToolbarItem.
  */
-
-// 11th hour 0.6.1 fixes for ADA05:
-// * Foucs behaviour. (Hacked into a good enough state for ADA)
-// * Focus ring leaking on the sides. (Ugly hack in the nib)
-// * Find why images don't display when left side eats screen. (Hacked to work in -redraw)
-// * Updated to RBSplitView 1.1.2. Now MIT! woot.
-// * Handle disk eject!!!!
 
 // For Veresion 0.6.2
 // * Japanese Localization
@@ -103,10 +83,7 @@
 //     * ViewAsIcons view needs ability to determine between display name and
 //       actual name
 // * Fix sym-linnk behavor.
-// * If possible
-//   * Overflow menu for NSToolbarItem Favorites
-//   * Text mode Favorites toolbar item is always leaves off the first item.
-//   ** Neither of these appear to be fixable until Apple fixes support for NSMenus delegate support **
+// * Fix few places where UNIX paths are still used.
 
 // For Version 0.7
 // * Delete key in sort manager preferences should do something. + UNDO!!!!

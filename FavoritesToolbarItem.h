@@ -45,4 +45,6 @@
 -(id)initWithItemIdentifier:(NSString*)itemIdent 
 				 controller:(VitaminSEEController*)inCont;
 
+-(void)rebuildOverflowAndOtherMenu:(id)sender;
+
 @end

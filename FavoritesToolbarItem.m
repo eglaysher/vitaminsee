@@ -69,11 +69,22 @@
 		NSImage* image = [[[NSImage imageNamed:@"ToolbarFavoritesIcon"] copy] autorelease];
 		[image setScalesWhenResized:YES];
 		[image setSize:NSMakeSize(16,16)];
-		[menuRepresentation setImage:image];		
+		[menuRepresentation setImage:image];	
 		
 		[menuRepresentation setTitle:@"Favorites"];
-//		[menuRepresentation setSubmenu:favoritesMenu];
+		[self rebuildOverflowAndOtherMenu:self];
 		[self setMenuFormRepresentation:menuRepresentation];		
+		
+		// Listen for a change in the user defaults and rebuild this menu
+		// when/if it happens. Again, this really should be done with the
+		// delegate I wrote, but NSToolbarItem's menuRepresentation has 
+		// problems with NSMenu's that use delegates so we have to do this
+		// manually.
+		NSNotificationCenter* c = [NSNotificationCenter defaultCenter];
+		[c addObserver:self
+			  selector:@selector(rebuildOverflowAndOtherMenu:)
+				  name:NSUserDefaultsDidChangeNotification
+				object:nil];
 	}
 	
 	return self;
@@ -81,11 +92,20 @@
 
 -(void)dealloc
 {
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
+	
 	[popUpImage release];
 	[favoritesMenu release];
 	[favoritesMenuDelegate release];
 	[menuRepresentation release];
 	[super dealloc];
+}
+
+// Really, this is a hack around broken delegate support for NSMenus in
+// NSToolbarItems in text or overflow mode. 
+-(void)rebuildOverflowAndOtherMenu:(id)sender
+{	
+	[menuRepresentation setSubmenu:[favoritesMenuDelegate buildCompatibleMenu]];
 }
 
 @end

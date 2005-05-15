@@ -66,6 +66,24 @@ shouldCancel:(BOOL)shouldCancel
 	[item setTarget:self];
 }
 
+// This compatibility function is for the NSToolbarItem menuRepresentations.
+// It has major problems dealing with NSMenus with delegates, so return
+// an NSMenu with the items prebuilt.
+-(NSMenu*)buildCompatibleMenu 
+{
+	NSMenu* menu = [[[NSMenu alloc] initWithTitle:@"Favorites"] autorelease];
+	int count = [self numberOfItemsInMenu:nil];
+	int i = 0;
+	for(i = 0; i < count; ++i)
+	{
+		NSMenuItem* item = [[[NSMenuItem alloc] init] autorelease];
+		[self menu:menu updateItem:item atIndex:i shouldCancel:NO];
+		[menu addItem:item];
+	}
+	
+	return menu;
+}
+
 -(BOOL)validateMenuItem:(NSMenuItem *)theMenuItem
 {
 	return [[theMenuItem representedObject] isDir];

@@ -41,6 +41,8 @@
 				8BD011D907A99DFB00AA4BAA,
 				8B56209B07CEA204005990E1,
 				8B56209C07CEA204005990E1,
+				CD4F2F3908369FD6009E50D1,
+				CD4F2F3A08369FD6009E50D1,
 			);
 			isa = PBXGroup;
 			name = "Main Program Classes";
@@ -50,6 +52,7 @@
 		089C165CFE840E0CC02AAC07 = {
 			children = (
 				089C165DFE840E0CC02AAC07,
+				CD4F33430837D6BD009E50D1,
 			);
 			isa = PBXVariantGroup;
 			name = InfoPlist.strings;
@@ -154,6 +157,7 @@
 			mainGroup = 29B97314FDCFA39411CA2CEA;
 			projectDirPath = "";
 			targets = (
+				8D1107260486CEB800E47090,
 				CDA6BDCD08297FBF007869CA,
 				8B4FDB590807174C0016CABC,
 				8BC8F94707F2102000C66290,
@@ -163,7 +167,6 @@
 				8BA1243407D26EC700614FF4,
 				8BAF0F3D07CE6DAA00B0C832,
 				8B6D01F707CB327E009A76DA,
-				8D1107260486CEB800E47090,
 			);
 		};
 		29B97314FDCFA39411CA2CEA = {
@@ -1854,6 +1857,7 @@
 				8B561D9307CE7627005990E1,
 				8B6D020307CB32CD009A76DA,
 				CDDBEB4608327E4300F934ED,
+				CD4F2F3B08369FD6009E50D1,
 			);
 			isa = PBXCopyFilesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3195,6 +3199,7 @@
 				CD44164C082C1C67003C01FD,
 				CD44164E082C1C67003C01FD,
 				CDDBEB4708327E4300F934ED,
+				CD4F2F3C08369FD6009E50D1,
 			);
 			isa = PBXSourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3354,6 +3359,42 @@
 			isa = PBXBuildFile;
 			settings = {
 			};
+		};
+		CD4F2F3908369FD6009E50D1 = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			path = OpenWithMenuDelegate.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CD4F2F3A08369FD6009E50D1 = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
+			path = OpenWithMenuDelegate.m;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CD4F2F3B08369FD6009E50D1 = {
+			fileRef = CD4F2F3908369FD6009E50D1;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		CD4F2F3C08369FD6009E50D1 = {
+			fileRef = CD4F2F3A08369FD6009E50D1;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		CD4F33430837D6BD009E50D1 = {
+			isa = PBXFileReference;
+			lastKnownFileType = text.plist.strings;
+			name = Japanese;
+			path = Japanese.lproj/InfoPlist.strings;
+			refType = 4;
+			sourceTree = "<group>";
 		};
 		CD50A33C0826E74900414068 = {
 			fileEncoding = 4;

@@ -4,11 +4,11 @@
 //                and displays them in a menu.
 // Part of:       VitaminSEE
 //
-// Revision:      $Revision$
-// Last edited:   $Date$
-// Author:        $Author$
+// Revision:      $Revision: 149 $
+// Last edited:   $Date: 2005-04-29 14:32:49 -0400 (Fri, 29 Apr 2005) $
+// Author:        $Author: elliot $
 // Copyright:     (c) 2005 Elliot Glaysher
-// Created:       4/11/05
+// Created:       5/14/2005
 //
 /////////////////////////////////////////////////////////////////////////
 //
@@ -31,15 +31,20 @@
 
 #import <Cocoa/Cocoa.h>
 
-@class VitaminSEEController;
+@class PluginLayer;
 
-@interface FavoritesMenuDelegate : NSObject {
-		VitaminSEEController* controller;
+@interface OpenWithMenuDelegate : NSObject {
+	// 'JPG' => ('/Applications/Preview.app/...', '/Applications/Photoshop.app'..)
+	NSMutableDictionary* fileTypeToArrayOfApplicationURLS;
+	
+	NSArray* allApplications;
+	
+	PluginLayer* pluginLayer;
 }
 
--(id)initWithController:(VitaminSEEController*)controller;
+-(id)initWithPluginLayer:(PluginLayer*)pl;
 
-- (int)numberOfItemsInMenu:(NSMenu *)menu;
+-(int)numberOfItemsInMenu:(NSMenu *)menu;
 
 - (BOOL)menu:(NSMenu *)menu 
   updateItem:(NSMenuItem *)item 
@@ -47,4 +52,5 @@
 shouldCancel:(BOOL)shouldCancel;
 
 -(NSMenu*)buildCompatibleMenu;
+
 @end
