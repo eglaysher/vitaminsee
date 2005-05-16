@@ -1016,9 +1016,13 @@
 		 [[NSBundle mainBundle] builtInPlugInsPath] bundleExtension:@"cqvPref"];
         
         // Set which panes are included, and their order.
-        [prefs setPanesOrder:[NSArray arrayWithObjects:@"General",
-			@"Favorites", @"Keywords", @"Updating", @"Advanced",
-			@"A Non-Existent Preference Pane", nil]];
+        [prefs setPanesOrder:[NSArray arrayWithObjects:
+			NSLocalizedString(@"General", @"Name of General Preference Pane"),
+			NSLocalizedString(@"Favorites", @"Name of Favorites Prefernce Pane"),
+			NSLocalizedString(@"Keywords", @"Name of Keywords Preference Pane"),
+			NSLocalizedString(@"Updating", @"Name of Updating Preference Pane"),
+			NSLocalizedString(@"Advanced", @"Name of Advanced Preference Pange"),
+			nil]];
     }
     
     // Show the preferences window.

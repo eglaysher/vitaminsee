@@ -1469,6 +1469,7 @@
 		8B5E14E00814662200897347 = {
 			children = (
 				8B5E14E10814662200897347,
+				CD55212108394EE0007A4125,
 			);
 			isa = PBXVariantGroup;
 			name = GeneralPreferences.nib;
@@ -1663,11 +1664,12 @@
 		};
 		8B6D011307CB185E009A76DA = {
 			children = (
+				8B5E14E00814662200897347,
+				CD5520FB08394CA6007A4125,
 				8B561DF807CE78F9005990E1,
 				8BAF0F4B07CE6E5200B0C832,
 				8BAF0F4C07CE6E5200B0C832,
 				8BAF0F3F07CE6DAA00B0C832,
-				8B5E14E00814662200897347,
 			);
 			isa = PBXGroup;
 			name = GeneralPreferences;
@@ -2434,6 +2436,7 @@
 				8BAF0F4407CE6E1800B0C832,
 				8B561DF907CE78F9005990E1,
 				8B5E14E20814662200897347,
+				CD5520FC08394CA6007A4125,
 			);
 			isa = PBXResourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3419,6 +3422,47 @@
 			isa = PBXBuildFile;
 			settings = {
 			};
+		};
+		CD5520F708394C9D007A4125 = {
+			fileEncoding = 10;
+			isa = PBXFileReference;
+			lastKnownFileType = text.plist.strings;
+			name = English;
+			path = Components/GeneralPreferences/English.lproj/Localizable.strings;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CD5520FB08394CA6007A4125 = {
+			children = (
+				CD5520F708394C9D007A4125,
+				CD5520FD08394CAD007A4125,
+			);
+			isa = PBXVariantGroup;
+			name = Localizable.strings;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CD5520FC08394CA6007A4125 = {
+			fileRef = CD5520FB08394CA6007A4125;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		CD5520FD08394CAD007A4125 = {
+			isa = PBXFileReference;
+			lastKnownFileType = text.plist.strings;
+			name = Japanese;
+			path = Components/GeneralPreferences/Japanese.lproj/Localizable.strings;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CD55212108394EE0007A4125 = {
+			isa = PBXFileReference;
+			lastKnownFileType = wrapper.nib;
+			name = Japanese;
+			path = Components/GeneralPreferences/Japanese.lproj/GeneralPreferences.nib;
+			refType = 4;
+			sourceTree = "<group>";
 		};
 		CD76863C08283934006AE601 = {
 			fileEncoding = "-2147483647";
