@@ -400,7 +400,7 @@ void buildDisplayName(NSMutableArray* appilcationArray)
 	{
 		currentName = [currentEntry objectForKey:@"Name"];
 		
-		if([currentName isEqual:lastName])
+		if([currentName caseInsensitiveCompare:lastName] == NSOrderedSame)
 		{
 			// Both this and the pervious entry need their names set (this may
 			// double set the display name if their are three or more versions,

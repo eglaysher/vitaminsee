@@ -1445,6 +1445,7 @@
 		8B5E14D5081464D800897347 = {
 			children = (
 				8B5E14D6081464D800897347,
+				CD9B1D81083B94CD0098782A,
 			);
 			isa = PBXVariantGroup;
 			name = GoToFolderSheet.nib;
@@ -3509,12 +3510,44 @@
 			settings = {
 			};
 		};
+		CD9B1D54083B90120098782A = {
+			children = (
+				CDA6BE31082981F5007869CA,
+				CD9B1D56083B90180098782A,
+			);
+			isa = PBXVariantGroup;
+			name = AdvancedPreferences.nib;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CD9B1D55083B90120098782A = {
+			fileRef = CD9B1D54083B90120098782A;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		CD9B1D56083B90180098782A = {
+			isa = PBXFileReference;
+			lastKnownFileType = wrapper.nib;
+			name = Japanese;
+			path = Components/AdvancedPreferences/Japanese.lproj/AdvancedPreferences.nib;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CD9B1D81083B94CD0098782A = {
+			isa = PBXFileReference;
+			lastKnownFileType = wrapper.nib;
+			name = Japanese;
+			path = Components/GotoFolderSheet/Japanese.lproj/GoToFolderSheet.nib;
+			refType = 4;
+			sourceTree = "<group>";
+		};
 		CDA6BDB508297E90007869CA = {
 			children = (
 				CDA6C00C08299163007869CA,
 				CDA6BDE708297FF8007869CA,
 				CDA6BDE808297FF8007869CA,
-				CDA6BE31082981F5007869CA,
+				CD9B1D54083B90120098782A,
 				CDA6BDDF08297FBF007869CA,
 			);
 			isa = PBXGroup;
@@ -3526,7 +3559,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CDA6BDE608297FDE007869CA,
-				CDA6BE32082981F5007869CA,
+				CD9B1D55083B90120098782A,
 			);
 			isa = PBXResourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3652,16 +3685,10 @@
 		CDA6BE31082981F5007869CA = {
 			isa = PBXFileReference;
 			lastKnownFileType = wrapper.nib;
-			name = AdvancedPreferences.nib;
-			path = Components/AdvancedPreferences/AdvancedPreferences.nib;
+			name = English;
+			path = Components/AdvancedPreferences/English.lproj/AdvancedPreferences.nib;
 			refType = 4;
 			sourceTree = "<group>";
-		};
-		CDA6BE32082981F5007869CA = {
-			fileRef = CDA6BE31082981F5007869CA;
-			isa = PBXBuildFile;
-			settings = {
-			};
 		};
 		CDA6BEEC0829845E007869CA = {
 			fileRef = CDA6BDE808297FF8007869CA;

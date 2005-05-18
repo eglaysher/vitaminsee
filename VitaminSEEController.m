@@ -79,14 +79,11 @@
  * Open with menu
  */
 
-// For Veresion 0.6.2
-// * Japanese Localization
-//   * Requires localization of display names!
-//     * General Preferences needs some kind of DisplayNameValueTransformer
-//     * ViewAsIcons view needs ability to determine between display name and
-//       actual name
+// Double test:
 // * Fix sym-linnk behavor.
 
+// For Veresion 0.6.2
+// * Japanese Localization
 
 // For Version 0.7
 // * Open with toolbar item
