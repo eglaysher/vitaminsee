@@ -164,13 +164,16 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 138082061;
-			PBXWorkspaceStateSaveDate = 138082061;
+			PBXPerProjectTemplateStateSaveDate = 138083345;
+			PBXWorkspaceStateSaveDate = 138083345;
 		};
 		perUserProjectItems = {
 			CD102D5C083AF7530019F4F8 = CD102D5C083AF7530019F4F8;
 			CD102D5F083AF7530019F4F8 = CD102D5F083AF7530019F4F8;
 			CD102D60083AF7530019F4F8 = CD102D60083AF7530019F4F8;
+			CD687DED083AFC15004F1E0A = CD687DED083AFC15004F1E0A;
+			CD687DF0083AFC15004F1E0A = CD687DF0083AFC15004F1E0A;
+			CD687DF1083AFC15004F1E0A = CD687DF1083AFC15004F1E0A;
 			CD6D5BF1083AEF0A00855197 = CD6D5BF1083AEF0A00855197;
 			CD6D5BF2083AEF0A00855197 = CD6D5BF2083AEF0A00855197;
 			CD6D5BF3083AEF0A00855197 = CD6D5BF3083AEF0A00855197;
@@ -297,8 +300,8 @@
 	8B6A96F20807ABD10085334A = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {657, 1792}}";
-			sepNavSelRange = "{3815, 0}";
-			sepNavVisRect = "{{0, 1167}, {575, 625}}";
+			sepNavSelRange = "{2774, 0}";
+			sepNavVisRect = "{{0, 562}, {575, 625}}";
 			sepNavWindowFrame = "{{303, 25}, {620, 698}}";
 		};
 	};
@@ -463,16 +466,16 @@
 	8BD011D907A99DFB00AA4BAA = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {937, 18368}}";
-			sepNavSelRange = "{20378, 0}";
-			sepNavVisRect = "{{0, 10184}, {746, 648}}";
+			sepNavSelRange = "{20428, 0}";
+			sepNavVisRect = "{{0, 12068}, {746, 648}}";
 			sepNavWindowFrame = "{{40, 25}, {791, 721}}";
 		};
 	};
 	8BE97E2407ACD46B005D384C = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {818, 4464}}";
-			sepNavSelRange = "{10691, 0}";
-			sepNavVisRect = "{{0, 3736}, {746, 648}}";
+			sepNavSelRange = "{7508, 0}";
+			sepNavVisRect = "{{0, 2388}, {746, 648}}";
 			sepNavWindowFrame = "{{15, 20}, {791, 721}}";
 		};
 	};
@@ -674,21 +677,35 @@
 			sepNavWindowFrame = "{{15, 20}, {791, 721}}";
 		};
 	};
-	CD6D5A0B083AA3EA00855197 = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {746, 5392}}";
-			sepNavSelRange = "{2342, 0}";
-			sepNavVisRect = "{{0, 592}, {746, 648}}";
-			sepNavWindowFrame = "{{15, 20}, {791, 721}}";
-		};
+	CD687DED083AFC15004F1E0A = {
+		fRef = 8B6D01C007CB2EA2009A76DA;
+		isa = PBXTextBookmark;
+		name = "SS_PrefsController.m: 69";
+		rLen = 0;
+		rLoc = 1615;
+		rType = 0;
+		vrLen = 0;
+		vrLoc = 0;
 	};
-	CD6D5A0C083AA3F200855197 = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {746, 1504}}";
-			sepNavSelRange = "{2249, 49}";
-			sepNavVisRect = "{{0, 728}, {746, 648}}";
-			sepNavWindowFrame = "{{15, 20}, {791, 721}}";
-		};
+	CD687DF0083AFC15004F1E0A = {
+		fRef = 8BD011D907A99DFB00AA4BAA;
+		isa = PBXTextBookmark;
+		name = "VitaminSEEController.m: 658";
+		rLen = 0;
+		rLoc = 20378;
+		rType = 0;
+		vrLen = 1150;
+		vrLoc = 19844;
+	};
+	CD687DF1083AFC15004F1E0A = {
+		fRef = CD4F2F3A08369FD6009E50D1;
+		isa = PBXTextBookmark;
+		name = "EGOpenWithMenuDelegate.m: 145";
+		rLen = 0;
+		rLoc = 4757;
+		rType = 0;
+		vrLen = 1599;
+		vrLoc = 5149;
 	};
 	CD6D5BF1083AEF0A00855197 = {
 		fRef = 8B6D01C007CB2EA2009A76DA;
@@ -1482,8 +1499,8 @@
 	CDF0E2A608359F6100652BEC = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1308, 1408}}";
-			sepNavSelRange = "{528, 0}";
-			sepNavVisRect = "{{0, 0}, {746, 648}}";
+			sepNavSelRange = "{1454, 0}";
+			sepNavVisRect = "{{0, 628}, {746, 648}}";
 			sepNavWindowFrame = "{{148, 24}, {791, 721}}";
 		};
 	};

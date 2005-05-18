@@ -71,7 +71,7 @@
 		[image setSize:NSMakeSize(16,16)];
 		[menuRepresentation setImage:image];	
 		
-		[menuRepresentation setTitle:@"Favorites"];
+		[menuRepresentation setTitle:NSLocalizedString(@"Favorites", @"Toolbar Item")];
 		[self rebuildOverflowAndOtherMenu:self];
 		[self setMenuFormRepresentation:menuRepresentation];		
 		
