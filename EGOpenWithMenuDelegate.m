@@ -94,12 +94,9 @@ static void buildDisplayName(NSMutableArray* appilcationArray);
 		return [listOfApplications count];
 	else
 	{
-		listOfApplications = [self getOpenWithMenuFor:currentFile urls:allApplications];
-		
-		NSLog(@"List: %@", listOfApplications);
+		listOfApplications = [self getOpenWithMenuFor:currentFile urls:allApplications];		
 		
 		[fileTypeToArrayOfApplicationURLS setObject:listOfApplications forKey:extensionOfCurrentFile];
-		NSLog(@"Count: %d", [listOfApplications count]);
 		return [listOfApplications count];
 	}
 }

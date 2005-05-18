@@ -76,6 +76,7 @@
 /* COMPLETED:
  * Fix overflow mode on the Favorites NSToolbarItem.
  * Fix few places where UNIX paths are still used.
+ * Open with menu
  */
 
 // For Veresion 0.6.2
@@ -85,9 +86,10 @@
 //     * ViewAsIcons view needs ability to determine between display name and
 //       actual name
 // * Fix sym-linnk behavor.
-// * Open with
+
 
 // For Version 0.7
+// * Open with toolbar item
 // * Automator actions:
 //   * Set wallpaper
 //   * Find images

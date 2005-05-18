@@ -202,13 +202,10 @@
 
 -(NSString*)displayName
 {
-	if(![fileSystemPath isLink])
-		return [[NSFileManager defaultManager] displayNameAtPath:fileSystemPath];
-	else
-	{
-		NSLog(@"%@ is a link!", fileSystemPath);
+	if([fileSystemPath isLink])
 		return [fileSystemPath lastPathComponent];
-	}
+	else
+		return [[NSFileManager defaultManager] displayNameAtPath:fileSystemPath];
 }
 
 -(NSArray*)directoryContents
@@ -224,11 +221,7 @@
 	{
 		NSString* fullPath = [fileSystemPath stringByAppendingPathComponent:
 			[childPaths objectAtIndex:i]];
-		[fullChildPaths addObject:fullPath];
-		
-		// wow, looks like somebody didn't test the retain/release functionality
-		// in the standard library to well...
-//		[childPaths replaceObjectAtIndex:i withObject:fullPath];
+		[fullChildPaths addObject:fullPath];		
 	}
 	
 	return [self buildEGPathArrayFromArrayOfNSStrings:fullChildPaths];
@@ -260,32 +253,32 @@
 
 -(NSArray*)pathDisplayComponents
 {
-	NSMutableArray* components = [[[[NSFileManager defaultManager] 
-		componentsToDisplayForPath:fileSystemPath] mutableCopy] autorelease];
-	[components insertObject:[[EGPathRoot root] displayName] atIndex:0];
+	NSEnumerator* e = [[self pathComponents] objectEnumerator];
+	NSMutableArray* displayComponents = [NSMutableArray array];
+	EGPath* current;
+	while(current = [e nextObject])
+		[displayComponents addObject:[current displayName]];
 	
-	return components;
+	return displayComponents;
 }
 
 -(NSArray*)pathComponents
 {
 	NSMutableArray* mountedVolumes = [[NSWorkspace sharedWorkspace] mountedLocalVolumePaths];
-	NSMutableArray* components = [NSMutableArray array];
-	
-	// Remove "/" from the array; it doesn't need any special handeling.
-//	[mountedVolumes removeObject:[EGPathFilesystemPath pathWithPath:@"/"]];
+	NSMutableArray* components = [NSMutableArray array];	
 
 	NSString* currentPath = fileSystemPath;
 	
 	// Start from the end of the path, chopping off each
-	while(1)//![currentPath isEqual:@"/"])
+	while(1)
 	{
 		// First add the current path to the list of paths we return
 		[components insertObject:[EGPathFilesystemPath pathWithPath:currentPath]
 						 atIndex:0];		
 		
 		// Now go through each mounted volume mount point. If there's a match,
-		// then we need to break out of this loop.
+		// then we need to break out of this loop. Considering that / will always
+		// be mounted, this will break out when we hit root...
 		if([mountedVolumes containsObject:currentPath])
 			break;
 		
@@ -295,6 +288,8 @@
 	
 	// Finally, add the computer
 	[components insertObject:[EGPathRoot root] atIndex:0];
+
+//	NSLog(@"Path Components: %@", components);
 	
 	return components;
 }
