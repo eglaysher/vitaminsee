@@ -41,7 +41,9 @@
 				8BD011D907A99DFB00AA4BAA,
 				8B56209B07CEA204005990E1,
 				8B56209C07CEA204005990E1,
+				CD6D5A0C083AA3F200855197,
 				CD4F2F3908369FD6009E50D1,
+				CD6D5A0B083AA3EA00855197,
 				CD4F2F3A08369FD6009E50D1,
 			);
 			isa = PBXGroup;
@@ -3367,7 +3369,7 @@
 			fileEncoding = 4;
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.c.h;
-			path = OpenWithMenuDelegate.h;
+			path = EGOpenWithMenuDelegate.h;
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -3375,7 +3377,7 @@
 			fileEncoding = 4;
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.c.objc;
-			path = OpenWithMenuDelegate.m;
+			path = EGOpenWithMenuDelegate.m;
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -3461,6 +3463,22 @@
 			lastKnownFileType = wrapper.nib;
 			name = Japanese;
 			path = Components/GeneralPreferences/Japanese.lproj/GeneralPreferences.nib;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CD6D5A0B083AA3EA00855197 = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
+			path = OpenWithMenuDelegate.m;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CD6D5A0C083AA3F200855197 = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			path = OpenWithMenuDelegate.h;
 			refType = 4;
 			sourceTree = "<group>";
 		};

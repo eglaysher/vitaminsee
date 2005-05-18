@@ -22,6 +22,7 @@
                 closeWindow = id; 
                 deleteFileClicked = id; 
                 fakeFavoritesMenuSelector = id; 
+                fakeOpenWithMenuSelector = id; 
                 goBack = id; 
                 goEnclosingFolder = id; 
                 goForward = id; 
@@ -58,6 +59,7 @@
                 imageSizeLabel = NSTextField; 
                 imageViewer = NSImageView; 
                 mainVitaminSeeWindow = NSWindow; 
+                openWithMenuItem = NSMenuItem; 
                 pictureFolderMenuItem = NSMenuItem; 
                 progressCurrentTask = NSTextField; 
                 progressIndicator = NSProgressIndicator; 

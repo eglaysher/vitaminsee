@@ -31,6 +31,7 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class EGOpenWithMenuDelegate;
 @class ImageTaskManager;
 @class ThumbnailManager;
 @class ViewIconViewController;
@@ -67,6 +68,8 @@
 	IBOutlet NSMenuItem* pictureFolderMenuItem;
 	IBOutlet NSMenuItem* favoritesMenuItem;
 	FavoritesMenuDelegate* favoritesMenuDelegate;
+	IBOutlet NSMenuItem* openWithMenuItem;
+	EGOpenWithMenuDelegate* openWithMenuDelegate;
 	
     IBOutlet NSImageView *imageViewer;
 	IBOutlet NSTextField * fileSizeLabel;
@@ -136,6 +139,7 @@
 
 // File menu options
 -(IBAction)openFolder:(id)sender;
+-(IBAction)fakeOpenWithMenuSelector:(id)sender;
 -(IBAction)closeWindow:(id)sender;
 -(IBAction)referesh:(id)sender;
 

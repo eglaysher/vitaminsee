@@ -59,6 +59,7 @@
 #import "PluginLayer.h"
 #import "PathExistsValueTransformer.h"
 #import "FullDisplayNameValueTransformer.h"
+#import "EGOpenWithMenuDelegate.h"
 
 #import "RBSplitView.h"
 #import "RBSplitSubview.h"
@@ -74,6 +75,7 @@
 
 /* COMPLETED:
  * Fix overflow mode on the Favorites NSToolbarItem.
+ * Fix few places where UNIX paths are still used.
  */
 
 // For Veresion 0.6.2
@@ -83,9 +85,12 @@
 //     * ViewAsIcons view needs ability to determine between display name and
 //       actual name
 // * Fix sym-linnk behavor.
-// * Fix few places where UNIX paths are still used.
+// * Open with
 
 // For Version 0.7
+// * Automator actions:
+//   * Set wallpaper
+//   * Find images
 // * Delete key in sort manager preferences should do something. + UNDO!!!!
 // * Fullscreen + Slideshow
 // * Have thumbnails scale down if right side is shrunk (rework NSBrowserCell
@@ -262,6 +267,8 @@
 	[splitView setAutosaveName:@"MainWindowSplitView" recursively:YES];
 	[splitView restoreState:YES];
 	
+	[openWithMenuItem setTarget:self];
+	
 	// Set our plugins to nil
 	loadedBasePlugins = [[NSMutableDictionary alloc] init];
 	loadedViewPlugins = [[NSMutableDictionary alloc] init];
@@ -394,6 +401,10 @@
 {
 	[viewAsIconsController doubleClick:nil];
 	[self selectFirstResponder];
+}
+
+-(IBAction)fakeOpenWithMenuSelector:(id)sender
+{
 }
 
 -(IBAction)closeWindow:(id)sender
@@ -651,6 +662,20 @@
 	{
 		enable = mainWindowVisible && [currentImageFile isDir];
 	}
+	else if(action == @selector(fakeOpenWithMenuSelector:))
+	{
+		if(![theMenuItem submenu])
+		{
+			// Set up the Open with Menu
+			NSMenu* openWithMenu = [[[NSMenu alloc] init] autorelease];
+			openWithMenuDelegate = [[EGOpenWithMenuDelegate alloc] init];
+			[openWithMenuDelegate setDelegate:self];
+			[openWithMenu setDelegate:openWithMenuDelegate];
+			[theMenuItem setSubmenu:openWithMenu];		
+		}
+		   
+	   enable = mainWindowVisible && ![currentImageFile isDir];
+	}
 	else if(action == @selector(closeWindow:) ||
 			action == @selector(referesh:))
 	{
@@ -787,7 +812,7 @@
 		favoritesMenuDelegate = [[FavoritesMenuDelegate alloc] initWithController:self];
 		[favoritesMenu setDelegate:favoritesMenuDelegate];
 		[theMenuItem setSubmenu:favoritesMenu];		
-	}
+	}	
 
     return enable;
 }
@@ -1095,13 +1120,28 @@
 	// Make the icon view the first responder since the previous enable
 	// makes directoryDropdown FR.
 	if(![[splitView subviewAtPosition:0] isCollapsed])
-	{
 		[viewAsIconsController makeFirstResponderTo:mainVitaminSeeWindow];
-	}
 	else
-	{
 		[mainVitaminSeeWindow makeFirstResponder:scrollView];	
-	}
+}
+
+////////////////////////////// OPEN WITH MENU DELEGATE 
+-(void)openWithMenuDelegate:(EGOpenWithMenuDelegate*)openWithMenu
+		openCurrentFileWith:(NSString*)pathToApplication
+{
+	[[NSWorkspace sharedWorkspace] openFile:currentImageFile
+							withApplication:pathToApplication];
+}
+
+-(NSString*)currentFilePathForOpenWithMenuDelegate
+{
+	return currentImageFile;
+}
+
+-(BOOL)openWithMenuDelegate:(EGOpenWithMenuDelegate*)openWithMenu
+			 shouldShowItem:(NSDictionary*)item
+{
+	return [[item objectForKey:@"Path"] rangeOfString:@"Preview.app"].location == NSNotFound;
 }
 
 @end

@@ -64,9 +64,15 @@
 			[displayPath appendString:current];
 		}
 	}
+	else if([[[value pathComponents] objectAtIndex:1] isEqual:@"Volumes"])
+	{
+		displayPath = [NSString stringWithFormat:@"Missing folder on Volume \"%@\"", 
+			[[value pathComponents] objectAtIndex:2]];
+	}
 	else
 	{
-		displayPath = [NSString stringWithFormat:@"Missing folder at %@", value];
+		displayPath = [NSString stringWithFormat:@"Missing folder on Volume %@",
+			[[NSFileManager defaultManager] displayNameAtPath:@"/"]];
 	}
 	
 	return displayPath;

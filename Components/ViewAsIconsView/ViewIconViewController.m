@@ -139,8 +139,10 @@
 
 - (void)setCurrentDirectory:(EGPath*)newCurrentDirectory
 				currentFile:(NSString*)newCurrentFile
-{	
+{
 	[pluginLayer startProgressIndicator];
+	
+//	NSLog(@"Path: %@", [newCurrentDirectory fileSystemPath]);
 	
 	assert(![newCurrentDirectory isKindOfClass:[NSString class]]);
 	
