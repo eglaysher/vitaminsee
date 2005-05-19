@@ -77,10 +77,8 @@
  * Fix overflow mode on the Favorites NSToolbarItem.
  * Fix few places where UNIX paths are still used.
  * Open with menu
+ * Fix sym-linnk behavor.
  */
-
-// Double test:
-// * Fix sym-linnk behavor.
 
 // For Veresion 0.6.2
 // * Japanese Localization

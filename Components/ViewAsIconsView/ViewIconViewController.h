@@ -49,6 +49,8 @@
 	
 	NSMutableArray* fileList;	
 	int oldPosition;
+	
+	BOOL needToRebuild;
 }
 
 -(void)connectKeyFocus:(id)nextFocus;

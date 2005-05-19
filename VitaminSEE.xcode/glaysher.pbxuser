@@ -168,15 +168,8 @@
 			PBXWorkspaceStateSaveDate = 138147322;
 		};
 		perUserProjectItems = {
-			CD687E2E083B0563004F1E0A = CD687E2E083B0563004F1E0A;
-			CD9B1D6E083B941A0098782A = CD9B1D6E083B941A0098782A;
-			CD9B1D77083B94720098782A = CD9B1D77083B94720098782A;
 			CD9B1DB0083BF5DE0098782A = CD9B1DB0083BF5DE0098782A;
-			CD9B1DB1083BF5DE0098782A = CD9B1DB1083BF5DE0098782A;
-			CD9B1DB2083BF5DE0098782A = CD9B1DB2083BF5DE0098782A;
-			CD9B1E6C083BF6040098782A = CD9B1E6C083BF6040098782A;
-			CD9B1E6F083BF6040098782A = CD9B1E6F083BF6040098782A;
-			CD9B1E70083BF6040098782A = CD9B1E70083BF6040098782A;
+			CD9B1ECE083C194E0098782A = CD9B1ECE083C194E0098782A;
 		};
 		sourceControlManager = CD98F35108244FFF000A5C4A;
 		userBuildSettings = {
@@ -465,8 +458,8 @@
 	};
 	8BD011D907A99DFB00AA4BAA = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {937, 18352}}";
-			sepNavSelRange = "{2671, 0}";
+			sepNavIntBoundsRect = "{{0, 0}, {937, 18320}}";
+			sepNavSelRange = "{2702, 0}";
 			sepNavVisRect = "{{0, 846}, {746, 648}}";
 			sepNavWindowFrame = "{{40, 25}, {791, 721}}";
 		};
@@ -500,17 +493,17 @@
 	};
 	8BF72B0507B9E78F003A3C82 = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {746, 1328}}";
-			sepNavSelRange = "{1715, 0}";
-			sepNavVisRect = "{{0, 632}, {746, 648}}";
+			sepNavIntBoundsRect = "{{0, 0}, {746, 1360}}";
+			sepNavSelRange = "{1722, 13}";
+			sepNavVisRect = "{{0, 712}, {746, 648}}";
 			sepNavWindowFrame = "{{15, 20}, {791, 721}}";
 		};
 	};
 	8BF72B0607B9E78F003A3C82 = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {706, 9376}}";
-			sepNavSelRange = "{4163, 0}";
-			sepNavVisRect = "{{0, 2134}, {679, 357}}";
+			sepNavIntBoundsRect = "{{0, 0}, {746, 9728}}";
+			sepNavSelRange = "{16400, 0}";
+			sepNavVisRect = "{{0, 9048}, {746, 648}}";
 			sepNavWindowFrame = "{{205, 6}, {791, 721}}";
 		};
 	};
@@ -610,8 +603,8 @@
 	CD4F2F3A08369FD6009E50D1 = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {923, 6832}}";
-			sepNavSelRange = "{14029, 0}";
-			sepNavVisRect = "{{0, 6172}, {746, 648}}";
+			sepNavSelRange = "{13797, 0}";
+			sepNavVisRect = "{{0, 0}, {746, 648}}";
 			sepNavWindowFrame = "{{15, 20}, {791, 721}}";
 		};
 	};
@@ -646,16 +639,6 @@
 			sepNavVisRect = "{{0, 0}, {746, 648}}";
 			sepNavWindowFrame = "{{15, 20}, {791, 721}}";
 		};
-	};
-	CD687E2E083B0563004F1E0A = {
-		fRef = 8B6D01C007CB2EA2009A76DA;
-		isa = PBXTextBookmark;
-		name = "SS_PrefsController.m: 69";
-		rLen = 0;
-		rLoc = 1615;
-		rType = 0;
-		vrLen = 0;
-		vrLoc = 0;
 	};
 	CD76863C08283934006AE601 = {
 		uiCtxt = {
@@ -1344,14 +1327,6 @@
 		indexTemplatePath = "";
 		isa = PBXCodeSenseManager;
 	};
-	CD9B1D6E083B941A0098782A = {
-		fRef = CD4F2F3A08369FD6009E50D1;
-		isa = PBXBookmark;
-	};
-	CD9B1D77083B94720098782A = {
-		fRef = 8D1107310486CEB800E47090;
-		isa = PBXBookmark;
-	};
 	CD9B1DB0083BF5DE0098782A = {
 		fRef = 8B6D01C007CB2EA2009A76DA;
 		isa = PBXTextBookmark;
@@ -1362,27 +1337,7 @@
 		vrLen = 0;
 		vrLoc = 0;
 	};
-	CD9B1DB1083BF5DE0098782A = {
-		fRef = 8D1107310486CEB800E47090;
-		isa = PBXTextBookmark;
-		name = "Info.plist: 187";
-		rLen = 0;
-		rLoc = 4433;
-		rType = 0;
-		vrLen = 1058;
-		vrLoc = 3574;
-	};
-	CD9B1DB2083BF5DE0098782A = {
-		fRef = CD4F2F3A08369FD6009E50D1;
-		isa = PBXTextBookmark;
-		name = "EGOpenWithMenuDelegate.m: 422";
-		rLen = 0;
-		rLoc = 14029;
-		rType = 0;
-		vrLen = 1286;
-		vrLoc = 12803;
-	};
-	CD9B1E6C083BF6040098782A = {
+	CD9B1ECE083C194E0098782A = {
 		fRef = 8B6D01C007CB2EA2009A76DA;
 		isa = PBXTextBookmark;
 		name = "SS_PrefsController.m: 69";
@@ -1391,26 +1346,6 @@
 		rType = 0;
 		vrLen = 0;
 		vrLoc = 0;
-	};
-	CD9B1E6F083BF6040098782A = {
-		fRef = 8D1107310486CEB800E47090;
-		isa = PBXTextBookmark;
-		name = "Info.plist: 187";
-		rLen = 0;
-		rLoc = 4433;
-		rType = 0;
-		vrLen = 1070;
-		vrLoc = 3562;
-	};
-	CD9B1E70083BF6040098782A = {
-		fRef = CD4F2F3A08369FD6009E50D1;
-		isa = PBXTextBookmark;
-		name = "EGOpenWithMenuDelegate.m: 422";
-		rLen = 0;
-		rLoc = 14029;
-		rType = 0;
-		vrLen = 1290;
-		vrLoc = 12799;
 	};
 	CDA6BDCD08297FBF007869CA = {
 		activeExec = 0;

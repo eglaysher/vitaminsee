@@ -41,6 +41,7 @@
 @interface ViewIconViewController (Private)
 -(void)rebuildInternalFileArray;
 -(void)handleDidMountNotification:(id)notification;
+-(void)handleWillUnmountNotification:(id)notification;
 -(void)handleDidUnmountNotification:(id)notification;
 @end
 
@@ -64,9 +65,15 @@
 				   name:NSWorkspaceDidMountNotification
 				 object:nil];
 		[nc addObserver:self
+			   selector:@selector(handleWillUnmountNotification:)
+				   name:NSWorkspaceWillUnmountNotification
+				 object:nil];
+		[nc addObserver:self
 			   selector:@selector(handleDidUnmountNotification:)
 				   name:NSWorkspaceDidUnmountNotification
-				 object:nil];		
+				 object:nil];	
+		
+			needToRebuild = NO;
 	}
 
 	return self;
@@ -562,24 +569,35 @@ willDisplayCell:(id)cell
 	}
 }
 
+-(void)handleWillUnmountNotification:(id)notification
+{
+	NSString* unmountedPath = [[notification userInfo] objectForKey:@"NSDevicePath"];
+	NSString* realPath = [[currentDirectory fileSystemPath] stringByResolvingSymlinksInPath];
+
+	// Detect if we are on the volume that's going to be unmounted. We have to do
+	// this before the volume is unmounted, since otherwise the symlink isn't going to be
+	// detected
+	if([realPath hasPrefix:unmountedPath])
+	{
+		// Trying to modify stuff here takes locks on the files on the remote
+		// volume. So take note that we HAVE to drop back to root.
+		needToRebuild = YES;
+	}
+}
+
 -(void)handleDidUnmountNotification:(id)notification
 {
 	NSString* unmountedPath = [[notification userInfo] objectForKey:@"NSDevicePath"];
-
-	if([currentDirectory isRoot])
+	
+	if(needToRebuild || [currentDirectory isRoot] || 
+	   [[currentDirectory fileSystemPath] hasPrefix:unmountedPath])
 	{
 		// Rebuild list to reflect the mounted drive since we're in machine root.
-		[self rebuildInternalFileArray];
-		[ourBrowser loadColumnZero];
-		[ourBrowser selectRow:0 inColumn:0];
-		[self singleClick:ourBrowser];		
-	}
-	else if([[currentDirectory fileSystemPath] hasPrefix:unmountedPath])
-	{
-		// Drop back to root
 		[self setCurrentDirectory:[[currentDirectory pathComponents] objectAtIndex:0]
 					  currentFile:nil];
 	}
+	
+	needToRebuild = NO;
 }
 
 @end
