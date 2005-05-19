@@ -322,7 +322,7 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
 
 -(NSString*)name
 {
-	return NSLocalizedString(@"Sort Manager", @"Localized name of preference pane in toolbar");
+	return NSLocalizedString(@"Keywords", @"Localized name of preference pane in toolbar");
 }
 
 -(void)activate

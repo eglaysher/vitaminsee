@@ -47,8 +47,12 @@
 	[panel setCanChooseFiles:NO];
 	[panel setAllowsMultipleSelection:YES];
 	[panel setCanCreateDirectories:YES];
-	[panel setPrompt:NSLocalizedString(@"Add", @"Action button in add Favorite location open box")];
-	[panel setTitle:NSLocalizedString(@"Add paths to Sort Manager", @"Window title for open box")];
+	[panel setPrompt:NSLocalizedStringFromTableInBundle(@"Add", nil,
+		[NSBundle bundleForClass:[self class]],
+		@"Action button in add Favorite location open box")];
+	[panel setTitle:NSLocalizedStringFromTableInBundle(@"Add paths to Favorites",
+		nil, [NSBundle bundleForClass:[self class]],													   
+		@"Window title for open box")];
 	
 	int result = [panel runModalForDirectory:[NSHomeDirectory() 
 		stringByAppendingPathComponent:@"Pictures"]
