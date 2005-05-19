@@ -164,12 +164,19 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 138147322;
-			PBXWorkspaceStateSaveDate = 138147322;
+			PBXPerProjectTemplateStateSaveDate = 138160130;
+			PBXWorkspaceStateSaveDate = 138160130;
 		};
 		perUserProjectItems = {
 			CD9B1DB0083BF5DE0098782A = CD9B1DB0083BF5DE0098782A;
 			CD9B1ECE083C194E0098782A = CD9B1ECE083C194E0098782A;
+			CD9B1F93083C398F0098782A = CD9B1F93083C398F0098782A;
+			CD9B1F98083C3A0F0098782A = CD9B1F98083C3A0F0098782A;
+			CD9B1F99083C3A0F0098782A = CD9B1F99083C3A0F0098782A;
+			CD9B1F9A083C3A100098782A = CD9B1F9A083C3A100098782A;
+			CD9B1F9F083C3A100098782A = CD9B1F9F083C3A100098782A;
+			CD9B1FA1083C3A100098782A = CD9B1FA1083C3A100098782A;
+			CD9B1FA2083C3A100098782A = CD9B1FA2083C3A100098782A;
 		};
 		sourceControlManager = CD98F35108244FFF000A5C4A;
 		userBuildSettings = {
@@ -407,9 +414,9 @@
 	};
 	8BAF0F4C07CE6E5200B0C832 = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {746, 2080}}";
-			sepNavSelRange = "{3705, 0}";
-			sepNavVisRect = "{{0, 1432}, {746, 648}}";
+			sepNavIntBoundsRect = "{{0, 0}, {746, 2112}}";
+			sepNavSelRange = "{2662, 0}";
+			sepNavVisRect = "{{0, 1324}, {746, 306}}";
 			sepNavWindowFrame = "{{15, 20}, {791, 721}}";
 		};
 	};
@@ -635,7 +642,7 @@
 	CD5520FD08394CAD007A4125 = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {746, 648}}";
-			sepNavSelRange = "{241, 2}";
+			sepNavSelRange = "{157, 0}";
 			sepNavVisRect = "{{0, 0}, {746, 648}}";
 			sepNavWindowFrame = "{{15, 20}, {791, 721}}";
 		};
@@ -1346,6 +1353,68 @@
 		rType = 0;
 		vrLen = 0;
 		vrLoc = 0;
+	};
+	CD9B1F93083C398F0098782A = {
+		fRef = 8BAF0F4C07CE6E5200B0C832;
+		isa = PBXBookmark;
+	};
+	CD9B1F98083C3A0F0098782A = {
+		comments = "warning: `NSBundle' may not respond to `+bundleForClass:localizedStringForKey:value:table:'";
+		fRef = 8BAF0F4C07CE6E5200B0C832;
+		isa = PBXTextBookmark;
+		rLen = 1;
+		rLoc = 44;
+		rType = 1;
+	};
+	CD9B1F99083C3A0F0098782A = {
+		fRef = 8BAF0F4C07CE6E5200B0C832;
+		isa = PBXTextBookmark;
+		name = "[oPanel setTitle:NSLocalizedStringFromTableInBundle(@\"Change startup folder\",";
+		rLen = 80;
+		rLoc = 1744;
+		rType = 0;
+		vrLen = 375;
+		vrLoc = 1632;
+	};
+	CD9B1F9A083C3A100098782A = {
+		fRef = 8B6D01C007CB2EA2009A76DA;
+		isa = PBXTextBookmark;
+		name = "SS_PrefsController.m: 69";
+		rLen = 0;
+		rLoc = 1615;
+		rType = 0;
+		vrLen = 0;
+		vrLoc = 0;
+	};
+	CD9B1F9F083C3A100098782A = {
+		fRef = 8BAF0F4C07CE6E5200B0C832;
+		isa = PBXTextBookmark;
+		name = "GeneralPreferencesController.m: 46";
+		rLen = 0;
+		rLoc = 1824;
+		rType = 0;
+		vrLen = 482;
+		vrLoc = 3515;
+	};
+	CD9B1FA1083C3A100098782A = {
+		fRef = 8BAF0F4C07CE6E5200B0C832;
+		isa = PBXTextBookmark;
+		name = "GeneralPreferencesController.m: 107";
+		rLen = 0;
+		rLoc = 3678;
+		rType = 0;
+		vrLen = 435;
+		vrLoc = 2526;
+	};
+	CD9B1FA2083C3A100098782A = {
+		fRef = 8BAF0F4C07CE6E5200B0C832;
+		isa = PBXTextBookmark;
+		name = "GeneralPreferencesController.m: 69";
+		rLen = 0;
+		rLoc = 2662;
+		rType = 0;
+		vrLen = 411;
+		vrLoc = 3063;
 	};
 	CDA6BDCD08297FBF007869CA = {
 		activeExec = 0;

@@ -42,9 +42,11 @@
 	[oPanel setCanChooseDirectories:YES];
 	[oPanel setCanChooseFiles:NO];
 	[oPanel setAllowsMultipleSelection:NO];
-	[oPanel setTitle:NSLocalizedString(@"Change startup folder", 
+	[oPanel setTitle:NSLocalizedStringFromTableInBundle(@"Change startup folder", 
+		nil, [NSBundle bundleForClass:[self class]],
 		@"Name in open dialog box when selecting new startup folder")];
-	[oPanel setPrompt:NSLocalizedString(@"Change", 
+	[oPanel setPrompt:NSLocalizedStringFromTableInBundle(@"Change", nil,
+		[NSBundle bundleForClass:[self class]], 
 		@"Action button in open dialog box")];
 	
 	NSString* currentDirectory = [[NSUserDefaults standardUserDefaults]
