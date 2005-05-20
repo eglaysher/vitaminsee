@@ -14,6 +14,7 @@
 * Don't smooth the image at Actual Size; it doesn't do anything except slow things down.
   Apply smoothing only when shrinking or enlarging the image.
 * In the same vein, don't smooth the image when the unzoomed image will fit in the viewing area.
+* Handle unmounting in a sane way.
 
 0.6.1 Release (May 13th, 2005)
 ------------------------------
