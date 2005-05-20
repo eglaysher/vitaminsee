@@ -47,7 +47,7 @@ using namespace std;
 		{
 			// This entry is a keyword. Add it to our list.
 			const char* keyVal = md->value().toString().c_str();
-			NSString* keyword = [NSString stringWithCString:keyVal];
+			NSString* keyword = [NSString stringWithUTF8String:keyVal];
 			[keywords addObject:keyword];
 		}
 	}

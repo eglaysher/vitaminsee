@@ -254,8 +254,8 @@
 	};
 	8B52793A0801D48E0032F515 = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {867, 648}}";
-			sepNavSelRange = "{1157, 0}";
+			sepNavIntBoundsRect = "{{0, 0}, {937, 648}}";
+			sepNavSelRange = "{827, 0}";
 			sepNavVisRect = "{{0, 0}, {746, 648}}";
 			sepNavWindowFrame = "{{15, 20}, {791, 721}}";
 		};
@@ -508,9 +508,9 @@
 	};
 	8BD011D907A99DFB00AA4BAA = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {937, 18352}}";
-			sepNavSelRange = "{0, 1366}";
-			sepNavVisRect = "{{0, 0}, {746, 648}}";
+			sepNavIntBoundsRect = "{{0, 0}, {937, 18368}}";
+			sepNavSelRange = "{2958, 0}";
+			sepNavVisRect = "{{0, 1592}, {746, 648}}";
 			sepNavWindowFrame = "{{40, 25}, {791, 721}}";
 		};
 	};
@@ -1489,7 +1489,7 @@
 	CDF0E2520835605800652BEC = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1381, 648}}";
-			sepNavSelRange = "{1103, 0}";
+			sepNavSelRange = "{711, 0}";
 			sepNavVisRect = "{{0, 0}, {746, 648}}";
 			sepNavWindowFrame = "{{204, 8}, {791, 721}}";
 		};
@@ -1513,7 +1513,7 @@
 	CDF0E2A608359F6100652BEC = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {746, 1568}}";
-			sepNavSelRange = "{576, 0}";
+			sepNavSelRange = "{1249, 0}";
 			sepNavVisRect = "{{0, 0}, {746, 648}}";
 			sepNavWindowFrame = "{{227, 25}, {791, 721}}";
 		};

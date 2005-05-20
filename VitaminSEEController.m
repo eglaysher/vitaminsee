@@ -80,6 +80,7 @@
  * Fix sym-link behavor.
  * Switching from "Zoom to Fit" to "Actual Size" doesn't lag anymore.
  * Use localized display name in the default Favorites path.
+ * Non-ASCII keywords are read back from the file properly. Full support for Unicode.
  */
 
 // For Veresion 0.6.2
