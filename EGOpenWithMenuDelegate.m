@@ -84,8 +84,14 @@ static void buildDisplayName(NSMutableArray* appilcationArray);
 		// subsequent calls.
 		_LSCopyAllApplicationURLs(&allApplications);
 	}
-
+	
 	NSString* currentFile = [self getCurrentFile];
+	
+	// If the current file is a folder, then just ignore. We eat way too much
+	// time on folders.
+	BOOL isDir;
+	if([[NSFileManager defaultManager] fileExistsAtPath:currentFile isDirectory:&isDir] && isDir)
+		return 0;
 
 	NSString* extensionOfCurrentFile = [currentFile pathExtension];
 	NSArray* listOfApplications = [fileTypeToArrayOfApplicationURLS 
@@ -117,8 +123,7 @@ static void buildDisplayName(NSMutableArray* appilcationArray);
 	
 	// Set the image
 	NSString* pathString = [currentApplication objectForKey:@"Path"];
-	NSImage* image = [[[[NSWorkspace sharedWorkspace]
-			iconForFile:pathString] copy] autorelease];
+	NSImage* image = [[NSWorkspace sharedWorkspace] iconForFile:pathString];
 	[image setScalesWhenResized:YES];
 	[image setSize:NSMakeSize(16,16)];
 	[item setImage:image];
@@ -167,6 +172,7 @@ static void buildDisplayName(NSMutableArray* appilcationArray);
 
 	return currentFile;
 }
+
 
 -(NSArray*)getOpenWithMenuFor:(NSString*)file urls:(NSArray*) applicationURLs
 {

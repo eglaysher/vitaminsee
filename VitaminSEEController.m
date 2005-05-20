@@ -78,10 +78,12 @@
  * Fix few places where UNIX paths are still used.
  * Open with menu
  * Fix sym-linnk behavor.
+ * Switching from "Zoom to Fit" to "Actual Size" doesn't lag anymore.
  */
 
 // For Veresion 0.6.2
 // * Japanese Localization
+// * THOURGHAL TESTING!!!!
 
 // For Version 0.7
 // * Open with toolbar item

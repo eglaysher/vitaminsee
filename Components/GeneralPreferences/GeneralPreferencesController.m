@@ -97,8 +97,7 @@
 
 - (NSString *)paneName
 {
-    return NSLocalizedStringFromTableInBundle(@"General", nil, [NSBundle bundleForClass:[self class]],
-											  @"Localized name of preference pane in toolbar");
+    return NSLocalizedString(@"General", @"Localized name of preference pane in toolbar");
 }
 
 - (NSImage *)paneIcon
@@ -114,7 +113,6 @@
 	NSString* tooltip = NSLocalizedStringFromTableInBundle(
 		@"General Preferences", nil, [NSBundle bundleForClass:[self class]],
 		@"Tooltip in toolbar");
-	NSLog(@"Tip: %@", tooltip);
 	return tooltip;
 }
 

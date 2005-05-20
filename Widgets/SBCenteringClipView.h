@@ -1,10 +1,16 @@
+/////////////////////////////////////////////////////////////////////////
+// File:          $Name$
+// Module:        Main Controller Class
+// Part of:       VitaminSEE
 //
-//  SBCenteringClipView.h
-//  CQView
+// ID:            $Id: VitaminSEEController.m 123 2005-04-18 00:21:02Z elliot $
+// Revision:      $Revision$
+// Last edited:   $Date$
+// Author:        $Author$
+// Copyright:     (c) 2005 Somebody Else
+// Created:       2/3/05
 //
-//  Created by Elliot on 2/3/05.
-//  Copyright 2005 Elliot Glaysher. All rights reserved.
-//
+/////////////////////////////////////////////////////////////////////////
 
 #import <Cocoa/Cocoa.h>
 

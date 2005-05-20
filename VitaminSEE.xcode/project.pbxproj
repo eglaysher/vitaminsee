@@ -892,6 +892,7 @@
 			buildRules = (
 			);
 			buildSettings = {
+				COPY_PHASE_STRIP = NO;
 				DEPLOYMENT_POSTPROCESSING = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				INFOPLIST_FILE = "Components/ImageMetadata/ImageMetadata-Info.plist";
@@ -1202,7 +1203,8 @@
 			buildRules = (
 			);
 			buildSettings = {
-				DEPLOYMENT_POSTPROCESSING = YES;
+				COPY_PHASE_STRIP = NO;
+				DEPLOYMENT_POSTPROCESSING = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
 				INFOPLIST_FILE = "Components/SortManager/SortManager-Info.plist";
@@ -1397,6 +1399,7 @@
 		8B5E14C7081462CB00897347 = {
 			children = (
 				8B5E14C8081462CB00897347,
+				CD9B1FFA083C42890098782A,
 			);
 			isa = PBXVariantGroup;
 			name = KeywordManagerPreferences.nib;
@@ -1421,6 +1424,7 @@
 		8B5E14D0081463A400897347 = {
 			children = (
 				8B5E14D1081463A400897347,
+				CD92B1A2083D15B800298815,
 			);
 			isa = PBXVariantGroup;
 			name = KeywordManager.nib;
@@ -1651,6 +1655,7 @@
 		};
 		8B6D010E07CB179C009A76DA = {
 			children = (
+				CD9B1FD7083C3EB50098782A,
 				8B5E14EE081470A600897347,
 				8B7DDCCA07F8E82400FE20E4,
 				8B7DDCCB07F8E82400FE20E4,
@@ -1745,6 +1750,7 @@
 			files = (
 				8B6D01FC07CB329C009A76DA,
 				8B5E14F0081470A600897347,
+				CD9B1FD8083C3EB50098782A,
 			);
 			isa = PBXResourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2131,7 +2137,7 @@
 			);
 			buildSettings = {
 				COPY_PHASE_STRIP = NO;
-				DEPLOYMENT_POSTPROCESSING = YES;
+				DEPLOYMENT_POSTPROCESSING = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
 				INFOPLIST_FILE = "Components/GotoFolderSheet/GotoFolderSheet-Info.plist";
@@ -2468,7 +2474,8 @@
 			buildRules = (
 			);
 			buildSettings = {
-				DEPLOYMENT_POSTPROCESSING = YES;
+				COPY_PHASE_STRIP = NO;
+				DEPLOYMENT_POSTPROCESSING = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
 				INFOPLIST_FILE = "Components/GeneralPreferences/GeneralPreferences-Info.plist";
@@ -3099,8 +3106,9 @@
 			buildRules = (
 			);
 			buildSettings = {
-				DEAD_CODE_STRIPPING = YES;
-				DEPLOYMENT_POSTPROCESSING = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = NO;
+				DEPLOYMENT_POSTPROCESSING = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -3510,6 +3518,14 @@
 			settings = {
 			};
 		};
+		CD92B1A2083D15B800298815 = {
+			isa = PBXFileReference;
+			lastKnownFileType = wrapper.nib;
+			name = Japanese;
+			path = Components/KeywordManager/Japanese.lproj/KeywordManager.nib;
+			refType = 4;
+			sourceTree = "<group>";
+		};
 		CD9B1D54083B90120098782A = {
 			children = (
 				CDA6BE31082981F5007869CA,
@@ -3539,6 +3555,47 @@
 			lastKnownFileType = wrapper.nib;
 			name = Japanese;
 			path = Components/GotoFolderSheet/Japanese.lproj/GoToFolderSheet.nib;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CD9B1FD3083C3EAF0098782A = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = text.plist.strings;
+			name = English;
+			path = Components/SortManagerPreferences/English.lproj/Localizable.strings;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CD9B1FD7083C3EB50098782A = {
+			children = (
+				CD9B1FD3083C3EAF0098782A,
+				CD9B1FD9083C3EBA0098782A,
+			);
+			isa = PBXVariantGroup;
+			name = Localizable.strings;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CD9B1FD8083C3EB50098782A = {
+			fileRef = CD9B1FD7083C3EB50098782A;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		CD9B1FD9083C3EBA0098782A = {
+			isa = PBXFileReference;
+			lastKnownFileType = text.plist.strings;
+			name = Japanese;
+			path = Components/SortManagerPreferences/Japanese.lproj/Localizable.strings;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CD9B1FFA083C42890098782A = {
+			isa = PBXFileReference;
+			lastKnownFileType = wrapper.nib;
+			name = Japanese;
+			path = Components/KeywordManagerPreferences/Japanese.lproj/KeywordManagerPreferences.nib;
 			refType = 4;
 			sourceTree = "<group>";
 		};

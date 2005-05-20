@@ -200,8 +200,9 @@
 	pthread_mutex_unlock(&imageScalingProperties);
 	
 	// Build the thumbnail and set it to the file...
-	if(localShouldBuild && [[NSFileManager defaultManager] fileExistsAtPath:path] &&
-	    [path isImage] && ![IconFamily fileHasCustomIcon:path])
+	BOOL isDirectory;
+	if(localShouldBuild && [[NSFileManager defaultManager] fileExistsAtPath:path isDirectory:&isDirectory] &&
+	   !isDirectory && [path isImage] && ![IconFamily fileHasCustomIcon:path])
 	{
 		[vitaminSEEController setStatusText:[NSString 
 			stringWithFormat:@"Building thumbnail for %@...", [path lastPathComponent]]];

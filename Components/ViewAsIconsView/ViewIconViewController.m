@@ -545,8 +545,7 @@ willDisplayCell:(id)cell
 	NSEnumerator* fileEnum = [myFileList objectEnumerator];
 	NSString* file;
 	while(file = [fileEnum nextObject])
-		if([file isImage])
-			[pluginLayer generateThumbnailForFile:file];
+		[pluginLayer generateThumbnailForFile:file];
 	
 	// Now let's keep our new list of files.
 	[myFileList retain];

@@ -1,17 +1,36 @@
+/////////////////////////////////////////////////////////////////////////
+// File:          $Name$
+// Module:        Scroll View that can become key, processes key input as
+//                scrolling, and draws a focus ring.
+// Part of:       VitaminSEE
 //
-//  EGScrollView.m
-//  VitaminSEE
+// Revision:      $Revision: 192 $
+// Last edited:   $Date: 2005-05-18 01:07:24 -0400 (Wed, 18 May 2005) $
+// Author:        $Author: glaysher $
+// Copyright:     (c) 2005 Elliot Glaysher
+// Created:       5/11/05
 //
-//  Created by Elliot Glaysher on 5/11/05.
-//  Copyright 2005 __MyCompanyName__. All rights reserved.
+/////////////////////////////////////////////////////////////////////////
 //
+// This library is free software; you can redistribute it and/or
+// modify it under the terms of the GNU Lesser General Public
+// License as published by the Free Software Foundation; either
+// version 2.1 of the License, or (at your option) any later version.
+//  
+// This library is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+// Lesser General Public License for more details.
+//  
+// You should have received a copy of the GNU Lesser General Public
+// License along with this library; if not, write to the Free Software
+// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  
+// USA
+//
+/////////////////////////////////////////////////////////////////////////
+
 
 #import "EGScrollView.h"
-
-#define UnicodeLeft [NSString stringWithFormat:@"%C",0x2190]
-#define UnicodeRight [NSString stringWithFormat:@"%C",0x2192]
-#define UnicodeUp [NSString stringWithFormat:@"%C",0x2191]
-#define UnicodeDown [NSString stringWithFormat:@"%C",0x2193]
 
 #define   ARROW_UP_KEY        0x7E
 #define   ARROW_DOWN_KEY      0x7D
@@ -105,17 +124,12 @@
     lastResp = resp; 
 
 	NSRect boundsWithSideView = [self bounds];
-//	boundsWithSideView.origin.x -= 10;
-//	boundsWithSideView.origin.y -= 10;	
-//	boundsWithSideView.size.width += 10;
-//	boundsWithSideView.size.height += 20;
     [self setKeyboardFocusRingNeedsDisplayInRect:boundsWithSideView]; 
     return YES; 
 } 
 
 - (void)drawRect:(NSRect)rect {
     [super drawRect: rect]; 
-//    NSLog(@"%@ drawing focus ring? %hd", self, shouldDrawFocusRing); 
     if (shouldDrawFocusRing) { 
         NSSetFocusRingStyle(NSFocusRingOnly); 
         NSRectFill(rect);

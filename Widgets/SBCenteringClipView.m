@@ -1,3 +1,18 @@
+/////////////////////////////////////////////////////////////////////////
+// File:          $Name$
+// Module:        Main Controller Class
+// Part of:       VitaminSEE
+//
+// ID:            $Id: VitaminSEEController.m 123 2005-04-18 00:21:02Z elliot $
+// Revision:      $Revision$
+// Last edited:   $Date$
+// Author:        $Author$
+// Copyright:     (c) 2005 Somebody Else
+// Created:       2/3/05
+//
+/////////////////////////////////////////////////////////////////////////
+//
+// This class is 99% based on an article on the net. Google for SBCenteringClipView.
 
 #import "SBCenteringClipView.h"
 #import "EGScrollView.h"

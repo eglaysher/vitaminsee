@@ -384,8 +384,12 @@
 //	NSLog(@"Image:[%d, %d] Dispaly:[%d, %d]", imageX, imageY, display.width, display.height);
 	
 	NSImage* imageToRet;
-	if(smoothing == NO_SMOOTHING || imageRepIsAnimated(imageRep))
+	if(smoothing == NO_SMOOTHING || 
+	   (canScaleProportionally && ratioToScale == 1.0) ||
+	   (imageX <= contentViewSize.width && imageY <= contentViewSize.height) ||
+	   imageRepIsAnimated(imageRep))
 	{
+//		NSLog(@"Quick render!");
 		// Draw the image by just making an NSImage from the imageRep. This is
 		// done when the image will have no smoothing, or when we are 
 		// rendering an animated GIF.
@@ -402,6 +406,7 @@
 	}
 	else
 	{
+//		NSLog(@"Full render!");
 		// First, we draw the image with no interpolation, and send that representation
 		// to the screen for SPEED so it LOOKS like we are doing something.
 		imageToRet = [[[NSImage alloc] initWithSize:NSMakeSize(display.width,

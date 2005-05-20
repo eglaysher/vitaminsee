@@ -145,7 +145,7 @@
 			// moving is reciporical, we don't need an unMove function.
 			if(canUndo)
 			{
-				[[self undoManager] setActionName:@"Move"];
+				[[self undoManager] setActionName:NSLocalizedString(@"Move", @"Move undo label")];
 				[[[self undoManager] prepareWithInvocationTarget:self] 
 					moveFile:destinationPath
 						  to:sourceDirectory];
@@ -198,7 +198,7 @@
 			
 			if(canUndo)
 			{
-				[[self undoManager] setActionName:@"Copy"];
+				[[self undoManager] setActionName:NSLocalizedString(@"Copy", @"Copy undo label")];
 				[[[self undoManager] prepareWithInvocationTarget:self] 
 					unCopyFile:destinationPath from:file];
 			}
@@ -250,7 +250,7 @@
 			
 			if(canUndo)
 			{
-				[[self undoManager] setActionName:@"Rename"];
+				[[self undoManager] setActionName:NSLocalizedString(@"Rename", @"Rename undo label")];
 				NSString* originalFilename = [file lastPathComponent];
 				[[[self undoManager] prepareWithInvocationTarget:self] 
 					renameFile:destinationPath to:originalFilename];
@@ -317,7 +317,7 @@
 	// If the source exists, we can undo this operation...
 	if([fileManager fileExistsAtPath:oldSource])
 	{
-		[[self undoManager] setActionName:@"Copy"];
+		[[self undoManager] setActionName:NSLocalizedString(@"Copy", @"Copy undo label")];
 		[[[self undoManager] prepareWithInvocationTarget:self]
 				copyFile:oldSource to:[oldDestination stringByDeletingLastPathComponent]];		
 	}
