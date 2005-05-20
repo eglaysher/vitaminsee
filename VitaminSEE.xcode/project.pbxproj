@@ -1866,8 +1866,6 @@
 				8B5620E107CEA6F1005990E1,
 				8B561D9307CE7627005990E1,
 				8B6D020307CB32CD009A76DA,
-				CDDBEB4608327E4300F934ED,
-				CD4F2F3B08369FD6009E50D1,
 			);
 			isa = PBXCopyFilesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3389,12 +3387,6 @@
 			refType = 4;
 			sourceTree = "<group>";
 		};
-		CD4F2F3B08369FD6009E50D1 = {
-			fileRef = CD4F2F3908369FD6009E50D1;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
 		CD4F2F3C08369FD6009E50D1 = {
 			fileRef = CD4F2F3A08369FD6009E50D1;
 			isa = PBXBuildFile;
@@ -3802,12 +3794,6 @@
 			path = Widgets/EGScrollView.m;
 			refType = 4;
 			sourceTree = "<group>";
-		};
-		CDDBEB4608327E4300F934ED = {
-			fileRef = CDDBEB4408327E4300F934ED;
-			isa = PBXBuildFile;
-			settings = {
-			};
 		};
 		CDDBEB4708327E4300F934ED = {
 			fileRef = CDDBEB4508327E4300F934ED;

@@ -73,22 +73,9 @@
 
 ////////////////////////////////////////////////// WHERE TO GO FROM HERE...
 
-/* COMPLETED:
- * Fix overflow mode on the Favorites NSToolbarItem.
- * Fix few places where UNIX paths are still used.
- * Open with menu
- * Fix sym-link behavor.
- * Switching from "Zoom to Fit" to "Actual Size" doesn't lag anymore.
- * Use localized display name in the default Favorites path.
- * Non-ASCII keywords are read back from the file properly. Full support for Unicode.
- */
-
-// For Veresion 0.6.2
-// * Japanese Localization
-// * THOURGHAL TESTING!!!!
-
 // For Version 0.7
 // * Open with toolbar item
+// * PDF/PICT/PSD support. Let's support all the file formats we can, and 
 // * Automator actions:
 //   * Set wallpaper
 //   * Find images
