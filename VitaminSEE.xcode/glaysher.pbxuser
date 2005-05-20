@@ -165,11 +165,12 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 138169278;
-			PBXWorkspaceStateSaveDate = 138169278;
+			PBXPerProjectTemplateStateSaveDate = 138251020;
+			PBXWorkspaceStateSaveDate = 138251020;
 		};
 		perUserProjectItems = {
 			CD92B439083D858600298815 = CD92B439083D858600298815;
+			CDA02EDA083D8B1200578AD2 = CDA02EDA083D8B1200578AD2;
 			CDBFC403083C4BA400671137 = CDBFC403083C4BA400671137;
 		};
 		sourceControlManager = CD98F35108244FFF000A5C4A;
@@ -1416,6 +1417,16 @@
 			sepNavVisRect = "{{0, 0}, {746, 648}}";
 			sepNavWindowFrame = "{{15, 20}, {791, 721}}";
 		};
+	};
+	CDA02EDA083D8B1200578AD2 = {
+		fRef = 8B6D01C007CB2EA2009A76DA;
+		isa = PBXTextBookmark;
+		name = "SS_PrefsController.m: 69";
+		rLen = 0;
+		rLoc = 1615;
+		rType = 0;
+		vrLen = 0;
+		vrLoc = 0;
 	};
 	CDA6BDCD08297FBF007869CA = {
 		activeExec = 0;

@@ -77,8 +77,9 @@
  * Fix overflow mode on the Favorites NSToolbarItem.
  * Fix few places where UNIX paths are still used.
  * Open with menu
- * Fix sym-linnk behavor.
+ * Fix sym-link behavor.
  * Switching from "Zoom to Fit" to "Actual Size" doesn't lag anymore.
+ * Use localized display name in the default Favorites path.
  */
 
 // For Veresion 0.6.2
@@ -207,15 +208,15 @@
 	
 	// Default sort manager array
 	NSArray* sortManagerPaths;
+	NSString* firstPath;
 	if(hasPictures)
-		sortManagerPaths = [NSArray arrayWithObjects:
-			[NSDictionary dictionaryWithObjectsAndKeys:@"Pictures", @"Name",
-				[NSHomeDirectory() stringByAppendingPathComponent:@"Pictures"], 
-						@"Path", nil], nil];
+		firstPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Pictures"];
 	else
-		sortManagerPaths = [NSArray arrayWithObjects:
-			[NSDictionary dictionaryWithObjectsAndKeys:@"Home", @"Name",
-				NSHomeDirectory(), @"Path", nil], nil];
+		firstPath = NSHomeDirectory();
+
+	sortManagerPaths = [NSArray arrayWithObjects:
+		[NSDictionary dictionaryWithObjectsAndKeys:[fileManager displayNameAtPath:firstPath], @"Name",
+			firstPath, @"Path", nil], nil];
 	
 	[defaultPrefs setObject:sortManagerPaths forKey:@"SortManagerPaths"];
 	[defaultPrefs setObject:[NSNumber numberWithBool:YES] forKey:@"SortManagerInContextMenu"];

@@ -332,10 +332,10 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>CD92B439083D858600298815</string>
+										<string>CDA02EDA083D8B1200578AD2</string>
 										<key>history</key>
 										<array>
-											<string>CDBFC403083C4BA400671137</string>
+											<string>CD92B439083D858600298815</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -395,9 +395,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>CD92B106083C4BCB00298815</string>
+				<string>CDA02EDB083D8B1200578AD2</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>CD92B107083C4BCB00298815</string>
+				<string>CDA02EDC083D8B1200578AD2</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -516,7 +516,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>138249606.10669601</real>
+	<real>138251020.717383</real>
 	<key>ToolbarDisplayMode</key>
 	<integer>2</integer>
 	<key>ToolbarIsVisible</key>
@@ -531,13 +531,6 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>1C530D57069F1CE1000CFCEE</string>
-		<string>CD92B134083C4F1100298815</string>
-		<string>CD92B135083C4F1100298815</string>
-		<string>CD7905A6082912B000BFA5DD</string>
-		<string>1CD10A99069EF8BA00B06720</string>
-		<string>CD92B11C083C4CBD00298815</string>
-		<string>CD92B114083C4C5A00298815</string>
 		<string>1C0AD2B3069F1EA900FABCE6</string>
 		<string>/Users/glaysher/Projects/VitaminSEE-main/VitaminSEE.xcode</string>
 	</array>
@@ -933,8 +926,8 @@
 										<string>yes</string>
 										<key>sizes</key>
 										<array>
-											<string>{{0, 0}, {491, 168}}</string>
-											<string>{{0, 173}, {491, 270}}</string>
+											<string>{{0, 0}, {367, 168}}</string>
+											<string>{{0, 173}, {367, 270}}</string>
 										</array>
 									</dict>
 									<key>VerticalSplitView</key>
@@ -983,9 +976,9 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C0AD2B3069F1EA900FABCE6</string>
-				<string>CD92B10C083C4BCB00298815</string>
+				<string>CDA02EDD083D8B1200578AD2</string>
 				<string>1CD0528B0623707200166675</string>
-				<string>CD92B10D083C4BCB00298815</string>
+				<string>CDA02EDE083D8B1200578AD2</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.run</string>
