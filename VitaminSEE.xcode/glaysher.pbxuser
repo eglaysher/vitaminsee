@@ -74,7 +74,7 @@
 				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
 				PBXFileTableDataSourceColumnWidthsKey = (
 					20,
-					109,
+					141,
 					20,
 					48,
 					43,
@@ -165,13 +165,16 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 138251020;
-			PBXWorkspaceStateSaveDate = 138251020;
+			PBXPerProjectTemplateStateSaveDate = 138394153;
+			PBXWorkspaceStateSaveDate = 138394153;
 		};
 		perUserProjectItems = {
-			CD92B439083D858600298815 = CD92B439083D858600298815;
-			CDA02EDA083D8B1200578AD2 = CDA02EDA083D8B1200578AD2;
-			CDBFC403083C4BA400671137 = CDBFC403083C4BA400671137;
+			CDDBE89D083FB3A500E65DA9 = CDDBE89D083FB3A500E65DA9;
+			CDDBEA3F083FD7BE00E65DA9 = CDDBEA3F083FD7BE00E65DA9;
+			CDDBEA43083FD7BE00E65DA9 = CDDBEA43083FD7BE00E65DA9;
+			CDDBEA65083FDAEB00E65DA9 = CDDBEA65083FDAEB00E65DA9;
+			CDDBEA66083FDAEB00E65DA9 = CDDBEA66083FDAEB00E65DA9;
+			CDDBEA67083FDAEB00E65DA9 = CDDBEA67083FDAEB00E65DA9;
 		};
 		sourceControlManager = CD98F35108244FFF000A5C4A;
 		userBuildSettings = {
@@ -188,17 +191,17 @@
 	8B3CB1A207EA82CE0086353C = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {746, 1120}}";
-			sepNavSelRange = "{1038, 0}";
+			sepNavSelRange = "{1523, 0}";
 			sepNavVisRect = "{{0, 472}, {746, 648}}";
 			sepNavWindowFrame = "{{15, 20}, {791, 721}}";
 		};
 	};
 	8B3CB1A307EA82CE0086353C = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {783, 3712}}";
-			sepNavSelRange = "{5748, 0}";
-			sepNavVisRect = "{{0, 3048}, {746, 648}}";
-			sepNavWindowFrame = "{{15, 20}, {791, 721}}";
+			sepNavIntBoundsRect = "{{0, 0}, {783, 3552}}";
+			sepNavSelRange = "{3820, 0}";
+			sepNavVisRect = "{{0, 1632}, {746, 648}}";
+			sepNavWindowFrame = "{{219, 18}, {791, 721}}";
 		};
 	};
 	8B3E9C2D080B0FE5009D39C6 = {
@@ -294,10 +297,10 @@
 	};
 	8B5D5E2A07B8215E00957950 = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {746, 8096}}";
-			sepNavSelRange = "{11792, 0}";
-			sepNavVisRect = "{{0, 6004}, {746, 648}}";
-			sepNavWindowFrame = "{{15, 20}, {791, 721}}";
+			sepNavIntBoundsRect = "{{0, 0}, {746, 7760}}";
+			sepNavSelRange = "{8540, 8}";
+			sepNavVisRect = "{{0, 4612}, {746, 648}}";
+			sepNavWindowFrame = "{{147, 20}, {791, 721}}";
 		};
 	};
 	8B6710B0080C9BE00084EE5A = {
@@ -386,9 +389,9 @@
 	8B7C0C3B07B5FEB5005DB6FF = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {746, 2176}}";
-			sepNavSelRange = "{3779, 0}";
-			sepNavVisRect = "{{0, 0}, {746, 648}}";
-			sepNavWindowFrame = "{{88, 15}, {791, 721}}";
+			sepNavSelRange = "{1869, 0}";
+			sepNavVisRect = "{{0, 308}, {746, 648}}";
+			sepNavWindowFrame = "{{24, 8}, {791, 721}}";
 		};
 	};
 	8B7E6DA5080B419500DD5466 = {
@@ -473,8 +476,8 @@
 	};
 	8BB7F55C07F0B9B200668047 = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {746, 1600}}";
-			sepNavSelRange = "{4213, 0}";
+			sepNavIntBoundsRect = "{{0, 0}, {746, 1616}}";
+			sepNavSelRange = "{1419, 0}";
 			sepNavVisRect = "{{0, 0}, {746, 648}}";
 			sepNavWindowFrame = "{{229, 25}, {791, 721}}";
 		};
@@ -516,10 +519,10 @@
 	};
 	8BD011D907A99DFB00AA4BAA = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {937, 18176}}";
-			sepNavSelRange = "{2660, 0}";
-			sepNavVisRect = "{{0, 3364}, {746, 648}}";
-			sepNavWindowFrame = "{{-6, -11}, {791, 721}}";
+			sepNavIntBoundsRect = "{{0, 0}, {937, 18560}}";
+			sepNavSelRange = "{2535, 0}";
+			sepNavVisRect = "{{0, 932}, {746, 648}}";
+			sepNavWindowFrame = "{{-6, -7}, {791, 721}}";
 		};
 	};
 	8BE97E2407ACD46B005D384C = {
@@ -543,25 +546,25 @@
 	};
 	8BF72A8807B9D14C003A3C82 = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {804, 2816}}";
-			sepNavSelRange = "{5781, 0}";
-			sepNavVisRect = "{{0, 1841}, {575, 625}}";
+			sepNavIntBoundsRect = "{{0, 0}, {804, 2848}}";
+			sepNavSelRange = "{4655, 0}";
+			sepNavVisRect = "{{0, 1140}, {575, 625}}";
 			sepNavWindowFrame = "{{15, 43}, {620, 698}}";
 		};
 	};
 	8BF72B0507B9E78F003A3C82 = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {746, 1360}}";
-			sepNavSelRange = "{1722, 13}";
-			sepNavVisRect = "{{0, 712}, {746, 648}}";
+			sepNavIntBoundsRect = "{{0, 0}, {746, 1344}}";
+			sepNavSelRange = "{1648, 16}";
+			sepNavVisRect = "{{0, 696}, {746, 648}}";
 			sepNavWindowFrame = "{{15, 20}, {791, 721}}";
 		};
 	};
 	8BF72B0607B9E78F003A3C82 = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {746, 9648}}";
-			sepNavSelRange = "{15232, 0}";
-			sepNavVisRect = "{{0, 8388}, {746, 648}}";
+			sepNavIntBoundsRect = "{{0, 0}, {746, 9664}}";
+			sepNavSelRange = "{1008, 0}";
+			sepNavVisRect = "{{0, 1884}, {746, 648}}";
 			sepNavWindowFrame = "{{205, 6}, {791, 721}}";
 		};
 	};
@@ -728,16 +731,6 @@
 		isa = PBXFileBreakpoint;
 		lineNumber = 177;
 		state = 1;
-	};
-	CD92B439083D858600298815 = {
-		fRef = 8B6D01C007CB2EA2009A76DA;
-		isa = PBXTextBookmark;
-		name = "SS_PrefsController.m: 69";
-		rLen = 0;
-		rLoc = 1615;
-		rType = 0;
-		vrLen = 0;
-		vrLoc = 0;
 	};
 	CD98F30B08244FF9000A5C4A = {
 		activeArgIndex = 2147483647;
@@ -1426,16 +1419,6 @@
 			sepNavWindowFrame = "{{15, 20}, {791, 721}}";
 		};
 	};
-	CDA02EDA083D8B1200578AD2 = {
-		fRef = 8B6D01C007CB2EA2009A76DA;
-		isa = PBXTextBookmark;
-		name = "SS_PrefsController.m: 69";
-		rLen = 0;
-		rLoc = 1615;
-		rType = 0;
-		vrLen = 0;
-		vrLoc = 0;
-	};
 	CDA6BDCD08297FBF007869CA = {
 		activeExec = 0;
 	};
@@ -1460,7 +1443,7 @@
 		state = 1;
 		symbolName = "-[NSException raise]";
 	};
-	CDBFC403083C4BA400671137 = {
+	CDDBE89D083FB3A500E65DA9 = {
 		fRef = 8B6D01C007CB2EA2009A76DA;
 		isa = PBXTextBookmark;
 		name = "SS_PrefsController.m: 69";
@@ -1469,6 +1452,56 @@
 		rType = 0;
 		vrLen = 0;
 		vrLoc = 0;
+	};
+	CDDBEA3F083FD7BE00E65DA9 = {
+		fRef = 8BF72A8807B9D14C003A3C82;
+		isa = PBXTextBookmark;
+		name = "NSString+FileTasks.m: 95";
+		rLen = 0;
+		rLoc = 4648;
+		rType = 0;
+		vrLen = 1532;
+		vrLoc = 3814;
+	};
+	CDDBEA43083FD7BE00E65DA9 = {
+		fRef = 8BD011D907A99DFB00AA4BAA;
+		isa = PBXTextBookmark;
+		name = "VitaminSEEController.m: 80";
+		rLen = 0;
+		rLoc = 2669;
+		rType = 0;
+		vrLen = 1256;
+		vrLoc = 2110;
+	};
+	CDDBEA65083FDAEB00E65DA9 = {
+		fRef = 8B6D01C007CB2EA2009A76DA;
+		isa = PBXTextBookmark;
+		name = "SS_PrefsController.m: 69";
+		rLen = 0;
+		rLoc = 1615;
+		rType = 0;
+		vrLen = 0;
+		vrLoc = 0;
+	};
+	CDDBEA66083FDAEB00E65DA9 = {
+		fRef = 8BF72A8807B9D14C003A3C82;
+		isa = PBXTextBookmark;
+		name = "NSString+FileTasks.m: isImage";
+		rLen = 0;
+		rLoc = 4655;
+		rType = 0;
+		vrLen = 1533;
+		vrLoc = 3814;
+	};
+	CDDBEA67083FDAEB00E65DA9 = {
+		fRef = 8BD011D907A99DFB00AA4BAA;
+		isa = PBXTextBookmark;
+		name = "VitaminSEEController.m: 77";
+		rLen = 0;
+		rLoc = 2535;
+		rType = 0;
+		vrLen = 1256;
+		vrLoc = 2110;
 	};
 	CDDBEB4408327E4300F934ED = {
 		uiCtxt = {

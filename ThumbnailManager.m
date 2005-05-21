@@ -119,16 +119,6 @@
 			pthread_mutex_unlock(&taskQueueLock);
 			
 			[self doBuildIcon:path];
-//			if([path retainCount] > 1)
-//			{
-//				NSLog(@"Thumbnail image file retainCount: %d", [path retainCount]);
-//			}
-//
-//			NSLog(@"There are %d in thumbnailQueue", [thumbnailQueue count]);
-//			int i, count = [thumbnailQueue count];
-//			for(i = 0; i < count; ++i)
-//				NSLog(@"%@ has retcount of %d", [thumbnailQueue objectAtIndex:i],
-//					  [[thumbnailQueue objectAtIndex:i] count]);
 		}
 		else
 		{

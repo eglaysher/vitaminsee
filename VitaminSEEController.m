@@ -73,9 +73,12 @@
 
 ////////////////////////////////////////////////// WHERE TO GO FROM HERE...
 
-// For Version 0.7
-// * Open with toolbar item
+// For Version 0.6.3
+// * More thumbnail operations
 // * PDF/PICT/PSD support. Let's support all the file formats we can, and 
+// * Open with toolbar item
+
+// For Version 0.7
 // * Automator actions:
 //   * Set wallpaper
 //   * Find images
@@ -87,8 +90,6 @@
 //   * Requires figuring out how the Mac trash system works; 
 //     NSWorkspaceRecycleOperation isn't behaving how the Finder behaves. Maybe
 //     the answer is in Carbon?
-// * Working Open with other application function
-// * More thumbnail operations
 
 // For Version 0.8
 // * Transparent archive support
@@ -376,14 +377,15 @@
     return YES;
 }
 
-// ============================================================================
-//                         FILE VIEW SELECTION
-// ============================================================================
 // Changing the user interface
 - (void)setViewAsView:(NSView*)nextView
 {
 	[currentFileViewHolder setSubview:nextView];
 }
+
+// ============================================================================
+//                         FILE VIEW SELECTION
+// ============================================================================
 
 -(IBAction)openFolder:(id)sender;
 {
@@ -405,6 +407,28 @@
 	NSString* directory = [currentImageFile stringByDeletingLastPathComponent];
 	[viewAsIconsController setCurrentDirectory:[EGPathFilesystemPath pathWithPath:directory]
 								   currentFile:currentImageFile];
+}
+
+-(IBAction)addThumbnailForCurrentFile:(id)sender
+{
+	// Add or rebuild the thumbnail for this file.
+	[thumbnailManager buildThumbnail:currentImageFile];
+}
+
+-(IBAction)addThumbnailToAll:(id)sender
+{
+//	[thumbnailManager clearThumbnailQueue];
+//	NSString* currentDirectory = [viewAsIconsController.currentDirectory fileSystemPath];
+}
+
+-(IBAction)removeThumbnailForCurrentFile:(id)sender
+{
+	
+}
+
+-(IBAction)removeThumbnailForAll:(id)sender
+{
+	
 }
 
 -(IBAction)toggleFileList:(id)sender

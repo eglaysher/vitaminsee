@@ -297,7 +297,7 @@ willDisplayCell:(id)cell
 	NSString* absolutePath = [fileList objectAtIndex:index];
 
 	[pluginLayer setCurrentFile:absolutePath];
-	
+
 	if(NSAppKitVersionNumber < 824.00f)
 	{
 		// Hi! My name is UGLY HACK. I'm here because Apple's NSScrollView has a
@@ -309,6 +309,7 @@ willDisplayCell:(id)cell
 		// Thankfully, this was fixed in Tiger. But Tiger didn't give us an f'in
 		// AppKit version number for it.
 		[ourBrowser setNeedsDisplay];
+		NSLog(@"Ugly hack!");
 	}
 	
 	// Now we figure out which file we preload next.

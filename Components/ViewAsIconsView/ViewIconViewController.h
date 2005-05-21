@@ -80,5 +80,4 @@
 -(void)setThumbnail:(NSImage*)image 
 			forFile:(NSString*)path;
 
-
 @end

@@ -88,7 +88,9 @@ static NSArray* hiddenFiles = 0;
 		[fileExtentsion isEqualToString:@"TIF"] ||
 		[fileExtentsion isEqualToString:@"TIFF"] ||
 		[fileExtentsion isEqualToString:@"BMP"] ||
-		[fileExtentsion isEqualToString:@"ICNS"];
+		[fileExtentsion isEqualToString:@"ICNS"] ||
+		[fileExtentsion isEqualToString:@"PDF"] ||
+		[fileExtentsion isEqualToString:@"PSD"];
 }
 
 -(BOOL)isVisible
@@ -98,7 +100,7 @@ static NSArray* hiddenFiles = 0;
 			@"bin", @"cores", @"Desktop DB", @"Desktop DF", @"Desktop Folder", @"dev",
 			@"etc", @"lost+found", @"mach", @"mach_kernel", @"mach.sym", @"opt",
 			@"private", @"sbin", @"tmp", @"Trash", @"usr", @"var", @"VM Storage",
-			@"Volumes", nil] retain];	
+			@"Volumes", nil] retain];
 	
 	// Make this as sophisticated for example to hide more files you don't think the user should see!
     NSString *lastPathComponent = [self lastPathComponent];

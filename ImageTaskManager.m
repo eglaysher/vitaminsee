@@ -272,8 +272,7 @@
 	if(![imageCache objectForKey:path])
 	{
 		pthread_mutex_unlock(&imageCacheLock);
-		// Preload the image
-		
+		// Preload the image		
 		NSImageRep* rep = loadImage(path);
 		NSMutableDictionary* dict = [NSMutableDictionary 
 			dictionaryWithObjectsAndKeys:[NSDate date], @"Date", rep, @"Image",
@@ -283,6 +282,7 @@
 		[self evictImages];
 		[imageCache setObject:dict forKey:path];
 	}
+
 	pthread_mutex_unlock(&imageCacheLock);
 }
 
@@ -305,19 +305,6 @@
 		[vitaminSEEController stopProgressIndicator];	
 		return;
 	}
-	else if([[[path pathExtension] uppercaseString] isEqual:@"ICNS"])		
-	{
-		NSImage* image = [[NSImage alloc] initWithContentsOfFile:path];
-		NSSize size = [image size];
-		
-		[self sendDisplayCommandWithImage:image width:size.width height:size.height];
-		[image release];
-		
-		// Stop the spinner
-		[vitaminSEEController stopProgressIndicator];
-		
-		return;
-	}
 
 	NSImageRep* imageRep;
 	pthread_mutex_lock(&imageCacheLock);
@@ -328,17 +315,9 @@
 	{
 		pthread_mutex_unlock(&imageCacheLock);
 
-		// Load the file, since it obviously hasn't been loaded.
-		imageRep = loadImage(path);
-		cacheEntry = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-			[NSDate date], @"Date", imageRep, @"Image", nil];
-		
+		[self doPreloadImage:path];
 		pthread_mutex_lock(&imageCacheLock);
-		// Evict an old cache entry
-		[self evictImages];
-		
-		// Add the image to the cache so subsquent hits won't require reloading...
-		[imageCache setObject:cacheEntry forKey:path];
+		cacheEntry = [imageCache objectForKey:path];
 	}
 	else
 	{
