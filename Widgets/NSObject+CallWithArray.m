@@ -13,10 +13,10 @@
 
 -(void)performSelector:(SEL)selector withEachObjectIn:(NSArray*)arrayOfObjects
 {
-	NSEnumerator* e = [arrayOfObjects objectEnumerator];
-	id object;
-	while(object = [e nextObject])
-		[self performSelector:selector withObject:object];
+	CFArrayRef ref = (CFArrayRef)arrayOfObjects;
+	int i = 0, count = CFArrayGetCount(ref);
+	for(; i < count; ++i)
+		[self performSelector:selector withObject:(id)CFArrayGetValueAtIndex(ref, i)];
 }
 
 @end

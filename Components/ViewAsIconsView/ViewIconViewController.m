@@ -37,6 +37,7 @@
 #import "IconFamily.h"
 #import "PluginLayer.h"
 #import "EGPath.h"
+#import "NSObject+CallWithArray.h"
 
 @interface ViewIconViewController (Private)
 -(void)rebuildInternalFileArray;
@@ -273,13 +274,10 @@ willDisplayCell:(id)cell
 
 - (void)clearCache
 {
-	// Reset the cells so they regenerate their cached titles...
-	id matrix = [ourBrowser matrixInColumn:0];
-	int numberOfRows = [matrix numberOfRows];
-	int i;
-	for(i = 0; i < numberOfRows; ++i)
+	id cells = [[[ourBrowser matrixInColumn:0] cells] objectEnumerator];
+	id cell;
+	while(cell = [cells nextObject])
 	{
-		id cell = [matrix cellAtRow:i column:0];
 		if([cell respondsToSelector:@selector(setIconImage:)])
 		{
 			[cell resetTitleCache];
@@ -537,23 +535,13 @@ willDisplayCell:(id)cell
 
 	// Now build thumbnails for each file in the directory (since we can be 
 	// confident they'll be built in order)
-	// 
-	// fixme: future optimization: add something to the thumbnail manager/plugin
-	// layer that allows you just send an NSArray to it. This would save
-	// [cost of message dispatch] * 3 * (numberOfFilesInDirectory)...
-	// This wouldn't be worthless since shark says 25% of the time in this 
-	// function is here.
-	NSEnumerator* fileEnum = [myFileList objectEnumerator];
-	NSString* file;
-	while(file = [fileEnum nextObject])
-		[pluginLayer generateThumbnailForFile:file];
+	[pluginLayer performSelector:@selector(generateThumbnailForFile:)
+				withEachObjectIn:myFileList];
 	
 	// Now let's keep our new list of files.
 	[myFileList retain];
 	[fileList release];	
 	fileList = myFileList;
-
-//	NSLog(@"filelist retain count: %d", [fileList retainCount]);
 }
 
 // Handle notifications
