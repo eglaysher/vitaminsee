@@ -1866,6 +1866,7 @@
 				8B5620E107CEA6F1005990E1,
 				8B561D9307CE7627005990E1,
 				8B6D020307CB32CD009A76DA,
+				CDDBEB4A08400DA400E65DA9,
 			);
 			isa = PBXCopyFilesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3211,6 +3212,7 @@
 				CD44164E082C1C67003C01FD,
 				CDDBEB4708327E4300F934ED,
 				CD4F2F3C08369FD6009E50D1,
+				CDDBEB4B08400DA400E65DA9,
 			);
 			isa = PBXSourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3280,6 +3282,8 @@
 				CD44164A082C1C66003C01FD,
 				CDDBEB4408327E4300F934ED,
 				CDDBEB4508327E4300F934ED,
+				CDDBEB4808400DA400E65DA9,
+				CDDBEB4908400DA400E65DA9,
 			);
 			isa = PBXGroup;
 			name = "Widgets And Additions";
@@ -3797,6 +3801,36 @@
 		};
 		CDDBEB4708327E4300F934ED = {
 			fileRef = CDDBEB4508327E4300F934ED;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		CDDBEB4808400DA400E65DA9 = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = "NSObject+CallWithArray.h";
+			path = "Widgets/NSObject+CallWithArray.h";
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CDDBEB4908400DA400E65DA9 = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
+			name = "NSObject+CallWithArray.m";
+			path = "Widgets/NSObject+CallWithArray.m";
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CDDBEB4A08400DA400E65DA9 = {
+			fileRef = CDDBEB4808400DA400E65DA9;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		CDDBEB4B08400DA400E65DA9 = {
+			fileRef = CDDBEB4908400DA400E65DA9;
 			isa = PBXBuildFile;
 			settings = {
 			};
