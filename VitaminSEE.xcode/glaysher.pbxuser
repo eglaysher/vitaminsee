@@ -243,6 +243,7 @@
 			CD65D69C08402DE600E90C48 = CD65D69C08402DE600E90C48;
 			CD65D69D08402DE600E90C48 = CD65D69D08402DE600E90C48;
 			CD65D69E08402DEA00E90C48 = CD65D69E08402DEA00E90C48;
+			CD65D6A208402E6400E90C48 = CD65D6A208402E6400E90C48;
 			CDDBEC2008401D1400E65DA9 = CDDBEC2008401D1400E65DA9;
 			CDDBEC2208401D1400E65DA9 = CDDBEC2208401D1400E65DA9;
 			CDDBECFA08401EC000E65DA9 = CDDBECFA08401EC000E65DA9;
@@ -1296,7 +1297,7 @@
 		fRef = 8BD011D907A99DFB00AA4BAA;
 		isa = PBXTextBookmark;
 		rLen = 12;
-		rLoc = 32503;
+		rLoc = 32534;
 		rType = 0;
 	};
 	CD65D67F08402CC800E90C48 = {
@@ -1334,7 +1335,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEController.m: 1109";
 		rLen = 0;
-		rLoc = 32731;
+		rLoc = 32762;
 		rType = 0;
 		vrLen = 281;
 		vrLoc = 32502;
@@ -1364,7 +1365,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEController.m: 1109";
 		rLen = 0;
-		rLoc = 32731;
+		rLoc = 32762;
 		rType = 0;
 		vrLen = 281;
 		vrLoc = 32502;
@@ -1394,7 +1395,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEController.m: 1109";
 		rLen = 0;
-		rLoc = 32731;
+		rLoc = 32762;
 		rType = 0;
 		vrLen = 281;
 		vrLoc = 32502;
@@ -1424,7 +1425,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEController.m: 1109";
 		rLen = 0;
-		rLoc = 32731;
+		rLoc = 32762;
 		rType = 0;
 		vrLen = 281;
 		vrLoc = 32502;
@@ -1444,7 +1445,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEController.m: 1109";
 		rLen = 0;
-		rLoc = 32731;
+		rLoc = 32762;
 		rType = 0;
 		vrLen = 281;
 		vrLoc = 32502;
@@ -1474,7 +1475,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEController.m: 1109";
 		rLen = 0;
-		rLoc = 32731;
+		rLoc = 32762;
 		rType = 0;
 		vrLen = 281;
 		vrLoc = 32502;
@@ -1504,12 +1505,22 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEController.m: 1106";
 		rLen = 0;
-		rLoc = 32681;
+		rLoc = 32712;
 		rType = 0;
 		vrLen = 281;
 		vrLoc = 32502;
 	};
 	CD65D69E08402DEA00E90C48 = {
+		fRef = 8B6D01C007CB2EA2009A76DA;
+		isa = PBXTextBookmark;
+		name = "SS_PrefsController.m: 69";
+		rLen = 0;
+		rLoc = 1615;
+		rType = 0;
+		vrLen = 0;
+		vrLoc = 0;
+	};
+	CD65D6A208402E6400E90C48 = {
 		fRef = 8B6D01C007CB2EA2009A76DA;
 		isa = PBXTextBookmark;
 		name = "SS_PrefsController.m: 69";

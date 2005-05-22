@@ -73,9 +73,13 @@
 
 ////////////////////////////////////////////////// WHERE TO GO FROM HERE...
 
+/* COMPLETED:
+ * * PDF and PSD support
+ * * MORE SPEED! Start paying attention to non-critical areas
+ */
+
 // For Version 0.6.3
 // * More thumbnail operations
-// * PDF/PICT/PSD support. Let's support all the file formats we can, and 
 // * Open with toolbar item
 
 // For Version 0.7
