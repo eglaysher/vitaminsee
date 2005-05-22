@@ -116,10 +116,9 @@
 	if(isCurDir)
 	{
 		NSArray* cells = [ourBrowser selectedCells];
-		NSEnumerator* e = [cells objectEnumerator];
-		id cell;
-		while(cell = [e nextObject])
-			if([[cell cellPath] isEqual:fileIsInView])
+		int i = 0, count = CFArrayGetCount(cells);
+		for(; i < count; ++i)
+			if([[(id)CFArrayGetValueAtIndex(cells,i) cellPath] isEqual:fileIsInView])
 				return true;
 	}
 	
@@ -132,11 +131,10 @@
 	NSMutableArray* selectedFiles = [NSMutableArray arrayWithCapacity:[selectedCells count]];
 
 	// Add the path of each cell to the array we're returning.
-	NSEnumerator* e = [selectedCells objectEnumerator];
-	id cell;
-	while(cell = [e nextObject])
-		[selectedFiles addObject:[cell cellPath]];
-	
+	int i = 0, count = [selectedCells count]; //CFArrayGetCount(selectedCells);
+	for(; i < count; ++i)
+		[selectedFiles addObject:[(id)CFArrayGetValueAtIndex(selectedCells, i) cellPath]];
+
 	return selectedFiles;
 }
 
@@ -513,20 +511,21 @@ willDisplayCell:(id)cell
 -(void)rebuildInternalFileArray
 {
 	NSArray* directoryContents = [currentDirectory directoryContents];
-	NSEnumerator* dirEnum = [directoryContents objectEnumerator];
 	NSMutableArray* myFileList = [NSMutableArray arrayWithCapacity:[directoryContents count]];
-	EGPath* curPath;
-	while(curPath = [dirEnum nextObject])
+
+	int i = 0, count = [directoryContents count];
+	for(; i < count; ++i)
 	{
+		EGPath* curPath = (id)CFArrayGetValueAtIndex(directoryContents, i);
 		NSString* currentFileWithPath = [curPath fileSystemPath];
-				
+		
 		if(([currentFileWithPath isDir] || [currentFileWithPath isImage]) &&
 		   [currentFileWithPath isVisible])
 		{
 			// Before we  do ANYTHING, we make note of the file's modification time.
 			[myFileList addObject:currentFileWithPath];
 		}
-	}
+	}	
 	
 	// Now sort the list since some filesystems (*cough*SAMBA*cough*) don't
 	// present files sorted alphabetically and we do binary searches to avoid

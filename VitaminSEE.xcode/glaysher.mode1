@@ -232,8 +232,6 @@
 			<key>Layout</key>
 			<array>
 				<dict>
-					<key>BecomeActive</key>
-					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -331,7 +329,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>CD65D63B0840255000E90C48</string>
+										<string>CD65D69E08402DEA00E90C48</string>
 										<key>history</key>
 										<array>
 											<string>CDDBECFA08401EC000E65DA9</string>
@@ -356,6 +354,8 @@
 							<string>0pt</string>
 						</dict>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -513,7 +513,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>138421584.108935</real>
+	<real>138423786.58853799</real>
 	<key>ToolbarDisplayMode</key>
 	<integer>2</integer>
 	<key>ToolbarIsVisible</key>
@@ -528,14 +528,15 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>1C530D57069F1CE1000CFCEE</string>
 		<string>CD65D6170840206A00E90C48</string>
 		<string>CD65D6180840206A00E90C48</string>
 		<string>CD7905A6082912B000BFA5DD</string>
+		<string>1CD10A99069EF8BA00B06720</string>
 		<string>CD65D6150840206A00E90C48</string>
 		<string>CD65D6060840204500E90C48</string>
-		<string>1CD10A99069EF8BA00B06720</string>
-		<string>/Users/glaysher/Projects/VitaminSEE-main/VitaminSEE.xcode</string>
 		<string>1C0AD2B3069F1EA900FABCE6</string>
+		<string>/Users/glaysher/Projects/VitaminSEE-main/VitaminSEE.xcode</string>
 	</array>
 	<key>WindowString</key>
 	<string>221 153 690 397 0 0 1024 746 </string>
@@ -659,8 +660,8 @@
 										<string>yes</string>
 										<key>sizes</key>
 										<array>
-											<string>{{0, 0}, {156, 171}}</string>
-											<string>{{0, 171}, {156, 218}}</string>
+											<string>{{0, 0}, {274, 180}}</string>
+											<string>{{0, 180}, {274, 209}}</string>
 										</array>
 									</dict>
 									<key>VerticalSplitView</key>
@@ -675,8 +676,8 @@
 										<string>yes</string>
 										<key>sizes</key>
 										<array>
-											<string>{{0, 0}, {156, 389}}</string>
-											<string>{{156, 0}, {825, 389}}</string>
+											<string>{{0, 0}, {274, 389}}</string>
+											<string>{{274, 0}, {707, 389}}</string>
 										</array>
 									</dict>
 								</dict>
@@ -739,7 +740,7 @@
 			<key>WindowToolGUID</key>
 			<string>1CD10A99069EF8BA00B06720</string>
 			<key>WindowToolIsVisible</key>
-			<true/>
+			<false/>
 		</dict>
 		<dict>
 			<key>FirstTimeWindowDisplayed</key>
@@ -757,12 +758,14 @@
 							<key>Dock</key>
 							<array>
 								<dict>
+									<key>BecomeActive</key>
+									<true/>
 									<key>ContentConfiguration</key>
 									<dict>
 										<key>PBXProjectModuleGUID</key>
 										<string>1CDD528C0622207200134675</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>ThumbnailManager.m</string>
+										<string>VitaminSEEController.m</string>
 										<key>StatusBarVisibility</key>
 										<true/>
 									</dict>
@@ -818,8 +821,8 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C530D57069F1CE1000CFCEE</string>
-				<string>CDDBEBAF0840130B00E65DA9</string>
-				<string>CDDBEBB00840130B00E65DA9</string>
+				<string>CD65D6470840283100E90C48</string>
+				<string>CD65D6480840283100E90C48</string>
 				<string>1CDD528C0622207200134675</string>
 				<string>1CD0528E0623707200166675</string>
 			</array>
@@ -828,7 +831,7 @@
 			<key>WindowToolGUID</key>
 			<string>1C530D57069F1CE1000CFCEE</string>
 			<key>WindowToolIsVisible</key>
-			<true/>
+			<false/>
 		</dict>
 		<dict>
 			<key>Identifier</key>
@@ -847,6 +850,8 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>

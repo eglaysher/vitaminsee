@@ -121,11 +121,13 @@
 
 -(NSArray*)buildEGPathArrayFromArrayOfNSStrings:(NSArray*)paths
 {
-	NSEnumerator* e = [paths objectEnumerator];
-	NSString* current;
 	NSMutableArray* pathsToReturn = [NSMutableArray arrayWithCapacity:[paths count]];
-	while(current = [e nextObject])
-		[pathsToReturn addObject:[EGPath pathWithPath:current]];
+	int i = 0, count = [paths count];
+	for(; i < count; ++i)
+	{
+		id current = (id)CFArrayGetValueAtIndex(paths, i);
+		[pathsToReturn addObject:[EGPath pathWithPath:current]];		
+	}
 	
 	return pathsToReturn;
 }
@@ -242,7 +244,8 @@
 	for(i = 0; i < count; ++i)
 	{
 		NSString* fullPath = [fileSystemPath stringByAppendingPathComponent:
-			[childPaths objectAtIndex:i]];
+			(id)CFArrayGetValueAtIndex(childPaths, i)];
+
 		[fullChildPaths addObject:fullPath];		
 	}
 	
@@ -275,11 +278,14 @@
 
 -(NSArray*)pathDisplayComponents
 {
-	NSEnumerator* e = [[self pathComponents] objectEnumerator];
+	NSArray* pathComponents = [self pathComponents];
 	NSMutableArray* displayComponents = [NSMutableArray array];
-	EGPath* current;
-	while(current = [e nextObject])
+	int i = 0, count = [pathComponents count];
+	for(; i < count; ++i)
+	{
+		id current = (id)CFArrayGetValueAtIndex(pathComponents, i);
 		[displayComponents addObject:[current displayName]];
+	}		
 	
 	return displayComponents;
 }

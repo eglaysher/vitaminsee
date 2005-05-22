@@ -242,10 +242,11 @@
 		NSString* oldestPath = nil;
 		NSDate* oldestDate = [NSDate date]; // set oldest as now, so anything older
 		
-		NSEnumerator* e = [imageCache keyEnumerator];
-		NSString* cur;
-		while(cur = [e nextObject]) 
+		NSArray* currentImages = [imageCache allKeys];
+		int i = 0, count = [currentImages count];
+		for(; i < count; ++i)
 		{
+			NSString* cur = (NSString*)CFArrayGetValueAtIndex(currentImages, i);
 			NSDictionary* cacheEntry = [imageCache objectForKey:cur];
 			if([oldestDate compare:[cacheEntry objectForKey:@"Date"]] == NSOrderedDescending)
 			{
@@ -254,12 +255,6 @@
 				oldestPath = cur;
 			}
 		}
-		
-		// Let's get rid of the oldest path...
-//		id x = [[imageCache objectForKey:oldestPath] objectForKey:@"Image"];
-//		NSLog(@"  Deleting Address: %@", x);
-//		NSLog(@"Evicting %@ with a reference count of %d", oldestPath,
-//			  [[[imageCache objectForKey:oldestPath] objectForKey:@"Image"] retainCount]);
 		
 		[imageCache removeObjectForKey:oldestPath];
 	}
