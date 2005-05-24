@@ -197,4 +197,6 @@
 -(IBAction)runToolbarCustomizationPalette:(id)sender;
 -(void)selectFirstResponder;
 
+-(IBAction)setImageAsDesktop:(id)sender;
+
 @end

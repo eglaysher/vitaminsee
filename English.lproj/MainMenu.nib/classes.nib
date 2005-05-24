@@ -36,6 +36,7 @@
                 referesh = id; 
                 revealInFinder = id; 
                 runToolbarCustomizationPalette = id; 
+                setImageAsDesktop = id; 
                 showGPL = id; 
                 showPreferences = id; 
                 toggleFileList = id; 

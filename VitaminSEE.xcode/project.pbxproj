@@ -7,6 +7,8 @@
 	objects = {
 		080E96DDFE201D6D7F000001 = {
 			children = (
+				CD65D6F3084279EE00E90C48,
+				CD65D6D008426FAB00E90C48,
 				CD76863C08283934006AE601,
 				CD76863D08283934006AE601,
 				8B3E9C2D080B0FE5009D39C6,
@@ -1867,6 +1869,7 @@
 				8B561D9307CE7627005990E1,
 				8B6D020307CB32CD009A76DA,
 				CDDBEB4A08400DA400E65DA9,
+				CD65D6F4084279EF00E90C48,
 			);
 			isa = PBXCopyFilesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3213,6 +3216,7 @@
 				CDDBEB4708327E4300F934ED,
 				CD4F2F3C08369FD6009E50D1,
 				CDDBEB4B08400DA400E65DA9,
+				CD65D6D108426FAB00E90C48,
 			);
 			isa = PBXSourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3469,6 +3473,34 @@
 			path = Components/GeneralPreferences/Japanese.lproj/GeneralPreferences.nib;
 			refType = 4;
 			sourceTree = "<group>";
+		};
+		CD65D6D008426FAB00E90C48 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
+			path = DesktopBackground.m;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CD65D6D108426FAB00E90C48 = {
+			fileRef = CD65D6D008426FAB00E90C48;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		CD65D6F3084279EE00E90C48 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			path = DesktopBackground.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CD65D6F4084279EF00E90C48 = {
+			fileRef = CD65D6F3084279EE00E90C48;
+			isa = PBXBuildFile;
+			settings = {
+			};
 		};
 		CD687E0C083B03D0004F1E0A = {
 			isa = PBXFileReference;

@@ -164,90 +164,18 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 138419979;
-			PBXWorkspaceStateSaveDate = 138419979;
+			PBXPerProjectTemplateStateSaveDate = 138642098;
+			PBXWorkspaceStateSaveDate = 138642098;
 		};
 		perUserProjectItems = {
-			CD65D6040840204500E90C48 = CD65D6040840204500E90C48;
-			CD65D6050840204500E90C48 = CD65D6050840204500E90C48;
-			CD65D60A0840204700E90C48 = CD65D60A0840204700E90C48;
-			CD65D60D0840206000E90C48 = CD65D60D0840206000E90C48;
-			CD65D60E0840206A00E90C48 = CD65D60E0840206A00E90C48;
-			CD65D61C0840207D00E90C48 = CD65D61C0840207D00E90C48;
-			CD65D61D0840207F00E90C48 = CD65D61D0840207F00E90C48;
-			CD65D61E0840231600E90C48 = CD65D61E0840231600E90C48;
-			CD65D621084023AE00E90C48 = CD65D621084023AE00E90C48;
-			CD65D622084023AF00E90C48 = CD65D622084023AF00E90C48;
-			CD65D625084023AF00E90C48 = CD65D625084023AF00E90C48;
-			CD65D626084023FE00E90C48 = CD65D626084023FE00E90C48;
-			CD65D627084023FF00E90C48 = CD65D627084023FF00E90C48;
-			CD65D628084023FF00E90C48 = CD65D628084023FF00E90C48;
-			CD65D62B0840244900E90C48 = CD65D62B0840244900E90C48;
-			CD65D62C0840244900E90C48 = CD65D62C0840244900E90C48;
-			CD65D63A0840254F00E90C48 = CD65D63A0840254F00E90C48;
-			CD65D63B0840255000E90C48 = CD65D63B0840255000E90C48;
-			CD65D6400840283100E90C48 = CD65D6400840283100E90C48;
-			CD65D6420840283100E90C48 = CD65D6420840283100E90C48;
-			CD65D6430840283100E90C48 = CD65D6430840283100E90C48;
-			CD65D6440840283100E90C48 = CD65D6440840283100E90C48;
-			CD65D6450840283100E90C48 = CD65D6450840283100E90C48;
-			CD65D6460840283100E90C48 = CD65D6460840283100E90C48;
-			CD65D6490840283200E90C48 = CD65D6490840283200E90C48;
-			CD65D64A0840283900E90C48 = CD65D64A0840283900E90C48;
-			CD65D64B0840283900E90C48 = CD65D64B0840283900E90C48;
-			CD65D64F0840286500E90C48 = CD65D64F0840286500E90C48;
-			CD65D6500840286500E90C48 = CD65D6500840286500E90C48;
-			CD65D6510840286E00E90C48 = CD65D6510840286E00E90C48;
-			CD65D6520840288900E90C48 = CD65D6520840288900E90C48;
-			CD65D655084028A600E90C48 = CD65D655084028A600E90C48;
-			CD65D656084028A600E90C48 = CD65D656084028A600E90C48;
-			CD65D65B0840294000E90C48 = CD65D65B0840294000E90C48;
-			CD65D65C0840294000E90C48 = CD65D65C0840294000E90C48;
-			CD65D65D0840294000E90C48 = CD65D65D0840294000E90C48;
-			CD65D65E0840294200E90C48 = CD65D65E0840294200E90C48;
-			CD65D66508402ABD00E90C48 = CD65D66508402ABD00E90C48;
-			CD65D66608402ABD00E90C48 = CD65D66608402ABD00E90C48;
-			CD65D66708402ABD00E90C48 = CD65D66708402ABD00E90C48;
-			CD65D66808402ABD00E90C48 = CD65D66808402ABD00E90C48;
-			CD65D66908402ABD00E90C48 = CD65D66908402ABD00E90C48;
-			CD65D66A08402ABD00E90C48 = CD65D66A08402ABD00E90C48;
-			CD65D66B08402ABD00E90C48 = CD65D66B08402ABD00E90C48;
-			CD65D66C08402ABE00E90C48 = CD65D66C08402ABE00E90C48;
-			CD65D66F08402B1100E90C48 = CD65D66F08402B1100E90C48;
-			CD65D67008402B1100E90C48 = CD65D67008402B1100E90C48;
-			CD65D67108402B1200E90C48 = CD65D67108402B1200E90C48;
-			CD65D67A08402CC800E90C48 = CD65D67A08402CC800E90C48;
-			CD65D67B08402CC800E90C48 = CD65D67B08402CC800E90C48;
-			CD65D67C08402CC800E90C48 = CD65D67C08402CC800E90C48;
-			CD65D67D08402CC800E90C48 = CD65D67D08402CC800E90C48;
-			CD65D67E08402CC800E90C48 = CD65D67E08402CC800E90C48;
-			CD65D67F08402CC800E90C48 = CD65D67F08402CC800E90C48;
-			CD65D68008402CC800E90C48 = CD65D68008402CC800E90C48;
-			CD65D68108402CC800E90C48 = CD65D68108402CC800E90C48;
-			CD65D68208402CC800E90C48 = CD65D68208402CC800E90C48;
-			CD65D68308402CC900E90C48 = CD65D68308402CC900E90C48;
-			CD65D68408402CDB00E90C48 = CD65D68408402CDB00E90C48;
-			CD65D68508402CDB00E90C48 = CD65D68508402CDB00E90C48;
-			CD65D68608402CE700E90C48 = CD65D68608402CE700E90C48;
-			CD65D68A08402D3600E90C48 = CD65D68A08402D3600E90C48;
-			CD65D68B08402D3600E90C48 = CD65D68B08402D3600E90C48;
-			CD65D68C08402D4000E90C48 = CD65D68C08402D4000E90C48;
-			CD65D68E08402D9D00E90C48 = CD65D68E08402D9D00E90C48;
-			CD65D68F08402D9D00E90C48 = CD65D68F08402D9D00E90C48;
-			CD65D69208402DA800E90C48 = CD65D69208402DA800E90C48;
-			CD65D69308402DA800E90C48 = CD65D69308402DA800E90C48;
-			CD65D69408402DB100E90C48 = CD65D69408402DB100E90C48;
-			CD65D69708402DE000E90C48 = CD65D69708402DE000E90C48;
-			CD65D69808402DE000E90C48 = CD65D69808402DE000E90C48;
-			CD65D69908402DE100E90C48 = CD65D69908402DE100E90C48;
-			CD65D69C08402DE600E90C48 = CD65D69C08402DE600E90C48;
-			CD65D69D08402DE600E90C48 = CD65D69D08402DE600E90C48;
-			CD65D69E08402DEA00E90C48 = CD65D69E08402DEA00E90C48;
-			CD65D6A208402E6400E90C48 = CD65D6A208402E6400E90C48;
-			CDDBEC2008401D1400E65DA9 = CDDBEC2008401D1400E65DA9;
-			CDDBEC2208401D1400E65DA9 = CDDBEC2208401D1400E65DA9;
-			CDDBECFA08401EC000E65DA9 = CDDBECFA08401EC000E65DA9;
-			CDDBECFD08401EC000E65DA9 = CDDBECFD08401EC000E65DA9;
+			CD65D73B0843821C00E90C48 = CD65D73B0843821C00E90C48;
+			CD65D73D0843821C00E90C48 = CD65D73D0843821C00E90C48;
+			CD65D73E0843821C00E90C48 = CD65D73E0843821C00E90C48;
+			CD65D73F0843821C00E90C48 = CD65D73F0843821C00E90C48;
+			CDAE7AD90843888200A389A4 = CDAE7AD90843888200A389A4;
+			CDAE7ADC0843888200A389A4 = CDAE7ADC0843888200A389A4;
+			CDAE7ADD0843888200A389A4 = CDAE7ADD0843888200A389A4;
+			CDAE7ADE0843888200A389A4 = CDAE7ADE0843888200A389A4;
 		};
 		sourceControlManager = CD98F35108244FFF000A5C4A;
 		userBuildSettings = {
@@ -591,18 +519,18 @@
 	};
 	8BD011D807A99DFB00AA4BAA = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {664, 3216}}";
-			sepNavSelRange = "{2272, 47}";
-			sepNavVisRect = "{{0, 1096}, {453, 96}}";
+			sepNavIntBoundsRect = "{{0, 0}, {746, 3248}}";
+			sepNavSelRange = "{5801, 0}";
+			sepNavVisRect = "{{0, 2556}, {746, 648}}";
 			sepNavWindowFrame = "{{151, 22}, {791, 721}}";
 		};
 	};
 	8BD011D907A99DFB00AA4BAA = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {937, 18560}}";
-			sepNavSelRange = "{32681, 0}";
-			sepNavVisRect = "{{0, 17642}, {755, 189}}";
-			sepNavWindowFrame = "{{-6, -3}, {791, 721}}";
+			sepNavIntBoundsRect = "{{0, 0}, {937, 19072}}";
+			sepNavSelRange = "{22936, 0}";
+			sepNavVisRect = "{{0, 16708}, {746, 648}}";
+			sepNavWindowFrame = "{{-6, 1}, {791, 721}}";
 		};
 	};
 	8BE97E2407ACD46B005D384C = {
@@ -643,7 +571,7 @@
 	8BF72B0607B9E78F003A3C82 = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {706, 9456}}";
-			sepNavSelRange = "{14403, 47}";
+			sepNavSelRange = "{16460, 0}";
 			sepNavVisRect = "{{0, 8252}, {457, 249}}";
 			sepNavWindowFrame = "{{205, 6}, {791, 721}}";
 		};
@@ -789,25 +717,23 @@
 			sepNavWindowFrame = "{{15, 20}, {791, 721}}";
 		};
 	};
-	CD65D6040840204500E90C48 = {
-		comments = "error: ‘matrix’ undeclared (first use in this function)";
-		fRef = 8BF72B0607B9E78F003A3C82;
-		isa = PBXTextBookmark;
-		rLen = 1;
-		rLoc = 274;
-		rType = 1;
+	CD65D6D008426FAB00E90C48 = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {895, 3120}}";
+			sepNavSelRange = "{6817, 0}";
+			sepNavVisRect = "{{0, 2472}, {746, 648}}";
+			sepNavWindowFrame = "{{15, 20}, {791, 721}}";
+		};
 	};
-	CD65D6050840204500E90C48 = {
-		fRef = 8BF72B0607B9E78F003A3C82;
-		isa = PBXTextBookmark;
-		name = "id cells = [[[ourBrowser matrixInColumn:0] cells] objectEnumerator];";
-		rLen = 70;
-		rLoc = 7805;
-		rType = 0;
-		vrLen = 433;
-		vrLoc = 7526;
+	CD65D6F3084279EE00E90C48 = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {746, 648}}";
+			sepNavSelRange = "{859, 0}";
+			sepNavVisRect = "{{0, 0}, {746, 648}}";
+			sepNavWindowFrame = "{{15, 20}, {791, 721}}";
+		};
 	};
-	CD65D60A0840204700E90C48 = {
+	CD65D73B0843821C00E90C48 = {
 		fRef = 8B6D01C007CB2EA2009A76DA;
 		isa = PBXTextBookmark;
 		name = "SS_PrefsController.m: 69";
@@ -817,718 +743,49 @@
 		vrLen = 0;
 		vrLoc = 0;
 	};
-	CD65D60D0840206000E90C48 = {
-		fRef = 8BF72B0607B9E78F003A3C82;
+	CD65D73D0843821C00E90C48 = {
+		fRef = CD65D6D008426FAB00E90C48;
 		isa = PBXTextBookmark;
-		name = "id cells = [[[ourBrowser matrixInColumn:0] cells] objectEnumerator];";
-		rLen = 70;
-		rLoc = 7805;
+		name = setDesktopBackgroundToFile;
+		rLen = 26;
+		rLoc = 1042;
 		rType = 0;
-		vrLen = 433;
-		vrLoc = 7526;
-	};
-	CD65D60E0840206A00E90C48 = {
-		fRef = 8B6D01C007CB2EA2009A76DA;
-		isa = PBXTextBookmark;
-		name = "SS_PrefsController.m: 69";
-		rLen = 0;
-		rLoc = 1615;
-		rType = 0;
-		vrLen = 0;
+		vrLen = 1606;
 		vrLoc = 0;
 	};
-	CD65D61C0840207D00E90C48 = {
-		fRef = 8BF72B0607B9E78F003A3C82;
+	CD65D73E0843821C00E90C48 = {
+		fRef = 8BD011D807A99DFB00AA4BAA;
 		isa = PBXTextBookmark;
-		name = "id cells = [[[ourBrowser matrixInColumn:0] cells] objectEnumerator];";
-		rLen = 70;
-		rLoc = 7805;
-		rType = 0;
-		vrLen = 433;
-		vrLoc = 7526;
-	};
-	CD65D61D0840207F00E90C48 = {
-		fRef = 8B6D01C007CB2EA2009A76DA;
-		isa = PBXTextBookmark;
-		name = "SS_PrefsController.m: 69";
+		name = "VitaminSEEController.h: setImageAsDesktop:";
 		rLen = 0;
-		rLoc = 1615;
+		rLoc = 5801;
 		rType = 0;
-		vrLen = 0;
-		vrLoc = 0;
+		vrLen = 1183;
+		vrLoc = 4620;
 	};
-	CD65D61E0840231600E90C48 = {
-		fRef = CDDBEB4908400DA400E65DA9;
-		isa = PBXBookmark;
-	};
-	CD65D621084023AE00E90C48 = {
-		fRef = 8BF72B0607B9E78F003A3C82;
+	CD65D73F0843821C00E90C48 = {
+		fRef = CD65D7400843821C00E90C48;
 		isa = PBXTextBookmark;
-		name = "id cells = [[[ourBrowser matrixInColumn:0] cells] objectEnumerator];";
-		rLen = 70;
-		rLoc = 7805;
-		rType = 0;
-		vrLen = 433;
-		vrLoc = 7526;
-	};
-	CD65D622084023AF00E90C48 = {
-		fRef = 8B6D01C007CB2EA2009A76DA;
-		isa = PBXTextBookmark;
-		name = "SS_PrefsController.m: 69";
+		name = "(null): 141";
 		rLen = 0;
-		rLoc = 1615;
-		rType = 0;
-		vrLen = 0;
-		vrLoc = 0;
-	};
-	CD65D625084023AF00E90C48 = {
-		fRef = CDDBEB4908400DA400E65DA9;
-		isa = PBXTextBookmark;
-		name = "NSObject+CallWithArray.m: 19";
-		rLen = 0;
-		rLoc = 427;
-		rType = 0;
-		vrLen = 675;
-		vrLoc = 0;
-	};
-	CD65D626084023FE00E90C48 = {
-		fRef = 8BF72B0607B9E78F003A3C82;
-		isa = PBXTextBookmark;
-		name = "id cells = [[[ourBrowser matrixInColumn:0] cells] objectEnumerator];";
-		rLen = 70;
-		rLoc = 7805;
-		rType = 0;
-		vrLen = 433;
-		vrLoc = 7526;
-	};
-	CD65D627084023FF00E90C48 = {
-		fRef = 8B6D01C007CB2EA2009A76DA;
-		isa = PBXTextBookmark;
-		name = "SS_PrefsController.m: 69";
-		rLen = 0;
-		rLoc = 1615;
-		rType = 0;
-		vrLen = 0;
-		vrLoc = 0;
-	};
-	CD65D628084023FF00E90C48 = {
-		fRef = CDDBEB4908400DA400E65DA9;
-		isa = PBXTextBookmark;
-		name = "NSObject+CallWithArray.m: 21";
-		rLen = 0;
-		rLoc = 508;
-		rType = 0;
-		vrLen = 675;
-		vrLoc = 0;
-	};
-	CD65D62B0840244900E90C48 = {
-		fRef = 8B6D01C007CB2EA2009A76DA;
-		isa = PBXTextBookmark;
-		name = "SS_PrefsController.m: 69";
-		rLen = 0;
-		rLoc = 1615;
-		rType = 0;
-		vrLen = 0;
-		vrLoc = 0;
-	};
-	CD65D62C0840244900E90C48 = {
-		fRef = CDDBEB4908400DA400E65DA9;
-		isa = PBXTextBookmark;
-		name = "NSObject+CallWithArray.m: 18";
-		rLen = 0;
-		rLoc = 404;
-		rType = 0;
-		vrLen = 516;
-		vrLoc = 0;
-	};
-	CD65D63A0840254F00E90C48 = {
-		fRef = 8BF72B0607B9E78F003A3C82;
-		isa = PBXTextBookmark;
-		name = "id cells = [[[ourBrowser matrixInColumn:0] cells] objectEnumerator];";
-		rLen = 70;
-		rLoc = 7805;
-		rType = 0;
-		vrLen = 433;
-		vrLoc = 7526;
-	};
-	CD65D63B0840255000E90C48 = {
-		fRef = 8B6D01C007CB2EA2009A76DA;
-		isa = PBXTextBookmark;
-		name = "SS_PrefsController.m: 69";
-		rLen = 0;
-		rLoc = 1615;
-		rType = 0;
-		vrLen = 0;
-		vrLoc = 0;
-	};
-	CD65D6400840283100E90C48 = {
-		fRef = 8BF72B0607B9E78F003A3C82;
-		isa = PBXTextBookmark;
-		name = "ViewIconViewController.m: 590";
-		rLen = 0;
-		rLoc = 16460;
-		rType = 0;
-		vrLen = 386;
-		vrLoc = 7609;
-	};
-	CD65D6420840283100E90C48 = {
-		fRef = 8B443AFA07D7E0AB00C4D8E9;
-		isa = PBXTextBookmark;
-		name = NSEnumerator;
-		rLen = 12;
-		rLoc = 1817;
-		rType = 0;
-		vrLen = 376;
-		vrLoc = 1685;
-	};
-	CD65D6430840283100E90C48 = {
-		fRef = 8BF72B0607B9E78F003A3C82;
-		isa = PBXTextBookmark;
-		rLen = 0;
-		rLoc = 3821;
-		rType = 0;
-	};
-	CD65D6440840283100E90C48 = {
-		fRef = 8BF72B0607B9E78F003A3C82;
-		isa = PBXTextBookmark;
-		name = "ViewIconViewController.m: 592";
-		rLen = 0;
-		rLoc = 16460;
-		rType = 0;
-		vrLen = 334;
-		vrLoc = 14702;
-	};
-	CD65D6450840283100E90C48 = {
-		fRef = 8B443AFA07D7E0AB00C4D8E9;
-		isa = PBXTextBookmark;
-		name = NSEnumerator;
-		rLen = 12;
-		rLoc = 1817;
-		rType = 0;
-		vrLen = 376;
-		vrLoc = 1685;
-	};
-	CD65D6460840283100E90C48 = {
-		fRef = 8BF72B0607B9E78F003A3C82;
-		isa = PBXTextBookmark;
-		name = "ViewIconViewController.m: 134";
-		rLen = 0;
-		rLoc = 4078;
-		rType = 0;
-		vrLen = 420;
-		vrLoc = 3844;
-	};
-	CD65D6490840283200E90C48 = {
-		fRef = 8B6D01C007CB2EA2009A76DA;
-		isa = PBXTextBookmark;
-		name = "SS_PrefsController.m: 69";
-		rLen = 0;
-		rLoc = 1615;
-		rType = 0;
-		vrLen = 0;
-		vrLoc = 0;
-	};
-	CD65D64A0840283900E90C48 = {
-		fRef = 8BF72B0607B9E78F003A3C82;
-		isa = PBXTextBookmark;
-		name = "ViewIconViewController.m: 590";
-		rLen = 0;
-		rLoc = 16460;
-		rType = 0;
-		vrLen = 386;
-		vrLoc = 7609;
-	};
-	CD65D64B0840283900E90C48 = {
-		fRef = 8BF72B0607B9E78F003A3C82;
-		isa = PBXTextBookmark;
-		name = "ViewIconViewController.m: 134";
-		rLen = 0;
-		rLoc = 4078;
-		rType = 0;
-		vrLen = 420;
-		vrLoc = 3844;
-	};
-	CD65D64F0840286500E90C48 = {
-		fRef = 8BF72B0607B9E78F003A3C82;
-		isa = PBXTextBookmark;
-		name = "ViewIconViewController.m: 590";
-		rLen = 0;
-		rLoc = 16460;
-		rType = 0;
-		vrLen = 386;
-		vrLoc = 7634;
-	};
-	CD65D6500840286500E90C48 = {
-		fRef = 8BF72B0607B9E78F003A3C82;
-		isa = PBXTextBookmark;
-		name = "ViewIconViewController.m: 134";
-		rLen = 0;
-		rLoc = 4078;
-		rType = 0;
-		vrLen = 445;
-		vrLoc = 3844;
-	};
-	CD65D6510840286E00E90C48 = {
-		fRef = 8B6D01C007CB2EA2009A76DA;
-		isa = PBXTextBookmark;
-		name = "SS_PrefsController.m: 69";
-		rLen = 0;
-		rLoc = 1615;
-		rType = 0;
-		vrLen = 0;
-		vrLoc = 0;
-	};
-	CD65D6520840288900E90C48 = {
-		fRef = 8B6D01C007CB2EA2009A76DA;
-		isa = PBXTextBookmark;
-		name = "SS_PrefsController.m: 69";
-		rLen = 0;
-		rLoc = 1615;
-		rType = 0;
-		vrLen = 0;
-		vrLoc = 0;
-	};
-	CD65D655084028A600E90C48 = {
-		fRef = 8BF72B0607B9E78F003A3C82;
-		isa = PBXTextBookmark;
-		name = "ViewIconViewController.m: 590";
-		rLen = 0;
-		rLoc = 16460;
-		rType = 0;
-		vrLen = 386;
-		vrLoc = 7634;
-	};
-	CD65D656084028A600E90C48 = {
-		fRef = 8BF72B0607B9E78F003A3C82;
-		isa = PBXTextBookmark;
-		name = "ViewIconViewController.m: 134";
-		rLen = 0;
-		rLoc = 4078;
-		rType = 0;
-		vrLen = 445;
-		vrLoc = 3844;
-	};
-	CD65D65B0840294000E90C48 = {
-		comments = "error: ‘myFileList’ undeclared (first use in this function)";
-		fRef = 8BF72B0607B9E78F003A3C82;
-		isa = PBXTextBookmark;
-		rLen = 1;
-		rLoc = 525;
-		rType = 1;
-	};
-	CD65D65C0840294000E90C48 = {
-		fRef = 8BF72B0607B9E78F003A3C82;
-		isa = PBXTextBookmark;
-		name = "[myFileList addObject:currentFileWithPath];";
-		rLen = 47;
-		rLoc = 14403;
-		rType = 0;
-		vrLen = 577;
-		vrLoc = 14008;
-	};
-	CD65D65D0840294000E90C48 = {
-		fRef = 8BF72B0607B9E78F003A3C82;
-		isa = PBXTextBookmark;
-		name = "ViewIconViewController.m: 514";
-		rLen = 0;
-		rLoc = 13915;
-		rType = 0;
-		vrLen = 449;
-		vrLoc = 13762;
-	};
-	CD65D65E0840294200E90C48 = {
-		fRef = 8B6D01C007CB2EA2009A76DA;
-		isa = PBXTextBookmark;
-		name = "SS_PrefsController.m: 69";
-		rLen = 0;
-		rLoc = 1615;
-		rType = 0;
-		vrLen = 0;
-		vrLoc = 0;
-	};
-	CD65D66508402ABD00E90C48 = {
-		fRef = 8BF72B0607B9E78F003A3C82;
-		isa = PBXTextBookmark;
-		name = "[myFileList addObject:currentFileWithPath];";
-		rLen = 47;
-		rLoc = 14403;
-		rType = 0;
-		vrLen = 628;
-		vrLoc = 14008;
-	};
-	CD65D66608402ABD00E90C48 = {
-		fRef = 8BF72B0607B9E78F003A3C82;
-		isa = PBXTextBookmark;
-		name = "ViewIconViewController.m: 528";
-		rLen = 0;
-		rLoc = 14456;
-		rType = 0;
-		vrLen = 498;
-		vrLoc = 14323;
-	};
-	CD65D66708402ABD00E90C48 = {
-		fRef = CD50A33D0826E74900414068;
-		isa = PBXTextBookmark;
-		name = "FullDisplayNameValueTransformer.m: 50";
-		rLen = 0;
-		rLoc = 1741;
-		rType = 0;
-		vrLen = 373;
-		vrLoc = 1582;
-	};
-	CD65D66808402ABD00E90C48 = {
-		fRef = CD76863D08283934006AE601;
-		isa = PBXTextBookmark;
-		rLen = 0;
-		rLoc = 6215;
-		rType = 0;
-	};
-	CD65D66908402ABD00E90C48 = {
-		fRef = 8BF72B0607B9E78F003A3C82;
-		isa = PBXTextBookmark;
-		name = "ViewIconViewController.m: 528";
-		rLen = 0;
-		rLoc = 14456;
-		rType = 0;
-		vrLen = 498;
-		vrLoc = 14323;
-	};
-	CD65D66A08402ABD00E90C48 = {
-		fRef = CD50A33D0826E74900414068;
-		isa = PBXTextBookmark;
-		name = "FullDisplayNameValueTransformer.m: 50";
-		rLen = 0;
-		rLoc = 1741;
-		rType = 0;
-		vrLen = 373;
-		vrLoc = 1582;
-	};
-	CD65D66B08402ABD00E90C48 = {
-		fRef = CD76863D08283934006AE601;
-		isa = PBXTextBookmark;
-		name = "EGPath.m: 247";
-		rLen = 0;
-		rLoc = 5343;
-		rType = 0;
-		vrLen = 323;
-		vrLoc = 5151;
-	};
-	CD65D66C08402ABE00E90C48 = {
-		fRef = 8B6D01C007CB2EA2009A76DA;
-		isa = PBXTextBookmark;
-		name = "SS_PrefsController.m: 69";
-		rLen = 0;
-		rLoc = 1615;
-		rType = 0;
-		vrLen = 0;
-		vrLoc = 0;
-	};
-	CD65D66F08402B1100E90C48 = {
-		fRef = 8BF72B0607B9E78F003A3C82;
-		isa = PBXTextBookmark;
-		name = "[myFileList addObject:currentFileWithPath];";
-		rLen = 47;
-		rLoc = 14403;
-		rType = 0;
-		vrLen = 628;
-		vrLoc = 14008;
-	};
-	CD65D67008402B1100E90C48 = {
-		fRef = CD76863D08283934006AE601;
-		isa = PBXTextBookmark;
-		name = "EGPath.m: 242";
-		rLen = 0;
-		rLoc = 5156;
-		rType = 0;
-		vrLen = 404;
-		vrLoc = 4940;
-	};
-	CD65D67108402B1200E90C48 = {
-		fRef = 8B6D01C007CB2EA2009A76DA;
-		isa = PBXTextBookmark;
-		name = "SS_PrefsController.m: 69";
-		rLen = 0;
-		rLoc = 1615;
-		rType = 0;
-		vrLen = 0;
-		vrLoc = 0;
-	};
-	CD65D67A08402CC800E90C48 = {
-		fRef = 8BF72B0607B9E78F003A3C82;
-		isa = PBXTextBookmark;
-		name = "[myFileList addObject:currentFileWithPath];";
-		rLen = 47;
-		rLoc = 14403;
-		rType = 0;
-		vrLen = 628;
-		vrLoc = 14008;
-	};
-	CD65D67B08402CC800E90C48 = {
-		fRef = CD76863D08283934006AE601;
-		isa = PBXTextBookmark;
-		name = "EGPath.m: 307";
-		rLen = 0;
-		rLoc = 6695;
-		rType = 0;
-		vrLen = 445;
-		vrLoc = 6767;
-	};
-	CD65D67C08402CC800E90C48 = {
-		fRef = 8B5D5E2A07B8215E00957950;
-		isa = PBXTextBookmark;
-		name = "ImageTaskManager.m: 243";
-		rLen = 0;
-		rLoc = 6594;
-		rType = 0;
-		vrLen = 442;
-		vrLoc = 6522;
-	};
-	CD65D67D08402CC800E90C48 = {
-		fRef = 8B7C0C3B07B5FEB5005DB6FF;
-		isa = PBXTextBookmark;
-		name = "Util.m: 95";
-		rLen = 0;
-		rLoc = 3424;
-		rType = 0;
-		vrLen = 583;
-		vrLoc = 3080;
-	};
-	CD65D67E08402CC800E90C48 = {
-		fRef = 8BD011D907A99DFB00AA4BAA;
-		isa = PBXTextBookmark;
-		rLen = 12;
-		rLoc = 32534;
-		rType = 0;
-	};
-	CD65D67F08402CC800E90C48 = {
-		fRef = CD76863D08283934006AE601;
-		isa = PBXTextBookmark;
-		name = "EGPath.m: 307";
-		rLen = 0;
-		rLoc = 6695;
-		rType = 0;
-		vrLen = 445;
-		vrLoc = 6767;
-	};
-	CD65D68008402CC800E90C48 = {
-		fRef = 8B5D5E2A07B8215E00957950;
-		isa = PBXTextBookmark;
-		name = "ImageTaskManager.m: 243";
-		rLen = 0;
-		rLoc = 6594;
-		rType = 0;
-		vrLen = 442;
-		vrLoc = 6522;
-	};
-	CD65D68108402CC800E90C48 = {
-		fRef = 8B7C0C3B07B5FEB5005DB6FF;
-		isa = PBXTextBookmark;
-		name = "Util.m: 95";
-		rLen = 0;
-		rLoc = 3424;
-		rType = 0;
-		vrLen = 583;
-		vrLoc = 3080;
-	};
-	CD65D68208402CC800E90C48 = {
-		fRef = 8BD011D907A99DFB00AA4BAA;
-		isa = PBXTextBookmark;
-		name = "VitaminSEEController.m: 1109";
-		rLen = 0;
-		rLoc = 32762;
-		rType = 0;
-		vrLen = 281;
-		vrLoc = 32502;
-	};
-	CD65D68308402CC900E90C48 = {
-		fRef = 8B6D01C007CB2EA2009A76DA;
-		isa = PBXTextBookmark;
-		name = "SS_PrefsController.m: 69";
-		rLen = 0;
-		rLoc = 1615;
-		rType = 0;
-		vrLen = 0;
-		vrLoc = 0;
-	};
-	CD65D68408402CDB00E90C48 = {
-		fRef = 8BF72B0607B9E78F003A3C82;
-		isa = PBXTextBookmark;
-		name = "[myFileList addObject:currentFileWithPath];";
-		rLen = 47;
-		rLoc = 14403;
-		rType = 0;
-		vrLen = 628;
-		vrLoc = 14008;
-	};
-	CD65D68508402CDB00E90C48 = {
-		fRef = 8BD011D907A99DFB00AA4BAA;
-		isa = PBXTextBookmark;
-		name = "VitaminSEEController.m: 1109";
-		rLen = 0;
-		rLoc = 32762;
-		rType = 0;
-		vrLen = 281;
-		vrLoc = 32502;
-	};
-	CD65D68608402CE700E90C48 = {
-		fRef = 8B6D01C007CB2EA2009A76DA;
-		isa = PBXTextBookmark;
-		name = "SS_PrefsController.m: 69";
-		rLen = 0;
-		rLoc = 1615;
-		rType = 0;
-		vrLen = 0;
-		vrLoc = 0;
-	};
-	CD65D68A08402D3600E90C48 = {
-		fRef = 8BF72B0607B9E78F003A3C82;
-		isa = PBXTextBookmark;
-		name = "[myFileList addObject:currentFileWithPath];";
-		rLen = 47;
-		rLoc = 14403;
-		rType = 0;
-		vrLen = 628;
-		vrLoc = 14008;
-	};
-	CD65D68B08402D3600E90C48 = {
-		fRef = 8BD011D907A99DFB00AA4BAA;
-		isa = PBXTextBookmark;
-		name = "VitaminSEEController.m: 1109";
-		rLen = 0;
-		rLoc = 32762;
-		rType = 0;
-		vrLen = 281;
-		vrLoc = 32502;
-	};
-	CD65D68C08402D4000E90C48 = {
-		fRef = 8B6D01C007CB2EA2009A76DA;
-		isa = PBXTextBookmark;
-		name = "SS_PrefsController.m: 69";
-		rLen = 0;
-		rLoc = 1615;
-		rType = 0;
-		vrLen = 0;
-		vrLoc = 0;
-	};
-	CD65D68E08402D9D00E90C48 = {
-		fRef = 8BF72B0607B9E78F003A3C82;
-		isa = PBXTextBookmark;
-		name = "[myFileList addObject:currentFileWithPath];";
-		rLen = 47;
-		rLoc = 14403;
-		rType = 0;
-		vrLen = 628;
-		vrLoc = 14008;
-	};
-	CD65D68F08402D9D00E90C48 = {
-		fRef = 8BD011D907A99DFB00AA4BAA;
-		isa = PBXTextBookmark;
-		name = "VitaminSEEController.m: 1109";
-		rLen = 0;
-		rLoc = 32762;
-		rType = 0;
-		vrLen = 281;
-		vrLoc = 32502;
-	};
-	CD65D69208402DA800E90C48 = {
-		fRef = 8BF72B0607B9E78F003A3C82;
-		isa = PBXTextBookmark;
-		name = "[myFileList addObject:currentFileWithPath];";
-		rLen = 47;
-		rLoc = 14403;
-		rType = 0;
-		vrLen = 628;
-		vrLoc = 14008;
-	};
-	CD65D69308402DA800E90C48 = {
-		fRef = 8BD011D907A99DFB00AA4BAA;
-		isa = PBXTextBookmark;
-		name = "VitaminSEEController.m: 1109";
-		rLen = 0;
-		rLoc = 32762;
-		rType = 0;
-		vrLen = 281;
-		vrLoc = 32502;
-	};
-	CD65D69408402DB100E90C48 = {
-		fRef = 8B6D01C007CB2EA2009A76DA;
-		isa = PBXTextBookmark;
-		name = "SS_PrefsController.m: 69";
-		rLen = 0;
-		rLoc = 1615;
-		rType = 0;
-		vrLen = 0;
-		vrLoc = 0;
-	};
-	CD65D69708402DE000E90C48 = {
-		fRef = 8BF72B0607B9E78F003A3C82;
-		isa = PBXTextBookmark;
-		name = "[myFileList addObject:currentFileWithPath];";
-		rLen = 47;
-		rLoc = 14403;
-		rType = 0;
-		vrLen = 628;
-		vrLoc = 14008;
-	};
-	CD65D69808402DE000E90C48 = {
-		fRef = 8BD011D907A99DFB00AA4BAA;
-		isa = PBXTextBookmark;
-		name = "VitaminSEEController.m: 1109";
-		rLen = 0;
-		rLoc = 32762;
-		rType = 0;
-		vrLen = 281;
-		vrLoc = 32502;
-	};
-	CD65D69908402DE100E90C48 = {
-		fRef = 8B6D01C007CB2EA2009A76DA;
-		isa = PBXTextBookmark;
-		name = "SS_PrefsController.m: 69";
-		rLen = 0;
-		rLoc = 1615;
-		rType = 0;
-		vrLen = 0;
-		vrLoc = 0;
-	};
-	CD65D69C08402DE600E90C48 = {
-		fRef = 8BF72B0607B9E78F003A3C82;
-		isa = PBXTextBookmark;
-		name = "[myFileList addObject:currentFileWithPath];";
-		rLen = 47;
-		rLoc = 14403;
-		rType = 0;
-		vrLen = 628;
-		vrLoc = 14008;
-	};
-	CD65D69D08402DE600E90C48 = {
-		fRef = 8BD011D907A99DFB00AA4BAA;
-		isa = PBXTextBookmark;
-		name = "VitaminSEEController.m: 1106";
-		rLen = 0;
-		rLoc = 32712;
-		rType = 0;
-		vrLen = 281;
-		vrLoc = 32502;
-	};
-	CD65D69E08402DEA00E90C48 = {
-		fRef = 8B6D01C007CB2EA2009A76DA;
-		isa = PBXTextBookmark;
-		name = "SS_PrefsController.m: 69";
-		rLen = 0;
-		rLoc = 1615;
-		rType = 0;
-		vrLen = 0;
-		vrLoc = 0;
-	};
-	CD65D6A208402E6400E90C48 = {
-		fRef = 8B6D01C007CB2EA2009A76DA;
-		isa = PBXTextBookmark;
-		name = "SS_PrefsController.m: 69";
-		rLen = 0;
-		rLoc = 1615;
-		rType = 0;
-		vrLen = 0;
-		vrLoc = 0;
+		rLoc = 4206;
+		rType = 0;
+		vrLen = 1325;
+		vrLoc = 3610;
+	};
+	CD65D7400843821C00E90C48 = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.objc;
+		name = WallSelectorController.m;
+		path = /Users/glaysher/Projects/WallSelector/WallSelectorController.m;
+		refType = 0;
+		sourceTree = "<absolute>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {746, 3408}}";
+			sepNavSelRange = "{4206, 0}";
+			sepNavVisRect = "{{0, 1824}, {746, 648}}";
+			sepNavWindowFrame = "{{180, 17}, {791, 721}}";
+		};
 	};
 	CD76863C08283934006AE601 = {
 		uiCtxt = {
@@ -2267,6 +1524,53 @@
 		state = 1;
 		symbolName = "-[NSException raise]";
 	};
+	CDAE7AD90843888200A389A4 = {
+		fRef = 8B6D01C007CB2EA2009A76DA;
+		isa = PBXTextBookmark;
+		name = "SS_PrefsController.m: 69";
+		rLen = 0;
+		rLoc = 1615;
+		rType = 0;
+		vrLen = 0;
+		vrLoc = 0;
+	};
+	CDAE7ADC0843888200A389A4 = {
+		fRef = CD65D6D008426FAB00E90C48;
+		isa = PBXTextBookmark;
+		name = "DesktopBackground.m: 191";
+		rLen = 0;
+		rLoc = 6817;
+		rType = 0;
+		vrLen = 1486;
+		vrLoc = 5431;
+	};
+	CDAE7ADD0843888200A389A4 = {
+		fRef = 8BD011D807A99DFB00AA4BAA;
+		isa = PBXTextBookmark;
+		name = "VitaminSEEController.h: setImageAsDesktop:";
+		rLen = 0;
+		rLoc = 5801;
+		rType = 0;
+		vrLen = 1225;
+		vrLoc = 4578;
+	};
+	CDAE7ADE0843888200A389A4 = {
+		fRef = CDAE7ADF0843888200A389A4;
+		isa = PBXTextBookmark;
+		name = "(null): 141";
+		rLen = 0;
+		rLoc = 4206;
+		rType = 0;
+		vrLen = 1325;
+		vrLoc = 3610;
+	};
+	CDAE7ADF0843888200A389A4 = {
+		isa = PBXFileReference;
+		name = WallSelectorController.m;
+		path = /Users/glaysher/Projects/WallSelector/WallSelectorController.m;
+		refType = 0;
+		sourceTree = "<absolute>";
+	};
 	CDDBEB4408327E4300F934ED = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {746, 688}}";
@@ -2298,46 +1602,6 @@
 			sepNavVisRect = "{{0, 0}, {746, 648}}";
 			sepNavWindowFrame = "{{232, 21}, {791, 721}}";
 		};
-	};
-	CDDBEC2008401D1400E65DA9 = {
-		fRef = 8B6D01C007CB2EA2009A76DA;
-		isa = PBXTextBookmark;
-		name = "SS_PrefsController.m: 69";
-		rLen = 0;
-		rLoc = 1615;
-		rType = 0;
-		vrLen = 0;
-		vrLoc = 0;
-	};
-	CDDBEC2208401D1400E65DA9 = {
-		fRef = 8B3CB1A207EA82CE0086353C;
-		isa = PBXTextBookmark;
-		name = "ThumbnailManager.h: removeThumbnailQueue";
-		rLen = 0;
-		rLoc = 1564;
-		rType = 0;
-		vrLen = 1012;
-		vrLoc = 953;
-	};
-	CDDBECFA08401EC000E65DA9 = {
-		fRef = 8B6D01C007CB2EA2009A76DA;
-		isa = PBXTextBookmark;
-		name = "SS_PrefsController.m: 69";
-		rLen = 0;
-		rLoc = 1615;
-		rType = 0;
-		vrLen = 0;
-		vrLoc = 0;
-	};
-	CDDBECFD08401EC000E65DA9 = {
-		fRef = 8B3CB1A207EA82CE0086353C;
-		isa = PBXTextBookmark;
-		name = "ThumbnailManager.h: removeThumbnailQueue";
-		rLen = 0;
-		rLoc = 1564;
-		rType = 0;
-		vrLen = 960;
-		vrLoc = 953;
 	};
 	CDF0E24C0835603600652BEC = {
 		uiCtxt = {

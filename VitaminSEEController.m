@@ -78,8 +78,14 @@
  * * MORE SPEED! Start paying attention to non-critical areas
  */
 
+// Needs more testing:
+// * Set as desktop/set current folder as desktop...
+
 // For Version 0.6.3
+// * Set as desktop...
+// * Set current folder as desktop...
 // * More thumbnail operations
+// * More speed optimizations. Thread run loop function call overhead?
 // * Open with toolbar item
 
 // For Version 0.7
@@ -291,7 +297,7 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
 	if(!setPathForFirstTime)
-	{
+	{		
 		[viewAsIconsController setCurrentDirectory:[EGPathFilesystemPath 
 			pathWithPath:[[NSUserDefaults standardUserDefaults] 
 				objectForKey:@"DefaultStartupPath"]] currentFile:nil];
@@ -578,10 +584,15 @@
 				[loadedBasePlugins setValue:component forKey:name];
 			}
 			else
-				NSLog(@"WARNING! Attempt to load plugin from '%@' that doesn't conform to PluginBase!",
+				NSLog(@"WARNING! Attempt to load plugin from '%@' that doesn't conform to PluginBase! Plugin not loaded.",
 					  path);
 		}
+		else
+			NSLog(@"WARNGIN! Could not load principle class for plugin '%@'! Plugin not loaded.", name);
 	}
+	else
+		NSLog(@"WARNING! Could not find plugin '%@' from internal plugin path '%@'! Plugin not loaded.", 
+			  name, bundlePath);
 	
 	return component;
 }
@@ -701,6 +712,18 @@
 	{
 		enable = mainWindowVisible && [currentImageFile isDir] && 
 			[self isInFavorites:currentImageFile];
+	}
+	else if(action == @selector(setImageAsDesktop:))
+	{
+		BOOL isImage = [currentImageFile isImage];
+		BOOL isDir = [currentImageFile isDir];
+		
+		enable = mainWindowVisible && (isImage || isDir);
+		
+		if(isImage)
+			[theMenuItem setTitle:NSLocalizedString(@"Set Image as Desktop", @"Text in File menu")];
+		else
+			[theMenuItem setTitle:NSLocalizedString(@"Set Folder as Desktop", @"Text in File menu")];			
 	}
 	else if(action == @selector(deleteFileClicked:))
 	{
@@ -1139,6 +1162,14 @@
 		[viewAsIconsController makeFirstResponderTo:mainVitaminSeeWindow];
 	else
 		[mainVitaminSeeWindow makeFirstResponder:scrollView];	
+}
+
+-(IBAction)setImageAsDesktop:(id)sender
+{
+	if([currentImageFile isImage])
+		setDesktopBackgroundToFile(currentImageFile);
+	else if([currentImageFile isDir])
+		setDesktopBackgroundToFolder(currentImageFile);
 }
 
 ////////////////////////////// OPEN WITH MENU DELEGATE 
