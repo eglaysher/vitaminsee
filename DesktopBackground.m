@@ -5,20 +5,6 @@
  *  Created by Elliot Glaysher on 1/14/05.
  *  Copyright 2005 Elliot Glaysher. All rights reserved.
  *
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License
- * as published by the Free Software Foundation; either version 2
- * of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
 #import "DesktopBackground.h"
@@ -30,12 +16,11 @@ static NSDictionary* buildScreenList();
 void setDesktopBackgroundToFile(NSString* path)
 {
 	NSMutableDictionary* display = [NSMutableDictionary dictionary];
-	
-	// Now we check to see if we aren't in multi-wallpaper mode. If we aren't,
-	// then set it to the last tag and message preferenceCenter (if it exists)
+
+	// Build the default settings if 
 	id desktopDomain = [[NSUserDefaults standardUserDefaults] 
 		persistentDomainForName:@"com.apple.desktop"];
-	if(desktopDomain)
+	if(!desktopDomain)
 	{	
 		setupFirstTime(display);
 	}
@@ -181,9 +166,10 @@ static void setupFirstTime(NSMutableDictionary* display)
 	[display setObject:[NSNumber numberWithBool:YES] forKey:@"Random"];
 }
 
-// Build a dictioanry with one entry: {"default" => {} }. This is the basic
-// structure of the background dictionary.
-// This code will probably be only invoked once, ever.
+// Build a dictionary with 1+number of screen entries. Each will consist of an
+// NSMutableDictionary.
+//
+// This code will probably be only invoked once, if ever.
 static NSDictionary* buildScreenList()
 {
 	NSMutableDictionary* background = [[[NSMutableDictionary alloc] init] autorelease];
@@ -198,7 +184,7 @@ static NSDictionary* buildScreenList()
 		NSNumber* screenID = [[screen deviceDescription] objectForKey:@"NSScreenNumber"];
 		if(screenID)
 		{
-			// Add
+			// Add a dictionary.
 			[background setObject:[NSMutableDictionary dictionary] forKey:[screenID stringValue]];
 		}
 	}

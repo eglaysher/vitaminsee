@@ -185,7 +185,7 @@
 	pthread_mutex_unlock(&imageScalingProperties);	
 }
 
--(void)displayImageWithPath:(NSString*)path
+-(oneway void)displayImageWithPath:(in NSString*)path
 {
 	pthread_mutex_lock(&taskQueueLock);
 	
@@ -199,7 +199,24 @@
 	pthread_mutex_unlock(&taskQueueLock);
 }
 
--(void)preloadImage:(NSString*)path
+-(oneway void)displayImageWithPath:(in NSString*)newImageFile
+				  smoothing:(in int)newSmoothing
+		scaleProportionally:(in BOOL)newScaleProportionally
+				 scaleRatio:(in float)newScaleRatio
+			contentViewSize:(in NSSize)newContentViewSize
+{
+	pthread_mutex_lock(&imageScalingProperties);
+	smoothing = newSmoothing;
+	scaleProportionally = newScaleProportionally;
+	scaleRatio = newScaleRatio;
+	contentViewSize = newContentViewSize;
+	pthread_mutex_unlock(&imageScalingProperties);	
+	
+	[self displayImageWithPath:newImageFile];
+}
+
+
+-(oneway void)preloadImage:(in NSString*)path
 {	
 	pthread_mutex_lock(&taskQueueLock);
 

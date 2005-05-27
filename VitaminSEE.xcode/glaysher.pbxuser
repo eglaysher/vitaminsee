@@ -164,18 +164,12 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 138838756;
-			PBXWorkspaceStateSaveDate = 138838756;
+			PBXPerProjectTemplateStateSaveDate = 138915319;
+			PBXWorkspaceStateSaveDate = 138915319;
 		};
 		perUserProjectItems = {
-			CD8497E808467D8D008A01DF = CD8497E808467D8D008A01DF;
-			CD8497EB08467D8D008A01DF = CD8497EB08467D8D008A01DF;
-			CD8497EC08467D8D008A01DF = CD8497EC08467D8D008A01DF;
-			CD8497ED08467D8D008A01DF = CD8497ED08467D8D008A01DF;
-			CDAE7BAD08438A9B00A389A4 = CDAE7BAD08438A9B00A389A4;
-			CDAE7BB008438A9B00A389A4 = CDAE7BB008438A9B00A389A4;
-			CDAE7BB108438A9B00A389A4 = CDAE7BB108438A9B00A389A4;
-			CDAE7BB208438A9B00A389A4 = CDAE7BB208438A9B00A389A4;
+			CD2AA50E0847AD010024D870 = CD2AA50E0847AD010024D870;
+			CDF555260847D4F400D1A3B6 = CDF555260847D4F400D1A3B6;
 		};
 		sourceControlManager = CD98F35108244FFF000A5C4A;
 		userBuildSettings = {
@@ -290,17 +284,17 @@
 	};
 	8B5D5E2907B8215E00957950 = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {636, 1296}}";
-			sepNavSelRange = "{1944, 0}";
-			sepNavVisRect = "{{0, 671}, {575, 625}}";
+			sepNavIntBoundsRect = "{{0, 0}, {636, 1536}}";
+			sepNavSelRange = "{1790, 0}";
+			sepNavVisRect = "{{0, 911}, {575, 625}}";
 			sepNavWindowFrame = "{{38, 22}, {620, 698}}";
 		};
 	};
 	8B5D5E2A07B8215E00957950 = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {699, 7680}}";
-			sepNavSelRange = "{6721, 0}";
-			sepNavVisRect = "{{0, 3799}, {660, 357}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1637, 7952}}";
+			sepNavSelRange = "{2913, 0}";
+			sepNavVisRect = "{{0, 932}, {746, 648}}";
 			sepNavWindowFrame = "{{147, 20}, {791, 721}}";
 		};
 	};
@@ -528,8 +522,8 @@
 	8BD011D907A99DFB00AA4BAA = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {937, 19072}}";
-			sepNavSelRange = "{22936, 0}";
-			sepNavVisRect = "{{0, 16708}, {746, 648}}";
+			sepNavSelRange = "{27722, 0}";
+			sepNavVisRect = "{{0, 14292}, {746, 648}}";
 			sepNavWindowFrame = "{{-6, 1}, {791, 721}}";
 		};
 	};
@@ -613,6 +607,16 @@
 			sepNavVisRect = "{{0, 2488}, {746, 648}}";
 			sepNavWindowFrame = "{{15, 20}, {791, 721}}";
 		};
+	};
+	CD2AA50E0847AD010024D870 = {
+		fRef = 8B6D01C007CB2EA2009A76DA;
+		isa = PBXTextBookmark;
+		name = "SS_PrefsController.m: 69";
+		rLen = 0;
+		rLoc = 1615;
+		rType = 0;
+		vrLen = 0;
+		vrLoc = 0;
 	};
 	CD42B4DE082ACBA300DDCEA9 = {
 		isa = PBXSymbolicBreakpoint;
@@ -719,9 +723,9 @@
 	};
 	CD65D6D008426FAB00E90C48 = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {895, 3120}}";
-			sepNavSelRange = "{5899, 0}";
-			sepNavVisRect = "{{0, 2472}, {746, 648}}";
+			sepNavIntBoundsRect = "{{0, 0}, {895, 3088}}";
+			sepNavSelRange = "{2821, 0}";
+			sepNavVisRect = "{{0, 1256}, {746, 648}}";
 			sepNavWindowFrame = "{{15, 20}, {791, 721}}";
 		};
 	};
@@ -748,54 +752,6 @@
 			sepNavVisRect = "{{0, 4922}, {755, 189}}";
 			sepNavWindowFrame = "{{21, 23}, {791, 721}}";
 		};
-	};
-	CD8497E808467D8D008A01DF = {
-		fRef = 8B6D01C007CB2EA2009A76DA;
-		isa = PBXTextBookmark;
-		name = "SS_PrefsController.m: 69";
-		rLen = 0;
-		rLoc = 1615;
-		rType = 0;
-		vrLen = 0;
-		vrLoc = 0;
-	};
-	CD8497EB08467D8D008A01DF = {
-		fRef = CD65D6D008426FAB00E90C48;
-		isa = PBXTextBookmark;
-		name = "DesktopBackground.m: 169";
-		rLen = 0;
-		rLoc = 5899;
-		rType = 0;
-		vrLen = 1486;
-		vrLoc = 5431;
-	};
-	CD8497EC08467D8D008A01DF = {
-		fRef = 8BD011D807A99DFB00AA4BAA;
-		isa = PBXTextBookmark;
-		name = "VitaminSEEController.h: setImageAsDesktop:";
-		rLen = 0;
-		rLoc = 5801;
-		rType = 0;
-		vrLen = 1224;
-		vrLoc = 4578;
-	};
-	CD8497ED08467D8D008A01DF = {
-		fRef = CD8497EE08467D8D008A01DF;
-		isa = PBXTextBookmark;
-		name = "(null): 141";
-		rLen = 0;
-		rLoc = 4206;
-		rType = 0;
-		vrLen = 1325;
-		vrLoc = 3610;
-	};
-	CD8497EE08467D8D008A01DF = {
-		isa = PBXFileReference;
-		lastKnownFileType = sourcecode.c.objc;
-		name = WallSelectorController.m;
-		path = /Users/glaysher/Projects/WallSelector/WallSelectorController.m;
-		refType = 0;
-		sourceTree = "<absolute>";
 	};
 	CD98F30B08244FF9000A5C4A = {
 		activeArgIndex = 2147483647;
@@ -1518,54 +1474,6 @@
 		state = 1;
 		symbolName = "-[NSException raise]";
 	};
-	CDAE7ADF0843888200A389A4 = {
-		isa = PBXFileReference;
-		lastKnownFileType = sourcecode.c.objc;
-		name = WallSelectorController.m;
-		path = /Users/glaysher/Projects/WallSelector/WallSelectorController.m;
-		refType = 0;
-		sourceTree = "<absolute>";
-	};
-	CDAE7BAD08438A9B00A389A4 = {
-		fRef = 8B6D01C007CB2EA2009A76DA;
-		isa = PBXTextBookmark;
-		name = "SS_PrefsController.m: 69";
-		rLen = 0;
-		rLoc = 1615;
-		rType = 0;
-		vrLen = 0;
-		vrLoc = 0;
-	};
-	CDAE7BB008438A9B00A389A4 = {
-		fRef = CD65D6D008426FAB00E90C48;
-		isa = PBXTextBookmark;
-		name = "DesktopBackground.m: 191";
-		rLen = 0;
-		rLoc = 6830;
-		rType = 0;
-		vrLen = 1497;
-		vrLoc = 5420;
-	};
-	CDAE7BB108438A9B00A389A4 = {
-		fRef = 8BD011D807A99DFB00AA4BAA;
-		isa = PBXTextBookmark;
-		name = "VitaminSEEController.h: setImageAsDesktop:";
-		rLen = 0;
-		rLoc = 5801;
-		rType = 0;
-		vrLen = 1224;
-		vrLoc = 4578;
-	};
-	CDAE7BB208438A9B00A389A4 = {
-		fRef = CDAE7ADF0843888200A389A4;
-		isa = PBXTextBookmark;
-		name = "WallSelectorController.m: 141";
-		rLen = 0;
-		rLoc = 4206;
-		rType = 0;
-		vrLen = 1325;
-		vrLoc = 3610;
-	};
 	CDDBEB4408327E4300F934ED = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {746, 688}}";
@@ -1637,5 +1545,15 @@
 			sepNavVisRect = "{{0, 0}, {746, 648}}";
 			sepNavWindowFrame = "{{227, 25}, {791, 721}}";
 		};
+	};
+	CDF555260847D4F400D1A3B6 = {
+		fRef = 8B6D01C007CB2EA2009A76DA;
+		isa = PBXTextBookmark;
+		name = "SS_PrefsController.m: 69";
+		rLen = 0;
+		rLoc = 1615;
+		rType = 0;
+		vrLen = 0;
+		vrLoc = 0;
 	};
 }

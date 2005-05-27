@@ -82,8 +82,6 @@
 // * Set as desktop/set current folder as desktop...
 
 // For Version 0.6.3
-// * Set as desktop...
-// * Set current folder as desktop...
 // * More thumbnail operations
 // * More speed optimizations. Thread run loop function call overhead?
 // * Open with toolbar item
@@ -910,17 +908,16 @@
 		[imageViewer setImage:nil];	
 	}
 	else
-	{
-		// Tell the ImageTaskManager our current options
-		[imageTaskManager setSmoothing:[[[NSUserDefaults standardUserDefaults]
-		objectForKey:@"SmoothingTag"] intValue]];
-		[imageTaskManager setScaleProportionally:scaleProportionally];
-		[imageTaskManager setScaleRatio:scaleRatio];
-		[imageTaskManager setContentViewSize:[scrollView contentSize]];		
-		
+	{		
 		// Tell the ImageTaskManager to load the file and contact us when done
 		[self startProgressIndicator];
-		[imageTaskManager displayImageWithPath:currentImageFile];
+		int smoothing = [[[NSUserDefaults standardUserDefaults]
+			objectForKey:@"SmoothingTag"] intValue];
+		[imageTaskManager displayImageWithPath:currentImageFile
+									 smoothing:smoothing
+						   scaleProportionally:scaleProportionally
+									scaleRatio:scaleRatio
+							   contentViewSize:[scrollView contentSize]];
 	}
 }
 

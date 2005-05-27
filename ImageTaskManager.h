@@ -36,7 +36,17 @@
 @class IconFamily;
 @class VitaminSEEController;
 
-@interface ImageTaskManager : NSObject {
+@protocol ImageTaskProtocol
+-(oneway void)displayImageWithPath:(in NSString*)path;
+-(oneway void)preloadImage:(in NSString*)path;
+-(oneway void)displayImageWithPath:(in NSString*)newImageFile
+						 smoothing:(in int)newSmoothing
+			   scaleProportionally:(in BOOL)newScaleProportionally
+						scaleRatio:(in float)newScaleRatio
+				   contentViewSize:(in NSSize)newContentViewSize;
+@end
+
+@interface ImageTaskManager : NSObject <ImageTaskProtocol> {
 	// TASK QUEUE:
 	pthread_mutex_t taskQueueLock;
 	NSString* fileToDisplayPath;
@@ -67,8 +77,13 @@
 
 -(id)initWithController:(id)controller;
 
--(void)preloadImage:(NSString*)path;
--(void)displayImageWithPath:(NSString*)path;
+-(oneway void)displayImageWithPath:(in NSString*)path;
+-(oneway void)preloadImage:(in NSString*)path;
+-(oneway void)displayImageWithPath:(in NSString*)newImageFile
+						 smoothing:(in int)newSmoothing
+			   scaleProportionally:(in BOOL)newScaleProportionally
+						scaleRatio:(in float)newScaleRatio
+				   contentViewSize:(in NSSize)newContentViewSize;
 
 -(void)setSmoothing:(int)newSmoothing;
 -(void)setScaleRatio:(float)newScaleRatio;
