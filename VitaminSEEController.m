@@ -968,7 +968,6 @@
 	// When we collapse, give the image viewer focus
 	[scrollView setNextKeyView:nil];
 	[self selectFirstResponder];
-//	[mainVitaminSeeWindow makeFirstResponder:scrollView];
 	[imageViewer setNextKeyView:imageViewer];
 }
 
@@ -976,7 +975,6 @@
 {
 	// When we expand, make the file view first responder
 	[self selectFirstResponder];
-//	[viewAsIconsController makeFirstResponderTo:mainVitaminSeeWindow];
 	[viewAsIconsController connectKeyFocus:scrollView];
 	[mainVitaminSeeWindow setViewsNeedDisplay:YES];
 }

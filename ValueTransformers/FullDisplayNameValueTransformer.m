@@ -1,33 +1,31 @@
 /////////////////////////////////////////////////////////////////////////
 // File:          $Name$
-// Module:        ValueTransformer that changes a path from /Users/elliot... to
-//                Macintosh HD::Users::elliot::...
+// Module:        ValueTransformer that turns a UNIX path to a full mac path
 // Part of:       VitaminSEE
 //
-// Revision:      $Revision: 149 $
-// Last edited:   $Date: 2005-04-29 14:32:49 -0400 (Fri, 29 Apr 2005) $
-// Author:        $Author: elliot $
+// Revision:      $Revision: 155 $
+// Last edited:   $Date: 2005-05-04 11:37:41 -0400 (Wed, 04 May 2005) $
+// Author:        $Author: glaysher $
 // Copyright:     (c) 2005 Elliot Glaysher
-// Created:       4/11/05
+// Created:       5/2/05
 //
 /////////////////////////////////////////////////////////////////////////
 //
-// This library is free software; you can redistribute it and/or
-// modify it under the terms of the GNU Lesser General Public
-// License as published by the Free Software Foundation; either
-// version 2.1 of the License, or (at your option) any later version.
-//  
-// This library is distributed in the hope that it will be useful,
+// This program is free software; you can redistribute it and/or
+// modify it under the terms of the GNU General Public License
+// as published by the Free Software Foundation; either version 2
+// of the License, or (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-// Lesser General Public License for more details.
-//  
-// You should have received a copy of the GNU Lesser General Public
-// License along with this library; if not, write to the Free Software
-// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  
-// USA
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
 //
-/////////////////////////////////////////////////////////////////////////
+// You should have received a copy of the GNU General Public License
+// along with this program; if not, write to the Free Software
+// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+//
+////////////////////////////////////////////////////////////////////////
 
 #import "FullDisplayNameValueTransformer.h"
 
