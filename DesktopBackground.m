@@ -187,9 +187,21 @@ static void setupFirstTime(NSMutableDictionary* display)
 static NSDictionary* buildScreenList()
 {
 	NSMutableDictionary* background = [[[NSMutableDictionary alloc] init] autorelease];
-	
-	// Get a list of all displays
-	
+
+	// There will always be a default entry...
 	[background setObject:[NSMutableDictionary dictionary] forKey:@"default"];
+
+	NSEnumerator *e = [[NSScreen screens] objectEnumerator];
+	NSScreen *screen;
+	while(screen = [e nextObject])
+	{
+		NSNumber* screenID = [[screen deviceDescription] objectForKey:@"NSScreenNumber"];
+		if(screenID)
+		{
+			// Add
+			[background setObject:[NSMutableDictionary dictionary] forKey:[screenID stringValue]];
+		}
+	}
+	
 	return background;
 }
