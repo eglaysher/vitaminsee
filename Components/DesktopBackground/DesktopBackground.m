@@ -33,10 +33,18 @@ static void setProperties(NSDictionary* dict);
 static void setupFirstTime(NSMutableDictionary* display);
 static NSDictionary* buildScreenList();
 
-void setDesktopBackgroundToFile(NSString* path)
+@implementation DesktopBackground
+
+-(id)initWithPluginLayer:(PluginLayer*)inPluginLayer
+{
+	// Ignore the plugin player object we're given.
+	return [super init];
+}
+
+-(void)setDesktopBackgroundToFile:(NSString*) path
 {
 	NSMutableDictionary* display = [NSMutableDictionary dictionary];
-
+	
 	// Build the default settings if 
 	id desktopDomain = [[NSUserDefaults standardUserDefaults] 
 		persistentDomainForName:@"com.apple.desktop"];
@@ -75,10 +83,10 @@ void setDesktopBackgroundToFile(NSString* path)
 		}
 	}
 	
-	setProperties(display);
+	setProperties(display);	
 }
 
-void setDesktopBackgroundToFolder(NSString* pathToFolder)
+-(void)setDesktopBackgroundToFolder:(NSString*)pathToFolder
 {
 	NSMutableDictionary* display = [NSMutableDictionary dictionary];
 	
@@ -123,8 +131,10 @@ void setDesktopBackgroundToFolder(NSString* pathToFolder)
 	[display setObject:pathToFolder forKey:@"ChangePath"];
 	[display setObject:pathToFolder forKey:@"ChooseFolderPath"];
 	[display setObject:[pathToFolder lastPathComponent] forKey:@"CollectionString"];
-	setProperties(display);	
+	setProperties(display);		
 }
+
+@end
 
 static void setProperties(NSDictionary* dict)
 {

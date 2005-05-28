@@ -7,8 +7,6 @@
 	objects = {
 		080E96DDFE201D6D7F000001 = {
 			children = (
-				CD65D6F3084279EE00E90C48,
-				CD65D6D008426FAB00E90C48,
 				CD76863C08283934006AE601,
 				CD76863D08283934006AE601,
 				8B3E9C2D080B0FE5009D39C6,
@@ -183,7 +181,6 @@
 				29B97317FDCFA39411CA2CEA,
 				29B97323FDCFA39411CA2CEA,
 				19C28FACFE9D520D11CA2CBB,
-				CD4F13070849192D00459061,
 			);
 			isa = PBXGroup;
 			name = VitaminSEE;
@@ -1863,6 +1860,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				CD4F13F808491BED00459061,
 				CDA6BF5308298558007869CA,
 				8B4FDB8A080719E60016CABC,
 				8B4FDB490807170F0016CABC,
@@ -1872,8 +1870,6 @@
 				8B5620E107CEA6F1005990E1,
 				8B561D9307CE7627005990E1,
 				8B6D020307CB32CD009A76DA,
-				CDDBEB4A08400DA400E65DA9,
-				CD65D6F4084279EF00E90C48,
 			);
 			isa = PBXCopyFilesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3139,6 +3135,7 @@
 				8B8364CE07E0EEAE00F3C880,
 				8BC8F94C07F2103100C66290,
 				8B4FDB8E08071AC40016CABC,
+				CD4F13F508491B9600459061,
 			);
 			isa = PBXNativeTarget;
 			name = VitaminSEE;
@@ -3220,7 +3217,6 @@
 				CDDBEB4708327E4300F934ED,
 				CD4F2F3C08369FD6009E50D1,
 				CDDBEB4B08400DA400E65DA9,
-				CD65D6D108426FAB00E90C48,
 			);
 			isa = PBXSourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3385,6 +3381,9 @@
 		};
 		CD4F1301084918FA00459061 = {
 			children = (
+				CD4F1338084919E300459061,
+				CD4F1339084919E300459061,
+				CD4F133A084919E300459061,
 			);
 			isa = PBXGroup;
 			name = DesktopBackground;
@@ -3394,6 +3393,7 @@
 		CD4F13020849192D00459061 = {
 			buildActionMask = 2147483647;
 			files = (
+				CD4F133B084919E300459061,
 			);
 			isa = PBXResourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3401,6 +3401,7 @@
 		CD4F13030849192D00459061 = {
 			buildActionMask = 2147483647;
 			files = (
+				CD4F133C084919E300459061,
 			);
 			isa = PBXSourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3408,6 +3409,7 @@
 		CD4F13040849192D00459061 = {
 			buildActionMask = 2147483647;
 			files = (
+				CD4F13BD08491A0D00459061,
 			);
 			isa = PBXFrameworksBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3475,12 +3477,68 @@
 			refType = 4;
 			sourceTree = "<group>";
 		};
-		CD4F13070849192D00459061 = {
+		CD4F1338084919E300459061 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			lastKnownFileType = text.xml;
-			path = "DesktopBackground-Info.plist";
+			name = "DesktopBackground-Info.plist";
+			path = "Components/DesktopBackground/DesktopBackground-Info.plist";
 			refType = 4;
 			sourceTree = "<group>";
+		};
+		CD4F1339084919E300459061 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = DesktopBackground.h;
+			path = Components/DesktopBackground/DesktopBackground.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CD4F133A084919E300459061 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
+			name = DesktopBackground.m;
+			path = Components/DesktopBackground/DesktopBackground.m;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CD4F133B084919E300459061 = {
+			fileRef = CD4F1338084919E300459061;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		CD4F133C084919E300459061 = {
+			fileRef = CD4F133A084919E300459061;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		CD4F13BD08491A0D00459061 = {
+			fileRef = 1058C7A1FEA54F0111CA2CBB;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		CD4F13F408491B9600459061 = {
+			containerPortal = 29B97313FDCFA39411CA2CEA;
+			isa = PBXContainerItemProxy;
+			proxyType = 1;
+			remoteGlobalIDString = CD4F13050849192D00459061;
+			remoteInfo = DesktopBackground;
+		};
+		CD4F13F508491B9600459061 = {
+			isa = PBXTargetDependency;
+			target = CD4F13050849192D00459061;
+			targetProxy = CD4F13F408491B9600459061;
+		};
+		CD4F13F808491BED00459061 = {
+			fileRef = CD4F13060849192D00459061;
+			isa = PBXBuildFile;
+			settings = {
+			};
 		};
 		CD4F2F3908369FD6009E50D1 = {
 			fileEncoding = 4;
@@ -3576,34 +3634,6 @@
 			path = Components/GeneralPreferences/Japanese.lproj/GeneralPreferences.nib;
 			refType = 4;
 			sourceTree = "<group>";
-		};
-		CD65D6D008426FAB00E90C48 = {
-			fileEncoding = 30;
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.objc;
-			path = DesktopBackground.m;
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		CD65D6D108426FAB00E90C48 = {
-			fileRef = CD65D6D008426FAB00E90C48;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
-		CD65D6F3084279EE00E90C48 = {
-			fileEncoding = 30;
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.h;
-			path = DesktopBackground.h;
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		CD65D6F4084279EF00E90C48 = {
-			fileRef = CD65D6F3084279EE00E90C48;
-			isa = PBXBuildFile;
-			settings = {
-			};
 		};
 		CD687E0C083B03D0004F1E0A = {
 			isa = PBXFileReference;
@@ -3957,12 +3987,6 @@
 			path = "Widgets/NSObject+CallWithArray.m";
 			refType = 4;
 			sourceTree = "<group>";
-		};
-		CDDBEB4A08400DA400E65DA9 = {
-			fileRef = CDDBEB4808400DA400E65DA9;
-			isa = PBXBuildFile;
-			settings = {
-			};
 		};
 		CDDBEB4B08400DA400E65DA9 = {
 			fileRef = CDDBEB4908400DA400E65DA9;

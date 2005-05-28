@@ -9,11 +9,11 @@
 		};
 	};
 	29B97313FDCFA39411CA2CEA = {
-		activeBuildStyle = 4A9504CCFFE6A4B311CA0CBA;
+		activeBuildStyle = 4A9504CDFFE6A4B311CA0CBA;
 		activeExecutable = CD98F30B08244FF9000A5C4A;
 		activeTarget = 8D1107260486CEB800E47090;
 		addToTargets = (
-			8D1107260486CEB800E47090,
+			CD4F13050849192D00459061,
 		);
 		breakpoints = (
 			CDA6BFD4082988D4007869CA,
@@ -287,6 +287,9 @@
 			CD4F12FA0849187D00459061 = CD4F12FA0849187D00459061;
 			CD4F12FB0849187D00459061 = CD4F12FB0849187D00459061;
 			CD4F12FC0849187D00459061 = CD4F12FC0849187D00459061;
+			CD4F132F084919B100459061 = CD4F132F084919B100459061;
+			CD4F1330084919B100459061 = CD4F1330084919B100459061;
+			CD4F1331084919B100459061 = CD4F1331084919B100459061;
 			CDF555260847D4F400D1A3B6 = CDF555260847D4F400D1A3B6;
 			CDF5570F0847E6A900D1A3B6 = CDF5570F0847E6A900D1A3B6;
 		};
@@ -639,6 +642,14 @@
 			sepNavWindowFrame = "{{15, 20}, {791, 721}}";
 		};
 	};
+	8BA098D80805C86B001FB2FD = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {746, 648}}";
+			sepNavSelRange = "{238, 0}";
+			sepNavVisRect = "{{0, 0}, {746, 648}}";
+			sepNavWindowFrame = "{{332, 0}, {791, 721}}";
+		};
+	};
 	8BA1243407D26EC700614FF4 = {
 		activeExec = 0;
 	};
@@ -746,17 +757,17 @@
 	};
 	8BD011D807A99DFB00AA4BAA = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {746, 3232}}";
-			sepNavSelRange = "{464, 0}";
-			sepNavVisRect = "{{0, 0}, {746, 648}}";
+			sepNavIntBoundsRect = "{{0, 0}, {746, 3248}}";
+			sepNavSelRange = "{3575, 0}";
+			sepNavVisRect = "{{0, 1884}, {746, 648}}";
 			sepNavWindowFrame = "{{151, 22}, {791, 721}}";
 		};
 	};
 	8BD011D907A99DFB00AA4BAA = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {937, 19056}}";
-			sepNavSelRange = "{34864, 0}";
-			sepNavVisRect = "{{0, 4072}, {746, 648}}";
+			sepNavIntBoundsRect = "{{0, 0}, {937, 19232}}";
+			sepNavSelRange = "{10177, 0}";
+			sepNavVisRect = "{{0, 4008}, {746, 648}}";
 			sepNavWindowFrame = "{{-6, 1}, {791, 721}}";
 		};
 	};
@@ -805,8 +816,8 @@
 	};
 	8BF72A8807B9D14C003A3C82 = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {804, 2960}}";
-			sepNavSelRange = "{7713, 0}";
+			sepNavIntBoundsRect = "{{0, 0}, {804, 2720}}";
+			sepNavSelRange = "{4369, 0}";
 			sepNavVisRect = "{{0, 1232}, {575, 625}}";
 			sepNavWindowFrame = "{{15, 43}, {620, 698}}";
 		};
@@ -935,7 +946,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEController.m: 282";
 		rLen = 0;
-		rLoc = 10242;
+		rLoc = 10244;
 		rType = 0;
 		vrLen = 1358;
 		vrLoc = 9151;
@@ -965,7 +976,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEController.m: 282";
 		rLen = 0;
-		rLoc = 10242;
+		rLoc = 10244;
 		rType = 0;
 		vrLen = 1358;
 		vrLoc = 9151;
@@ -995,7 +1006,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEController.m: 282";
 		rLen = 0;
-		rLoc = 10242;
+		rLoc = 10244;
 		rType = 0;
 		vrLen = 1358;
 		vrLoc = 9151;
@@ -1025,7 +1036,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEController.m: 282";
 		rLen = 0;
-		rLoc = 10242;
+		rLoc = 10244;
 		rType = 0;
 		vrLen = 1358;
 		vrLoc = 9151;
@@ -1055,7 +1066,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEController.m: 282";
 		rLen = 0;
-		rLoc = 10242;
+		rLoc = 10244;
 		rType = 0;
 		vrLen = 1358;
 		vrLoc = 9151;
@@ -1085,7 +1096,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEController.m: 282";
 		rLen = 0;
-		rLoc = 10242;
+		rLoc = 10244;
 		rType = 0;
 		vrLen = 1358;
 		vrLoc = 9151;
@@ -1115,7 +1126,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEController.m: 282";
 		rLen = 0;
-		rLoc = 10242;
+		rLoc = 10244;
 		rType = 0;
 		vrLen = 1358;
 		vrLoc = 9151;
@@ -1145,7 +1156,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEController.m: 282";
 		rLen = 0;
-		rLoc = 10242;
+		rLoc = 10244;
 		rType = 0;
 		vrLen = 1358;
 		vrLoc = 9151;
@@ -1175,7 +1186,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEController.m: 282";
 		rLen = 0;
-		rLoc = 10242;
+		rLoc = 10244;
 		rType = 0;
 		vrLen = 1358;
 		vrLoc = 9151;
@@ -1205,7 +1216,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEController.m: 282";
 		rLen = 0;
-		rLoc = 10242;
+		rLoc = 10244;
 		rType = 0;
 		vrLen = 1358;
 		vrLoc = 9151;
@@ -1235,7 +1246,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEController.m: 282";
 		rLen = 0;
-		rLoc = 10242;
+		rLoc = 10244;
 		rType = 0;
 		vrLen = 1358;
 		vrLoc = 9151;
@@ -1265,7 +1276,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEController.m: 282";
 		rLen = 0;
-		rLoc = 10242;
+		rLoc = 10244;
 		rType = 0;
 		vrLen = 1358;
 		vrLoc = 9151;
@@ -1295,7 +1306,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEController.m: 282";
 		rLen = 0;
-		rLoc = 10242;
+		rLoc = 10244;
 		rType = 0;
 		vrLen = 1358;
 		vrLoc = 9151;
@@ -1325,7 +1336,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEController.m: 282";
 		rLen = 0;
-		rLoc = 10242;
+		rLoc = 10244;
 		rType = 0;
 		vrLen = 1358;
 		vrLoc = 9151;
@@ -1355,7 +1366,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEController.m: 282";
 		rLen = 0;
-		rLoc = 10242;
+		rLoc = 10244;
 		rType = 0;
 		vrLen = 1358;
 		vrLoc = 9151;
@@ -1385,7 +1396,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEController.m: 282";
 		rLen = 0;
-		rLoc = 10242;
+		rLoc = 10244;
 		rType = 0;
 		vrLen = 1358;
 		vrLoc = 9151;
@@ -1415,7 +1426,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEController.m: 282";
 		rLen = 0;
-		rLoc = 10242;
+		rLoc = 10244;
 		rType = 0;
 		vrLen = 1358;
 		vrLoc = 9151;
@@ -1445,7 +1456,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEController.m: 282";
 		rLen = 0;
-		rLoc = 10242;
+		rLoc = 10244;
 		rType = 0;
 		vrLen = 1358;
 		vrLoc = 9151;
@@ -1475,7 +1486,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEController.m: 282";
 		rLen = 0;
-		rLoc = 10242;
+		rLoc = 10244;
 		rType = 0;
 		vrLen = 1358;
 		vrLoc = 9151;
@@ -1505,7 +1516,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEController.m: 282";
 		rLen = 0;
-		rLoc = 10242;
+		rLoc = 10244;
 		rType = 0;
 		vrLen = 1358;
 		vrLoc = 9151;
@@ -1535,7 +1546,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEController.m: 282";
 		rLen = 0;
-		rLoc = 10242;
+		rLoc = 10244;
 		rType = 0;
 		vrLen = 1358;
 		vrLoc = 9151;
@@ -1565,7 +1576,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEController.m: 282";
 		rLen = 0;
-		rLoc = 10242;
+		rLoc = 10244;
 		rType = 0;
 		vrLen = 1358;
 		vrLoc = 9151;
@@ -1595,7 +1606,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEController.m: 282";
 		rLen = 0;
-		rLoc = 10242;
+		rLoc = 10244;
 		rType = 0;
 		vrLen = 1358;
 		vrLoc = 9151;
@@ -1625,7 +1636,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEController.m: 282";
 		rLen = 0;
-		rLoc = 10242;
+		rLoc = 10244;
 		rType = 0;
 		vrLen = 1358;
 		vrLoc = 9151;
@@ -1655,7 +1666,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEController.m: 282";
 		rLen = 0;
-		rLoc = 10242;
+		rLoc = 10244;
 		rType = 0;
 		vrLen = 1358;
 		vrLoc = 9151;
@@ -1685,7 +1696,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEController.m: 282";
 		rLen = 0;
-		rLoc = 10242;
+		rLoc = 10244;
 		rType = 0;
 		vrLen = 1358;
 		vrLoc = 9151;
@@ -1715,7 +1726,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEController.m: 282";
 		rLen = 0;
-		rLoc = 10242;
+		rLoc = 10244;
 		rType = 0;
 		vrLen = 1358;
 		vrLoc = 9151;
@@ -1745,7 +1756,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEController.m: 282";
 		rLen = 0;
-		rLoc = 10242;
+		rLoc = 10244;
 		rType = 0;
 		vrLen = 1358;
 		vrLoc = 9151;
@@ -1775,7 +1786,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEController.m: 282";
 		rLen = 0;
-		rLoc = 10242;
+		rLoc = 10244;
 		rType = 0;
 		vrLen = 1358;
 		vrLoc = 9151;
@@ -1805,7 +1816,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEController.m: 282";
 		rLen = 0;
-		rLoc = 10242;
+		rLoc = 10244;
 		rType = 0;
 		vrLen = 1358;
 		vrLoc = 9151;
@@ -1835,7 +1846,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEController.m: 282";
 		rLen = 0;
-		rLoc = 10242;
+		rLoc = 10244;
 		rType = 0;
 		vrLen = 1358;
 		vrLoc = 9151;
@@ -1865,7 +1876,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEController.m: 282";
 		rLen = 0;
-		rLoc = 10242;
+		rLoc = 10244;
 		rType = 0;
 		vrLen = 1358;
 		vrLoc = 9151;
@@ -1895,7 +1906,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEController.m: 282";
 		rLen = 0;
-		rLoc = 10242;
+		rLoc = 10244;
 		rType = 0;
 		vrLen = 1358;
 		vrLoc = 9151;
@@ -1925,7 +1936,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEController.m: 282";
 		rLen = 0;
-		rLoc = 10242;
+		rLoc = 10244;
 		rType = 0;
 		vrLen = 1358;
 		vrLoc = 9151;
@@ -1955,7 +1966,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEController.m: 282";
 		rLen = 0;
-		rLoc = 10242;
+		rLoc = 10244;
 		rType = 0;
 		vrLen = 1358;
 		vrLoc = 9151;
@@ -1985,7 +1996,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEController.m: 282";
 		rLen = 0;
-		rLoc = 10242;
+		rLoc = 10244;
 		rType = 0;
 		vrLen = 1358;
 		vrLoc = 9151;
@@ -2015,7 +2026,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEController.m: 282";
 		rLen = 0;
-		rLoc = 10242;
+		rLoc = 10244;
 		rType = 0;
 		vrLen = 1358;
 		vrLoc = 9151;
@@ -2045,7 +2056,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEController.m: 282";
 		rLen = 0;
-		rLoc = 10242;
+		rLoc = 10244;
 		rType = 0;
 		vrLen = 1358;
 		vrLoc = 9151;
@@ -2075,7 +2086,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEController.m: 282";
 		rLen = 0;
-		rLoc = 10242;
+		rLoc = 10244;
 		rType = 0;
 		vrLen = 1358;
 		vrLoc = 9151;
@@ -2092,6 +2103,52 @@
 	};
 	CD4F13050849192D00459061 = {
 		activeExec = 0;
+	};
+	CD4F132F084919B100459061 = {
+		fRef = 8B6D01C007CB2EA2009A76DA;
+		isa = PBXTextBookmark;
+		name = "SS_PrefsController.m: 69";
+		rLen = 0;
+		rLoc = 1615;
+		rType = 0;
+		vrLen = 0;
+		vrLoc = 0;
+	};
+	CD4F1330084919B100459061 = {
+		fRef = 8BD011D907A99DFB00AA4BAA;
+		isa = PBXTextBookmark;
+		name = "VitaminSEEController.m: 1191";
+		rLen = 0;
+		rLoc = 35281;
+		rType = 0;
+		vrLen = 1358;
+		vrLoc = 9151;
+	};
+	CD4F1331084919B100459061 = {
+		fRef = 8BF72A8807B9D14C003A3C82;
+		isa = PBXTextBookmark;
+		name = "NSString+FileTasks.m: 185";
+		rLen = 0;
+		rLoc = 7038;
+		rType = 0;
+		vrLen = 1476;
+		vrLoc = 4200;
+	};
+	CD4F1339084919E300459061 = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {746, 672}}";
+			sepNavSelRange = "{1308, 0}";
+			sepNavVisRect = "{{0, 0}, {746, 648}}";
+			sepNavWindowFrame = "{{15, 20}, {791, 721}}";
+		};
+	};
+	CD4F133A084919E300459061 = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {895, 3584}}";
+			sepNavSelRange = "{1843, 0}";
+			sepNavVisRect = "{{0, 460}, {746, 648}}";
+			sepNavWindowFrame = "{{15, 20}, {791, 721}}";
+		};
 	};
 	CD4F2F3908369FD6009E50D1 = {
 		uiCtxt = {
@@ -2145,22 +2202,6 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {746, 648}}";
 			sepNavSelRange = "{161, 0}";
-			sepNavVisRect = "{{0, 0}, {746, 648}}";
-			sepNavWindowFrame = "{{15, 20}, {791, 721}}";
-		};
-	};
-	CD65D6D008426FAB00E90C48 = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {895, 3424}}";
-			sepNavSelRange = "{1101, 0}";
-			sepNavVisRect = "{{0, 0}, {746, 648}}";
-			sepNavWindowFrame = "{{15, 20}, {791, 721}}";
-		};
-	};
-	CD65D6F3084279EE00E90C48 = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {746, 648}}";
-			sepNavSelRange = "{798, 0}";
 			sepNavVisRect = "{{0, 0}, {746, 648}}";
 			sepNavWindowFrame = "{{15, 20}, {791, 721}}";
 		};

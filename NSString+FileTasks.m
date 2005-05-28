@@ -83,21 +83,6 @@ static NSArray* fileExtensions = 0;
 		fileExtensions = [[NSImage imageUnfilteredFileTypes] retain];
 
 	return [fileExtensions containsObject:[self pathExtension]]; 
-		
-	//[	NSLog(@"File: %@", );
-	//	NSString *fileExtentsion = [[self pathExtension] uppercaseString];
-//	return [fileExtentsion isEqualToString:@"PNG"] || 
-//		[fileExtentsion isEqualToString:@"JFIF"] ||
-//		[fileExtentsion isEqualToString:@"JPEG"] ||
-//		[fileExtentsion isEqualToString:@"JPG"] || 
-//		[fileExtentsion isEqualToString:@"GIF"] ||
-//		[fileExtentsion isEqualToString:@"TIF"] ||
-//		[fileExtentsion isEqualToString:@"TIFF"] ||
-//		[fileExtentsion isEqualToString:@"BMP"] ||
-//		[fileExtentsion isEqualToString:@"ICNS"] ||
-//		[fileExtentsion isEqualToString:@"PDF"] ||
-//		[fileExtentsion isEqualToString:@"PSD"] ||
-//		[fileExtentsion isEqualToString:@"TGA"];
 }
 
 -(BOOL)isVisible

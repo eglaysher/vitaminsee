@@ -121,6 +121,7 @@
 -(id)sortManagerController;
 -(id)keywordManagerController;
 -(id)gotoFolderController;
+-(id)desktopBackgroundController;
 -(id)viewAsIconsControllerPlugin;
 -(id)imageMetadataPlugin;
 

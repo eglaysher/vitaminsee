@@ -27,5 +27,15 @@
 //
 ////////////////////////////////////////////////////////////////////////
 
-void setDesktopBackgroundToFile(NSString* path);
-void setDesktopBackgroundToFolder(NSString* pathToFolder);
+#import "PluginBase.h"
+
+@interface DesktopBackground : NSObject <PluginBase> {
+}
+
+-(void)setDesktopBackgroundToFile:(NSString*) path;
+-(void)setDesktopBackgroundToFolder:(NSString*)pathToFolder;
+
+@end
+
+//void setDesktopBackgroundToFile(NSString* path);
+//void setDesktopBackgroundToFolder(NSString* pathToFolder);

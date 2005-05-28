@@ -279,7 +279,7 @@
 
 	setPathForFirstTime = NO;
 
-	NSLog(@"File extensions: %@", [NSImage imageUnfilteredFileTypes]);
+//	NSLog(@"File extensions: %@", [NSImage imageUnfilteredFileTypes]);
 }
 
 -(void)dealloc
@@ -629,6 +629,17 @@
 											 fromBundle:@"GotoFolderSheet.bundle"];
 	return gotoFolderController;	
 }
+
+-(id)desktopBackgroundController
+{
+	id desktopBackgroundController = [loadedBasePlugins objectForKey:@"DesktopBackgroundController"];
+	if(!desktopBackgroundController)
+		desktopBackgroundController = [self loadComponentNamed:@"DesktopBackground"
+													fromBundle:@"DesktopBackground.bundle"];
+
+	return desktopBackgroundController;	
+}
+
 
 -(id)viewAsIconsControllerPlugin
 {
@@ -1163,9 +1174,9 @@
 -(IBAction)setImageAsDesktop:(id)sender
 {
 	if([currentImageFile isImage])
-		setDesktopBackgroundToFile(currentImageFile);
+		[[self desktopBackgroundController] setDesktopBackgroundToFile:currentImageFile];
 	else if([currentImageFile isDir])
-		setDesktopBackgroundToFolder(currentImageFile);
+		[[self desktopBackgroundController] setDesktopBackgroundToFolder:currentImageFile];
 }
 
 ////////////////////////////// OPEN WITH MENU DELEGATE 
