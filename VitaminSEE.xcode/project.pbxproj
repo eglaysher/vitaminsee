@@ -131,6 +131,7 @@
 				8BC8F94807F2102000C66290,
 				8B4FDB5A0807174C0016CABC,
 				CDA6BDCE08297FBF007869CA,
+				CD4F13060849192D00459061,
 			);
 			isa = PBXGroup;
 			name = Products;
@@ -169,6 +170,7 @@
 				8BA1243407D26EC700614FF4,
 				8BAF0F3D07CE6DAA00B0C832,
 				8B6D01F707CB327E009A76DA,
+				CD4F13050849192D00459061,
 			);
 		};
 		29B97314FDCFA39411CA2CEA = {
@@ -181,6 +183,7 @@
 				29B97317FDCFA39411CA2CEA,
 				29B97323FDCFA39411CA2CEA,
 				19C28FACFE9D520D11CA2CBB,
+				CD4F13070849192D00459061,
 			);
 			isa = PBXGroup;
 			name = VitaminSEE;
@@ -1640,6 +1643,7 @@
 		};
 		8B6D010807CB178F009A76DA = {
 			children = (
+				CD4F1301084918FA00459061,
 				CDA6BDB508297E90007869CA,
 				8B5B697407E82FF9001FC345,
 				8BC8F93807F20EC700C66290,
@@ -3378,6 +3382,105 @@
 			isa = PBXBuildFile;
 			settings = {
 			};
+		};
+		CD4F1301084918FA00459061 = {
+			children = (
+			);
+			isa = PBXGroup;
+			name = DesktopBackground;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CD4F13020849192D00459061 = {
+			buildActionMask = 2147483647;
+			files = (
+			);
+			isa = PBXResourcesBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD4F13030849192D00459061 = {
+			buildActionMask = 2147483647;
+			files = (
+			);
+			isa = PBXSourcesBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD4F13040849192D00459061 = {
+			buildActionMask = 2147483647;
+			files = (
+			);
+			isa = PBXFrameworksBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD4F13050849192D00459061 = {
+			buildPhases = (
+				CD4F13020849192D00459061,
+				CD4F13030849192D00459061,
+				CD4F13040849192D00459061,
+			);
+			buildRules = (
+			);
+			buildSettings = {
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = "DesktopBackground-Info.plist";
+				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
+				LIBRARY_STYLE = BUNDLE;
+				OPTIMIZATION_CFLAGS = "";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "-framework Foundation -framework AppKit";
+				OTHER_REZFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = DesktopBackground;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = "-Wmost -Wno-four-char-constants -Wno-unknown-pragmas";
+			};
+			dependencies = (
+			);
+			isa = PBXNativeTarget;
+			name = DesktopBackground;
+			productName = DesktopBackground;
+			productReference = CD4F13060849192D00459061;
+			productSettingsXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
+<!DOCTYPE plist PUBLIC \"-//Apple Computer//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">
+<plist version=\"1.0\">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>English</string>
+	<key>CFBundleExecutable</key>
+	<string>DesktopBackground</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.yourcompany.DesktopBackground</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
+	<key>CFBundleVersion</key>
+	<string>1.0</string>
+</dict>
+</plist>
+";
+			productType = "com.apple.product-type.bundle";
+		};
+		CD4F13060849192D00459061 = {
+			explicitFileType = wrapper.cfbundle;
+			includeInIndex = 0;
+			isa = PBXFileReference;
+			name = DesktopBackground.bundle;
+			path = build/DesktopBackground.bundle;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CD4F13070849192D00459061 = {
+			isa = PBXFileReference;
+			lastKnownFileType = text.xml;
+			path = "DesktopBackground-Info.plist";
+			refType = 4;
+			sourceTree = "<group>";
 		};
 		CD4F2F3908369FD6009E50D1 = {
 			fileEncoding = 4;
