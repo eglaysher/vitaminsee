@@ -39,12 +39,8 @@ NSImageRep* loadImage(NSString* path)
 	Class imageRepClass = [NSImageRep imageRepClassForData:imageData];
 	if(!imageRepClass)
 		return nil;
-	
-	id imageRep = [[imageRepClass alloc] initWithData:imageData];
-//	NSLog(@"image rep retain count in loadImage: %d", [imageRep retainCount]);
 
-	// 
-	return [imageRep autorelease];
+	return [[[imageRepClass alloc] initWithData:imageData] autorelease];
 }
 
 struct DS buildImageSize(int boxWidth, int boxHeight, int imageWidth, int imageHeight,

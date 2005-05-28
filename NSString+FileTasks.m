@@ -64,6 +64,7 @@
 #import "NSString+FileTasks.h"
 
 static NSArray* hiddenFiles = 0;
+static NSArray* fileExtensions = 0;
 
 @implementation NSString (FileTasks)
 
@@ -78,18 +79,25 @@ static NSArray* hiddenFiles = 0;
 
 -(BOOL)isImage
 {
-	NSString *fileExtentsion = [[self pathExtension] uppercaseString];
-	return [fileExtentsion isEqualToString:@"PNG"] || 
-		[fileExtentsion isEqualToString:@"JFIF"] ||
-		[fileExtentsion isEqualToString:@"JPEG"] ||
-		[fileExtentsion isEqualToString:@"JPG"] || 
-		[fileExtentsion isEqualToString:@"GIF"] ||
-		[fileExtentsion isEqualToString:@"TIF"] ||
-		[fileExtentsion isEqualToString:@"TIFF"] ||
-		[fileExtentsion isEqualToString:@"BMP"] ||
-		[fileExtentsion isEqualToString:@"ICNS"] ||
-		[fileExtentsion isEqualToString:@"PDF"] ||
-		[fileExtentsion isEqualToString:@"PSD"];
+	if(!fileExtensions)
+		fileExtensions = [[NSImage imageUnfilteredFileTypes] retain];
+
+	return [fileExtensions containsObject:[self pathExtension]]; 
+		
+	//[	NSLog(@"File: %@", );
+	//	NSString *fileExtentsion = [[self pathExtension] uppercaseString];
+//	return [fileExtentsion isEqualToString:@"PNG"] || 
+//		[fileExtentsion isEqualToString:@"JFIF"] ||
+//		[fileExtentsion isEqualToString:@"JPEG"] ||
+//		[fileExtentsion isEqualToString:@"JPG"] || 
+//		[fileExtentsion isEqualToString:@"GIF"] ||
+//		[fileExtentsion isEqualToString:@"TIF"] ||
+//		[fileExtentsion isEqualToString:@"TIFF"] ||
+//		[fileExtentsion isEqualToString:@"BMP"] ||
+//		[fileExtentsion isEqualToString:@"ICNS"] ||
+//		[fileExtentsion isEqualToString:@"PDF"] ||
+//		[fileExtentsion isEqualToString:@"PSD"] ||
+//		[fileExtentsion isEqualToString:@"TGA"];
 }
 
 -(BOOL)isVisible
