@@ -59,6 +59,7 @@
 #import "PathExistsValueTransformer.h"
 #import "FullDisplayNameValueTransformer.h"
 #import "EGOpenWithMenuDelegate.h"
+#import "DesktopBackground.h"
 
 #import "RBSplitView.h"
 #import "RBSplitSubview.h"
@@ -75,14 +76,11 @@
 /* COMPLETED:
  * * PDF and PSD support
  * * MORE SPEED! Start paying attention to non-critical areas
+ * * Set as desktop/set current folder as desktop...
  */
-
-// Needs more testing:
-// * Set as desktop/set current folder as desktop...
 
 // For Version 0.6.3
 // * Make sure Sakai's translation is fully integrated...
-// * More speed optimizations. Thread run loop function call overhead?
 
 // For Version 0.7
 // * More thumbnail operations for adding and removing
@@ -640,6 +638,16 @@
 	return desktopBackgroundController;	
 }
 
+-(id)openWithMenuController
+{
+	id openWithMenuController = [loadedBasePlugins objectForKey:@"OpenWithMenuController"];
+	if(!openWithMenuController)
+		openWithMenuController = [self loadComponentNamed:@"OpenWithMenu"
+											   fromBundle:@"OpenWithMenu.bundle"];
+	
+	return openWithMenuController;		
+}
+
 
 -(id)viewAsIconsControllerPlugin
 {
@@ -705,7 +713,7 @@
 		{
 			// Set up the Open with Menu
 			NSMenu* openWithMenu = [[[NSMenu alloc] init] autorelease];
-			openWithMenuDelegate = [[EGOpenWithMenuDelegate alloc] init];
+			openWithMenuDelegate = [[[self openWithMenuController] build] retain];
 			[openWithMenuDelegate setDelegate:self];
 			[openWithMenu setDelegate:openWithMenuDelegate];
 			[theMenuItem setSubmenu:openWithMenu];		
@@ -731,9 +739,28 @@
 		enable = mainWindowVisible && (isImage || isDir);
 		
 		if(isImage)
+		{
 			[theMenuItem setTitle:NSLocalizedString(@"Set As Desktop Picture", @"Text in File menu")];
+		}
 		else
+		{
 			[theMenuItem setTitle:NSLocalizedString(@"Use Folder For Desktop Pictures", @"Text in File menu")];
+			
+			// Only enable if the folder contains an image
+			BOOL containsImage = NO;
+			NSArray* directoryContents = [[NSFileManager defaultManager] directoryContentsAtPath:currentImageFile];
+			int i = 0, count = [directoryContents count];
+			for(; i < count; ++i)
+			{
+				if([((id)CFArrayGetValueAtIndex(directoryContents, i)) isImage])
+				{
+					containsImage = YES;
+					break;
+				}
+			}
+			
+			enable = enable && containsImage;
+		}
 	}
 	else if(action == @selector(deleteFileClicked:))
 	{

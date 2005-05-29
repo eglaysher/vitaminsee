@@ -1828,6 +1828,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				CDF3F68A084A441E00703E72,
 				CD4F13F808491BED00459061,
 				CDA6BF5308298558007869CA,
 				8B4FDB8A080719E60016CABC,
@@ -3105,6 +3106,7 @@
 				8BC8F94C07F2103100C66290,
 				8B4FDB8E08071AC40016CABC,
 				CD4F13F508491B9600459061,
+				CDF3F4AB084A427E00703E72,
 			);
 			isa = PBXNativeTarget;
 			name = VitaminSEE;
@@ -3370,7 +3372,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD4F133C084919E300459061,
-				CDF3F3C0084A3FF700703E72,
 			);
 			isa = PBXSourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3396,7 +3397,7 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
-				INFOPLIST_FILE = "DesktopBackground-Info.plist";
+				INFOPLIST_FILE = "Components/DesktopBackground/DesktopBackground-Info.plist";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
 				LIBRARY_STYLE = BUNDLE;
 				OTHER_CFLAGS = "";
@@ -4058,6 +4059,7 @@
 		CDF3F389084A3F5300703E72 = {
 			buildActionMask = 2147483647;
 			files = (
+				CDF3F3CD084A408000703E72,
 			);
 			isa = PBXResourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -4065,6 +4067,7 @@
 		CDF3F38A084A3F5300703E72 = {
 			buildActionMask = 2147483647;
 			files = (
+				CDF3F3CC084A407600703E72,
 			);
 			isa = PBXSourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -4072,6 +4075,8 @@
 		CDF3F38B084A3F5300703E72 = {
 			buildActionMask = 2147483647;
 			files = (
+				CDF3F4A4084A426F00703E72,
+				CDF3F4A5084A426F00703E72,
 			);
 			isa = PBXFrameworksBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -4089,7 +4094,7 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
-				INFOPLIST_FILE = "OpenWithMenu-Info.plist";
+				INFOPLIST_FILE = "Components/OpenWithMenu/OpenWithMenu-Info.plist";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
 				LIBRARY_STYLE = BUNDLE;
 				OPTIMIZATION_CFLAGS = "";
@@ -4139,18 +4144,11 @@
 			refType = 4;
 			sourceTree = "<group>";
 		};
-		CDF3F38E084A3F5300703E72 = {
-			isa = PBXFileReference;
-			lastKnownFileType = text.xml;
-			path = "OpenWithMenu-Info.plist";
-			refType = 4;
-			sourceTree = "<group>";
-		};
 		CDF3F3BC084A3FDA00703E72 = {
 			children = (
+				CDF3F3CA084A406800703E72,
 				CDF3F3BE084A3FF700703E72,
 				CDF3F3BF084A3FF700703E72,
-				CDF3F38E084A3F5300703E72,
 			);
 			isa = PBXGroup;
 			name = OpenWithMenu;
@@ -4175,8 +4173,53 @@
 			refType = 4;
 			sourceTree = "<group>";
 		};
-		CDF3F3C0084A3FF700703E72 = {
+		CDF3F3CA084A406800703E72 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = text.xml;
+			name = "OpenWithMenu-Info.plist";
+			path = "Components/OpenWithMenu/OpenWithMenu-Info.plist";
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CDF3F3CC084A407600703E72 = {
 			fileRef = CDF3F3BF084A3FF700703E72;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		CDF3F3CD084A408000703E72 = {
+			fileRef = CDF3F3CA084A406800703E72;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		CDF3F4A4084A426F00703E72 = {
+			fileRef = 1058C7A1FEA54F0111CA2CBB;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		CDF3F4A5084A426F00703E72 = {
+			fileRef = 8B5EB13407CD254F00B43D06;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		CDF3F4AA084A427E00703E72 = {
+			containerPortal = 29B97313FDCFA39411CA2CEA;
+			isa = PBXContainerItemProxy;
+			proxyType = 1;
+			remoteGlobalIDString = CDF3F38C084A3F5300703E72;
+			remoteInfo = OpenWithMenu;
+		};
+		CDF3F4AB084A427E00703E72 = {
+			isa = PBXTargetDependency;
+			target = CDF3F38C084A3F5300703E72;
+			targetProxy = CDF3F4AA084A427E00703E72;
+		};
+		CDF3F68A084A441E00703E72 = {
+			fileRef = CDF3F38D084A3F5300703E72;
 			isa = PBXBuildFile;
 			settings = {
 			};

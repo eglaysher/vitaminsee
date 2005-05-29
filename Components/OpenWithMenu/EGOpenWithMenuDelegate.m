@@ -30,6 +30,9 @@
 
 #import "EGOpenWithMenuDelegate.h"
 
+#import <Carbon/Carbon.h>
+#import <ApplicationServices/ApplicationServices.h>
+
 // These helper functions do most of the heavy lifting in figuring out the list
 // of menu items to display.
 //static NSArray* getOpenWithMenuFor(NSString* file, NSArray* applicationURLs);
@@ -48,6 +51,17 @@ static void buildDisplayName(NSMutableArray* appilcationArray);
 @end
 
 @implementation EGOpenWithMenuDelegate
+
+-(id)build
+{
+	return [[[EGOpenWithMenuDelegate alloc] init] autorelease];
+}
+
+-(id)initWithPluginLayer:(PluginLayer*)inPluginLayer
+{
+	// ignore the pluginlayer and just do normal initialization
+	return [self init];
+}
 
 -(id)init
 {
@@ -127,7 +141,7 @@ static void buildDisplayName(NSMutableArray* appilcationArray);
 	[image setSize:NSMakeSize(16,16)];
 	[item setImage:image];
 	
-//	NSLog(@"Item: %@", item);
+	return YES;
 }
 
 //-(BOOL)validateMenuItem:(NSMenuItem *)theMenuItem
@@ -159,7 +173,7 @@ static void buildDisplayName(NSMutableArray* appilcationArray);
 @implementation EGOpenWithMenuDelegate (Private)
 -(NSString*)getCurrentFile
 {
-	NSString* currentFile;
+	NSString* currentFile = 0;
 	if([delegate respondsToSelector:@selector(currentFilePathForOpenWithMenuDelegate)])
 	{
 		currentFile = [delegate currentFilePathForOpenWithMenuDelegate];
@@ -171,7 +185,6 @@ static void buildDisplayName(NSMutableArray* appilcationArray);
 
 	return currentFile;
 }
-
 
 -(NSArray*)getOpenWithMenuFor:(NSString*)file urls:(NSArray*) applicationURLs
 {

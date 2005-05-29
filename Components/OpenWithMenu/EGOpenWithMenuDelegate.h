@@ -30,6 +30,8 @@
 
 #import <Cocoa/Cocoa.h>
 
+#import "PluginBase.h"
+
 /*!
     @class		EGOpenWithMenuDelegate
     @abstract   A NSMenu delegate for displaying an "Open With…" menu.
@@ -45,7 +47,7 @@
 	menu, and will then call the delegate's openWithMenuDelegate:openCurrentFileWith:
 	function
 */
-@interface EGOpenWithMenuDelegate : NSObject {
+@interface EGOpenWithMenuDelegate : NSObject <PluginBase> {
 	///
 	NSMutableDictionary* fileTypeToArrayOfApplicationURLS;	
 	
@@ -55,6 +57,7 @@
 	id delegate;
 }
 
+-(id)build;
 -(id)delegate;
 -(void)setDelegate:(id)inDelegate;
 
@@ -65,7 +68,7 @@
 	 atIndex:(int)index 
 shouldCancel:(BOOL)shouldCancel;
 
--(NSMenu*)buildCompatibleMenu;
+//-(NSMenu*)buildCompatibleMenu;
 
 @end
 
