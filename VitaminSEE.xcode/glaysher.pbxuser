@@ -164,14 +164,17 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 139081770;
-			PBXWorkspaceStateSaveDate = 139081770;
+			PBXPerProjectTemplateStateSaveDate = 139083493;
+			PBXWorkspaceStateSaveDate = 139083493;
 		};
 		perUserProjectItems = {
 			CD465AB9084A3752000EE698 = CD465AB9084A3752000EE698;
 			CDBE1ABF084A3D770014E36C = CDBE1ABF084A3D770014E36C;
 			CDBE1AC4084A3E8B0014E36C = CDBE1AC4084A3E8B0014E36C;
 			CDBE1AC5084A3E8B0014E36C = CDBE1AC5084A3E8B0014E36C;
+			CDF3F39D084A3F7D00703E72 = CDF3F39D084A3F7D00703E72;
+			CDF3F3BD084A3FE000703E72 = CDF3F3BD084A3FE000703E72;
+			CDF3F3C1084A400000703E72 = CDF3F3C1084A400000703E72;
 		};
 		sourceControlManager = CD98F35108244FFF000A5C4A;
 		userBuildSettings = {
@@ -646,8 +649,8 @@
 	8BD011D907A99DFB00AA4BAA = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {937, 19232}}";
-			sepNavSelRange = "{2670, 0}";
-			sepNavVisRect = "{{0, 932}, {746, 648}}";
+			sepNavSelRange = "{2526, 0}";
+			sepNavVisRect = "{{0, 936}, {746, 648}}";
 			sepNavWindowFrame = "{{-6, 5}, {791, 721}}";
 		};
 	};
@@ -829,22 +832,6 @@
 			sepNavIntBoundsRect = "{{0, 0}, {895, 3584}}";
 			sepNavSelRange = "{1843, 0}";
 			sepNavVisRect = "{{0, 460}, {746, 648}}";
-			sepNavWindowFrame = "{{15, 20}, {791, 721}}";
-		};
-	};
-	CD4F2F3908369FD6009E50D1 = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {746, 1616}}";
-			sepNavSelRange = "{1348, 0}";
-			sepNavVisRect = "{{0, 0}, {746, 648}}";
-			sepNavWindowFrame = "{{212, 8}, {791, 721}}";
-		};
-	};
-	CD4F2F3A08369FD6009E50D1 = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {923, 6912}}";
-			sepNavSelRange = "{12857, 0}";
-			sepNavVisRect = "{{0, 0}, {746, 648}}";
 			sepNavWindowFrame = "{{15, 20}, {791, 721}}";
 		};
 	};
@@ -1710,5 +1697,38 @@
 			sepNavVisRect = "{{0, 0}, {746, 648}}";
 			sepNavWindowFrame = "{{227, 25}, {791, 721}}";
 		};
+	};
+	CDF3F38C084A3F5300703E72 = {
+		activeExec = 0;
+	};
+	CDF3F39D084A3F7D00703E72 = {
+		fRef = 8B6D01C007CB2EA2009A76DA;
+		isa = PBXTextBookmark;
+		name = "SS_PrefsController.m: 69";
+		rLen = 0;
+		rLoc = 1615;
+		rType = 0;
+		vrLen = 0;
+		vrLoc = 0;
+	};
+	CDF3F3BD084A3FE000703E72 = {
+		fRef = 8B6D01C007CB2EA2009A76DA;
+		isa = PBXTextBookmark;
+		name = "SS_PrefsController.m: 69";
+		rLen = 0;
+		rLoc = 1615;
+		rType = 0;
+		vrLen = 0;
+		vrLoc = 0;
+	};
+	CDF3F3C1084A400000703E72 = {
+		fRef = 8B6D01C007CB2EA2009A76DA;
+		isa = PBXTextBookmark;
+		name = "SS_PrefsController.m: 69";
+		rLen = 0;
+		rLoc = 1615;
+		rType = 0;
+		vrLen = 0;
+		vrLoc = 0;
 	};
 }

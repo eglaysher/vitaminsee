@@ -41,8 +41,6 @@
 				8BD011D907A99DFB00AA4BAA,
 				8B56209B07CEA204005990E1,
 				8B56209C07CEA204005990E1,
-				CD4F2F3908369FD6009E50D1,
-				CD4F2F3A08369FD6009E50D1,
 			);
 			isa = PBXGroup;
 			name = "Main Program Classes";
@@ -130,6 +128,7 @@
 				8B4FDB5A0807174C0016CABC,
 				CDA6BDCE08297FBF007869CA,
 				CD4F13060849192D00459061,
+				CDF3F38D084A3F5300703E72,
 			);
 			isa = PBXGroup;
 			name = Products;
@@ -169,6 +168,7 @@
 				8BAF0F3D07CE6DAA00B0C832,
 				8B6D01F707CB327E009A76DA,
 				CD4F13050849192D00459061,
+				CDF3F38C084A3F5300703E72,
 			);
 		};
 		29B97314FDCFA39411CA2CEA = {
@@ -1607,6 +1607,7 @@
 		};
 		8B6D010807CB178F009A76DA = {
 			children = (
+				CDF3F3BC084A3FDA00703E72,
 				CD4F1301084918FA00459061,
 				CDA6BDB508297E90007869CA,
 				8B5B697407E82FF9001FC345,
@@ -3183,7 +3184,6 @@
 				CD44164C082C1C67003C01FD,
 				CD44164E082C1C67003C01FD,
 				CDDBEB4708327E4300F934ED,
-				CD4F2F3C08369FD6009E50D1,
 				CDDBEB4B08400DA400E65DA9,
 			);
 			isa = PBXSourcesBuildPhase;
@@ -3370,6 +3370,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD4F133C084919E300459061,
+				CDF3F3C0084A3FF700703E72,
 			);
 			isa = PBXSourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3513,28 +3514,6 @@
 			path = "Japanese.lproj/VitaminSEE Help";
 			refType = 4;
 			sourceTree = "<group>";
-		};
-		CD4F2F3908369FD6009E50D1 = {
-			fileEncoding = 4;
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.h;
-			path = EGOpenWithMenuDelegate.h;
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		CD4F2F3A08369FD6009E50D1 = {
-			fileEncoding = 4;
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.objc;
-			path = EGOpenWithMenuDelegate.m;
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		CD4F2F3C08369FD6009E50D1 = {
-			fileRef = CD4F2F3A08369FD6009E50D1;
-			isa = PBXBuildFile;
-			settings = {
-			};
 		};
 		CD4F33430837D6BD009E50D1 = {
 			isa = PBXFileReference;
@@ -4072,6 +4051,132 @@
 		};
 		CDF1EA59082EA7AA00AA0441 = {
 			fileRef = CDF1EA58082EA7AA00AA0441;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		CDF3F389084A3F5300703E72 = {
+			buildActionMask = 2147483647;
+			files = (
+			);
+			isa = PBXResourcesBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CDF3F38A084A3F5300703E72 = {
+			buildActionMask = 2147483647;
+			files = (
+			);
+			isa = PBXSourcesBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CDF3F38B084A3F5300703E72 = {
+			buildActionMask = 2147483647;
+			files = (
+			);
+			isa = PBXFrameworksBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CDF3F38C084A3F5300703E72 = {
+			buildPhases = (
+				CDF3F389084A3F5300703E72,
+				CDF3F38A084A3F5300703E72,
+				CDF3F38B084A3F5300703E72,
+			);
+			buildRules = (
+			);
+			buildSettings = {
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = "OpenWithMenu-Info.plist";
+				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
+				LIBRARY_STYLE = BUNDLE;
+				OPTIMIZATION_CFLAGS = "";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "-framework Foundation -framework AppKit";
+				OTHER_REZFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = OpenWithMenu;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = "-Wmost -Wno-four-char-constants -Wno-unknown-pragmas";
+			};
+			dependencies = (
+			);
+			isa = PBXNativeTarget;
+			name = OpenWithMenu;
+			productName = OpenWithMenu;
+			productReference = CDF3F38D084A3F5300703E72;
+			productSettingsXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
+<!DOCTYPE plist PUBLIC \"-//Apple Computer//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">
+<plist version=\"1.0\">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>English</string>
+	<key>CFBundleExecutable</key>
+	<string>OpenWithMenu</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.yourcompany.OpenWithMenu</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
+	<key>CFBundleVersion</key>
+	<string>1.0</string>
+</dict>
+</plist>
+";
+			productType = "com.apple.product-type.bundle";
+		};
+		CDF3F38D084A3F5300703E72 = {
+			explicitFileType = wrapper.cfbundle;
+			includeInIndex = 0;
+			isa = PBXFileReference;
+			name = OpenWithMenu.bundle;
+			path = build/OpenWithMenu.bundle;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CDF3F38E084A3F5300703E72 = {
+			isa = PBXFileReference;
+			lastKnownFileType = text.xml;
+			path = "OpenWithMenu-Info.plist";
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CDF3F3BC084A3FDA00703E72 = {
+			children = (
+				CDF3F3BE084A3FF700703E72,
+				CDF3F3BF084A3FF700703E72,
+				CDF3F38E084A3F5300703E72,
+			);
+			isa = PBXGroup;
+			name = OpenWithMenu;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CDF3F3BE084A3FF700703E72 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = EGOpenWithMenuDelegate.h;
+			path = Components/OpenWithMenu/EGOpenWithMenuDelegate.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CDF3F3BF084A3FF700703E72 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
+			name = EGOpenWithMenuDelegate.m;
+			path = Components/OpenWithMenu/EGOpenWithMenuDelegate.m;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CDF3F3C0084A3FF700703E72 = {
+			fileRef = CDF3F3BF084A3FF700703E72;
 			isa = PBXBuildFile;
 			settings = {
 			};
