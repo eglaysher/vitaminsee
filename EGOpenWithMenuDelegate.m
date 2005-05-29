@@ -75,7 +75,7 @@ static void buildDisplayName(NSMutableArray* appilcationArray);
 }
 
 -(int)numberOfItemsInMenu:(NSMenu *)menu
-{
+{	
 	if(!allApplications)
 	{
 		// Ask Launch Services for a list of all applications. We only need

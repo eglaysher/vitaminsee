@@ -81,11 +81,11 @@
 // * Set as desktop/set current folder as desktop...
 
 // For Version 0.6.3
-// * More thumbnail operations
+// * Make sure Sakai's translation is fully integrated...
 // * More speed optimizations. Thread run loop function call overhead?
-// * Open with toolbar item
 
 // For Version 0.7
+// * More thumbnail operations for adding and removing
 // * Automator actions:
 //   * Set wallpaper
 //   * Find images
@@ -731,9 +731,9 @@
 		enable = mainWindowVisible && (isImage || isDir);
 		
 		if(isImage)
-			[theMenuItem setTitle:NSLocalizedString(@"Set Image as Desktop", @"Text in File menu")];
+			[theMenuItem setTitle:NSLocalizedString(@"Set As Desktop Picture", @"Text in File menu")];
 		else
-			[theMenuItem setTitle:NSLocalizedString(@"Set Folder as Desktop", @"Text in File menu")];			
+			[theMenuItem setTitle:NSLocalizedString(@"Use Folder For Desktop Pictures", @"Text in File menu")];
 	}
 	else if(action == @selector(deleteFileClicked:))
 	{

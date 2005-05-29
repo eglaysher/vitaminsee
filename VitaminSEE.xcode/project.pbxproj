@@ -220,9 +220,9 @@
 				8B7E6D9B080B40EC00DD5466,
 				8B7E6D9C080B40EC00DD5466,
 				8B6A9177080784F40085334A,
-				8B5279390801D48E0032F515,
+				8B52793A0801D48E0032F515,
 				8BB7F55C07F0B9B200668047,
-				8B6B0AA40804F50F007655EB,
+				8BC27DA707ECF9B300B56836,
 				8BBC35E907E222BF007C3B6B,
 				8BBC35D607E221D4007C3B6B,
 				8BBC34B907E13E52007C3B6B,
@@ -1065,31 +1065,14 @@
 			target = 8B4FDB590807174C0016CABC;
 			targetProxy = 8B4FDB8D08071AC40016CABC;
 		};
-		8B5279390801D48E0032F515 = {
-			children = (
-				8B52793A0801D48E0032F515,
-				CDF0E2520835605800652BEC,
-			);
-			isa = PBXVariantGroup;
-			name = Credits.html;
-			path = "";
-			refType = 4;
-			sourceTree = "<group>";
-		};
 		8B52793A0801D48E0032F515 = {
 			fileEncoding = 30;
 			isa = PBXFileReference;
 			lastKnownFileType = text.html;
-			name = English;
-			path = English.lproj/Credits.html;
+			name = Credits.html;
+			path = Resources/Credits.html;
 			refType = 4;
 			sourceTree = "<group>";
-		};
-		8B5279710801D4CB0032F515 = {
-			fileRef = 8B5279390801D48E0032F515;
-			isa = PBXBuildFile;
-			settings = {
-			};
 		};
 		8B5380E207DD86BC00BA7CFF = {
 			fileRef = 8BEA491807D7A73E001ADD2E;
@@ -1618,22 +1601,6 @@
 		};
 		8B6A96F40807ABD10085334A = {
 			fileRef = 8B6A96F20807ABD10085334A;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
-		8B6B0AA40804F50F007655EB = {
-			children = (
-				8BC27DA707ECF9B300B56836,
-				CDF0E24C0835603600652BEC,
-			);
-			isa = PBXVariantGroup;
-			name = GPL.txt;
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		8B6B0AA50804F50F007655EB = {
-			fileRef = 8B6B0AA40804F50F007655EB;
 			isa = PBXBuildFile;
 			settings = {
 			};
@@ -2419,6 +2386,7 @@
 		8BAD1DAF07DE8F9E000CBEA0 = {
 			children = (
 				8BAD1DB007DE8F9E000CBEA0,
+				CD4F1553084A35A400459061,
 			);
 			isa = PBXVariantGroup;
 			name = "VitaminSEE Help";
@@ -2631,8 +2599,8 @@
 			fileEncoding = 30;
 			isa = PBXFileReference;
 			lastKnownFileType = text;
-			name = English;
-			path = English.lproj/GPL.txt;
+			name = GPL.txt;
+			path = Resources/GPL.txt;
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -3151,8 +3119,8 @@
 				8B7E6D9D080B40EC00DD5466,
 				8B6A9178080784F40085334A,
 				8BB7F55D07F0B9B200668047,
-				8B5279710801D4CB0032F515,
-				8B6B0AA50804F50F007655EB,
+				CDBE1AB9084A3CE90014E36C,
+				CDBE1AB8084A3CDA0014E36C,
 				8BBC35EA07E222BF007C3B6B,
 				8BBC35D707E221D4007C3B6B,
 				8BBC34BA07E13E53007C3B6B,
@@ -3430,7 +3398,6 @@
 				INFOPLIST_FILE = "DesktopBackground-Info.plist";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
 				LIBRARY_STYLE = BUNDLE;
-				OPTIMIZATION_CFLAGS = "";
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "-framework Foundation -framework AppKit";
 				OTHER_REZFLAGS = "";
@@ -3472,10 +3439,9 @@
 			explicitFileType = wrapper.cfbundle;
 			includeInIndex = 0;
 			isa = PBXFileReference;
-			name = DesktopBackground.bundle;
-			path = build/DesktopBackground.bundle;
-			refType = 4;
-			sourceTree = "<group>";
+			path = DesktopBackground.bundle;
+			refType = 3;
+			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		CD4F1338084919E300459061 = {
 			fileEncoding = 30;
@@ -3539,6 +3505,14 @@
 			isa = PBXBuildFile;
 			settings = {
 			};
+		};
+		CD4F1553084A35A400459061 = {
+			isa = PBXFileReference;
+			lastKnownFileType = folder;
+			name = Japanese;
+			path = "Japanese.lproj/VitaminSEE Help";
+			refType = 4;
+			sourceTree = "<group>";
 		};
 		CD4F2F3908369FD6009E50D1 = {
 			fileEncoding = 4;
@@ -3946,6 +3920,18 @@
 			settings = {
 			};
 		};
+		CDBE1AB8084A3CDA0014E36C = {
+			fileRef = 8BC27DA707ECF9B300B56836;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		CDBE1AB9084A3CE90014E36C = {
+			fileRef = 8B52793A0801D48E0032F515;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
 		CDDBEB4408327E4300F934ED = {
 			fileEncoding = 4;
 			isa = PBXFileReference;
@@ -3999,22 +3985,6 @@
 			lastKnownFileType = wrapper.nib;
 			name = Japanese;
 			path = Japanese.lproj/MainMenu.nib;
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		CDF0E24C0835603600652BEC = {
-			isa = PBXFileReference;
-			lastKnownFileType = text;
-			name = Japanese;
-			path = Japanese.lproj/GPL.txt;
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		CDF0E2520835605800652BEC = {
-			isa = PBXFileReference;
-			lastKnownFileType = text.html;
-			name = Japanese;
-			path = Japanese.lproj/Credits.html;
 			refType = 4;
 			sourceTree = "<group>";
 		};
