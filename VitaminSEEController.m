@@ -712,23 +712,16 @@
 	else if(action == @selector(fakeOpenWithMenuSelector:))
 	{
 		enable = mainWindowVisible && ![currentImageFile isDir];
-		BOOL loadRealMenu = NO;
 		
 		if(![theMenuItem submenu] && !enable)
 		{
 			// Set a false menu
 			NSMenu* openWithMenu = [[[NSMenu alloc] init] autorelease];
 			[theMenuItem setSubmenu:openWithMenu];
-//			NSLog(@"Building fake menu!");
 		}
 		else if(!loadedOpenWithMenu && enable)
-//		{
-//			loadRealMenu = YES;
-//		}
-//		
-//		if(loadRealMenu)
 		{
-			// Set up the Open with Menu
+			// Set up the real Open with Menu
 			NSMenu* openWithMenu = [[[NSMenu alloc] init] autorelease];
 			openWithMenuDelegate = [[[self openWithMenuController] build] retain];
 			loadedOpenWithMenu = YES;
@@ -736,8 +729,6 @@
 			[openWithMenu setDelegate:openWithMenuDelegate];
 			[theMenuItem setSubmenu:openWithMenu];		
 		}
-		   
-
 	}
 	else if(action == @selector(closeWindow:) ||
 			action == @selector(referesh:))

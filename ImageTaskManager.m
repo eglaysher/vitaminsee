@@ -262,7 +262,7 @@
 		int i = 0, count = [currentImages count];
 		for(; i < count; ++i)
 		{
-			NSString* cur = (NSString*)CFArrayGetValueAtIndex(currentImages, i);
+			NSString* cur = (NSString*)CFArrayGetValueAtIndex((CFArrayRef)currentImages, i);
 			NSDictionary* cacheEntry = [imageCache objectForKey:cur];
 			if([oldestDate compare:[cacheEntry objectForKey:@"Date"]] == NSOrderedDescending)
 			{

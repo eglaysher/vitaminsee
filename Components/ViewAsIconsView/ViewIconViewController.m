@@ -115,9 +115,9 @@
 	if(isCurDir)
 	{
 		NSArray* cells = [ourBrowser selectedCells];
-		int i = 0, count = CFArrayGetCount(cells);
+		int i = 0, count = [cells count];
 		for(; i < count; ++i)
-			if([[(id)CFArrayGetValueAtIndex(cells,i) cellPath] isEqual:fileIsInView])
+			if([[(id)CFArrayGetValueAtIndex((CFArrayRef)cells,i) cellPath] isEqual:fileIsInView])
 				return true;
 	}
 	
@@ -132,7 +132,7 @@
 	// Add the path of each cell to the array we're returning.
 	int i = 0, count = [selectedCells count]; //CFArrayGetCount(selectedCells);
 	for(; i < count; ++i)
-		[selectedFiles addObject:[(id)CFArrayGetValueAtIndex(selectedCells, i) cellPath]];
+		[selectedFiles addObject:[(id)CFArrayGetValueAtIndex((CFArrayRef)selectedCells, i) cellPath]];
 
 	return selectedFiles;
 }
@@ -515,7 +515,7 @@ willDisplayCell:(id)cell
 	int i = 0, count = [directoryContents count];
 	for(; i < count; ++i)
 	{
-		EGPath* curPath = (id)CFArrayGetValueAtIndex(directoryContents, i);
+		EGPath* curPath = (id)CFArrayGetValueAtIndex((CFArrayRef)directoryContents, i);
 		NSString* currentFileWithPath = [curPath fileSystemPath];
 		
 		if(([currentFileWithPath isDir] || [currentFileWithPath isImage]) &&

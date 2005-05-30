@@ -124,7 +124,7 @@
 	int i = 0, count = [paths count];
 	for(; i < count; ++i)
 	{
-		id current = (id)CFArrayGetValueAtIndex(paths, i);
+		id current = (id)CFArrayGetValueAtIndex((CFArrayRef)paths, i);
 		[pathsToReturn addObject:[EGPath pathWithPath:current]];		
 	}
 	
@@ -243,7 +243,7 @@
 	for(i = 0; i < count; ++i)
 	{
 		NSString* fullPath = [fileSystemPath stringByAppendingPathComponent:
-			(id)CFArrayGetValueAtIndex(childPaths, i)];
+			(id)CFArrayGetValueAtIndex((CFArrayRef)childPaths, i)];
 
 		[fullChildPaths addObject:fullPath];		
 	}
@@ -282,7 +282,7 @@
 	int i = 0, count = [pathComponents count];
 	for(; i < count; ++i)
 	{
-		id current = (id)CFArrayGetValueAtIndex(pathComponents, i);
+		id current = (id)CFArrayGetValueAtIndex((CFArrayRef)pathComponents, i);
 		[displayComponents addObject:[current displayName]];
 	}		
 	

@@ -45,6 +45,9 @@ static void checkForDuplicateEntries(NSMutableArray* entriesToDoubleCheck,
 									 NSMutableArray* entriesToRemove);
 static void buildDisplayName(NSMutableArray* appilcationArray);
 
+// Use an unsupported funcction from apple
+extern void _LSCopyAllApplicationURLs(NSArray**);
+
 @interface EGOpenWithMenuDelegate (Private)
 -(NSString*)getCurrentFile;
 -(NSArray*)getOpenWithMenuFor:(NSString*)file urls:(NSArray*) applicationURLs;

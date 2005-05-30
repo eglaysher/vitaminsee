@@ -3634,6 +3634,20 @@
 			settings = {
 			};
 		};
+		CD8679FD084B8BF100400ED4 = {
+			isa = PBXFileReference;
+			lastKnownFileType = wrapper.framework;
+			name = ApplicationServices.framework;
+			path = /System/Library/Frameworks/ApplicationServices.framework;
+			refType = 0;
+			sourceTree = "<absolute>";
+		};
+		CD8679FE084B8BF100400ED4 = {
+			fileRef = CD8679FD084B8BF100400ED4;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
 		CD92B1A2083D15B800298815 = {
 			isa = PBXFileReference;
 			lastKnownFileType = wrapper.nib;
@@ -4086,6 +4100,7 @@
 			files = (
 				CDF3F4A4084A426F00703E72,
 				CDF3F4A5084A426F00703E72,
+				CD8679FE084B8BF100400ED4,
 			);
 			isa = PBXFrameworksBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -4156,6 +4171,7 @@
 				CDF3F3CA084A406800703E72,
 				CDF3F3BE084A3FF700703E72,
 				CDF3F3BF084A3FF700703E72,
+				CD8679FD084B8BF100400ED4,
 			);
 			isa = PBXGroup;
 			name = OpenWithMenu;
