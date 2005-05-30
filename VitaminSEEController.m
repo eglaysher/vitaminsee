@@ -752,7 +752,7 @@
 			int i = 0, count = [directoryContents count];
 			for(; i < count; ++i)
 			{
-				if([((id)CFArrayGetValueAtIndex(directoryContents, i)) isImage])
+				if([((id)CFArrayGetValueAtIndex((CFArrayRef)directoryContents, i)) isImage])
 				{
 					containsImage = YES;
 					break;

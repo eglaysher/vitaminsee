@@ -1,0 +1,13 @@
+{
+    IBClasses = (
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {
+            ACTIONS = {doubleClick = id; singleClick = id; }; 
+            CLASS = ViewIconViewController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {directoryDropdown = NSPopUpButton; ourBrowser = NSBrowser; ourView = NSView; }; 
+            SUPERCLASS = NSObject; 
+        }
+    ); 
+    IBVersion = 1; 
+}

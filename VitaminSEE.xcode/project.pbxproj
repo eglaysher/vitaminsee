@@ -1360,6 +1360,7 @@
 		8B5E14BC0814615200897347 = {
 			children = (
 				8B5E14BD0814615200897347,
+				CDB226CD084A60C0004E8A15,
 			);
 			isa = PBXVariantGroup;
 			name = ViewAsIconsView.nib;
@@ -3900,6 +3901,14 @@
 			settings = {
 			};
 		};
+		CDB226CD084A60C0004E8A15 = {
+			isa = PBXFileReference;
+			lastKnownFileType = wrapper.nib;
+			name = Japanese;
+			path = Components/ViewAsIconsView/Japanese.lproj/ViewAsIconsView.nib;
+			refType = 4;
+			sourceTree = "<group>";
+		};
 		CDBE1AB8084A3CDA0014E36C = {
 			fileRef = 8BC27DA707ECF9B300B56836;
 			isa = PBXBuildFile;
@@ -4097,7 +4106,6 @@
 				INFOPLIST_FILE = "Components/OpenWithMenu/OpenWithMenu-Info.plist";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
 				LIBRARY_STYLE = BUNDLE;
-				OPTIMIZATION_CFLAGS = "";
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "-framework Foundation -framework AppKit";
 				OTHER_REZFLAGS = "";
@@ -4139,10 +4147,9 @@
 			explicitFileType = wrapper.cfbundle;
 			includeInIndex = 0;
 			isa = PBXFileReference;
-			name = OpenWithMenu.bundle;
-			path = build/OpenWithMenu.bundle;
-			refType = 4;
-			sourceTree = "<group>";
+			path = OpenWithMenu.bundle;
+			refType = 3;
+			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		CDF3F3BC084A3FDA00703E72 = {
 			children = (
