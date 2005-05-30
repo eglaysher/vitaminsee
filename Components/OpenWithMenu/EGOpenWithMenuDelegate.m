@@ -60,6 +60,7 @@ static void buildDisplayName(NSMutableArray* appilcationArray);
 -(id)initWithPluginLayer:(PluginLayer*)inPluginLayer
 {
 	// ignore the pluginlayer and just do normal initialization
+//	NSLog(@"BEING BORN!");
 	return [self init];
 }
 
@@ -125,8 +126,6 @@ static void buildDisplayName(NSMutableArray* appilcationArray);
 	NSString* currentFile = [self getCurrentFile];
 	NSArray* currentFileType = [fileTypeToArrayOfApplicationURLS objectForKey:[currentFile pathExtension]];
 	NSDictionary* currentApplication = [currentFileType objectAtIndex:index];
-//	NSLog(@"Current application: %@", currentApplication);
-//	NSLog(@"Display application at %d for %@: %@", index, currentFile, currentApplication);
 	
 	[item setTitle:[currentApplication objectForKey:@"DisplayName"]];
 	[item setTarget:self];
@@ -140,6 +139,8 @@ static void buildDisplayName(NSMutableArray* appilcationArray);
 	[image setScalesWhenResized:YES];
 	[image setSize:NSMakeSize(16,16)];
 	[item setImage:image];
+	
+//	NSLog(@"item ref count: %d", [item retainCount]);
 	
 	return YES;
 }

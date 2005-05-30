@@ -68,7 +68,9 @@
 	IBOutlet NSMenuItem* favoritesMenuItem;
 	FavoritesMenuDelegate* favoritesMenuDelegate;
 	IBOutlet NSMenuItem* openWithMenuItem;
+
 	EGOpenWithMenuDelegate* openWithMenuDelegate;
+	BOOL loadedOpenWithMenu;
 	
     IBOutlet NSImageView *imageViewer;
 	IBOutlet NSTextField * fileSizeLabel;

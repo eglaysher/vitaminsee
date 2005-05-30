@@ -212,6 +212,7 @@
 			currentIconFamilyThumbnail = thumbnail;
 			currentPath = path;
 			[vitaminSEEController setIcon];
+			[thumbnail release];
 
 			[vitaminSEEController setStatusText:nil];
 		}

@@ -35,7 +35,7 @@
 -(void)performSelector:(SEL)selector withEachObjectIn:(NSArray*)arrayOfObjects
 {
 	CFArrayRef ref = (CFArrayRef)arrayOfObjects;
-	int i = 0, count = CFArrayGetCount(ref);
+	int i = 0, count = [arrayOfObjects count];
 	for(; i < count; ++i)
 		[self performSelector:selector withObject:(id)CFArrayGetValueAtIndex(ref, i)];
 }

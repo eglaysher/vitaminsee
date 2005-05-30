@@ -3,13 +3,13 @@
 	089C165DFE840E0CC02AAC07 = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {909, 648}}";
-			sepNavSelRange = "{71, 0}";
+			sepNavSelRange = "{203, 0}";
 			sepNavVisRect = "{{0, 0}, {746, 648}}";
 			sepNavWindowFrame = "{{15, 20}, {791, 721}}";
 		};
 	};
 	29B97313FDCFA39411CA2CEA = {
-		activeBuildStyle = 4A9504CDFFE6A4B311CA0CBA;
+		activeBuildStyle = 4A9504CCFFE6A4B311CA0CBA;
 		activeExecutable = CD98F30B08244FF9000A5C4A;
 		activeTarget = 8D1107260486CEB800E47090;
 		addToTargets = (
@@ -277,8 +277,8 @@
 	};
 	8B52793A0801D48E0032F515 = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {937, 648}}";
-			sepNavSelRange = "{827, 0}";
+			sepNavIntBoundsRect = "{{0, 0}, {1371, 648}}";
+			sepNavSelRange = "{199, 0}";
 			sepNavVisRect = "{{0, 0}, {746, 648}}";
 			sepNavWindowFrame = "{{15, 20}, {791, 721}}";
 		};
@@ -823,8 +823,8 @@
 	};
 	CD4F33430837D6BD009E50D1 = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {885, 648}}";
-			sepNavSelRange = "{172, 0}";
+			sepNavIntBoundsRect = "{{0, 0}, {909, 648}}";
+			sepNavSelRange = "{202, 0}";
 			sepNavVisRect = "{{0, 0}, {746, 648}}";
 			sepNavWindowFrame = "{{15, 20}, {791, 721}}";
 		};
@@ -1669,8 +1669,8 @@
 	CDF0E2A608359F6100652BEC = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1162, 1664}}";
-			sepNavSelRange = "{304, 0}";
-			sepNavVisRect = "{{0, 0}, {746, 648}}";
+			sepNavSelRange = "{1787, 0}";
+			sepNavVisRect = "{{0, 1016}, {746, 648}}";
 			sepNavWindowFrame = "{{227, 25}, {791, 721}}";
 		};
 	};

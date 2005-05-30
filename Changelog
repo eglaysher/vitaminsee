@@ -1,3 +1,13 @@
+0.6.3 Release (May 31st, 2005)
+------------------------------
+* Support all file types that the underlying OS says we can open. This includes
+  PDFs, Photoshop images, and (theoretically) some camera RAW formats.
+* Small speed enhancements most people won't notice
+* Set as Desktop Picture/Use Folder For Desktop Pictures: Set the current image
+  as the desktop background picture or the contents of the currently selected 
+  folder for random backgrounds.
+* Translation fixes and AppleHelp translation by Hiroto Sakai
+
 0.6.2 Bugfix Release (May 20th, 2005)
 -------------------------------------
 * The Favorites toolbar item now correctly has a menu when in "Text Only" mode 

@@ -248,6 +248,8 @@
 	scaleProportionally = NO;
 	scaleRatio = 1.0;
 	
+	loadedOpenWithMenu = NO;
+	
 	// Set up our split view
 	[splitView setDelegate:self];
 	RBSplitSubview* leftView = [splitView subviewAtPosition:0];
@@ -709,17 +711,33 @@
 	}
 	else if(action == @selector(fakeOpenWithMenuSelector:))
 	{
-		if(![theMenuItem submenu])
+		enable = mainWindowVisible && ![currentImageFile isDir];
+		BOOL loadRealMenu = NO;
+		
+		if(![theMenuItem submenu] && !enable)
+		{
+			// Set a false menu
+			NSMenu* openWithMenu = [[[NSMenu alloc] init] autorelease];
+			[theMenuItem setSubmenu:openWithMenu];
+//			NSLog(@"Building fake menu!");
+		}
+		else if(!loadedOpenWithMenu && enable)
+//		{
+//			loadRealMenu = YES;
+//		}
+//		
+//		if(loadRealMenu)
 		{
 			// Set up the Open with Menu
 			NSMenu* openWithMenu = [[[NSMenu alloc] init] autorelease];
 			openWithMenuDelegate = [[[self openWithMenuController] build] retain];
+			loadedOpenWithMenu = YES;
 			[openWithMenuDelegate setDelegate:self];
 			[openWithMenu setDelegate:openWithMenuDelegate];
 			[theMenuItem setSubmenu:openWithMenu];		
 		}
 		   
-	   enable = mainWindowVisible && ![currentImageFile isDir];
+
 	}
 	else if(action == @selector(closeWindow:) ||
 			action == @selector(referesh:))
@@ -1072,9 +1090,6 @@
 	NSString* path = [thumbnailManager getCurrentPath];
 
 	[viewAsIconsController setThumbnail:thumbnail forFile:path];
-
-	// Release the current icon
-	[thumbnail release];
 }
 
 // Progress indicator control
