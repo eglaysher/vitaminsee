@@ -81,6 +81,7 @@
 
 // For Version 0.6.3
 // * Make sure Sakai's translation is fully integrated...
+//   * Fix Apple Help Issues!
 
 // For Version 0.7
 // * More thumbnail operations for adding and removing
@@ -364,6 +365,8 @@
 	if(info)
 		[alert setInformativeText:info];
 
+	NSLog(@"Here!");
+	
 	// If we have a help anchor, set things up so a help button is available.
 	if(anchor)
 	{
@@ -381,8 +384,10 @@
 
 -(BOOL)alertShowHelp:(NSAlert *)alert 
 {	
+	NSString* helpBookName = [[[NSBundle mainBundle] localizedInfoDictionary] objectForKey:@"CFBundleHelpBookName"];
+	
 	[[NSHelpManager sharedHelpManager] openHelpAnchor:[alert helpAnchor]
-											   inBook:@"VitaminSEE Help"];
+											   inBook:helpBookName];
     return YES;
 }
 
@@ -481,14 +486,12 @@
 {
 	[pathManager undo];
 	[self selectFirstResponder];
-//	[viewAsIconsController makeFirstResponderTo:mainVitaminSeeWindow];
 }
 
 -(IBAction)goForward:(id)sender
 {
 	[pathManager redo];
 	[self selectFirstResponder];
-//	[viewAsIconsController makeFirstResponderTo:mainVitaminSeeWindow];
 }
 
 -(IBAction)goToComputerFolder:(id)sender

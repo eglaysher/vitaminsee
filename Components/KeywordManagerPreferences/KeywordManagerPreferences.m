@@ -48,8 +48,10 @@
 // Forum actions
 -(IBAction)showHelp:(id)sender
 {
+	NSString* helpBookName = [[[NSBundle mainBundle] localizedInfoDictionary] objectForKey:@"CFBundleHelpBookName"];
+	
 	[[NSHelpManager sharedHelpManager] openHelpAnchor:@"KEYWORD_MANAGER_PREFERENCES_ANCHOR"
-											   inBook:@"VitaminSEE Help"];
+											   inBook:helpBookName];
 }
 
 -(IBAction)addKeyword:(id)sender

@@ -34,9 +34,11 @@
 
 -(IBAction)showHelp:(id)sender
 {
+	NSString* helpBookName = [[[NSBundle mainBundle] localizedInfoDictionary] objectForKey:@"CFBundleHelpBookName"];
+	
 	[[NSHelpManager sharedHelpManager] 
 		openHelpAnchor:@"VITAMINSEE_ADVANCED_PREFERENCES_ANCHOR"
-				inBook:@"VitaminSEE Help"];
+				inBook:helpBookName];
 }
 
 /////////////////////////////////////////// Protocol: SS_PreferencePaneProtocol
