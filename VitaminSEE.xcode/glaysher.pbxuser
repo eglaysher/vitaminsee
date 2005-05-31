@@ -9,7 +9,7 @@
 		};
 	};
 	29B97313FDCFA39411CA2CEA = {
-		activeBuildStyle = 4A9504CCFFE6A4B311CA0CBA;
+		activeBuildStyle = 4A9504CDFFE6A4B311CA0CBA;
 		activeExecutable = CD98F30B08244FF9000A5C4A;
 		activeTarget = 8D1107260486CEB800E47090;
 		addToTargets = (
@@ -164,14 +164,12 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 139168951;
-			PBXWorkspaceStateSaveDate = 139168951;
+			PBXPerProjectTemplateStateSaveDate = 139245598;
+			PBXWorkspaceStateSaveDate = 139245598;
 		};
 		perUserProjectItems = {
-			CD1838E1084B96A70019EE28 = CD1838E1084B96A70019EE28;
-			CD1838E4084B96A70019EE28 = CD1838E4084B96A70019EE28;
-			CD867BCC084B8C9500400ED4 = CD867BCC084B8C9500400ED4;
-			CD867BCE084B8C9500400ED4 = CD867BCE084B8C9500400ED4;
+			CD7DFD19084CB82E00F7F615 = CD7DFD19084CB82E00F7F615;
+			CD7E89A8084CB7FD009E463B = CD7E89A8084CB7FD009E463B;
 		};
 		sourceControlManager = CD98F35108244FFF000A5C4A;
 		userBuildSettings = {
@@ -196,8 +194,8 @@
 	8B3CB1A307EA82CE0086353C = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {783, 3552}}";
-			sepNavSelRange = "{4909, 0}";
-			sepNavVisRect = "{{0, 0}, {746, 648}}";
+			sepNavSelRange = "{988, 0}";
+			sepNavVisRect = "{{0, 2904}, {746, 648}}";
 			sepNavWindowFrame = "{{219, 18}, {791, 721}}";
 		};
 	};
@@ -260,8 +258,8 @@
 	8B4A5A9007B74EDC00F30E03 = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {2365, 24688}}";
-			sepNavSelRange = "{20761, 0}";
-			sepNavVisRect = "{{0, 9368}, {746, 648}}";
+			sepNavSelRange = "{28923, 30}";
+			sepNavVisRect = "{{0, 12852}, {755, 137}}";
 			sepNavWindowFrame = "{{15, 20}, {791, 721}}";
 		};
 	};
@@ -300,8 +298,8 @@
 	8B56209C07CEA204005990E1 = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {944, 5856}}";
-			sepNavSelRange = "{1265, 0}";
-			sepNavVisRect = "{{0, 0}, {746, 648}}";
+			sepNavSelRange = "{6468, 30}";
+			sepNavVisRect = "{{0, 3492}, {755, 137}}";
 			sepNavWindowFrame = "{{15, 20}, {791, 721}}";
 		};
 	};
@@ -594,10 +592,10 @@
 	};
 	8BB7F55C07F0B9B200668047 = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {746, 1776}}";
-			sepNavSelRange = "{424, 0}";
+			sepNavIntBoundsRect = "{{0, 0}, {746, 1824}}";
+			sepNavSelRange = "{457, 0}";
 			sepNavVisRect = "{{0, 0}, {746, 648}}";
-			sepNavWindowFrame = "{{229, 25}, {791, 721}}";
+			sepNavWindowFrame = "{{230, 24}, {791, 721}}";
 		};
 	};
 	8BC6662807BFCF880075F57F = {
@@ -637,17 +635,17 @@
 	};
 	8BD011D807A99DFB00AA4BAA = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {746, 3280}}";
-			sepNavSelRange = "{4034, 0}";
-			sepNavVisRect = "{{0, 1884}, {746, 648}}";
+			sepNavIntBoundsRect = "{{0, 0}, {755, 3280}}";
+			sepNavSelRange = "{3694, 19}";
+			sepNavVisRect = "{{0, 2020}, {755, 137}}";
 			sepNavWindowFrame = "{{151, 22}, {791, 721}}";
 		};
 	};
 	8BD011D907A99DFB00AA4BAA = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {937, 19808}}";
-			sepNavSelRange = "{12721, 0}";
-			sepNavVisRect = "{{0, 3826}, {746, 648}}";
+			sepNavSelRange = "{26754, 25}";
+			sepNavVisRect = "{{0, 13621}, {746, 648}}";
 			sepNavWindowFrame = "{{64, 9}, {791, 721}}";
 		};
 	};
@@ -662,8 +660,8 @@
 	8BE97E2407ACD46B005D384C = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {818, 4448}}";
-			sepNavSelRange = "{1284, 0}";
-			sepNavVisRect = "{{0, 0}, {746, 648}}";
+			sepNavSelRange = "{10947, 30}";
+			sepNavVisRect = "{{0, 4244}, {755, 137}}";
 			sepNavWindowFrame = "{{15, 20}, {791, 721}}";
 		};
 	};
@@ -704,25 +702,25 @@
 	};
 	8BF72B0507B9E78F003A3C82 = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {746, 1328}}";
-			sepNavSelRange = "{1279, 0}";
-			sepNavVisRect = "{{0, 0}, {746, 648}}";
+			sepNavIntBoundsRect = "{{0, 0}, {755, 1328}}";
+			sepNavSelRange = "{1892, 19}";
+			sepNavVisRect = "{{0, 868}, {755, 137}}";
 			sepNavWindowFrame = "{{15, 20}, {791, 721}}";
 		};
 	};
 	8BF72B0607B9E78F003A3C82 = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {734, 9440}}";
-			sepNavSelRange = "{14070, 82}";
-			sepNavVisRect = "{{0, 8156}, {457, 249}}";
+			sepNavIntBoundsRect = "{{0, 0}, {746, 9664}}";
+			sepNavSelRange = "{16355, 0}";
+			sepNavVisRect = "{{0, 9016}, {746, 648}}";
 			sepNavWindowFrame = "{{205, 6}, {791, 721}}";
 		};
 	};
 	8BFA0B4C07DAF79C004F72AA = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {746, 848}}";
-			sepNavSelRange = "{518, 26}";
-			sepNavVisRect = "{{0, 184}, {746, 648}}";
+			sepNavIntBoundsRect = "{{0, 0}, {755, 832}}";
+			sepNavSelRange = "{545, 19}";
+			sepNavVisRect = "{{0, 452}, {755, 137}}";
 			sepNavWindowFrame = "{{15, 20}, {791, 721}}";
 		};
 	};
@@ -751,30 +749,10 @@
 	8D1107310486CEB800E47090 = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {797, 9872}}";
-			sepNavSelRange = "{14462, 0}";
+			sepNavSelRange = "{14798, 0}";
 			sepNavVisRect = "{{0, 9224}, {746, 648}}";
 			sepNavWindowFrame = "{{15, 20}, {791, 721}}";
 		};
-	};
-	CD1838E1084B96A70019EE28 = {
-		fRef = 8B6D01C007CB2EA2009A76DA;
-		isa = PBXTextBookmark;
-		name = "SS_PrefsController.m: 69";
-		rLen = 0;
-		rLoc = 1615;
-		rType = 0;
-		vrLen = 0;
-		vrLoc = 0;
-	};
-	CD1838E4084B96A70019EE28 = {
-		fRef = 8BB7F55C07F0B9B200668047;
-		isa = PBXTextBookmark;
-		name = "Changelog: 8";
-		rLen = 0;
-		rLoc = 424;
-		rType = 0;
-		vrLen = 2314;
-		vrLoc = 0;
 	};
 	CD42B4DE082ACBA300DDCEA9 = {
 		isa = PBXSymbolicBreakpoint;
@@ -892,13 +870,13 @@
 	};
 	CD76863D08283934006AE601 = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {746, 5264}}";
-			sepNavSelRange = "{6256, 0}";
-			sepNavVisRect = "{{0, 4228}, {746, 648}}";
+			sepNavIntBoundsRect = "{{0, 0}, {755, 5264}}";
+			sepNavSelRange = "{5250, 30}";
+			sepNavVisRect = "{{0, 3844}, {755, 137}}";
 			sepNavWindowFrame = "{{15, 20}, {791, 721}}";
 		};
 	};
-	CD867BCC084B8C9500400ED4 = {
+	CD7DFD19084CB82E00F7F615 = {
 		fRef = 8B6D01C007CB2EA2009A76DA;
 		isa = PBXTextBookmark;
 		name = "SS_PrefsController.m: 69";
@@ -908,14 +886,14 @@
 		vrLen = 0;
 		vrLoc = 0;
 	};
-	CD867BCE084B8C9500400ED4 = {
-		fRef = 8BB7F55C07F0B9B200668047;
+	CD7E89A8084CB7FD009E463B = {
+		fRef = 8B6D01C007CB2EA2009A76DA;
 		isa = PBXTextBookmark;
-		name = "Changelog: 8";
+		name = "SS_PrefsController.m: 69";
 		rLen = 0;
-		rLoc = 424;
+		rLoc = 1615;
 		rType = 0;
-		vrLen = 2314;
+		vrLen = 0;
 		vrLoc = 0;
 	};
 	CD98F30B08244FF9000A5C4A = {
@@ -1581,6 +1559,16 @@
 			{
 				level = 0;
 				path = /private/tmp/CDDBEC0A08401B7100E65DA9;
+				whenToLoad = 0;
+			},
+			{
+				level = 0;
+				path = /Users/glaysher/Projects/VitaminSEE/build/VitaminSEE.app/Contents/MacOS/VitaminSEE;
+				whenToLoad = 0;
+			},
+			{
+				level = 0;
+				path = /Users/glaysher/Projects/VitaminSEE/build/VitaminSEE.app/Contents/PlugIns/ViewAsIconsFileView.bundle/Contents/MacOS/ViewAsIconsFileView;
 				whenToLoad = 0;
 			},
 		);

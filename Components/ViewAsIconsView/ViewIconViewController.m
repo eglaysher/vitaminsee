@@ -148,8 +148,13 @@
 	[pluginLayer startProgressIndicator];
 	
 //	NSLog(@"Path: %@", [newCurrentDirectory fileSystemPath]);
-	
-	assert(![newCurrentDirectory isKindOfClass:[NSString class]]);
+
+//	if(![newCurrentDirectory isKindOfClass:[EGPath class]])
+//	{
+//		NSLog(@"WARNING! newCurrentDirectory is of type '%@' and is %@.", 
+//			  [[newCurrentDirectory class] description],
+//			  newCurrentDirectory);
+//	}
 	
 	if(currentDirectory && newCurrentDirectory && 
 	   ![currentDirectory isEqual:newCurrentDirectory])
@@ -557,17 +562,26 @@ willDisplayCell:(id)cell
 
 -(void)handleWillUnmountNotification:(id)notification
 {
-	NSString* unmountedPath = [[notification userInfo] objectForKey:@"NSDevicePath"];
-	NSString* realPath = [[currentDirectory fileSystemPath] stringByResolvingSymlinksInPath];
-
-	// Detect if we are on the volume that's going to be unmounted. We have to do
-	// this before the volume is unmounted, since otherwise the symlink isn't going to be
-	// detected
-	if([realPath hasPrefix:unmountedPath])
+	@try
 	{
-		// Trying to modify stuff here takes locks on the files on the remote
-		// volume. So take note that we HAVE to drop back to root.
-		needToRebuild = YES;
+		NSString* unmountedPath = [[notification userInfo] objectForKey:@"NSDevicePath"];
+		NSString* realPath = [[currentDirectory fileSystemPath] stringByResolvingSymlinksInPath];
+
+		// Detect if we are on the volume that's going to be unmounted. We have to do
+		// this before the volume is unmounted, since otherwise the symlink isn't going to be
+		// detected
+		if([realPath hasPrefix:unmountedPath])
+		{
+			// Trying to modify stuff here takes locks on the files on the remote
+			// volume. So take note that we HAVE to drop back to root.
+			needToRebuild = YES;
+		}
+	}
+	@catch(NSException *exception)
+	{
+		// If there was a selector not found error, then it came from [currentDirecoty fileSystemPath],
+		// which may be and EGPathRoot and not have a real path...
+		NSLog(@"*** Non-critical exception. Ignore previous -[EGPathRoot fileSystemPath]: message.");
 	}
 }
 

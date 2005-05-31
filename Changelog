@@ -14,16 +14,17 @@
   and in overflow mode.
 * Fixed few places where UNIX paths were still being displayed to the user.
 * Added an open with menu.
-* Fixed behavior when handling symlinks; the directory drop down no longer gets screwed
-  up when following a symlink.
+* Fixed behavior when handling symlinks; the directory drop down no longer gets
+  screwed up when following a symlink.
 * Use localized display name for the default Favorites location.
 * Unicode keywords are now handled properly
-* Rough Japanese translation. There may be grammar errors here and there; I want to know
-  about them. Props to the Japanese translation for Apple Preview and gqview for giving
-  me a vocabulary lesson...
-* Don't smooth the image at Actual Size; it doesn't do anything except slow things down.
-  Apply smoothing only when shrinking or enlarging the image.
-* In the same vein, don't smooth the image when the unzoomed image will fit in the viewing area.
+* Rough Japanese translation. There may be grammar errors here and there; I want
+  to know about them. Props to the Japanese translation for Apple Preview and 
+  gqview for giving me a vocabulary lesson...
+* Don't smooth the image at Actual Size; it doesn't do anything except slow 
+  things down. Apply smoothing only when shrinking or enlarging the image.
+* In the same vein, don't smooth the image when the unzoomed image will fit in 
+  the viewing area.
 * Handle unmounting in a sane way.
 
 0.6.1 Release (May 13th, 2005)
@@ -32,7 +33,8 @@
   (Use Machintosh HD:Users:name:... instead of /Users/name/ style paths.)
 * Disable show/hide toolbar and customize toolbar when window isn't displayed...
 * Autosave main window position
-* Disable buttons in sort manager when you close VS window and then open sort manager.
+* Disable buttons in sort manager when you close VS window and then open sort 
+  manager.
 * Adding a thumbnail doesn't change a file's modification time (which makes
   more sense since we aren't really modifying the file; just adding a piece of
   metadata on the filesystem).
@@ -44,7 +46,8 @@
 * Now use RBSplitView to prevent that stupid crash that I reported last version.
 * Because of RBSplitView, there is a "Show/Hide File List" option in the View menu.
 * Tabbing between controls now works; Up/Down in the file list changes
-* Added Next/Previous items to the Go menu for navigation when the file list is hidden.
+* Added Next/Previous items to the Go menu for navigation when the file list is
+  hidden.
 * Use UTI types on 10.4.
 
 0.6 Release (April 29th, 2005)
