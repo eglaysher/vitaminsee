@@ -76,7 +76,7 @@
 
 
 	if(!normalString)
-	NSLog(@"WARNING! Normal string couldn't be generated in FileSizeFormatter!");
+		NSLog(@"WARNING! Normal string couldn't be generated in FileSizeFormatter!");
 
 	return [[[NSAttributedString alloc] 
 		initWithString:normalString	attributes:attributes] autorelease];

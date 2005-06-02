@@ -204,7 +204,48 @@
 		</dict>
 	</array>
 	<key>OpenEditors</key>
-	<array/>
+	<array>
+		<dict>
+			<key>Content</key>
+			<dict>
+				<key>PBXProjectModuleGUID</key>
+				<string>CD70C187084F8FF800AF0415</string>
+				<key>PBXProjectModuleLabel</key>
+				<string>VitaminSEEController.m</string>
+				<key>PBXSplitModuleInNavigatorKey</key>
+				<dict>
+					<key>Split0</key>
+					<dict>
+						<key>PBXProjectModuleGUID</key>
+						<string>CD70C188084F8FF800AF0415</string>
+						<key>PBXProjectModuleLabel</key>
+						<string>VitaminSEEController.m</string>
+						<key>_historyCapacity</key>
+						<integer>0</integer>
+						<key>bookmark</key>
+						<string>CD70C19F084F907C00AF0415</string>
+						<key>history</key>
+						<array>
+							<string>CD70C185084F8FE700AF0415</string>
+						</array>
+					</dict>
+					<key>SplitCount</key>
+					<string>1</string>
+				</dict>
+				<key>StatusBarVisibility</key>
+				<true/>
+			</dict>
+			<key>Geometry</key>
+			<dict>
+				<key>Frame</key>
+				<string>{{0, 20}, {791, 680}}</string>
+				<key>PBXModuleWindowStatusBarHidden2</key>
+				<false/>
+				<key>RubberWindowFrame</key>
+				<string>64 9 791 721 0 0 1024 746 </string>
+			</dict>
+		</dict>
+	</array>
 	<key>PerspectiveWidths</key>
 	<array>
 		<integer>-1</integer>
@@ -232,8 +273,6 @@
 			<key>Layout</key>
 			<array>
 				<dict>
-					<key>BecomeActive</key>
-					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -272,20 +311,18 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateExpansionKey</key>
 							<array>
 								<string>29B97314FDCFA39411CA2CEA</string>
-								<string>8B6D010807CB178F009A76DA</string>
 								<string>080E96DDFE201D6D7F000001</string>
-								<string>1C37FBAC04509CD000000102</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>47</integer>
-									<integer>15</integer>
+									<integer>5</integer>
+									<integer>4</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 656}, {288, 338}}</string>
+							<string>{{0, 0}, {288, 338}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -334,7 +371,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>CD70C176084F8C0400AF0415</string>
+										<string>CD70C19E084F907C00AF0415</string>
 										<key>history</key>
 										<array>
 											<string>CDE062D4084EBEFE00593117</string>
@@ -359,6 +396,8 @@
 							<string>0pt</string>
 						</dict>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -516,7 +555,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>139430916.22250301</real>
+	<real>139432060.24138501</real>
 	<key>ToolbarDisplayMode</key>
 	<integer>2</integer>
 	<key>ToolbarIsVisible</key>
@@ -534,6 +573,7 @@
 		<string>1C530D57069F1CE1000CFCEE</string>
 		<string>CD70C0A8084EC19E00AF0415</string>
 		<string>1C0AD2B3069F1EA900FABCE6</string>
+		<string>CD70C187084F8FF800AF0415</string>
 		<string>/Users/glaysher/Projects/VitaminSEE/VitaminSEE.xcode</string>
 	</array>
 	<key>WindowString</key>
@@ -763,7 +803,7 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CDD528C0622207200134675</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>VitaminSEEController.m</string>
+										<string>AppKitAdditions.m</string>
 										<key>StatusBarVisibility</key>
 										<true/>
 									</dict>
