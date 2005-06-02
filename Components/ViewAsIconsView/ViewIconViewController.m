@@ -145,6 +145,7 @@
 - (void)setCurrentDirectory:(EGPath*)newCurrentDirectory
 				currentFile:(NSString*)newCurrentFile
 {
+	NSLog(@"-[ViewIconViewController setCurrentDirectory:%@ currentFile:%@]", newCurrentDirectory, newCurrentFile);
 	[pluginLayer startProgressIndicator];
 	
 //	NSLog(@"Path: %@", [newCurrentDirectory fileSystemPath]);
@@ -179,8 +180,10 @@
 	unsigned i;
 	for(i = 0; i < count; ++i)
 	{
+		NSString* menuPathComponentName = [displayNames objectAtIndex: count - i - 1];
+		NSLog(@"Building menu drop down component %@", menuPathComponentName);
 		NSMenuItem* newMenuItem = [[[NSMenuItem alloc] 
-			initWithTitle:[displayNames objectAtIndex: count - i - 1]
+			initWithTitle:menuPathComponentName
 				   action:@selector(directoryMenuSelected:)
 			keyEquivalent:@""] autorelease];
 		
@@ -514,10 +517,12 @@ willDisplayCell:(id)cell
 
 -(void)rebuildInternalFileArray
 {
+	NSLog(@"-[ViewIconViewController(Private) rebuildInternalFileArray]");
 	NSArray* directoryContents = [currentDirectory directoryContents];
 	NSMutableArray* myFileList = [NSMutableArray arrayWithCapacity:[directoryContents count]];
 
 	int i = 0, count = [directoryContents count];
+	NSLog(@"There are %d files in the directory %@", count, currentDirectory);
 	for(; i < count; ++i)
 	{
 		EGPath* curPath = (id)CFArrayGetValueAtIndex((CFArrayRef)directoryContents, i);

@@ -136,6 +136,8 @@
 
 // ----------------------------------------------------------------------------
 
+static NSString* egPathRootDisplayName = 0;
+
 @implementation EGPathRoot
 
 +(id)root
@@ -145,19 +147,37 @@
 
 -(NSString*)displayName
 {
-	// http://www.cocoadev.com/index.pl?HowToGetHardwareAndNetworkInfo
-	CFStringRef name;
-	NSString *computerName;
-	name = SCDynamicStoreCopyComputerName(NULL,NULL);
-	computerName = [NSString stringWithString:(NSString *)name];
-	CFRelease(name);
-	return computerName;
+	if(!egPathRootDisplayName)
+	{
+		CFStringRef name;
+		name = SCDynamicStoreCopyComputerName(NULL,NULL);
+		
+		if(name)
+		{
+			egPathRootDisplayName = [[NSString alloc] initWithString:(NSString *)name];
+			CFRelease(name);
+		}
+		else
+		{
+			// Okay, that failed. Let's ask Carbon for our name instead:
+			name = CSCopyMachineName();
+			if(name)
+			{
+				egPathRootDisplayName = [[NSString alloc] initWithString:(NSString *)name];
+				CFRelease(name);
+			}
+			else
+				// Screw it. Use a likely default...
+				egPathRootDisplayName = [[NSString alloc] initWithString:@"Macintosh"];				
+		}
+	}
+	
+	return egPathRootDisplayName;
 }
 
 -(NSArray*)directoryContents
 {
 	NSArray* paths = [[NSWorkspace sharedWorkspace] mountedLocalVolumePaths];
-//	NSLog(@"Computer paths: %@", paths);
 	return [self buildEGPathArrayFromArrayOfNSStrings:paths];
 }
 
@@ -218,7 +238,7 @@
 
 -(NSString*)description
 {
-	return [NSString stringWithFormat:@"<EGPathFileSystemPath: %x: %@>", self, fileSystemPath];
+	return [NSString stringWithFormat:@"<EGPathFileSystemPath: 0x%08x: %@>", self, fileSystemPath];
 }
 
 // ----------------------------------------------------------------------------
@@ -233,6 +253,8 @@
 
 -(NSArray*)directoryContents
 {
+	NSLog(@"-[EGPathFilesystemPath directoryContents]");
+	
 	NSArray* childPaths = [[NSFileManager defaultManager] 
 		directoryContentsAtPath:fileSystemPath];
 	int count = [childPaths count];

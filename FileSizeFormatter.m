@@ -72,10 +72,14 @@
 -(NSAttributedString*)attributedStringForObjectValue:(id)anObject 
 							   withDefaultAttributes:(NSDictionary*)attributes
 {
+	NSString* normalString = [self stringForObjectValue:anObject];
+
+
+	if(!normalString)
+	NSLog(@"WARNING! Normal string couldn't be generated in FileSizeFormatter!");
 
 	return [[[NSAttributedString alloc] 
-		initWithString:[self stringForObjectValue:anObject] 
-			attributes:attributes] autorelease];
+		initWithString:normalString	attributes:attributes] autorelease];
 }
 
 @end

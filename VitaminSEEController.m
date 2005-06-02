@@ -74,21 +74,18 @@
 ////////////////////////////////////////////////// WHERE TO GO FROM HERE...
 
 /* COMPLETED:
- * * PDF and PSD support
- * * MORE SPEED! Start paying attention to non-critical areas
- * * Set as desktop/set current folder as desktop...
  */
 
-// For Version 0.6.3
-// * Make sure Sakai's translation is fully integrated...
-//   * Fix Apple Help Issues!
+// For Version 0.6.4
+// * Thumbnail options.
+// * Delete key in sort manager preferences should do something. + UNDO!!!!
+// * Bug fixes.
+// * Move Gemmell's prefs controller code into it's own bundle.
 
 // For Version 0.7
-// * More thumbnail operations for adding and removing
 // * Automator actions:
 //   * Set wallpaper
 //   * Find images
-// * Delete key in sort manager preferences should do something. + UNDO!!!!
 // * Fullscreen + Slideshow
 // * Have thumbnails scale down if right side is shrunk (rework NSBrowserCell
 //   subclass to use NSImageCell?)
@@ -221,6 +218,12 @@
 
 - (void)awakeFromNib
 {
+	NSLog(@"-[VitaminSEEController awakeFromNib]");
+	// Set our plugins to nil
+	loadedBasePlugins = [[NSMutableDictionary alloc] init];
+	loadedViewPlugins = [[NSMutableDictionary alloc] init];
+	loadedCurrentFilePlugins = [[NSMutableDictionary alloc] init];	
+	
 	// Set up the file viewer on the left
 	viewAsIconsController = [self viewAsIconsControllerPlugin];
 	[self setViewAsView:[viewAsIconsController view]];
@@ -264,12 +267,7 @@
 	[splitView setAutosaveName:@"MainWindowSplitView" recursively:YES];
 	[splitView restoreState:YES];
 	
-	[openWithMenuItem setTarget:self];
-	
-	// Set our plugins to nil
-	loadedBasePlugins = [[NSMutableDictionary alloc] init];
-	loadedViewPlugins = [[NSMutableDictionary alloc] init];
-	loadedCurrentFilePlugins = [[NSMutableDictionary alloc] init];
+	[openWithMenuItem setTarget:self];	
 	
 	// Use an Undo manager to manage moving back and forth.
 	pathManager = [[NSUndoManager alloc] init];	
@@ -279,8 +277,6 @@
 	thumbnailManager = [[ThumbnailManager alloc] initWithController:self];
 
 	setPathForFirstTime = NO;
-
-//	NSLog(@"File extensions: %@", [NSImage imageUnfilteredFileTypes]);
 }
 
 -(void)dealloc
@@ -296,6 +292,8 @@
 // been shown.
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
+	NSLog(@"-[VitaminSEEController applicationDidFinishLaunching]");
+
 	if(!setPathForFirstTime)
 	{		
 		[viewAsIconsController setCurrentDirectory:[EGPathFilesystemPath 
@@ -308,6 +306,8 @@
 
 -(BOOL)application:(NSApplication*)theApplication openFile:(NSString*)filename
 {	
+	NSLog(@"-[VitaminSEEController application: openFile:%@", filename);
+
 	if([filename isImage])
 	{		
 		// Clear the current image. (Do this now since there's the possibility
@@ -341,7 +341,6 @@
 - (BOOL)applicationShouldHandleReopen:(NSApplication *)theApplication 
 					hasVisibleWindows:(BOOL)hasVisibleWindows
 {
-//	NSLog(@"In applicationShouldHandleReopen");
 	if(![mainVitaminSeeWindow isVisible])
 	{
 		// Now display the window
@@ -557,6 +556,9 @@
 	
 -(id)loadComponentNamed:(NSString*)name fromBundle:(NSString*)path
 {
+	NSParameterAssert(name);
+	NSParameterAssert(path);
+	
 	NSString *bundlePath = [[[NSBundle mainBundle] builtInPlugInsPath]
 			stringByAppendingPathComponent:path];
 	NSBundle *windowBundle = [NSBundle bundleWithPath:bundlePath];	
@@ -572,6 +574,7 @@
 				component = [[windowControllerClass alloc] initWithPluginLayer:
 					[PluginLayer pluginLayerWithController:self]];
 				[loadedCurrentFilePlugins setValue:component forKey:name];				
+				[component fileSetTo:([mainVitaminSeeWindow isVisible] ? currentImageFile : nil )];
 			}
 			else if([windowControllerClass conformsToProtocol:@protocol(FileView)])
 			{
@@ -590,7 +593,7 @@
 					  path);
 		}
 		else
-			NSLog(@"WARNGIN! Could not load principle class for plugin '%@'! Plugin not loaded.", name);
+			NSLog(@"WARNING! Could not load principle class for plugin '%@'! Plugin not loaded.", name);
 	}
 	else
 		NSLog(@"WARNING! Could not find plugin '%@' from internal plugin path '%@'! Plugin not loaded.", 
@@ -598,79 +601,69 @@
 	
 	return component;
 }
+
+- (id) pluginNamed:(NSString*)pluginName
+	  withFileName:(NSString*)pluginFileName
+ inPluginDirectory:(id)pluginDirectory
+{
+	NSParameterAssert(pluginName);
+	NSParameterAssert(pluginFileName);
+	NSParameterAssert(pluginDirectory);
+	
+	id plugin = [pluginDirectory objectForKey:pluginName];
+	if(!plugin)
+		plugin = [self loadComponentNamed:pluginName fromBundle:pluginFileName];
+
+	return plugin;
+}
 	
 -(id)sortManagerController
 {
-	id sortManager = [loadedCurrentFilePlugins objectForKey:@"SortManagerController"];
-	if(!sortManager)
-	{
-		sortManager = [self loadComponentNamed:@"SortManagerController"
-									fromBundle:@"SortManager.cqvPlugin"];
-		[sortManager fileSetTo:([mainVitaminSeeWindow isVisible] ? currentImageFile : nil )];
-	}
-	return sortManager;
+	return [self pluginNamed:@"SortManagerController"
+				withFileName:@"SortManager.cqvPlugin"
+		   inPluginDirectory:loadedCurrentFilePlugins];
 }
 
 -(id)keywordManagerController
 {
-	id keywordManager = [loadedCurrentFilePlugins objectForKey:@"KeywordManagerController"];
-	if(!keywordManager)
-	{
-		keywordManager = [self loadComponentNamed:@"KeywordManagerController"
-									   fromBundle:@"KeywordManager.cqvPlugin"];
-		[keywordManager fileSetTo:([mainVitaminSeeWindow isVisible] ? currentImageFile : nil )];
-	}
-	
-	return keywordManager;
+	return [self pluginNamed:@"KeywordManagerController"
+				withFileName:@"KeywordManager.cqvPlugin"
+		   inPluginDirectory:loadedCurrentFilePlugins];
 }
 
 -(id)gotoFolderController
 {
-	id gotoFolderController = [loadedBasePlugins objectForKey:@"GotoFolderController"];
-	if(!gotoFolderController)
-		gotoFolderController = [self loadComponentNamed:@"GotoFolderController"
-											 fromBundle:@"GotoFolderSheet.bundle"];
-	return gotoFolderController;	
+	return [self pluginNamed:@"GotoFolderController"
+				withFileName:@"GotoFolderSheet.bundle"
+		   inPluginDirectory:loadedBasePlugins];
 }
 
 -(id)desktopBackgroundController
 {
-	id desktopBackgroundController = [loadedBasePlugins objectForKey:@"DesktopBackgroundController"];
-	if(!desktopBackgroundController)
-		desktopBackgroundController = [self loadComponentNamed:@"DesktopBackground"
-													fromBundle:@"DesktopBackground.bundle"];
-
-	return desktopBackgroundController;	
+	return [self pluginNamed:@"DesktopBackgroundController"
+				withFileName:@"DesktopBackground.bundle"
+		   inPluginDirectory:loadedBasePlugins];
 }
 
 -(id)openWithMenuController
 {
-	id openWithMenuController = [loadedBasePlugins objectForKey:@"OpenWithMenuController"];
-	if(!openWithMenuController)
-		openWithMenuController = [self loadComponentNamed:@"OpenWithMenu"
-											   fromBundle:@"OpenWithMenu.bundle"];
-	
-	return openWithMenuController;		
+	return [self pluginNamed:@"OpenWithMenuController"
+				withFileName:@"OpenWithMenu.bundle"
+		   inPluginDirectory:loadedBasePlugins];
 }
 
-
 -(id)viewAsIconsControllerPlugin
-{
-	id plugin = [loadedViewPlugins objectForKey:@"ViewAsIconsController"];
-	if(!plugin)
-		plugin = [self loadComponentNamed:@"ViewAsIconsController"
-							   fromBundle:@"ViewAsIconsFileView.bundle"];
-	return plugin;
+{	
+	return [self pluginNamed:@"ViewAsIconsController" 
+				withFileName:@"ViewAsIconsFileView.bundle"
+		   inPluginDirectory:loadedViewPlugins];
 }
 
 -(id)imageMetadataPlugin
 {
-	id imageMetadataPlugin = [loadedBasePlugins objectForKey:@"ImageMetadata"];
-	if(!imageMetadataPlugin)
-		imageMetadataPlugin = [self loadComponentNamed:@"ImageMetadata"
-											fromBundle:@"ImageMetadata.bundle"];
-	
-	return imageMetadataPlugin;
+	return [self pluginNamed:@"ImageMetadata"
+				withFileName:@"ImageMetadata.bundle"
+		   inPluginDirectory:loadedBasePlugins];
 }
 
 -(void)toggleVisible:(NSWindow*)window
@@ -1215,7 +1208,8 @@
 		[[self desktopBackgroundController] setDesktopBackgroundToFolder:currentImageFile];
 }
 
-////////////////////////////// OPEN WITH MENU DELEGATE 
+////////////////////////////// OPEN WITH MENU DELEGATE // fixme: Move into own 
+// class in OpenWithMenu bundle sometime...
 -(void)openWithMenuDelegate:(EGOpenWithMenuDelegate*)openWithMenu
 		openCurrentFileWith:(NSString*)pathToApplication
 {

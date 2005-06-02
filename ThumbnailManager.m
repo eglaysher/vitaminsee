@@ -113,11 +113,13 @@
 
 		if([thumbnailQueue count])
 		{
-			NSString* path = [NSString stringWithString:[thumbnailQueue objectAtIndex:0]];
+			NSString* path = [thumbnailQueue objectAtIndex:0];
+			[path retain];
 			[thumbnailQueue removeObjectAtIndex:0];
 			pthread_mutex_unlock(&taskQueueLock);
 			
 			[self doBuildIcon:path];
+			[path release];
 		}
 		else
 		{

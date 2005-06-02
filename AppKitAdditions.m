@@ -175,6 +175,7 @@ zeroing in on the optimum length.
 "*/
 - (NSString *)truncateForWidth:(float) inWidth
 {
+	NSLog(@"Going to truncate the pathname %@", self);
 	NSString* result = self;
 	NSRange range;	
 	
