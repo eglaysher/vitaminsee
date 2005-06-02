@@ -3599,6 +3599,30 @@
 			refType = 4;
 			sourceTree = "<group>";
 		};
+		CD70C1A5084F996B00AF0415 = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = OpenWithMenuController.h;
+			path = Components/OpenWithMenu/OpenWithMenuController.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CD70C1A6084F996B00AF0415 = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
+			name = OpenWithMenuController.m;
+			path = Components/OpenWithMenu/OpenWithMenuController.m;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CD70C1A7084F996B00AF0415 = {
+			fileRef = CD70C1A6084F996B00AF0415;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
 		CD76863C08283934006AE601 = {
 			fileEncoding = "-2147483647";
 			isa = PBXFileReference;
@@ -4092,6 +4116,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CDF3F3CC084A407600703E72,
+				CD70C1A7084F996B00AF0415,
 			);
 			isa = PBXSourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -4172,6 +4197,8 @@
 				CDF3F3CA084A406800703E72,
 				CDF3F3BE084A3FF700703E72,
 				CDF3F3BF084A3FF700703E72,
+				CD70C1A5084F996B00AF0415,
+				CD70C1A6084F996B00AF0415,
 				CD8679FD084B8BF100400ED4,
 			);
 			isa = PBXGroup;

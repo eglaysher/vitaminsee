@@ -47,7 +47,7 @@
 	menu, and will then call the delegate's openWithMenuDelegate:openCurrentFileWith:
 	function
 */
-@interface EGOpenWithMenuDelegate : NSObject <PluginBase> {
+@interface EGOpenWithMenuDelegate : NSObject {
 	///
 	NSMutableDictionary* fileTypeToArrayOfApplicationURLS;	
 	
@@ -57,7 +57,6 @@
 	id delegate;
 }
 
--(id)build;
 -(id)delegate;
 -(void)setDelegate:(id)inDelegate;
 

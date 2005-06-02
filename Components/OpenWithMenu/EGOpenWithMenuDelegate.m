@@ -55,18 +55,6 @@ extern void _LSCopyAllApplicationURLs(NSArray**);
 
 @implementation EGOpenWithMenuDelegate
 
--(id)build
-{
-	return [[[EGOpenWithMenuDelegate alloc] init] autorelease];
-}
-
--(id)initWithPluginLayer:(PluginLayer*)inPluginLayer
-{
-	// ignore the pluginlayer and just do normal initialization
-//	NSLog(@"BEING BORN!");
-	return [self init];
-}
-
 -(id)init
 {
 	if(self = [super init])

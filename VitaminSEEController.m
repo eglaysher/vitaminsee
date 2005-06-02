@@ -58,7 +58,7 @@
 #import "PluginLayer.h"
 #import "PathExistsValueTransformer.h"
 #import "FullDisplayNameValueTransformer.h"
-#import "EGOpenWithMenuDelegate.h"
+#import "OpenWithMenuController.h"
 #import "DesktopBackground.h"
 
 #import "RBSplitView.h"
@@ -719,9 +719,9 @@
 		{
 			// Set up the real Open with Menu
 			NSMenu* openWithMenu = [[[NSMenu alloc] init] autorelease];
-			openWithMenuDelegate = [[[self openWithMenuController] build] retain];
+			openWithMenuDelegate = [[[self openWithMenuController] buildMenuDelegate] retain];
 			loadedOpenWithMenu = YES;
-			[openWithMenuDelegate setDelegate:self];
+//			[openWithMenuDelegate setDelegate:self];
 			[openWithMenu setDelegate:openWithMenuDelegate];
 			[theMenuItem setSubmenu:openWithMenu];		
 		}
@@ -1206,26 +1206,6 @@
 		[[self desktopBackgroundController] setDesktopBackgroundToFile:currentImageFile];
 	else if([currentImageFile isDir])
 		[[self desktopBackgroundController] setDesktopBackgroundToFolder:currentImageFile];
-}
-
-////////////////////////////// OPEN WITH MENU DELEGATE // fixme: Move into own 
-// class in OpenWithMenu bundle sometime...
--(void)openWithMenuDelegate:(EGOpenWithMenuDelegate*)openWithMenu
-		openCurrentFileWith:(NSString*)pathToApplication
-{
-	[[NSWorkspace sharedWorkspace] openFile:currentImageFile
-							withApplication:pathToApplication];
-}
-
--(NSString*)currentFilePathForOpenWithMenuDelegate
-{
-	return currentImageFile;
-}
-
--(BOOL)openWithMenuDelegate:(EGOpenWithMenuDelegate*)openWithMenu
-			 shouldShowItem:(NSDictionary*)item
-{
-	return [[item objectForKey:@"Path"] rangeOfString:@"Preview.app"].location == NSNotFound;
 }
 
 @end
