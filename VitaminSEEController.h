@@ -118,14 +118,6 @@
 	informativeText:(NSString*)info 
 		 helpAnchor:(NSString*)anchor;
 
--(id)loadComponentNamed:(NSString*)name fromBundle:(NSString*)path;
-
--(id)sortManagerController;
--(id)keywordManagerController;
--(id)gotoFolderController;
--(id)desktopBackgroundController;
--(id)viewAsIconsControllerPlugin;
--(id)imageMetadataPlugin;
 
 // Moving about in 
 //- (void)setCurrentDirectory:(NSString*)newCurrentDirectory file:(NSString*)newCurrentFile;

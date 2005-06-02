@@ -32,6 +32,7 @@
 
 #import "VitaminSEEController.h"
 #import "VitaminSEEController+PluginLayer.h"
+#import "VitaminSEEController+LoadableComponents.h"
 #import "ToolbarDelegate.h"
 #import "ViewIconViewController.h"
 #import "EGPath.h"
@@ -47,7 +48,6 @@
 #import "Util.h"
 #import "NSString+FileTasks.h"
 #import "AppKitAdditions.h"
-#import "PluginLayer.h"
 #import "SortManagerController.h"
 #import "IconFamily.h"
 #import "ImmutableToMutableTransformer.h"
@@ -60,11 +60,13 @@
 #import "FullDisplayNameValueTransformer.h"
 #import "OpenWithMenuController.h"
 #import "DesktopBackground.h"
+#import "SSPrefsControllerFactory.h"
 
 #import "RBSplitView.h"
 #import "RBSplitSubview.h"
 
 @implementation VitaminSEEController
+
 ///////// TEST PLAN
 
 /*
@@ -74,13 +76,15 @@
 ////////////////////////////////////////////////// WHERE TO GO FROM HERE...
 
 /* COMPLETED:
+ * * Move Gemmell's prefs controller code into it's own bundle.
+ * * Bug fix: If VitaminSEE previously hung on the "Loading..." screen, and you never set
+ *   a name for your computer, this should be fixed.
  */
 
 // For Version 0.6.4
 // * Thumbnail options.
 // * Delete key in sort manager preferences should do something. + UNDO!!!!
 // * Bug fixes.
-// * Move Gemmell's prefs controller code into it's own bundle.
 
 // For Version 0.7
 // * Automator actions:
@@ -554,118 +558,6 @@
 		AlertSoundPlay();
 }
 	
--(id)loadComponentNamed:(NSString*)name fromBundle:(NSString*)path
-{
-	NSParameterAssert(name);
-	NSParameterAssert(path);
-	
-	NSString *bundlePath = [[[NSBundle mainBundle] builtInPlugInsPath]
-			stringByAppendingPathComponent:path];
-	NSBundle *windowBundle = [NSBundle bundleWithPath:bundlePath];	
-	id component;
-
-	if(windowBundle)
-	{
-		Class windowControllerClass = [windowBundle principalClass];
-		if(windowControllerClass)
-		{
-			if([windowControllerClass conformsToProtocol:@protocol(CurrentFilePlugin)])
-			{
-				component = [[windowControllerClass alloc] initWithPluginLayer:
-					[PluginLayer pluginLayerWithController:self]];
-				[loadedCurrentFilePlugins setValue:component forKey:name];				
-				[component fileSetTo:([mainVitaminSeeWindow isVisible] ? currentImageFile : nil )];
-			}
-			else if([windowControllerClass conformsToProtocol:@protocol(FileView)])
-			{
-				component = [[windowControllerClass alloc] initWithPluginLayer:
-					[PluginLayer pluginLayerWithController:self]];
-				[loadedViewPlugins setValue:component forKey:name];				
-			}
-			else if([windowControllerClass conformsToProtocol:@protocol(PluginBase)])
-			{
-				component = [[windowControllerClass alloc] initWithPluginLayer:
-					[PluginLayer pluginLayerWithController:self]];
-				[loadedBasePlugins setValue:component forKey:name];
-			}
-			else
-				NSLog(@"WARNING! Attempt to load plugin from '%@' that doesn't conform to PluginBase! Plugin not loaded.",
-					  path);
-		}
-		else
-			NSLog(@"WARNING! Could not load principle class for plugin '%@'! Plugin not loaded.", name);
-	}
-	else
-		NSLog(@"WARNING! Could not find plugin '%@' from internal plugin path '%@'! Plugin not loaded.", 
-			  name, bundlePath);
-	
-	return component;
-}
-
-- (id) pluginNamed:(NSString*)pluginName
-	  withFileName:(NSString*)pluginFileName
- inPluginDirectory:(id)pluginDirectory
-{
-	NSParameterAssert(pluginName);
-	NSParameterAssert(pluginFileName);
-	NSParameterAssert(pluginDirectory);
-	
-	id plugin = [pluginDirectory objectForKey:pluginName];
-	if(!plugin)
-		plugin = [self loadComponentNamed:pluginName fromBundle:pluginFileName];
-
-	return plugin;
-}
-	
--(id)sortManagerController
-{
-	return [self pluginNamed:@"SortManagerController"
-				withFileName:@"SortManager.cqvPlugin"
-		   inPluginDirectory:loadedCurrentFilePlugins];
-}
-
--(id)keywordManagerController
-{
-	return [self pluginNamed:@"KeywordManagerController"
-				withFileName:@"KeywordManager.cqvPlugin"
-		   inPluginDirectory:loadedCurrentFilePlugins];
-}
-
--(id)gotoFolderController
-{
-	return [self pluginNamed:@"GotoFolderController"
-				withFileName:@"GotoFolderSheet.bundle"
-		   inPluginDirectory:loadedBasePlugins];
-}
-
--(id)desktopBackgroundController
-{
-	return [self pluginNamed:@"DesktopBackgroundController"
-				withFileName:@"DesktopBackground.bundle"
-		   inPluginDirectory:loadedBasePlugins];
-}
-
--(id)openWithMenuController
-{
-	return [self pluginNamed:@"OpenWithMenuController"
-				withFileName:@"OpenWithMenu.bundle"
-		   inPluginDirectory:loadedBasePlugins];
-}
-
--(id)viewAsIconsControllerPlugin
-{	
-	return [self pluginNamed:@"ViewAsIconsController" 
-				withFileName:@"ViewAsIconsFileView.bundle"
-		   inPluginDirectory:loadedViewPlugins];
-}
-
--(id)imageMetadataPlugin
-{
-	return [self pluginNamed:@"ImageMetadata"
-				withFileName:@"ImageMetadata.bundle"
-		   inPluginDirectory:loadedBasePlugins];
-}
-
 -(void)toggleVisible:(NSWindow*)window
 {
 	if([window isVisible])
@@ -1111,9 +1003,8 @@
 {
 	if (!prefs) {
         // Determine path to the sample preference panes
-        
-        prefs = [[SS_PrefsController alloc] initWithPanesSearchPath:
-		 [[NSBundle mainBundle] builtInPlugInsPath] bundleExtension:@"cqvPref"];
+		prefs = [[[self ssPrefsController] buildWithPanesSearchPath:[[NSBundle mainBundle] builtInPlugInsPath]
+												   bundleExtension:@"cqvPref"] retain];
         
         // Set which panes are included, and their order.
         [prefs setPanesOrder:[NSArray arrayWithObjects:

@@ -35,12 +35,12 @@
 				8B6FCF9907B1E200003F0000,
 				8BE97E2307ACD46B005D384C,
 				8BE97E2407ACD46B005D384C,
-				8B6D01C107CB2EA2009A76DA,
-				8B6D01C007CB2EA2009A76DA,
 				8BD011D807A99DFB00AA4BAA,
 				8BD011D907A99DFB00AA4BAA,
 				8B56209B07CEA204005990E1,
 				8B56209C07CEA204005990E1,
+				CD70C2EA084F9C7800AF0415,
+				CD70C2EB084F9C7800AF0415,
 			);
 			isa = PBXGroup;
 			name = "Main Program Classes";
@@ -129,6 +129,7 @@
 				CDA6BDCE08297FBF007869CA,
 				CD4F13060849192D00459061,
 				CDF3F38D084A3F5300703E72,
+				CD70C354084FA3DC00AF0415,
 			);
 			isa = PBXGroup;
 			name = Products;
@@ -169,6 +170,7 @@
 				8B6D01F707CB327E009A76DA,
 				CD4F13050849192D00459061,
 				CDF3F38C084A3F5300703E72,
+				CD70C353084FA3DC00AF0415,
 			);
 		};
 		29B97314FDCFA39411CA2CEA = {
@@ -1608,6 +1610,7 @@
 		};
 		8B6D010807CB178F009A76DA = {
 			children = (
+				CD70C34F084FA3CE00AF0415,
 				CDF3F3BC084A3FDA00703E72,
 				CD4F1301084918FA00459061,
 				CDA6BDB508297E90007869CA,
@@ -1683,28 +1686,6 @@
 		};
 		8B6D015707CB23A0009A76DA = {
 			fileRef = 8B6D015507CB23A0009A76DA;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
-		8B6D01C007CB2EA2009A76DA = {
-			fileEncoding = 30;
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.objc;
-			path = SS_PrefsController.m;
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		8B6D01C107CB2EA2009A76DA = {
-			fileEncoding = 30;
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.h;
-			path = SS_PrefsController.h;
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		8B6D01C207CB2EA2009A76DA = {
-			fileRef = 8B6D01C007CB2EA2009A76DA;
 			isa = PBXBuildFile;
 			settings = {
 			};
@@ -1829,6 +1810,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				CDF1ADE6084FA75D001A521A,
 				CDF3F68A084A441E00703E72,
 				CD4F13F808491BED00459061,
 				CDA6BF5308298558007869CA,
@@ -1840,6 +1822,7 @@
 				8B5620E107CEA6F1005990E1,
 				8B561D9307CE7627005990E1,
 				8B6D020307CB32CD009A76DA,
+				CD70C2EC084F9C7800AF0415,
 			);
 			isa = PBXCopyFilesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3108,6 +3091,7 @@
 				8B4FDB8E08071AC40016CABC,
 				CD4F13F508491B9600459061,
 				CDF3F4AB084A427E00703E72,
+				CDF1AD48084FA648001A521A,
 			);
 			isa = PBXNativeTarget;
 			name = VitaminSEE;
@@ -3171,7 +3155,6 @@
 				8B5D5E2C07B8215E00957950,
 				8BF72A8A07B9D14C003A3C82,
 				8B6D015707CB23A0009A76DA,
-				8B6D01C207CB2EA2009A76DA,
 				8B56209E07CEA204005990E1,
 				8BA124AF07D2816300614FF4,
 				8B3CB1A507EA82CE0086353C,
@@ -3188,6 +3171,7 @@
 				CD44164E082C1C67003C01FD,
 				CDDBEB4708327E4300F934ED,
 				CDDBEB4B08400DA400E65DA9,
+				CD70C2ED084F9C7800AF0415,
 			);
 			isa = PBXSourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3619,6 +3603,171 @@
 		};
 		CD70C1A7084F996B00AF0415 = {
 			fileRef = CD70C1A6084F996B00AF0415;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		CD70C2EA084F9C7800AF0415 = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			path = "VitaminSEEController+LoadableComponents.h";
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CD70C2EB084F9C7800AF0415 = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
+			path = "VitaminSEEController+LoadableComponents.m";
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CD70C2EC084F9C7800AF0415 = {
+			fileRef = CD70C2EA084F9C7800AF0415;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		CD70C2ED084F9C7800AF0415 = {
+			fileRef = CD70C2EB084F9C7800AF0415;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		CD70C34F084FA3CE00AF0415 = {
+			children = (
+				CD70C381084FA48400AF0415,
+				CDF1AD4A084FA66B001A521A,
+				CDF1AD4B084FA66B001A521A,
+				CD70C383084FA49A00AF0415,
+				CD70C384084FA49A00AF0415,
+			);
+			isa = PBXGroup;
+			name = SSPrefsController;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CD70C350084FA3DC00AF0415 = {
+			buildActionMask = 2147483647;
+			files = (
+				CD70C382084FA48400AF0415,
+			);
+			isa = PBXResourcesBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD70C351084FA3DC00AF0415 = {
+			buildActionMask = 2147483647;
+			files = (
+				CD70C385084FA49A00AF0415,
+				CDF1AD4C084FA66B001A521A,
+			);
+			isa = PBXSourcesBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD70C352084FA3DC00AF0415 = {
+			buildActionMask = 2147483647;
+			files = (
+			);
+			isa = PBXFrameworksBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD70C353084FA3DC00AF0415 = {
+			buildPhases = (
+				CD70C350084FA3DC00AF0415,
+				CD70C351084FA3DC00AF0415,
+				CD70C352084FA3DC00AF0415,
+			);
+			buildRules = (
+			);
+			buildSettings = {
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = "Components/SSPrefsController/SSPrefsController-Info.plist";
+				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
+				LIBRARY_STYLE = BUNDLE;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "-framework Foundation -framework AppKit";
+				OTHER_REZFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = SSPrefsController;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = "-Wmost -Wno-four-char-constants -Wno-unknown-pragmas";
+			};
+			dependencies = (
+			);
+			isa = PBXNativeTarget;
+			name = SSPrefsController;
+			productName = SSPrefsController;
+			productReference = CD70C354084FA3DC00AF0415;
+			productSettingsXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
+<!DOCTYPE plist PUBLIC \"-//Apple Computer//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">
+<plist version=\"1.0\">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>English</string>
+	<key>CFBundleExecutable</key>
+	<string>SSPrefsController</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.yourcompany.SSPrefsController</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
+	<key>CFBundleVersion</key>
+	<string>1.0</string>
+</dict>
+</plist>
+";
+			productType = "com.apple.product-type.bundle";
+		};
+		CD70C354084FA3DC00AF0415 = {
+			explicitFileType = wrapper.cfbundle;
+			includeInIndex = 0;
+			isa = PBXFileReference;
+			path = SSPrefsController.bundle;
+			refType = 3;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		CD70C381084FA48400AF0415 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = text.xml;
+			name = "SSPrefsController-Info.plist";
+			path = "Components/SSPrefsController/SSPrefsController-Info.plist";
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CD70C382084FA48400AF0415 = {
+			fileRef = CD70C381084FA48400AF0415;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		CD70C383084FA49A00AF0415 = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = SSPrefsControllerFactory.h;
+			path = Components/SSPrefsController/SSPrefsControllerFactory.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CD70C384084FA49A00AF0415 = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
+			name = SSPrefsControllerFactory.m;
+			path = Components/SSPrefsController/SSPrefsControllerFactory.m;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CD70C385084FA49A00AF0415 = {
+			fileRef = CD70C384084FA49A00AF0415;
 			isa = PBXBuildFile;
 			settings = {
 			};
@@ -4089,6 +4238,48 @@
 			path = Japanese.lproj/Localizable.strings;
 			refType = 4;
 			sourceTree = "<group>";
+		};
+		CDF1AD47084FA648001A521A = {
+			containerPortal = 29B97313FDCFA39411CA2CEA;
+			isa = PBXContainerItemProxy;
+			proxyType = 1;
+			remoteGlobalIDString = CD70C353084FA3DC00AF0415;
+			remoteInfo = SSPrefsController;
+		};
+		CDF1AD48084FA648001A521A = {
+			isa = PBXTargetDependency;
+			target = CD70C353084FA3DC00AF0415;
+			targetProxy = CDF1AD47084FA648001A521A;
+		};
+		CDF1AD4A084FA66B001A521A = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = SS_PrefsController.h;
+			path = Components/SSPrefsController/SS_PrefsController.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CDF1AD4B084FA66B001A521A = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
+			name = SS_PrefsController.m;
+			path = Components/SSPrefsController/SS_PrefsController.m;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CDF1AD4C084FA66B001A521A = {
+			fileRef = CDF1AD4B084FA66B001A521A;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		CDF1ADE6084FA75D001A521A = {
+			fileRef = CD70C354084FA3DC00AF0415;
+			isa = PBXBuildFile;
+			settings = {
+			};
 		};
 		CDF1EA58082EA7AA00AA0441 = {
 			isa = PBXFileReference;

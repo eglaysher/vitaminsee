@@ -32,6 +32,7 @@
 #import "ThumbnailManager.h"
 #import "VitaminSEEController.h"
 #import "VitaminSEEController+PluginLayer.h"
+#import "VitaminSEEController+LoadableComponents.h"
 
 @interface VitaminSEEController (PluginLayerPrivate)
 -(BOOL)removeOverwriteFile:(NSString*)fileToOverwrite;
