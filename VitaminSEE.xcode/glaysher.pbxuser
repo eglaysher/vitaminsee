@@ -164,8 +164,8 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 139437580;
-			PBXWorkspaceStateSaveDate = 139437580;
+			PBXPerProjectTemplateStateSaveDate = 139456353;
+			PBXWorkspaceStateSaveDate = 139456353;
 		};
 		perUserProjectItems = {
 			CD70C3AD084FA5B300AF0415 = CD70C3AD084FA5B300AF0415;
@@ -631,7 +631,7 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {937, 17648}}";
 			sepNavSelRange = "{2433, 73}";
-			sepNavVisRect = "{{0, 948}, {746, 648}}";
+			sepNavVisRect = "{{0, 940}, {746, 648}}";
 			sepNavWindowFrame = "{{64, 9}, {791, 721}}";
 		};
 	};
@@ -800,9 +800,9 @@
 	};
 	CD4F133A084919E300459061 = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {895, 3584}}";
-			sepNavSelRange = "{1624, 0}";
-			sepNavVisRect = "{{0, 324}, {746, 648}}";
+			sepNavIntBoundsRect = "{{0, 0}, {895, 3824}}";
+			sepNavSelRange = "{1627, 0}";
+			sepNavVisRect = "{{0, 952}, {746, 648}}";
 			sepNavWindowFrame = "{{73, 19}, {791, 721}}";
 		};
 	};
@@ -857,7 +857,7 @@
 	CD70C1A6084F996B00AF0415 = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {746, 976}}";
-			sepNavSelRange = "{1087, 0}";
+			sepNavSelRange = "{449, 0}";
 			sepNavVisRect = "{{0, 0}, {746, 648}}";
 			sepNavWindowFrame = "{{217, 25}, {791, 721}}";
 		};
@@ -883,9 +883,9 @@
 	};
 	CD70C383084FA49A00AF0415 = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {746, 648}}";
+			sepNavIntBoundsRect = "{{0, 0}, {559, 304}}";
 			sepNavSelRange = "{271, 77}";
-			sepNavVisRect = "{{0, 0}, {746, 648}}";
+			sepNavVisRect = "{{0, 212}, {285, 73}}";
 			sepNavWindowFrame = "{{15, 20}, {791, 721}}";
 		};
 	};
@@ -1712,10 +1712,17 @@
 	};
 	CDF1AD4A084FA66B001A521A = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {746, 1232}}";
+			sepNavIntBoundsRect = "{{0, 0}, {615, 1232}}";
 			sepNavSelRange = "{195, 0}";
-			sepNavVisRect = "{{0, 0}, {746, 648}}";
+			sepNavVisRect = "{{0, 117}, {285, 73}}";
 			sepNavWindowFrame = "{{15, 20}, {791, 721}}";
+		};
+	};
+	CDF1AD4B084FA66B001A521A = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1553, 9376}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRect = "{{0, 0}, {285, 73}}";
 		};
 	};
 	CDF1AD6D084FA6AC001A521A = {

@@ -253,7 +253,7 @@ static NSString* egPathRootDisplayName = 0;
 
 -(NSArray*)directoryContents
 {
-	NSLog(@"-[EGPathFilesystemPath directoryContents]");
+//	NSLog(@"-[EGPathFilesystemPath directoryContents]");
 	
 	NSArray* childPaths = [[NSFileManager defaultManager] 
 		directoryContentsAtPath:fileSystemPath];

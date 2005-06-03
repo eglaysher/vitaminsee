@@ -41,7 +41,12 @@ static NSDictionary* buildScreenList();
 	return [super init];
 }
 
--(void)setDesktopBackgroundToFile:(NSString*) path
+-(void)setDesktopBackgroundToFile:(NSString*)path
+{
+	[self setDesktopBackgroundToFile:path withOptions:[NSDictionary dictionary]];
+}
+
+-(void)setDesktopBackgroundToFile:(NSString*)path withOptions:(NSDictionary*)options
 {
 	NSMutableDictionary* display = [NSMutableDictionary dictionary];
 	
@@ -83,10 +88,17 @@ static NSDictionary* buildScreenList();
 		}
 	}
 	
+	[display addEntriesFromDictionary:options];
+	
 	setProperties(display);	
 }
 
 -(void)setDesktopBackgroundToFolder:(NSString*)pathToFolder
+{
+	[self setDesktopBackgroundToFolder:pathToFolder withOptions:[NSDictionary dictionary]];
+}
+
+-(void)setDesktopBackgroundToFolder:(NSString*)pathToFolder withOptions:(NSDictionary*)options
 {
 	NSMutableDictionary* display = [NSMutableDictionary dictionary];
 	
@@ -131,6 +143,9 @@ static NSDictionary* buildScreenList();
 	[display setObject:pathToFolder forKey:@"ChangePath"];
 	[display setObject:pathToFolder forKey:@"ChooseFolderPath"];
 	[display setObject:[pathToFolder lastPathComponent] forKey:@"CollectionString"];
+
+	[display addEntriesFromDictionary:options];
+	
 	setProperties(display);		
 }
 

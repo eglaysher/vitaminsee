@@ -92,7 +92,7 @@ NSSize IMAGE_SIZE = {128.0f, 128.0f};
 
 -(void)setCellPropertiesFromPath:(NSString*)path andEGPath:(EGPath*)egpath
 {
-	NSLog(@"-[ViewAsIconViewCell setCellPropertiesFromPath:%@ andEGPath:%@", path, egpath);
+//	NSLog(@"-[ViewAsIconViewCell setCellPropertiesFromPath:%@ andEGPath:%@", path, egpath);
 	
 	// Keep this path...
 	[path retain];

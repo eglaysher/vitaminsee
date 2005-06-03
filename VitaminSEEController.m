@@ -222,7 +222,7 @@
 
 - (void)awakeFromNib
 {
-	NSLog(@"-[VitaminSEEController awakeFromNib]");
+//	NSLog(@"-[VitaminSEEController awakeFromNib]");
 	// Set our plugins to nil
 	loadedBasePlugins = [[NSMutableDictionary alloc] init];
 	loadedViewPlugins = [[NSMutableDictionary alloc] init];
@@ -296,7 +296,7 @@
 // been shown.
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-	NSLog(@"-[VitaminSEEController applicationDidFinishLaunching]");
+//	NSLog(@"-[VitaminSEEController applicationDidFinishLaunching]");
 
 	if(!setPathForFirstTime)
 	{		
@@ -310,7 +310,7 @@
 
 -(BOOL)application:(NSApplication*)theApplication openFile:(NSString*)filename
 {	
-	NSLog(@"-[VitaminSEEController application: openFile:%@", filename);
+//	NSLog(@"-[VitaminSEEController application: openFile:%@", filename);
 
 	if([filename isImage])
 	{		
@@ -368,7 +368,7 @@
 	if(info)
 		[alert setInformativeText:info];
 
-	NSLog(@"Here!");
+//	NSLog(@"Here!");
 	
 	// If we have a help anchor, set things up so a help button is available.
 	if(anchor)
