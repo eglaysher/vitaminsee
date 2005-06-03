@@ -157,6 +157,12 @@
 			isa = PBXProject;
 			mainGroup = 29B97314FDCFA39411CA2CEA;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = CD7AAA0B0850E8740077DCE3;
+					ProjectRef = CD7AAA0A0850E8740077DCE3;
+				},
+			);
 			targets = (
 				8D1107260486CEB800E47090,
 				CDA6BDCD08297FBF007869CA,
@@ -175,6 +181,7 @@
 		};
 		29B97314FDCFA39411CA2CEA = {
 			children = (
+				CD7AA9F10850E8470077DCE3,
 				CD44162D082C1BCC003C01FD,
 				8B6D010807CB178F009A76DA,
 				8B2DF9F408137AD700A903A7,
@@ -3058,6 +3065,7 @@
 				8D1107290486CEB800E47090,
 				8D11072C0486CEB800E47090,
 				8D11072E0486CEB800E47090,
+				CD7AA9E00850E78D0077DCE3,
 			);
 			buildRules = (
 			);
@@ -3092,6 +3100,7 @@
 				CD4F13F508491B9600459061,
 				CDF3F4AB084A427E00703E72,
 				CDF1AD48084FA648001A521A,
+				CD7AAA2A0850E88D0077DCE3,
 			);
 			isa = PBXNativeTarget;
 			name = VitaminSEE;
@@ -3807,6 +3816,75 @@
 			isa = PBXBuildFile;
 			settings = {
 			};
+		};
+		CD7AA9E00850E78D0077DCE3 = {
+			buildActionMask = 2147483647;
+			dstPath = VitaminSEE.app/Contents/Library/Automator;
+			dstSubfolderSpec = 16;
+			files = (
+				CD7AAA0E0850E87D0077DCE3,
+			);
+			isa = PBXCopyFilesBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD7AA9F10850E8470077DCE3 = {
+			children = (
+				CD7AAA0A0850E8740077DCE3,
+			);
+			isa = PBXGroup;
+			name = "Automator Actions";
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CD7AAA0A0850E8740077DCE3 = {
+			isa = PBXFileReference;
+			lastKnownFileType = "wrapper.pb-project";
+			name = SetWallpaperFolder.xcode;
+			path = AutomatorActions/SetWallpaperFolder/SetWallpaperFolder.xcode;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CD7AAA0B0850E8740077DCE3 = {
+			children = (
+				CD7AAA0C0850E8740077DCE3,
+			);
+			isa = PBXGroup;
+			name = Products;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CD7AAA0C0850E8740077DCE3 = {
+			fileType = wrapper.cfbundle;
+			isa = PBXReferenceProxy;
+			path = SetWallpaperFolder.action;
+			refType = 3;
+			remoteRef = CD7AAA0D0850E8750077DCE3;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		CD7AAA0D0850E8750077DCE3 = {
+			containerPortal = CD7AAA0A0850E8740077DCE3;
+			isa = PBXContainerItemProxy;
+			proxyType = 2;
+			remoteGlobalIDString = 8D5B49B6048680CD000E48DA;
+			remoteInfo = SetWallpaperFolder;
+		};
+		CD7AAA0E0850E87D0077DCE3 = {
+			fileRef = CD7AAA0C0850E8740077DCE3;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		CD7AAA290850E88D0077DCE3 = {
+			containerPortal = CD7AAA0A0850E8740077DCE3;
+			isa = PBXContainerItemProxy;
+			proxyType = 1;
+			remoteGlobalIDString = 8D5B49AC048680CD000E48DA;
+			remoteInfo = SetWallpaperFolder;
+		};
+		CD7AAA2A0850E88D0077DCE3 = {
+			isa = PBXTargetDependency;
+			name = "SetWallpaperFolder (from SetWallpaperFolder.xcode)";
+			targetProxy = CD7AAA290850E88D0077DCE3;
 		};
 		CD8679FD084B8BF100400ED4 = {
 			isa = PBXFileReference;

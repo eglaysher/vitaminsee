@@ -77,8 +77,8 @@
 
 /* COMPLETED:
  * * Move Gemmell's prefs controller code into it's own bundle.
- * * Bug fix: If VitaminSEE previously hung on the "Loading..." screen, and you never set
- *   a name for your computer, this should be fixed.
+ * * Bug fix: Program could get stuck on "Loading..." if computer was never named.
+ *   (Kudos to "L S" for the bug report.)
  */
 
 // For Version 0.6.4
