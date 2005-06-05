@@ -26,20 +26,18 @@
 	<key>AMDescription</key>
 	<dict>
 		<key>AMDInput</key>
-		<string>Files</string>
+		<string>Image Files</string>
 		<key>AMDRelatedActions</key>
-		<string></string>
-		<key>AMDResult</key>
-		<string>Input</string>
+		<string>(* AMDRelatedActions bundle ids go here. (optional) *)</string>
 		<key>AMDSummary</key>
-		<string>Removes a thumbnail icon from a file.</string>
+		<string>For each image file passed in, set the icon to a thumbnail of the image.</string>
 	</dict>
 	<key>AMIconName</key>
 	<string>(* The name of the icon *)</string>
 	<key>AMKeywords</key>
 	<array/>
 	<key>AMName</key>
-	<string>Remove Thumbnail Icons</string>
+	<string>Set Icon to Thumbnail</string>
 	<key>AMProvides</key>
 	<dict>
 		<key>Container</key>
@@ -54,17 +52,17 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleExecutable</key>
-	<string>RemoveIcon</string>
+	<string>AddIcon</string>
 	<key>CFBundleGetInfoString</key>
-	<string>RemoveIcon version 1.0, Copyright (c) 2005, __MyCompanyName__.</string>
+	<string>AddIcon version 1.0, Copyright (c) 2005, __MyCompanyName__.</string>
 	<key>CFBundleIconFile</key>
 	<string></string>
 	<key>CFBundleIdentifier</key>
-	<string>org.elliotglaysher.VitaminSEE.Automator.RemoveIcon</string>
+	<string>org.elliotglaysher.VitaminSEE.Automator.AddIcon</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>RemoveIcon</string>
+	<string>AddIcon</string>
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleShortVersionString</key>
@@ -74,6 +72,6 @@
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
 	<key>NSPrincipalClass</key>
-	<string>RemoveIcon</string>
+	<string>AddIcon</string>
 </dict>
 </plist>

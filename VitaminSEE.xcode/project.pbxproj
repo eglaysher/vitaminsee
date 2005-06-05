@@ -163,6 +163,10 @@
 					ProjectRef = CDEBDAF8085289D800F75B6D;
 				},
 				{
+					ProductGroup = CDD4CC5D0853B0BF0071A1D1;
+					ProjectRef = CDD4CC5C0853B0BF0071A1D1;
+				},
+				{
 					ProductGroup = CD7AAA0B0850E8740077DCE3;
 					ProjectRef = CD7AAA0A0850E8740077DCE3;
 				},
@@ -3106,6 +3110,7 @@
 				CDF1AD48084FA648001A521A,
 				CD7AAA2A0850E88D0077DCE3,
 				CDEBDB4B08528A2700F75B6D,
+				CDD4CC840853B0E20071A1D1,
 			);
 			isa = PBXNativeTarget;
 			name = VitaminSEE;
@@ -3827,6 +3832,7 @@
 			dstPath = VitaminSEE.app/Contents/Library/Automator;
 			dstSubfolderSpec = 16;
 			files = (
+				CDD4CC600853B0CD0071A1D1,
 				CDEBDB2A08528A1400F75B6D,
 				CD7AAA0E0850E87D0077DCE3,
 			);
@@ -3835,6 +3841,7 @@
 		};
 		CD7AA9F10850E8470077DCE3 = {
 			children = (
+				CDD4CC5C0853B0BF0071A1D1,
 				CDEBDAF8085289D800F75B6D,
 				CD7AAA0A0850E8740077DCE3,
 			);
@@ -4193,6 +4200,56 @@
 			isa = PBXBuildFile;
 			settings = {
 			};
+		};
+		CDD4CC5C0853B0BF0071A1D1 = {
+			isa = PBXFileReference;
+			lastKnownFileType = "wrapper.pb-project";
+			name = AddIcon.xcode;
+			path = AutomatorActions/AddIcon/AddIcon.xcode;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CDD4CC5D0853B0BF0071A1D1 = {
+			children = (
+				CDD4CC5E0853B0BF0071A1D1,
+			);
+			isa = PBXGroup;
+			name = Products;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CDD4CC5E0853B0BF0071A1D1 = {
+			fileType = wrapper.cfbundle;
+			isa = PBXReferenceProxy;
+			path = AddIcon.action;
+			refType = 3;
+			remoteRef = CDD4CC5F0853B0C00071A1D1;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		CDD4CC5F0853B0C00071A1D1 = {
+			containerPortal = CDD4CC5C0853B0BF0071A1D1;
+			isa = PBXContainerItemProxy;
+			proxyType = 2;
+			remoteGlobalIDString = 8D5B49B6048680CD000E48DA;
+			remoteInfo = AddIcon;
+		};
+		CDD4CC600853B0CD0071A1D1 = {
+			fileRef = CDD4CC5E0853B0BF0071A1D1;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		CDD4CC830853B0E20071A1D1 = {
+			containerPortal = CDD4CC5C0853B0BF0071A1D1;
+			isa = PBXContainerItemProxy;
+			proxyType = 1;
+			remoteGlobalIDString = 8D5B49AC048680CD000E48DA;
+			remoteInfo = AddIcon;
+		};
+		CDD4CC840853B0E20071A1D1 = {
+			isa = PBXTargetDependency;
+			name = "AddIcon (from AddIcon.xcode)";
+			targetProxy = CDD4CC830853B0E20071A1D1;
 		};
 		CDDBEB4408327E4300F934ED = {
 			fileEncoding = 4;
