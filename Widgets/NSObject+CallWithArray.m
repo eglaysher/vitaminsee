@@ -29,7 +29,6 @@
 
 #import "NSObject+CallWithArray.h"
 
-
 @implementation NSObject (CallWithArray)
 
 -(void)performSelector:(SEL)selector withEachObjectIn:(NSArray*)arrayOfObjects

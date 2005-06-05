@@ -159,6 +159,10 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
+					ProductGroup = CDEBDAF9085289D800F75B6D;
+					ProjectRef = CDEBDAF8085289D800F75B6D;
+				},
+				{
 					ProductGroup = CD7AAA0B0850E8740077DCE3;
 					ProjectRef = CD7AAA0A0850E8740077DCE3;
 				},
@@ -3101,6 +3105,7 @@
 				CDF3F4AB084A427E00703E72,
 				CDF1AD48084FA648001A521A,
 				CD7AAA2A0850E88D0077DCE3,
+				CDEBDB4B08528A2700F75B6D,
 			);
 			isa = PBXNativeTarget;
 			name = VitaminSEE;
@@ -3822,6 +3827,7 @@
 			dstPath = VitaminSEE.app/Contents/Library/Automator;
 			dstSubfolderSpec = 16;
 			files = (
+				CDEBDB2A08528A1400F75B6D,
 				CD7AAA0E0850E87D0077DCE3,
 			);
 			isa = PBXCopyFilesBuildPhase;
@@ -3829,6 +3835,7 @@
 		};
 		CD7AA9F10850E8470077DCE3 = {
 			children = (
+				CDEBDAF8085289D800F75B6D,
 				CD7AAA0A0850E8740077DCE3,
 			);
 			isa = PBXGroup;
@@ -4234,6 +4241,56 @@
 			isa = PBXBuildFile;
 			settings = {
 			};
+		};
+		CDEBDAF8085289D800F75B6D = {
+			isa = PBXFileReference;
+			lastKnownFileType = "wrapper.pb-project";
+			name = RemoveIcon.xcode;
+			path = AutomatorActions/RemoveIcon/RemoveIcon.xcode;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CDEBDAF9085289D800F75B6D = {
+			children = (
+				CDEBDAFA085289D800F75B6D,
+			);
+			isa = PBXGroup;
+			name = Products;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CDEBDAFA085289D800F75B6D = {
+			fileType = wrapper.cfbundle;
+			isa = PBXReferenceProxy;
+			path = RemoveIcon.action;
+			refType = 3;
+			remoteRef = CDEBDAFB085289D900F75B6D;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		CDEBDAFB085289D900F75B6D = {
+			containerPortal = CDEBDAF8085289D800F75B6D;
+			isa = PBXContainerItemProxy;
+			proxyType = 2;
+			remoteGlobalIDString = 8D5B49B6048680CD000E48DA;
+			remoteInfo = RemoveIcon;
+		};
+		CDEBDB2A08528A1400F75B6D = {
+			fileRef = CDEBDAFA085289D800F75B6D;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		CDEBDB4A08528A2700F75B6D = {
+			containerPortal = CDEBDAF8085289D800F75B6D;
+			isa = PBXContainerItemProxy;
+			proxyType = 1;
+			remoteGlobalIDString = 8D5B49AC048680CD000E48DA;
+			remoteInfo = RemoveIcon;
+		};
+		CDEBDB4B08528A2700F75B6D = {
+			isa = PBXTargetDependency;
+			name = "RemoveIcon (from RemoveIcon.xcode)";
+			targetProxy = CDEBDB4A08528A2700F75B6D;
 		};
 		CDF0E23D08353AFA00652BEC = {
 			isa = PBXFileReference;

@@ -61,6 +61,7 @@
 #import "OpenWithMenuController.h"
 #import "DesktopBackground.h"
 #import "SSPrefsControllerFactory.h"
+#import "NSObject+CallWithArray.h"
 
 #import "RBSplitView.h"
 #import "RBSplitSubview.h"
@@ -76,20 +77,21 @@
 ////////////////////////////////////////////////// WHERE TO GO FROM HERE...
 
 /* COMPLETED:
- * * Move Gemmell's prefs controller code into it's own bundle.
  * * Bug fix: Program could get stuck on "Loading..." if computer was never named.
  *   (Kudos to "L S" for the bug report.)
+ * * Move Gemmell's prefs controller code into it's own bundle.
+ * * Automator actions:
+ *   * Set desktop background folder
  */
 
 // For Version 0.6.4
 // * Thumbnail options.
-// * Delete key in sort manager preferences should do something. + UNDO!!!!
 // * Bug fixes.
 
 // For Version 0.7
+// * Delete key in sort manager preferences should do something. + UNDO!!!!
 // * Automator actions:
-//   * Set wallpaper
-//   * Find images
+//   * Set wallpaper to selection
 // * Fullscreen + Slideshow
 // * Have thumbnails scale down if right side is shrunk (rework NSBrowserCell
 //   subclass to use NSImageCell?)
@@ -108,6 +110,7 @@
 
 // For Version 0.9
 // * Create an image database feature
+// * Automator action: Find images
 // * Add metadata for PNG and GIF
 // * 2 million% more complete metadata! Exif panel! IPTC panel!
 
@@ -428,23 +431,30 @@
 
 -(IBAction)addThumbnailForCurrentFile:(id)sender
 {
-	// Add or rebuild the thumbnail for this file.
-	[thumbnailManager buildThumbnail:currentImageFile];
-}
+	NSArray* currentlySelectedFiles = [viewAsIconsController selectedFiles];
 
--(IBAction)addThumbnailToAll:(id)sender
-{
-//	[thumbnailManager clearThumbnailQueue];
-//	NSString* currentDirectory = [viewAsIconsController.currentDirectory fileSystemPath];
+	// Remove the current file(s) from the thumbnail queue...
+	[thumbnailManager performSelector:@selector(removeFileFromQueue:)
+					 withEachObjectIn:currentlySelectedFiles];
+	
+	// Remove each thumbnail from the files
+	NSEnumerator* e = [currentlySelectedFiles objectEnumerator];
+	NSString* fileName;
+	while(fileName = [e nextObject])
+		[IconFamily removeCustomIconFromFile:fileName];
+
+	// Generate the new thumbnails...
+	// CAN'T DO THIS BECAUSE OF D.O.!
+//	[thumbnailManager performSelector:@selector(buildThumbnail:)
+//					 withEachObjectIn:currentlySelectedFiles];
+
+	// Load the new thumbnails in
+	
 }
 
 -(IBAction)removeThumbnailForCurrentFile:(id)sender
 {
-	
-}
-
--(IBAction)removeThumbnailForAll:(id)sender
-{
+	[IconFamily removeCustomIconFromFile:currentImageFile];
 	
 }
 
