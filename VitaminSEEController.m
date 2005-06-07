@@ -84,9 +84,14 @@
  *   * Set desktop background folder
  */
 
+// Test more; specifically, I need to test accessing an image across SMB since
+// I screwed with image loading behaviour
+
 // For Version 0.6.4
 // * Thumbnail options.
 // * Bug fixes.
+// * Make sure there are proper headers in all the files.
+// * Clean up and translate actions
 
 // For Version 0.7
 // * Delete key in sort manager preferences should do something. + UNDO!!!!
@@ -437,19 +442,30 @@
 	[thumbnailManager performSelector:@selector(removeFileFromQueue:)
 					 withEachObjectIn:currentlySelectedFiles];
 	
-	// Remove each thumbnail from the files
-	NSEnumerator* e = [currentlySelectedFiles objectEnumerator];
-	NSString* fileName;
-	while(fileName = [e nextObject])
-		[IconFamily removeCustomIconFromFile:fileName];
-
 	// Generate the new thumbnails...
-	// CAN'T DO THIS BECAUSE OF D.O.!
-//	[thumbnailManager performSelector:@selector(buildThumbnail:)
-//					 withEachObjectIn:currentlySelectedFiles];
-
-	// Load the new thumbnails in
-	
+	NSEnumerator* e = [currentlySelectedFiles objectEnumerator];
+	NSString* file;
+	while(file = [e nextObject])
+	{
+		if([file isImage])
+		{
+			// If this file already has an icon, we need to remove it.
+			if([IconFamily fileHasCustomIcon:file])
+				[IconFamily removeCustomIconFromFile:file];
+			
+			// Build the icon
+			NSImage* image = [[[NSImage alloc] initWithData:
+				[NSData dataWithContentsOfFile:file]] autorelease];
+			
+			// Set icon
+			IconFamily* iconFamily = [IconFamily iconFamilyWithThumbnailsOfImage:image];
+			if(iconFamily)
+				[iconFamily setAsCustomIconForFile:file];
+			
+			// Send the new icon to the file view
+			// FIXME HERE
+		}
+	}
 }
 
 -(IBAction)removeThumbnailForCurrentFile:(id)sender

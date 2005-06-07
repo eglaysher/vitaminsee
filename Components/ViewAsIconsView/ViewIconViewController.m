@@ -446,7 +446,11 @@ willDisplayCell:(id)cell
 							  withSortSelector:@selector(caseInsensitiveCompare:)];
 	if(index != NSNotFound)
 	{
-		[[ourBrowser loadedCellAtRow:index column:0] setIconImage:image];
+		id currentCell = [[ourBrowser matrixInColumn:0] cellAtRow:index column:0];
+		
+		if([currentCell isLoaded])
+			[currentCell setIconImage:image];
+
 		[ourBrowser setNeedsDisplay];
 	}
 }

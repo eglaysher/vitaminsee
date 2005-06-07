@@ -183,6 +183,8 @@
 
 -(void)doBuildIcon:(NSString*)path
 {
+	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+	
 	NSImage* thumbnail;
 	IconFamily* iconFamily;
 	
@@ -219,6 +221,8 @@
 			[vitaminSEEController setStatusText:nil];
 		}
 	}
+	
+	[pool release];
 }
 
 @end
