@@ -164,16 +164,14 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 139800193;
-			PBXWorkspaceStateSaveDate = 139800193;
+			PBXPerProjectTemplateStateSaveDate = 139942844;
+			PBXWorkspaceStateSaveDate = 139942844;
 		};
 		perUserProjectItems = {
-			CD41A58308553E4A00ABC481 = CD41A58308553E4A00ABC481;
-			CD41A5860855CE6100ABC481 = CD41A5860855CE6100ABC481;
 			CD41A5AC085757CD00ABC481 = CD41A5AC085757CD00ABC481;
-			CD41A5AD085757CD00ABC481 = CD41A5AD085757CD00ABC481;
 			CD41A5AE085757CD00ABC481 = CD41A5AE085757CD00ABC481;
-			CDD4CCB5085506060071A1D1 = CDD4CCB5085506060071A1D1;
+			CD53E54D08575DB300EE200F = CD53E54D08575DB300EE200F;
+			CD53E55008575DB300EE200F = CD53E55008575DB300EE200F;
 			CDE106B0084FF8FB00FDED32 = CDE106B0084FF8FB00FDED32;
 			CDE106B1084FF8FB00FDED32 = CDE106B1084FF8FB00FDED32;
 			CDE106B2084FF8FB00FDED32 = CDE106B2084FF8FB00FDED32;
@@ -780,14 +778,6 @@
 			sepNavWindowFrame = "{{15, 20}, {791, 721}}";
 		};
 	};
-	CD41A58308553E4A00ABC481 = {
-		fRef = 8BD011D907A99DFB00AA4BAA;
-		isa = PBXBookmark;
-	};
-	CD41A5860855CE6100ABC481 = {
-		fRef = 8B5D5E2A07B8215E00957950;
-		isa = PBXBookmark;
-	};
 	CD41A5AC085757CD00ABC481 = {
 		fRef = 8BD011D907A99DFB00AA4BAA;
 		isa = PBXTextBookmark;
@@ -797,16 +787,6 @@
 		rType = 0;
 		vrLen = 0;
 		vrLoc = 0;
-	};
-	CD41A5AD085757CD00ABC481 = {
-		fRef = 8BD011D907A99DFB00AA4BAA;
-		isa = PBXTextBookmark;
-		name = "VitaminSEEController.m: 91";
-		rLen = 0;
-		rLoc = 3089;
-		rType = 0;
-		vrLen = 1145;
-		vrLoc = 2175;
 	};
 	CD41A5AE085757CD00ABC481 = {
 		fRef = 8B5D5E2A07B8215E00957950;
@@ -907,6 +887,26 @@
 			sepNavVisRect = "{{0, 0}, {746, 648}}";
 			sepNavWindowFrame = "{{213, 1}, {791, 721}}";
 		};
+	};
+	CD53E54D08575DB300EE200F = {
+		fRef = 8BD011D907A99DFB00AA4BAA;
+		isa = PBXTextBookmark;
+		name = "VitaminSEEController.m: 1133";
+		rLen = 0;
+		rLoc = 33148;
+		rType = 0;
+		vrLen = 0;
+		vrLoc = 0;
+	};
+	CD53E55008575DB300EE200F = {
+		fRef = 8B5D5E2A07B8215E00957950;
+		isa = PBXTextBookmark;
+		name = "ImageTaskManager.m: CACHE_SIZE";
+		rLen = 0;
+		rLoc = 1572;
+		rType = 0;
+		vrLen = 1621;
+		vrLoc = 0;
 	};
 	CD5520F708394C9D007A4125 = {
 		uiCtxt = {
@@ -1728,16 +1728,6 @@
 		isa = PBXSymbolicBreakpoint;
 		state = 1;
 		symbolName = "-[NSException raise]";
-	};
-	CDD4CCB5085506060071A1D1 = {
-		fRef = 8BD011D907A99DFB00AA4BAA;
-		isa = PBXTextBookmark;
-		name = "VitaminSEEController.m: 73";
-		rLen = 73;
-		rLoc = 2468;
-		rType = 0;
-		vrLen = 0;
-		vrLoc = 0;
 	};
 	CDDBEB4408327E4300F934ED = {
 		uiCtxt = {
