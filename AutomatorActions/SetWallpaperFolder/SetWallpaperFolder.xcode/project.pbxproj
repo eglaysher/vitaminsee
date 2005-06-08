@@ -99,6 +99,7 @@
 		089C167DFE841241C02AAC07 = {
 			children = (
 				089C167EFE841241C02AAC07,
+				CD41A5A70857567400ABC481,
 			);
 			isa = PBXVariantGroup;
 			name = InfoPlist.strings;
@@ -270,6 +271,7 @@
 		65C50ADD067A987800FE4393 = {
 			children = (
 				65C50ADE067A987800FE4393,
+				CD41A5A40857566900ABC481,
 			);
 			isa = PBXVariantGroup;
 			name = main.nib;
@@ -400,6 +402,22 @@
 //CD2
 //CD3
 //CD4
+		CD41A5A40857566900ABC481 = {
+			isa = PBXFileReference;
+			lastKnownFileType = wrapper.nib;
+			name = Japanese;
+			path = Japanese.lproj/main.nib;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CD41A5A70857567400ABC481 = {
+			isa = PBXFileReference;
+			lastKnownFileType = text.plist.strings;
+			name = Japanese;
+			path = Japanese.lproj/InfoPlist.strings;
+			refType = 4;
+			sourceTree = "<group>";
+		};
 		CD7AAA4A0850EE930077DCE3 = {
 			isa = PBXFileReference;
 			lastKnownFileType = image.tiff;

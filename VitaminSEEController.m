@@ -82,13 +82,17 @@
  * * Move Gemmell's prefs controller code into it's own bundle.
  * * Automator actions:
  *   * Set desktop background folder
+ * * Reduce RAM
  */
 
 // Test more; specifically, I need to test accessing an image across SMB since
 // I screwed with image loading behaviour
 
+// Test RAM consumption. Changed CACHE_SIZE in ImageTaskManager
+
 // For Version 0.6.4
 // * Thumbnail options.
+// * Unload images in cache when we leave a directory
 // * Bug fixes.
 // * Make sure there are proper headers in all the files.
 // * Clean up and translate actions

@@ -35,7 +35,7 @@
 #import "VitaminSEEController.h"
 #import "NSString+FileTasks.h"
 
-#define CACHE_SIZE 3
+#define CACHE_SIZE 2
 
 #define NO_SMOOTHING 1
 #define LOW_SMOOTHING 2

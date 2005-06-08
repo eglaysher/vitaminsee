@@ -115,6 +115,7 @@
 			case 8:
 				[options setObject:[NSNumber numberWithFloat:86400]
 							forKey:@"ChangeTime"];
+				break;
 			case 9:
 				[options setObject:@"Login" forKey:@"Change"];
 				break;
@@ -128,7 +129,11 @@
 		}		
 		
 		// If we are here, we have a valid tag so set it:
-		[options setObject:[NSNumber numberWithInt:tag] forKey:@"TimerPopUpTag"];
+		if(tag != 0)
+		{
+			NSLog(@"Setting TimerPopUpTag!");
+			[options setObject:[NSNumber numberWithInt:tag] forKey:@"TimerPopUpTag"];
+		}
 		
 		// Set the background!
 		id desktopBackgroundSetter = [[[DesktopBackground alloc] init] autorelease];

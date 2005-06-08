@@ -1,11 +1,3 @@
-//
-//  SSPrefsControllerFactory.h
-//  VitaminSEE
-//
-//  Created by Elliot Glaysher on 6/2/05.
-//  Copyright 2005 __MyCompanyName__. All rights reserved.
-//
-
 /////////////////////////////////////////////////////////////////////////
 // File:          $Name$
 // Module:        PluginBase wrapper around Matt Gemmell's SS_PrefsController

@@ -1,10 +1,3 @@
-//
-//  VitaminSEEController+LoadableComponents.h
-//  VitaminSEE
-//
-//  Created by Elliot Glaysher on 6/2/05.
-//  Copyright 2005 __MyCompanyName__. All rights reserved.
-//
 /////////////////////////////////////////////////////////////////////////
 // File:          $Name$
 // Module:        Category that contains code to transparently load
