@@ -91,6 +91,8 @@
 // Test RAM consumption. Changed CACHE_SIZE in ImageTaskManager
 
 // For Version 0.6.4
+// * Minimize autoreleased objects; they can cause memory spikes...
+//   * DO NOT AUTORELEASE IMAGES! MOVE FROM AUTORELEASE TO MANUAL!
 // * Thumbnail options.
 // * Unload images in cache when we leave a directory
 // * Bug fixes.
@@ -205,6 +207,7 @@
 	[defaultPrefs setObject:[NSNumber numberWithInt:3] forKey:@"SmoothingTag"];
 	[defaultPrefs setObject:[NSNumber numberWithBool:YES] forKey:@"DisplayThumbnails"];
 	[defaultPrefs setObject:[NSNumber numberWithBool:YES] forKey:@"GenerateThumbnails"];
+	[defaultPrefs setObject:[NSNumber numberWithBool:NO] forKey:@"SaveThumbnails"];
 	[defaultPrefs setObject:[NSNumber numberWithBool:NO] forKey:@"GenerateThumbnailsInArchives"];
 	[defaultPrefs setObject:[NSNumber numberWithBool:YES] forKey:@"PreloadImages"];
 	[defaultPrefs setObject:[NSNumber numberWithBool:NO] forKey:@"ShowHiddenFiles"];
@@ -441,12 +444,7 @@
 -(IBAction)addThumbnailForCurrentFile:(id)sender
 {
 	NSArray* currentlySelectedFiles = [viewAsIconsController selectedFiles];
-
-	// Remove the current file(s) from the thumbnail queue...
-	[thumbnailManager performSelector:@selector(removeFileFromQueue:)
-					 withEachObjectIn:currentlySelectedFiles];
 	
-	// Generate the new thumbnails...
 	NSEnumerator* e = [currentlySelectedFiles objectEnumerator];
 	NSString* file;
 	while(file = [e nextObject])
@@ -476,6 +474,23 @@
 {
 	[IconFamily removeCustomIconFromFile:currentImageFile];
 	
+	NSArray* currentlySelectedFiles = [viewAsIconsController selectedFiles];
+		
+	// Generate the new thumbnails...
+	NSEnumerator* e = [currentlySelectedFiles objectEnumerator];
+	NSString* file;
+	while(file = [e nextObject])
+	{
+		if([file isImage])
+		{
+			// If this file already has an icon, we need to remove it.
+			if([IconFamily fileHasCustomIcon:file])
+				[IconFamily removeCustomIconFromFile:file];
+						
+			// Send the new icon to the file view
+			// FIXME HERE
+		}
+	}
 }
 
 -(IBAction)toggleFileList:(id)sender

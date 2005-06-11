@@ -97,6 +97,8 @@
 	[ourBrowser setCellClass:[ViewAsIconViewCell class]];
 	[ourBrowser setDelegate:self];
 	
+	[ourBrowser setReusesColumns:NO];
+	
 	currentlySelectedCell = nil;
 }
 
@@ -147,6 +149,8 @@
 {
 //	NSLog(@"-[ViewIconViewController setCurrentDirectory:%@ currentFile:%@]", newCurrentDirectory, newCurrentFile);
 	[pluginLayer startProgressIndicator];
+	
+	[pluginLayer flushImageCache];
 	
 //	NSLog(@"Path: %@", [newCurrentDirectory fileSystemPath]);
 
@@ -274,7 +278,11 @@ willDisplayCell:(id)cell
 {
 	NSString* path = [fileList objectAtIndex:row];
 	[cell setCellPropertiesFromPath:path andEGPath:[pluginLayer pathWithPath:path]];
-	[cell setIconImage:[path iconImageOfSize:NSMakeSize(128,128)]];
+	
+	if(![cell iconImage])
+	{
+		[cell setIconImage:[path iconImageOfSize:NSMakeSize(128,128)]];
+	}
 }
 
 - (void)clearCache
@@ -449,9 +457,10 @@ willDisplayCell:(id)cell
 		id currentCell = [[ourBrowser matrixInColumn:0] cellAtRow:index column:0];
 		
 		if([currentCell isLoaded])
+		{
 			[currentCell setIconImage:image];
-
-		[ourBrowser setNeedsDisplay];
+			[ourBrowser setNeedsDisplay];
+		}
 	}
 }
 
@@ -523,7 +532,7 @@ willDisplayCell:(id)cell
 {
 //	NSLog(@"-[ViewIconViewController(Private) rebuildInternalFileArray]");
 	NSArray* directoryContents = [currentDirectory directoryContents];
-	NSMutableArray* myFileList = [NSMutableArray arrayWithCapacity:[directoryContents count]];
+	NSMutableArray* myFileList = [[NSMutableArray alloc] initWithCapacity:[directoryContents count]];
 
 	int i = 0, count = [directoryContents count];
 //	NSLog(@"There are %d files in the directory %@", count, currentDirectory);
@@ -550,8 +559,7 @@ willDisplayCell:(id)cell
 	[pluginLayer performSelector:@selector(generateThumbnailForFile:)
 				withEachObjectIn:myFileList];
 	
-	// Now let's keep our new list of files.
-	[myFileList retain];
+	// Now let's keep our new list of files. (Note it was allocated earlier)
 	[fileList release];	
 	fileList = myFileList;
 }

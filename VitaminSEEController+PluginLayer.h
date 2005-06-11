@@ -54,4 +54,6 @@
 -(NSUndoManager*)pathManager;
 -(NSUndoManager*)undoManager;
 
+-(void)flushImageCache;
+
 @end

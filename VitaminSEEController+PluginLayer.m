@@ -288,6 +288,11 @@
 	return [mainVitaminSeeWindow undoManager];
 }
 
+-(void)flushImageCache
+{
+	[imageTaskManager flushImageCache];
+}
+
 @end
 
 @implementation VitaminSEEController (PluginLayerPrivate)

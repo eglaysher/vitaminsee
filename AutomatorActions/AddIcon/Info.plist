@@ -28,14 +28,18 @@
 		<key>AMDInput</key>
 		<string>Image Files</string>
 		<key>AMDRelatedActions</key>
-		<string>(* AMDRelatedActions bundle ids go here. (optional) *)</string>
+		<string>org.elliotglaysher.VitaminSEE.Automator.RemoveIcon</string>
 		<key>AMDSummary</key>
 		<string>For each image file passed in, set the icon to a thumbnail of the image.</string>
 	</dict>
 	<key>AMIconName</key>
-	<string>(* The name of the icon *)</string>
+	<string></string>
 	<key>AMKeywords</key>
-	<array/>
+	<array>
+		<string>Add</string>
+		<string>Thumbnail</string>
+		<string>Icon</string>
+	</array>
 	<key>AMName</key>
 	<string>Set Icon to Thumbnail</string>
 	<key>AMProvides</key>

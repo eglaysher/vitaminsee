@@ -45,7 +45,10 @@
 }
 
 -(void)setCellPropertiesFromPath:(NSString*)path andEGPath:(EGPath*)egpath;
+
+- (NSImage*)iconImage;
 -(void)setIconImage:(NSImage*)image;
+
 -(NSString*)cellPath;
 
 -(void)setTitle:(NSString*)newTitle;

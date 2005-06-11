@@ -145,7 +145,7 @@ zeroing in on the optimum length.
 	if ([self size].width > inWidth)
 	{
 		if(!ellipsis)
-			ellipsis = [[NSString stringWithFormat:@"%C", 0x2026] retain];
+			ellipsis = [[NSString alloc] stringWithFormat:@"%C", 0x2026];
 		
 		NSMutableAttributedString* newString = [[[NSMutableAttributedString 
 			alloc] init] autorelease];
@@ -183,7 +183,7 @@ zeroing in on the optimum length.
 	if ([self sizeWithAttributes:0].width > inWidth)
 	{
 		if(!ellipsis)
-			ellipsis = [[NSString stringWithFormat:@"%C", 0x2026] retain];
+			ellipsis = [[NSString alloc] initWithFormat:@"%C", 0x2026];
 		
 		NSMutableString* newString = [NSMutableString stringWithString:self];
 		int curLength = [self length] - 1;	//start by chopping off at least one
@@ -199,6 +199,7 @@ zeroing in on the optimum length.
 	}
 	else
 		result = [NSString stringWithString:self];
+
 	
 	return result;
 }

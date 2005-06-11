@@ -243,6 +243,13 @@
 	return currentImage;
 }
 
+-(void)flushImageCache
+{
+	pthread_mutex_lock(&imageCacheLock);
+	[imageCache removeAllObjects];
+	pthread_mutex_unlock(&imageCacheLock);
+}
+
 @end
 
 @implementation ImageTaskManager (Private)
@@ -288,6 +295,7 @@
 		NSMutableDictionary* dict = [NSMutableDictionary 
 			dictionaryWithObjectsAndKeys:[NSDate date], @"Date", rep, @"Image",
 			nil];
+		[rep release];
 		
 		pthread_mutex_lock(&imageCacheLock);
 		[self evictImages];
@@ -383,14 +391,13 @@
 		// Draw the image by just making an NSImage from the imageRep. This is
 		// done when the image will have no smoothing, or when we are 
 		// rendering an animated GIF.
-		imageToRet = [[[NSImage alloc] init] autorelease];
+		imageToRet = [[NSImage alloc] init];
 		[imageToRet addRepresentation:imageRep];
 		
 		// Scale it anyway, because some pictures LIE about their size.
 		[imageToRet setScalesWhenResized:YES];
 		[imageToRet setSize:NSMakeSize(display.width, display.height)];
 		
-		[imageToRet retain];
 		[self sendDisplayCommandWithImage:imageToRet width:imageX height:imageY];
 		[imageToRet release];
 	}
@@ -399,8 +406,8 @@
 //		NSLog(@"Full render!");
 		// First, we draw the image with no interpolation, and send that representation
 		// to the screen for SPEED so it LOOKS like we are doing something.
-		imageToRet = [[[NSImage alloc] initWithSize:NSMakeSize(display.width,
-			display.height)] autorelease];
+		imageToRet = [[NSImage alloc] initWithSize:NSMakeSize(display.width,
+			display.height)];
 		
 		// This block could throw on a bad file. We catch and error
 		@try
@@ -417,6 +424,7 @@
 		{
 			// The image will still be locked, even if -lock fails.
 			[imageToRet unlockFocus];
+			[imageToRet release];
 			
 			NSLog(@"Exception: %@:%@", [e name] , [e reason]);
 
@@ -435,6 +443,7 @@
 		}
 		
 		[self sendDisplayCommandWithImage:imageToRet width:imageX height:imageY];
+		[imageToRet release];
 		
 		// Now give us a chance to BAIL if we've already been given another display
 		// command
@@ -444,8 +453,8 @@
 		// Draw the image onto a new NSImage using smooth scaling. This is done
 		// whenever the image isn't animated so that the picture will have 
 		// some antialiasin lovin' applied to it.
-		imageToRet = [[[NSImage alloc] initWithSize:NSMakeSize(display.width,
-			display.height)] autorelease];
+		imageToRet = [[NSImage alloc] initWithSize:NSMakeSize(display.width,
+			display.height)];
 		[imageToRet lockFocus];
 		{
 			switch(smoothing)
@@ -466,6 +475,7 @@
 		
 		// Now display the final image:
 		[self sendDisplayCommandWithImage:imageToRet width:imageX height:imageY];
+		[imageToRet release];
 	}
 	
 	// An image has been displayed so stop the spinner
@@ -492,5 +502,7 @@
 	
 	[vitaminSEEController displayImage];
 }
+
+
 
 @end

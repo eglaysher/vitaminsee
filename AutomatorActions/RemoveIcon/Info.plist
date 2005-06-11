@@ -28,16 +28,18 @@
 		<key>AMDInput</key>
 		<string>Files</string>
 		<key>AMDRelatedActions</key>
-		<string></string>
-		<key>AMDResult</key>
-		<string>Input</string>
+		<string>org.elliotglaysher.VitaminSEE.Automator.AddIcon</string>
 		<key>AMDSummary</key>
 		<string>Removes a thumbnail icon from a file.</string>
 	</dict>
 	<key>AMIconName</key>
-	<string>(* The name of the icon *)</string>
+	<string></string>
 	<key>AMKeywords</key>
-	<array/>
+	<array>
+		<string>Remove</string>
+		<string>Thumbnail</string>
+		<string>Icon</string>
+	</array>
 	<key>AMName</key>
 	<string>Remove Thumbnail Icons</string>
 	<key>AMProvides</key>

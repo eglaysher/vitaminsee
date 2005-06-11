@@ -31,16 +31,20 @@
 #import "NSString+FileTasks.h"
 #import <stdlib.h>
 
+// Does not return an autoreleased object...
 NSImageRep* loadImage(NSString* path)
 {
-	NSData* imageData = [NSData dataWithContentsOfFile:path];
+	NSData* imageData = [[NSData alloc] initWithContentsOfFile:path];
 
 	// Get the class that can handle this file.
 	Class imageRepClass = [NSImageRep imageRepClassForData:imageData];
 	if(!imageRepClass)
 		return nil;
 
-	return [[[imageRepClass alloc] initWithData:imageData] autorelease];
+	NSImageRep* image = [[imageRepClass alloc] initWithData:imageData];
+	[imageData release];
+	
+	return image;
 }
 
 struct DS buildImageSize(int boxWidth, int boxHeight, int imageWidth, int imageHeight,

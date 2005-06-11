@@ -91,4 +91,5 @@
 
 -(NSImage*)getCurrentImageWithWidth:(int*)width height:(int*)height scale:(float*)scale;
 
+-(void)flushImageCache;
 @end

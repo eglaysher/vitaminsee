@@ -483,6 +483,16 @@
     //investigate optimisations (dataWithBytesNoCopy:length: for example...)
 }
 
+- (NSImage*) imageWithAllRepsNoAutorelease
+{
+    NSImage* image = NULL;
+    image = [[NSImage alloc] initWithData:[NSData dataWithBytes:*hIconFamily length:GetHandleSize((Handle)hIconFamily)]];
+	
+    return image;
+	
+    //investigate optimisations (dataWithBytesNoCopy:length: for example...)
+}
+
 - (BOOL) setIconFamilyElement:(OSType)elementType fromBitmapImageRep:(NSBitmapImageRep*)bitmapImageRep
 {
     Handle hRawData = NULL;

@@ -155,6 +155,7 @@
 // elements as its NSImageReps.
 
 - (NSImage*) imageWithAllReps;
+- (NSImage*) imageWithAllRepsNoAutorelease;
 
 // NOTE: Planned method -- not yet implemented.
 //

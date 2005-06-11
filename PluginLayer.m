@@ -140,4 +140,9 @@
 	return [EGPathFilesystemPath pathWithPath:inPath];
 }
 
+-(void)flushImageCache
+{
+	return [controller flushImageCache];
+}
+
 @end

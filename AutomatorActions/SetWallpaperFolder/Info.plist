@@ -28,7 +28,7 @@
 		<key>AMDInput</key>
 		<string>Folder</string>
 		<key>AMDOptions</key>
-		<string>Change Time/Wallwhatever</string>
+		<string>AMDOptions</string>
 		<key>AMDRelatedActions</key>
 		<string>com.apple.Automator.SetDesktopPicture</string>
 		<key>AMDSummary</key>
@@ -37,7 +37,10 @@
 	<key>AMIconName</key>
 	<string>DesktopFolderIcon</string>
 	<key>AMKeywords</key>
-	<array/>
+	<array>
+		<string>Wallpaper</string>
+		<string>Desktop Background</string>
+	</array>
 	<key>AMName</key>
 	<string>Set Folder as Source for Desktop Backgrounds</string>
 	<key>AMProvides</key>

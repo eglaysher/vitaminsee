@@ -123,4 +123,6 @@
 // Object factory methods so that I don't have to link stuff into the plugins
 -(EGPath*)pathWithPath:(NSString*)inPath;
 
+-(void)flushImageCache;
+
 @end
