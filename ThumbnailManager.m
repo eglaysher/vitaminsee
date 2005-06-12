@@ -140,6 +140,13 @@
 	pthread_mutex_unlock(&imageScalingProperties);
 }
 
+-(void)setShouldSaveIconToDisk:(BOOL)newShouldSaveIconToDisk
+{
+	pthread_mutex_lock(&imageScalingProperties);
+	shouldSaveIconToDisk = newShouldSaveIconToDisk;
+	pthread_mutex_unlock(&imageScalingProperties);	
+}
+
 -(void)buildThumbnail:(NSString*)path
 {	
 	pthread_mutex_lock(&taskQueueLock);
@@ -209,7 +216,8 @@
 		iconFamily = [IconFamily iconFamilyWithThumbnailsOfImage:image];
 		if(iconFamily)
 		{
-			[iconFamily setAsCustomIconForFile:path];
+			if(shouldSaveIconToDisk)
+				[iconFamily setAsCustomIconForFile:path];
 
 			// Must retain
 			thumbnail = [iconFamily imageWithAllRepsNoAutorelease];

@@ -269,7 +269,9 @@
 -(void)generateThumbnailForFile:(NSString*)path
 {
 	BOOL buildThumbnails = [[[NSUserDefaults standardUserDefaults] objectForKey:@"GenerateThumbnails"] boolValue];
-	[thumbnailManager setShouldBuildIcon:buildThumbnails];	
+	BOOL saveThumbnails = [[[NSUserDefaults standardUserDefaults] objectForKey:@"SaveThumbnails"] boolValue];
+	[thumbnailManager setShouldBuildIcon:buildThumbnails];
+	[thumbnailManager setShouldSaveIconToDisk:saveThumbnails];
 	[thumbnailManager buildThumbnail:path];
 }
 

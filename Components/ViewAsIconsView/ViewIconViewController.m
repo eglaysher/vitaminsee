@@ -57,6 +57,8 @@
 		pluginLayer = inPluginLayer;
 
 		oldPosition = -1;
+
+		thumbnailCache = [[NSMutableDictionary alloc] init];
 		
 		// Register for mounting/unmounting notifications
 		NSNotificationCenter* nc = [[NSWorkspace sharedWorkspace] notificationCenter];
@@ -73,7 +75,7 @@
 				   name:NSWorkspaceDidUnmountNotification
 				 object:nil];	
 		
-			needToRebuild = NO;
+		needToRebuild = NO;
 	}
 
 	return self;
@@ -85,6 +87,7 @@
 	NSNotificationCenter* nc = [[NSWorkspace sharedWorkspace] notificationCenter];
 	[nc removeObserver:self];
 	
+	[thumbnailCache release];	
 	[pluginLayer release];
 	[super dealloc];
 }
@@ -150,6 +153,7 @@
 //	NSLog(@"-[ViewIconViewController setCurrentDirectory:%@ currentFile:%@]", newCurrentDirectory, newCurrentFile);
 	[pluginLayer startProgressIndicator];
 	
+	[thumbnailCache removeAllObjects];
 	[pluginLayer flushImageCache];
 	
 //	NSLog(@"Path: %@", [newCurrentDirectory fileSystemPath]);
@@ -279,9 +283,16 @@ willDisplayCell:(id)cell
 	NSString* path = [fileList objectAtIndex:row];
 	[cell setCellPropertiesFromPath:path andEGPath:[pluginLayer pathWithPath:path]];
 	
+	// If the cell image hasn't been loaded
 	if(![cell iconImage])
 	{
-		[cell setIconImage:[path iconImageOfSize:NSMakeSize(128,128)]];
+		// If there's an entry in the thumbnail cache, use it
+		NSImage* icon = [thumbnailCache objectForKey:path];
+		if(!icon)
+			icon = [path iconImageOfSize:NSMakeSize(128,128)];
+
+		[self removeUnneededImageReps:icon];
+		[cell setIconImage:icon];
 	}
 }
 
@@ -455,13 +466,38 @@ willDisplayCell:(id)cell
 	if(index != NSNotFound)
 	{
 		id currentCell = [[ourBrowser matrixInColumn:0] cellAtRow:index column:0];
+
+		[self removeUnneededImageReps:image];
 		
 		if([currentCell isLoaded])
 		{
 			[currentCell setIconImage:image];
 			[ourBrowser setNeedsDisplay];
 		}
+		
+		// If we aren't saving the thumbnails to disk, then store them
+		if(![[[NSUserDefaults standardUserDefaults] objectForKey:@"SaveThumbnails"] boolValue])
+		{
+			[thumbnailCache setObject:image forKey:path];
+		}
 	}
+}
+
+-(void)removeUnneededImageReps:(NSImage*)image
+{
+	int pixelsHigh, pixelsWide, longSide;
+	NSArray* imageReps = [image representations];
+	NSEnumerator* e = [imageReps objectEnumerator];
+	NSImageRep* rep;
+	while(rep = [e nextObject])
+	{
+		pixelsHigh = [rep pixelsHigh];
+		pixelsWide = [rep pixelsWide];
+		longSide = pixelsHigh > pixelsWide ? pixelsHigh : pixelsWide;
+		
+		if(longSide != 128)
+			[image removeRepresentation:rep];
+	}	
 }
 
 -(BOOL)canGoEnclosingFolder

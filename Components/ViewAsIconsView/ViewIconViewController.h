@@ -47,6 +47,7 @@
 	EGPath* currentDirectory;
 	
 	NSMutableArray* fileList;	
+	NSMutableDictionary* thumbnailCache;
 	int oldPosition;
 	
 	BOOL needToRebuild;
@@ -74,6 +75,8 @@
 -(void)selectFile:(NSString*)fileToSelect;
 
 -(void)makeFirstResponderTo:(NSWindow*)window;
+
+-(void)removeUnneededImageReps:(NSImage*)image;
 
 -(void)clearCache;
 -(void)setThumbnail:(NSImage*)image 

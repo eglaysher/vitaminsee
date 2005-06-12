@@ -49,7 +49,8 @@
 	
 	id vitaminSEEController;
 	
-	bool shouldBuildIcon;
+	BOOL shouldBuildIcon;
+	BOOL shouldSaveIconToDisk;
 }
 
 -(id)initWithController:(id)parrentController;
@@ -59,6 +60,8 @@
 -(void)clearThumbnailQueue;
 
 -(void)setShouldBuildIcon:(BOOL)newShouldBuildIcon;
+-(void)setShouldSaveIconToDisk:(BOOL)newShouldSaveIconToDisk;
+
 -(void)setThumbnailLoadingPosition:(int)newPosition;
 
 -(NSString*)getCurrentPath;
