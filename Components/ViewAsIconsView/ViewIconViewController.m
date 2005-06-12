@@ -189,7 +189,6 @@
 	for(i = 0; i < count; ++i)
 	{
 		NSString* menuPathComponentName = [displayNames objectAtIndex: count - i - 1];
-//		NSLog(@"Building menu drop down component %@", menuPathComponentName);
 		NSMenuItem* newMenuItem = [[[NSMenuItem alloc] 
 			initWithTitle:menuPathComponentName
 				   action:@selector(directoryMenuSelected:)
@@ -483,6 +482,7 @@ willDisplayCell:(id)cell
 	}
 }
 
+// We  don't need image representations that aren't the 128 version. Junk them.
 -(void)removeUnneededImageReps:(NSImage*)image
 {
 	int pixelsHigh, pixelsWide, longSide;

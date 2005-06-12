@@ -30,6 +30,7 @@
 #import "ViewIconViewController.h"
 #import "ImageMetadata.h"
 #import "ThumbnailManager.h"
+#import "ImageTaskManager.h"
 #import "VitaminSEEController.h"
 #import "VitaminSEEController+PluginLayer.h"
 #import "VitaminSEEController+LoadableComponents.h"

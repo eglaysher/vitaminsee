@@ -26,9 +26,9 @@
 @end
 
 // This category is from Karelia Software. Full liscence in source.
-@interface NSAttributedString (Truncation)
--(NSAttributedString*)truncateForWidth:(float)inWidth;
-@end
+//@interface NSAttributedString (Truncation)
+//-(NSAttributedString*)truncateForWidth:(float)inWidth;
+//@end
 
 @interface NSString (Truncation)
 - (NSString *)truncateForWidth:(float) inWidth;

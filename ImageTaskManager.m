@@ -111,6 +111,9 @@
 	vitaminSEEController = [serverConnection rootProxy];
 	[vitaminSEEController setProtocolForProxy:@protocol(ImageDisplayer)];
 	
+	// We are the most important thread in the program
+	[NSThread setThreadPriority:0.8];
+	
 	// Handle queue
 	while(1)
 	{
@@ -243,7 +246,7 @@
 	return currentImage;
 }
 
--(void)flushImageCache
+-(oneway void)flushImageCache
 {
 	pthread_mutex_lock(&imageCacheLock);
 	[imageCache removeAllObjects];

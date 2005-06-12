@@ -91,10 +91,7 @@
 // Test RAM consumption. Changed CACHE_SIZE in ImageTaskManager
 
 // For Version 0.6.4
-// * Minimize autoreleased objects; they can cause memory spikes...
-//   * DO NOT AUTORELEASE IMAGES! MOVE FROM AUTORELEASE TO MANUAL!
 // * Thumbnail options.
-// * Unload images in cache when we leave a directory
 // * Bug fixes.
 // * Make sure there are proper headers in all the files.
 // * Clean up and translate actions
@@ -207,7 +204,7 @@
 	[defaultPrefs setObject:[NSNumber numberWithInt:3] forKey:@"SmoothingTag"];
 	[defaultPrefs setObject:[NSNumber numberWithBool:YES] forKey:@"DisplayThumbnails"];
 	[defaultPrefs setObject:[NSNumber numberWithBool:YES] forKey:@"GenerateThumbnails"];
-	[defaultPrefs setObject:[NSNumber numberWithBool:NO] forKey:@"SaveThumbnails"];
+	[defaultPrefs setObject:[NSNumber numberWithBool:YES] forKey:@"SaveThumbnails"];
 	[defaultPrefs setObject:[NSNumber numberWithBool:NO] forKey:@"GenerateThumbnailsInArchives"];
 	[defaultPrefs setObject:[NSNumber numberWithBool:YES] forKey:@"PreloadImages"];
 	[defaultPrefs setObject:[NSNumber numberWithBool:NO] forKey:@"ShowHiddenFiles"];
@@ -427,6 +424,8 @@
 
 -(IBAction)fakeOpenWithMenuSelector:(id)sender
 {
+	// Don't do anything. This method is here so we can catch stuff during menu
+	// validation.
 }
 
 -(IBAction)closeWindow:(id)sender
@@ -781,10 +780,11 @@
 		// Set the icon if we don't have one yet.
 		if(![theMenuItem image])
 		{
-			NSImage* img = [[[NSImage imageNamed:@"iMac"] copy] autorelease];
+			NSImage* img = [[NSImage imageNamed:@"iMac"] copy];
 			[img setScalesWhenResized:YES];
 			[img setSize:NSMakeSize(16, 16)];
 			[theMenuItem setImage:img];
+			[img release];
 		}
 	}	
 	else if (action == @selector(goToHomeFolder:))
@@ -930,11 +930,6 @@
 	scaleProportionally = YES;
 	scaleRatio = 1.0;
 	[self redraw];
-}
-
--(void)willAdjustSubviews:(id)rbview
-{
-//	[imageViewer setImage:nil];
 }
 
 // Redraw the window when the window resizes.

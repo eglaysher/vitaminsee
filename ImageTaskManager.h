@@ -43,6 +43,7 @@
 			   scaleProportionally:(in BOOL)newScaleProportionally
 						scaleRatio:(in float)newScaleRatio
 				   contentViewSize:(in NSSize)newContentViewSize;
+-(oneway void)flushImageCache;
 @end
 
 @interface ImageTaskManager : NSObject <ImageTaskProtocol> {
@@ -91,5 +92,5 @@
 
 -(NSImage*)getCurrentImageWithWidth:(int*)width height:(int*)height scale:(float*)scale;
 
--(void)flushImageCache;
+-(oneway void)flushImageCache;
 @end

@@ -136,33 +136,33 @@ would be to decide on the font of the "É" and compensate for that in the
 width calculations; another would be to do a binary search on the length, 
 zeroing in on the optimum length.
 "*/
-- (NSAttributedString *)truncateForWidth:(float) inWidth
-{
-	NSAttributedString* result = self;
-	NSRange range;	
-	
-	// Commented out for leak testing...
-	if ([self size].width > inWidth)
-	{
-		if(!ellipsis)
-			ellipsis = [[NSString alloc] stringWithFormat:@"%C", 0x2026];
-		
-		NSMutableAttributedString* newString = [[[NSMutableAttributedString 
-			alloc] init] autorelease];
-		int curLength = [self length] - 1;	//start by chopping off at least one
-		
-		[newString appendAttributedString:self];
-		while ([newString size].width > inWidth && curLength > 2)
-		{
-			// replace 2 characters with "…"
-			range = NSMakeRange( curLength - 1, 2);	
-			[newString replaceCharactersInRange:range withString:ellipsis];
-			curLength--;
-		}
-		result = newString;
-	}
-	return result;
-}
+//- (NSAttributedString *)truncateForWidth:(float) inWidth
+//{
+//	NSAttributedString* result = self;
+//	NSRange range;	
+//	
+//	// Commented out for leak testing...
+//	if ([self size].width > inWidth)
+//	{
+//		if(!ellipsis)
+//			ellipsis = [[NSString alloc] stringWithFormat:@"%C", 0x2026];
+//		
+//		NSMutableAttributedString* newString = [[[NSMutableAttributedString 
+//			alloc] init] autorelease];
+//		int curLength = [self length] - 1;	//start by chopping off at least one
+//		
+//		[newString appendAttributedString:self];
+//		while ([newString size].width > inWidth && curLength > 2)
+//		{
+//			// replace 2 characters with "…"
+//			range = NSMakeRange( curLength - 1, 2);	
+//			[newString replaceCharactersInRange:range withString:ellipsis];
+//			curLength--;
+//		}
+//		result = newString;
+//	}
+//	return result;
+//}
 
 @end
 

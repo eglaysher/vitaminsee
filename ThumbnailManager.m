@@ -96,7 +96,7 @@
 	[vitaminSEEController setProtocolForProxy:@protocol(ImageDisplayer)];
 	
 	// Don't delude ourselves. We're not as important as displaying images
-	[NSThread setThreadPriority:0.3];
+	[NSThread setThreadPriority:0.2];
 	
 	// Handle queue
 	while(1)
@@ -213,14 +213,14 @@
 		[data release];
 
 		// Set icon
-		iconFamily = [IconFamily iconFamilyWithThumbnailsOfImage:image];
+		iconFamily = [[IconFamily alloc] initWithThumbnailsOfImage:image];
 		if(iconFamily)
 		{
 			if(shouldSaveIconToDisk)
 				[iconFamily setAsCustomIconForFile:path];
 
-			// Must retain
 			thumbnail = [iconFamily imageWithAllRepsNoAutorelease];
+			[iconFamily release];
 
 			currentIconFamilyThumbnail = thumbnail;
 			currentPath = path;
