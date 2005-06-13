@@ -984,7 +984,8 @@
     NSRect iconRect;
     NSRect targetRect;
 
-	// ELLIOT FIXME: This is a major memory bottleneck!
+	// ELLIOT FIXME: This is a major memory bottleneck! We're making a copy
+	// of every image that comes through here!?
 	//
     // Create a working copy of the image and scale its size down to fit in
     // the square area of the icon.
@@ -994,8 +995,14 @@
     // is.  We need to change some properties ("size" and "scalesWhenResized")
     // of the original image, but we shouldn't change the original, so a copy
     // is necessary.
-    workingImage = [image copyWithZone:[image zone]];
-    [workingImage setScalesWhenResized:YES];
+//    workingImage = [image copyWithZone:[image zone]];
+
+	// Okay, I'm 99% sure that this works and let's us do everything as above
+	// without the copy...
+	workingImage = [[NSImage alloc] init];
+	[workingImage addRepresentations:[image representations]];
+    
+	[workingImage setScalesWhenResized:YES];
     size = [workingImage size];
     workingImageRep = [workingImage bestRepresentationForDevice:nil];
     if ([workingImageRep isKindOfClass:[NSBitmapImageRep class]]) {
