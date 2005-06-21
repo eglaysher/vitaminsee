@@ -336,7 +336,7 @@
 	if(!cacheEntry)
 	{
 		pthread_mutex_unlock(&imageCacheLock);
-
+//		NSLog(@"Image %@ isn't in the cache!", path);
 		[self doPreloadImage:path];
 		pthread_mutex_lock(&imageCacheLock);
 		cacheEntry = [imageCache objectForKey:path];
@@ -344,6 +344,7 @@
 	else
 	{
 		// Update the last time accessed
+//		NSLog(@"Using cached version of %@", path);
 		[cacheEntry setValue:[NSDate date] forKey:@"Date"];
 	}
 	
@@ -400,6 +401,17 @@
 		// Scale it anyway, because some pictures LIE about their size.
 		[imageToRet setScalesWhenResized:YES];
 		[imageToRet setSize:NSMakeSize(display.width, display.height)];
+
+		// Okay, if this image is animated, but it doesn't have have an frame
+		// duration, we're dealing with a broken GIF. Hack it so that it has
+		// a frame duration, even if it's wrong so at least there's some animation...
+		if([imageRep isKindOfClass:[NSBitmapImageRep class]] &&
+		   [[(NSBitmapImageRep*)imageRep valueForProperty:NSImageFrameCount] intValue] > 1 &&
+		   ![(NSBitmapImageRep*)imageRep valueForProperty:NSImageCurrentFrameDuration] )
+		{
+			[(NSBitmapImageRep*)imageRep setProperty:NSImageCurrentFrameDuration
+										   withValue:[NSNumber numberWithFloat:0.1f]];
+		}
 		
 		[self sendDisplayCommandWithImage:imageToRet width:imageX height:imageY];
 		[imageToRet release];
@@ -505,7 +517,5 @@
 	
 	[vitaminSEEController displayImage];
 }
-
-
 
 @end

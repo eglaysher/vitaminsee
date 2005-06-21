@@ -77,23 +77,24 @@
 ////////////////////////////////////////////////// WHERE TO GO FROM HERE...
 
 /* COMPLETED:
+ * * You can now generate thumbnails, but not store them on disk. (The default
+ *   behavior is to write thumbnails to disk because of RAM consumption.)
+ * * Massivly reduce RAM consumption when building thumbnails
  * * Bug fix: Program could get stuck on "Loading..." if computer was never named.
  *   (Kudos to "L S" for the bug report.)
  * * Move Gemmell's prefs controller code into it's own bundle.
  * * Automator actions:
  *   * Set desktop background folder
- * * Reduce RAM
+ * * The Tiger GIF loader isn't as resiliant against broken animated GIFs as the
+ *   Panther one was. Add a workaround that fixes *some* animated GIFs that
+ *   work under Panther. These images will play slowly, but at least they'll play.
  */
 
 // Test more; specifically, I need to test accessing an image across SMB since
 // I screwed with image loading behaviour
 
-// Test RAM consumption. Changed CACHE_SIZE in ImageTaskManager
-
 // For Version 0.6.4
-// * Thumbnail options.
 // * Bug fixes.
-// * Make sure there are proper headers in all the files.
 // * Clean up and translate actions
 
 // For Version 0.7
@@ -107,6 +108,7 @@
 //   * Requires figuring out how the Mac trash system works; 
 //     NSWorkspaceRecycleOperation isn't behaving how the Finder behaves. Maybe
 //     the answer is in Carbon?
+// * Thumbnail options.
 
 // For Version 0.8
 // * Transparent archive support
@@ -978,13 +980,16 @@
 	NSImage* image = [imageTaskManager getCurrentImageWithWidth:&x height:&y 
 														  scale:&scale];
 
+	[imageViewer setAnimates:YES];
 	[imageViewer setImage:image];
 	[imageViewer setFrameSize:[image size]];
-	[imageViewer setAnimates:YES];
 	
-	// Set the correct cursor.
-	if([image size].width > [scrollView contentSize].width ||
-	   [image size].height > [scrollView contentSize].height)
+	// Set the correct cursor. If the picture is larger then the viewing area,
+	// we use a grabing cursor. Otherwise, we use the standard pointer.
+	NSSize imageSize = [image size];
+	NSSize scrollViewSize = [scrollView contentSize];
+	if(imageSize.width > scrollViewSize.width ||
+	   imageSize.height > scrollViewSize.height)
 	{
 		if(!handCursor)
 			handCursor = [[NSCursor alloc] initWithImage:[NSImage 

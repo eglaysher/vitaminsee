@@ -287,6 +287,8 @@ willDisplayCell:(id)cell
 	{
 		// If there's an entry in the thumbnail cache, use it
 		NSImage* icon = [thumbnailCache objectForKey:path];
+		
+		// If there isn't, use the file icon...
 		if(!icon)
 			icon = [path iconImageOfSize:NSMakeSize(128,128)];
 
@@ -330,7 +332,7 @@ willDisplayCell:(id)cell
 		// Thankfully, this was fixed in Tiger. But Tiger didn't give us an f'in
 		// AppKit version number for it.
 		[ourBrowser setNeedsDisplay];
-		NSLog(@"Ugly hack!");
+//		NSLog(@"Ugly hack!");
 	}
 	
 	// Now we figure out which file we preload next.
@@ -474,8 +476,12 @@ willDisplayCell:(id)cell
 			[ourBrowser setNeedsDisplay];
 		}
 		
-		// If we aren't saving the thumbnails to disk, then store them
-		if(![[[NSUserDefaults standardUserDefaults] objectForKey:@"SaveThumbnails"] boolValue])
+		// If we aren't saving the thumbnails to disk, then store them.
+		// Also do it if these thumbnails are on another volume. (SMB is b0rken;
+		// Even when a thumbnail's icon has been set, it takes a while to take
+		// effect, and leads to no thumbnails in VitaminSEE...)
+		if(![[[NSUserDefaults standardUserDefaults] objectForKey:@"SaveThumbnails"] boolValue] ||
+		   [[[path pathComponents] objectAtIndex:1] isEqual:@"Volumes"])
 		{
 			[thumbnailCache setObject:image forKey:path];
 		}

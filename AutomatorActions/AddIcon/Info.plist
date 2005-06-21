@@ -58,7 +58,7 @@
 	<key>CFBundleExecutable</key>
 	<string>AddIcon</string>
 	<key>CFBundleGetInfoString</key>
-	<string>AddIcon version 1.0, Copyright (c) 2005, __MyCompanyName__.</string>
+	<string>AddIcon version 1.0, Copyright (c) 2005, Elliot Glaysher.</string>
 	<key>CFBundleIconFile</key>
 	<string></string>
 	<key>CFBundleIdentifier</key>

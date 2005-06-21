@@ -1837,7 +1837,6 @@
 				8B5620E107CEA6F1005990E1,
 				8B561D9307CE7627005990E1,
 				8B6D020307CB32CD009A76DA,
-				CD70C2EC084F9C7800AF0415,
 			);
 			isa = PBXCopyFilesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2562,12 +2561,6 @@
 			refType = 4;
 			sourceTree = "<group>";
 		};
-		8BBC34BA07E13E53007C3B6B = {
-			fileRef = 8BBC34B907E13E52007C3B6B;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
 		8BBC35D607E221D4007C3B6B = {
 			isa = PBXFileReference;
 			lastKnownFileType = image.icns;
@@ -2576,12 +2569,6 @@
 			refType = 4;
 			sourceTree = "<group>";
 		};
-		8BBC35D707E221D4007C3B6B = {
-			fileRef = 8BBC35D607E221D4007C3B6B;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
 		8BBC35E907E222BF007C3B6B = {
 			isa = PBXFileReference;
 			lastKnownFileType = image.icns;
@@ -2589,12 +2576,6 @@
 			path = Resources/HomeFolderIcon.icns;
 			refType = 4;
 			sourceTree = "<group>";
-		};
-		8BBC35EA07E222BF007C3B6B = {
-			fileRef = 8BBC35E907E222BF007C3B6B;
-			isa = PBXBuildFile;
-			settings = {
-			};
 		};
 		8BC27DA707ECF9B300B56836 = {
 			fileEncoding = 30;
@@ -3123,15 +3104,16 @@
 		8D1107290486CEB800E47090 = {
 			buildActionMask = 2147483647;
 			files = (
+				CD69D6C20864E3D40041F804,
+				CD69D6C30864E3D40041F804,
+				CD69D6C40864E3D40041F804,
+				CD69D6C50864E3D40041F804,
 				8B7E6D9E080B40EC00DD5466,
 				8B7E6D9D080B40EC00DD5466,
 				8B6A9178080784F40085334A,
 				8BB7F55D07F0B9B200668047,
 				CDBE1AB9084A3CE90014E36C,
 				CDBE1AB8084A3CDA0014E36C,
-				8BBC35EA07E222BF007C3B6B,
-				8BBC35D707E221D4007C3B6B,
-				8BBC34BA07E13E53007C3B6B,
 				8B32703D07E137A400FBD945,
 				8B32703E07E137A400FBD945,
 				8B32703F07E137A400FBD945,
@@ -3140,7 +3122,6 @@
 				8BAD1DC507DE8FD0000CBEA0,
 				8D11072A0486CEB800E47090,
 				8D11072B0486CEB800E47090,
-				CD7686500829035F006AE601,
 				CDA6C00D08299164007869CA,
 				CD44189C082EA2DC003C01FD,
 				CD44189D082EA2DC003C01FD,
@@ -3603,6 +3584,30 @@
 			refType = 4;
 			sourceTree = "<group>";
 		};
+		CD69D6C20864E3D40041F804 = {
+			fileRef = CD76864F0829035F006AE601;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		CD69D6C30864E3D40041F804 = {
+			fileRef = 8BBC35E907E222BF007C3B6B;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		CD69D6C40864E3D40041F804 = {
+			fileRef = 8BBC35D607E221D4007C3B6B;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		CD69D6C50864E3D40041F804 = {
+			fileRef = 8BBC34B907E13E52007C3B6B;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
 		CD70C1A5084F996B00AF0415 = {
 			fileEncoding = 4;
 			isa = PBXFileReference;
@@ -3642,12 +3647,6 @@
 			path = "VitaminSEEController+LoadableComponents.m";
 			refType = 4;
 			sourceTree = "<group>";
-		};
-		CD70C2EC084F9C7800AF0415 = {
-			fileRef = CD70C2EA084F9C7800AF0415;
-			isa = PBXBuildFile;
-			settings = {
-			};
 		};
 		CD70C2ED084F9C7800AF0415 = {
 			fileRef = CD70C2EB084F9C7800AF0415;
@@ -3821,12 +3820,6 @@
 			path = Resources/iMac.icns;
 			refType = 4;
 			sourceTree = "<group>";
-		};
-		CD7686500829035F006AE601 = {
-			fileRef = CD76864F0829035F006AE601;
-			isa = PBXBuildFile;
-			settings = {
-			};
 		};
 		CD7AA9E00850E78D0077DCE3 = {
 			buildActionMask = 2147483647;

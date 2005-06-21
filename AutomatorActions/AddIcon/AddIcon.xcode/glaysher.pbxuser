@@ -56,12 +56,8 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 139977582;
-			PBXWorkspaceStateSaveDate = 139977582;
-		};
-		perUserProjectItems = {
-			CD5AC6D80857E36F00D4BD2C = CD5AC6D80857E36F00D4BD2C;
-			CD5AC6E20857E3B100D4BD2C = CD5AC6E20857E3B100D4BD2C;
+			PBXPerProjectTemplateStateSaveDate = 140832378;
+			PBXWorkspaceStateSaveDate = 140832378;
 		};
 		sourceControlManager = 658A2DCF067AB96600421F51;
 		userBuildSettings = {
@@ -70,7 +66,7 @@
 	089C167EFE841241C02AAC07 = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {746, 648}}";
-			sepNavSelRange = "{348, 0}";
+			sepNavSelRange = "{744, 0}";
 			sepNavVisRect = "{{0, 0}, {746, 648}}";
 			sepNavWindowFrame = "{{193, 25}, {791, 721}}";
 		};
@@ -149,23 +145,17 @@
 	8D5B49B7048680CD000E48DA = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {797, 1312}}";
-			sepNavSelRange = "{576, 0}";
-			sepNavVisRect = "{{0, 0}, {746, 648}}";
+			sepNavSelRange = "{1515, 0}";
+			sepNavVisRect = "{{0, 664}, {746, 648}}";
 			sepNavWindowFrame = "{{1, 25}, {791, 721}}";
 		};
 	};
-	CD5AC6D80857E36F00D4BD2C = {
-		fRef = 8D5B49B7048680CD000E48DA;
-		isa = PBXBookmark;
-	};
-	CD5AC6E20857E3B100D4BD2C = {
-		fRef = 8D5B49B7048680CD000E48DA;
-		isa = PBXTextBookmark;
-		name = "Info.plist: 23";
-		rLen = 0;
-		rLoc = 576;
-		rType = 0;
-		vrLen = 1081;
-		vrLoc = 0;
+	CD26701B08610B4900432EF1 = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {746, 648}}";
+			sepNavSelRange = "{338, 0}";
+			sepNavVisRect = "{{0, 0}, {746, 648}}";
+			sepNavWindowFrame = "{{194, 25}, {791, 721}}";
+		};
 	};
 }

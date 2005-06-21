@@ -97,6 +97,7 @@
 		089C167DFE841241C02AAC07 = {
 			children = (
 				089C167EFE841241C02AAC07,
+				CD26701B08610B4900432EF1,
 			);
 			isa = PBXVariantGroup;
 			name = InfoPlist.strings;
@@ -375,6 +376,14 @@
 //CD2
 //CD3
 //CD4
+		CD26701B08610B4900432EF1 = {
+			isa = PBXFileReference;
+			lastKnownFileType = text.plist.strings;
+			name = Japanese;
+			path = Japanese.lproj/InfoPlist.strings;
+			refType = 4;
+			sourceTree = "<group>";
+		};
 		CDD4C9DF0853A4340071A1D1 = {
 			fileEncoding = 30;
 			isa = PBXFileReference;
