@@ -47,9 +47,9 @@
 #include <utility>
 #include <sstream>
 #include <cstdio>
-#ifdef HAVE_STDINT_H
+//#ifdef HAVE_STDINT_H
 # include <stdint.h>
-#endif
+//#endif
 
 // MSVC doesn't provide C99 types, but it has MS specific variants
 #ifdef _MSC_VER
@@ -68,7 +68,7 @@ namespace Exiv2 {
 // type definitions
 
     //! 1 byte unsigned integer type.
-    typedef uint8_t byte;
+	typedef uint8_t byte;
 
     //! 8 byte unsigned rational type.
     typedef std::pair<uint32_t, uint32_t> URational;
