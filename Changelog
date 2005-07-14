@@ -1,3 +1,24 @@
+0.6.4.1 Emergency Bugfix Release (July 13th, 2005)
+--------------------------------------------------
+* Fix crashing in thumbnailing code.
+
+0.6.4 Release (July 5th, 2005)
+------------------------------
+* You can now generate thumbnails, but not store them on disk. (The default
+  behavior is to write thumbnails to disk because of RAM consumption.)
+* Massivly reduce RAM consumption when building thumbnails
+* Bug fix: Program could get stuck on "Loading..." if computer was never
+  named. (Kudos to "L S" for the bug report.)
+* Move Gemmell's prefs controller code into it's own bundle.
+* Automator actions:
+  * Set desktop background folder
+  * Add thumbnail Icon
+  * Remove thumbnail Icon
+* The Tiger GIF loader isn't as resiliant against broken animated GIFs as
+  the Panther one was. Add a workaround that fixes *some* animated GIFs
+  that work under Panther. These images will play slowly, but at least 
+  they'll play.
+
 0.6.3 Release (May 31st, 2005)
 ------------------------------
 * Support all file types that the underlying OS says we can open. This includes

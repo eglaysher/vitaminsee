@@ -207,8 +207,16 @@
 
 		// I don't think there IS an autorelease...
 		NSData* data = [[NSData alloc] initWithContentsOfFile:path];
+		if(!data) {
+			NSLog(@"WARNING! Couldn't load file %@ so we could make a thumbnail...", path);
+			return;
+		}
 		NSImage* image = [[NSImage alloc] initWithData:data];
 		[data release];
+		if(!image) {
+			NSLog(@"WARNING! Couldn't make an image from the data in %@ so we could make a thumbnail...", path);
+			return;
+		}
 
 		// Set icon
 		iconFamily = [[IconFamily alloc] initWithThumbnailsOfImage:image];

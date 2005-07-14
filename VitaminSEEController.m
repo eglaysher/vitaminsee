@@ -76,27 +76,6 @@
 
 ////////////////////////////////////////////////// WHERE TO GO FROM HERE...
 
-/* COMPLETED:
- * * You can now generate thumbnails, but not store them on disk. (The default
- *   behavior is to write thumbnails to disk because of RAM consumption.)
- * * Massivly reduce RAM consumption when building thumbnails
- * * Bug fix: Program could get stuck on "Loading..." if computer was never named.
- *   (Kudos to "L S" for the bug report.)
- * * Move Gemmell's prefs controller code into it's own bundle.
- * * Automator actions:
- *   * Set desktop background folder
- * * The Tiger GIF loader isn't as resiliant against broken animated GIFs as the
- *   Panther one was. Add a workaround that fixes *some* animated GIFs that
- *   work under Panther. These images will play slowly, but at least they'll play.
- */
-
-// Test more; specifically, I need to test accessing an image across SMB since
-// I screwed with image loading behaviour
-
-// For Version 0.6.4
-// * Bug fixes.
-// * Clean up and translate actions
-
 // For Version 0.7
 // * Delete key in sort manager preferences should do something. + UNDO!!!!
 // * Automator actions:

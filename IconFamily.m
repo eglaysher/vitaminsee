@@ -259,6 +259,10 @@
     NSBitmapImageRep* iconBitmap16x16;
     NSImage* bitmappedIconImage128x128;
 	NSRect imageRect;
+	
+	// We need to be really sure that we have a good image.
+	if(image == nil)
+		return nil;
     
     // Start with a new, empty IconFamily.
     self = [self init];
@@ -276,7 +280,6 @@
 	[iconImage128x128 lockFocus];
 	iconBitmap128x128 = [[NSBitmapImageRep alloc] initWithFocusedViewRect:NSMakeRect(0, 0, 128, 128)];
 	[iconImage128x128 unlockFocus];
-	[iconImage128x128 release];
 
     // Create an NSImage with the iconBitmap128x128 NSBitmapImageRep, that we
     // can resample to create the smaller icon family elements.  (This is
@@ -289,40 +292,40 @@
     // Resample the 128x128 image to create a 32x32 pixel, 32-bit RGBA version,
     // and use that as our "large" (32x32) icon and 8-bit mask.
     iconImage32x32 = [IconFamily resampleImage:bitmappedIconImage128x128 toIconWidth:32 usingImageInterpolation:imageInterpolation imageRect:nil];
-	[iconImage32x32 lockFocus];
-	iconBitmap32x32 = [[NSBitmapImageRep alloc] initWithFocusedViewRect:NSMakeRect(0, 0, 32, 32)];
-	[iconImage32x32 unlockFocus];
-	[iconImage32x32 release];
-    if (iconBitmap32x32) {
-        [self setIconFamilyElement:kLarge32BitData fromBitmapImageRep:iconBitmap32x32];
-        [self setIconFamilyElement:kLarge8BitData fromBitmapImageRep:iconBitmap32x32];
-        [self setIconFamilyElement:kLarge8BitMask fromBitmapImageRep:iconBitmap32x32];
-        [self setIconFamilyElement:kLarge1BitMask fromBitmapImageRep:iconBitmap32x32];
-    }
+	if(iconImage32x32) {
+		[iconImage32x32 lockFocus];
+		iconBitmap32x32 = [[NSBitmapImageRep alloc] initWithFocusedViewRect:NSMakeRect(0, 0, 32, 32)];
+		[iconImage32x32 unlockFocus];
+		[iconImage32x32 release];
+		if (iconBitmap32x32) {
+			[self setIconFamilyElement:kLarge32BitData fromBitmapImageRep:iconBitmap32x32];
+			[self setIconFamilyElement:kLarge8BitData fromBitmapImageRep:iconBitmap32x32];
+			[self setIconFamilyElement:kLarge8BitMask fromBitmapImageRep:iconBitmap32x32];
+			[self setIconFamilyElement:kLarge1BitMask fromBitmapImageRep:iconBitmap32x32];
+		}
+	}
 
     // Resample the 128x128 image to create a 16x16 pixel, 32-bit RGBA version,
     // and use that as our "small" (16x16) icon and 8-bit mask.
     iconImage16x16 = [IconFamily resampleImage:bitmappedIconImage128x128 toIconWidth:16 usingImageInterpolation:imageInterpolation imageRect:nil];
-	[iconImage16x16 lockFocus];
-	iconBitmap16x16 = [[NSBitmapImageRep alloc] initWithFocusedViewRect:NSMakeRect(0, 0, 16, 16)];
-	[iconImage16x16 unlockFocus];
-	[iconImage16x16 release];
-    if (iconBitmap16x16) {
-        [self setIconFamilyElement:kSmall32BitData fromBitmapImageRep:iconBitmap16x16];
-        [self setIconFamilyElement:kSmall8BitData fromBitmapImageRep:iconBitmap16x16];
-        [self setIconFamilyElement:kSmall8BitMask fromBitmapImageRep:iconBitmap16x16];
-        [self setIconFamilyElement:kSmall1BitMask fromBitmapImageRep:iconBitmap16x16];
-    }
+	if(iconImage16x16) {
+		[iconImage16x16 lockFocus];
+		iconBitmap16x16 = [[NSBitmapImageRep alloc] initWithFocusedViewRect:NSMakeRect(0, 0, 16, 16)];
+		[iconImage16x16 unlockFocus];
+		[iconImage16x16 release];
+		if (iconBitmap16x16) {
+			[self setIconFamilyElement:kSmall32BitData fromBitmapImageRep:iconBitmap16x16];
+			[self setIconFamilyElement:kSmall8BitData fromBitmapImageRep:iconBitmap16x16];
+			[self setIconFamilyElement:kSmall8BitMask fromBitmapImageRep:iconBitmap16x16];
+			[self setIconFamilyElement:kSmall1BitMask fromBitmapImageRep:iconBitmap16x16];
+		}
+	}
 	
 	// Finally, since we aren't going to need the original image anymore, draw a 
 	// black border around the image and set it as the 128x128 image
 	if (iconBitmap128x128) {
-		// If we have successfully made the first 128x128 image, then we can make 
-		// a second one with a border quite easily. We can't reuse the first because
-		// the border looks ugly when scaled down to 16x16.
-		NSImage* bordered128 = iconImage128x128;
 		NSBitmapImageRep* borderedBitmap128;
-		[bordered128 lockFocus];
+		[iconImage128x128 lockFocus];
 		
 		// Set our border color to BLACK.
 		[[NSColor blackColor] set];
@@ -330,7 +333,7 @@
 		
 		// Now that we have drawn our border, copy this image...
 		borderedBitmap128 = [[NSBitmapImageRep alloc] initWithFocusedViewRect:NSMakeRect(0, 0, 128, 128)];
-		[bordered128 unlockFocus];
+		[iconImage128x128 unlockFocus];
         
 		if(borderedBitmap128)
 		{
@@ -343,10 +346,11 @@
 			// Something went wrong. Use the unbordered so at least there's some image...
 			[self setIconFamilyElement:kThumbnail32BitData fromBitmapImageRep:iconBitmap128x128];
 			[self setIconFamilyElement:kThumbnail8BitMask  fromBitmapImageRep:iconBitmap128x128];			
-		}		
+		}
     }	
 
     // Release all of the images that we created and no longer need.
+	[iconImage128x128 release];
     [bitmappedIconImage128x128 release];
     [iconBitmap128x128 release];
     [iconBitmap32x32 release];
