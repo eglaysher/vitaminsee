@@ -40,8 +40,13 @@
 	NSEnumerator* e = [input objectEnumerator];
 	NSString* filePath;
 	while(filePath = [e nextObject])
-		if([IconFamily fileHasCustomIcon:filePath])
+		if([IconFamily fileHasCustomIcon:filePath]) {
+			NSAutoreleasePool* p = [[NSAutoreleasePool alloc] init];
+			
 			[IconFamily removeCustomIconFromFile:filePath];
+			
+			[p release];
+		}
 
 	// Pass on the list of files
 	return input;

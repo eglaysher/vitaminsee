@@ -44,6 +44,9 @@
 	{
 		if([file isImage])
 		{
+			// This is going to take awhile; We need an autorelease pool here.
+			NSAutoreleasePool* p = [[NSAutoreleasePool alloc] init];
+			
 			// If this file already has an icon, we need to remove it.
 			if([IconFamily fileHasCustomIcon:file])
 				[IconFamily removeCustomIconFromFile:file];
@@ -56,6 +59,8 @@
 			IconFamily* iconFamily = [IconFamily iconFamilyWithThumbnailsOfImage:image];
 			if(iconFamily)
 				[iconFamily setAsCustomIconForFile:file];
+			
+			[p release];
 		}
 	}
 	
