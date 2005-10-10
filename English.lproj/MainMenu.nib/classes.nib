@@ -1,0 +1,62 @@
+{
+    IBClasses = (
+        {
+            ACTIONS = {
+                closeWindow = id; 
+                fakeFavoritesMenuSelector = id; 
+                fakeOpenWithMenuSelector = id; 
+                goBack = id; 
+                goEnclosingFolder = id; 
+                goForward = id; 
+                goNextFile = id; 
+                goPreviousFile = id; 
+                goToComputerFolder = id; 
+                goToHomeFolder = id; 
+                goToPicturesFolder = id; 
+                newWindow = id; 
+                openFolder = id; 
+                referesh = id; 
+                revealInFinder = id; 
+                showGPL = id; 
+                showPreferences = id; 
+                toggleFileList = id; 
+                toggleKeywordManager = id; 
+                toggleSortManager = id; 
+                toggleVitaminSee = id; 
+                viewInPreview = id; 
+            }; 
+            CLASS = ApplicationController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {
+                computerFolderMenuItem = NSMenuItem; 
+                favoritesMenuItem = NSMenuItem; 
+                homeFolderMenuItem = NSMenuItem; 
+                mainVitaminSeeWindow = NSWindow; 
+                openWithMenuItem = NSMenuItem; 
+                pictureFolderMenuItem = NSMenuItem; 
+            }; 
+            SUPERCLASS = NSObject; 
+        }, 
+        {CLASS = EGScrollView; LANGUAGE = ObjC; SUPERCLASS = NSScrollView; }, 
+        {
+            ACTIONS = {actualSize = id; zoomIn = id; zoomOut = id; zoomToFit = id; }; 
+            CLASS = FirstResponder; 
+            LANGUAGE = ObjC; 
+            SUPERCLASS = NSObject; 
+        }, 
+        {
+            CLASS = MyImageView; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {scrollView = EGScrollView; }; 
+            SUPERCLASS = NSImageView; 
+        }, 
+        {
+            ACTIONS = {copyButtonPushed = id; moveButtonPushed = id; }; 
+            CLASS = SortManagerController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {mainController = CQViewController; }; 
+            SUPERCLASS = NSWindowController; 
+        }
+    ); 
+    IBVersion = 1; 
+}

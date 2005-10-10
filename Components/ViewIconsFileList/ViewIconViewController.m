@@ -29,12 +29,12 @@
 
 #import "AppKitAdditions.h"
 #import "ViewIconViewController.h"
-#import "ViewAsIconViewCell.h"
-#import "VitaminSEEController.h"
+#import "ViewIconsCell.h"
+//#import "VitaminSEEController.h"
 #import "NSString+FileTasks.h"
-#import "ThumbnailManager.h"
-#import "IconFamily.h"
-#import "PluginLayer.h"
+//#import "ThumbnailManager.h"
+//#import "IconFamily.h"
+#import "FileList.h"
 #import "EGPath.h"
 #import "NSObject+CallWithArray.h"
 
@@ -47,14 +47,11 @@
 
 @implementation ViewIconViewController
 
--(id)initWithPluginLayer:(PluginLayer*)inPluginLayer
+-(id)init
 {
 	if(self = [super init])
 	{
-		[NSBundle loadNibNamed:@"ViewAsIconsView" owner:self];
-
-		[inPluginLayer retain];
-		pluginLayer = inPluginLayer;
+		[NSBundle loadNibNamed:@"ViewIconsView" owner:self];
 
 		oldPosition = -1;
 
@@ -76,6 +73,10 @@
 				 object:nil];	
 		
 		needToRebuild = NO;
+
+		// Lookup the image loading class.
+		ImageLoader = NSClassFromString(@"ImageLoader");
+		pathType = NSClassFromString(@"EGPath");
 	}
 
 	return self;
@@ -87,17 +88,21 @@
 	NSNotificationCenter* nc = [[NSWorkspace sharedWorkspace] notificationCenter];
 	[nc removeObserver:self];
 	
-	[thumbnailCache release];	
-	[pluginLayer release];
+	[thumbnailCache release];
 	[super dealloc];
 }
-	
+
+-(void)setDelegate:(id<FileListDelegate>)newDelegate
+{
+	delegate = newDelegate;
+}
+
 -(void)awakeFromNib
 {
 	[ourBrowser setTarget:self];
 	[ourBrowser setAction:@selector(singleClick:)];
 	[ourBrowser setDoubleAction:@selector(doubleClick:)];	
-	[ourBrowser setCellClass:[ViewAsIconViewCell class]];
+	[ourBrowser setCellClass:[ViewIconsCell class]];
 	[ourBrowser setDelegate:self];
 	
 	[ourBrowser setReusesColumns:NO];
@@ -142,37 +147,28 @@
 	return selectedFiles;
 }
 
--(BOOL)canSetCurrentDirectory
+-(BOOL)canSetDirectory
 {
 	return YES;
 }
 
-- (void)setCurrentDirectory:(EGPath*)newCurrentDirectory
-				currentFile:(NSString*)newCurrentFile
+- (void)setDirectory:(EGPath*)newCurrentDirectory
 {
-//	NSLog(@"-[ViewIconViewController setCurrentDirectory:%@ currentFile:%@]", newCurrentDirectory, newCurrentFile);
-	[pluginLayer startProgressIndicator];
+	[delegate startProgressIndicator];
 	
 	[thumbnailCache removeAllObjects];
-	[pluginLayer flushImageCache];
+//	[pluginLayer flushImageCache];
 	
-//	NSLog(@"Path: %@", [newCurrentDirectory fileSystemPath]);
-
-//	if(![newCurrentDirectory isKindOfClass:[EGPath class]])
-//	{
-//		NSLog(@"WARNING! newCurrentDirectory is of type '%@' and is %@.", 
-//			  [[newCurrentDirectory class] description],
-//			  newCurrentDirectory);
-//	}
-	
-	if(currentDirectory && newCurrentDirectory && 
-	   ![currentDirectory isEqual:newCurrentDirectory])
-		[[[pluginLayer pathManager] prepareWithInvocationTarget:self]
-			setCurrentDirectory:currentDirectory
-					currentFile:[pluginLayer currentFile]];
+	// FIXME-UPDATE
+//	if(currentDirectory && newCurrentDirectory && 
+//	   ![currentDirectory isEqual:newCurrentDirectory])
+//		[[[pluginLayer pathManager] prepareWithInvocationTarget:self]
+//			setCurrentDirectory:currentDirectory
+//					currentFile:[pluginLayer currentFile]];
 
 	// Clear the thumbnails. They need to be regenerated...
-	[pluginLayer clearThumbnailQueue];
+	// FIXME: Update
+//	[pluginLayer clearThumbnailQueue];
 	
 	// Set the current Directory
 	[currentDirectory release];
@@ -221,24 +217,15 @@
 	oldPosition = -1;
 
 	// Now reload the data
-	[ourBrowser setCellClass:[ViewAsIconViewCell class]];
+	[ourBrowser setCellClass:[ViewIconsCell class]];
+//	[ourBrowser setSendsActionOnArrowKeys:NO];
 	[ourBrowser loadColumnZero];
 	
-	[pluginLayer stopProgressIndicator];
+	[delegate stopProgressIndicator];
 	
-	if(newCurrentFile)
-	{
-		// Select the previous directory
-		[pluginLayer setCurrentFile:newCurrentFile];
-		[ourBrowser setPath:[NSString stringWithFormat:@"/%@", 
-			[newCurrentFile lastPathComponent]]];
-	}
-	else
-	{
-		// Select the first file on the list
-		[ourBrowser selectRow:0 inColumn:0];
-		[self singleClick:ourBrowser];
-	}
+	// Select the first file on the list
+	[ourBrowser selectRow:0 inColumn:0];
+	[self singleClick:ourBrowser];
 	
 	[[ourBrowser window] makeFirstResponder:ourBrowser];
 }
@@ -260,11 +247,11 @@
 -(void)directoryMenuSelected:(id)sender
 {
 	id path = [sender representedObject];
-	[self setCurrentDirectory:path
-				  currentFile:nil];
+	[self setDirectory:path];
+//				  currentFile:nil];
 }
 
--(NSView*)view
+-(NSView*)getView
 {
 	return ourView;
 }
@@ -280,7 +267,8 @@ willDisplayCell:(id)cell
 		 column:(int)column
 {
 	NSString* path = [fileList objectAtIndex:row];
-	[cell setCellPropertiesFromPath:path andEGPath:[pluginLayer pathWithPath:path]];
+	// FIXME
+	[cell setCellPropertiesFromPath:path andEGPath:[NSClassFromString(@"EGPath") pathWithPath:path]];
 	
 	// If the cell image hasn't been loaded
 	if(![cell iconImage])
@@ -311,7 +299,7 @@ willDisplayCell:(id)cell
 }
 
 -(void)singleClick:(id)sender
-{
+{	
 	// grab the image path
 	int index = [[ourBrowser matrixInColumn:0] selectedRow];
 	if(index == -1)
@@ -319,7 +307,7 @@ willDisplayCell:(id)cell
 	
 	NSString* absolutePath = [fileList objectAtIndex:index];
 
-	[pluginLayer setCurrentFile:absolutePath];
+	[delegate setDisplayedFileTo:[pathType pathWithPath:absolutePath]];
 
 	if(NSAppKitVersionNumber < 824.00f)
 	{
@@ -353,8 +341,10 @@ willDisplayCell:(id)cell
 	if(preloadRow > -1)
 	{
 		id node = [[ourBrowser loadedCellAtRow:preloadRow column:0] cellPath];
+		// FIXME
 		if(node && [node isImage])
-			[pluginLayer preloadFile:node];
+			[ImageLoader preloadImage:[pathType pathWithPath:node]];
+			//[pluginLayer preloadFile:node];
 	}
 
 	oldPosition = newPosition;
@@ -364,10 +354,11 @@ willDisplayCell:(id)cell
 {
 	// Double clicking sets the directory...if it's a directory
 	NSString* absolutePath = [fileList objectAtIndex:[[ourBrowser matrixInColumn:0] selectedRow]];
-	
+
+	// FIXME
 	if([absolutePath isDir])
-		// Get the first image in the directory:		
-		[self setCurrentDirectory:[pluginLayer pathWithPath:absolutePath] currentFile:nil];
+//		// Get the first image in the directory:		
+		[self setDirectory:[NSClassFromString(@"EGPath") pathWithPath:absolutePath]];
 }
 
 -(void)removeFile:(NSString*)absolutePath
@@ -392,12 +383,13 @@ willDisplayCell:(id)cell
 		if(newFile)
 		{
 			[self selectFile:newFile];
-			[pluginLayer setCurrentFile:newFile];			
+			[delegate setDisplayedFileTo:newFile];			
 		}
 		else if([fileList count] == 0)
-			[pluginLayer setCurrentFile:nil];
-		else
-			[self selectFile:[pluginLayer currentFile]];
+			[delegate setDisplayedFileTo:nil];
+		// FIXME
+		//		else
+//			[self selectFile:[pluginLayer currentFile]];
 	}
 }
 
@@ -415,13 +407,14 @@ willDisplayCell:(id)cell
 
 		// Add it to the list of files to thumbnail. Either it already has a 
 		// thumbnail
-		[pluginLayer generateThumbnailForFile:path];
+		/// FIXME
+		//		[pluginLayer generateThumbnailForFile:path];
 		
 		// Redisplay and select the added file
 		[ourBrowser loadColumnZero];
 		[ourBrowser setPath:[NSString stringWithFormat:@"/%@", [path lastPathComponent]]];
 		
-		[pluginLayer setCurrentFile:[fileList objectAtIndex:index]];
+		[delegate setDisplayedFileTo:[fileList objectAtIndex:index]];
 	}
 }
 
@@ -429,7 +422,7 @@ willDisplayCell:(id)cell
 // were to be removed.
 -(NSString*)nameOfNextFile
 {
-	NSString* currentFile = [pluginLayer currentFile];
+	NSString* currentFile = [delegate currentFile];
 	NSString* nextFile;
 
 	int index = [fileList binarySearchFor:currentFile 
@@ -468,7 +461,7 @@ willDisplayCell:(id)cell
 	{
 		id currentCell = [[ourBrowser matrixInColumn:0] cellAtRow:index column:0];
 
-		[self removeUnneededImageReps:image];
+//		[self removeUnneededImageReps:image];
 		
 		if([currentCell isLoaded])
 		{
@@ -516,14 +509,14 @@ willDisplayCell:(id)cell
 	NSArray* paths = [currentDirectory pathComponents];
 	EGPath* currentDirCopy = [currentDirectory retain];
 	// fixme: Possible problem
-	[self setCurrentDirectory:[paths objectAtIndex:[paths count] - 2]
-				  currentFile:[currentDirCopy fileSystemPath]];
+	[self setDirectory:[paths objectAtIndex:[paths count] - 2]];
+//				  currentFile:[currentDirCopy fileSystemPath]];
 	[currentDirCopy release];
 }
 
 -(BOOL)canGoNextFile 
 {
-	int index = [fileList binarySearchFor:[pluginLayer currentFile]
+	int index = [fileList binarySearchFor:[delegate currentFile]
 						 withSortSelector:@selector(caseInsensitiveCompare:)];
 	
 	int count = [fileList count];
@@ -535,7 +528,7 @@ willDisplayCell:(id)cell
 
 -(void)goNextFile
 {
-	int index = [fileList binarySearchFor:[pluginLayer currentFile]
+	int index = [fileList binarySearchFor:[delegate currentFile]
 						 withSortSelector:@selector(caseInsensitiveCompare:)];
 	index++;
 	
@@ -546,7 +539,7 @@ willDisplayCell:(id)cell
 
 -(BOOL)canGoPreviousFile
 {
-	int index = [fileList binarySearchFor:[pluginLayer currentFile]
+	int index = [fileList binarySearchFor:[delegate currentFile]
 						 withSortSelector:@selector(caseInsensitiveCompare:)];
 
 	if(index > 0)
@@ -557,7 +550,7 @@ willDisplayCell:(id)cell
 
 -(void)goPreviousFile
 {
-	int index = [fileList binarySearchFor:[pluginLayer currentFile]
+	int index = [fileList binarySearchFor:[delegate currentFile]
 						 withSortSelector:@selector(caseInsensitiveCompare:)];
 	index--;
 	
@@ -574,16 +567,16 @@ willDisplayCell:(id)cell
 {
 //	NSLog(@"-[ViewIconViewController(Private) rebuildInternalFileArray]");
 	NSArray* directoryContents = [currentDirectory directoryContents];
-	NSMutableArray* myFileList = [[NSMutableArray alloc] initWithCapacity:[directoryContents count]];
+	NSMutableArray* myFileList = [[NSMutableArray alloc] initWithCapacity:
+		[directoryContents count]];
 
 	int i = 0, count = [directoryContents count];
-//	NSLog(@"There are %d files in the directory %@", count, currentDirectory);
 	for(; i < count; ++i)
 	{
 		EGPath* curPath = (id)CFArrayGetValueAtIndex((CFArrayRef)directoryContents, i);
 		NSString* currentFileWithPath = [curPath fileSystemPath];
 		
-		if(([currentFileWithPath isDir] || [currentFileWithPath isImage]) &&
+		if(([curPath isDirectory] || [currentFileWithPath isImage]) &&
 		   [currentFileWithPath isVisible])
 		{
 			// Before we  do ANYTHING, we make note of the file's modification time.
@@ -598,8 +591,9 @@ willDisplayCell:(id)cell
 
 	// Now build thumbnails for each file in the directory (since we can be 
 	// confident they'll be built in order)
-	[pluginLayer performSelector:@selector(generateThumbnailForFile:)
-				withEachObjectIn:myFileList];
+	// FIXME
+	//	[pluginLayer performSelector:@selector(generateThumbnailForFile:)
+//				withEachObjectIn:myFileList];
 	
 	// Now let's keep our new list of files. (Note it was allocated earlier)
 	[fileList release];	
@@ -652,8 +646,8 @@ willDisplayCell:(id)cell
 	   [[currentDirectory fileSystemPath] hasPrefix:unmountedPath])
 	{
 		// Rebuild list to reflect the mounted drive since we're in machine root.
-		[self setCurrentDirectory:[[currentDirectory pathComponents] objectAtIndex:0]
-					  currentFile:nil];
+		[self setDirectory:[[currentDirectory pathComponents] objectAtIndex:0]];
+//					  currentFile:nil];
 	}
 	
 	needToRebuild = NO;

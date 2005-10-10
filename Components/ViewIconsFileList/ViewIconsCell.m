@@ -3,9 +3,9 @@
 // Module:        Implements the cell used in the ViewAsIconView browser.
 // Part of:       VitaminSEE
 //
-// Revision:      $Revision$
-// Last edited:   $Date$
-// Author:        $Author$
+// Revision:      $Revision: 231 $
+// Last edited:   $Date: 2005-06-02 21:27:59 -0500 (Thu, 02 Jun 2005) $
+// Author:        $Author: glaysher $
 // Copyright:     (c) 2005 Elliot Glaysher
 // Created:       2/9/05
 //
@@ -28,10 +28,10 @@
 ////////////////////////////////////////////////////////////////////////
 
 
-#import "ViewAsIconViewCell.h"
+#import "ViewIconsCell.h"
 #import "AppKitAdditions.h"
 #import "NSString+FileTasks.h"
-#import "VitaminSEEController.h"
+//#import "VitaminSEEController.h"
 #import "EGPath.h"
 
 #include <limits.h>
@@ -45,7 +45,7 @@
 // variables.
 NSSize IMAGE_SIZE = {128.0f, 128.0f};
 
-@implementation ViewAsIconViewCell
+@implementation ViewIconsCell
 
 -(id)init
 {
@@ -92,7 +92,7 @@ NSSize IMAGE_SIZE = {128.0f, 128.0f};
 
 -(void)setCellPropertiesFromPath:(NSString*)path andEGPath:(EGPath*)egpath
 {
-//	NSLog(@"-[ViewAsIconViewCell setCellPropertiesFromPath:%@ andEGPath:%@", path, egpath);
+//	NSLog(@"-[ViewIconsCell setCellPropertiesFromPath:%@ andEGPath:%@", path, egpath);
 	
 	// Keep this path...
 	[path retain];

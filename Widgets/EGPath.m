@@ -42,6 +42,12 @@
 
 @implementation EGPath
 
+-(id)copyWithZone:(NSZone*)zone
+{
+	// Implement for real in subclasses
+	return nil;
+}
+
 +(id)root
 {
 	return [EGPathRoot root];
@@ -50,6 +56,11 @@
 +(id)pathWithPath:(NSString*)path
 {
 	return [EGPathFilesystemPath pathWithPath:path];
+}
+
+-(NSData*)dataRepresentationOfPath
+{
+	return nil;
 }
 
 // ----- Comparator
@@ -73,6 +84,12 @@
 }
 
 -(NSString*)fileSystemPath
+{
+	[self doesNotRecognizeSelector:_cmd];
+	return nil;
+}
+
+-(NSString*)fileName
 {
 	[self doesNotRecognizeSelector:_cmd];
 	return nil;
@@ -140,6 +157,11 @@ static NSString* egPathRootDisplayName = 0;
 
 @implementation EGPathRoot
 
+-(id)copyWithZone:(NSZone*)zone
+{
+	return [[EGPathRoot allocWithZone:zone] init];
+}
+
 +(id)root
 {
 	return [[[EGPathRoot alloc] init] autorelease];
@@ -173,6 +195,11 @@ static NSString* egPathRootDisplayName = 0;
 	}
 	
 	return egPathRootDisplayName;
+}
+
+-(BOOL)isEqual:(id)rhs
+{
+	return [rhs isKindOfClass:[EGPathRoot class]];
 }
 
 -(NSArray*)directoryContents
@@ -215,6 +242,11 @@ static NSString* egPathRootDisplayName = 0;
 
 @implementation EGPathFilesystemPath
 
+-(id)copyWithZone:(NSZone*)zone
+{
+	return [[EGPathFilesystemPath allocWithZone:zone] initWithPath:fileSystemPath];
+}
+
 +(id)pathWithPath:(NSString*)path
 {
 	return [[[EGPathFilesystemPath alloc] initWithPath:path] autorelease];
@@ -232,6 +264,17 @@ static NSString* egPathRootDisplayName = 0;
 {
 	[fileSystemPath release];
 	[super dealloc];
+}
+
+-(BOOL)isEqual:(id)rhs
+{
+	return [rhs isKindOfClass:[EGPathFilesystemPath class]] && 
+		[[rhs fileSystemPath] isEqualToString:fileSystemPath];
+}
+
+-(NSData*)dataRepresentationOfPath
+{
+	return [[NSData alloc] initWithContentsOfFile:fileSystemPath];
 }
 
 // ----------------------------------------------------------------------------

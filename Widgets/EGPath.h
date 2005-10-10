@@ -29,15 +29,20 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface EGPath : NSObject {
+@interface EGPath : NSObject <NSCopying> {
 }
+-(id)copyWithZone:(NSZone*)zone;
 
 +(id)root;
 +(id)pathWithPath:(NSString*)path;
 
+-(NSData*)dataRepresentationOfPath;
+
 // The filename to display to the user
 -(NSString*)displayName;
 -(NSString*)fileSystemPath;
+
+-(NSString*)fileName;
 
 -(BOOL)isRoot;
 

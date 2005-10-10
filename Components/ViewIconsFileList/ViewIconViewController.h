@@ -30,37 +30,35 @@
 
 #import <Cocoa/Cocoa.h>
 
-#import "FileView.h"
+#import "FileList.h"
 
 @class PluginLayer;
 @class ThumbnailManager;
-@class EGPath;
 
-@interface ViewIconViewController : NSObject <FileView> {
+@interface ViewIconViewController : NSObject <FileList> {
 	IBOutlet NSPopUpButton* directoryDropdown;
 	IBOutlet NSBrowser* ourBrowser;
 	IBOutlet NSView* ourView;
 
-	PluginLayer* pluginLayer;
+	Class ImageLoader;
+	Class pathType;
 	
 	NSCell* currentlySelectedCell;
 	EGPath* currentDirectory;
+	EGPath* currentFile;
 	
 	NSMutableArray* fileList;	
 	NSMutableDictionary* thumbnailCache;
 	int oldPosition;
 	
 	BOOL needToRebuild;
+	
+	id<FileListDelegate> delegate;
 }
-
--(void)connectKeyFocus:(id)nextFocus;
 
 //-(void)setThumbnailManager:(ThumbnailManager*)itm;
 
--(void)setCurrentDirectory:(EGPath*)directory currentFile:(NSString*)file;
-
-//-(void)setCurrentDirectory:(NSString*)path;
--(NSView*)view;
+-(void)setDirectory:(EGPath*)directory currentFile:(NSString*)file;
 
 // Methods to handle clicks
 -(void)singleClick:(id)sender;

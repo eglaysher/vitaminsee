@@ -1,44 +1,23 @@
-/////////////////////////////////////////////////////////////////////////
-// File:          $Name$
-// Module:        Utility functions
-// Part of:       VitaminSEE
 //
-// Revision:      $Revision$
-// Last edited:   $Date$
-// Author:        $Author$
-// Copyright:     (c) 2005 Elliot Glaysher
-// Created:       2/6/05
+//  Util.h
+//  Prototype
 //
-/////////////////////////////////////////////////////////////////////////
+//  Created by Elliot Glaysher on 9/18/05.
+//  Copyright 2005 __MyCompanyName__. All rights reserved.
 //
-// This program is free software; you can redistribute it and/or
-// modify it under the terms of the GNU General Public License
-// as published by the Free Software Foundation; either version 2
-// of the License, or (at your option) any later version.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
-// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
-//
-////////////////////////////////////////////////////////////////////////
 
 #import <Cocoa/Cocoa.h>
 
-#define min(a,b) (((a)<(b))?(a):(b))
-struct DS {
-	int width;
-	int height;
-};
+#ifdef __cplusplus
+extern "C"
+{
+#endif        /* __cplusplus */
 
-NSImageRep* loadImage(NSString* path);
-struct DS buildImageSize(int boxWidth, int boxHeight, int imageWidth, int imageHeight,
-					  BOOL canScaleProportionally, float ratioToScale,
-					  BOOL*canGetAwayWithQuickRender, float* ratioUsed);
-float buildRatio(int first, int second);
+NSNumber* buildRatio(float first, float second);
 BOOL imageRepIsAnimated(NSImageRep* rep);
-//BOOL floatEquals(float one, float two, float tolerance = 0.001);
+BOOL floatEquals(float one, float two, float tolerance);
+
+#ifdef __cplusplus
+}
+#endif        /* __cplusplus */
+	

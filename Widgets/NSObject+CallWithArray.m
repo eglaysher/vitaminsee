@@ -39,4 +39,11 @@
 		[self performSelector:selector withObject:(id)CFArrayGetValueAtIndex(ref, i)];
 }
 
+// Fix apple's broken hash!
+- (unsigned int) hash
+{
+	return( ((unsigned int) self >> 4) | 
+            (unsigned int) self << (32 - 4));
+}
+
 @end
