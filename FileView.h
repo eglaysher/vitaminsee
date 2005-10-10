@@ -16,6 +16,14 @@
  */
 @class EGPath;
 
+/** The FileViewFactory protocol must be implemented by the Principle Class of the 
+ * 
+ *
+ */
+@protocol FilveViewFactory <PluginBase>
+-(id)createView;
+@end
+
 @protocol FileView <PluginBase>
 
 // 

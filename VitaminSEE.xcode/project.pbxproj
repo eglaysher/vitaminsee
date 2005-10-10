@@ -13,8 +13,6 @@
 				8B3E9C2E080B0FE5009D39C6,
 				8B6A96F10807ABD10085334A,
 				8B6A96F20807ABD10085334A,
-				8BFDA9740805C0980097504B,
-				8BFDA9750805C0980097504B,
 				8BC8F96507F211F900C66290,
 				8BC8F96607F211F900C66290,
 				8B3CB1A207EA82CE0086353C,
@@ -37,10 +35,12 @@
 				8BE97E2407ACD46B005D384C,
 				8BD011D807A99DFB00AA4BAA,
 				8BD011D907A99DFB00AA4BAA,
-				8B56209B07CEA204005990E1,
-				8B56209C07CEA204005990E1,
 				CD70C2EA084F9C7800AF0415,
 				CD70C2EB084F9C7800AF0415,
+				8BBB0D6208A03A7E00CAE622,
+				8BBB0D6308A03A7E00CAE622,
+				8BBB0EE808A0774800CAE622,
+				8BBB0EE908A0774800CAE622,
 			);
 			isa = PBXGroup;
 			name = "Main Program Classes";
@@ -230,6 +230,7 @@
 		};
 		29B97317FDCFA39411CA2CEA = {
 			children = (
+				8BBB11E808A4485500CAE622,
 				CDF0E2A408359F5A00652BEC,
 				CD44189A082EA2DC003C01FD,
 				CD44189B082EA2DC003C01FD,
@@ -1149,28 +1150,6 @@
 			refType = 4;
 			sourceTree = "<group>";
 		};
-		8B56209B07CEA204005990E1 = {
-			fileEncoding = 4;
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.h;
-			path = "VitaminSEEController+PluginLayer.h";
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		8B56209C07CEA204005990E1 = {
-			fileEncoding = 4;
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.objc;
-			path = "VitaminSEEController+PluginLayer.m";
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		8B56209E07CEA204005990E1 = {
-			fileRef = 8B56209C07CEA204005990E1;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
 		8B5620BB07CEA5A5005990E1 = {
 			buildActionMask = 2147483647;
 			files = (
@@ -1840,6 +1819,8 @@
 				8B5620E107CEA6F1005990E1,
 				8B561D9307CE7627005990E1,
 				8B6D020307CB32CD009A76DA,
+				8BBB0D6408A03A7E00CAE622,
+				8BBB0EEA08A0774800CAE622,
 			);
 			isa = PBXCopyFilesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2388,6 +2369,30 @@
 			settings = {
 			};
 		};
+		8BA278AD08A68AAD00D9947D = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = ViewIconViewFactory.h;
+			path = Components/ViewAsIconsView/ViewIconViewFactory.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8BA278AE08A68AAD00D9947D = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
+			name = ViewIconViewFactory.m;
+			path = Components/ViewAsIconsView/ViewIconViewFactory.m;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8BA278AF08A68AAD00D9947D = {
+			fileRef = 8BA278AE08A68AAD00D9947D;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
 		8BAD1DAF07DE8F9E000CBEA0 = {
 			children = (
 				8BAD1DB007DE8F9E000CBEA0,
@@ -2559,6 +2564,86 @@
 			settings = {
 			};
 		};
+		8BBB0D6208A03A7E00CAE622 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			path = VitaminSEEWindowController.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8BBB0D6308A03A7E00CAE622 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
+			path = VitaminSEEWindowController.m;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8BBB0D6408A03A7E00CAE622 = {
+			fileRef = 8BBB0D6208A03A7E00CAE622;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8BBB0D6508A03A7F00CAE622 = {
+			fileRef = 8BBB0D6308A03A7E00CAE622;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8BBB0EE808A0774800CAE622 = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			path = VitaminSEEPicture.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8BBB0EE908A0774800CAE622 = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
+			path = VitaminSEEPicture.m;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8BBB0EEA08A0774800CAE622 = {
+			fileRef = 8BBB0EE808A0774800CAE622;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8BBB0EEB08A0774800CAE622 = {
+			fileRef = 8BBB0EE908A0774800CAE622;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8BBB11E808A4485500CAE622 = {
+			children = (
+				8BBB11E908A4485500CAE622,
+			);
+			isa = PBXVariantGroup;
+			name = VitaminSEEWindow.nib;
+			path = "";
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8BBB11E908A4485500CAE622 = {
+			isa = PBXFileReference;
+			lastKnownFileType = wrapper.nib;
+			name = English;
+			path = English.lproj/VitaminSEEWindow.nib;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8BBB11EA08A4485500CAE622 = {
+			fileRef = 8BBB11E808A4485500CAE622;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
 		8BBC34B907E13E52007C3B6B = {
 			isa = PBXFileReference;
 			lastKnownFileType = image.icns;
@@ -2643,6 +2728,8 @@
 				8BF72B0607B9E78F003A3C82,
 				8BF72B0507B9E78F003A3C82,
 				8BC8F94907F2102000C66290,
+				8BA278AD08A68AAD00D9947D,
+				8BA278AE08A68AAD00D9947D,
 			);
 			isa = PBXGroup;
 			name = ViewAsIconsFileView;
@@ -2663,6 +2750,7 @@
 			files = (
 				8B4FDA12080713B90016CABC,
 				8B4FDA13080713B90016CABC,
+				8BA278AF08A68AAD00D9947D,
 			);
 			isa = PBXSourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3025,28 +3113,6 @@
 			refType = 4;
 			sourceTree = "<group>";
 		};
-		8BFDA9740805C0980097504B = {
-			fileEncoding = 4;
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.h;
-			path = PluginLayer.h;
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		8BFDA9750805C0980097504B = {
-			fileEncoding = 4;
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.objc;
-			path = PluginLayer.m;
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		8BFDA9770805C0980097504B = {
-			fileRef = 8BFDA9750805C0980097504B;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
 //8B0
 //8B1
 //8B2
@@ -3135,6 +3201,7 @@
 				CD44189C082EA2DC003C01FD,
 				CD44189D082EA2DC003C01FD,
 				CDF0E2A508359F5A00652BEC,
+				8BBB11EA08A4485500CAE622,
 			);
 			isa = PBXResourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3165,11 +3232,9 @@
 				8B5D5E2C07B8215E00957950,
 				8BF72A8A07B9D14C003A3C82,
 				8B6D015707CB23A0009A76DA,
-				8B56209E07CEA204005990E1,
 				8BA124AF07D2816300614FF4,
 				8B3CB1A507EA82CE0086353C,
 				8BC8F96807F211F900C66290,
-				8BFDA9770805C0980097504B,
 				8B6A96F40807ABD10085334A,
 				8B3E9C30080B0FE5009D39C6,
 				8B3E9CAC080B154C009D39C6,
@@ -3182,6 +3247,8 @@
 				CDDBEB4708327E4300F934ED,
 				CDDBEB4B08400DA400E65DA9,
 				CD70C2ED084F9C7800AF0415,
+				8BBB0D6508A03A7F00CAE622,
+				8BBB0EEB08A0774800CAE622,
 			);
 			isa = PBXSourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;

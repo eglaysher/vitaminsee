@@ -58,7 +58,7 @@
 				component = [[windowControllerClass alloc] initWithPluginLayer:
 					[PluginLayer pluginLayerWithController:self]];
 				[loadedCurrentFilePlugins setValue:component forKey:name];				
-				[component fileSetTo:([mainVitaminSeeWindow isVisible] ? currentImageFile : nil )];
+//				[component fileSetTo:([mainVitaminSeeWindow isVisible] ? currentImageFile : nil )];
 			}
 			else if([windowControllerClass conformsToProtocol:@protocol(FileView)])
 			{

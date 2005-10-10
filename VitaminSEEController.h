@@ -69,38 +69,11 @@
 	FavoritesMenuDelegate* favoritesMenuDelegate;
 	IBOutlet NSMenuItem* openWithMenuItem;
 
+	// Open With Menu that needs initialization
 	EGOpenWithMenuDelegate* openWithMenuDelegate;
 	BOOL loadedOpenWithMenu;
-	
-    IBOutlet NSImageView *imageViewer;
-	IBOutlet NSTextField * fileSizeLabel;
-	IBOutlet NSTextField * imageSizeLabel;
-	IBOutlet NSWindow* viewerWindow;
-	IBOutlet RBSplitView* splitView;
-	IBOutlet NSScrollView* scrollView;
 
-	NSCursor *handCursor;
-	
-	// File view components:
-	IBOutlet NSView* currentFileViewHolder;
-	
-	ViewIconViewController* viewAsIconsController;
-
-	IBOutlet NSProgressIndicator* progressIndicator;
-	IBOutlet NSTextField * progressCurrentTask;
-		
-	// Actual application data--NOT OUTLETS!
-	NSString* currentImageFile;
-
-	// Scale data
-	bool scaleProportionally;
-	float scaleRatio;
-
-	NSUndoManager* pathManager;
-	
-	// Other threads that do work for us.
-	ImageTaskManager* imageTaskManager;
-	ThumbnailManager* thumbnailManager;
+	NSMutableArray* pictureViewers;
 	
 	SS_PrefsController *prefs;	
 	
@@ -114,9 +87,9 @@
 	BOOL setPathForFirstTime;
 }
 
--(void)displayAlert:(NSString*)message 
-	informativeText:(NSString*)info 
-		 helpAnchor:(NSString*)anchor;
+//-(void)displayAlert:(NSString*)message 
+//	informativeText:(NSString*)info 
+//		 helpAnchor:(NSString*)anchor;
 
 
 // Moving about in 
@@ -157,17 +130,10 @@
 // ----------------------
 -(IBAction)fakeFavoritesMenuSelector:(id)sender;
 // ----------------------
--(IBAction)goToFolder:(id)sender;
--(void)finishedGotoFolder:(NSString*)done;
 
 -(IBAction)toggleVitaminSee:(id)sender;
 -(IBAction)toggleSortManager:(id)sender;
 -(IBAction)toggleKeywordManager:(id)sender;
-
--(IBAction)zoomIn:(id)sender;
--(IBAction)zoomOut:(id)sender;
--(IBAction)zoomToFit:(id)sender;
--(IBAction)actualSize:(id)sender;
 
 // Window delegate method to redraw the image when we resize...
 //- (void)windowDidResize:(NSNotification*)notification;
@@ -176,21 +142,19 @@
 -(void)setStatusText:(NSString*)statusText;
 
 // Progress indicator control
--(void)startProgressIndicator;
--(void)stopProgressIndicator;
 
 -(IBAction)showPreferences:(id)sender;
--(IBAction)deleteFileClicked:(id)sender;
 
 -(IBAction)showGPL:(id)sender;
 
--(IBAction)addCurrentDirectoryToFavorites:(id)sender;
 -(BOOL)isInFavorites:(NSString*)path;
 
--(IBAction)toggleToolbarShown:(id)sender;
--(IBAction)runToolbarCustomizationPalette:(id)sender;
--(void)selectFirstResponder;
+//-(IBAction)toggleToolbarShown:(id)sender;
+//-(IBAction)runToolbarCustomizationPalette:(id)sender;
+//-(void)selectFirstResponder;
 
--(IBAction)setImageAsDesktop:(id)sender;
+//-(IBAction)setImageAsDesktop:(id)sender;
+
+-(IBAction)newWindow:(id)sender;
 
 @end

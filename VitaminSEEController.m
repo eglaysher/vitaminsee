@@ -63,6 +63,8 @@
 #import "SSPrefsControllerFactory.h"
 #import "NSObject+CallWithArray.h"
 
+#import "VitaminSEEPicture.h"
+
 #import "RBSplitView.h"
 #import "RBSplitSubview.h"
 
@@ -221,65 +223,67 @@
 	loadedViewPlugins = [[NSMutableDictionary alloc] init];
 	loadedCurrentFilePlugins = [[NSMutableDictionary alloc] init];	
 	
-	// Set up the file viewer on the left
-	viewAsIconsController = [self viewAsIconsControllerPlugin];
-	[self setViewAsView:[viewAsIconsController view]];
-	[viewAsIconsController connectKeyFocus:scrollView];
-	[viewerWindow setInitialFirstResponder:[viewAsIconsController view]];
+	pictureViewers = [[NSMutableArray alloc] init];
 	
-	// Set up the scroll view on the right
-	id docView = [[scrollView documentView] retain];
-	id newClipView = [[SBCenteringClipView alloc] initWithFrame:[[scrollView 
-		contentView] frame]];
-	[newClipView setBackgroundColor:[NSColor windowBackgroundColor]];
-	[newClipView setScrollView:scrollView];
-	[scrollView setContentView:(NSClipView*)newClipView];
-	[newClipView release];
-	[scrollView setDocumentView:docView];
-	[docView release];
-	
-	// Set the scroll view to accept input
-	[scrollView setFocusRingType:NSFocusRingAbove];
-	
-	// Use our file size formatter for formating the "[image size]" text label
-	FileSizeFormatter* fsFormatter = [[[FileSizeFormatter alloc] init] autorelease];
-	[[fileSizeLabel cell] setFormatter:fsFormatter];
-	
-	[self setupToolbar];
-	scaleProportionally = NO;
-	scaleRatio = 1.0;
-	
-	loadedOpenWithMenu = NO;
-	
-	// Set up our split view
-	[splitView setDelegate:self];
-	RBSplitSubview* leftView = [splitView subviewAtPosition:0];
-	[leftView setCanCollapse:YES];
-	[leftView setMinDimension:92 andMaxDimension:0];
-	RBSplitSubview* rightView = [splitView subviewAtPosition:1];
-	[rightView setCanCollapse:NO];
-	[rightView setMinDimension:0 andMaxDimension:0];
-	
-	// Restore the settings for the split view
-	[splitView setAutosaveName:@"MainWindowSplitView" recursively:YES];
-	[splitView restoreState:YES];
-	
-	[openWithMenuItem setTarget:self];	
-	
-	// Use an Undo manager to manage moving back and forth.
-	pathManager = [[NSUndoManager alloc] init];	
-	
-	// Launch the other threads and tell them to connect back to us.
-	imageTaskManager = [[ImageTaskManager alloc] initWithController:self];
-	thumbnailManager = [[ThumbnailManager alloc] initWithController:self];
+//	// Set up the file viewer on the left
+//	viewAsIconsController = [self viewAsIconsControllerPlugin];
+//	[self setViewAsView:[viewAsIconsController view]];
+//	[viewAsIconsController connectKeyFocus:scrollView];
+//	[viewerWindow setInitialFirstResponder:[viewAsIconsController view]];
+//	
+//	// Set up the scroll view on the right
+//	id docView = [[scrollView documentView] retain];
+//	id newClipView = [[SBCenteringClipView alloc] initWithFrame:[[scrollView 
+//		contentView] frame]];
+//	[newClipView setBackgroundColor:[NSColor windowBackgroundColor]];
+//	[newClipView setScrollView:scrollView];
+//	[scrollView setContentView:(NSClipView*)newClipView];
+//	[newClipView release];
+//	[scrollView setDocumentView:docView];
+//	[docView release];
+//	
+//	// Set the scroll view to accept input
+//	[scrollView setFocusRingType:NSFocusRingAbove];
+//	
+//	// Use our file size formatter for formating the "[image size]" text label
+//	FileSizeFormatter* fsFormatter = [[[FileSizeFormatter alloc] init] autorelease];
+//	[[fileSizeLabel cell] setFormatter:fsFormatter];
+//	
+//	[self setupToolbar];
+//	scaleProportionally = NO;
+//	scaleRatio = 1.0;
+//	
+//	loadedOpenWithMenu = NO;
+//	
+//	// Set up our split view
+//	[splitView setDelegate:self];
+//	RBSplitSubview* leftView = [splitView subviewAtPosition:0];
+//	[leftView setCanCollapse:YES];
+//	[leftView setMinDimension:92 andMaxDimension:0];
+//	RBSplitSubview* rightView = [splitView subviewAtPosition:1];
+//	[rightView setCanCollapse:NO];
+//	[rightView setMinDimension:0 andMaxDimension:0];
+//	
+//	// Restore the settings for the split view
+//	[splitView setAutosaveName:@"MainWindowSplitView" recursively:YES];
+//	[splitView restoreState:YES];
+//	
+//	[openWithMenuItem setTarget:self];	
+//	
+//	// Use an Undo manager to manage moving back and forth.
+//	pathManager = [[NSUndoManager alloc] init];	
+//	
+//	// Launch the other threads and tell them to connect back to us.
+//	imageTaskManager = [[ImageTaskManager alloc] initWithController:self];
+//	thumbnailManager = [[ThumbnailManager alloc] initWithController:self];
 
 	setPathForFirstTime = NO;
 }
 
 -(void)dealloc
 {
-	[pathManager release];
-	[splitView saveState:YES];
+//	[pathManager release];
+//	[splitView saveState:YES];
 	[super dealloc];
 }
 
@@ -291,48 +295,50 @@
 {
 //	NSLog(@"-[VitaminSEEController applicationDidFinishLaunching]");
 
-	if(!setPathForFirstTime)
-	{		
-		[viewAsIconsController setCurrentDirectory:[EGPathFilesystemPath 
-			pathWithPath:[[NSUserDefaults standardUserDefaults] 
-				objectForKey:@"DefaultStartupPath"]] currentFile:nil];
-	}
+	[self newWindow:self];
 	
-	[self selectFirstResponder];
+//	if(!setPathForFirstTime)
+//	{		
+//		[viewAsIconsController setCurrentDirectory:[EGPathFilesystemPath 
+//			pathWithPath:[[NSUserDefaults standardUserDefaults] 
+//				objectForKey:@"DefaultStartupPath"]] currentFile:nil];
+//	}
+//	
+//	[self selectFirstResponder];
 }
 
 -(BOOL)application:(NSApplication*)theApplication openFile:(NSString*)filename
 {	
 //	NSLog(@"-[VitaminSEEController application: openFile:%@", filename);
 
-	if([filename isImage])
-	{		
-		// Clear the current image. (Do this now since there's the possibility
-		// that the new image won't load in time for display latter on.)
-		[self setCurrentFile:nil];
-		
-		[viewAsIconsController setCurrentDirectory:[EGPathFilesystemPath pathWithPath:[filename stringByDeletingLastPathComponent]]
-									   currentFile:filename];
-		
-		// Show the window if hidden. (Do this now so there isn't a flash from
-		// the previous directory) 
-		if(![mainVitaminSeeWindow isVisible])
-			[self toggleVitaminSee:self];		
-	}
-	else if([filename isDir])
-	{
-		// Show the window
-		if(![mainVitaminSeeWindow isVisible])
-			[self toggleVitaminSee:self];
-		
-		[viewAsIconsController setCurrentDirectory:[EGPathFilesystemPath pathWithPath:filename]
-									   currentFile:nil];
-	}
-	else
-		return NO;
-
-	setPathForFirstTime = YES;
-	return YES;
+//	if([filename isImage])
+//	{		
+//		// Clear the current image. (Do this now since there's the possibility
+//		// that the new image won't load in time for display latter on.)
+//		[self setCurrentFile:nil];
+//		
+//		[viewAsIconsController setCurrentDirectory:[EGPathFilesystemPath pathWithPath:[filename stringByDeletingLastPathComponent]]
+//									   currentFile:filename];
+//		
+//		// Show the window if hidden. (Do this now so there isn't a flash from
+//		// the previous directory) 
+//		if(![mainVitaminSeeWindow isVisible])
+//			[self toggleVitaminSee:self];		
+//	}
+//	else if([filename isDir])
+//	{
+//		// Show the window
+//		if(![mainVitaminSeeWindow isVisible])
+//			[self toggleVitaminSee:self];
+//		
+//		[viewAsIconsController setCurrentDirectory:[EGPathFilesystemPath pathWithPath:filename]
+//									   currentFile:nil];
+//	}
+//	else
+//		return NO;
+//
+//	setPathForFirstTime = YES;
+//	return YES;
 }
 
 - (BOOL)applicationShouldHandleReopen:(NSApplication *)theApplication 
@@ -345,782 +351,9 @@
 	}
 }
 
-- (void)windowWillClose:(NSNotification *)aNotification
+-(IBAction)newWindow:(id)sender
 {
-	// Tell all the plugins that there's no file.
-	[self setPluginCurrentFileTo:nil];
-}
-
--(void)displayAlert:(NSString*)message informativeText:(NSString*)info 
-		 helpAnchor:(NSString*)anchor
-{
-	NSAlert *alert = [[[NSAlert alloc] init] autorelease];
-	[alert addButtonWithTitle:@"OK"];
-	[alert setMessageText:message];
-
-	if(info)
-		[alert setInformativeText:info];
-
-//	NSLog(@"Here!");
-	
-	// If we have a help anchor, set things up so a help button is available.
-	if(anchor)
-	{
-		[alert setHelpAnchor:anchor];
-		[alert setShowsHelp:YES];
-		[alert setDelegate:self];
-	}
-	
-	[alert setAlertStyle:NSWarningAlertStyle];
-	[alert beginSheetModalForWindow:mainVitaminSeeWindow
-					  modalDelegate:nil
-					 didEndSelector:nil
-						contextInfo:nil];
-}
-
--(BOOL)alertShowHelp:(NSAlert *)alert 
-{	
-	NSString* helpBookName = [[[NSBundle mainBundle] localizedInfoDictionary] objectForKey:@"CFBundleHelpBookName"];
-	
-	[[NSHelpManager sharedHelpManager] openHelpAnchor:[alert helpAnchor]
-											   inBook:helpBookName];
-    return YES;
-}
-
-// Changing the user interface
-- (void)setViewAsView:(NSView*)nextView
-{
-	[currentFileViewHolder setSubview:nextView];
-}
-
-// ============================================================================
-//                         FILE VIEW SELECTION
-// ============================================================================
-
--(IBAction)openFolder:(id)sender;
-{
-	[viewAsIconsController doubleClick:nil];
-	[self selectFirstResponder];
-}
-
--(IBAction)fakeOpenWithMenuSelector:(id)sender
-{
-	// Don't do anything. This method is here so we can catch stuff during menu
-	// validation.
-}
-
--(IBAction)closeWindow:(id)sender
-{
-	[mainVitaminSeeWindow close];
-}
-
--(IBAction)referesh:(id)sender
-{
-	NSString* directory = [currentImageFile stringByDeletingLastPathComponent];
-	[viewAsIconsController setCurrentDirectory:[EGPathFilesystemPath pathWithPath:directory]
-								   currentFile:currentImageFile];
-}
-
--(IBAction)addThumbnailForCurrentFile:(id)sender
-{
-	NSArray* currentlySelectedFiles = [viewAsIconsController selectedFiles];
-	
-	NSEnumerator* e = [currentlySelectedFiles objectEnumerator];
-	NSString* file;
-	while(file = [e nextObject])
-	{
-		if([file isImage])
-		{
-			// If this file already has an icon, we need to remove it.
-			if([IconFamily fileHasCustomIcon:file])
-				[IconFamily removeCustomIconFromFile:file];
-			
-			// Build the icon
-			NSImage* image = [[[NSImage alloc] initWithData:
-				[NSData dataWithContentsOfFile:file]] autorelease];
-			
-			// Set icon
-			IconFamily* iconFamily = [IconFamily iconFamilyWithThumbnailsOfImage:image];
-			if(iconFamily)
-				[iconFamily setAsCustomIconForFile:file];
-			
-			// Send the new icon to the file view
-			// FIXME HERE
-		}
-	}
-}
-
--(IBAction)removeThumbnailForCurrentFile:(id)sender
-{
-	[IconFamily removeCustomIconFromFile:currentImageFile];
-	
-	NSArray* currentlySelectedFiles = [viewAsIconsController selectedFiles];
-		
-	// Generate the new thumbnails...
-	NSEnumerator* e = [currentlySelectedFiles objectEnumerator];
-	NSString* file;
-	while(file = [e nextObject])
-	{
-		if([file isImage])
-		{
-			// If this file already has an icon, we need to remove it.
-			if([IconFamily fileHasCustomIcon:file])
-				[IconFamily removeCustomIconFromFile:file];
-						
-			// Send the new icon to the file view
-			// FIXME HERE
-		}
-	}
-}
-
--(IBAction)toggleFileList:(id)sender
-{
-	RBSplitSubview* firstSplit = [splitView subviewAtPosition:0];
-	if ([firstSplit isCollapsed]) {
-		[firstSplit expandWithAnimation:NO withResize:NO];
-	} else {
-		[firstSplit collapseWithAnimation:NO withResize:NO];
-	}
-}
-
--(IBAction)revealInFinder:(id)sender
-{
-	[[NSWorkspace sharedWorkspace] selectFile:currentImageFile
-					 inFileViewerRootedAtPath:@""];
-}
-
--(IBAction)viewInPreview:(id)sender
-{
-	[[NSWorkspace sharedWorkspace]	openFile:currentImageFile
-							 withApplication:@"Preview"];
-}
-
--(IBAction)goPreviousFile:(id)sender
-{
-	[viewAsIconsController goPreviousFile];
-}
-
--(IBAction)goNextFile:(id)sender
-{
-	[viewAsIconsController goNextFile];
-}
-
--(IBAction)goEnclosingFolder:(id)sender
-{
-	[viewAsIconsController goEnclosingFolder];
-}
-
--(IBAction)goBack:(id)sender
-{
-	[pathManager undo];
-	[self selectFirstResponder];
-}
-
--(IBAction)goForward:(id)sender
-{
-	[pathManager redo];
-	[self selectFirstResponder];
-}
-
--(IBAction)goToComputerFolder:(id)sender
-{
-	if(![mainVitaminSeeWindow isVisible])
-		[self toggleVitaminSee:self];	
-	[viewAsIconsController setCurrentDirectory:[EGPathRoot root]
-								   currentFile:nil];
-}
-
--(IBAction)goToHomeFolder:(id)sender
-{
-	if(![mainVitaminSeeWindow isVisible])
-		[self toggleVitaminSee:self];
-	[viewAsIconsController setCurrentDirectory:[EGPathFilesystemPath pathWithPath:NSHomeDirectory()]
-								   currentFile:nil];
-}
-
--(IBAction)goToPicturesFolder:(id)sender
-{
-	if(![mainVitaminSeeWindow isVisible])
-		[self toggleVitaminSee:self];
-
-	[viewAsIconsController setCurrentDirectory:[EGPathFilesystemPath
-		pathWithPath:[NSHomeDirectory() 
-			stringByAppendingPathComponent:@"Pictures"]]
-								   currentFile:nil];
-}
-
--(IBAction)fakeFavoritesMenuSelector:(id)sender
-{
-}
-
--(IBAction)goToFolder:(id)sender
-{
-	[[self gotoFolderController] showSheet:mainVitaminSeeWindow
-							  initialValue:@""
-									target:self
-								  selector:@selector(finishedGotoFolder:)];
-}
-
--(void)finishedGotoFolder:(NSString*)done
-{
-	if([done isDir])
-	{
-		// Clear the current image. (Do this now since there's the possibility
-		// that the new image won't load in time for display latter on.)
-		if(![mainVitaminSeeWindow isVisible])
-			[self setCurrentFile:nil];
-		
-		[viewAsIconsController setCurrentDirectory:[EGPathFilesystemPath pathWithPath:done]
-									   currentFile:nil];
-		
-		// Show the window if hidden. (Do this now so there isn't a flash from
-		// the previous directory)
-		if(![mainVitaminSeeWindow isVisible])
-			[self toggleVitaminSee:self];
-	}
-	else
-		// Beep at the user...
-		AlertSoundPlay();
-}
-	
--(void)toggleVisible:(NSWindow*)window
-{
-	if([window isVisible])
-		[window close];
-	else
-		[window makeKeyAndOrderFront:self];	
-}
-
--(IBAction)toggleVitaminSee:(id)sender
-{
-	if([mainVitaminSeeWindow isVisible])
-		[mainVitaminSeeWindow close];
-	else
-	{
-		[self setPluginCurrentFileTo:currentImageFile];
-		[mainVitaminSeeWindow makeKeyAndOrderFront:self];
-	}
-}
-
--(IBAction)toggleSortManager:(id)sender
-{	
-	[self toggleVisible:[[self sortManagerController] window]];
-}
-
--(IBAction)toggleKeywordManager:(id)sender
-{
-	[self toggleVisible:[[self keywordManagerController] window]];
-}
-
--(BOOL)validateMenuItem:(NSMenuItem *)theMenuItem
-{
-    BOOL enable = [self respondsToSelector:[theMenuItem action]];
-	BOOL mainWindowVisible = [mainVitaminSeeWindow isVisible];
-	SEL action = [theMenuItem action];
-	
-	if(action == @selector(openFolder:))
-	{
-		enable = mainWindowVisible && [currentImageFile isDir];
-	}
-	else if(action == @selector(fakeOpenWithMenuSelector:))
-	{
-		enable = mainWindowVisible && ![currentImageFile isDir];
-		
-		if(![theMenuItem submenu] && !enable)
-		{
-			// Set a false menu
-			NSMenu* openWithMenu = [[[NSMenu alloc] init] autorelease];
-			[theMenuItem setSubmenu:openWithMenu];
-		}
-		else if(!loadedOpenWithMenu && enable)
-		{
-			// Set up the real Open with Menu
-			NSMenu* openWithMenu = [[[NSMenu alloc] init] autorelease];
-			openWithMenuDelegate = [[[self openWithMenuController] buildMenuDelegate] retain];
-			loadedOpenWithMenu = YES;
-//			[openWithMenuDelegate setDelegate:self];
-			[openWithMenu setDelegate:openWithMenuDelegate];
-			[theMenuItem setSubmenu:openWithMenu];		
-		}
-	}
-	else if(action == @selector(closeWindow:) ||
-			action == @selector(referesh:))
-	{
-		enable = mainWindowVisible;
-	}
-	else if(action == @selector(addCurrentDirectoryToFavorites:))
-	{
-		enable = mainWindowVisible && [currentImageFile isDir] && 
-			[self isInFavorites:currentImageFile];
-	}
-	else if(action == @selector(setImageAsDesktop:))
-	{
-		BOOL isImage = [currentImageFile isImage];
-		BOOL isDir = [currentImageFile isDir];
-		
-		enable = mainWindowVisible && (isImage || isDir);
-		
-		if(isImage)
-		{
-			[theMenuItem setTitle:NSLocalizedString(@"Set As Desktop Picture", @"Text in File menu")];
-		}
-		else
-		{
-			[theMenuItem setTitle:NSLocalizedString(@"Use Folder For Desktop Pictures", @"Text in File menu")];
-			
-			// Only enable if the folder contains an image
-			BOOL containsImage = NO;
-			NSArray* directoryContents = [[NSFileManager defaultManager] directoryContentsAtPath:currentImageFile];
-			int i = 0, count = [directoryContents count];
-			for(; i < count; ++i)
-			{
-				if([((id)CFArrayGetValueAtIndex((CFArrayRef)directoryContents, i)) isImage])
-				{
-					containsImage = YES;
-					break;
-				}
-			}
-			
-			enable = enable && containsImage;
-		}
-	}
-	else if(action == @selector(deleteFileClicked:))
-	{
-		enable = mainWindowVisible && [[viewAsIconsController selectedFiles] count];
-	}
-	// View Menu
-	else if (action == @selector(actualSize:))
-	{
-		enable = mainWindowVisible && [currentImageFile isImage] && 
-			!(scaleProportionally && scaleRatio == 1.0);
-	}
-	else if(action == @selector(zoomToFit:))
-	{
-		enable = mainWindowVisible && [currentImageFile isImage] && scaleProportionally;
-	}
-	else if (action == @selector(zoomIn:) ||
-			 action == @selector(zoomOut:))
-	{
-		enable = mainWindowVisible && [currentImageFile isImage];
-	}
-	else if(action == @selector(revealInFinder:))
-	{
-		enable = mainWindowVisible && [[viewAsIconsController selectedFiles] count];
-	}
-	else if(action == @selector(toggleFileList:))
-	{
-		enable = mainWindowVisible;
-		
-		if([[splitView subviewAtPosition:0] isCollapsed])
-			[theMenuItem setTitle:NSLocalizedString(@"Show File List", @"Text in View menu")];
-		else
-			[theMenuItem setTitle:NSLocalizedString(@"Hide File List", @"Text in View menu")];
-	}
-	else if(action == @selector(viewInPreview:))
-	{
-		enable = mainWindowVisible && [currentImageFile isImage];
-	}
-	else if(action == @selector(toggleToolbarShown:))
-	{
-		enable = mainWindowVisible;
-		
-		// Set the menu item to the correct state
-		if([[mainVitaminSeeWindow toolbar] isVisible])
-			[theMenuItem setTitle:NSLocalizedString(@"Hide Toolbar", @"Text in View menu")];
-		else
-			[theMenuItem setTitle:NSLocalizedString(@"Show Toolbar", @"Text in View menu")];
-	}
-	else if(action == @selector(runToolbarCustomizationPalette:))
-	{
-		enable = mainWindowVisible;
-	}
-	// Go Menu
-	else if (action == @selector(goNextFile:))
-	{
-		enable = mainWindowVisible && [viewAsIconsController canGoNextFile];
-	}
-	else if (action == @selector(goPreviousFile:))
-	{
-		enable = mainWindowVisible && [viewAsIconsController canGoPreviousFile];
-	}
-    else if (action == @selector(goEnclosingFolder:))
-    {
-		// You can go up as long as there is a thing to go back on...
-        enable = mainWindowVisible && [viewAsIconsController canGoEnclosingFolder];
-    }
-    else if (action == @selector(goBack:))
-    {
-        enable = mainWindowVisible && [pathManager canUndo];
-    }
-	else if (action == @selector(goForward:))
-	{
-		enable = mainWindowVisible && [pathManager canRedo];
-	}
-	else if (action == @selector(goToComputerFolder:))
-	{
-		// Set the icon if we don't have one yet.
-		if(![theMenuItem image])
-		{
-			NSImage* img = [[NSImage imageNamed:@"iMac"] copy];
-			[img setScalesWhenResized:YES];
-			[img setSize:NSMakeSize(16, 16)];
-			[theMenuItem setImage:img];
-			[img release];
-		}
-	}	
-	else if (action == @selector(goToHomeFolder:))
-	{
-		// Set the icon if we don't have one yet.
-		if(![theMenuItem image])
-		{
-			NSImage* img = [[NSWorkspace sharedWorkspace] iconForFile:NSHomeDirectory()];
-			[img setSize:NSMakeSize(16, 16)];
-			[theMenuItem setImage:img];
-		}
-	}
-	else if (action == @selector(goToPicturesFolder:))
-	{
-		enable = [[NSHomeDirectory() stringByAppendingPathComponent:@"Pictures"] isDir];
-
-		// Set the icon if we haven't done so yet.
-		if(![theMenuItem image])
-		{
-			NSImage* img;
-			if(enable)
-			{
-				img = [[[NSImage imageNamed:@"ToolbarPicturesFolderIcon"] copy] autorelease];
-				[img setScalesWhenResized:YES];
-				[img setSize:NSMakeSize(16, 16)];
-			}
-			else
-				img = [[NSImage alloc] initWithSize:NSMakeSize(16,16)];
-			
-			[theMenuItem setImage:img];
-		}
-	}
-	else if (action == @selector(goToFolder:))
-	{
-		enable = mainWindowVisible;
-	}
-	else if (action == @selector(fakeFavoritesMenuSelector:))
-	{
-		[theMenuItem setAction:nil];
-		
-		// Set up the Favorites Menu
-		NSMenu* favoritesMenu = [[[NSMenu alloc] init] autorelease];
-		favoritesMenuDelegate = [[FavoritesMenuDelegate alloc] initWithController:self];
-		[favoritesMenu setDelegate:favoritesMenuDelegate];
-		[theMenuItem setSubmenu:favoritesMenu];		
-	}	
-
-    return enable;
-}
-
-- (void)setCurrentFile:(NSString*)newCurrentFile
-{
-	// CHECK THIS OUT LATER!!!!
-	[newCurrentFile retain];
-	[currentImageFile release];
-	currentImageFile = newCurrentFile;
-	
-	// Okay, we don't know what kind of thing we have been passed, so let's
-	BOOL isDir = [newCurrentFile isDir];
-	if((newCurrentFile && isDir) || !currentImageFile)
-		[fileSizeLabel setObjectValue:@"---"];
-	else
-		[fileSizeLabel setObjectValue:[NSNumber 
-			numberWithInt:[newCurrentFile fileSize]]];
-	
-	if(![newCurrentFile isImage])
-		[imageSizeLabel setStringValue:@"---"];
-	
-	[self setPluginCurrentFileTo:newCurrentFile];
-
-	[self redraw];
-}
-
--(void)setPluginCurrentFileTo:(NSString*)newCurrentFile
-{
-	// Alert all the plugins of the new file:
-	NSEnumerator* e = [loadedCurrentFilePlugins objectEnumerator];
-	id <CurrentFilePlugin> plugin;
-	while(plugin = [e nextObject])
-		[plugin fileSetTo:newCurrentFile];	
-}
-
--(void)preloadFile:(NSString*)file
-{
-	if([[[NSUserDefaults standardUserDefaults] objectForKey:@"PreloadImages"] boolValue])
-		[imageTaskManager preloadImage:file];
-}
-
--(void)redraw
-{
-	// UGLY HACK TO GET HIS WORKING BY ADA05!!!!
-	// There's an image cacheing exception if there's no place to place the image
-	// (this makes no sense), so hard code it so that this condition can't happen.
-	if([[splitView subviewAtPosition:1] dimension] < 20)
-		return;
-	
-	[imageSizeLabel setStringValue:@"---"];
-	
-	if(!currentImageFile)
-	{
-		// Set nothing.
-		[imageViewer setImage:nil];	
-	}
-	else
-	{		
-		// Tell the ImageTaskManager to load the file and contact us when done
-		[self startProgressIndicator];
-		int smoothing = [[[NSUserDefaults standardUserDefaults]
-			objectForKey:@"SmoothingTag"] intValue];
-		[imageTaskManager displayImageWithPath:currentImageFile
-									 smoothing:smoothing
-						   scaleProportionally:scaleProportionally
-									scaleRatio:scaleRatio
-							   contentViewSize:[scrollView contentSize]];
-	}
-}
-
--(IBAction)zoomIn:(id)sender
-{
-	scaleProportionally = YES;
-	scaleRatio = scaleRatio + 0.10f;
-	[self redraw];
-}
-
--(IBAction)zoomOut:(id)sender
-{
-	scaleProportionally = YES;
-	scaleRatio = scaleRatio - 0.10;
-	if(scaleRatio <= 0)
-		scaleRatio = 0.05;
-	[self redraw];
-}
-
--(IBAction)zoomToFit:(id)sender
-{
-	scaleProportionally = NO;
-	scaleRatio = 1.0;
-	[self redraw];
-}
-
--(IBAction)actualSize:(id)sender
-{
-	scaleProportionally = YES;
-	scaleRatio = 1.0;
-	[self redraw];
-}
-
-// Redraw the window when the window resizes.
-//-(void)windowDidResize:(NSNotification*)notification
--(void)didAdjustSubviews:(id)rbview
-{
-	[self redraw];
-}
-
-- (void)splitView:(RBSplitView*)sender didCollapse:(RBSplitSubview*)subview
-{
-	// When we collapse, give the image viewer focus
-	[scrollView setNextKeyView:nil];
-	[self selectFirstResponder];
-	[imageViewer setNextKeyView:imageViewer];
-}
-
-- (void)splitView:(RBSplitView*)sender didExpand:(RBSplitSubview*)subview 
-{
-	// When we expand, make the file view first responder
-	[self selectFirstResponder];
-	[viewAsIconsController connectKeyFocus:scrollView];
-	[mainVitaminSeeWindow setViewsNeedDisplay:YES];
-}
-
-- (void)splitView:(RBSplitView*)sender wasResizedFrom:(float)oldDimension to:(float)newDimension
-{
-	[mainVitaminSeeWindow setViewsNeedDisplay:YES];
-}
-
-// Redraw the window when the seperator between the file list and image view
-// is moved.
--(void)splitViewDidResizeSubviews:(NSNotification*)notification
-{
-	[viewAsIconsController clearCache];
-	[self redraw];
-}
-
-// Callback function for ImageTaskManager. Gets called when an image is to be
-// displayed in the window...
--(void)displayImage
-{
-	// Get the current image from the ImageTaskManager
-	int x, y;
-	float scale;
-	NSImage* image = [imageTaskManager getCurrentImageWithWidth:&x height:&y 
-														  scale:&scale];
-
-	[imageViewer setAnimates:YES];
-	[imageViewer setImage:image];
-	[imageViewer setFrameSize:[image size]];
-	
-	// Set the correct cursor. If the picture is larger then the viewing area,
-	// we use a grabing cursor. Otherwise, we use the standard pointer.
-	NSSize imageSize = [image size];
-	NSSize scrollViewSize = [scrollView contentSize];
-	if(imageSize.width > scrollViewSize.width ||
-	   imageSize.height > scrollViewSize.height)
-	{
-		if(!handCursor)
-			handCursor = [[NSCursor alloc] initWithImage:[NSImage 
-				imageNamed:@"hand_open"] hotSpot:NSMakePoint(8, 8)];
-		[(NSScrollView*)[imageViewer superview] setDocumentCursor:handCursor];
-	}
-	else
-		[(NSScrollView*)[imageViewer superview] setDocumentCursor:nil];
-	
-	scaleRatio = scale;
-
-	if([currentImageFile isDir])
-		[imageSizeLabel setStringValue:@"---"];
-	else
-		[imageSizeLabel setStringValue:[NSString stringWithFormat:@"%i x %i", 
-			x, y]];
-}
-
--(void)setIcon
-{
-	NSImage* thumbnail = [thumbnailManager getCurrentThumbnail];
-	NSString* path = [thumbnailManager getCurrentPath];
-
-	[viewAsIconsController setThumbnail:thumbnail forFile:path];
-}
-
-// Progress indicator control
--(void)startProgressIndicator
-{
-	[scrollView setNeedsDisplay:YES];
-	[progressIndicator setHidden:NO];
-	[progressIndicator startAnimation:self];
-}
-
--(void)stopProgressIndicator
-{
-	[scrollView setNeedsDisplay:YES];
-	[progressIndicator stopAnimation:self];
-	[progressIndicator setHidden:YES];
-}
-
--(void)setStatusText:(NSString*)statusText
-{
-	if(statusText)
-	{
-		[progressCurrentTask setStringValue:statusText];		
-		[progressCurrentTask setHidden:NO];
-	}
-	else
-		[progressCurrentTask setHidden:YES];
-
-	[scrollView setNeedsDisplay:YES];
-}
-
--(IBAction)showPreferences:(id)sender
-{
-	if (!prefs) {
-        // Determine path to the sample preference panes
-		prefs = [[[self ssPrefsController] buildWithPanesSearchPath:[[NSBundle mainBundle] builtInPlugInsPath]
-												   bundleExtension:@"cqvPref"] retain];
-        
-        // Set which panes are included, and their order.
-        [prefs setPanesOrder:[NSArray arrayWithObjects:
-			NSLocalizedString(@"General", @"Name of General Preference Pane"),
-			NSLocalizedString(@"Favorites", @"Name of Favorites Prefernce Pane"),
-			NSLocalizedString(@"Keywords", @"Name of Keywords Preference Pane"),
-			NSLocalizedString(@"Updating", @"Name of Updating Preference Pane"),
-			NSLocalizedString(@"Advanced", @"Name of Advanced Preference Pange"),
-			nil]];
-    }
-    
-    // Show the preferences window.
-    [prefs showPreferencesWindow];
-}
-
--(IBAction)deleteFileClicked:(id)sender
-{
-	[self deleteFile:[self currentFile]];
-}
-
--(IBAction)showGPL:(id)sender
-{
-	[[NSWorkspace sharedWorkspace] openFile:[[NSBundle mainBundle] 
-		pathForResource:@"GPL"
-				 ofType:@"txt"]];
-}
-
--(IBAction)addCurrentDirectoryToFavorites:(id)sender
-{
-	// Adds the currently selected directory to the favorites menu
-	if([currentImageFile isDir])
-	{
-		NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
-		NSMutableArray* favoritesArray = [[userDefaults objectForKey:
-			@"SortManagerPaths"] mutableCopy];
-		
-		NSDictionary* newItem = [NSDictionary dictionaryWithObjectsAndKeys:
-			[currentImageFile lastPathComponent], @"Name",
-			currentImageFile, @"Path", nil];
-		[favoritesArray addObject:newItem];
-		[userDefaults setValue:favoritesArray forKey:@"SortManagerPaths"];
-		
-		[favoritesArray release];
-	}
-}
-
--(BOOL)isInFavorites:(NSString*)path
-{
-	BOOL enable = YES;
-	NSEnumerator* e = [[[NSUserDefaults standardUserDefaults]
-			objectForKey:@"SortManagerPaths"] objectEnumerator];
-	NSString* thisPath;
-	while(thisPath = [[e nextObject] objectForKey:@"Path"])
-	{
-		if([thisPath isEqual:path])
-		{
-			enable = NO;
-			break;
-		}
-	}
-	
-	return enable;
-}
-
-// These two functions are here so that -[VitaminSEEController validateMenu:]
-// get's used.
--(IBAction)toggleToolbarShown:(id)sender
-{
-	[mainVitaminSeeWindow toggleToolbarShown:sender];
-}
-
--(IBAction)runToolbarCustomizationPalette:(id)sender
-{
-	[mainVitaminSeeWindow runToolbarCustomizationPalette:sender];
-}
-
--(void)selectFirstResponder
-{
-	// Make the icon view the first responder since the previous enable
-	// makes directoryDropdown FR.
-	if(![[splitView subviewAtPosition:0] isCollapsed])
-		[viewAsIconsController makeFirstResponderTo:mainVitaminSeeWindow];
-	else
-		[mainVitaminSeeWindow makeFirstResponder:scrollView];	
-}
-
--(IBAction)setImageAsDesktop:(id)sender
-{
-	if([currentImageFile isImage])
-		[[self desktopBackgroundController] setDesktopBackgroundToFile:currentImageFile];
-	else if([currentImageFile isDir])
-		[[self desktopBackgroundController] setDesktopBackgroundToFolder:currentImageFile];
+	id newViewer = [[VitaminSEEPicture alloc] initWithPath:@"/Users/elliot/Pictures"];
 }
 
 @end

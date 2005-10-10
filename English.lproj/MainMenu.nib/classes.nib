@@ -1,7 +1,12 @@
 {
     IBClasses = (
         {CLASS = EGScrollView; LANGUAGE = ObjC; SUPERCLASS = NSScrollView; }, 
-        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {
+            ACTIONS = {actualSize = id; zoomIn = id; zoomOut = id; zoomToFit = id; }; 
+            CLASS = FirstResponder; 
+            LANGUAGE = ObjC; 
+            SUPERCLASS = NSObject; 
+        }, 
         {
             CLASS = MyImageView; 
             LANGUAGE = ObjC; 
@@ -17,10 +22,7 @@
         }, 
         {
             ACTIONS = {
-                actualSize = id; 
-                addCurrentDirectoryToFavorites = id; 
                 closeWindow = id; 
-                deleteFileClicked = id; 
                 fakeFavoritesMenuSelector = id; 
                 fakeOpenWithMenuSelector = id; 
                 goBack = id; 
@@ -29,44 +31,29 @@
                 goNextFile = id; 
                 goPreviousFile = id; 
                 goToComputerFolder = id; 
-                goToFolder = id; 
                 goToHomeFolder = id; 
                 goToPicturesFolder = id; 
+                newWindow = id; 
                 openFolder = id; 
                 referesh = id; 
                 revealInFinder = id; 
-                runToolbarCustomizationPalette = id; 
-                setImageAsDesktop = id; 
                 showGPL = id; 
                 showPreferences = id; 
                 toggleFileList = id; 
                 toggleKeywordManager = id; 
                 toggleSortManager = id; 
-                toggleToolbarShown = id; 
                 toggleVitaminSee = id; 
                 viewInPreview = id; 
-                zoomIn = id; 
-                zoomOut = id; 
-                zoomToFit = id; 
             }; 
             CLASS = VitaminSEEController; 
             LANGUAGE = ObjC; 
             OUTLETS = {
                 computerFolderMenuItem = NSMenuItem; 
-                currentFileViewHolder = NSView; 
                 favoritesMenuItem = NSMenuItem; 
-                fileSizeLabel = NSTextField; 
                 homeFolderMenuItem = NSMenuItem; 
-                imageSizeLabel = NSTextField; 
-                imageViewer = NSImageView; 
                 mainVitaminSeeWindow = NSWindow; 
                 openWithMenuItem = NSMenuItem; 
                 pictureFolderMenuItem = NSMenuItem; 
-                progressCurrentTask = NSTextField; 
-                progressIndicator = NSProgressIndicator; 
-                scrollView = NSScrollView; 
-                splitView = RBSplitView; 
-                viewerWindow = NSWindow; 
             }; 
             SUPERCLASS = NSObject; 
         }
