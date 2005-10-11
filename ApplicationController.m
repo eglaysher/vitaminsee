@@ -325,13 +325,13 @@ static ApplicationController* appControl;
 	if(![mainVitaminSeeWindow isVisible])
 	{
 		// Now display the window
-		[self toggleVitaminSee:self];
+//		[self toggleVitaminSee:self];
 	}
 }
 
 -(IBAction)newWindow:(id)sender
 {
-	id newViewer = [[ViewerDocument alloc] initWithPath:@"/Users/elliot/Pictures"];
+	[[ViewerDocument alloc] initWithPath:@"/Users/elliot/Pictures"];
 }
 
 @end

@@ -1186,6 +1186,7 @@
 			buildRules = (
 			);
 			buildSettings = {
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1193,7 +1194,6 @@
 				INFOPLIST_FILE = "Components/ViewIconsFileList/ViewIconsFileList-Info.plist";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
 				LIBRARY_STYLE = BUNDLE;
-				OPTIMIZATION_CFLAGS = "";
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "-framework Foundation -framework AppKit";
 				OTHER_REZFLAGS = "";
@@ -1235,10 +1235,9 @@
 			explicitFileType = wrapper.cfbundle;
 			includeInIndex = 0;
 			isa = PBXFileReference;
-			name = ViewIconsFileList.bundle;
-			path = build/ViewIconsFileList.bundle;
-			refType = 4;
-			sourceTree = "<group>";
+			path = ViewIconsFileList.bundle;
+			refType = 3;
+			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		8B24491708FB55C8004716BC = {
 			fileEncoding = 30;
@@ -1399,6 +1398,7 @@
 			buildRules = (
 			);
 			buildSettings = {
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = VitaminSEE_Prefix.pch;

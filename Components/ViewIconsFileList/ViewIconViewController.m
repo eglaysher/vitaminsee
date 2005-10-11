@@ -222,7 +222,7 @@
 //	[ourBrowser setSendsActionOnArrowKeys:NO];
 	[ourBrowser loadColumnZero];
 	
-	[delegate stopProgressIndicator];
+//	[delegate stopProgressIndicator];
 	
 	// Select the first file on the list
 	[ourBrowser selectRow:0 inColumn:0];
@@ -249,7 +249,6 @@
 {
 	id path = [sender representedObject];
 	[self setDirectory:path];
-//				  currentFile:nil];
 }
 
 -(NSView*)getView

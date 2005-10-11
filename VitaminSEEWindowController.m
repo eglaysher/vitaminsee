@@ -55,8 +55,8 @@
 	// Set the scroll view to accept input
 	[scrollView setFocusRingType:NSFocusRingAbove];
 	
-	// Set up our split view
-	[splitView setDelegate:self];
+	// Set up our split view. We do this because the pallete is broken...
+//	[splitView setDelegate:self];
 	RBSplitSubview* leftView = [splitView subviewAtPosition:0];
 	[leftView setCanCollapse:YES];
 	[leftView setMinDimension:92 andMaxDimension:0];
@@ -73,8 +73,6 @@
 	fileList = newList;
 	
 	id fileListView = [fileList getView];
-	NSLog(@"CFV: %@", currentFileViewHolder);
-	NSLog(@"FLV: %@", fileListView);
 	[currentFileViewHolder setSubview:fileListView];
 }
 
@@ -82,21 +80,21 @@
 
 -(void)didAdjustSubviews:(id)rbview
 {
-	[pictureState redraw];
+//	[pictureState redraw];
 }
 
 - (void)splitView:(RBSplitView*)sender didCollapse:(RBSplitSubview*)subview
 {
 	// When we collapse, give the image viewer focus
 	[scrollView setNextKeyView:nil];
-	[self selectFirstResponder];
+//	[self selectFirstResponder];
 	[imageViewer setNextKeyView:imageViewer];
 }
 
 - (void)splitView:(RBSplitView*)sender didExpand:(RBSplitSubview*)subview 
 {
 	// When we expand, make the file view first responder
-	[self selectFirstResponder];
+//	[self selectFirstResponder];
 //	[viewAsIconsController connectKeyFocus:scrollView];
 //	[mainVitaminSeeWindow setViewsNeedDisplay:YES];
 }
@@ -212,6 +210,47 @@
 	id document = [self document];
 	[self setDocument:nil];
 	[document release];
+}
+
+
+//-----------------------------------------------------------------------------
+
+/** Menu item validation
+ */
+-(BOOL)validateMenuItem:(NSMenuItem *)anItem
+{
+	// Default behaviour: only enable if we respond to this selector.
+	SEL action = [anItem action];
+    BOOL enable = [self respondsToSelector:action];
+	
+	if(action == @selector(toggleFileList:))
+	{
+		// In case of toggleFileList:, we need to make sure that we present the
+		// correct label to the user.
+		if([[splitView subviewAtPosition:0] isCollapsed])
+			[anItem setTitle:NSLocalizedString(@"Show File List", 
+											   @"Text in View menu")];
+		else
+			[anItem setTitle:NSLocalizedString(@"Hide File List",
+											   @"Text in View menu")];		
+	}
+	
+	return enable;
+}
+
+//-----------------------------------------------------------------------------
+// VIEW MENU
+//-----------------------------------------------------------------------------
+
+/** Expands or collapses the file list in this window.
+ */
+-(void)toggleFileList:(id)sender
+{
+	RBSplitSubview* firstSplit = [splitView subviewAtPosition:0];
+	if ([firstSplit isCollapsed]) 
+		[firstSplit expandWithAnimation:NO withResize:NO];
+	else 
+		[firstSplit collapseWithAnimation:NO withResize:NO];
 }
 
 @end

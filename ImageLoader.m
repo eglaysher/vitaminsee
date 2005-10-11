@@ -169,6 +169,8 @@ static BOOL newTaskThatPreemptsPreload(NSDictionary* currentTask)
 	pthread_mutex_unlock(&taskQueueLock);
 }
 
+//-----------------------------------------------------------------------------
+
 /** Function called by user which preloads an image into memory. This function
  * will simply add the path of the file into a FIFO queue (which pops from the
  * front when there's more then CACHED_IMAGE images.)

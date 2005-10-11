@@ -102,23 +102,23 @@
 -(IBAction)viewInPreview:(id)sender;
 
 // Go menu actions
--(IBAction)goNextFile:(id)sender;
--(IBAction)goPreviousFile:(id)sender;
-// ----------------------
--(IBAction)goEnclosingFolder:(id)sender;
--(IBAction)goBack:(id)sender;
--(IBAction)goForward:(id)sender;
-// ----------------------
--(IBAction)goToComputerFolder:(id)sender;
--(IBAction)goToHomeFolder:(id)sender;
--(IBAction)goToPicturesFolder:(id)sender;
-// ----------------------
--(IBAction)fakeFavoritesMenuSelector:(id)sender;
+//-(IBAction)goNextFile:(id)sender;
+//-(IBAction)goPreviousFile:(id)sender;
+//// ----------------------
+//-(IBAction)goEnclosingFolder:(id)sender;
+//-(IBAction)goBack:(id)sender;
+//-(IBAction)goForward:(id)sender;
+//// ----------------------
+//-(IBAction)goToComputerFolder:(id)sender;
+//-(IBAction)goToHomeFolder:(id)sender;
+//-(IBAction)goToPicturesFolder:(id)sender;
+//// ----------------------
+//-(IBAction)fakeFavoritesMenuSelector:(id)sender;
 // ----------------------
 
--(IBAction)toggleVitaminSee:(id)sender;
--(IBAction)toggleSortManager:(id)sender;
--(IBAction)toggleKeywordManager:(id)sender;
+//-(IBAction)toggleVitaminSee:(id)sender;
+//-(IBAction)toggleSortManager:(id)sender;
+//-(IBAction)toggleKeywordManager:(id)sender;
 
 // Window delegate method to redraw the image when we resize...
 //- (void)windowDidResize:(NSNotification*)notification;
@@ -128,9 +128,9 @@
 
 // Progress indicator control
 
--(IBAction)showPreferences:(id)sender;
+//-(IBAction)showPreferences:(id)sender;
 
--(IBAction)showGPL:(id)sender;
+//-(IBAction)showGPL:(id)sender;
 
 -(BOOL)isInFavorites:(NSString*)path;
 

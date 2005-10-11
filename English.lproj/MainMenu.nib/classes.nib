@@ -39,7 +39,14 @@
         }, 
         {CLASS = EGScrollView; LANGUAGE = ObjC; SUPERCLASS = NSScrollView; }, 
         {
-            ACTIONS = {actualSize = id; zoomIn = id; zoomOut = id; zoomToFit = id; }; 
+            ACTIONS = {
+                actualSize = id; 
+                revealInFinder = id; 
+                toggleFileList = id; 
+                zoomIn = id; 
+                zoomOut = id; 
+                zoomToFit = id; 
+            }; 
             CLASS = FirstResponder; 
             LANGUAGE = ObjC; 
             SUPERCLASS = NSObject; 

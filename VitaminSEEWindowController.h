@@ -13,7 +13,7 @@
 @class RBSplitView;
 @class ViewerDocument;
 
-@interface VitaminSEEWindowController : NSWindowController <FileListDelegate> {
+@interface VitaminSEEWindowController : NSWindowController {
 	VitaminSEEPicture* pictureState;
     
 	IBOutlet NSImageView *imageViewer;
@@ -42,11 +42,6 @@
 
 -(void)startProgressIndicator;
 -(void)stopProgressIndicator;
-
--(IBAction)zoomIn:(id)sender;
--(IBAction)zoomOut:(id)sender;
--(IBAction)zoomToFit:(id)sender;
--(IBAction)actualSize:(id)sender;
 
 // File operations
 -(IBAction)deleteFileClicked:(id)sender;
