@@ -175,7 +175,7 @@
 	scaleRatio = 1.0f;
 	
 	// redraw
-	[self setDisplayedFileTo:[currentFile fileSystemPath]];
+	[self setDisplayedFileTo:currentFile];
 }
 
 -(void)zoomIn:(id)sender
@@ -185,7 +185,7 @@
 	// Add
 	scaleMode = SCALE_IMAGE_PROPORTIONALLY;
 	scaleRatio += 0.10f;
-	[self setDisplayedFileTo:[currentFile fileSystemPath]];	
+	[self setDisplayedFileTo:currentFile];	
 }
 
 -(void)zoomOut:(id)sender
@@ -194,7 +194,16 @@
 
 	scaleMode = SCALE_IMAGE_PROPORTIONALLY;
 	scaleRatio -= 0.10f;
-	[self setDisplayedFileTo:[currentFile fileSystemPath]];
+	[self setDisplayedFileTo:currentFile];
+}
+
+-(void)zoomToFit:(id)sender
+{
+	NSLog(@"-zoomToFit:%@", sender);
+	
+	scaleMode = SCALE_IMAGE_TO_FIT;
+	scaleRatio = 1.0f;
+	[self setDisplayedFileTo:currentFile];
 }
 
 @end
