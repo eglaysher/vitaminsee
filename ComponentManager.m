@@ -127,7 +127,7 @@ static NSMutableDictionary* currentFilePlugins = 0;
 		factory = [[principle alloc] init];
 		[pluginInfo setObject:factory forKey:@"Instance"];
 	}
-	
+
 	return factory;
 }
 

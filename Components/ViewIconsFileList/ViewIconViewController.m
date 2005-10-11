@@ -51,7 +51,8 @@
 {
 	if(self = [super init])
 	{
-		[NSBundle loadNibNamed:@"ViewIconsView" owner:self];
+		// ViewIconsFileView
+		[NSBundle loadNibNamed:@"ViewIconsFileView" owner:self];
 
 		oldPosition = -1;
 

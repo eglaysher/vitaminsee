@@ -5,9 +5,9 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleExecutable</key>
-	<string>ViewAsIconsFileView</string>
+	<string>ViewIconsFileList</string>
 	<key>CFBundleIdentifier</key>
-	<string>org.elliotglaysher.VitaminSEE.ViewAsIconsFileView</string>
+	<string>com.yourcompany.ViewIconsFileList</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundlePackageType</key>
@@ -16,5 +16,13 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
+	<key>NSPrincipalClass</key>
+	<string>ViewIconsFileListFactory</string>
+	<key>VSFLMenuName</key>
+	<string>as Icons</string>
+	<key>VSPluginName</key>
+	<string>ViewAsIcons</string>
+	<key>VSPluginType</key>
+	<string>FileList</string>
 </dict>
 </plist>

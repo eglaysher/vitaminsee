@@ -50,13 +50,16 @@
 		
 		// We need a file list
 		fileList = [[ComponentManager getFileListPluginNamed:@"ViewAsIcons"] build];
+		NSLog(@"FILELIST: %@", fileList);
 		[fileList setDelegate:self];
-		
+
+
 		window = [[VitaminSEEWindowController alloc] initWithFileList:fileList
 													   document:self];
+		NSLog(@"Window: %@", window);
 		viewerNotifications = [[NSNotificationCenter alloc] init];
 
-		[window showWindow:window];		
+		[window showWindow:window];
 
 		[fileList setDirectory:[EGPath pathWithPath:@"/Users/elliot/Pictures"]];
 		

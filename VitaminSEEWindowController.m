@@ -71,7 +71,11 @@
 -(void)setFileList:(id<FileList>)newList
 {
 	fileList = newList;
-	[currentFileViewHolder setSubview:[fileList getView]];
+	
+	id fileListView = [fileList getView];
+	NSLog(@"CFV: %@", currentFileViewHolder);
+	NSLog(@"FLV: %@", fileListView);
+	[currentFileViewHolder setSubview:fileListView];
 }
 
 //////////////////////////////////////////////////////// SUBVIEW DELEGATE STUFF
