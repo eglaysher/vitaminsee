@@ -41,4 +41,9 @@
 -(id)initWithPath:(NSString*)path;
 
 -(NSNumber*)documentID;
+
+-(void)startProgressIndicator;
+-(void)stopProgressIndicator;
+
+-(BOOL)validateAction:(SEL)action;
 @end

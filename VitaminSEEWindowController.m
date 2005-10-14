@@ -10,8 +10,9 @@
 #import "ViewerDocument.h"
 #import "RBSplitView.h"
 #import "SBCenteringClipView.h"
-
+#import "ToolbarDelegate.h"
 #import "ComponentManager.h"
+#import "AppKitAdditions.h"
 
 @implementation VitaminSEEWindowController
 
@@ -26,6 +27,7 @@
 		fileList = inFileList;
 		
 		[self setDocument:viewerDocument];
+		[[self window] setToolbar:[ToolbarDelegate buildToolbar]];
 	}
 	
 	return self;
@@ -64,8 +66,6 @@
 	[rightView setCanCollapse:NO];
 	[rightView setMinDimension:0 andMaxDimension:0];	
 }
-
-//-(void)
 
 /// Set the file list 
 -(void)setFileList:(id<FileList>)newList

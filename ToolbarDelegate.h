@@ -27,17 +27,8 @@
 //
 ////////////////////////////////////////////////////////////////////////
 
-
-#import "VitaminSEEController.h"
-
-@interface VitaminSEEController (ToolbarDelegate)
-
--(void)setupToolbar;
-
-- (NSToolbarItem *) toolbar: (NSToolbar *)toolbar
-	  itemForItemIdentifier: (NSString *) itemIdent 
-  willBeInsertedIntoToolbar:(BOOL) willBeInserted;
-
-- (NSArray *) toolbarDefaultItemIdentifiers: (NSToolbar *) toolbar;
-- (NSArray *) toolbarAllowedItemIdentifiers: (NSToolbar *) toolbar;
+@interface ToolbarDelegate : NSObject {
+	
+}
++(NSToolbar*)buildToolbar;
 @end

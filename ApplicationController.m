@@ -216,52 +216,11 @@ static ApplicationController* appControl;
 	
 	pictureViewers = [[NSMutableArray alloc] init];
 	
-//	// Set up the file viewer on the left
-//	viewAsIconsController = [self viewAsIconsControllerPlugin];
-//	[self setViewAsView:[viewAsIconsController view]];
-//	[viewAsIconsController connectKeyFocus:scrollView];
-//	[viewerWindow setInitialFirstResponder:[viewAsIconsController view]];
-//	
-//	
-//	// Use our file size formatter for formating the "[image size]" text label
-//	FileSizeFormatter* fsFormatter = [[[FileSizeFormatter alloc] init] autorelease];
-//	[[fileSizeLabel cell] setFormatter:fsFormatter];
-//	
-//	[self setupToolbar];
-//	scaleProportionally = NO;
-//	scaleRatio = 1.0;
-//	
-//	loadedOpenWithMenu = NO;
-//	
-//	// Set up our split view
-//	[splitView setDelegate:self];
-//	RBSplitSubview* leftView = [splitView subviewAtPosition:0];
-//	[leftView setCanCollapse:YES];
-//	[leftView setMinDimension:92 andMaxDimension:0];
-//	RBSplitSubview* rightView = [splitView subviewAtPosition:1];
-//	[rightView setCanCollapse:NO];
-//	[rightView setMinDimension:0 andMaxDimension:0];
-//	
-//	// Restore the settings for the split view
-//	[splitView setAutosaveName:@"MainWindowSplitView" recursively:YES];
-//	[splitView restoreState:YES];
-//	
-//	[openWithMenuItem setTarget:self];	
-//	
-//	// Use an Undo manager to manage moving back and forth.
-//	pathManager = [[NSUndoManager alloc] init];	
-//	
-//	// Launch the other threads and tell them to connect back to us.
-//	imageTaskManager = [[ImageTaskManager alloc] initWithController:self];
-//	thumbnailManager = [[ThumbnailManager alloc] initWithController:self];
-
 	setPathForFirstTime = NO;
 }
 
 -(void)dealloc
 {
-//	[pathManager release];
-//	[splitView saveState:YES];
 	[super dealloc];
 }
 
@@ -274,59 +233,6 @@ static ApplicationController* appControl;
 //	NSLog(@"-[ApplicationController applicationDidFinishLaunching]");
 
 	[self newWindow:self];
-	
-//	if(!setPathForFirstTime)
-//	{		
-//		[viewAsIconsController setCurrentDirectory:[EGPathFilesystemPath 
-//			pathWithPath:[[NSUserDefaults standardUserDefaults] 
-//				objectForKey:@"DefaultStartupPath"]] currentFile:nil];
-//	}
-//	
-//	[self selectFirstResponder];
-}
-
--(BOOL)application:(NSApplication*)theApplication openFile:(NSString*)filename
-{	
-//	NSLog(@"-[ApplicationController application: openFile:%@", filename);
-
-//	if([filename isImage])
-//	{		
-//		// Clear the current image. (Do this now since there's the possibility
-//		// that the new image won't load in time for display latter on.)
-//		[self setCurrentFile:nil];
-//		
-//		[viewAsIconsController setCurrentDirectory:[EGPathFilesystemPath pathWithPath:[filename stringByDeletingLastPathComponent]]
-//									   currentFile:filename];
-//		
-//		// Show the window if hidden. (Do this now so there isn't a flash from
-//		// the previous directory) 
-//		if(![mainVitaminSeeWindow isVisible])
-//			[self toggleVitaminSee:self];		
-//	}
-//	else if([filename isDir])
-//	{
-//		// Show the window
-//		if(![mainVitaminSeeWindow isVisible])
-//			[self toggleVitaminSee:self];
-//		
-//		[viewAsIconsController setCurrentDirectory:[EGPathFilesystemPath pathWithPath:filename]
-//									   currentFile:nil];
-//	}
-//	else
-//		return NO;
-//
-//	setPathForFirstTime = YES;
-//	return YES;
-}
-
-- (BOOL)applicationShouldHandleReopen:(NSApplication *)theApplication 
-					hasVisibleWindows:(BOOL)hasVisibleWindows
-{
-	if(![mainVitaminSeeWindow isVisible])
-	{
-		// Now display the window
-//		[self toggleVitaminSee:self];
-	}
 }
 
 -(IBAction)newWindow:(id)sender

@@ -37,6 +37,7 @@
 #import "FileList.h"
 #import "EGPath.h"
 #import "NSObject+CallWithArray.h"
+//#import "ImageLoader.h"
 
 @interface ViewIconViewController (Private)
 -(void)rebuildInternalFileArray;
@@ -154,9 +155,7 @@
 }
 
 - (void)setDirectory:(EGPath*)newCurrentDirectory
-{
-	[delegate startProgressIndicator];
-	
+{	
 	[thumbnailCache removeAllObjects];
 //	[pluginLayer flushImageCache];
 	

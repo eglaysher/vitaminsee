@@ -7,6 +7,8 @@
 	objects = {
 		080E96DDFE201D6D7F000001 = {
 			children = (
+				8B244B3C08FC886A004716BC,
+				8B244B3D08FC886A004716BC,
 				8B2448C508FB2080004716BC,
 				8B2448C608FB2080004716BC,
 				8B2448C708FB2080004716BC,
@@ -1341,6 +1343,7 @@
 			dstSubfolderSpec = 13;
 			files = (
 				8B24492B08FB5680004716BC,
+				8B244B3E08FC886A004716BC,
 			);
 			isa = PBXCopyFilesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1374,6 +1377,34 @@
 		};
 		8B24493D08FB5859004716BC = {
 			fileRef = 8B24493C08FB5859004716BC;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B244B3C08FC886A004716BC = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			path = ToolbarDelegate.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B244B3D08FC886A004716BC = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
+			path = ToolbarDelegate.m;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B244B3E08FC886A004716BC = {
+			fileRef = 8B244B3C08FC886A004716BC;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B244B3F08FC886A004716BC = {
+			fileRef = 8B244B3D08FC886A004716BC;
 			isa = PBXBuildFile;
 			settings = {
 			};
@@ -1481,6 +1512,7 @@
 				8B2448E008FB209E004716BC,
 				8B2448E108FB209E004716BC,
 				8B2448E508FB20CB004716BC,
+				8B244B3F08FC886A004716BC,
 			);
 			isa = PBXSourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;

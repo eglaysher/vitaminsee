@@ -27,7 +27,7 @@
 //
 ////////////////////////////////////////////////////////////////////////
 
-#import "FavoritesToolbarItem.h"
+//#import "FavoritesToolbarItem.h"
 #import "ToolbarDelegate.h"
 #import "ViewIconViewController.h"
 #import "NSString+FileTasks.h"
@@ -50,22 +50,37 @@ static NSString* MoveToTrashID = @"Move Item to Trash Toolbar Identifier";
 static NSString* GotoComputerID = @"Goto Computer Toolbar Identifier";
 static NSString* GotoPicturesID = @"Goto Pictures Toolbar Identifier";
 static NSString* GotoHomeID = @"Goto Home Toolbar Identifier";
-static NSString* FavoritesID = @"Favorites Toolbar Identifier";
+//static NSString* FavoritesID = @"Favorites Toolbar Identifier";
 
 static NSString* NextPictureToolbarID = @"Next Picture Toolbar Identifier";
 static NSString* PreviousPictureToolbarID = @"Previous Picture Toolbar Identifier";
 
-@implementation VitaminSEEController (ToolbarDelegate)
+/** This instance of the class is created once and is used to validate all
+ * toolbars for viewer windows.
+ */
+static ToolbarDelegate* toolbarDelegateObject = 0;
 
--(void)setupToolbar {
+@implementation ToolbarDelegate
+
+/** Initialize our global instance of ToolbarDelegate.
+ */
++(void)initialize
+{
+	toolbarDelegateObject = [[ToolbarDelegate alloc] init];
+}
+
+/** Create a new toolbar object and pass it to the caller.
+ */
++(NSToolbar*)buildToolbar {
 	// Create the toolbar
-	NSToolbar* toolbar = [[[NSToolbar alloc] initWithIdentifier:MainViewerWindowToolbarIdentifier] autorelease];
+	NSToolbar* toolbar = [[[NSToolbar alloc] initWithIdentifier:
+		MainViewerWindowToolbarIdentifier] autorelease];
 	[toolbar setAllowsUserCustomization:YES];
 	[toolbar setAutosavesConfiguration:YES];
-	[toolbar setDelegate:self];	
+	[toolbar setDelegate:toolbarDelegateObject];	
 	[toolbar validateVisibleItems];
-	
-	[viewerWindow setToolbar:toolbar];
+
+	return toolbar;
 }
 
 // This function hands back NSToolbarItems for various NSString identifiers
@@ -80,7 +95,6 @@ static NSString* PreviousPictureToolbarID = @"Previous Picture Toolbar Identifie
 		[item setPaletteLabel:NSLocalizedString(@"Zoom in", @"Toolbar Item")];
 		[item setToolTip:NSLocalizedString(@"Zoom in", @"Toolbar Item")];
 		[item setImage:[NSImage imageNamed:@"ZoomInToolbarImage"]];
-		[item setTarget:self];
 		[item setAction:@selector(zoomIn:)];
 	}
 	else if([itemIdent isEqual:ZoomOutToolbarID])
@@ -89,7 +103,6 @@ static NSString* PreviousPictureToolbarID = @"Previous Picture Toolbar Identifie
 		[item setPaletteLabel:NSLocalizedString(@"Zoom out", @"Toolbar Item")];
 		[item setToolTip:NSLocalizedString(@"Zoom out", @"Toolbar Item")];
 		[item setImage:[NSImage imageNamed:@"ZoomOutToolbarImage"]];
-		[item setTarget:self];
 		[item setAction:@selector(zoomOut:)];
 	}
 	else if([itemIdent isEqual:ZoomToFitToolbarID])
@@ -98,7 +111,6 @@ static NSString* PreviousPictureToolbarID = @"Previous Picture Toolbar Identifie
 		[item setPaletteLabel:NSLocalizedString(@"Zoom to fit", @"Toolbar Item")];
 		[item setToolTip:NSLocalizedString(@"Zoom to fit", @"Toolbar Item")];
 		[item setImage:[NSImage imageNamed:@"ZoomToFitToolbarImage"]];
-		[item setTarget:self];
 		[item setAction:@selector(zoomToFit:)];
 	}
 	else if([itemIdent isEqual:ActualSizeToolbarID])
@@ -107,8 +119,7 @@ static NSString* PreviousPictureToolbarID = @"Previous Picture Toolbar Identifie
 		[item setPaletteLabel:NSLocalizedString(@"Actual Size", @"Toolbar Item")];
 		[item setToolTip:NSLocalizedString(@"Actual Size", @"Toolbar Item")];
 		[item setImage:[NSImage imageNamed:@"ActualSizeToolbarImage"]];
-		[item setTarget:self];
-		[item setAction:@selector(actualSize:)];		
+		[item setAction:@selector(actualSize:)];	
 	}
 	else if([itemIdent isEqual:RevealInFinderToolbarID])
 	{
@@ -117,7 +128,6 @@ static NSString* PreviousPictureToolbarID = @"Previous Picture Toolbar Identifie
 		[item setToolTip:NSLocalizedString(@"Reveal in Finder", @"Toolbar Item")];
 		// fixme: This slows stuff down. Perhaps I'd like to not suck?
 		[item setImage:[[NSWorkspace sharedWorkspace] iconForApplication:@"Finder"]];
-		[item setTarget:self];
 		[item setAction:@selector(revealInFinder:)];
 	}
 	else if([itemIdent isEqual:ViewInPreviewToolbarID])
@@ -127,8 +137,7 @@ static NSString* PreviousPictureToolbarID = @"Previous Picture Toolbar Identifie
 		[item setToolTip:NSLocalizedString(@"View in Preview", @"Toolbar Item")];
 		// fixme: This slows stuff down. Perhaps I'd like to not suck?
 		[item setImage:[[NSWorkspace sharedWorkspace] iconForApplication:@"Preview"]];
-		[item setTarget:self];
-		[item setAction:@selector(viewInPreview:)];		
+		[item setAction:@selector(openInPreview:)];		
 	}
 	else if([itemIdent isEqual:MoveToTrashID])
 	{
@@ -136,7 +145,6 @@ static NSString* PreviousPictureToolbarID = @"Previous Picture Toolbar Identifie
 		[item setPaletteLabel:NSLocalizedString(@"Delete", @"Toolbar Item")];
 		[item setToolTip:NSLocalizedString(@"Delete", @"Toolbar Item")];
 		[item setImage:[NSImage imageNamed:@"ToolbarDeleteIcon"]];
-		[item setTarget:self];
 		[item setAction:@selector(deleteFileClicked:)];				
 	}
 	else if([itemIdent isEqual:GotoComputerID])
@@ -145,7 +153,6 @@ static NSString* PreviousPictureToolbarID = @"Previous Picture Toolbar Identifie
 		[item setPaletteLabel:NSLocalizedString(@"Computer", @"Toolbar Item")];
 		[item setToolTip:NSLocalizedString(@"Computer", @"Toolbar Item")];
 		[item setImage:[NSImage imageNamed:@"iMac"]];
-		[item setTarget:self];
 		[item setAction:@selector(goToComputerFolder:)];				
 	}	
 	else if([itemIdent isEqual:GotoHomeID])
@@ -154,7 +161,6 @@ static NSString* PreviousPictureToolbarID = @"Previous Picture Toolbar Identifie
 		[item setPaletteLabel:NSLocalizedString(@"Home", @"Toolbar Item")];
 		[item setToolTip:NSLocalizedString(@"Home", @"Toolbar Item")];
 		[item setImage:[NSImage imageNamed:@"HomeFolderIcon"]];
-		[item setTarget:self];
 		[item setAction:@selector(goToHomeFolder:)];				
 	}
 	else if([itemIdent isEqual:GotoPicturesID])
@@ -163,22 +169,20 @@ static NSString* PreviousPictureToolbarID = @"Previous Picture Toolbar Identifie
 		[item setPaletteLabel:NSLocalizedString(@"Pictures", @"Toolbar Item")];
 		[item setToolTip:NSLocalizedString(@"Pictures", @"Toolbar Item")];
 		[item setImage:[NSImage imageNamed:@"ToolbarPicturesFolderIcon"]];
-		[item setTarget:self];
 		[item setAction:@selector(goToPicturesFolder:)];
 	}
-	else if([itemIdent isEqual:FavoritesID])
-	{
-		// FavoritesToolbarItem is special.
-		item = [[[FavoritesToolbarItem alloc] initWithItemIdentifier:itemIdent
-														  controller:self] autorelease];
-	}
+//	else if([itemIdent isEqual:FavoritesID])
+//	{
+//		// FavoritesToolbarItem is special.
+//		item = [[[FavoritesToolbarItem alloc] initWithItemIdentifier:itemIdent
+//														  controller:self] autorelease];
+//	}
 	else if([itemIdent isEqual:NextPictureToolbarID])
 	{
 		[item setLabel:NSLocalizedString(@"Next", @"Toolbar Item")];
 		[item setPaletteLabel:NSLocalizedString(@"Next", @"Toolbar Item")];
 		[item setToolTip:NSLocalizedString(@"Next", @"Toolbar Item")];
 		[item setImage:[NSImage imageNamed:@"NextToolbarImage"]];
-		[item setTarget:self];
 		[item setAction:@selector(goNextFile:)];
 	}
 	else if([itemIdent isEqual:PreviousPictureToolbarID])
@@ -187,7 +191,6 @@ static NSString* PreviousPictureToolbarID = @"Previous Picture Toolbar Identifie
 		[item setPaletteLabel:NSLocalizedString(@"Previous", @"Toolbar Item")];
 		[item setToolTip:NSLocalizedString(@"Previous", @"Toolbar Item")];
 		[item setImage:[NSImage imageNamed:@"PreviousToolbarImage"]];
-		[item setTarget:self];
 		[item setAction:@selector(goPreviousFile:)];		
 	}	
 	else
@@ -198,11 +201,12 @@ static NSString* PreviousPictureToolbarID = @"Previous Picture Toolbar Identifie
 
 - (NSArray *) toolbarDefaultItemIdentifiers: (NSToolbar *) toolbar
 {
+	// FavoritesID, 
 	return [NSArray arrayWithObjects:RevealInFinderToolbarID, 
 		ViewInPreviewToolbarID, NSToolbarSeparatorItemIdentifier,
 		NextPictureToolbarID, PreviousPictureToolbarID,
 		NSToolbarSeparatorItemIdentifier, GotoComputerID,
-		GotoHomeID, GotoPicturesID, FavoritesID, NSToolbarSeparatorItemIdentifier,
+		GotoHomeID, GotoPicturesID, NSToolbarSeparatorItemIdentifier,
 		NSToolbarFlexibleSpaceItemIdentifier, 
 		ZoomInToolbarID, ZoomOutToolbarID, ZoomToFitToolbarID, 
 		ActualSizeToolbarID, nil];
@@ -210,8 +214,9 @@ static NSString* PreviousPictureToolbarID = @"Previous Picture Toolbar Identifie
 
 - (NSArray *) toolbarAllowedItemIdentifiers: (NSToolbar *) toolbar
 {
+	// FavoritesID,
 	return [NSArray arrayWithObjects:RevealInFinderToolbarID, ViewInPreviewToolbarID, 
-		MoveToTrashID, GotoComputerID, GotoHomeID, GotoPicturesID, FavoritesID, ZoomInToolbarID, ZoomOutToolbarID,
+		MoveToTrashID, GotoComputerID, GotoHomeID, GotoPicturesID,  ZoomInToolbarID, ZoomOutToolbarID,
 		ZoomToFitToolbarID, ActualSizeToolbarID, NextPictureToolbarID, PreviousPictureToolbarID,
 		NSToolbarSeparatorItemIdentifier,
 		NSToolbarSpaceItemIdentifier, NSToolbarFlexibleSpaceItemIdentifier,
@@ -223,37 +228,38 @@ static NSString* PreviousPictureToolbarID = @"Previous Picture Toolbar Identifie
     BOOL enable = NO;
 	NSString* identifier = [toolbarItem itemIdentifier];
 
-	if([identifier isEqual:RevealInFinderToolbarID])
+//	if([identifier isEqual:RevealInFinderToolbarID])
+//	{
+//		enable = [[viewAsIconsController selectedFiles] count];
+//	}
+//	else
+		if([identifier isEqual:MoveToTrashID])
 	{
-		enable = [[viewAsIconsController selectedFiles] count];
-	}
-	else if([identifier isEqual:MoveToTrashID])
-	{
-		enable = [[viewAsIconsController selectedFiles] count];
+//		enable = [[viewAsIconsController selectedFiles] count];
 	}
 	else if ([identifier isEqual:ActualSizeToolbarID])
 	{
-		enable = [currentImageFile isImage] && !(scaleProportionally && 
-			scaleRatio == 1.0);
+//		enable = [currentImageFile isImage] && !(scaleProportionally && 
+//			scaleRatio == 1.0);
 	}
 	else if ([identifier isEqual:ZoomToFitToolbarID])
 	{
-		enable = [currentImageFile isImage] && scaleProportionally; // && scaleRatio == 1.0;
+//		enable = [currentImageFile isImage] && scaleProportionally; // && scaleRatio == 1.0;
 	}
     else if ([identifier isEqual:ZoomInToolbarID] || 
 			 [identifier isEqual:ZoomOutToolbarID] ||
 			 [identifier isEqual:ViewInPreviewToolbarID])
 	{
 		// We can only do these actions if the file is an image.
-        enable = [currentImageFile isImage];
+//        enable = [currentImageFile isImage];
     }
 	else if ([identifier isEqual:NextPictureToolbarID])
 	{
-		enable = [viewAsIconsController canGoNextFile];
+//		enable = [viewAsIconsController canGoNextFile];
 	}
 	else if ([identifier isEqual:PreviousPictureToolbarID])
 	{
-		enable = [viewAsIconsController canGoPreviousFile];
+//		enable = [viewAsIconsController canGoPreviousFile];
 	}
 	else if ([identifier isEqual:GotoComputerID])
 	{

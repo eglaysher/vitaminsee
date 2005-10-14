@@ -37,21 +37,21 @@
 
 -(void)setFileList:(id<FileList>)newList;
 
--(IBAction)goToFolder:(id)sender;
--(void)finishedGotoFolder:(NSString*)done;
+//-(IBAction)goToFolder:(id)sender;
+//-(void)finishedGotoFolder:(NSString*)done;
 
 -(void)startProgressIndicator;
 -(void)stopProgressIndicator;
 
 // File operations
--(IBAction)deleteFileClicked:(id)sender;
--(IBAction)addCurrentDirectoryToFavorites:(id)sender;
+//-(IBAction)deleteFileClicked:(id)sender;
+//-(IBAction)addCurrentDirectoryToFavorites:(id)sender;
 
 -(void)setImage:(NSImage*)image;
 -(void)setFileSizeLabelText:(int)fileSize;
 -(void)setImageSizeLabelText:(NSSize)size;
 
--(IBAction)setImageAsDesktop:(id)sender;
+//-(IBAction)setImageAsDesktop:(id)sender;
 
 -(double)viewingAreaWidth;
 -(double)viewingAreaHeight;
