@@ -30,14 +30,10 @@
 #import "AppKitAdditions.h"
 #import "ViewIconViewController.h"
 #import "ViewIconsCell.h"
-//#import "VitaminSEEController.h"
 #import "NSString+FileTasks.h"
-//#import "ThumbnailManager.h"
-//#import "IconFamily.h"
 #import "FileList.h"
 #import "EGPath.h"
 #import "NSObject+CallWithArray.h"
-//#import "ImageLoader.h"
 
 @interface ViewIconViewController (Private)
 -(void)rebuildInternalFileArray;
@@ -120,41 +116,13 @@
 }
 
 //////////////////////////////////////////////////////////// PROTOCOL: FileView
--(BOOL)fileIsInView:(NSString*)fileIsInView
-{
-	BOOL isCurDir = [currentDirectory isEqual:[fileIsInView stringByDeletingLastPathComponent]];
-	
-	if(isCurDir)
-	{
-		NSArray* cells = [ourBrowser selectedCells];
-		int i = 0, count = [cells count];
-		for(; i < count; ++i)
-			if([[(id)CFArrayGetValueAtIndex((CFArrayRef)cells,i) cellPath] isEqual:fileIsInView])
-				return true;
-	}
-	
-	return false;
-}
-
--(NSArray*)selectedFiles
-{
-	NSArray* selectedCells = [ourBrowser selectedCells];
-	NSMutableArray* selectedFiles = [NSMutableArray arrayWithCapacity:[selectedCells count]];
-
-	// Add the path of each cell to the array we're returning.
-	int i = 0, count = [selectedCells count]; //CFArrayGetCount(selectedCells);
-	for(; i < count; ++i)
-		[selectedFiles addObject:[(id)CFArrayGetValueAtIndex((CFArrayRef)selectedCells, i) cellPath]];
-
-	return selectedFiles;
-}
 
 -(BOOL)canSetDirectory
 {
 	return YES;
 }
 
-- (void)setDirectory:(EGPath*)newCurrentDirectory
+- (BOOL)setDirectory:(EGPath*)newCurrentDirectory
 {	
 	[thumbnailCache removeAllObjects];
 //	[pluginLayer flushImageCache];
@@ -171,8 +139,9 @@
 //	[pluginLayer clearThumbnailQueue];
 	
 	// Set the current Directory
+	[newCurrentDirectory retain];
 	[currentDirectory release];
-	currentDirectory = [newCurrentDirectory retain];
+	currentDirectory = newCurrentDirectory;
 	
 	// We need the display names to present to the user.
 	NSArray* displayNames = [currentDirectory pathDisplayComponents];
@@ -221,19 +190,22 @@
 //	[ourBrowser setSendsActionOnArrowKeys:NO];
 	[ourBrowser loadColumnZero];
 	
-//	[delegate stopProgressIndicator];
-	
 	// Select the first file on the list
 	[ourBrowser selectRow:0 inColumn:0];
 	[self singleClick:ourBrowser];
 	
 	[[ourBrowser window] makeFirstResponder:ourBrowser];
+	
+	return YES;
 }
 
+//-----------------------------------------------------------------------------
+
+/** Validator for the menu items in the directory drop down. Loads the file 
+ * icon for each item if it hasn't been loaded already.
+ */
 -(BOOL)validateMenuItem:(NSMenuItem *)theMenuItem
 {
-	// Set up the image for this menu item if we haven't already assigned an
-	// image.
 	if(![theMenuItem image])
 	{
 		NSImage* image = [[theMenuItem representedObject] fileIcon];
@@ -244,6 +216,11 @@
 	return YES;
 }
 
+//-----------------------------------------------------------------------------
+
+/** Callback method that gets called when a directory is selected from the 
+ * drop-down
+ */
 -(void)directoryMenuSelected:(id)sender
 {
 	id path = [sender representedObject];
@@ -255,19 +232,32 @@
 	return ourView;
 }
 
+//-----------------------------------------------------------------------------
+//------------------------------------------------------------ BROWSER DELEGATE
+//-----------------------------------------------------------------------------
+
+/** Returns the number of items in the current directory, which is used by the
+ * NSBrowser for lazy loading.
+ */
 - (int)browser:(NSBrowser *)sender numberOfRowsInColumn:(int)column
 {
 	return [fileList count];
 }
 
+//-----------------------------------------------------------------------------
+
+/** Delegate method used to initialize each cell in the browser right before
+ * it's displayed.
+ */
 - (void)browser:(NSBrowser *)sender 
 willDisplayCell:(id)cell 
-		  atRow:(int)row
+		  atRow:(int)row 
 		 column:(int)column
 {
 	NSString* path = [fileList objectAtIndex:row];
 	// FIXME
-	[cell setCellPropertiesFromPath:path andEGPath:[NSClassFromString(@"EGPath") pathWithPath:path]];
+	[cell setCellPropertiesFromPath:path andEGPath:
+		[NSClassFromString(@"EGPath") pathWithPath:path]];
 	
 	// If the cell image hasn't been loaded
 	if(![cell iconImage])
@@ -284,19 +274,10 @@ willDisplayCell:(id)cell
 	}
 }
 
-- (void)clearCache
-{
-	id cells = [[[ourBrowser matrixInColumn:0] cells] objectEnumerator];
-	id cell;
-	while(cell = [cells nextObject])
-	{
-		if([cell respondsToSelector:@selector(setIconImage:)])
-		{
-			[cell resetTitleCache];
-		}
-	}
-}
+//-----------------------------------------------------------------------------
 
+/** Handles a single click, displays an image.
+ */
 -(void)singleClick:(id)sender
 {	
 	// grab the image path
@@ -319,7 +300,6 @@ willDisplayCell:(id)cell
 		// Thankfully, this was fixed in Tiger. But Tiger didn't give us an f'in
 		// AppKit version number for it.
 		[ourBrowser setNeedsDisplay];
-//		NSLog(@"Ugly hack!");
 	}
 	
 	// Now we figure out which file we preload next.
@@ -343,12 +323,15 @@ willDisplayCell:(id)cell
 		// FIXME
 		if(node && [node isImage])
 			[ImageLoader preloadImage:[pathType pathWithPath:node]];
-			//[pluginLayer preloadFile:node];
 	}
 
 	oldPosition = newPosition;
 }
 
+//-----------------------------------------------------------------------------
+
+/** Double clicking changes the current directory
+ */
 -(void)doubleClick:(id)sender
 {
 	// Double clicking sets the directory...if it's a directory
@@ -358,86 +341,6 @@ willDisplayCell:(id)cell
 	if([absolutePath isDir])
 //		// Get the first image in the directory:		
 		[self setDirectory:[NSClassFromString(@"EGPath") pathWithPath:absolutePath]];
-}
-
--(void)removeFile:(NSString*)absolutePath
-{
-	unsigned index = [fileList binarySearchFor:absolutePath 
-		withSortSelector:@selector(caseInsensitiveCompare:)];
-
-	NSMatrix* matrix = [ourBrowser matrixInColumn:0];
-	NSString* newFile = 0;
-	if(index != NSNotFound)
-	{
-		if(index == [matrix selectedRow])
-			newFile = [self nameOfNextFile];
-
-		[fileList removeObjectAtIndex:index];
-		
-		[ourBrowser loadColumnZero];
-		
-		[ourBrowser setNeedsDisplay];
-		
-		// Set the next file
-		if(newFile)
-		{
-			[self selectFile:newFile];
-			[delegate setDisplayedFileTo:newFile];			
-		}
-		else if([fileList count] == 0)
-			[delegate setDisplayedFileTo:nil];
-		// FIXME
-		//		else
-//			[self selectFile:[pluginLayer currentFile]];
-	}
-}
-
--(void)addFile:(NSString*)path
-{
-	if([[currentDirectory fileSystemPath] isEqual:[path stringByDeletingLastPathComponent]])
-	{
-		unsigned index = [fileList lowerBoundToInsert:path 
-						 withSortSelector:@selector(caseInsensitiveCompare:)];
-	
-		if(index != [fileList count])
-			[fileList insertObject:path atIndex:index];
-		else
-			[fileList addObject:path];
-
-		// Add it to the list of files to thumbnail. Either it already has a 
-		// thumbnail
-		/// FIXME
-		//		[pluginLayer generateThumbnailForFile:path];
-		
-		// Redisplay and select the added file
-		[ourBrowser loadColumnZero];
-		[ourBrowser setPath:[NSString stringWithFormat:@"/%@", [path lastPathComponent]]];
-		
-		[delegate setDisplayedFileTo:[fileList objectAtIndex:index]];
-	}
-}
-
-// Returns the path of the next cell that would be selected if the current cell
-// were to be removed.
--(NSString*)nameOfNextFile
-{
-	NSString* currentFile = [delegate currentFile];
-	NSString* nextFile;
-
-	int index = [fileList binarySearchFor:currentFile 
-							  withSortSelector:@selector(caseInsensitiveCompare:)];
-	int count = [fileList count];
-	
-	if(index == NSNotFound)
-		nextFile = nil;
-	else if(index + 1 < count)
-		nextFile = [fileList objectAtIndex:(index + 1)];
-	else if(index - 1 >= 0)
-		nextFile = [fileList objectAtIndex:(index - 1)];
-	else
-		nextFile = nil;
-
-	return nextFile;
 }
 
 -(void)selectFile:(NSString*)fileToSelect
@@ -515,7 +418,7 @@ willDisplayCell:(id)cell
 
 -(BOOL)canGoNextFile 
 {
-	int index = [fileList binarySearchFor:[delegate currentFile]
+	int index = [fileList binarySearchFor:[[delegate currentFile] fileSystemPath]
 						 withSortSelector:@selector(caseInsensitiveCompare:)];
 	
 	int count = [fileList count];
@@ -527,7 +430,7 @@ willDisplayCell:(id)cell
 
 -(void)goNextFile
 {
-	int index = [fileList binarySearchFor:[delegate currentFile]
+	int index = [fileList binarySearchFor:[[delegate currentFile] fileSystemPath]
 						 withSortSelector:@selector(caseInsensitiveCompare:)];
 	index++;
 	
@@ -538,7 +441,7 @@ willDisplayCell:(id)cell
 
 -(BOOL)canGoPreviousFile
 {
-	int index = [fileList binarySearchFor:[delegate currentFile]
+	int index = [fileList binarySearchFor:[[delegate currentFile] fileSystemPath]
 						 withSortSelector:@selector(caseInsensitiveCompare:)];
 
 	if(index > 0)
@@ -549,7 +452,7 @@ willDisplayCell:(id)cell
 
 -(void)goPreviousFile
 {
-	int index = [fileList binarySearchFor:[delegate currentFile]
+	int index = [fileList binarySearchFor:[[delegate currentFile] fileSystemPath]
 						 withSortSelector:@selector(caseInsensitiveCompare:)];
 	index--;
 	
@@ -646,7 +549,6 @@ willDisplayCell:(id)cell
 	{
 		// Rebuild list to reflect the mounted drive since we're in machine root.
 		[self setDirectory:[[currentDirectory pathComponents] objectAtIndex:0]];
-//					  currentFile:nil];
 	}
 	
 	needToRebuild = NO;

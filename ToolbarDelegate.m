@@ -153,7 +153,7 @@ static ToolbarDelegate* toolbarDelegateObject = 0;
 		[item setPaletteLabel:NSLocalizedString(@"Computer", @"Toolbar Item")];
 		[item setToolTip:NSLocalizedString(@"Computer", @"Toolbar Item")];
 		[item setImage:[NSImage imageNamed:@"iMac"]];
-		[item setAction:@selector(goToComputerFolder:)];				
+		[item setAction:@selector(goToComputer:)];				
 	}	
 	else if([itemIdent isEqual:GotoHomeID])
 	{
@@ -161,7 +161,7 @@ static ToolbarDelegate* toolbarDelegateObject = 0;
 		[item setPaletteLabel:NSLocalizedString(@"Home", @"Toolbar Item")];
 		[item setToolTip:NSLocalizedString(@"Home", @"Toolbar Item")];
 		[item setImage:[NSImage imageNamed:@"HomeFolderIcon"]];
-		[item setAction:@selector(goToHomeFolder:)];				
+		[item setAction:@selector(goToHomeDirectory:)];				
 	}
 	else if([itemIdent isEqual:GotoPicturesID])
 	{
@@ -169,7 +169,7 @@ static ToolbarDelegate* toolbarDelegateObject = 0;
 		[item setPaletteLabel:NSLocalizedString(@"Pictures", @"Toolbar Item")];
 		[item setToolTip:NSLocalizedString(@"Pictures", @"Toolbar Item")];
 		[item setImage:[NSImage imageNamed:@"ToolbarPicturesFolderIcon"]];
-		[item setAction:@selector(goToPicturesFolder:)];
+		[item setAction:@selector(goToPicturesDirectory:)];
 	}
 //	else if([itemIdent isEqual:FavoritesID])
 //	{
@@ -222,62 +222,5 @@ static ToolbarDelegate* toolbarDelegateObject = 0;
 		NSToolbarSpaceItemIdentifier, NSToolbarFlexibleSpaceItemIdentifier,
 		NSToolbarCustomizeToolbarItemIdentifier, nil];
 }
-
--(BOOL)validateToolbarItem:(NSToolbarItem*)toolbarItem
-{
-    BOOL enable = NO;
-	NSString* identifier = [toolbarItem itemIdentifier];
-
-//	if([identifier isEqual:RevealInFinderToolbarID])
-//	{
-//		enable = [[viewAsIconsController selectedFiles] count];
-//	}
-//	else
-		if([identifier isEqual:MoveToTrashID])
-	{
-//		enable = [[viewAsIconsController selectedFiles] count];
-	}
-	else if ([identifier isEqual:ActualSizeToolbarID])
-	{
-//		enable = [currentImageFile isImage] && !(scaleProportionally && 
-//			scaleRatio == 1.0);
-	}
-	else if ([identifier isEqual:ZoomToFitToolbarID])
-	{
-//		enable = [currentImageFile isImage] && scaleProportionally; // && scaleRatio == 1.0;
-	}
-    else if ([identifier isEqual:ZoomInToolbarID] || 
-			 [identifier isEqual:ZoomOutToolbarID] ||
-			 [identifier isEqual:ViewInPreviewToolbarID])
-	{
-		// We can only do these actions if the file is an image.
-//        enable = [currentImageFile isImage];
-    }
-	else if ([identifier isEqual:NextPictureToolbarID])
-	{
-//		enable = [viewAsIconsController canGoNextFile];
-	}
-	else if ([identifier isEqual:PreviousPictureToolbarID])
-	{
-//		enable = [viewAsIconsController canGoPreviousFile];
-	}
-	else if ([identifier isEqual:GotoComputerID])
-	{
-		enable = YES;
-	}	
-	else if ([identifier isEqual:GotoHomeID])
-	{
-		// Always show home. If the user has deleted his, then tough luck
-        enable = YES;
-    }	
-	else if ([identifier isEqual:GotoPicturesID])
-	{
-		// Only enable the Pictures item if "~/Pictures" exists
-		enable = [[NSHomeDirectory() stringByAppendingPathComponent:@"Pictures"] isDir];
-	}
-	
-    return enable;	
-}
-
 
 @end

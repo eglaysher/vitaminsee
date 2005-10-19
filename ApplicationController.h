@@ -31,6 +31,7 @@
 #import <Cocoa/Cocoa.h>
 
 @class RBSplitView;
+@class EGPath;
 
 /*!
 	@class ApplicationController
@@ -74,4 +75,5 @@
 
 -(IBAction)newWindow:(id)sender;
 
+-(void)goToDirectory:(EGPath*)path;
 @end

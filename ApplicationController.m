@@ -44,6 +44,8 @@
 #import "RBSplitView.h"
 #import "RBSplitSubview.h"
 
+#import "EGPath.h"
+
 @implementation ApplicationController
 
 ///////// TEST PLAN
@@ -237,7 +239,71 @@ static ApplicationController* appControl;
 
 -(IBAction)newWindow:(id)sender
 {
-	[[ViewerDocument alloc] initWithPath:@"/Users/elliot/Pictures"];
+	[[ViewerDocument alloc] initWithPath:
+		[EGPath pathWithPath:[@"~/Pictures" stringByExpandingTildeInPath]]];
+}
+
+///////////////////////////////////////////////////////////////// GO MENU ITEMS
+
+/** Action that will set the directory of the current window to the Computer
+ * (if the current window's FileList supports setting a directory), or opens
+ * a new window to the location Computer if no windows are open.
+ *
+ * @see -goToDirectory
+ */
+-(IBAction)goToComputer:(id)sender
+{
+	[self goToDirectory:[EGPath root]];
+}
+
+//-----------------------------------------------------------------------------
+
+/** Action that will set the directory of the current window to the users' home
+ * directory (if the current window's FileList supports setting a directory), 
+ * or opens a new window to the location Computer if no windows are open.
+ *
+ * @see -goToDirectory
+ */
+-(IBAction)goToHomeDirectory:(id)sender
+{
+	[self goToDirectory:[EGPath pathWithPath:[@"~/" stringByExpandingTildeInPath]]];
+}
+
+//-----------------------------------------------------------------------------
+
+/** Action that will set the directory of the current window to the users'
+ * Pictures directory (if the current window's FileList supports setting a
+ * directory), or opens a new window to the location Computer if no windows are
+ * open.
+ *
+ * @see -goToDirectory
+ */
+-(IBAction)goToPicturesDirectory:(id)sender
+{
+	[self goToDirectory:[EGPath pathWithPath:[@"~/Pictures" stringByExpandingTildeInPath]]];
+}
+
+//-----------------------------------------------------------------------------
+
+/** Sets the current directory of the mainWindow, or create a new window with
+ * the directory.
+ */
+-(void)goToDirectory:(EGPath*)path
+{
+	NSWindow* mainWindow = [NSApp mainWindow];
+	NSWindowController* controller = [mainWindow windowController];
+	ViewerDocument* document = [controller document];
+	
+	if(mainWindow && controller && document) 
+	{
+		// Tell it to set the directory
+		[document setDirectory:path];
+	}
+	else 
+	{
+		// We have to make a new window to set the directory on it!
+		[[ViewerDocument alloc] initWithPath:path];
+	}
 }
 
 @end

@@ -386,6 +386,11 @@ static NSString* egPathRootDisplayName = 0;
 	return components;
 }
 
+-(NSComparisonResult)caseInsensitiveCompare:(id)rhs
+{
+	return [fileSystemPath caseInsensitiveCompare:rhs];
+}
+
 @end
 
 

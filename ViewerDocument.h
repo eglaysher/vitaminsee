@@ -38,9 +38,11 @@
 }
 
 -(id)init;
--(id)initWithPath:(NSString*)path;
+-(id)initWithPath:(EGPath*)path;
 
 -(NSNumber*)documentID;
+
+-(void)setDirectory:(EGPath*)path;
 
 -(void)startProgressIndicator;
 -(void)stopProgressIndicator;

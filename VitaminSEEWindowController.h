@@ -27,6 +27,8 @@
 	id<FileList> fileList;
 	
 	IBOutlet NSProgressIndicator* progressIndicator;
+	bool currentlyAnimated;
+	
 	IBOutlet NSTextField * progressCurrentTask;
 	
 	NSCursor *handCursor;

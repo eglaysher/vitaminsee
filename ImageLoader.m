@@ -310,6 +310,10 @@ static BOOL newTaskThatPreemptsPreload(NSDictionary* currentTask)
 		return;
 	}
 		
+	[requester performSelectorOnMainThread:@selector(startProgressIndicator)
+								withObject:nil
+							 waitUntilDone:NO];
+	
 	NSImage* imageToRet;
 	NSString* smoothing = [task objectForKey:@"Smoothing"];
 	if(smoothing == NO_SMOOTHING || 

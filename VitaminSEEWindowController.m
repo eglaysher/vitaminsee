@@ -28,6 +28,7 @@
 		
 		[self setDocument:viewerDocument];
 		[[self window] setToolbar:[ToolbarDelegate buildToolbar]];
+		currentlyAnimated = false;
 	}
 	
 	return self;
@@ -116,16 +117,28 @@
 // Progress indicator control
 -(void)startProgressIndicator
 {
-	[scrollView setNeedsDisplay:YES];
-	[progressIndicator setHidden:NO];
-	[progressIndicator startAnimation:self];
+//	[scrollView setNeedsDisplay:YES];
+//	[progressIndicator setHidden:NO];
+	if(!currentlyAnimated)
+	{
+		[progressIndicator startAnimation:self];		
+		currentlyAnimated = true;
+	}
+	else
+		NSLog(@"Allready on!");
 }
 
 -(void)stopProgressIndicator
 {
-	[scrollView setNeedsDisplay:YES];
-	[progressIndicator stopAnimation:self];
-	[progressIndicator setHidden:YES];
+//	[scrollView setNeedsDisplay:YES];
+	
+	if(currentlyAnimated) 
+	{
+		[progressIndicator stopAnimation:self];
+		currentlyAnimated = false;
+	}
+
+//	[progressIndicator setHidden:YES];
 }
 
 -(void)setStatusText:(NSString*)statusText

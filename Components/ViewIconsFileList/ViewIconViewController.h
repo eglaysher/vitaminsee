@@ -56,27 +56,18 @@
 	id<FileListDelegate> delegate;
 }
 
-//-(void)setThumbnailManager:(ThumbnailManager*)itm;
-
--(void)setDirectory:(EGPath*)directory currentFile:(NSString*)file;
+//-(void)setDirectory:(EGPath*)directory currentFile:(NSString*)file;
 
 // Methods to handle clicks
 -(void)singleClick:(id)sender;
 -(void)doubleClick:(id)sender;
 
--(void)removeFile:(NSString*)absolutePath;
--(void)addFile:(NSString*)path;
-
 -(void)directoryMenuSelected:(id)sender;
-
--(NSString*)nameOfNextFile;
--(void)selectFile:(NSString*)fileToSelect;
 
 -(void)makeFirstResponderTo:(NSWindow*)window;
 
 -(void)removeUnneededImageReps:(NSImage*)image;
 
--(void)clearCache;
 -(void)setThumbnail:(NSImage*)image 
 			forFile:(NSString*)path;
 

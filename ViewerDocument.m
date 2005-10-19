@@ -40,7 +40,7 @@
  *
  * @param path The directory to display
  */
--(id)initWithPath:(NSString*)path
+-(id)initWithPath:(EGPath*)path
 {
 	if(self = [super init])
 	{		
@@ -61,7 +61,7 @@
 
 		[window showWindow:window];
 
-		[fileList setDirectory:[EGPath pathWithPath:@"/Users/elliot/Pictures"]];
+		[fileList setDirectory:path];
 		
 		// Do something to set the current path.
 //		[self setDisplayedFileTo:@"/Users/elliot/Pictures/6b.jpg"];
@@ -86,6 +86,18 @@
 }
 
 //----------------------------------------------------------------------------- 
+
+/** 
+ *
+ */
+-(void)setDirectory:(EGPath*)path
+{
+	// Set the new path
+	[fileList setDirectory:path];
+}
+
+
+//-----------------------------------------------------------------------------
 
 /** Sets the file being displayed. Will spawn a task to the ImageLoader to 
  * load and scale the image. This method is usually called by the current 
@@ -113,7 +125,7 @@
 				self, @"Requester",
 				nil];
 		
-		[self startProgressIndicator];
+//		[self startProgressIndicator];
 		[ImageLoader loadTask:dic];
 	}
 }
@@ -162,14 +174,14 @@
 -(void)startProgressIndicator
 {
 	// Pass this message on to the Window
-	[window startProgressIndicator];
+//	[window startProgressIndicator];
 }
 
 //-----------------------------------------------------------------------------
  
 -(void)stopProgressIndicator
 {
-	[window stopProgressIndicator];
+//	[window stopProgressIndicator];
 }
 
 
@@ -203,6 +215,10 @@
 //	else if(action == @selector(zoomIn:) ||
 //			action == @selector(zoomOut:))
 //		enable = isimage
+	else if(action == @selector(goNextFile:))
+		enable = [fileList canGoNextFile];
+	else if(action == @selector(goPreviousFile:))
+		enable = [fileList canGoPreviousFile];
 	
 	return enable;
 }
@@ -277,7 +293,29 @@
 
 // All other items in the view menu are handled by other classes
 
+
+//-----------------------------------------------------------------------------
+// GO MENU
 //-----------------------------------------------------------------------------
 
+/** Go Next
+ */
+-(void)goNextFile:(id)sender
+{
+	// Go next
+	NSLog(@"Go next!");
+	[fileList goNextFile];
+}
+
+//-----------------------------------------------------------------------------
+
+/** Go Previous
+ */
+-(void)goPreviousFile:(id)sender
+{
+	// Go previous
+	NSLog(@"Go Previous!");
+	[fileList goPreviousFile];
+}
 
 @end

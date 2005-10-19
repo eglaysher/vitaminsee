@@ -41,6 +41,11 @@
         {
             ACTIONS = {
                 actualSize = id; 
+                goNextFile = id; 
+                goPreviousFile = id; 
+                goToComputer = id; 
+                goToHomeDirectory = id; 
+                goToPicturesDirectory = id; 
                 openInPreview = id; 
                 revealInFinder = id; 
                 toggleFileList = id; 
