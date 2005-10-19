@@ -32,6 +32,7 @@
 
 @class RBSplitView;
 @class EGPath;
+@class FavoritesMenuDelegate;
 
 /*!
 	@class ApplicationController
@@ -46,7 +47,7 @@
 	IBOutlet NSMenuItem* homeFolderMenuItem;
 	IBOutlet NSMenuItem* pictureFolderMenuItem;
 	IBOutlet NSMenuItem* favoritesMenuItem;
-//	FavoritesMenuDelegate* favoritesMenuDelegate;
+	FavoritesMenuDelegate* favoritesMenuDelegate;
 	IBOutlet NSMenuItem* openWithMenuItem;
 
 	// Open With Menu that needs initialization
@@ -76,4 +77,6 @@
 -(IBAction)newWindow:(id)sender;
 
 -(void)goToDirectory:(EGPath*)path;
+
+-(IBAction)fakeFavoritesMenuSelector:(id)sender;
 @end

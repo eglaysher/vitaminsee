@@ -40,7 +40,7 @@
 #import "VitaminSEEWindowController.h"
 
 #import "ComponentManager.h"
-
+#import "FavoritesMenuDelegate.h"
 #import "RBSplitView.h"
 #import "RBSplitSubview.h"
 
@@ -243,6 +243,26 @@ static ApplicationController* appControl;
 		[EGPath pathWithPath:[@"~/Pictures" stringByExpandingTildeInPath]]];
 }
 
+//
+-(BOOL)validateMenuItem:(NSMenuItem *)theMenuItem
+{
+	BOOL enable = [self respondsToSelector:[theMenuItem action]];
+	SEL action = [theMenuItem action];
+	
+	if (action == @selector(fakeFavoritesMenuSelector:))
+	{
+		[theMenuItem setAction:nil];
+		
+		// Set up the Favorites Menu
+		NSMenu* favoritesMenu = [[[NSMenu alloc] init] autorelease];
+		favoritesMenuDelegate = [[FavoritesMenuDelegate alloc] init];
+		[favoritesMenu setDelegate:favoritesMenuDelegate];
+		[theMenuItem setSubmenu:favoritesMenu];		
+	}	
+	return enable;
+}
+
+
 ///////////////////////////////////////////////////////////////// GO MENU ITEMS
 
 /** Action that will set the directory of the current window to the Computer
@@ -304,6 +324,11 @@ static ApplicationController* appControl;
 		// We have to make a new window to set the directory on it!
 		[[ViewerDocument alloc] initWithPath:path];
 	}
+}
+
+-(IBAction)fakeFavoritesMenuSelector:(id)sender
+{
+	
 }
 
 @end

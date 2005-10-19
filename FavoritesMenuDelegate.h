@@ -30,13 +30,8 @@
 
 #import <Cocoa/Cocoa.h>
 
-@class VitaminSEEController;
-
 @interface FavoritesMenuDelegate : NSObject {
-		VitaminSEEController* controller;
 }
-
--(id)initWithController:(VitaminSEEController*)controller;
 
 - (int)numberOfItemsInMenu:(NSMenu *)menu;
 

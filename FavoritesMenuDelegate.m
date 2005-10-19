@@ -29,27 +29,25 @@
 ////////////////////////////////////////////////////////////////////////
 
 #import "FavoritesMenuDelegate.h"
-#import "VitaminSEEController.h"
+#import "EGPath.h"
 #import "NSString+FileTasks.h"
+#import "ApplicationController.h"
 
 @implementation FavoritesMenuDelegate
 
--(id)initWithController:(VitaminSEEController*)inController
-{
-	if(self = [super init])
-	{
-		controller = inController;
-	}
-	
-	return self;
-}
-
+/** Returns the number of entries that should be in the menu.
+ */
 -(int)numberOfItemsInMenu:(NSMenu*)menu
 {
 	return [[[NSUserDefaults standardUserDefaults] 
 		objectForKey:@"SortManagerPaths"] count];
 }
 
+//-----------------------------------------------------------------------------
+
+/** Lazily initializes a menu item to a menu item to represent the index-th
+ * path.
+ */
 - (BOOL)menu:(NSMenu *)menu 
   updateItem:(NSMenuItem *)item 
 	 atIndex:(int)index 
@@ -65,9 +63,12 @@ shouldCancel:(BOOL)shouldCancel
 	[item setTarget:self];
 }
 
-// This compatibility function is for the NSToolbarItem menuRepresentations.
-// It has major problems dealing with NSMenus with delegates, so return
-// an NSMenu with the items prebuilt.
+//-----------------------------------------------------------------------------
+
+/** This compatibility function is for the NSToolbarItem menuRepresentations.
+ * It has major problems dealing with NSMenus with delegates, so return
+ * an NSMenu with the items prebuilt.
+ */
 -(NSMenu*)buildCompatibleMenu 
 {
 	NSMenu* menu = [[[NSMenu alloc] initWithTitle:@"Favorites"] autorelease];
@@ -83,14 +84,25 @@ shouldCancel:(BOOL)shouldCancel
 	return menu;
 }
 
+//-----------------------------------------------------------------------------
+
+/** Menu validation function. Checks to make sure that the directory, in fact,
+ * exists, and that it hasn't been deleted/moved/whatevered since the time of
+ * adding to Favorites.
+ */
 -(BOOL)validateMenuItem:(NSMenuItem *)theMenuItem
 {
 	return [[theMenuItem representedObject] isDir];
 }
 
+//-----------------------------------------------------------------------------
+
+/** Menu action for all menu items created in this delegate. Sets the directory
+ * for whatever is the main window...
+ */
 -(void)setDirectoryFromFavorites:(id)menu
 {
-	[controller finishedGotoFolder:[menu representedObject]];
+	[[ApplicationController controller] goToDirectory:[EGPath pathWithPath:[menu representedObject]]];
 }
 
 @end
