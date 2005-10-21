@@ -61,6 +61,8 @@ shouldCancel:(BOOL)shouldCancel
 	[item setKeyEquivalent:@""];
 	[item setRepresentedObject:[d objectForKey:@"Path"]];
 	[item setTarget:self];
+	
+	return YES;
 }
 
 //-----------------------------------------------------------------------------
@@ -102,7 +104,8 @@ shouldCancel:(BOOL)shouldCancel
  */
 -(void)setDirectoryFromFavorites:(id)menu
 {
-	[[ApplicationController controller] goToDirectory:[EGPath pathWithPath:[menu representedObject]]];
+	[[ApplicationController controller] goToDirectory:[EGPath pathWithPath:
+		[menu representedObject]]];
 }
 
 @end

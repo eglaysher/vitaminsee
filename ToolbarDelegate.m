@@ -27,7 +27,7 @@
 //
 ////////////////////////////////////////////////////////////////////////
 
-//#import "FavoritesToolbarItem.h"
+#import "FavoritesToolbarItem.h"
 #import "ToolbarDelegate.h"
 #import "ViewIconViewController.h"
 #import "NSString+FileTasks.h"
@@ -50,7 +50,7 @@ static NSString* MoveToTrashID = @"Move Item to Trash Toolbar Identifier";
 static NSString* GotoComputerID = @"Goto Computer Toolbar Identifier";
 static NSString* GotoPicturesID = @"Goto Pictures Toolbar Identifier";
 static NSString* GotoHomeID = @"Goto Home Toolbar Identifier";
-//static NSString* FavoritesID = @"Favorites Toolbar Identifier";
+static NSString* FavoritesID = @"Favorites Toolbar Identifier";
 
 static NSString* NextPictureToolbarID = @"Next Picture Toolbar Identifier";
 static NSString* PreviousPictureToolbarID = @"Previous Picture Toolbar Identifier";
@@ -171,12 +171,12 @@ static ToolbarDelegate* toolbarDelegateObject = 0;
 		[item setImage:[NSImage imageNamed:@"ToolbarPicturesFolderIcon"]];
 		[item setAction:@selector(goToPicturesDirectory:)];
 	}
-//	else if([itemIdent isEqual:FavoritesID])
-//	{
-//		// FavoritesToolbarItem is special.
-//		item = [[[FavoritesToolbarItem alloc] initWithItemIdentifier:itemIdent
-//														  controller:self] autorelease];
-//	}
+	else if([itemIdent isEqual:FavoritesID])
+	{
+		// FavoritesToolbarItem is special.
+		item = [[[FavoritesToolbarItem alloc] initWithItemIdentifier:itemIdent]
+			autorelease];
+	}
 	else if([itemIdent isEqual:NextPictureToolbarID])
 	{
 		[item setLabel:NSLocalizedString(@"Next", @"Toolbar Item")];
@@ -201,12 +201,12 @@ static ToolbarDelegate* toolbarDelegateObject = 0;
 
 - (NSArray *) toolbarDefaultItemIdentifiers: (NSToolbar *) toolbar
 {
-	// FavoritesID, 
+	// 
 	return [NSArray arrayWithObjects:RevealInFinderToolbarID, 
 		ViewInPreviewToolbarID, NSToolbarSeparatorItemIdentifier,
 		NextPictureToolbarID, PreviousPictureToolbarID,
 		NSToolbarSeparatorItemIdentifier, GotoComputerID,
-		GotoHomeID, GotoPicturesID, NSToolbarSeparatorItemIdentifier,
+		GotoHomeID, GotoPicturesID, FavoritesID, NSToolbarSeparatorItemIdentifier,
 		NSToolbarFlexibleSpaceItemIdentifier, 
 		ZoomInToolbarID, ZoomOutToolbarID, ZoomToFitToolbarID, 
 		ActualSizeToolbarID, nil];
@@ -216,7 +216,7 @@ static ToolbarDelegate* toolbarDelegateObject = 0;
 {
 	// FavoritesID,
 	return [NSArray arrayWithObjects:RevealInFinderToolbarID, ViewInPreviewToolbarID, 
-		MoveToTrashID, GotoComputerID, GotoHomeID, GotoPicturesID,  ZoomInToolbarID, ZoomOutToolbarID,
+		MoveToTrashID, GotoComputerID, GotoHomeID, GotoPicturesID,  FavoritesID, ZoomInToolbarID, ZoomOutToolbarID,
 		ZoomToFitToolbarID, ActualSizeToolbarID, NextPictureToolbarID, PreviousPictureToolbarID,
 		NSToolbarSeparatorItemIdentifier,
 		NSToolbarSpaceItemIdentifier, NSToolbarFlexibleSpaceItemIdentifier,

@@ -41,9 +41,7 @@
 	NSMenuItem* menuRepresentation;
 }
 
--(id)initWithItemIdentifier:(NSString*)itemIdent 
-				 controller:(VitaminSEEController*)inCont;
-
+-(id)initWithItemIdentifier:(NSString*)itemIdent;
 -(void)rebuildOverflowAndOtherMenu:(id)sender;
 
 @end

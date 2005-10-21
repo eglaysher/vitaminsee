@@ -28,14 +28,14 @@
 ////////////////////////////////////////////////////////////////////////
 
 #import "MVMenuButton.h"
-#import "VitaminSEEController.h"
 #import "FavoritesToolbarItem.h"
 #import "FavoritesMenuDelegate.h"
 
 @implementation FavoritesToolbarItem
 
+/** Creates a "Favorites" toolbar menu item.
+ */
 -(id)initWithItemIdentifier:(NSString*)itemIdent 
-				 controller:(VitaminSEEController*)inCont
 {
 	if(self = [super initWithItemIdentifier:itemIdent])
 	{		
@@ -56,7 +56,7 @@
 		
 		// Build menu
 		favoritesMenu = [[NSMenu alloc] init];
-		favoritesMenuDelegate = [[FavoritesMenuDelegate alloc] initWithController:inCont];
+		favoritesMenuDelegate = [[FavoritesMenuDelegate alloc] init];
 		[favoritesMenu setDelegate:favoritesMenuDelegate];
 
 		// Set up menu for the popup image.
@@ -65,6 +65,7 @@
 		// Set up menu representation for item
 		menuRepresentation = [[NSMenuItem alloc] init];
 
+		// Set the toolbar image to the Favorites heart
 		NSImage* image = [[[NSImage imageNamed:@"ToolbarFavoritesIcon"] copy] autorelease];
 		[image setScalesWhenResized:YES];
 		[image setSize:NSMakeSize(16,16)];
@@ -89,6 +90,10 @@
 	return self;
 }
 
+//-----------------------------------------------------------------------------
+
+/** Deallocator 
+ */
 -(void)dealloc
 {
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -100,8 +105,16 @@
 	[super dealloc];
 }
 
-// Really, this is a hack around broken delegate support for NSMenus in
-// NSToolbarItems in text or overflow mode. 
+//-----------------------------------------------------------------------------
+
+/** Notification handler function for "NSUserDefaultsDidChangeNotification".
+ * Regenerates the Favorites menu. 
+ * 
+ * Really, this is a hack around broken delegate support for NSMenus in 
+ * NSToolbarItems in text or overflow mode. This wasn't even fixed in Tiger the
+ * last time I checked, not that it matters, since I'd have to drop 
+ * compatibility with all previous versions of the AppKit.
+ */
 -(void)rebuildOverflowAndOtherMenu:(id)sender
 {	
 	[menuRepresentation setSubmenu:[favoritesMenuDelegate buildCompatibleMenu]];

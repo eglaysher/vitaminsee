@@ -326,6 +326,8 @@
 //8B4
 		8B2448A108FB2018004716BC = {
 			children = (
+				8BDF02140908715A00C2A1BF,
+				8BDF02150908715A00C2A1BF,
 				8B2448A208FB2033004716BC,
 				8B2448A308FB2033004716BC,
 				8B2448A408FB2033004716BC,
@@ -1347,6 +1349,7 @@
 				8B24492B08FB5680004716BC,
 				8B244B3E08FC886A004716BC,
 				8B569B920905EA0C001B14F5,
+				8BDF02160908715A00C2A1BF,
 			);
 			isa = PBXCopyFilesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1436,6 +1439,36 @@
 		};
 		8B569B930905EA0C001B14F5 = {
 			fileRef = 8B569B910905EA0C001B14F5;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8BDF02140908715A00C2A1BF = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = FavoritesToolbarItem.h;
+			path = Widgets/FavoritesToolbarItem.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8BDF02150908715A00C2A1BF = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
+			name = FavoritesToolbarItem.m;
+			path = Widgets/FavoritesToolbarItem.m;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8BDF02160908715A00C2A1BF = {
+			fileRef = 8BDF02140908715A00C2A1BF;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8BDF02170908715A00C2A1BF = {
+			fileRef = 8BDF02150908715A00C2A1BF;
 			isa = PBXBuildFile;
 			settings = {
 			};
@@ -1545,6 +1578,7 @@
 				8B2448E508FB20CB004716BC,
 				8B244B3F08FC886A004716BC,
 				8B569B930905EA0C001B14F5,
+				8BDF02170908715A00C2A1BF,
 			);
 			isa = PBXSourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
