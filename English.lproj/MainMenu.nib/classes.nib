@@ -18,6 +18,9 @@
         {
             ACTIONS = {
                 actualSize = id; 
+                goBack = id; 
+                goEnclosingFolder = id; 
+                goForward = id; 
                 goNextFile = id; 
                 goPreviousFile = id; 
                 goToComputer = id; 

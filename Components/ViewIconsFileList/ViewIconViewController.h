@@ -51,6 +51,8 @@
 	NSMutableDictionary* thumbnailCache;
 	int oldPosition;
 	
+	NSUndoManager* pathManager;
+	
 	BOOL needToRebuild;
 	
 	id<FileListDelegate> delegate;

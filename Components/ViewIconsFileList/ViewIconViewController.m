@@ -75,6 +75,8 @@
 		// Lookup the image loading class.
 		ImageLoader = NSClassFromString(@"ImageLoader");
 		pathType = NSClassFromString(@"EGPath");
+		
+		pathManager = [[NSUndoManager alloc] init];
 	}
 
 	return self;
@@ -86,6 +88,7 @@
 	NSNotificationCenter* nc = [[NSWorkspace sharedWorkspace] notificationCenter];
 	[nc removeObserver:self];
 	
+	[pathManager release];
 	[thumbnailCache release];
 	[super dealloc];
 }
@@ -126,13 +129,17 @@
 {	
 	[thumbnailCache removeAllObjects];
 //	[pluginLayer flushImageCache];
-	
-	// FIXME-UPDATE
-//	if(currentDirectory && newCurrentDirectory && 
-//	   ![currentDirectory isEqual:newCurrentDirectory])
-//		[[[pluginLayer pathManager] prepareWithInvocationTarget:self]
-//			setCurrentDirectory:currentDirectory
-//					currentFile:[pluginLayer currentFile]];
+
+	NSLog(@"Path manager: %@", pathManager);
+	if(currentDirectory) 
+	{
+		[pathManager registerUndoWithTarget:self
+								   selector:@selector(setDirectory:)
+									 object:currentDirectory];
+		[pathManager registerUndoWithTarget:self 
+								   selector:@selector(focusOnFile:) 
+									 object:currentFile];		
+	}
 
 	// Clear the thumbnails. They need to be regenerated...
 	// FIXME: Update
@@ -197,6 +204,24 @@
 	[[ourBrowser window] makeFirstResponder:ourBrowser];
 	
 	return YES;
+}
+
+//-----------------------------------------------------------------------------
+
+-(BOOL)focusOnFile:(EGPath*)file
+{
+	unsigned index = [fileList binarySearchFor:[file fileSystemPath]
+							  withSortSelector:@selector(caseInsensitiveCompare:)];
+
+	if(index != NSNotFound)
+	{
+		[ourBrowser selectRow:index inColumn:0];
+		return YES;
+	}
+	else 
+	{
+		return NO;
+	}
 }
 
 //-----------------------------------------------------------------------------
@@ -401,10 +426,14 @@ willDisplayCell:(id)cell
 	}	
 }
 
+//-----------------------------------------------------------------------------
+
 -(BOOL)canGoEnclosingFolder
 {
 	return [[currentDirectory pathDisplayComponents] count] > 1;
 }
+
+//-----------------------------------------------------------------------------
 
 -(void)goEnclosingFolder
 {
@@ -415,6 +444,8 @@ willDisplayCell:(id)cell
 //				  currentFile:[currentDirCopy fileSystemPath]];
 	[currentDirCopy release];
 }
+
+//-----------------------------------------------------------------------------
 
 -(BOOL)canGoNextFile 
 {
@@ -428,6 +459,8 @@ willDisplayCell:(id)cell
 		return NO;
 }
 
+//-----------------------------------------------------------------------------
+
 -(void)goNextFile
 {
 	int index = [fileList binarySearchFor:[[delegate currentFile] fileSystemPath]
@@ -438,6 +471,8 @@ willDisplayCell:(id)cell
 	[ourBrowser selectRow:index inColumn:0];
 	[self singleClick:ourBrowser];
 }
+
+//-----------------------------------------------------------------------------
 
 -(BOOL)canGoPreviousFile
 {
@@ -450,6 +485,8 @@ willDisplayCell:(id)cell
 		return NO;
 }
 
+//-----------------------------------------------------------------------------
+
 -(void)goPreviousFile
 {
 	int index = [fileList binarySearchFor:[[delegate currentFile] fileSystemPath]
@@ -459,6 +496,35 @@ willDisplayCell:(id)cell
 	// Select this file
 	[ourBrowser selectRow:index inColumn:0];
 	[self singleClick:ourBrowser];
+}
+
+//-----------------------------------------------------------------------------
+
+-(BOOL)canGoBack
+{
+	return [pathManager canUndo];
+}
+
+//-----------------------------------------------------------------------------
+
+-(void)goBack
+{
+	[pathManager undo];
+}
+
+//-----------------------------------------------------------------------------
+
+-(BOOL)canGoForward
+{
+	NSLog(@"Path manager: %@", pathManager);
+	return [pathManager canRedo];
+}
+
+//-----------------------------------------------------------------------------
+
+-(void)goForward
+{
+	[pathManager redo];
 }
 
 @end

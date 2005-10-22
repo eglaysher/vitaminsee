@@ -219,6 +219,10 @@
 		enable = [fileList canGoNextFile];
 	else if(action == @selector(goPreviousFile:))
 		enable = [fileList canGoPreviousFile];
+	else if(action == @selector(goBack:))
+		enable = [fileList canGoBack];
+	else if(action == @selector(goForward:))
+		enable = [fileList canGoForward];
 	
 	return enable;
 }
@@ -316,6 +320,27 @@
 	// Go previous
 	NSLog(@"Go Previous!");
 	[fileList goPreviousFile];
+}
+
+//-----------------------------------------------------------------------------
+
+/** Go Back
+ */
+-(void)goBack:(id)sender
+{
+	NSLog(@"Go Back!");
+	[fileList goBack];
+}
+
+//-----------------------------------------------------------------------------
+
+/** Go Forward
+ *
+ */
+-(void)goForward:(id)sender
+{
+	NSLog(@"Go Forward!");
+	[fileList goForward];
 }
 
 @end

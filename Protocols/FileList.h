@@ -117,6 +117,12 @@
  */
 -(void)goForward;
 
+/** Go up one folder 
+ *
+ * @see -canGoEnclosingFolder
+ */
+-(void)goEnclosingFolder;
+
 //@}
 
 //-----------------------------------------------------------------------------
@@ -138,6 +144,8 @@
  *
  * FileLists that want to totally disable should hard code a return value of
  * NO.
+ *
+ * @see -goNextFile
  */
 -(BOOL)canGoNextFile;
 
@@ -147,20 +155,34 @@
  *
  * FileLists that want to totally disable should hard code a return value of
  * NO.
+ *
+ * @see -goPreviousFile
  */
 -(BOOL)canGoPreviousFile;
 
 /** Checks if the "Back" Go menu item and toolbar item should be enabled. In 
  * most FileLists, this means keeping track of the previous directories, though
  * it could have a different semantic meaning (such as previous searches).
+ *
+ * @see -goBack
  */
 -(BOOL)canGoBack;
 
 /** Checks if the "Forward" Go menu item and toolbar item should be enabled. In
  * most FileLists, this means keeping track of the previous directories, though
  * it could have a different semantic meaning.
+ * 
+ * @see -goForward
  */
 -(BOOL)canGoForward;
+
+/** Checks if the "Enclosing Folder" Go menu item and toolbar item should be
+ * enabled. In most FileLists, this means having a notion of a current 
+ * directory, so there's a place to go up to.
+ *
+ * @see -goEnclosingFolder
+ */
+-(BOOL)canGoEnclosingFolder;
 
 /** Responsible for setting the title information (and proxy icon if 
  * applicable) of a window. The window to set is passed in by the 
