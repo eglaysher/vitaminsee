@@ -28,10 +28,10 @@
 //
 ////////////////////////////////////////////////////////////////////////
 
-#import "GotoSheetController.h"
+#import "GotoFolderSheetController.h"
 
 
-@implementation GotoSheetController
+@implementation GotoFolderSheetController
 
 
 -(id)initWithPluginLayer:(PluginLayer*)inPluginLayer

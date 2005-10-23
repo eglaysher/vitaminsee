@@ -31,7 +31,7 @@
 #import <Cocoa/Cocoa.h>
 #import "PluginBase.h"
 
-@interface GotoSheetController : NSWindowController <PluginBase> {
+@interface GotoFolderSheetController : NSWindowController <PluginBase> {
 	IBOutlet NSTextField* folderName;
 	NSTimer* timer;
 	
