@@ -34,6 +34,7 @@
 #import "FileList.h"
 #import "EGPath.h"
 #import "NSObject+CallWithArray.h"
+#import "ImageLoader.h"
 
 @interface ViewIconViewController (Private)
 -(void)rebuildInternalFileArray;
@@ -72,10 +73,6 @@
 		
 		needToRebuild = NO;
 
-		// Lookup the image loading class.
-		ImageLoader = NSClassFromString(@"ImageLoader");
-		pathType = NSClassFromString(@"EGPath");
-		
 		pathManager = [[NSUndoManager alloc] init];
 	}
 
@@ -311,7 +308,7 @@ willDisplayCell:(id)cell
 	
 	NSString* absolutePath = [fileList objectAtIndex:index];
 
-	[delegate setDisplayedFileTo:[pathType pathWithPath:absolutePath]];
+	[delegate setDisplayedFileTo:[EGPath pathWithPath:absolutePath]];
 
 	if(NSAppKitVersionNumber < 824.00f)
 	{
@@ -346,7 +343,7 @@ willDisplayCell:(id)cell
 		id node = [[ourBrowser loadedCellAtRow:preloadRow column:0] cellPath];
 		// FIXME
 		if(node && [node isImage])
-			[ImageLoader preloadImage:[pathType pathWithPath:node]];
+			[ImageLoader preloadImage:[EGPath pathWithPath:node]];
 	}
 
 	oldPosition = newPosition;
@@ -364,7 +361,7 @@ willDisplayCell:(id)cell
 	// FIXME
 	if([absolutePath isDir])
 //		// Get the first image in the directory:		
-		[self setDirectory:[NSClassFromString(@"EGPath") pathWithPath:absolutePath]];
+		[self setDirectory:[EGPath pathWithPath:absolutePath]];
 }
 
 -(void)selectFile:(NSString*)fileToSelect

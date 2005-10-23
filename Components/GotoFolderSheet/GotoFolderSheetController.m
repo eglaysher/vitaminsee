@@ -30,7 +30,6 @@
 
 #import "GotoFolderSheetController.h"
 
-
 @implementation GotoFolderSheetController
 
 -(id)init
@@ -86,13 +85,13 @@
 	
 	// Clear the 
 	[folderName setStringValue:initialValue];
-
+	
 	[NSApp beginSheet:[self window]
 	   modalForWindow:window
 		modalDelegate:self
 	   didEndSelector:@selector(sheetDidEnd:returnCode:contextInfo:)
 		  contextInfo:nil];
-}	
+}
 
 -(void)sheetDidEnd:(NSWindow*)sheet returnCode:(int)returnCode
 	   contextInfo:(void*)contextInfo

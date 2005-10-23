@@ -119,6 +119,7 @@
 				8D1107320486CEB800E47090,
 				8B24491508FB5587004716BC,
 				8BEA54AA090BE15B00F83026,
+				8BEA55D3090C0EC100F83026,
 			);
 			isa = PBXGroup;
 			name = Products;
@@ -150,6 +151,7 @@
 				8D1107260486CEB800E47090,
 				8B24491408FB5587004716BC,
 				8BEA54A9090BE15B00F83026,
+				8BEA55D2090C0EC100F83026,
 			);
 		};
 		29B97314FDCFA39411CA2CEA = {
@@ -164,7 +166,6 @@
 				29B97317FDCFA39411CA2CEA,
 				29B97323FDCFA39411CA2CEA,
 				19C28FACFE9D520D11CA2CBB,
-				8BEA54AB090BE15B00F83026,
 			);
 			isa = PBXGroup;
 			name = VitaminSEE;
@@ -1137,6 +1138,7 @@
 		};
 		8B24490F08FB546C004716BC = {
 			children = (
+				8BEA55C2090C0AFE00F83026,
 				8B38D821090A8CCA00D2EEFD,
 				8B24491008FB5498004716BC,
 			);
@@ -1165,7 +1167,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B24492508FB563E004716BC,
-				8B24493D08FB5859004716BC,
 			);
 			isa = PBXResourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1204,8 +1205,9 @@
 				INFOPLIST_FILE = "Components/ViewIconsFileList/ViewIconsFileList-Info.plist";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
 				LIBRARY_STYLE = BUNDLE;
+				MACOSX_DEPLOYMENT_TARGET = 10.3;
 				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "-framework Foundation -framework AppKit";
+				OTHER_LDFLAGS = "-framework Foundation -framework AppKit -undefined dynamic_lookup";
 				OTHER_REZFLAGS = "";
 				PREBINDING = NO;
 				PRODUCT_NAME = ViewIconsFileList;
@@ -1350,6 +1352,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				8B8B7241090C138A006DDF10,
 				8BEA54B8090BE19D00F83026,
 				8B24492B08FB5680004716BC,
 			);
@@ -1383,12 +1386,6 @@
 			refType = 4;
 			sourceTree = "<group>";
 		};
-		8B24493D08FB5859004716BC = {
-			fileRef = 8B24493C08FB5859004716BC;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
 		8B244B3C08FC886A004716BC = {
 			fileEncoding = 30;
 			isa = PBXFileReference;
@@ -1421,7 +1418,7 @@
 				8BEA5551090BE82800F83026,
 			);
 			isa = PBXGroup;
-			name = "Go To Folder Sheet";
+			name = GotoFolderSheet;
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -1443,6 +1440,33 @@
 		};
 		8B569B930905EA0C001B14F5 = {
 			fileRef = 8B569B910905EA0C001B14F5;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B8B7229090C1323006DDF10 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = text.xml;
+			name = "GotoFolderWindow-Info.plist";
+			path = "Components/GotoFolderWindow/GotoFolderWindow-Info.plist";
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B8B723F090C1380006DDF10 = {
+			containerPortal = 29B97313FDCFA39411CA2CEA;
+			isa = PBXContainerItemProxy;
+			proxyType = 1;
+			remoteGlobalIDString = 8BEA55D2090C0EC100F83026;
+			remoteInfo = GotoFolderWindow;
+		};
+		8B8B7240090C1380006DDF10 = {
+			isa = PBXTargetDependency;
+			target = 8BEA55D2090C0EC100F83026;
+			targetProxy = 8B8B723F090C1380006DDF10;
+		};
+		8B8B7241090C138A006DDF10 = {
+			fileRef = 8BEA55D3090C0EC100F83026;
 			isa = PBXBuildFile;
 			settings = {
 			};
@@ -1538,7 +1562,7 @@
 				INFOPLIST_FILE = "Components/GotoFolderSheet/GotoFolderSheet-Info.plist";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
 				LIBRARY_STYLE = BUNDLE;
-				OPTIMIZATION_CFLAGS = "";
+				MACOSX_DEPLOYMENT_TARGET = 10.3;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "-framework Foundation -framework AppKit";
 				OTHER_REZFLAGS = "";
@@ -1580,17 +1604,9 @@
 			explicitFileType = wrapper.cfbundle;
 			includeInIndex = 0;
 			isa = PBXFileReference;
-			name = GotoFolderSheet.bundle;
-			path = build/GotoFolderSheet.bundle;
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		8BEA54AB090BE15B00F83026 = {
-			isa = PBXFileReference;
-			lastKnownFileType = text.xml;
-			path = "GotoFolderSheet-Info.plist";
-			refType = 4;
-			sourceTree = "<group>";
+			path = GotoFolderSheet.bundle;
+			refType = 3;
+			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		8BEA54AF090BE18C00F83026 = {
 			fileRef = 8BEA5470090BDFA000F83026;
@@ -1664,6 +1680,178 @@
 			settings = {
 			};
 		};
+		8BEA55C2090C0AFE00F83026 = {
+			children = (
+				8BEA55DF090C0EFB00F83026,
+				8B8B7229090C1323006DDF10,
+				8BEA55D9090C0EDF00F83026,
+				8BEA55DA090C0EDF00F83026,
+				8BEA55DB090C0EDF00F83026,
+				8BEA55DC090C0EDF00F83026,
+			);
+			isa = PBXGroup;
+			name = GotoFolderWindow;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8BEA55CF090C0EC100F83026 = {
+			buildActionMask = 2147483647;
+			files = (
+				8BEA55E1090C0EFB00F83026,
+			);
+			isa = PBXResourcesBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8BEA55D0090C0EC100F83026 = {
+			buildActionMask = 2147483647;
+			files = (
+				8BEA55DD090C0EDF00F83026,
+				8BEA55DE090C0EDF00F83026,
+			);
+			isa = PBXSourcesBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8BEA55D1090C0EC100F83026 = {
+			buildActionMask = 2147483647;
+			files = (
+			);
+			isa = PBXFrameworksBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8BEA55D2090C0EC100F83026 = {
+			buildPhases = (
+				8BEA55CF090C0EC100F83026,
+				8BEA55D0090C0EC100F83026,
+				8BEA55D1090C0EC100F83026,
+			);
+			buildRules = (
+			);
+			buildSettings = {
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = "Components/GotoFolderWindow/GotoFolderWindow-Info.plist";
+				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
+				LIBRARY_STYLE = BUNDLE;
+				MACOSX_DEPLOYMENT_TARGET = 10.3;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "-framework Foundation -framework AppKit -undefined dynamic_lookup";
+				OTHER_REZFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = GotoFolderWindow;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = "-Wmost -Wno-four-char-constants -Wno-unknown-pragmas";
+			};
+			dependencies = (
+			);
+			isa = PBXNativeTarget;
+			name = GotoFolderWindow;
+			productName = GotoFolderWindow;
+			productReference = 8BEA55D3090C0EC100F83026;
+			productSettingsXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
+<!DOCTYPE plist PUBLIC \"-//Apple Computer//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">
+<plist version=\"1.0\">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>English</string>
+	<key>CFBundleExecutable</key>
+	<string>GotoFolderWindow</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.yourcompany.GotoFolderWindow</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
+	<key>CFBundleVersion</key>
+	<string>1.0</string>
+</dict>
+</plist>
+";
+			productType = "com.apple.product-type.bundle";
+		};
+		8BEA55D3090C0EC100F83026 = {
+			explicitFileType = wrapper.cfbundle;
+			includeInIndex = 0;
+			isa = PBXFileReference;
+			path = GotoFolderWindow.bundle;
+			refType = 3;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		8BEA55D9090C0EDF00F83026 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = GotoFolderWindowController.h;
+			path = Components/GotoFolderWindow/GotoFolderWindowController.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8BEA55DA090C0EDF00F83026 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
+			name = GotoFolderWindowController.m;
+			path = Components/GotoFolderWindow/GotoFolderWindowController.m;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8BEA55DB090C0EDF00F83026 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = GotoFolderWindowFactory.h;
+			path = Components/GotoFolderWindow/GotoFolderWindowFactory.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8BEA55DC090C0EDF00F83026 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
+			name = GotoFolderWindowFactory.m;
+			path = Components/GotoFolderWindow/GotoFolderWindowFactory.m;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8BEA55DD090C0EDF00F83026 = {
+			fileRef = 8BEA55DA090C0EDF00F83026;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8BEA55DE090C0EDF00F83026 = {
+			fileRef = 8BEA55DC090C0EDF00F83026;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8BEA55DF090C0EFB00F83026 = {
+			children = (
+				8BEA55E0090C0EFB00F83026,
+			);
+			isa = PBXVariantGroup;
+			name = GotoFolderWindow.nib;
+			path = "";
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8BEA55E0090C0EFB00F83026 = {
+			isa = PBXFileReference;
+			lastKnownFileType = wrapper.nib;
+			name = English;
+			path = Components/GotoFolderWindow/English.lproj/GotoFolderWindow.nib;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8BEA55E1090C0EFB00F83026 = {
+			fileRef = 8BEA55DF090C0EFB00F83026;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
 //8B0
 //8B1
 //8B2
@@ -1698,6 +1886,7 @@
 			dependencies = (
 				8B24492A08FB567D004716BC,
 				8BEA54B6090BE19900F83026,
+				8B8B7240090C1380006DDF10,
 			);
 			isa = PBXNativeTarget;
 			name = VitaminSEE;

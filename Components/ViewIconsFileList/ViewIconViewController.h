@@ -40,8 +40,8 @@
 	IBOutlet NSBrowser* ourBrowser;
 	IBOutlet NSView* ourView;
 
-	Class ImageLoader;
-	Class pathType;
+//	Class ImageLoader;
+//	Class pathType;
 	
 	NSCell* currentlySelectedCell;
 	EGPath* currentDirectory;

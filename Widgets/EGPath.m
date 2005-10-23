@@ -172,26 +172,16 @@ static NSString* egPathRootDisplayName = 0;
 	if(!egPathRootDisplayName)
 	{
 		CFStringRef name;
-		name = SCDynamicStoreCopyComputerName(NULL,NULL);
-		
+		// Okay, that failed. Let's ask Carbon for our name instead:
+		name = CSCopyMachineName();
 		if(name)
 		{
 			egPathRootDisplayName = [[NSString alloc] initWithString:(NSString *)name];
 			CFRelease(name);
 		}
 		else
-		{
-			// Okay, that failed. Let's ask Carbon for our name instead:
-			name = CSCopyMachineName();
-			if(name)
-			{
-				egPathRootDisplayName = [[NSString alloc] initWithString:(NSString *)name];
-				CFRelease(name);
-			}
-			else
-				// Screw it. Use a likely default...
-				egPathRootDisplayName = [[NSString alloc] initWithString:@"Macintosh"];				
-		}
+			// Screw it. Use a likely default...
+			egPathRootDisplayName = [[NSString alloc] initWithString:@"Macintosh"];
 	}
 	
 	return egPathRootDisplayName;

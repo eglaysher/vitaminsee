@@ -39,6 +39,7 @@
 #import "ViewerDocument.h"
 #import "VitaminSEEWindowController.h"
 #import "GotoFolderSheetController.h"
+#import "GotoFolderWindowController.h"
 #import "ComponentManager.h"
 #import "FavoritesMenuDelegate.h"
 #import "RBSplitView.h"
@@ -324,6 +325,14 @@ static ApplicationController* appControl;
 				   initialValue:@"~/Pictures"
 						 target:document
 					   selector:@selector(setDirectoryFromRawPath:)];
+	}
+	else
+	{
+		id gotoDelegate = [[ComponentManager getInteranlComponentNamed:@"GotoFolderWindow"] build];
+		
+		[gotoDelegate showModalWindowWithInitialValue:@"~/Pictures"
+											   target:self
+											 selector:@selector(goToDirectory:)];
 	}
 }
 
