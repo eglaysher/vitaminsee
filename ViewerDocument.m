@@ -86,6 +86,19 @@
 
 //----------------------------------------------------------------------------- 
 
+/** Used for the Goto Folder method... 
+ */
+-(void)setDirectoryFromRawPath:(NSString*)path
+{
+	NSLog(@"Receiving the path %@", path);
+	if([path isDir]) 
+		[fileList setDirectory:[EGPath pathWithPath:path]];
+	else
+		AlertSoundPlay();
+}
+
+//-----------------------------------------------------------------------------
+
 /** 
  */
 -(void)setDirectory:(EGPath*)path

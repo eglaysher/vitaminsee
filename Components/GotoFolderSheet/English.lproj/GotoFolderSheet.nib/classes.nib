@@ -3,6 +3,13 @@
         {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
         {
             ACTIONS = {clickCancel = id; clickOK = id; completeText = id; type = id; }; 
+            CLASS = GotoFolderSheetController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {folderName = NSTextField; target = id; }; 
+            SUPERCLASS = NSWindowController; 
+        }, 
+        {
+            ACTIONS = {clickCancel = id; clickOK = id; completeText = id; type = id; }; 
             CLASS = GotoSheetController; 
             LANGUAGE = ObjC; 
             OUTLETS = {

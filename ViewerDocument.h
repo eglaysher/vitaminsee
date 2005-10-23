@@ -48,4 +48,6 @@
 -(void)stopProgressIndicator;
 
 -(BOOL)validateAction:(SEL)action;
+
+-(void)setDirectoryFromRawPath:(NSString*)path;
 @end

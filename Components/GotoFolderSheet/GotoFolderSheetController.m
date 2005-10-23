@@ -33,10 +33,9 @@
 
 @implementation GotoFolderSheetController
 
-
--(id)initWithPluginLayer:(PluginLayer*)inPluginLayer
+-(id)init
 {
-	if(self = [super initWithWindowNibName:@"GoToFolderSheet"])
+	if(self = [super initWithWindowNibName:@"GotoFolderSheet"])
 	{
 		[self window];
 		
@@ -81,8 +80,6 @@
 		selector:(SEL)selector
 {
 	// First, set the callbacks for later when OUR callbacks are called
-	[inTarget retain];
-	[target release];
 	target = inTarget;
 	
 	returnSelector = selector;
@@ -97,7 +94,6 @@
 		  contextInfo:nil];
 }	
 
-
 -(void)sheetDidEnd:(NSWindow*)sheet returnCode:(int)returnCode
 	   contextInfo:(void*)contextInfo
 {
@@ -111,8 +107,6 @@
 	// Now call the selector on target if needed.
 	if(!cancel)
 		[target performSelector:returnSelector withObject:directory];
-
-	[target release];
 }
 
 @end

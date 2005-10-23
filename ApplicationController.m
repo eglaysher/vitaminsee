@@ -38,7 +38,7 @@
 #import "ApplicationController.h"
 #import "ViewerDocument.h"
 #import "VitaminSEEWindowController.h"
-
+#import "GotoFolderSheetController.h"
 #import "ComponentManager.h"
 #import "FavoritesMenuDelegate.h"
 #import "RBSplitView.h"
@@ -312,13 +312,20 @@ static ApplicationController* appControl;
 {
 	if([NSApp mainWindow]) 
 	{
-		id gotoDelegate = [ComponentManager getInteranlComponentNamed:@"GotoFolder"];
+		id gotoDelegate = [[ComponentManager getInteranlComponentNamed:@"GotoFolderSheet"] build];
+		NSWindow* mainWindow = [NSApp mainWindow];
+		NSWindowController* controller = [mainWindow windowController];
+		ViewerDocument* document = [controller document];
 		
 		// Start 
 		NSLog(@"Goto delegate: %@", gotoDelegate);
+		
+		[gotoDelegate showSheet:mainWindow
+				   initialValue:@"~/Pictures"
+						 target:document
+					   selector:@selector(setDirectoryFromRawPath:)];
 	}
 }
-
 
 //-----------------------------------------------------------------------------
 
