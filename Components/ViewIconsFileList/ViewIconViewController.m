@@ -130,7 +130,6 @@
 	[thumbnailCache removeAllObjects];
 //	[pluginLayer flushImageCache];
 
-	NSLog(@"Path manager: %@", pathManager);
 	if(currentDirectory) 
 	{
 		[pathManager registerUndoWithTarget:self
@@ -516,7 +515,6 @@ willDisplayCell:(id)cell
 
 -(BOOL)canGoForward
 {
-	NSLog(@"Path manager: %@", pathManager);
 	return [pathManager canRedo];
 }
 

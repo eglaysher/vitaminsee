@@ -16,5 +16,11 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
+	<key>NSPrincipalClass</key>
+	<string>GotoSheetController</string>
+	<key>VSPluginName</key>
+	<string>GotoFolder</string>
+	<key>VSPluginType</key>
+	<string>InternalUse</string>
 </dict>
 </plist>

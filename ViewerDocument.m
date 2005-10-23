@@ -56,7 +56,6 @@
 
 		window = [[VitaminSEEWindowController alloc] initWithFileList:fileList
 													   document:self];
-		NSLog(@"Window: %@", window);
 		viewerNotifications = [[NSNotificationCenter alloc] init];
 
 		[window showWindow:window];
@@ -88,14 +87,12 @@
 //----------------------------------------------------------------------------- 
 
 /** 
- *
  */
 -(void)setDirectory:(EGPath*)path
 {
 	// Set the new path
 	[fileList setDirectory:path];
 }
-
 
 //-----------------------------------------------------------------------------
 
@@ -215,6 +212,7 @@
 //	else if(action == @selector(zoomIn:) ||
 //			action == @selector(zoomOut:))
 //		enable = isimage
+	// Go menu
 	else if(action == @selector(goNextFile:))
 		enable = [fileList canGoNextFile];
 	else if(action == @selector(goPreviousFile:))
@@ -223,6 +221,8 @@
 		enable = [fileList canGoBack];
 	else if(action == @selector(goForward:))
 		enable = [fileList canGoForward];
+	else if(action == @selector(goEnclosingFolder:))
+		enable = [fileList canGoEnclosingFolder];
 	
 	return enable;
 }
@@ -306,8 +306,6 @@
  */
 -(void)goNextFile:(id)sender
 {
-	// Go next
-	NSLog(@"Go next!");
 	[fileList goNextFile];
 }
 
@@ -317,8 +315,6 @@
  */
 -(void)goPreviousFile:(id)sender
 {
-	// Go previous
-	NSLog(@"Go Previous!");
 	[fileList goPreviousFile];
 }
 
@@ -328,7 +324,6 @@
  */
 -(void)goBack:(id)sender
 {
-	NSLog(@"Go Back!");
 	[fileList goBack];
 }
 
@@ -339,8 +334,16 @@
  */
 -(void)goForward:(id)sender
 {
-	NSLog(@"Go Forward!");
 	[fileList goForward];
 }
 
+//-----------------------------------------------------------------------------
+
+/** Go Enclosing Folder
+ *
+ */
+-(void)goEnclosingFolder:(id)sender
+{
+	[fileList goEnclosingFolder];
+}
 @end

@@ -305,6 +305,23 @@ static ApplicationController* appControl;
 
 //-----------------------------------------------------------------------------
 
+/** 
+ *
+ */
+-(IBAction)goToFolder:(id)sender
+{
+	if([NSApp mainWindow]) 
+	{
+		id gotoDelegate = [ComponentManager getInteranlComponentNamed:@"GotoFolder"];
+		
+		// Start 
+		NSLog(@"Goto delegate: %@", gotoDelegate);
+	}
+}
+
+
+//-----------------------------------------------------------------------------
+
 /** Sets the current directory of the mainWindow, or create a new window with
  * the directory.
  */

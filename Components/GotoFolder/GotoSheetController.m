@@ -33,15 +33,11 @@
 
 @implementation GotoSheetController
 
-
--(id)initWithPluginLayer:(PluginLayer*)inPluginLayer
+-(id)init
 {
 	if(self = [super initWithWindowNibName:@"GoToFolderSheet"])
 	{
 		[self window];
-		
-		// We don't really need the pluginlayer except to conform to the Plugin
-		// protocol so don't do anything with it.
 	}
 	
 	return self;

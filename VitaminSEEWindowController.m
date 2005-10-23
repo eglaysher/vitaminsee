@@ -27,7 +27,6 @@
 		fileList = inFileList;
 		
 		[self setDocument:viewerDocument];
-		[[self window] setToolbar:[ToolbarDelegate buildToolbar]];
 		currentlyAnimated = false;
 	}
 	
@@ -41,6 +40,9 @@
 
 -(void)awakeFromNib
 {
+	// Build the toolbar
+	[[self window] setToolbar:[ToolbarDelegate buildToolbar]];
+	
 	// Set the fileList for real.
 	[self setFileList:fileList];
 	

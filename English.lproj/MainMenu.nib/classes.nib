@@ -24,6 +24,7 @@
                 goNextFile = id; 
                 goPreviousFile = id; 
                 goToComputer = id; 
+                goToFolder = id; 
                 goToHomeDirectory = id; 
                 goToPicturesDirectory = id; 
                 openInPreview = id; 

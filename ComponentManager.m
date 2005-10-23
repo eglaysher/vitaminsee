@@ -22,6 +22,9 @@ static NSMutableDictionary* fileListPlugins = 0;
 // Dictionaries of names to Current File Plugins
 static NSMutableDictionary* currentFilePlugins = 0;
 
+// Dictionaries of names to Internal Components
+static NSMutableDictionary* internalComponents = 0;
+
 // PUBLIC INTERFACE
 @implementation ComponentManager
 
@@ -40,6 +43,8 @@ static NSMutableDictionary* currentFilePlugins = 0;
 		fileListPlugins = [[NSMutableDictionary alloc] init];
 	if(!currentFilePlugins)
 		currentFilePlugins = [[NSMutableDictionary alloc] init];
+	if(!internalComponents)
+		internalComponents = [[NSMutableDictionary alloc] init];
 	
 	// Look for all paths in the directory "path" that have the suffix ".bundle"
 	NSArray* itemsInPath = [[NSFileManager defaultManager] 
@@ -59,8 +64,10 @@ static NSMutableDictionary* currentFilePlugins = 0;
 			if([pluginType isEqual:@"FileList"]) {
 				NSString* menuName = [info objectForKey:@"VSFLMenuName"];
 				NSMutableDictionary* pluginInfo = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-					pluginName, @"PluginName", currentBundle, @"Bundle",
-					menuName, @"MenuName", [NSNumber numberWithBool:NO], @"Loaded", 
+					pluginName, @"PluginName", 
+					currentBundle, @"Bundle",
+					@"FileList", @"PluginType", 
+					menuName, @"MenuName",
 					nil];
 								
 				[fileListPlugins setObject:pluginInfo forKey:pluginName];
@@ -70,15 +77,23 @@ static NSMutableDictionary* currentFilePlugins = 0;
 				NSString* menuLocation = [info objectForKey:@"VSCFMenuItemLocation"];
 				NSMutableDictionary* pluginInfo = [NSMutableDictionary dictionaryWithObjectsAndKeys:
 					pluginName, @"PluginName", currentBundle, @"Bundle",
+					@"CurrentFile", @"PluginType", 
 					menuName, @"MenuItemName", menuLocation, @"MenuLocation",
-					[NSNumber numberWithBool:NO], @"Loaded", 
 					nil];
 
 				// More shit goes here. Fixme.
 				[currentFilePlugins setObject:pluginInfo forKey:pluginName];
 			}
+			else if([pluginType isEqual:@"InternalUse"]) {
+				NSMutableDictionary* pluginInfo = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+					pluginName, @"PluginName", 
+					@"Internal Use", @"PluginType",
+					currentBundle, @"Bundle", nil];
+				
+				[internalComponents setObject:pluginInfo forKey:pluginName];
+			}
 			else {
-				NSLog(@"WARNING! Could not load bundle %@ since it has the invalid Bundle Type %@",
+				NSLog(@"WARNING! Ignoring bundle %@ since it has the invalid Bundle Type %@",
 					  current, pluginType);
 			}
 		}
@@ -89,46 +104,11 @@ static NSMutableDictionary* currentFilePlugins = 0;
 
 +(id <FileListFactory>)getFileListPluginNamed:(NSString*)name
 {
-	if(!initialized)
-		return nil;
-	
-	NSMutableDictionary* pluginInfo = [fileListPlugins objectForKey:name];
-	if(pluginInfo == nil) {
-		NSLog(@"WARNING! Could not find component named %@", name);
-		return nil;
-	}
-	
-	// Check to see if there is already a root instance
-	id <FileListFactory> factory = [pluginInfo objectForKey:@"Instance"];
-	if(factory == nil) 
-	{
-		NSBundle* bundle = [pluginInfo objectForKey:@"Bundle"];
-		BOOL load = [bundle load];
-
-		NSLog(@"Bundle: %@, %d" , bundle, load);
-
-//		NSLinkEditErrors editError;
-//		int errorNumber;
-//		const char *name, *msg, *objFileImageErrMsg = NULL;
-//		
-//		NSLinkEditError(&editError, &errorNumber, &name, &msg);
-//
-//		NSLog(@"Error number %d, %d, %s, %s", editError, errorNumber, name, msg);
-
-		Class principle = [bundle principalClass];
-		if(![principle conformsToProtocol:@protocol(FileListFactory)]) {
-			NSLog(@"WARNING! Component named %@ claims to conform to FileListPlugin but doesn't!",
-				  [pluginInfo objectForKey:@"PluginName"]);
-			NSLog(@"This component's principle class is %@", NSStringFromClass(principle));
-			return nil;
-		}
-		
-		// Create the instance
-		factory = [[principle alloc] init];
-		[pluginInfo setObject:factory forKey:@"Instance"];
-	}
-
-	return factory;
+	BOOL firstTime;
+	return [self returnPluginNamed:name
+					fromDictionary:fileListPlugins
+						  protocol:@protocol(FileListFactory)
+						 firstTime:&firstTime];
 }
 
 //+(id<CurrentFilePlugin>)getCurrentFilePluginNamed:(NSString*)name
@@ -140,4 +120,66 @@ static NSMutableDictionary* currentFilePlugins = 0;
 //	return nil;
 //}
 
++(id)getInteranlComponentNamed:(NSString*)name
+{
+	BOOL firstTime;
+	return [self returnPluginNamed:name
+					fromDictionary:internalComponents
+						  protocol:nil
+						 firstTime:&firstTime];	
+}
+
+
+//-----------------------------------------------------------------------------
+
+/** Private internal function used to 
+ *
+ */
++(id)returnPluginNamed:(NSString*)name 
+		fromDictionary:(NSDictionary*)dictionary
+			  protocol:(Protocol*)protocol
+			 firstTime:(BOOL*)firstTime
+{
+	if(!initialized)
+		return nil;
+
+	NSMutableDictionary* pluginInfo = [dictionary objectForKey:name];
+	if(pluginInfo == nil) {
+		NSLog(@"WARNING! Could not find component named %@", name);
+		return nil;
+	}
+	
+	// Check to see if there is already a root instance
+	id instance = [pluginInfo objectForKey:@"Instance"];
+	*firstTime = NO;
+	if(instance == nil) 
+	{
+		NSBundle* bundle = [pluginInfo objectForKey:@"Bundle"];
+		BOOL loaded = [bundle load];
+		if(!loaded)
+		{
+			NSLog(@"WARNING! Couldn't load the bundle %@", bundle);
+			return nil;
+		}
+		
+		Class principle = [bundle principalClass];
+		// Check to make sure this class conforms to whatever protocol we want
+		// to check if we were asked to verify that it conforms to a protocol.
+		if(protocol && ![principle conformsToProtocol:protocol]) {
+			NSLog(@"WARNING! Component named '%@' claims to conform to '%@' but doesn't!",
+				  [pluginInfo objectForKey:@"PluginName"],
+				  [pluginInfo objectForKey:@"PluginType"]);
+			NSLog(@"This component's principle class is %@", NSStringFromClass(principle));
+			return nil;
+		}
+		
+		NSLog(@"Class: %@", principle);
+		// Create the instance
+		instance = [[principle alloc] init];
+		[pluginInfo setObject:instance forKey:@"Instance"];
+		*firstTime = YES;
+	}
+	
+	return instance;
+}
 @end
