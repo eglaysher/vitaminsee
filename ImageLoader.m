@@ -237,7 +237,7 @@ static BOOL newTaskThatPreemptsPreload(NSDictionary* currentTask)
 			NSMutableDictionary* currentTask = (id)CFDictionaryGetValue(
 																		(CFDictionaryRef)taskQueue, firstRequester);
 			[currentTask retain];
-			CFDictionaryRemoveValue((CFDictionaryRef)taskQueue, firstRequester);
+			[taskQueue removeObjectForKey:firstRequester];
 			pthread_mutex_unlock(&taskQueueLock);
 			
 			[self doDisplayImage:currentTask];

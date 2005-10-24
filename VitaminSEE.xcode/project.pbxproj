@@ -7,8 +7,6 @@
 	objects = {
 		080E96DDFE201D6D7F000001 = {
 			children = (
-				8B569B900905EA0C001B14F5,
-				8B569B910905EA0C001B14F5,
 				8B244B3C08FC886A004716BC,
 				8B244B3D08FC886A004716BC,
 				8B2448C508FB2080004716BC,
@@ -120,6 +118,7 @@
 				8B24491508FB5587004716BC,
 				8BEA54AA090BE15B00F83026,
 				8BEA55D3090C0EC100F83026,
+				8B7AA5AB090C983F00A351DF,
 			);
 			isa = PBXGroup;
 			name = Products;
@@ -152,6 +151,7 @@
 				8B24491408FB5587004716BC,
 				8BEA54A9090BE15B00F83026,
 				8BEA55D2090C0EC100F83026,
+				8B7AA5AA090C983F00A351DF,
 			);
 		};
 		29B97314FDCFA39411CA2CEA = {
@@ -330,16 +330,12 @@
 //8B4
 		8B2448A108FB2018004716BC = {
 			children = (
-				8BDF02140908715A00C2A1BF,
-				8BDF02150908715A00C2A1BF,
 				8B2448A208FB2033004716BC,
 				8B2448A308FB2033004716BC,
 				8B2448A408FB2033004716BC,
 				8B2448A508FB2033004716BC,
 				8B2448A608FB2033004716BC,
 				8B2448A708FB2033004716BC,
-				8B2448A808FB2033004716BC,
-				8B2448A908FB2033004716BC,
 				8B2448AA08FB2033004716BC,
 				8B2448AB08FB2033004716BC,
 				8B2448AC08FB2033004716BC,
@@ -410,24 +406,6 @@
 			lastKnownFileType = sourcecode.c.objc;
 			name = EGScrollView.m;
 			path = Widgets/EGScrollView.m;
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		8B2448A808FB2033004716BC = {
-			fileEncoding = 30;
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.h;
-			name = MVMenuButton.h;
-			path = Widgets/MVMenuButton.h;
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		8B2448A908FB2033004716BC = {
-			fileEncoding = 30;
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.objc;
-			name = MVMenuButton.m;
-			path = Widgets/MVMenuButton.m;
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -562,12 +540,6 @@
 		};
 		8B2448B908FB2033004716BC = {
 			fileRef = 8B2448A708FB2033004716BC;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
-		8B2448BA08FB2033004716BC = {
-			fileRef = 8B2448A908FB2033004716BC;
 			isa = PBXBuildFile;
 			settings = {
 			};
@@ -1353,6 +1325,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				8B7AA600090C999800A351DF,
 				8B8B7241090C138A006DDF10,
 				8BEA54B8090BE19D00F83026,
 				8B24492B08FB5680004716BC,
@@ -1423,24 +1396,214 @@
 			refType = 4;
 			sourceTree = "<group>";
 		};
-		8B569B900905EA0C001B14F5 = {
+		8B7AA5A7090C983F00A351DF = {
+			buildActionMask = 2147483647;
+			files = (
+			);
+			isa = PBXResourcesBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B7AA5A8090C983F00A351DF = {
+			buildActionMask = 2147483647;
+			files = (
+				8B7AA5BC090C986A00A351DF,
+				8B7AA5BD090C986A00A351DF,
+				8B7AA5BE090C986A00A351DF,
+				8B7AA5D2090C98C600A351DF,
+			);
+			isa = PBXSourcesBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B7AA5A9090C983F00A351DF = {
+			buildActionMask = 2147483647;
+			files = (
+			);
+			isa = PBXFrameworksBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B7AA5AA090C983F00A351DF = {
+			buildPhases = (
+				8B7AA5A7090C983F00A351DF,
+				8B7AA5A8090C983F00A351DF,
+				8B7AA5A9090C983F00A351DF,
+			);
+			buildRules = (
+			);
+			buildSettings = {
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = "Components/FavoritesMenu/FavoritesMenu-Info.plist";
+				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
+				LIBRARY_STYLE = BUNDLE;
+				MACOSX_DEPLOYMENT_TARGET = 10.3;
+				OPTIMIZATION_CFLAGS = "";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "-framework Foundation -framework AppKit -undefined dynamic_lookup";
+				OTHER_REZFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = FavoritesMenu;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = "-Wmost -Wno-four-char-constants -Wno-unknown-pragmas";
+			};
+			dependencies = (
+			);
+			isa = PBXNativeTarget;
+			name = FavoritesMenu;
+			productName = FavoritesMenu;
+			productReference = 8B7AA5AB090C983F00A351DF;
+			productSettingsXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
+<!DOCTYPE plist PUBLIC \"-//Apple Computer//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">
+<plist version=\"1.0\">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>English</string>
+	<key>CFBundleExecutable</key>
+	<string>FavoritesMenu</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.yourcompany.FavoritesMenu</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
+	<key>CFBundleVersion</key>
+	<string>1.0</string>
+</dict>
+</plist>
+";
+			productType = "com.apple.product-type.bundle";
+		};
+		8B7AA5AB090C983F00A351DF = {
+			explicitFileType = wrapper.cfbundle;
+			includeInIndex = 0;
+			isa = PBXFileReference;
+			name = FavoritesMenu.bundle;
+			path = build/FavoritesMenu.bundle;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B7AA5B6090C986A00A351DF = {
 			fileEncoding = 30;
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.c.h;
-			path = FavoritesMenuDelegate.h;
+			name = FavoritesMenuDelegate.h;
+			path = Components/FavoritesMenu/FavoritesMenuDelegate.h;
 			refType = 4;
 			sourceTree = "<group>";
 		};
-		8B569B910905EA0C001B14F5 = {
+		8B7AA5B7090C986A00A351DF = {
 			fileEncoding = 30;
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.c.objc;
-			path = FavoritesMenuDelegate.m;
+			name = FavoritesMenuDelegate.m;
+			path = Components/FavoritesMenu/FavoritesMenuDelegate.m;
 			refType = 4;
 			sourceTree = "<group>";
 		};
-		8B569B930905EA0C001B14F5 = {
-			fileRef = 8B569B910905EA0C001B14F5;
+		8B7AA5B8090C986A00A351DF = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = FavoritesToolbarItem.h;
+			path = Components/FavoritesMenu/FavoritesToolbarItem.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B7AA5B9090C986A00A351DF = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
+			name = FavoritesToolbarItem.m;
+			path = Components/FavoritesMenu/FavoritesToolbarItem.m;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B7AA5BA090C986A00A351DF = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = MVMenuButton.h;
+			path = Components/FavoritesMenu/MVMenuButton.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B7AA5BB090C986A00A351DF = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
+			name = MVMenuButton.m;
+			path = Components/FavoritesMenu/MVMenuButton.m;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B7AA5BC090C986A00A351DF = {
+			fileRef = 8B7AA5B7090C986A00A351DF;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B7AA5BD090C986A00A351DF = {
+			fileRef = 8B7AA5B9090C986A00A351DF;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B7AA5BE090C986A00A351DF = {
+			fileRef = 8B7AA5BB090C986A00A351DF;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B7AA5C3090C989800A351DF = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = text.plist;
+			name = "FavoritesMenu-Info.plist";
+			path = "Components/FavoritesMenu/FavoritesMenu-Info.plist";
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B7AA5D0090C98C600A351DF = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = FavoritesMenuFactory.h;
+			path = Components/FavoritesMenu/FavoritesMenuFactory.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B7AA5D1090C98C600A351DF = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
+			name = FavoritesMenuFactory.m;
+			path = Components/FavoritesMenu/FavoritesMenuFactory.m;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B7AA5D2090C98C600A351DF = {
+			fileRef = 8B7AA5D1090C98C600A351DF;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B7AA5F3090C999000A351DF = {
+			containerPortal = 29B97313FDCFA39411CA2CEA;
+			isa = PBXContainerItemProxy;
+			proxyType = 1;
+			remoteGlobalIDString = 8B7AA5AA090C983F00A351DF;
+			remoteInfo = FavoritesMenu;
+		};
+		8B7AA5F4090C999000A351DF = {
+			isa = PBXTargetDependency;
+			target = 8B7AA5AA090C983F00A351DF;
+			targetProxy = 8B7AA5F3090C999000A351DF;
+		};
+		8B7AA600090C999800A351DF = {
+			fileRef = 8B7AA5AB090C983F00A351DF;
 			isa = PBXBuildFile;
 			settings = {
 			};
@@ -1474,35 +1637,20 @@
 		};
 		8BD7074F090C973F00D28A14 = {
 			children = (
+				8B7AA5C3090C989800A351DF,
+				8B7AA5B6090C986A00A351DF,
+				8B7AA5B7090C986A00A351DF,
+				8B7AA5B8090C986A00A351DF,
+				8B7AA5B9090C986A00A351DF,
+				8B7AA5BA090C986A00A351DF,
+				8B7AA5BB090C986A00A351DF,
+				8B7AA5D0090C98C600A351DF,
+				8B7AA5D1090C98C600A351DF,
 			);
 			isa = PBXGroup;
 			name = FavoritesMenu;
 			refType = 4;
 			sourceTree = "<group>";
-		};
-		8BDF02140908715A00C2A1BF = {
-			fileEncoding = 30;
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.h;
-			name = FavoritesToolbarItem.h;
-			path = Widgets/FavoritesToolbarItem.h;
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		8BDF02150908715A00C2A1BF = {
-			fileEncoding = 30;
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.objc;
-			name = FavoritesToolbarItem.m;
-			path = Widgets/FavoritesToolbarItem.m;
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		8BDF02170908715A00C2A1BF = {
-			fileRef = 8BDF02150908715A00C2A1BF;
-			isa = PBXBuildFile;
-			settings = {
-			};
 		};
 		8BEA546E090BDFA000F83026 = {
 			fileEncoding = 30;
@@ -1893,6 +2041,7 @@
 				WRAPPER_EXTENSION = app;
 			};
 			dependencies = (
+				8B7AA5F4090C999000A351DF,
 				8B24492A08FB567D004716BC,
 				8BEA54B6090BE19900F83026,
 				8B8B7240090C1380006DDF10,
@@ -1949,7 +2098,6 @@
 				8B2448B708FB2033004716BC,
 				8B2448B808FB2033004716BC,
 				8B2448B908FB2033004716BC,
-				8B2448BA08FB2033004716BC,
 				8B2448BB08FB2033004716BC,
 				8B2448BC08FB2033004716BC,
 				8B2448BD08FB2033004716BC,
@@ -1967,8 +2115,6 @@
 				8B2448E108FB209E004716BC,
 				8B2448E508FB20CB004716BC,
 				8B244B3F08FC886A004716BC,
-				8B569B930905EA0C001B14F5,
-				8BDF02170908715A00C2A1BF,
 			);
 			isa = PBXSourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;

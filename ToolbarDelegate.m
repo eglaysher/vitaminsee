@@ -32,6 +32,8 @@
 #import "ViewIconViewController.h"
 #import "NSString+FileTasks.h"
 #import "AppKitAdditions.h"
+#import "ComponentManager.h"
+#import "FavoritesMenuFactory.h"
 
 // Our Viewer's ID
 static NSString* MainViewerWindowToolbarIdentifier = @"Main Viewere Window Toolbar Identifier";
@@ -174,8 +176,8 @@ static ToolbarDelegate* toolbarDelegateObject = 0;
 	else if([itemIdent isEqual:FavoritesID])
 	{
 		// FavoritesToolbarItem is special.
-		item = [[[FavoritesToolbarItem alloc] initWithItemIdentifier:itemIdent]
-			autorelease];
+		item = [[[ComponentManager getInteranlComponentNamed:@"FavoritesMenu"] 
+			buildToolbarItemWithIdentifier:itemIdent] autorelease];
 	}
 	else if([itemIdent isEqual:NextPictureToolbarID])
 	{

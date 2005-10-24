@@ -44,6 +44,7 @@
 #import "FavoritesMenuDelegate.h"
 #import "RBSplitView.h"
 #import "RBSplitSubview.h"
+#import "FavoritesMenuFactory.h"
 
 #import "EGPath.h"
 
@@ -256,7 +257,8 @@ static ApplicationController* appControl;
 		
 		// Set up the Favorites Menu
 		NSMenu* favoritesMenu = [[[NSMenu alloc] init] autorelease];
-		favoritesMenuDelegate = [[FavoritesMenuDelegate alloc] init];
+		favoritesMenuDelegate = [[ComponentManager getInteranlComponentNamed:@"FavoritesMenu"] 
+			buildMenuDelegate];
 		[favoritesMenu setDelegate:favoritesMenuDelegate];
 		[theMenuItem setSubmenu:favoritesMenu];		
 	}	
