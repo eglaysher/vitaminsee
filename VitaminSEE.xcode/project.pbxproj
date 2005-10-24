@@ -1138,6 +1138,7 @@
 		};
 		8B24490F08FB546C004716BC = {
 			children = (
+				8BD7074F090C973F00D28A14,
 				8BEA55C2090C0AFE00F83026,
 				8B38D821090A8CCA00D2EEFD,
 				8B24491008FB5498004716BC,
@@ -1470,6 +1471,14 @@
 			isa = PBXBuildFile;
 			settings = {
 			};
+		};
+		8BD7074F090C973F00D28A14 = {
+			children = (
+			);
+			isa = PBXGroup;
+			name = FavoritesMenu;
+			refType = 4;
+			sourceTree = "<group>";
 		};
 		8BDF02140908715A00C2A1BF = {
 			fileEncoding = 30;
