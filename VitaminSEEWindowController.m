@@ -162,20 +162,8 @@
 	[imageViewer setImage:image];
 	[imageViewer setFrameSize:[image size]];
 	
-	// Set the correct cursor. If the picture is larger then the viewing area,
-	// we use a grabing cursor. Otherwise, we use the standard pointer.
-	NSSize imageSize = [image size];
-	NSSize scrollViewSize = [scrollView contentSize];
-	if(imageSize.width > scrollViewSize.width ||
-	   imageSize.height > scrollViewSize.height)
-	{
-		if(!handCursor)
-			handCursor = [[NSCursor alloc] initWithImage:[NSImage 
-				imageNamed:@"hand_open"] hotSpot:NSMakePoint(8, 8)];
-		[(NSScrollView*)[imageViewer superview] setDocumentCursor:handCursor];
-	}
-	else
-		[(NSScrollView*)[imageViewer superview] setDocumentCursor:nil];
+	// Set the correct cursor by simulating the user releasing the mouse.
+	[imageViewer mouseUp:nil];
 }
 
 -(void)setFileSizeLabelText:(int)fileSize

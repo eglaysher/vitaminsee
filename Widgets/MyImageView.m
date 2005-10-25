@@ -34,13 +34,12 @@
 		startPt = [theEvent locationInWindow];
 		startOrigin = [(NSClipView*)[self superview] documentVisibleRect].origin;
 
-		NSCursor *grabCursor = [[NSCursor alloc] initWithImage:[NSImage 
-			imageNamed:@"hand_closed"] hotSpot:NSMakePoint(8, 8)];
+		NSCursor *grabCursor = [NSCursor closedHandCursor];
 		
-//		id superview = [[[self superview] superview] superview];
 		[scrollView setDocumentCursor:grabCursor];
-		[grabCursor release];
 	}
+	else
+		[scrollView setDocumentCursor:nil];
 }
 
 - (void)mouseDragged:(NSEvent *)theEvent
@@ -61,11 +60,11 @@
 	NSSize contentSize = [(NSScrollView*)[[self superview] superview] contentSize];
 	if(imageSize.height > contentSize.height || imageSize.width > contentSize.width)
 	{
-		NSCursor *handCursor = [[NSCursor alloc] initWithImage:[NSImage 
-			imageNamed:@"hand_open"] hotSpot:NSMakePoint(8, 8)];
+		NSCursor *handCursor = [NSCursor openHandCursor];
 		[(NSScrollView*)[self superview] setDocumentCursor:handCursor];
-		[handCursor release];
 	}
+	else
+		[(NSScrollView*)[self superview] setDocumentCursor:nil];
 }
 
 @end

@@ -201,8 +201,6 @@
 				8B2448E608FB20E2004716BC,
 				8B2448E708FB20E2004716BC,
 				8B2448E808FB20E2004716BC,
-				8B2448E908FB20E2004716BC,
-				8B2448EA08FB20E2004716BC,
 				8B2448EB08FB20E2004716BC,
 				8B2448EC08FB20E2004716BC,
 				8B2448ED08FB20E2004716BC,
@@ -886,22 +884,6 @@
 			refType = 4;
 			sourceTree = "<group>";
 		};
-		8B2448E908FB20E2004716BC = {
-			isa = PBXFileReference;
-			lastKnownFileType = image.tiff;
-			name = hand_closed.tiff;
-			path = Resources/hand_closed.tiff;
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		8B2448EA08FB20E2004716BC = {
-			isa = PBXFileReference;
-			lastKnownFileType = image.tiff;
-			name = hand_open.tiff;
-			path = Resources/hand_open.tiff;
-			refType = 4;
-			sourceTree = "<group>";
-		};
 		8B2448EB08FB20E2004716BC = {
 			isa = PBXFileReference;
 			lastKnownFileType = image.icns;
@@ -1004,18 +986,6 @@
 		};
 		8B2448F808FB20E2004716BC = {
 			fileRef = 8B2448E808FB20E2004716BC;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
-		8B2448F908FB20E2004716BC = {
-			fileRef = 8B2448E908FB20E2004716BC;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
-		8B2448FA08FB20E2004716BC = {
-			fileRef = 8B2448EA08FB20E2004716BC;
 			isa = PBXBuildFile;
 			settings = {
 			};
@@ -1687,7 +1657,6 @@
 				INFOPLIST_FILE = "Components/DesktopBackground/DesktopBackground-Info.plist";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
 				LIBRARY_STYLE = BUNDLE;
-				OPTIMIZATION_CFLAGS = "";
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "-framework Foundation -framework AppKit";
 				OTHER_REZFLAGS = "";
@@ -1729,10 +1698,9 @@
 			explicitFileType = wrapper.cfbundle;
 			includeInIndex = 0;
 			isa = PBXFileReference;
-			name = DesktopBackground.bundle;
-			path = build/DesktopBackground.bundle;
-			refType = 4;
-			sourceTree = "<group>";
+			path = DesktopBackground.bundle;
+			refType = 3;
+			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		8B9B2F1F090DAE82009C69B7 = {
 			fileEncoding = 30;
@@ -2218,8 +2186,6 @@
 				8B2448F608FB20E2004716BC,
 				8B2448F708FB20E2004716BC,
 				8B2448F808FB20E2004716BC,
-				8B2448F908FB20E2004716BC,
-				8B2448FA08FB20E2004716BC,
 				8B2448FB08FB20E2004716BC,
 				8B2448FC08FB20E2004716BC,
 				8B2448FD08FB20E2004716BC,
