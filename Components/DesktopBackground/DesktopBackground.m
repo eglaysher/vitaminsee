@@ -35,12 +35,6 @@ static NSDictionary* buildScreenList();
 
 @implementation DesktopBackground
 
--(id)initWithPluginLayer:(PluginLayer*)inPluginLayer
-{
-	// Ignore the plugin player object we're given.
-	return [super init];
-}
-
 -(void)setDesktopBackgroundToFile:(NSString*)path
 {
 	[self setDesktopBackgroundToFile:path withOptions:[NSDictionary dictionary]];

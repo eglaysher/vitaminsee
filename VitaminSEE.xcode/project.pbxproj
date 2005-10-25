@@ -119,6 +119,7 @@
 				8BEA54AA090BE15B00F83026,
 				8BEA55D3090C0EC100F83026,
 				8B7AA5AB090C983F00A351DF,
+				8B9B2F15090DAE69009C69B7,
 			);
 			isa = PBXGroup;
 			name = Products;
@@ -152,6 +153,7 @@
 				8BEA54A9090BE15B00F83026,
 				8BEA55D2090C0EC100F83026,
 				8B7AA5AA090C983F00A351DF,
+				8B9B2F14090DAE69009C69B7,
 			);
 		};
 		29B97314FDCFA39411CA2CEA = {
@@ -1110,6 +1112,7 @@
 		};
 		8B24490F08FB546C004716BC = {
 			children = (
+				8B9B2F06090DAE50009C69B7,
 				8BD7074F090C973F00D28A14,
 				8BEA55C2090C0AFE00F83026,
 				8B38D821090A8CCA00D2EEFD,
@@ -1325,6 +1328,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				8B9B2F9B090DB44D009C69B7,
 				8B7AA600090C999800A351DF,
 				8B8B7241090C138A006DDF10,
 				8BEA54B8090BE19D00F83026,
@@ -1438,7 +1442,6 @@
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
 				LIBRARY_STYLE = BUNDLE;
 				MACOSX_DEPLOYMENT_TARGET = 10.3;
-				OPTIMIZATION_CFLAGS = "";
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "-framework Foundation -framework AppKit -undefined dynamic_lookup";
 				OTHER_REZFLAGS = "";
@@ -1480,10 +1483,9 @@
 			explicitFileType = wrapper.cfbundle;
 			includeInIndex = 0;
 			isa = PBXFileReference;
-			name = FavoritesMenu.bundle;
-			path = build/FavoritesMenu.bundle;
-			refType = 4;
-			sourceTree = "<group>";
+			path = FavoritesMenu.bundle;
+			refType = 3;
+			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		8B7AA5B6090C986A00A351DF = {
 			fileEncoding = 30;
@@ -1631,6 +1633,160 @@
 		};
 		8B8B7241090C138A006DDF10 = {
 			fileRef = 8BEA55D3090C0EC100F83026;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B9B2F06090DAE50009C69B7 = {
+			children = (
+				8B9B2F22090DAEC2009C69B7,
+				8B9B2F1F090DAE82009C69B7,
+				8B9B2F20090DAE82009C69B7,
+			);
+			isa = PBXGroup;
+			name = DesktopBackground;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B9B2F11090DAE69009C69B7 = {
+			buildActionMask = 2147483647;
+			files = (
+				8B9B2F23090DAEC2009C69B7,
+			);
+			isa = PBXResourcesBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B9B2F12090DAE69009C69B7 = {
+			buildActionMask = 2147483647;
+			files = (
+				8B9B2F21090DAE82009C69B7,
+			);
+			isa = PBXSourcesBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B9B2F13090DAE69009C69B7 = {
+			buildActionMask = 2147483647;
+			files = (
+			);
+			isa = PBXFrameworksBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B9B2F14090DAE69009C69B7 = {
+			buildPhases = (
+				8B9B2F11090DAE69009C69B7,
+				8B9B2F12090DAE69009C69B7,
+				8B9B2F13090DAE69009C69B7,
+			);
+			buildRules = (
+			);
+			buildSettings = {
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = "Components/DesktopBackground/DesktopBackground-Info.plist";
+				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
+				LIBRARY_STYLE = BUNDLE;
+				OPTIMIZATION_CFLAGS = "";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "-framework Foundation -framework AppKit";
+				OTHER_REZFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = DesktopBackground;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = "-Wmost -Wno-four-char-constants -Wno-unknown-pragmas";
+			};
+			dependencies = (
+			);
+			isa = PBXNativeTarget;
+			name = DesktopBackground;
+			productName = DesktopBackground;
+			productReference = 8B9B2F15090DAE69009C69B7;
+			productSettingsXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
+<!DOCTYPE plist PUBLIC \"-//Apple Computer//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">
+<plist version=\"1.0\">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>English</string>
+	<key>CFBundleExecutable</key>
+	<string>DesktopBackground</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.yourcompany.DesktopBackground</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
+	<key>CFBundleVersion</key>
+	<string>1.0</string>
+</dict>
+</plist>
+";
+			productType = "com.apple.product-type.bundle";
+		};
+		8B9B2F15090DAE69009C69B7 = {
+			explicitFileType = wrapper.cfbundle;
+			includeInIndex = 0;
+			isa = PBXFileReference;
+			name = DesktopBackground.bundle;
+			path = build/DesktopBackground.bundle;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B9B2F1F090DAE82009C69B7 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = DesktopBackground.h;
+			path = Components/DesktopBackground/DesktopBackground.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B9B2F20090DAE82009C69B7 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
+			name = DesktopBackground.m;
+			path = Components/DesktopBackground/DesktopBackground.m;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B9B2F21090DAE82009C69B7 = {
+			fileRef = 8B9B2F20090DAE82009C69B7;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B9B2F22090DAEC2009C69B7 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = text.xml;
+			name = "DesktopBackground-Info.plist";
+			path = "Components/DesktopBackground/DesktopBackground-Info.plist";
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B9B2F23090DAEC2009C69B7 = {
+			fileRef = 8B9B2F22090DAEC2009C69B7;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B9B2F76090DB441009C69B7 = {
+			containerPortal = 29B97313FDCFA39411CA2CEA;
+			isa = PBXContainerItemProxy;
+			proxyType = 1;
+			remoteGlobalIDString = 8B9B2F14090DAE69009C69B7;
+			remoteInfo = DesktopBackground;
+		};
+		8B9B2F77090DB441009C69B7 = {
+			isa = PBXTargetDependency;
+			target = 8B9B2F14090DAE69009C69B7;
+			targetProxy = 8B9B2F76090DB441009C69B7;
+		};
+		8B9B2F9B090DB44D009C69B7 = {
+			fileRef = 8B9B2F15090DAE69009C69B7;
 			isa = PBXBuildFile;
 			settings = {
 			};
@@ -2045,6 +2201,7 @@
 				8B24492A08FB567D004716BC,
 				8BEA54B6090BE19900F83026,
 				8B8B7240090C1380006DDF10,
+				8B9B2F77090DB441009C69B7,
 			);
 			isa = PBXNativeTarget;
 			name = VitaminSEE;

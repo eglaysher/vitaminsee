@@ -29,6 +29,7 @@
                 goToPicturesDirectory = id; 
                 openInPreview = id; 
                 revealInFinder = id; 
+                setAsDesktopImage = id; 
                 toggleFileList = id; 
                 zoomIn = id; 
                 zoomOut = id; 

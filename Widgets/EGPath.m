@@ -38,6 +38,10 @@
 -(NSArray*)buildEGPathArrayFromArrayOfNSStrings:(NSArray*)paths;
 @end
 
+/** Array of all image file extensions that we support.
+ */
+static NSArray* fileExtensions = 0;
+
 // ----------------------------------------------------------------------------
 
 @implementation EGPath
@@ -131,6 +135,20 @@
 	return nil;	
 }
 
+
+//-----------------------------------------------------------------------------
+
+/** 
+ *
+ */
+-(BOOL)isImage
+{
+	if(!fileExtensions)
+		fileExtensions = [[NSImage imageUnfilteredFileTypes] retain];
+	
+	return [fileExtensions containsObject:[[self fileName] pathExtension]];
+}
+
 @end
 
 @implementation EGPath (Private)
@@ -211,6 +229,12 @@ static NSString* egPathRootDisplayName = 0;
 -(BOOL)isDirectory
 {
 	return YES;
+}
+
+-(NSString*)fileName
+{
+	[self doesNotRecognizeSelector:_cmd];
+	return nil;
 }
 
 -(NSImage*)fileIcon
@@ -309,6 +333,11 @@ static NSString* egPathRootDisplayName = 0;
 -(NSString*)fileSystemPath
 {
 	return fileSystemPath;
+}
+
+-(NSString*)fileName
+{
+	return [fileSystemPath lastPathComponent];
 }
 
 -(BOOL)exists

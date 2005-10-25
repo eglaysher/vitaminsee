@@ -45,6 +45,7 @@
 #import "RBSplitView.h"
 #import "RBSplitSubview.h"
 #import "FavoritesMenuFactory.h"
+#import "NSString+FileTasks.h"
 
 #import "EGPath.h"
 
@@ -262,6 +263,49 @@ static ApplicationController* appControl;
 		[favoritesMenu setDelegate:favoritesMenuDelegate];
 		[theMenuItem setSubmenu:favoritesMenu];		
 	}	
+	else if (action == @selector(goToComputer:))
+	{
+		// Set the icon if we don't have one yet.
+		if(![theMenuItem image])
+		{
+			NSImage* img = [[NSImage imageNamed:@"iMac"] copy];
+			[img setScalesWhenResized:YES];
+			[img setSize:NSMakeSize(16, 16)];
+			[theMenuItem setImage:img];
+			[img release];
+		}
+	}	
+	else if (action == @selector(goToHomeDirectory:))
+	{
+		// Set the icon if we don't have one yet.
+		if(![theMenuItem image])
+		{
+			NSImage* img = [[NSWorkspace sharedWorkspace] iconForFile:NSHomeDirectory()];
+			[img setSize:NSMakeSize(16, 16)];
+			[theMenuItem setImage:img];
+		}
+	}
+	else if (action == @selector(goToPicturesDirectory:))
+	{
+		enable = [[NSHomeDirectory() stringByAppendingPathComponent:@"Pictures"] isDir];
+		
+		// Set the icon if we haven't done so yet.
+		if(![theMenuItem image])
+		{
+			NSImage* img;
+			if(enable)
+			{
+				img = [[[NSImage imageNamed:@"ToolbarPicturesFolderIcon"] copy] autorelease];
+				[img setScalesWhenResized:YES];
+				[img setSize:NSMakeSize(16, 16)];
+			}
+			else
+				img = [[NSImage alloc] initWithSize:NSMakeSize(16,16)];
+			
+			[theMenuItem setImage:img];
+		}
+	}
+	
 	return enable;
 }
 
@@ -361,6 +405,11 @@ static ApplicationController* appControl;
 	}
 }
 
+//-----------------------------------------------------------------------------
+
+/** Selector that doesn't do anything. It's detected at runtime through
+ * -validateMenuItem:, and a submenu is generated.
+ */
 -(IBAction)fakeFavoritesMenuSelector:(id)sender
 {
 	

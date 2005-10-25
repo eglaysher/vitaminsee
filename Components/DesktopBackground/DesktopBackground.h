@@ -27,9 +27,7 @@
 //
 ////////////////////////////////////////////////////////////////////////
 
-#import "PluginBase.h"
-
-@interface DesktopBackground : NSObject <PluginBase> {
+@interface DesktopBackground : NSObject {
 }
 
 -(void)setDesktopBackgroundToFile:(NSString*)path;
@@ -39,6 +37,3 @@
 -(void)setDesktopBackgroundToFolder:(NSString*)pathToFolder withOptions:(NSDictionary*)options;
 
 @end
-
-//void setDesktopBackgroundToFile(NSString* path);
-//void setDesktopBackgroundToFolder(NSString* pathToFolder);

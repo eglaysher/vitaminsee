@@ -61,6 +61,9 @@
 // An NSArray of EGPaths that complement display components
 -(NSArray*)pathComponents;
 
+// Checks to see if the current file is an image file.
+-(BOOL)isImage;
+
 @end
 
 @interface EGPathRoot : EGPath { }
