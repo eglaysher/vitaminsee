@@ -186,7 +186,7 @@ extern void _LSCopyAllApplicationURLs(NSArray**);
 	// Remove all items that are in a folder that has /.Trash/ in it; they won't work
 	removeTrashedPathsFromArray(applicationArray);
 	
-	// Sort on the Name component
+	// Sort on the Name component, then the Version number.
 	NSSortDescriptor* nameDescriptor = [[[NSSortDescriptor alloc] 
 		initWithKey:@"Name" ascending:YES] autorelease];
 	NSSortDescriptor* versionDescriptor = [[[NSSortDescriptor alloc] 
@@ -253,7 +253,7 @@ NSArray* getListOfApplicationsThatCanOpenExtension(NSString* file, NSArray* arra
 		LSCanURLAcceptURL((CFURLRef)fileURL, (CFURLRef)url, kLSRolesAll, kLSAcceptDefault, &accepted);
 		if(accepted && applicationCanHandleFileType(url, extensionOfCurrentFile))
 			[listOfApplications addObject:url];
-	}	
+	}
 	
 	return listOfApplications;
 }

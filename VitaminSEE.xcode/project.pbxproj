@@ -120,6 +120,7 @@
 				8BEA55D3090C0EC100F83026,
 				8B7AA5AB090C983F00A351DF,
 				8B9B2F15090DAE69009C69B7,
+				8B64CD5E090EF8030060CB34,
 			);
 			isa = PBXGroup;
 			name = Products;
@@ -154,6 +155,7 @@
 				8BEA55D2090C0EC100F83026,
 				8B7AA5AA090C983F00A351DF,
 				8B9B2F14090DAE69009C69B7,
+				8B64CD5D090EF8030060CB34,
 			);
 		};
 		29B97314FDCFA39411CA2CEA = {
@@ -1082,6 +1084,7 @@
 		};
 		8B24490F08FB546C004716BC = {
 			children = (
+				8B64CD4F090EF7ED0060CB34,
 				8B9B2F06090DAE50009C69B7,
 				8BD7074F090C973F00D28A14,
 				8BEA55C2090C0AFE00F83026,
@@ -1298,6 +1301,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				8B426112090EFCAB0006EE43,
 				8B9B2F9B090DB44D009C69B7,
 				8B7AA600090C999800A351DF,
 				8B8B7241090C138A006DDF10,
@@ -1369,6 +1373,186 @@
 			name = GotoFolderSheet;
 			refType = 4;
 			sourceTree = "<group>";
+		};
+		8B42610F090EFCA10006EE43 = {
+			containerPortal = 29B97313FDCFA39411CA2CEA;
+			isa = PBXContainerItemProxy;
+			proxyType = 1;
+			remoteGlobalIDString = 8B64CD5D090EF8030060CB34;
+			remoteInfo = OpenWithMenu;
+		};
+		8B426110090EFCA10006EE43 = {
+			isa = PBXTargetDependency;
+			target = 8B64CD5D090EF8030060CB34;
+			targetProxy = 8B42610F090EFCA10006EE43;
+		};
+		8B426112090EFCAB0006EE43 = {
+			fileRef = 8B64CD5E090EF8030060CB34;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B64CD4F090EF7ED0060CB34 = {
+			children = (
+				8B64CD6C090EF81C0060CB34,
+				8B64CD6A090EF81C0060CB34,
+				8B64CD6B090EF81C0060CB34,
+				8B64CD6D090EF81C0060CB34,
+				8B64CD6E090EF81C0060CB34,
+			);
+			isa = PBXGroup;
+			name = OpenWithMenu;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B64CD5A090EF8030060CB34 = {
+			buildActionMask = 2147483647;
+			files = (
+				8B64CD70090EF81C0060CB34,
+			);
+			isa = PBXResourcesBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B64CD5B090EF8030060CB34 = {
+			buildActionMask = 2147483647;
+			files = (
+				8B64CD6F090EF81C0060CB34,
+				8B64CD71090EF81C0060CB34,
+			);
+			isa = PBXSourcesBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B64CD5C090EF8030060CB34 = {
+			buildActionMask = 2147483647;
+			files = (
+			);
+			isa = PBXFrameworksBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B64CD5D090EF8030060CB34 = {
+			buildPhases = (
+				8B64CD5A090EF8030060CB34,
+				8B64CD5B090EF8030060CB34,
+				8B64CD5C090EF8030060CB34,
+			);
+			buildRules = (
+			);
+			buildSettings = {
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = "Components/OpenWithMenu/OpenWithMenu-Info.plist";
+				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
+				LIBRARY_STYLE = BUNDLE;
+				MACOSX_DEPLOYMENT_TARGET = 10.3;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "-framework Foundation -framework AppKit -undefined dynamic_lookup";
+				OTHER_REZFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = OpenWithMenu;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = "-Wmost -Wno-four-char-constants -Wno-unknown-pragmas";
+			};
+			dependencies = (
+			);
+			isa = PBXNativeTarget;
+			name = OpenWithMenu;
+			productName = OpenWithMenu;
+			productReference = 8B64CD5E090EF8030060CB34;
+			productSettingsXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
+<!DOCTYPE plist PUBLIC \"-//Apple Computer//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">
+<plist version=\"1.0\">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>English</string>
+	<key>CFBundleExecutable</key>
+	<string>OpenWithMenu</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.yourcompany.OpenWithMenu</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
+	<key>CFBundleVersion</key>
+	<string>1.0</string>
+</dict>
+</plist>
+";
+			productType = "com.apple.product-type.bundle";
+		};
+		8B64CD5E090EF8030060CB34 = {
+			explicitFileType = wrapper.cfbundle;
+			includeInIndex = 0;
+			isa = PBXFileReference;
+			path = OpenWithMenu.bundle;
+			refType = 3;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		8B64CD6A090EF81C0060CB34 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = EGOpenWithMenuDelegate.h;
+			path = Components/OpenWithMenu/EGOpenWithMenuDelegate.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B64CD6B090EF81C0060CB34 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
+			name = EGOpenWithMenuDelegate.m;
+			path = Components/OpenWithMenu/EGOpenWithMenuDelegate.m;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B64CD6C090EF81C0060CB34 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = text.xml;
+			name = "OpenWithMenu-Info.plist";
+			path = "Components/OpenWithMenu/OpenWithMenu-Info.plist";
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B64CD6D090EF81C0060CB34 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = OpenWithMenuController.h;
+			path = Components/OpenWithMenu/OpenWithMenuController.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B64CD6E090EF81C0060CB34 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
+			name = OpenWithMenuController.m;
+			path = Components/OpenWithMenu/OpenWithMenuController.m;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B64CD6F090EF81C0060CB34 = {
+			fileRef = 8B64CD6B090EF81C0060CB34;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B64CD70090EF81C0060CB34 = {
+			fileRef = 8B64CD6C090EF81C0060CB34;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B64CD71090EF81C0060CB34 = {
+			fileRef = 8B64CD6E090EF81C0060CB34;
+			isa = PBXBuildFile;
+			settings = {
+			};
 		};
 		8B7AA5A7090C983F00A351DF = {
 			buildActionMask = 2147483647;
@@ -2170,6 +2354,7 @@
 				8BEA54B6090BE19900F83026,
 				8B8B7240090C1380006DDF10,
 				8B9B2F77090DB441009C69B7,
+				8B426110090EFCA10006EE43,
 			);
 			isa = PBXNativeTarget;
 			name = VitaminSEE;

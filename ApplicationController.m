@@ -222,6 +222,7 @@ static ApplicationController* appControl;
 	pictureViewers = [[NSMutableArray alloc] init];
 	
 	setPathForFirstTime = NO;
+	loadedOpenWithMenu = NO;
 }
 
 -(void)dealloc
@@ -235,8 +236,6 @@ static ApplicationController* appControl;
 // been shown.
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-//	NSLog(@"-[ApplicationController applicationDidFinishLaunching]");
-
 	[self newWindow:self];
 }
 
@@ -246,69 +245,158 @@ static ApplicationController* appControl;
 		[EGPath pathWithPath:[@"~/Pictures" stringByExpandingTildeInPath]]];
 }
 
-//
+//-----------------------------------------------------------------------------
+
+/** Validates a menu item.
+ */
 -(BOOL)validateMenuItem:(NSMenuItem *)theMenuItem
 {
 	BOOL enable = [self respondsToSelector:[theMenuItem action]];
 	SEL action = [theMenuItem action];
 	
-	if (action == @selector(fakeFavoritesMenuSelector:))
-	{
-		[theMenuItem setAction:nil];
-		
-		// Set up the Favorites Menu
-		NSMenu* favoritesMenu = [[[NSMenu alloc] init] autorelease];
-		favoritesMenuDelegate = [[ComponentManager getInteranlComponentNamed:@"FavoritesMenu"] 
-			buildMenuDelegate];
-		[favoritesMenu setDelegate:favoritesMenuDelegate];
-		[theMenuItem setSubmenu:favoritesMenu];		
-	}	
+	if(action == @selector(fakeOpenWithMenuSelector:))
+		enable = [self validateOpenWithMenuItem:theMenuItem];
+	else if (action == @selector(fakeFavoritesMenuSelector:))
+		enable = [self validateFavoritesMenuItem:theMenuItem];
 	else if (action == @selector(goToComputer:))
+		enable = [self validateGoToComputerMenuItem:theMenuItem];
+	else if (action == @selector(goToHomeDirectory:))
+		enable = [self validateGoToHomeDirectoryMenuItem:theMenuItem];
+	else if (action == @selector(goToPicturesDirectory:))
+		enable = [self validateGoToPicturesDirectoryMenuItem:theMenuItem];
+	
+	return enable;
+}
+
+//-----------------------------------------------------------------------------
+
+/** Validates the Open With... Menu Item. Returns whether it should be enabled.
+ */
+-(BOOL)validateOpenWithMenuItem:(NSMenuItem*)item
+{
+	BOOL enable = [self currentFile] && ![[self currentFile] isDirectory];
+	
+	if(![item submenu] && !enable)
 	{
-		// Set the icon if we don't have one yet.
-		if(![theMenuItem image])
+		// Set a false menu
+		NSMenu* openWithMenu = [[[NSMenu alloc] init] autorelease];
+		[item setSubmenu:openWithMenu];
+	}
+	else if(!loadedOpenWithMenu && enable)
+	{
+		// Set up the real Open with Menu
+		NSMenu* openWithMenu = [[[NSMenu alloc] init] autorelease];
+		id openWithMenuController = [ComponentManager getInteranlComponentNamed:
+			@"OpenWithMenu"];
+		openWithMenuDelegate = [[openWithMenuController buildMenuDelegate] retain];
+		loadedOpenWithMenu = YES;
+		//			[openWithMenuDelegate setDelegate:self];
+		[openWithMenu setDelegate:openWithMenuDelegate];
+		[item setSubmenu:openWithMenu];		
+	}
+
+	return enable;
+}
+
+//-----------------------------------------------------------------------------
+
+/** This function loads the Favorites menu code from the proper bundle, and adds
+ * the menu. It should be called only from -validateMenuItem:
+ */
+-(BOOL)validateFavoritesMenuItem:(NSMenuItem*)item
+{
+	[item setAction:nil];
+	
+	// Set up the Favorites Menu
+	NSMenu* favoritesMenu = [[[NSMenu alloc] init] autorelease];
+	favoritesMenuDelegate = [[ComponentManager getInteranlComponentNamed:
+		@"FavoritesMenu"] buildMenuDelegate];
+	[favoritesMenu setDelegate:favoritesMenuDelegate];
+	[item setSubmenu:favoritesMenu];	
+	
+	return YES;
+}
+
+//-----------------------------------------------------------------------------
+
+/** Checks to make sure the icon for the Computer entry in the goto menu is 
+ * loaded. It should be called only from -validateMenuItem:
+ */
+-(BOOL)validateGoToComputerMenuItem:(NSMenuItem*)item
+{
+	// Set the icon if we don't have one yet.
+	if(![item image])
+	{
+		NSImage* img = [[NSImage imageNamed:@"iMac"] copy];
+		[img setScalesWhenResized:YES];
+		[img setSize:NSMakeSize(16, 16)];
+		[item setImage:img];
+		[img release];
+	}
+	
+	return YES;
+}
+
+//-----------------------------------------------------------------------------
+
+/** Checks to make sure the icon for the Home entry in the goto menu is
+ * loaded. It should be called only from -validateMenuItem:
+ */
+-(BOOL)validateGoToHomeDirectoryMenuItem:(NSMenuItem*)item
+{
+	// Set the icon if we don't have one yet.
+	if(![item image])
+	{
+		NSImage* img = [[NSWorkspace sharedWorkspace] iconForFile:NSHomeDirectory()];
+		[img setSize:NSMakeSize(16, 16)];
+		[item setImage:img];
+	}	
+	
+	return YES;
+}
+
+//-----------------------------------------------------------------------------
+
+/** Checks to make sure the icon for the Pictures entry in the goto menu is
+ * loaded. This function also disables that menu item if there is no Pictures
+ * folder. It should be called only from -validateMenuItem: 
+ */
+-(BOOL)validateGoToPicturesDirectoryMenuItem:(NSMenuItem*)item
+{
+	BOOL enable = [[NSHomeDirectory() stringByAppendingPathComponent:@"Pictures"] isDir];
+	
+	// Set the icon if we haven't done so yet.
+	if(![item image])
+	{
+		NSImage* img;
+		if(enable)
 		{
-			NSImage* img = [[NSImage imageNamed:@"iMac"] copy];
+			img = [[[NSImage imageNamed:@"ToolbarPicturesFolderIcon"] copy] autorelease];
 			[img setScalesWhenResized:YES];
 			[img setSize:NSMakeSize(16, 16)];
-			[theMenuItem setImage:img];
-			[img release];
 		}
-	}	
-	else if (action == @selector(goToHomeDirectory:))
-	{
-		// Set the icon if we don't have one yet.
-		if(![theMenuItem image])
-		{
-			NSImage* img = [[NSWorkspace sharedWorkspace] iconForFile:NSHomeDirectory()];
-			[img setSize:NSMakeSize(16, 16)];
-			[theMenuItem setImage:img];
-		}
-	}
-	else if (action == @selector(goToPicturesDirectory:))
-	{
-		enable = [[NSHomeDirectory() stringByAppendingPathComponent:@"Pictures"] isDir];
+		else
+			img = [[NSImage alloc] initWithSize:NSMakeSize(16,16)];
 		
-		// Set the icon if we haven't done so yet.
-		if(![theMenuItem image])
-		{
-			NSImage* img;
-			if(enable)
-			{
-				img = [[[NSImage imageNamed:@"ToolbarPicturesFolderIcon"] copy] autorelease];
-				[img setScalesWhenResized:YES];
-				[img setSize:NSMakeSize(16, 16)];
-			}
-			else
-				img = [[NSImage alloc] initWithSize:NSMakeSize(16,16)];
-			
-			[theMenuItem setImage:img];
-		}
+		[item setImage:img];
 	}
 	
 	return enable;
 }
 
+//-----------------------------------------------------------------------------
+
+/** Returns the current file for the current main window. 
+ *
+ */
+-(EGPath*)currentFile
+{
+	NSWindow* mainWindow = [NSApp mainWindow];
+	NSWindowController* controller = [mainWindow windowController];
+	ViewerDocument* document = [controller document];
+
+	return [document currentFile];
+}
 
 ///////////////////////////////////////////////////////////////// GO MENU ITEMS
 
@@ -411,8 +499,12 @@ static ApplicationController* appControl;
  * -validateMenuItem:, and a submenu is generated.
  */
 -(IBAction)fakeFavoritesMenuSelector:(id)sender
-{
-	
-}
+{}
+
+/** Selector that doesn't do anything. It's detected at runtime through
+ * -validateMenuItem:, and a submenu is generated.
+ */
+-(IBAction)fakeOpenWithMenuSelector:(id)sender
+{}
 
 @end

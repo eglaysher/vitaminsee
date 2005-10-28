@@ -63,17 +63,10 @@
 		return [NSString stringWithFormat:@"%qi Gb", bytes/1073741824];
 }
 
-//-(BOOL)getObjectValue:(id *)obj forString:(NSString *)string 
-//	 errorDescription:(NSString **)error
-//{
-//	
-//}
-
 -(NSAttributedString*)attributedStringForObjectValue:(id)anObject 
 							   withDefaultAttributes:(NSDictionary*)attributes
 {
 	NSString* normalString = [self stringForObjectValue:anObject];
-
 
 	if(!normalString)
 		NSLog(@"WARNING! Normal string couldn't be generated in FileSizeFormatter!");

@@ -43,7 +43,7 @@
 -(NSNumber*)documentID;
 
 -(void)setDirectory:(EGPath*)path;
-
+-(EGPath*)currentFile;
 -(void)startProgressIndicator;
 -(void)stopProgressIndicator;
 

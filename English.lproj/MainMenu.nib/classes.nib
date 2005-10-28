@@ -1,7 +1,11 @@
 {
     IBClasses = (
         {
-            ACTIONS = {fakeFavoritesMenuSelector = id; newWindow = id; }; 
+            ACTIONS = {
+                fakeFavoritesMenuSelector = id; 
+                fakeOpenWithMenuSelector = id; 
+                newWindow = id; 
+            }; 
             CLASS = ApplicationController; 
             LANGUAGE = ObjC; 
             OUTLETS = {

@@ -33,6 +33,7 @@
 @class RBSplitView;
 @class EGPath;
 @class FavoritesMenuDelegate;
+@class EGOpenWithMenuDelegate;
 
 /*!
 	@class ApplicationController
@@ -51,7 +52,7 @@
 	IBOutlet NSMenuItem* openWithMenuItem;
 
 	// Open With Menu that needs initialization
-//	EGOpenWithMenuDelegate* openWithMenuDelegate;
+	EGOpenWithMenuDelegate* openWithMenuDelegate;
 	BOOL loadedOpenWithMenu;
 
 	NSMutableArray* pictureViewers;
@@ -71,12 +72,22 @@
 }
 
 -(NSNumber*)getNextAvailableID;
-
+-(EGPath*)currentFile;
 +(ApplicationController*)controller;
 
 -(IBAction)newWindow:(id)sender;
 
 -(void)goToDirectory:(EGPath*)path;
 
+// These functions validate specific menu actions that have complex validation
+// schemes.
+-(BOOL)validateOpenWithMenuItem:(NSMenuItem*)item;
+-(BOOL)validateFavoritesMenuItem:(NSMenuItem*)item;
+-(BOOL)validateGoToComputerMenuItem:(NSMenuItem*)item;
+-(BOOL)validateGoToHomeDirectoryMenuItem:(NSMenuItem*)item;
+-(BOOL)validateGoToPicturesDirectoryMenuItem:(NSMenuItem*)item;
+
 -(IBAction)fakeFavoritesMenuSelector:(id)sender;
+-(IBAction)fakeOpenWithMenuSelector:(id)sender;
+
 @end
