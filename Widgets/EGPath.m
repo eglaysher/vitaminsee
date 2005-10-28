@@ -110,6 +110,11 @@ static NSArray* fileExtensions = 0;
 	return NO;
 }
 
+-(BOOL)isNaturalFile
+{
+	return NO;
+}
+
 -(BOOL)isDirectory
 {
 	[self doesNotRecognizeSelector:_cmd];
@@ -135,11 +140,10 @@ static NSArray* fileExtensions = 0;
 	return nil;	
 }
 
-
 //-----------------------------------------------------------------------------
 
-/** 
- *
+/** Returns whether we identify this file as an image we can display just based
+ * on it's file name.
  */
 -(BOOL)isImage
 {
@@ -224,6 +228,11 @@ static NSString* egPathRootDisplayName = 0;
 -(BOOL)isRoot
 {
 	return YES;
+}
+
+-(BOOL)isNaturalFile
+{
+	return NO;
 }
 
 -(BOOL)isDirectory
@@ -352,6 +361,11 @@ static NSString* egPathRootDisplayName = 0;
 												  isDirectory:&isDir];
 	
 	return exists && isDir;
+}
+
+-(BOOL)isNaturalFile
+{
+	return YES;
 }
 
 -(NSImage*)fileIcon

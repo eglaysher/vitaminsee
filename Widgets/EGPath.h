@@ -45,8 +45,8 @@
 -(NSString*)fileName;
 
 -(BOOL)isRoot;
-
 -(BOOL)exists;
+-(BOOL)isNaturalFile;
 -(BOOL)isDirectory;
 
 // Items in the current directory

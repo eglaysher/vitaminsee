@@ -16,6 +16,7 @@ extern "C"
 NSNumber* buildRatio(float first, float second);
 BOOL imageRepIsAnimated(NSImageRep* rep);
 BOOL floatEquals(float one, float two, float tolerance);
+BOOL isInFavorites(NSString* path);
 
 #ifdef __cplusplus
 }

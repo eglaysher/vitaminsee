@@ -22,3 +22,21 @@ BOOL floatEquals(float one, float two, float tolerance)
 {
 	return fabs(one - two) < tolerance;
 }
+
+BOOL isInFavorites(NSString* path)
+{
+	BOOL inFavorites = NO;
+	NSEnumerator* e = [[[NSUserDefaults standardUserDefaults]
+			objectForKey:@"SortManagerPaths"] objectEnumerator];
+	NSString* thisPath;
+	while(thisPath = [[e nextObject] objectForKey:@"Path"])
+	{
+		if([thisPath isEqualTo:path])
+		{
+			inFavorites = YES;
+			break;
+		}
+	}
+	
+	return inFavorites;
+}

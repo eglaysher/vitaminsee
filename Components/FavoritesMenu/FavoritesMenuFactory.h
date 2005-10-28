@@ -15,4 +15,6 @@
 -(id)buildMenuDelegate;
 -(id)buildToolbarItemWithIdentifier:(NSString*)itemIdent;
 
+-(void)addDirectoryToFavorites:(NSString*)directory;
+
 @end

@@ -14,6 +14,8 @@
 #import "EGPath.h"
 #import "NSString+FileTasks.h"
 #import "DesktopBackground.h"
+#import "FavoritesMenuFactory.h"
+#import "Util.h"
 
 @implementation ViewerDocument
 
@@ -260,6 +262,8 @@
 		
 		enable = enable && containsImage;
 	}	
+	
+	return enable;
 }
 
 -(BOOL)validateAction:(SEL)action
@@ -269,7 +273,10 @@
 	
 	// Disable menu items when they would put the image in the state it's 
 	// already currently in.
-	if(action == @selector(actualSize:))
+	if(action == @selector(addToFavorites:))
+		enable = [currentFile isDirectory] && [currentFile isNaturalFile] &&
+			!isInFavorites([currentFile fileSystemPath]);
+	else if(action == @selector(actualSize:))
 		enable = scaleMode != SCALE_IMAGE_PROPORTIONALLY || scaleRatio != 1;
 	else if(action == @selector(zoomToFit:))
 		enable = scaleMode != SCALE_IMAGE_TO_FIT;
@@ -321,6 +328,21 @@
 //-----------------------------------------------------------------------------
 
 // INSERT REFRESH CODE HERE...
+
+
+//-----------------------------------------------------------------------------
+
+/** Add the current directory to the favorites.
+ */
+-(void)addToFavorites:(id)sender
+{
+	NSLog(@"For now, we just nslog.");
+	NSString* filepath = [currentFile fileSystemPath];
+	
+	id favoritesComponent = [ComponentManager
+		getInteranlComponentNamed:@"FavoritesMenu"];
+	[favoritesComponent addDirectoryToFavorites:filepath];
+}
 
 //-----------------------------------------------------------------------------
 
