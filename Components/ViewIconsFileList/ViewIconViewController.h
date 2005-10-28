@@ -39,9 +39,6 @@
 	IBOutlet NSPopUpButton* directoryDropdown;
 	IBOutlet NSBrowser* ourBrowser;
 	IBOutlet NSView* ourView;
-
-//	Class ImageLoader;
-//	Class pathType;
 	
 	NSCell* currentlySelectedCell;
 	EGPath* currentDirectory;

@@ -42,8 +42,8 @@
 				PBXFileTableDataSourceColumnSortingKey = PBXErrorsWarningsDataSource_LocationID;
 				PBXFileTableDataSourceColumnWidthsKey = (
 					20,
-					319,
-					185,
+					428,
+					76,
 				);
 				PBXFileTableDataSourceColumnsKey = (
 					PBXErrorsWarningsDataSource_TypeID,
@@ -92,7 +92,7 @@
 				PBXFileTableDataSourceColumnSortingKey = PBXFindDataSource_LocationID;
 				PBXFileTableDataSourceColumnWidthsKey = (
 					200,
-					328.2085,
+					328,
 				);
 				PBXFileTableDataSourceColumnsKey = (
 					PBXFindDataSource_MessageID,
@@ -161,10 +161,22 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 152228949;
-			PBXWorkspaceStateSaveDate = 152228949;
+			PBXPerProjectTemplateStateSaveDate = 152230319;
+			PBXWorkspaceStateSaveDate = 152230319;
 		};
 		perUserProjectItems = {
+			8B1136470912DA10008FBD78 = 8B1136470912DA10008FBD78;
+			8B11364D0912DA56008FBD78 = 8B11364D0912DA56008FBD78;
+			8B11364E0912DA56008FBD78 = 8B11364E0912DA56008FBD78;
+			8B1136530912DA58008FBD78 = 8B1136530912DA58008FBD78;
+			8B1136540912DA58008FBD78 = 8B1136540912DA58008FBD78;
+			8B1136550912DA58008FBD78 = 8B1136550912DA58008FBD78;
+			8B1136560912DA58008FBD78 = 8B1136560912DA58008FBD78;
+			8B11365B0912DA70008FBD78 = 8B11365B0912DA70008FBD78;
+			8B11365C0912DA76008FBD78 = 8B11365C0912DA76008FBD78;
+			8B11365D0912DA76008FBD78 = 8B11365D0912DA76008FBD78;
+			8B11365E0912DA76008FBD78 = 8B11365E0912DA76008FBD78;
+			8B11365F0912DA76008FBD78 = 8B11365F0912DA76008FBD78;
 			8B823CED0911D99700DE50FD = 8B823CED0911D99700DE50FD;
 			8B823CEE0911D99700DE50FD = 8B823CEE0911D99700DE50FD;
 			8B823CEF0911D99700DE50FD = 8B823CEF0911D99700DE50FD;
@@ -187,6 +199,129 @@
 			sepNavVisRect = "{{0, 0}, {746, 648}}";
 			sepNavWindowFrame = "{{15, 20}, {791, 721}}";
 		};
+	};
+	8B1136460912DA10008FBD78 = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.objc;
+		name = ViewIconViewController.m;
+		path = "/Users/elliot/Projects/VitaminSEE-0.7-dev/Components/ViewIconsFileList/ViewIconViewController.m";
+		refType = 0;
+		sourceTree = "<absolute>";
+	};
+	8B1136470912DA10008FBD78 = {
+		fRef = 8B1136460912DA10008FBD78;
+		isa = PBXTextBookmark;
+		rLen = 1;
+		rLoc = 536;
+		rType = 1;
+	};
+	8B11364D0912DA56008FBD78 = {
+		comments = "warning: method definition for `-setWindowTitle:' not found";
+		fRef = 8B24491C08FB55C8004716BC;
+		isa = PBXTextBookmark;
+		rLen = 1;
+		rLoc = 562;
+		rType = 1;
+	};
+	8B11364E0912DA56008FBD78 = {
+		fRef = 8B24491C08FB55C8004716BC;
+		isa = PBXTextBookmark;
+		name = "@end";
+		rLen = 5;
+		rLoc = 15194;
+		rType = 0;
+		vrLen = 304;
+		vrLoc = 15124;
+	};
+	8B1136530912DA58008FBD78 = {
+		fRef = 8B24491C08FB55C8004716BC;
+		isa = PBXTextBookmark;
+		name = "ViewIconViewController.m: 562";
+		rLen = 0;
+		rLoc = 15190;
+		rType = 0;
+		vrLen = 921;
+		vrLoc = 14765;
+	};
+	8B1136540912DA58008FBD78 = {
+		fRef = 8B2448C608FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "ApplicationController.m: initialize";
+		rLen = 0;
+		rLoc = 7368;
+		rType = 0;
+		vrLen = 1225;
+		vrLoc = 14640;
+	};
+	8B1136550912DA58008FBD78 = {
+		fRef = 8B64CD6E090EF81C0060CB34;
+		isa = PBXTextBookmark;
+		name = "OpenWithMenuController.m: 34";
+		rLen = 0;
+		rLoc = 1493;
+		rType = 0;
+		vrLen = 1418;
+		vrLoc = 1079;
+	};
+	8B1136560912DA58008FBD78 = {
+		fRef = 8B64CD6B090EF81C0060CB34;
+		isa = PBXTextBookmark;
+		name = "EGOpenWithMenuDelegate.m: 170";
+		rLen = 0;
+		rLoc = 5479;
+		rType = 0;
+		vrLen = 1530;
+		vrLoc = 5280;
+	};
+	8B11365B0912DA70008FBD78 = {
+		fRef = 8B24491C08FB55C8004716BC;
+		isa = PBXTextBookmark;
+		name = "@end";
+		rLen = 5;
+		rLoc = 15194;
+		rType = 0;
+		vrLen = 404;
+		vrLoc = 15124;
+	};
+	8B11365C0912DA76008FBD78 = {
+		fRef = 8B24491C08FB55C8004716BC;
+		isa = PBXTextBookmark;
+		name = "ViewIconViewController.m: 555";
+		rLen = 0;
+		rLoc = 15042;
+		rType = 0;
+		vrLen = 982;
+		vrLoc = 14765;
+	};
+	8B11365D0912DA76008FBD78 = {
+		fRef = 8B2448C608FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "ApplicationController.m: initialize";
+		rLen = 0;
+		rLoc = 7368;
+		rType = 0;
+		vrLen = 1225;
+		vrLoc = 14640;
+	};
+	8B11365E0912DA76008FBD78 = {
+		fRef = 8B64CD6E090EF81C0060CB34;
+		isa = PBXTextBookmark;
+		name = "OpenWithMenuController.m: 34";
+		rLen = 0;
+		rLoc = 1493;
+		rType = 0;
+		vrLen = 1418;
+		vrLoc = 1079;
+	};
+	8B11365F0912DA76008FBD78 = {
+		fRef = 8B64CD6B090EF81C0060CB34;
+		isa = PBXTextBookmark;
+		name = "EGOpenWithMenuDelegate.m: 170";
+		rLen = 0;
+		rLoc = 5479;
+		rType = 0;
+		vrLen = 1530;
+		vrLoc = 5280;
 	};
 	8B24487D08FADC49004716BC = {
 		activeArgIndex = 2147483647;
@@ -831,8 +966,8 @@
 	8B2448C408FB2061004716BC = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {746, 3840}}";
-			sepNavSelRange = "{3992, 26}";
-			sepNavVisRect = "{{0, 1824}, {746, 648}}";
+			sepNavSelRange = "{3906, 0}";
+			sepNavVisRect = "{{0, 1832}, {746, 648}}";
 			sepNavWindowFrame = "{{15, 20}, {791, 721}}";
 		};
 	};
@@ -848,7 +983,7 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {746, 8176}}";
 			sepNavSelRange = "{7368, 0}";
-			sepNavVisRect = "{{0, 7188}, {746, 648}}";
+			sepNavVisRect = "{{0, 7184}, {746, 648}}";
 			sepNavWindowFrame = "{{15, 20}, {791, 721}}";
 		};
 	};
@@ -1009,17 +1144,17 @@
 	};
 	8B24491B08FB55C8004716BC = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {746, 1232}}";
-			sepNavSelRange = "{1646, 11}";
-			sepNavVisRect = "{{0, 394}, {746, 648}}";
+			sepNavIntBoundsRect = "{{0, 0}, {746, 1184}}";
+			sepNavSelRange = "{1534, 0}";
+			sepNavVisRect = "{{0, 392}, {746, 648}}";
 			sepNavWindowFrame = "{{15, 20}, {791, 721}}";
 		};
 	};
 	8B24491C08FB55C8004716BC = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {746, 10096}}";
-			sepNavSelRange = "{6914, 0}";
-			sepNavVisRect = "{{0, 3609}, {746, 648}}";
+			sepNavIntBoundsRect = "{{0, 0}, {746, 10512}}";
+			sepNavSelRange = "{15042, 0}";
+			sepNavVisRect = "{{0, 8612}, {746, 648}}";
 			sepNavWindowFrame = "{{223, 25}, {791, 721}}";
 		};
 	};
@@ -1210,7 +1345,7 @@
 		fRef = 8B24491B08FB55C8004716BC;
 		isa = PBXTextBookmark;
 		rLen = 0;
-		rLoc = 2147483647;
+		rLoc = 2147483605;
 		rType = 0;
 	};
 	8BE1735D0912D8B8008541D3 = {
@@ -1218,7 +1353,7 @@
 		isa = PBXTextBookmark;
 		name = currentFile;
 		rLen = 11;
-		rLoc = 1646;
+		rLoc = 1604;
 		rType = 0;
 		vrLen = 943;
 		vrLoc = 1055;

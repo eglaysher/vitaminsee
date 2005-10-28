@@ -95,6 +95,11 @@
 	delegate = newDelegate;
 }
 
+-(id<FileListDelegate>)delegate
+{
+	return delegate;
+}
+
 -(void)awakeFromNib
 {
 	[ourBrowser setTarget:self];
@@ -532,6 +537,27 @@ willDisplayCell:(id)cell
 -(void)goForward
 {
 	[pathManager redo];
+}
+
+//-----------------------------------------------------------------------------
+
+-(EGPath*)directory
+{
+	return currentDirectory;
+}
+
+//-----------------------------------------------------------------------------
+
+-(EGPath*)file
+{
+	return currentFile;
+}
+
+//-----------------------------------------------------------------------------
+
+-(void)setWindowTitle:(NSWindow*)window
+{
+	// For now, do nothing.
 }
 
 @end
