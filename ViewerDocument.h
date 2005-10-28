@@ -47,6 +47,7 @@
 -(void)startProgressIndicator;
 -(void)stopProgressIndicator;
 
+-(BOOL)validateSetAsDesktopImageItem:(NSMenuItem*)item;
 -(BOOL)validateAction:(SEL)action;
 
 -(void)setDirectoryFromRawPath:(NSString*)path;

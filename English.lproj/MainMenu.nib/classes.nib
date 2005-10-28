@@ -31,6 +31,7 @@
                 goToFolder = id; 
                 goToHomeDirectory = id; 
                 goToPicturesDirectory = id; 
+                openCurrentItem = id; 
                 openInPreview = id; 
                 revealInFinder = id; 
                 setAsDesktopImage = id; 

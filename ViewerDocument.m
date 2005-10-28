@@ -219,38 +219,47 @@
 
 	// Check to see if we have to change the label on the desktop pictures item.
 	if(action == @selector(setAsDesktopImage:))
-	{
-		BOOL isImage = [currentFile isImage];
-		BOOL isDir = [currentFile isDirectory];
+		enable = [self validateSetAsDesktopImageItem:anItem];
 		
-		enable = isImage || isDir;
-		
-		if(isImage)
-		{
-			[anItem setTitle:NSLocalizedString(@"Set As Desktop Picture", @"Text in File menu")];
-		}
-		else
-		{
-			[anItem setTitle:NSLocalizedString(@"Use Folder For Desktop Pictures", @"Text in File menu")];
-			
-			// Only enable if the folder contains an image
-			BOOL containsImage = NO;
-			NSArray* directoryContents = [currentFile directoryContents];
-			int i = 0, count = [directoryContents count];
-			for(; i < count; ++i)
-			{
-				if([((id)CFArrayGetValueAtIndex((CFArrayRef)directoryContents, i)) isImage])
-				{
-					containsImage = YES;
-					break;
-				}
-			}
-			
-			enable = enable && containsImage;
-		}
-	}
-	
 	return enable;
+}
+
+//-----------------------------------------------------------------------------
+
+/** Validate the "Set As Desktop Image" File menu item. 
+ */
+-(BOOL)validateSetAsDesktopImageItem:(NSMenuItem*)item
+{
+	BOOL isImage = [currentFile isImage];
+	BOOL isDir = [currentFile isDirectory];
+	
+	BOOL enable = isImage || isDir;
+	
+	if(isImage)
+	{
+		[item setTitle:NSLocalizedString(@"Set As Desktop Picture", 
+										 @"Text in File menu")];
+	}
+	else
+	{
+		[item setTitle:NSLocalizedString(@"Use Folder For Desktop Pictures",
+										 @"Text in File menu")];
+		
+		// Only enable if the folder contains an image
+		BOOL containsImage = NO;
+		NSArray* directoryContents = [currentFile directoryContents];
+		int i = 0, count = [directoryContents count];
+		for(; i < count; ++i)
+		{
+			if([((id)CFArrayGetValueAtIndex((CFArrayRef)directoryContents, i)) isImage])
+			{
+				containsImage = YES;
+				break;
+			}
+		}
+		
+		enable = enable && containsImage;
+	}	
 }
 
 -(BOOL)validateAction:(SEL)action
@@ -285,6 +294,36 @@
 //-----------------------------------------------------------------------------
 // FILE MENU
 //-----------------------------------------------------------------------------
+
+/** Function invoked when File > Open is activated. This function should go into
+* the currently selected directory, though different FileLists may have 
+* different semantics.
+*/
+-(void)openCurrentItem:(id)sender
+{
+	[fileList openCurrentItem];
+}
+
+//-----------------------------------------------------------------------------
+
+/** Opens the current image in Preview
+*/
+-(void)openInPreview:(id)sender
+{
+	[[NSWorkspace sharedWorkspace]	openFile:[currentFile fileSystemPath]
+							 withApplication:@"Preview"];
+}
+
+//-----------------------------------------------------------------------------
+
+// ***  Open With handled in Application Controller
+
+//-----------------------------------------------------------------------------
+
+// INSERT REFRESH CODE HERE...
+
+//-----------------------------------------------------------------------------
+
 /** Sets the current selection {file, directory} as the desktop image.
  */
 -(void)setAsDesktopImage:(id)sender
@@ -353,21 +392,6 @@
 	[[NSWorkspace sharedWorkspace] selectFile:[currentFile fileSystemPath]
 					 inFileViewerRootedAtPath:@""];
 }
-
-//-----------------------------------------------------------------------------
-
-/** Opens the current image in Preview
- */
--(void)openInPreview:(id)sender
-{
-	[[NSWorkspace sharedWorkspace]	openFile:[currentFile fileSystemPath]
-							 withApplication:@"Preview"];
-}
-
-//-----------------------------------------------------------------------------
-
-// All other items in the view menu are handled by other classes
-
 
 //-----------------------------------------------------------------------------
 // GO MENU

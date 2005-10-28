@@ -123,6 +123,13 @@
  */
 -(void)goEnclosingFolder;
 
+/** Invoked when the "Open" menu item is selected. This can have different
+ * semantic meanings depending on the FileList.
+ *
+ * @see -canOpenCurrentItem
+ */
+-(void)openCurrentItem;
+
 //@}
 
 //-----------------------------------------------------------------------------
@@ -130,6 +137,13 @@
 /** @name User Interface Validation
  */
 //@{
+
+/** Checks if the "Open" File menu item should be enabled. Most file lists will
+ * use this for traversing directories.
+ *
+ * FileLists that have no heiarchical structures can hard code this value to NO.
+ */
+-(BOOL)canOpenCurrentItem;
 
 /** Determines if this plugin has the semantic idea of a "Current Directory".
  * Returning YES will enable menu items and toolbar items that set the current

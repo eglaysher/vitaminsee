@@ -253,6 +253,18 @@
 	return ourView;
 }
 
+
+//-----------------------------------------------------------------------------
+-(void)openCurrentItem
+{
+	NSLog(@"-[ViewIconViewController openCurrentItem]");
+	[self doubleClick:self];
+}
+
+-(BOOL)canOpenCurrentItem
+{
+	return [currentFile isDirectory];
+}
 //-----------------------------------------------------------------------------
 //------------------------------------------------------------ BROWSER DELEGATE
 //-----------------------------------------------------------------------------
