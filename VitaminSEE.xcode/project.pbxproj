@@ -121,6 +121,8 @@
 				8B7AA5AB090C983F00A351DF,
 				8B9B2F15090DAE69009C69B7,
 				8B64CD5E090EF8030060CB34,
+				8B1137CD09130185008FBD78,
+				8B113881091304FE008FBD78,
 			);
 			isa = PBXGroup;
 			name = Products;
@@ -156,6 +158,8 @@
 				8B7AA5AA090C983F00A351DF,
 				8B9B2F14090DAE69009C69B7,
 				8B64CD5D090EF8030060CB34,
+				8B1137CC09130185008FBD78,
+				8B113880091304FE008FBD78,
 			);
 		};
 		29B97314FDCFA39411CA2CEA = {
@@ -330,6 +334,411 @@
 //8B2
 //8B3
 //8B4
+		8B1137C909130185008FBD78 = {
+			buildActionMask = 2147483647;
+			files = (
+			);
+			isa = PBXResourcesBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B1137CA09130185008FBD78 = {
+			buildActionMask = 2147483647;
+			files = (
+				8B1137F70913021E008FBD78,
+				8B1137F90913021E008FBD78,
+			);
+			isa = PBXSourcesBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B1137CB09130185008FBD78 = {
+			buildActionMask = 2147483647;
+			files = (
+			);
+			isa = PBXFrameworksBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B1137CC09130185008FBD78 = {
+			buildPhases = (
+				8B1137C909130185008FBD78,
+				8B1137CA09130185008FBD78,
+				8B1137CB09130185008FBD78,
+			);
+			buildRules = (
+			);
+			buildSettings = {
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = "Components/SSPrefsController/SSPrefsController-Info.plist";
+				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
+				LIBRARY_STYLE = BUNDLE;
+				OPTIMIZATION_CFLAGS = "";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "-framework Foundation -framework AppKit";
+				OTHER_REZFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = SSPrefsController;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = "-Wmost -Wno-four-char-constants -Wno-unknown-pragmas";
+			};
+			dependencies = (
+			);
+			isa = PBXNativeTarget;
+			name = SSPrefsController;
+			productName = SSPrefsController;
+			productReference = 8B1137CD09130185008FBD78;
+			productSettingsXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
+<!DOCTYPE plist PUBLIC \"-//Apple Computer//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">
+<plist version=\"1.0\">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>English</string>
+	<key>CFBundleExecutable</key>
+	<string>SSPrefsController</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.yourcompany.SSPrefsController</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
+	<key>CFBundleVersion</key>
+	<string>1.0</string>
+</dict>
+</plist>
+";
+			productType = "com.apple.product-type.bundle";
+		};
+		8B1137CD09130185008FBD78 = {
+			explicitFileType = wrapper.cfbundle;
+			includeInIndex = 0;
+			isa = PBXFileReference;
+			name = SSPrefsController.bundle;
+			path = build/SSPrefsController.bundle;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B1137DF091301F2008FBD78 = {
+			containerPortal = 29B97313FDCFA39411CA2CEA;
+			isa = PBXContainerItemProxy;
+			proxyType = 1;
+			remoteGlobalIDString = 8B1137CC09130185008FBD78;
+			remoteInfo = SSPrefsController;
+		};
+		8B1137E0091301F2008FBD78 = {
+			isa = PBXTargetDependency;
+			target = 8B1137CC09130185008FBD78;
+			targetProxy = 8B1137DF091301F2008FBD78;
+		};
+		8B1137E2091301F7008FBD78 = {
+			fileRef = 8B1137CD09130185008FBD78;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B1137E409130201008FBD78 = {
+			children = (
+				8B1137F20913021E008FBD78,
+				8B1137F30913021E008FBD78,
+				8B1137F40913021E008FBD78,
+				8B1137F50913021E008FBD78,
+				8B1137F60913021E008FBD78,
+			);
+			isa = PBXGroup;
+			name = SSPrefsController;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B1137F20913021E008FBD78 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = SS_PrefsController.h;
+			path = Components/SSPrefsController/SS_PrefsController.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B1137F30913021E008FBD78 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
+			name = SS_PrefsController.m;
+			path = Components/SSPrefsController/SS_PrefsController.m;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B1137F40913021E008FBD78 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = text.xml;
+			name = "SSPrefsController-Info.plist";
+			path = "Components/SSPrefsController/SSPrefsController-Info.plist";
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B1137F50913021E008FBD78 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = SSPrefsControllerFactory.h;
+			path = Components/SSPrefsController/SSPrefsControllerFactory.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B1137F60913021E008FBD78 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
+			name = SSPrefsControllerFactory.m;
+			path = Components/SSPrefsController/SSPrefsControllerFactory.m;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B1137F70913021E008FBD78 = {
+			fileRef = 8B1137F30913021E008FBD78;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B1137F90913021E008FBD78 = {
+			fileRef = 8B1137F60913021E008FBD78;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B11382009130304008FBD78 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = SS_PreferencePaneProtocol.h;
+			path = Protocols/SS_PreferencePaneProtocol.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B11382109130304008FBD78 = {
+			fileRef = 8B11382009130304008FBD78;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B11387D091304FE008FBD78 = {
+			buildActionMask = 2147483647;
+			files = (
+				8B1138A409130531008FBD78,
+				8B1138B909130546008FBD78,
+				8B1138BA09130546008FBD78,
+			);
+			isa = PBXResourcesBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B11387E091304FE008FBD78 = {
+			buildActionMask = 2147483647;
+			files = (
+				8B1138A609130531008FBD78,
+			);
+			isa = PBXSourcesBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B11387F091304FE008FBD78 = {
+			buildActionMask = 2147483647;
+			files = (
+			);
+			isa = PBXFrameworksBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B113880091304FE008FBD78 = {
+			buildPhases = (
+				8B11387D091304FE008FBD78,
+				8B11387E091304FE008FBD78,
+				8B11387F091304FE008FBD78,
+			);
+			buildRules = (
+			);
+			buildSettings = {
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = "Components/GeneralPreferences/GeneralPreferences-Info.plist";
+				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
+				LIBRARY_STYLE = BUNDLE;
+				OPTIMIZATION_CFLAGS = "";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "-framework Foundation -framework AppKit";
+				OTHER_REZFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = GeneralPreferences;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = "-Wmost -Wno-four-char-constants -Wno-unknown-pragmas";
+				WRAPPER_EXTENSION = VSPref;
+			};
+			dependencies = (
+			);
+			isa = PBXNativeTarget;
+			name = GeneralPreferences;
+			productName = GeneralPreferences;
+			productReference = 8B113881091304FE008FBD78;
+			productSettingsXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
+<!DOCTYPE plist PUBLIC \"-//Apple Computer//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">
+<plist version=\"1.0\">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>English</string>
+	<key>CFBundleExecutable</key>
+	<string>GeneralPreferences</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.yourcompany.GeneralPreferences</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
+	<key>CFBundleVersion</key>
+	<string>1.0</string>
+</dict>
+</plist>
+";
+			productType = "com.apple.product-type.bundle";
+		};
+		8B113881091304FE008FBD78 = {
+			explicitFileType = wrapper.cfbundle;
+			includeInIndex = 0;
+			isa = PBXFileReference;
+			path = GeneralPreferences.VSPref;
+			refType = 3;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		8B1138910913050E008FBD78 = {
+			children = (
+				8B1138B509130546008FBD78,
+				8B1138B709130546008FBD78,
+				8B1138A009130531008FBD78,
+				8B1138A109130531008FBD78,
+				8B1138A209130531008FBD78,
+				8B1138A309130531008FBD78,
+			);
+			isa = PBXGroup;
+			name = GeneralPreferences;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B1138A009130531008FBD78 = {
+			isa = PBXFileReference;
+			lastKnownFileType = image.tiff;
+			name = General_Prefs.tiff;
+			path = Components/GeneralPreferences/General_Prefs.tiff;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B1138A109130531008FBD78 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = text.xml;
+			name = "GeneralPreferences-Info.plist";
+			path = "Components/GeneralPreferences/GeneralPreferences-Info.plist";
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B1138A209130531008FBD78 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = GeneralPreferencesController.h;
+			path = Components/GeneralPreferences/GeneralPreferencesController.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B1138A309130531008FBD78 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
+			name = GeneralPreferencesController.m;
+			path = Components/GeneralPreferences/GeneralPreferencesController.m;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B1138A409130531008FBD78 = {
+			fileRef = 8B1138A009130531008FBD78;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B1138A609130531008FBD78 = {
+			fileRef = 8B1138A309130531008FBD78;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B1138B509130546008FBD78 = {
+			children = (
+				8B1138B609130546008FBD78,
+			);
+			isa = PBXVariantGroup;
+			name = GeneralPreferences.nib;
+			path = "";
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B1138B609130546008FBD78 = {
+			isa = PBXFileReference;
+			lastKnownFileType = wrapper.nib;
+			name = English;
+			path = Components/GeneralPreferences/English.lproj/GeneralPreferences.nib;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B1138B709130546008FBD78 = {
+			children = (
+				8B1138B809130546008FBD78,
+			);
+			isa = PBXVariantGroup;
+			name = Localizable.strings;
+			path = "";
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B1138B809130546008FBD78 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = text.plist.strings;
+			name = English;
+			path = Components/GeneralPreferences/English.lproj/Localizable.strings;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B1138B909130546008FBD78 = {
+			fileRef = 8B1138B509130546008FBD78;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B1138BA09130546008FBD78 = {
+			fileRef = 8B1138B709130546008FBD78;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B1138D8091305CD008FBD78 = {
+			containerPortal = 29B97313FDCFA39411CA2CEA;
+			isa = PBXContainerItemProxy;
+			proxyType = 1;
+			remoteGlobalIDString = 8B113880091304FE008FBD78;
+			remoteInfo = GeneralPreferences;
+		};
+		8B1138D9091305CD008FBD78 = {
+			isa = PBXTargetDependency;
+			target = 8B113880091304FE008FBD78;
+			targetProxy = 8B1138D8091305CD008FBD78;
+		};
+		8B1138E0091305F4008FBD78 = {
+			fileRef = 8B113881091304FE008FBD78;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
 		8B2448A108FB2018004716BC = {
 			children = (
 				8B2448A208FB2033004716BC,
@@ -584,6 +993,7 @@
 		};
 		8B2448C308FB2048004716BC = {
 			children = (
+				8B11382009130304008FBD78,
 				8B2448C408FB2061004716BC,
 			);
 			isa = PBXGroup;
@@ -1084,6 +1494,8 @@
 		};
 		8B24490F08FB546C004716BC = {
 			children = (
+				8B1138910913050E008FBD78,
+				8B1137E409130201008FBD78,
 				8B64CD4F090EF7ED0060CB34,
 				8B9B2F06090DAE50009C69B7,
 				8BD7074F090C973F00D28A14,
@@ -1301,12 +1713,15 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				8B1138E0091305F4008FBD78,
+				8B1137E2091301F7008FBD78,
 				8B426112090EFCAB0006EE43,
 				8B9B2F9B090DB44D009C69B7,
 				8B7AA600090C999800A351DF,
 				8B8B7241090C138A006DDF10,
 				8BEA54B8090BE19D00F83026,
 				8B24492B08FB5680004716BC,
+				8B11382109130304008FBD78,
 			);
 			isa = PBXCopyFilesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2354,7 +2769,9 @@
 				8BEA54B6090BE19900F83026,
 				8B8B7240090C1380006DDF10,
 				8B9B2F77090DB441009C69B7,
+				8B1138D9091305CD008FBD78,
 				8B426110090EFCA10006EE43,
+				8B1137E0091301F2008FBD78,
 			);
 			isa = PBXNativeTarget;
 			name = VitaminSEE;

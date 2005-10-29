@@ -47,6 +47,10 @@
 #import "FavoritesMenuFactory.h"
 #import "NSString+FileTasks.h"
 
+#import "ImmutableToMutableTransformer.h"
+#import "PathExistsValueTransformer.h"
+#import "FullDisplayNameValueTransformer.h"
+
 #import "EGPath.h"
 
 @implementation ApplicationController
@@ -146,12 +150,12 @@
 + (void)initialize 
 {
 	// Set up our custom NSValueTransformers
-//	[NSValueTransformer setValueTransformer:[[[ImmutableToMutableTransformer 
-//		alloc] init] autorelease] forName:@"ImmutableToMutableTransformer"];
-//	[NSValueTransformer setValueTransformer:[[[PathExistsValueTransformer alloc]
-//		init] autorelease] forName:@"PathExistsValueTransformer"];
-//	[NSValueTransformer setValueTransformer:[[[FullDisplayNameValueTransformer
-//		alloc] init] autorelease] forName:@"FullDisplayNameValueTransformer"];
+	[NSValueTransformer setValueTransformer:[[[ImmutableToMutableTransformer 
+		alloc] init] autorelease] forName:@"ImmutableToMutableTransformer"];
+	[NSValueTransformer setValueTransformer:[[[PathExistsValueTransformer alloc]
+		init] autorelease] forName:@"PathExistsValueTransformer"];
+	[NSValueTransformer setValueTransformer:[[[FullDisplayNameValueTransformer
+		alloc] init] autorelease] forName:@"FullDisplayNameValueTransformer"];
 	
 	// Test to see if the user is a rebel and deleted the Pictures folder
 	NSString* picturesFolder = [NSHomeDirectory() stringByAppendingPathComponent:@"Pictures"];
@@ -402,6 +406,31 @@ static ApplicationController* appControl;
 	ViewerDocument* document = [controller document];
 
 	return [document currentFile];
+}
+
+-(IBAction)showPreferences:(id)sender
+{
+	if (!prefs) {
+        // Determine path to the sample preference panes
+		id ssPrefsFactory = [ComponentManager 
+			getInteranlComponentNamed:@"SSPrefsController"];
+		
+		prefs = [[ssPrefsFactory buildWithPanesSearchPath:
+			[[NSBundle mainBundle] builtInPlugInsPath] 
+										  bundleExtension:@"VSPref"] retain];
+        
+        // Set which panes are included, and their order.
+        [prefs setPanesOrder:[NSArray arrayWithObjects:
+			NSLocalizedString(@"General", @"Name of General Preference Pane"),
+			NSLocalizedString(@"Favorites", @"Name of Favorites Prefernce Pane"),
+			NSLocalizedString(@"Keywords", @"Name of Keywords Preference Pane"),
+			NSLocalizedString(@"Updating", @"Name of Updating Preference Pane"),
+			NSLocalizedString(@"Advanced", @"Name of Advanced Preference Pange"),
+			nil]];
+    }
+    
+    // Show the preferences window.
+    [prefs showPreferencesWindow];
 }
 
 ///////////////////////////////////////////////////////////////// GO MENU ITEMS

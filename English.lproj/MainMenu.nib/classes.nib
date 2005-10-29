@@ -5,6 +5,7 @@
                 fakeFavoritesMenuSelector = id; 
                 fakeOpenWithMenuSelector = id; 
                 newWindow = id; 
+                showPreferences = id; 
             }; 
             CLASS = ApplicationController; 
             LANGUAGE = ObjC; 
@@ -15,6 +16,7 @@
                 mainVitaminSeeWindow = NSWindow; 
                 openWithMenuItem = NSMenuItem; 
                 pictureFolderMenuItem = NSMenuItem; 
+                prefs = id; 
             }; 
             SUPERCLASS = NSObject; 
         }, 

@@ -29,12 +29,9 @@
 //
 ////////////////////////////////////////////////////////////////////////
 
-
 #import <Cocoa/Cocoa.h>
 
-#import "PluginBase.h"
-
-@interface SSPrefsControllerFactory : NSObject <PluginBase> {
+@interface SSPrefsControllerFactory : NSObject {
 }
 
 -(id)buildWithPanesSearchPath:(NSString*)path bundleExtension:(NSString*)ext;

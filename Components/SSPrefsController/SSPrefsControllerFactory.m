@@ -35,11 +35,6 @@
 
 @implementation SSPrefsControllerFactory
 
--(id)initWithPluginLayer:(PluginLayer*)inPluginLayer
-{
-	return [super init];
-}
-
 -(id)buildWithPanesSearchPath:(NSString*)path bundleExtension:(NSString*)ext
 {
 	return [[[SS_PrefsController alloc] initWithPanesSearchPath:path

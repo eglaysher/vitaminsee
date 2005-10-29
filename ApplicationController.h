@@ -57,7 +57,7 @@
 
 	NSMutableArray* pictureViewers;
 	
-//	SS_PrefsController *prefs;	
+	id prefs;	
 	
 	// Loaded plugins:
 	NSMutableDictionary* loadedBasePlugins;
@@ -87,6 +87,7 @@
 -(BOOL)validateGoToHomeDirectoryMenuItem:(NSMenuItem*)item;
 -(BOOL)validateGoToPicturesDirectoryMenuItem:(NSMenuItem*)item;
 
+-(IBAction)showPreferences:(id)sender;
 -(IBAction)fakeFavoritesMenuSelector:(id)sender;
 -(IBAction)fakeOpenWithMenuSelector:(id)sender;
 
