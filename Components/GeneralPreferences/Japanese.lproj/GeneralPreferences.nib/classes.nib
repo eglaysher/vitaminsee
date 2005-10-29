@@ -1,0 +1,13 @@
+{
+    IBClasses = (
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {
+            ACTIONS = {changeDefaultDirectory = id; showHelp = id; }; 
+            CLASS = GeneralPreferencesController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {prefView = NSView; }; 
+            SUPERCLASS = NSObject; 
+        }
+    ); 
+    IBVersion = 1; 
+}
