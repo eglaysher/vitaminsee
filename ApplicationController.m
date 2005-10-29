@@ -59,6 +59,12 @@
 
 ////////////////////////////////////////////////// WHERE TO GO FROM HERE...
 
+// Required tasks:
+// * Make the FileList use a UKKqueue instance to monitor the current directory;
+//   makes stupid, hacky old file management code go away, and make the FileList
+//   more self contained.
+// * Integrate preferences
+
 // For Version 0.7
 // * Delete key in sort manager preferences should do something. + UNDO!!!!
 // * Automator actions:

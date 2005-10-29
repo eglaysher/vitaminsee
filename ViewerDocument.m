@@ -273,16 +273,19 @@
 	
 	// Disable menu items when they would put the image in the state it's 
 	// already currently in.
+	// File menu
 	if(action == @selector(addToFavorites:))
 		enable = [currentFile isDirectory] && [currentFile isNaturalFile] &&
 			!isInFavorites([currentFile fileSystemPath]);
+	// View menu
 	else if(action == @selector(actualSize:))
-		enable = scaleMode != SCALE_IMAGE_PROPORTIONALLY || scaleRatio != 1;
+		enable = [currentFile isImage] && 
+			(scaleMode != SCALE_IMAGE_PROPORTIONALLY || scaleRatio != 1);
 	else if(action == @selector(zoomToFit:))
-		enable = scaleMode != SCALE_IMAGE_TO_FIT;
-//	else if(action == @selector(zoomIn:) ||
-//			action == @selector(zoomOut:))
-//		enable = isimage
+		enable = [currentFile isImage] && scaleMode != SCALE_IMAGE_TO_FIT;
+	else if(action == @selector(zoomIn:) ||
+			action == @selector(zoomOut:))
+		enable = [currentFile isImage];
 	// Go menu
 	else if(action == @selector(goNextFile:))
 		enable = [fileList canGoNextFile];
@@ -324,11 +327,6 @@
 //-----------------------------------------------------------------------------
 
 // ***  Open With handled in Application Controller
-
-//-----------------------------------------------------------------------------
-
-// INSERT REFRESH CODE HERE...
-
 
 //-----------------------------------------------------------------------------
 

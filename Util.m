@@ -9,6 +9,9 @@
 #import "Util.h"
 #include <stdint.h>
 
+/** Utility function that inspects an image rep and tries to determine if it's
+ * animated.
+ */
 BOOL imageRepIsAnimated(NSImageRep* rep)
 {
 	if([rep isKindOfClass:[NSBitmapImageRep class]] &&
@@ -18,11 +21,19 @@ BOOL imageRepIsAnimated(NSImageRep* rep)
 		return NO;
 }
 
+//-----------------------------------------------------------------------------
+
+/** Checks for equality of two floats (with some tolerance.)
+ */
 BOOL floatEquals(float one, float two, float tolerance)
 {
 	return fabs(one - two) < tolerance;
 }
 
+//-----------------------------------------------------------------------------
+
+/** Checks to see if the path path is in Favorites.
+ */
 BOOL isInFavorites(NSString* path)
 {
 	BOOL inFavorites = NO;
