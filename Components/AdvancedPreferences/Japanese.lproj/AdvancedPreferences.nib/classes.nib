@@ -1,0 +1,14 @@
+{
+    IBClasses = (
+        {
+            ACTIONS = {showHelp = id; }; 
+            CLASS = AdvancedPreferencesController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {prefView = NSView; }; 
+            SUPERCLASS = NSObject; 
+        }, 
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {CLASS = NSLevelIndicator; LANGUAGE = ObjC; SUPERCLASS = NSControl; }
+    ); 
+    IBVersion = 1; 
+}
