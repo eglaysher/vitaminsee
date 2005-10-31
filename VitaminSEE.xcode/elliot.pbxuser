@@ -13,7 +13,7 @@
 		activeExecutable = 8B24487D08FADC49004716BC;
 		activeTarget = 8D1107260486CEB800E47090;
 		addToTargets = (
-			8B2B8CF50916C0EA00691A7B,
+			8BE456000916E3B000E1668E,
 		);
 		breakpoints = (
 			8BC5D7B00902DCCE00C2FA0C,
@@ -161,12 +161,12 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 152485912;
-			PBXWorkspaceStateSaveDate = 152485912;
+			PBXPerProjectTemplateStateSaveDate = 152494960;
+			PBXWorkspaceStateSaveDate = 152494960;
 		};
 		perUserProjectItems = {
-			8B1139110913ACD7008FBD78 = 8B1139110913ACD7008FBD78;
 			8B2B8D830916E2E900691A7B = 8B2B8D830916E2E900691A7B;
+			8BE4568E0916E51700E1668E = 8BE4568E0916E51700E1668E;
 		};
 		sourceControlManager = 8B24488B08FADC51004716BC;
 		userBuildSettings = {
@@ -233,16 +233,6 @@
 			sepNavVisRect = "{{0, 1256}, {746, 648}}";
 			sepNavWindowFrame = "{{15, 20}, {791, 721}}";
 		};
-	};
-	8B1139110913ACD7008FBD78 = {
-		fRef = 8B2448C508FB2080004716BC;
-		isa = PBXTextBookmark;
-		name = "ApplicationController.h: validateGoToComputerMenuItem:";
-		rLen = 0;
-		rLoc = 2601;
-		rType = 0;
-		vrLen = 1115;
-		vrLoc = 1802;
 	};
 	8B24487D08FADC49004716BC = {
 		activeArgIndex = 2147483647;
@@ -1256,6 +1246,19 @@
 		isa = PBXSymbolicBreakpoint;
 		state = 1;
 		symbolName = "-[NSException raise]";
+	};
+	8BE456000916E3B000E1668E = {
+		activeExec = 0;
+	};
+	8BE4568E0916E51700E1668E = {
+		fRef = 8B2448C508FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "ApplicationController.h: validateGoToComputerMenuItem:";
+		rLen = 0;
+		rLoc = 2601;
+		rType = 0;
+		vrLen = 1115;
+		vrLoc = 1802;
 	};
 	8BEA546E090BDFA000F83026 = {
 		uiCtxt = {
