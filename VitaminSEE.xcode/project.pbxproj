@@ -123,6 +123,7 @@
 				8B64CD5E090EF8030060CB34,
 				8B1137CD09130185008FBD78,
 				8B113881091304FE008FBD78,
+				8B2B8CF60916C0EA00691A7B,
 			);
 			isa = PBXGroup;
 			name = Products;
@@ -160,6 +161,7 @@
 				8B64CD5D090EF8030060CB34,
 				8B1137CC09130185008FBD78,
 				8B113880091304FE008FBD78,
+				8B2B8CF50916C0EA00691A7B,
 			);
 		};
 		29B97314FDCFA39411CA2CEA = {
@@ -373,7 +375,6 @@
 				INFOPLIST_FILE = "Components/SSPrefsController/SSPrefsController-Info.plist";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
 				LIBRARY_STYLE = BUNDLE;
-				OPTIMIZATION_CFLAGS = "";
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "-framework Foundation -framework AppKit";
 				OTHER_REZFLAGS = "";
@@ -415,10 +416,9 @@
 			explicitFileType = wrapper.cfbundle;
 			includeInIndex = 0;
 			isa = PBXFileReference;
-			name = SSPrefsController.bundle;
-			path = build/SSPrefsController.bundle;
-			refType = 4;
-			sourceTree = "<group>";
+			path = SSPrefsController.bundle;
+			refType = 3;
+			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		8B1137DF091301F2008FBD78 = {
 			containerPortal = 29B97313FDCFA39411CA2CEA;
@@ -564,7 +564,6 @@
 				INFOPLIST_FILE = "Components/GeneralPreferences/GeneralPreferences-Info.plist";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
 				LIBRARY_STYLE = BUNDLE;
-				OPTIMIZATION_CFLAGS = "";
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "-framework Foundation -framework AppKit";
 				OTHER_REZFLAGS = "";
@@ -1494,6 +1493,7 @@
 		};
 		8B24490F08FB546C004716BC = {
 			children = (
+				8B2B8D0C0916C10200691A7B,
 				8B1138910913050E008FBD78,
 				8B1137E409130201008FBD78,
 				8B64CD4F090EF7ED0060CB34,
@@ -1713,6 +1713,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				8B2B8D600916C16C00691A7B,
 				8B1138E0091305F4008FBD78,
 				8B1137E2091301F7008FBD78,
 				8B426112090EFCAB0006EE43,
@@ -1771,6 +1772,195 @@
 		};
 		8B244B3F08FC886A004716BC = {
 			fileRef = 8B244B3D08FC886A004716BC;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B2B8CF20916C0EA00691A7B = {
+			buildActionMask = 2147483647;
+			files = (
+				8B2B8D220916C12600691A7B,
+				8B2B8D360916C13700691A7B,
+			);
+			isa = PBXResourcesBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B2B8CF30916C0EA00691A7B = {
+			buildActionMask = 2147483647;
+			files = (
+				8B2B8D230916C12600691A7B,
+			);
+			isa = PBXSourcesBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B2B8CF40916C0EA00691A7B = {
+			buildActionMask = 2147483647;
+			files = (
+			);
+			isa = PBXFrameworksBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B2B8CF50916C0EA00691A7B = {
+			buildPhases = (
+				8B2B8CF20916C0EA00691A7B,
+				8B2B8CF30916C0EA00691A7B,
+				8B2B8CF40916C0EA00691A7B,
+			);
+			buildRules = (
+			);
+			buildSettings = {
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = "Components/AdvancedPreferences/AdvancedPreferences-Info.plist";
+				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
+				LIBRARY_STYLE = BUNDLE;
+				OPTIMIZATION_CFLAGS = "";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "-framework Foundation -framework AppKit";
+				OTHER_REZFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = AdvancedPreferences;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = "-Wmost -Wno-four-char-constants -Wno-unknown-pragmas";
+				WRAPPER_EXTENSION = VSPref;
+			};
+			dependencies = (
+			);
+			isa = PBXNativeTarget;
+			name = AdvancedPreferences;
+			productName = AdvancedPreferences;
+			productReference = 8B2B8CF60916C0EA00691A7B;
+			productSettingsXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
+<!DOCTYPE plist PUBLIC \"-//Apple Computer//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">
+<plist version=\"1.0\">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>English</string>
+	<key>CFBundleExecutable</key>
+	<string>AdvancedPreferences</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.yourcompany.AdvancedPreferences</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
+	<key>CFBundleVersion</key>
+	<string>1.0</string>
+</dict>
+</plist>
+";
+			productType = "com.apple.product-type.bundle";
+		};
+		8B2B8CF60916C0EA00691A7B = {
+			explicitFileType = wrapper.cfbundle;
+			includeInIndex = 0;
+			isa = PBXFileReference;
+			path = AdvancedPreferences.VSPref;
+			refType = 3;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		8B2B8D0C0916C10200691A7B = {
+			children = (
+				8B2B8D340916C13700691A7B,
+				8B2B8D1D0916C12500691A7B,
+				8B2B8D1E0916C12500691A7B,
+				8B2B8D1F0916C12500691A7B,
+				8B2B8D200916C12500691A7B,
+			);
+			isa = PBXGroup;
+			name = AdvancedPreferences;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B2B8D1D0916C12500691A7B = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = text.xml;
+			name = "AdvancedPreferences-Info.plist";
+			path = "Components/AdvancedPreferences/AdvancedPreferences-Info.plist";
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B2B8D1E0916C12500691A7B = {
+			isa = PBXFileReference;
+			lastKnownFileType = image.png;
+			name = AdvancedPreferences.png;
+			path = Components/AdvancedPreferences/AdvancedPreferences.png;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B2B8D1F0916C12500691A7B = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = AdvancedPreferencesController.h;
+			path = Components/AdvancedPreferences/AdvancedPreferencesController.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B2B8D200916C12500691A7B = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
+			name = AdvancedPreferencesController.m;
+			path = Components/AdvancedPreferences/AdvancedPreferencesController.m;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B2B8D220916C12600691A7B = {
+			fileRef = 8B2B8D1E0916C12500691A7B;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B2B8D230916C12600691A7B = {
+			fileRef = 8B2B8D200916C12500691A7B;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B2B8D340916C13700691A7B = {
+			children = (
+				8B2B8D350916C13700691A7B,
+			);
+			isa = PBXVariantGroup;
+			name = AdvancedPreferences.nib;
+			path = "";
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B2B8D350916C13700691A7B = {
+			isa = PBXFileReference;
+			lastKnownFileType = wrapper.nib;
+			name = English;
+			path = Components/AdvancedPreferences/English.lproj/AdvancedPreferences.nib;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B2B8D360916C13700691A7B = {
+			fileRef = 8B2B8D340916C13700691A7B;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B2B8D5D0916C16200691A7B = {
+			containerPortal = 29B97313FDCFA39411CA2CEA;
+			isa = PBXContainerItemProxy;
+			proxyType = 1;
+			remoteGlobalIDString = 8B2B8CF50916C0EA00691A7B;
+			remoteInfo = AdvancedPreferences;
+		};
+		8B2B8D5E0916C16200691A7B = {
+			isa = PBXTargetDependency;
+			target = 8B2B8CF50916C0EA00691A7B;
+			targetProxy = 8B2B8D5D0916C16200691A7B;
+		};
+		8B2B8D600916C16C00691A7B = {
+			fileRef = 8B2B8CF60916C0EA00691A7B;
 			isa = PBXBuildFile;
 			settings = {
 			};
@@ -2772,6 +2962,7 @@
 				8B1138D9091305CD008FBD78,
 				8B426110090EFCA10006EE43,
 				8B1137E0091301F2008FBD78,
+				8B2B8D5E0916C16200691A7B,
 			);
 			isa = PBXNativeTarget;
 			name = VitaminSEE;

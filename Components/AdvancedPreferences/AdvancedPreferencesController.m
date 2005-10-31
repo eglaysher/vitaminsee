@@ -70,7 +70,7 @@
 - (NSImage *)paneIcon
 {
     return [[NSImage alloc] initWithContentsOfFile:
-		[[NSBundle mainBundle] pathForImageResource:@"AdvancedPreferences"]];
+		[[NSBundle bundleForClass:[self class]] pathForImageResource:@"AdvancedPreferences"]];
 }
 
 - (NSString *)paneToolTip
