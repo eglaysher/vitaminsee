@@ -33,7 +33,6 @@
 #import "NSString+FileTasks.h"
 #import "FileList.h"
 #import "EGPath.h"
-#import "NSObject+CallWithArray.h"
 #import "ImageLoader.h"
 
 @interface ViewIconViewController (Private)
@@ -593,6 +592,7 @@ willDisplayCell:(id)cell
 	// Now build thumbnails for each file in the directory (since we can be 
 	// confident they'll be built in order)
 	// FIXME
+	// When I fix this, make sure to use -[NSArray makeObjectsPerformSelector:withObject:]...
 	//	[pluginLayer performSelector:@selector(generateThumbnailForFile:)
 //				withEachObjectIn:myFileList];
 	

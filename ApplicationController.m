@@ -51,6 +51,9 @@
 #import "PathExistsValueTransformer.h"
 #import "FullDisplayNameValueTransformer.h"
 
+#import "SS_PrefsController.h"
+#import "SSPrefsControllerFactory.h"
+
 #import "EGPath.h"
 
 @implementation ApplicationController

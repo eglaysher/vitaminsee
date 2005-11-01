@@ -165,14 +165,8 @@
 			PBXWorkspaceStateSaveDate = 152495614;
 		};
 		perUserProjectItems = {
-			8B2B8D830916E2E900691A7B = 8B2B8D830916E2E900691A7B;
-			8B5ED9F60916E60300EE5414 = 8B5ED9F60916E60300EE5414;
-			8B5EDA970916E7B500EE5414 = 8B5EDA970916E7B500EE5414;
-			8B5EDA980916E7B500EE5414 = 8B5EDA980916E7B500EE5414;
-			8B5EDA9D0916E7B600EE5414 = 8B5EDA9D0916E7B600EE5414;
-			8B5EDAB30916E7D300EE5414 = 8B5EDAB30916E7D300EE5414;
-			8B5EDAB80916E7D400EE5414 = 8B5EDAB80916E7D400EE5414;
-			8BE4568E0916E51700E1668E = 8BE4568E0916E51700E1668E;
+			8B5EDB090916EEF300EE5414 = 8B5EDB090916EEF300EE5414;
+			8B5EDB250916F03700EE5414 = 8B5EDB250916F03700EE5414;
 		};
 		sourceControlManager = 8B24488B08FADC51004716BC;
 		userBuildSettings = {
@@ -829,8 +823,8 @@
 	8B2448A308FB2033004716BC = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {776, 4560}}";
-			sepNavSelRange = "{1721, 0}";
-			sepNavVisRect = "{{0, 1256}, {746, 648}}";
+			sepNavSelRange = "{2553, 0}";
+			sepNavVisRect = "{{0, 0}, {746, 648}}";
 			sepNavWindowFrame = "{{15, 20}, {791, 721}}";
 		};
 	};
@@ -891,16 +885,16 @@
 	8B2448C508FB2080004716BC = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {746, 1520}}";
-			sepNavSelRange = "{2601, 0}";
-			sepNavVisRect = "{{0, 824}, {746, 648}}";
+			sepNavSelRange = "{2240, 0}";
+			sepNavVisRect = "{{0, 244}, {746, 648}}";
 			sepNavWindowFrame = "{{105, 23}, {791, 721}}";
 		};
 	};
 	8B2448C608FB2080004716BC = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {746, 8736}}";
-			sepNavSelRange = "{1930, 0}";
-			sepNavVisRect = "{{0, 324}, {746, 648}}";
+			sepNavIntBoundsRect = "{{0, 0}, {746, 8784}}";
+			sepNavSelRange = "{2486, 0}";
+			sepNavVisRect = "{{0, 948}, {746, 648}}";
 			sepNavWindowFrame = "{{15, 20}, {791, 721}}";
 		};
 	};
@@ -995,8 +989,8 @@
 	8B2448DA08FB209E004716BC = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {746, 1280}}";
-			sepNavSelRange = "{2451, 0}";
-			sepNavVisRect = "{{0, 632}, {746, 648}}";
+			sepNavSelRange = "{1297, 0}";
+			sepNavVisRect = "{{0, 308}, {746, 648}}";
 			sepNavWindowFrame = "{{15, 20}, {791, 721}}";
 		};
 	};
@@ -1011,8 +1005,8 @@
 	8B2448DC08FB209E004716BC = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {746, 1008}}";
-			sepNavSelRange = "{74, 0}";
-			sepNavVisRect = "{{0, 0}, {746, 648}}";
+			sepNavSelRange = "{897, 0}";
+			sepNavVisRect = "{{0, 360}, {746, 648}}";
 			sepNavWindowFrame = "{{15, 20}, {791, 721}}";
 		};
 	};
@@ -1070,8 +1064,8 @@
 	8B24491C08FB55C8004716BC = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {741, 10512}}";
-			sepNavSelRange = "{18298, 0}";
-			sepNavVisRect = "{{0, 8927}, {655, 211}}";
+			sepNavSelRange = "{16413, 0}";
+			sepNavVisRect = "{{0, 9440}, {734, 184}}";
 			sepNavWindowFrame = "{{15, 20}, {791, 721}}";
 		};
 	};
@@ -1118,26 +1112,6 @@
 			sepNavWindowFrame = "{{15, 20}, {791, 721}}";
 		};
 	};
-	8B2B8D830916E2E900691A7B = {
-		fRef = 8B2448C508FB2080004716BC;
-		isa = PBXTextBookmark;
-		name = "ApplicationController.h: validateGoToComputerMenuItem:";
-		rLen = 0;
-		rLoc = 2601;
-		rType = 0;
-		vrLen = 1115;
-		vrLoc = 1802;
-	};
-	8B5ED9F60916E60300EE5414 = {
-		fRef = 8B2448C508FB2080004716BC;
-		isa = PBXTextBookmark;
-		name = "ApplicationController.h: validateGoToComputerMenuItem:";
-		rLen = 0;
-		rLoc = 2601;
-		rType = 0;
-		vrLen = 1115;
-		vrLoc = 1802;
-	};
 	8B5EDA250916E62900EE5414 = {
 		activeExec = 0;
 	};
@@ -1160,58 +1134,24 @@
 	8B5EDA510916E65E00EE5414 = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {832, 2096}}";
-			sepNavSelRange = "{3279, 75}";
+			sepNavSelRange = "{4081, 0}";
 			sepNavVisRect = "{{0, 1279}, {655, 211}}";
 			sepNavWindowFrame = "{{15, 20}, {791, 721}}";
 		};
 	};
-	8B5EDA970916E7B500EE5414 = {
-		comments = "error: 'SortManagerPreferencesController' undeclared (first use in this function)";
-		fRef = 8B5EDA510916E65E00EE5414;
-		isa = PBXTextBookmark;
-		rLen = 1;
-		rLoc = 86;
-		rType = 1;
+	8B5EDB090916EEF300EE5414 = {
+		fRef = 8B2448C608FB2080004716BC;
+		isa = PBXBookmark;
 	};
-	8B5EDA980916E7B500EE5414 = {
-		fRef = 8B5EDA510916E65E00EE5414;
+	8B5EDB250916F03700EE5414 = {
+		fRef = 8B2448C608FB2080004716BC;
 		isa = PBXTextBookmark;
-		name = "return [NSArray arrayWithObjects:[[[FavoritesPreferencesController alloc]";
-		rLen = 75;
-		rLoc = 3279;
-		rType = 0;
-		vrLen = 296;
-		vrLoc = 3140;
-	};
-	8B5EDA9D0916E7B600EE5414 = {
-		fRef = 8B2448C508FB2080004716BC;
-		isa = PBXTextBookmark;
-		name = "ApplicationController.h: validateGoToComputerMenuItem:";
+		name = "ApplicationController.m: 76";
 		rLen = 0;
-		rLoc = 2601;
+		rLoc = 2486;
 		rType = 0;
-		vrLen = 1115;
-		vrLoc = 1802;
-	};
-	8B5EDAB30916E7D300EE5414 = {
-		fRef = 8B5EDA510916E65E00EE5414;
-		isa = PBXTextBookmark;
-		name = "return [NSArray arrayWithObjects:[[[FavoritesPreferencesController alloc]";
-		rLen = 75;
-		rLoc = 3279;
-		rType = 0;
-		vrLen = 296;
-		vrLoc = 3140;
-	};
-	8B5EDAB80916E7D400EE5414 = {
-		fRef = 8B2448C508FB2080004716BC;
-		isa = PBXTextBookmark;
-		name = "ApplicationController.h: validateGoToComputerMenuItem:";
-		rLen = 0;
-		rLoc = 2601;
-		rType = 0;
-		vrLen = 1115;
-		vrLoc = 1802;
+		vrLen = 1332;
+		vrLoc = 2059;
 	};
 	8B64CD5D090EF8030060CB34 = {
 		activeExec = 0;
@@ -1337,16 +1277,6 @@
 		isa = PBXSymbolicBreakpoint;
 		state = 1;
 		symbolName = "-[NSException raise]";
-	};
-	8BE4568E0916E51700E1668E = {
-		fRef = 8B2448C508FB2080004716BC;
-		isa = PBXTextBookmark;
-		name = "ApplicationController.h: validateGoToComputerMenuItem:";
-		rLen = 0;
-		rLoc = 2601;
-		rType = 0;
-		vrLen = 1115;
-		vrLoc = 1802;
 	};
 	8BEA546E090BDFA000F83026 = {
 		uiCtxt = {

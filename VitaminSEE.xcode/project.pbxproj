@@ -744,8 +744,6 @@
 				8B2448A708FB2033004716BC,
 				8B2448AA08FB2033004716BC,
 				8B2448AB08FB2033004716BC,
-				8B2448AC08FB2033004716BC,
-				8B2448AD08FB2033004716BC,
 				8B2448AE08FB2033004716BC,
 				8B2448AF08FB2033004716BC,
 				8B2448B008FB2033004716BC,
@@ -830,24 +828,6 @@
 			lastKnownFileType = sourcecode.c.objc;
 			name = MyImageView.m;
 			path = Widgets/MyImageView.m;
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		8B2448AC08FB2033004716BC = {
-			fileEncoding = 30;
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.h;
-			name = "NSObject+CallWithArray.h";
-			path = "Widgets/NSObject+CallWithArray.h";
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		8B2448AD08FB2033004716BC = {
-			fileEncoding = 30;
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.objc;
-			name = "NSObject+CallWithArray.m";
-			path = "Widgets/NSObject+CallWithArray.m";
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -952,12 +932,6 @@
 		};
 		8B2448BB08FB2033004716BC = {
 			fileRef = 8B2448AB08FB2033004716BC;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
-		8B2448BC08FB2033004716BC = {
-			fileRef = 8B2448AD08FB2033004716BC;
 			isa = PBXBuildFile;
 			settings = {
 			};
@@ -3239,7 +3213,6 @@
 				8B2448B808FB2033004716BC,
 				8B2448B908FB2033004716BC,
 				8B2448BB08FB2033004716BC,
-				8B2448BC08FB2033004716BC,
 				8B2448BD08FB2033004716BC,
 				8B2448BE08FB2033004716BC,
 				8B2448BF08FB2033004716BC,
