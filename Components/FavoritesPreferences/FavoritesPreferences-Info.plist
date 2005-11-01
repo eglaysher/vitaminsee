@@ -5,9 +5,9 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleExecutable</key>
-	<string>SortManagerPreferences</string>
+	<string>FavoritesPreferences</string>
 	<key>CFBundleIdentifier</key>
-	<string>org.elliotglaysher.VitaminSEE.SortManagerPreferences</string>
+	<string>org.elliotglaysher.VitaminSEE.FavoritesPreferences</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundlePackageType</key>
@@ -17,6 +17,6 @@
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
 	<key>NSPrincipalClass</key>
-	<string>SortManagerPreferencesController</string>
+	<string>FavoritesPreferencesController</string>
 </dict>
 </plist>

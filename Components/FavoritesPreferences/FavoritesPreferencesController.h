@@ -32,7 +32,7 @@
 
 #import "SS_PreferencePaneProtocol.h"
 
-@interface SortManagerPreferencesController : NSObject <SS_PreferencePaneProtocol> 
+@interface FavoritesPreferencesController : NSObject <SS_PreferencePaneProtocol> 
 {
 	IBOutlet NSView* prefView;
 	IBOutlet NSArrayController* listOfDirectories;

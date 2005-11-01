@@ -27,10 +27,10 @@
 //
 ////////////////////////////////////////////////////////////////////////
 
-#import "SortManagerPreferencesController.h"
+#import "FavoritesPreferencesController.h"
 
 
-@implementation SortManagerPreferencesController
+@implementation FavoritesPreferencesController
 
 -(IBAction)add:(id)sender
 {
@@ -84,7 +84,7 @@
 
 +(NSArray*)preferencePanes
 {
-	return [NSArray arrayWithObjects:[[[SortManagerPreferencesController alloc]
+	return [NSArray arrayWithObjects:[[[FavoritesPreferencesController alloc]
 		init] autorelease], nil];
 }
 
@@ -93,7 +93,7 @@
     BOOL loaded = YES;
     
     if (!prefView)
-        loaded = [NSBundle loadNibNamed:@"SortManagerPreferences" owner:self];
+        loaded = [NSBundle loadNibNamed:@"FavoritesPreferences" owner:self];
     
     if (loaded)
         return prefView;
