@@ -160,7 +160,6 @@ NSSize IMAGE_SIZE = {128.0f, 128.0f};
 				 128 + 4.0f * 2.0f,
 				 NSMinYEdge);
 	imageFrame = notTextFrame;
-//	imageFrame.origin.x += (cellFrame.size.width - IMAGE_SIZE.width) / 2.0f;
 	imageFrame.origin.x += (int)(cellFrame.size.width - IMAGE_SIZE.width) / 2;
 	imageFrame.size = IMAGE_SIZE;
 	

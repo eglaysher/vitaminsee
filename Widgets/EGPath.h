@@ -49,6 +49,8 @@
 -(BOOL)isNaturalFile;
 -(BOOL)isDirectory;
 
+-(EGPath*)pathByDeletingLastPathComponent;
+
 // Items in the current directory
 -(NSArray*)directoryContents;
 
@@ -63,6 +65,10 @@
 
 // Checks to see if the current file is an image file.
 -(BOOL)isImage;
+
+-(NSImage*)iconImageOfSize:(NSSize)size;
+
+-(BOOL)hasThumbnailIcon;
 
 @end
 

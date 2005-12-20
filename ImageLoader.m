@@ -70,7 +70,7 @@ static BOOL newTaskForSameRequester(NSDictionary* currentTask)
 	return obj != nil;
 }
 
-/** Callback funcction used by methods that ask for a funcction pointer of
+/** Callback funcction used by methods that ask for a function pointer of
  * CANCELCHECK. This function checks to see if for the preloading task 
  * represented by currentTask should be canceled. Preloading tasks are canceled
  * when an image load request has been issued for a file that ISN'T the file
@@ -232,10 +232,10 @@ static BOOL newTaskThatPreemptsPreload(NSDictionary* currentTask)
 		if(taskQueueCount)
 		{
 			// Check the requester at the front of 
-			id firstRequester = (id)CFArrayGetValueAtIndex((CFArrayRef)
-														   [taskQueue allKeys], 0);
+			id firstRequester = (id)CFArrayGetValueAtIndex(
+				(CFArrayRef)[taskQueue allKeys], 0);
 			NSMutableDictionary* currentTask = (id)CFDictionaryGetValue(
-																		(CFDictionaryRef)taskQueue, firstRequester);
+				(CFDictionaryRef)taskQueue, firstRequester);
 			[currentTask retain];
 			[taskQueue removeObjectForKey:firstRequester];
 			pthread_mutex_unlock(&taskQueueLock);
@@ -549,7 +549,7 @@ static BOOL newTaskThatPreemptsPreload(NSDictionary* currentTask)
 	while(obj = [e nextObject])
 	{
 		if([[obj objectForKey:@"Path"] isEqual:path]) {
-			NSLog(@"Displaying a CACHED image...");
+//			NSLog(@"Displaying a CACHED image...");
 			[task setObject:[obj objectForKey:@"Data Size"] forKey:@"Data Size"];
 			return [[obj objectForKey:@"Image Rep"] retain];
 		}
@@ -593,7 +593,7 @@ static BOOL newTaskThatPreemptsPreload(NSDictionary* currentTask)
 		filesize, @"Data Size",
 		nil];
 	[imageCache setObject:dict forKey:path];
-	NSLog(@"Loading image '%@' from disk...", path);
+//	NSLog(@"Loading image '%@' from disk...", path);
 
 	return imageRep;
 }
@@ -668,7 +668,7 @@ static BOOL newTaskThatPreemptsPreload(NSDictionary* currentTask)
 		}
 	}
 	
-	// Round down.
+	// Round down, so we don't have a scroll bar apear for 0.1 pixels.
 	size.width = floor(size.width);
 	size.height = floor(size.height);
 	return size;

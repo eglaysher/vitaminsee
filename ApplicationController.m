@@ -71,6 +71,7 @@
 //   makes stupid, hacky old file management code go away, and make the FileList
 //   more self contained.
 // * Integrate preferences
+// * SPEED UP SORT MANAGER AND FILE OPERATIONS!
 
 // For Version 0.7
 // * Delete key in sort manager preferences should do something. + UNDO!!!!

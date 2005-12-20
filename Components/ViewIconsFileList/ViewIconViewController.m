@@ -34,6 +34,9 @@
 #import "FileList.h"
 #import "EGPath.h"
 #import "ImageLoader.h"
+#import "ThumbnailManager.h"
+
+#import "UKKQueue.h"
 
 @interface ViewIconViewController (Private)
 -(void)rebuildInternalFileArray;
@@ -52,8 +55,6 @@
 		[NSBundle loadNibNamed:@"ViewIconsFileView" owner:self];
 
 		oldPosition = -1;
-
-		thumbnailCache = [[NSMutableDictionary alloc] init];
 		
 		// Register for mounting/unmounting notifications
 		NSNotificationCenter* nc = [[NSWorkspace sharedWorkspace] notificationCenter];
@@ -73,6 +74,8 @@
 		needToRebuild = NO;
 
 		pathManager = [[NSUndoManager alloc] init];
+		fileWatcher = [[UKKQueue alloc] init];
+		[fileWatcher setDelegate:self];
 	}
 
 	return self;
@@ -84,8 +87,8 @@
 	NSNotificationCenter* nc = [[NSWorkspace sharedWorkspace] notificationCenter];
 	[nc removeObserver:self];
 	
+	[fileWatcher release];
 	[pathManager release];
-	[thumbnailCache release];
 	[super dealloc];
 }
 
@@ -128,8 +131,10 @@
 
 - (BOOL)setDirectory:(EGPath*)newCurrentDirectory
 {	
-	[thumbnailCache removeAllObjects];
 //	[pluginLayer flushImageCache];
+	
+	// First subscribe to the new directory.
+	[ThumbnailManager subscribe:self toDirectory:newCurrentDirectory];
 
 	if(currentDirectory) 
 	{
@@ -139,7 +144,20 @@
 		[pathManager registerUndoWithTarget:self 
 								   selector:@selector(focusOnFile:) 
 									 object:currentFile];		
+		
+		// Stop watching this directory if it's something kqueue will alert us
+		// about.
+		if([currentDirectory isNaturalFile]) 
+		{
+			[fileWatcher removePath:[currentDirectory fileSystemPath]];
+		}
+		
+		// Note that we unsubscribe from the old directory after 
+		[ThumbnailManager unsubscribe:self fromDirectory:currentDirectory];
 	}
+	
+	if([newCurrentDirectory isNaturalFile])
+		[fileWatcher addPath:[newCurrentDirectory fileSystemPath]];
 
 	// Clear the thumbnails. They need to be regenerated...
 	// FIXME: Update
@@ -210,6 +228,7 @@
 
 -(BOOL)focusOnFile:(EGPath*)file
 {
+	NSLog(@"Egpath: '%@'", file);
 	unsigned index = [fileList binarySearchFor:[file fileSystemPath]
 							  withSortSelector:@selector(caseInsensitiveCompare:)];
 
@@ -300,13 +319,13 @@ willDisplayCell:(id)cell
 	if(![cell iconImage])
 	{
 		// If there's an entry in the thumbnail cache, use it
-		NSImage* icon = [thumbnailCache objectForKey:path];
+		NSImage* icon = [ThumbnailManager getThumbnailFor:[NSClassFromString(@"EGPath") pathWithPath:path]];
 		
 		// If there isn't, use the file icon...
 		if(!icon)
 			icon = [path iconImageOfSize:NSMakeSize(128,128)];
 
-		[self removeUnneededImageReps:icon];
+//		[self removeUnneededImageReps:icon];
 		[cell setIconImage:icon];
 	}
 }
@@ -406,17 +425,7 @@ willDisplayCell:(id)cell
 		{
 			[currentCell setIconImage:image];
 			[ourBrowser setNeedsDisplay];
-		}
-		
-		// If we aren't saving the thumbnails to disk, then store them.
-		// Also do it if these thumbnails are on another volume. (SMB is b0rken;
-		// Even when a thumbnail's icon has been set, it takes a while to take
-		// effect, and leads to no thumbnails in VitaminSEE...)
-		if(![[[NSUserDefaults standardUserDefaults] objectForKey:@"SaveThumbnails"] boolValue] ||
-		   [[[path pathComponents] objectAtIndex:1] isEqual:@"Volumes"])
-		{
-			[thumbnailCache setObject:image forKey:path];
-		}
+		}		
 	}
 }
 
@@ -618,30 +627,34 @@ willDisplayCell:(id)cell
 {
 	@try
 	{
-		NSString* unmountedPath = [[notification userInfo] objectForKey:@"NSDevicePath"];
-		NSString* realPath = [[currentDirectory fileSystemPath] stringByResolvingSymlinksInPath];
+		NSString* unmountedPath = [[notification userInfo] objectForKey:
+			@"NSDevicePath"];
+		NSString* realPath = [[currentDirectory fileSystemPath] 
+			stringByResolvingSymlinksInPath];
 
-		// Detect if we are on the volume that's going to be unmounted. We have to do
-		// this before the volume is unmounted, since otherwise the symlink isn't going to be
-		// detected
+		// Detect if we are on the volume that's going to be unmounted. We have
+		// to do this before the volume is unmounted, since otherwise the
+		// symlink isn't going to be detected
 		if([realPath hasPrefix:unmountedPath])
 		{
-			// Trying to modify stuff here takes locks on the files on the remote
-			// volume. So take note that we HAVE to drop back to root.
+			// Trying to modify stuff here takes locks on the files on the 
+			// remote volume. So take note that we HAVE to drop back to root.
 			needToRebuild = YES;
 		}
 	}
 	@catch(NSException *exception)
 	{
-		// If there was a selector not found error, then it came from [currentDirecoty fileSystemPath],
-		// which may be and EGPathRoot and not have a real path...
+		// If there was a selector not found error, then it came from 
+		// [currentDirecoty fileSystemPath], which may be and EGPathRoot and 
+		// not have a real path...
 		NSLog(@"*** Non-critical exception. Ignore previous -[EGPathRoot fileSystemPath]: message.");
 	}
 }
 
 -(void)handleDidUnmountNotification:(id)notification
 {
-	NSString* unmountedPath = [[notification userInfo] objectForKey:@"NSDevicePath"];
+	NSString* unmountedPath = [[notification userInfo] objectForKey:
+		@"NSDevicePath"];
 	
 	if(needToRebuild || [currentDirectory isRoot] || 
 	   [[currentDirectory fileSystemPath] hasPrefix:unmountedPath])
@@ -651,6 +664,44 @@ willDisplayCell:(id)cell
 	}
 	
 	needToRebuild = NO;
+}
+
+
+//-----------------------------------------------------------------------------
+
+/** Delegate function for UKKQueue. 
+ *
+ */
+-(void) watcher: (id<UKFileWatcher>)kq receivedNotification: (NSString*)nm 
+		forPath: (NSString*)fpath
+{
+	NSLog(@"Notification: '%@' for '%@'", nm, fpath);
+	
+	if([currentDirectory isNaturalFile]) 
+	{
+		EGPath* curFile = [[delegate currentFile] retain];
+		
+		// Update the filelist, tell the browser to reload its data, and then
+		// set the file back to the current file.
+		
+		[self rebuildInternalFileArray];
+		
+		oldPosition = -1;
+		
+		// Now reload the data
+		[ourBrowser setCellClass:[ViewIconsCell class]];
+		//	[ourBrowser setSendsActionOnArrowKeys:NO];
+		[ourBrowser loadColumnZero];
+		
+		// Focus on the file we were focused on before.
+		if(![self focusOnFile:curFile]) 
+		{
+			// If we can't focus on the same file as before, then that means
+			// we got rid of the file we're currently viewing; and we need to
+		}
+		
+		[curFile release];
+	}
 }
 
 @end

@@ -34,6 +34,7 @@
 
 @class PluginLayer;
 @class ThumbnailManager;
+@class UKKQueue;
 
 @interface ViewIconViewController : NSObject <FileList> {
 	IBOutlet NSPopUpButton* directoryDropdown;
@@ -45,7 +46,6 @@
 	EGPath* currentFile;
 	
 	NSMutableArray* fileList;	
-	NSMutableDictionary* thumbnailCache;
 	int oldPosition;
 	
 	NSUndoManager* pathManager;
@@ -53,6 +53,8 @@
 	BOOL needToRebuild;
 	
 	id<FileListDelegate> delegate;
+	
+	UKKQueue* fileWatcher;
 }
 
 //-(void)setDirectory:(EGPath*)directory currentFile:(NSString*)file;

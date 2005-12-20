@@ -29,6 +29,7 @@
 
 #import "EGPath.h"
 #import "NSString+FileTasks.h"
+#import "IconFamily.h"
 
 #import <Cocoa/Cocoa.h>
 #import <Carbon/Carbon.h>
@@ -70,7 +71,15 @@ static NSArray* fileExtensions = 0;
 // ----- Comparator
 -(NSComparisonResult)compare:(id)object
 {
-	return [[self fileSystemPath] compare:[object fileSystemPath]];
+	// TODO: This will have to be more robust.
+	return [[self fileSystemPath] caseInsensitiveCompare:[object fileSystemPath]];
+}
+
+-(BOOL)isEqual:(id)rhs
+{
+	BOOL equal = self == rhs || [self compare:rhs] == NSOrderedSame;
+	
+	return equal;
 }
 
 // ----- Methods that get overridden in subclasses
@@ -121,6 +130,12 @@ static NSArray* fileExtensions = 0;
 	return NO;	
 }
 
+-(EGPath*)pathByDeletingLastPathComponent
+{
+	[self doesNotRecognizeSelector:_cmd];
+	return NO;
+}
+
 // The icon for the computer
 -(NSImage*)fileIcon
 {
@@ -138,6 +153,18 @@ static NSArray* fileExtensions = 0;
 {
 	[self doesNotRecognizeSelector:_cmd];
 	return nil;	
+}
+
+-(NSImage*)iconImageOfSize:(NSSize)size
+{
+	[self doesNotRecognizeSelector:_cmd];
+	return nil;	
+}
+
+-(BOOL)hasThumbnailIcon
+{
+	[self doesNotRecognizeSelector:_cmd];
+	return nil;		
 }
 
 //-----------------------------------------------------------------------------
@@ -209,10 +236,10 @@ static NSString* egPathRootDisplayName = 0;
 	return egPathRootDisplayName;
 }
 
--(BOOL)isEqual:(id)rhs
-{
-	return [rhs isKindOfClass:[EGPathRoot class]];
-}
+//-(BOOL)isEqual:(id)rhs
+//{
+//	return [rhs isKindOfClass:[EGPathRoot class]];
+//}
 
 -(NSArray*)directoryContents
 {
@@ -238,6 +265,13 @@ static NSString* egPathRootDisplayName = 0;
 -(BOOL)isDirectory
 {
 	return YES;
+}
+
+-(EGPath*)pathByDeletingLastPathComponent
+{
+	// To conform to -[NSString stringByDeletingLastPathComponent]'s example
+	// of "/" => "/", we return ourselves as root.
+	return [EGPathRoot root];
 }
 
 -(NSString*)fileName
@@ -289,11 +323,11 @@ static NSString* egPathRootDisplayName = 0;
 	[super dealloc];
 }
 
--(BOOL)isEqual:(id)rhs
-{
-	return [rhs isKindOfClass:[EGPathFilesystemPath class]] && 
-		[[rhs fileSystemPath] isEqualToString:fileSystemPath];
-}
+//-(BOOL)isEqual:(id)rhs
+//{
+//	return [rhs isKindOfClass:[EGPathFilesystemPath class]] && 
+//		[[rhs fileSystemPath] isEqualToString:fileSystemPath];
+//}
 
 -(NSData*)dataRepresentationOfPath
 {
@@ -419,10 +453,61 @@ static NSString* egPathRootDisplayName = 0;
 	return components;
 }
 
+-(EGPath*)pathByDeletingLastPathComponent
+{
+//	NSArray* components = [self pathComponents];
+//	unsigned count = [components count];
+//	if(count > 0)
+//		count--;
+//	return [components objectAtIndex:count];
+	return [EGPath pathWithPath:[fileSystemPath stringByDeletingLastPathComponent]];
+}
+
 -(NSComparisonResult)caseInsensitiveCompare:(id)rhs
 {
 	return [fileSystemPath caseInsensitiveCompare:rhs];
 }
+
+-(NSImage*)iconImageOfSize:(NSSize)size
+{
+    NSString *path = fileSystemPath;
+    NSImage *nodeImage = nil;
+    
+    nodeImage = [[NSWorkspace sharedWorkspace] iconForFile:path];
+    if (!nodeImage) {
+        // No icon for actual file, try the extension.
+        nodeImage = [[NSWorkspace sharedWorkspace] iconForFileType:[path pathExtension]];
+    }
+    [nodeImage setSize: size];    
+    
+    if (nodeImage==nil) {
+        nodeImage = [NSImage imageNamed:@"FSIconImage-Default"];
+    }
+    
+    return nodeImage;	
+}
+
+-(BOOL)hasThumbnailIcon
+{
+	return [IconFamily fileHasCustomIcon:fileSystemPath];
+}
+
+-(unsigned int)hash
+{
+	return [fileSystemPath hash];
+}
+
+//-(BOOL)isEqual:(id)rhs
+//{
+//	BOOL equal = self == rhs || [self compare:rhs] == NSOrderedSame;
+//	
+//	if(equal)
+//		NSLog(@"%@ == %@", self, rhs);
+//	else
+//		NSLog(@"%@ != %@", self, rhs);
+//	
+//	return equal;
+//}
 
 @end
 

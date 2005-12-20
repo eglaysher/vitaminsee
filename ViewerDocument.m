@@ -53,9 +53,7 @@
 		
 		// We need a file list
 		fileList = [[ComponentManager getFileListPluginNamed:@"ViewAsIcons"] build];
-		NSLog(@"FILELIST: %@", fileList);
 		[fileList setDelegate:self];
-
 
 		window = [[VitaminSEEWindowController alloc] initWithFileList:fileList
 													   document:self];
@@ -63,13 +61,10 @@
 
 		[window showWindow:window];
 
-		[fileList setDirectory:path];
-		
-		// Do something to set the current path.
-//		[self setDisplayedFileTo:@"/Users/elliot/Pictures/6b.jpg"];
-		
 		scaleRatio = 1.0f;
 		scaleMode = SCALE_IMAGE_TO_FIT;
+		
+		[fileList setDirectory:path];
 	}
 
 	return self;
@@ -124,7 +119,7 @@
 	[currentFile release];
 	currentFile = file;
 	
-	if([[file fileSystemPath] isImage]) {
+	if([[file fileSystemPath] isImage]) {		
 		NSMutableDictionary* dic = [NSMutableDictionary 
 			dictionaryWithObjectsAndKeys:
 				scaleMode, @"Scale Mode",
@@ -136,9 +131,8 @@
 				[NSNumber numberWithDouble:scaleRatio], @"Scale Ratio",
 				currentFile, @"Path",
 				self, @"Requester",
-				nil];
+			nil];
 		
-//		[self startProgressIndicator];
 		[ImageLoader loadTask:dic];
 	}
 }
@@ -160,7 +154,7 @@
 			// Set the image size label
 			[window setImageSizeLabelText:NSMakeSize(
 				[[task objectForKey:@"Pixel Width"] floatValue],
-				[[task objectForKey:@"Pixel Heigh"] floatValue])];
+				[[task objectForKey:@"Pixel Height"] floatValue])];
 			
 			// Set the size of the image in bytes
 			[window setFileSizeLabelText:[[task objectForKey:@"Data Size"] 
