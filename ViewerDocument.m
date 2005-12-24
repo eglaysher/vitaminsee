@@ -268,7 +268,9 @@
 	// Disable menu items when they would put the image in the state it's 
 	// already currently in.
 	// File menu
-	if(action == @selector(addToFavorites:))
+	if(action == @selector(openInPreview:))
+		enable = [currentFile isImage];
+	else if(action == @selector(addToFavorites:))
 		enable = [currentFile isDirectory] && [currentFile isNaturalFile] &&
 			!isInFavorites([currentFile fileSystemPath]);
 	// View menu
@@ -328,7 +330,6 @@
  */
 -(void)addToFavorites:(id)sender
 {
-	NSLog(@"For now, we just nslog.");
 	NSString* filepath = [currentFile fileSystemPath];
 	
 	id favoritesComponent = [ComponentManager
@@ -455,4 +456,5 @@
 {
 	[fileList goEnclosingFolder];
 }
+
 @end
