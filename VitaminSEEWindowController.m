@@ -81,40 +81,45 @@
 
 //////////////////////////////////////////////////////// SUBVIEW DELEGATE STUFF
 
--(void)didAdjustSubviews:(id)rbview
-{
-//	[pictureState redraw];
-}
+//-(void)didAdjustSubviews:(id)rbview
+//{
+//	NSLog(@"View redraw...");
+//	id doc = [self document];
+//	[doc setDisplayedFileTo:[doc currentFile]];	
+//}
+//
+//- (void)splitView:(RBSplitView*)sender didCollapse:(RBSplitSubview*)subview
+//{
+//	// When we collapse, give the image viewer focus
+//	[scrollView setNextKeyView:nil];
+////	[self selectFirstResponder];
+//	[imageViewer setNextKeyView:imageViewer];
+//}
 
-- (void)splitView:(RBSplitView*)sender didCollapse:(RBSplitSubview*)subview
-{
-	// When we collapse, give the image viewer focus
-	[scrollView setNextKeyView:nil];
-//	[self selectFirstResponder];
-	[imageViewer setNextKeyView:imageViewer];
-}
+//- (void)splitView:(RBSplitView*)sender didExpand:(RBSplitSubview*)subview 
+//{
+//	// When we expand, make the file view first responder
+////	NSLog(@"-splitView:didExpand:");
+////	[self selectFirstResponder];
+////	[viewAsIconsController connectKeyFocus:scrollView];
+////	[mainVitaminSeeWindow setViewsNeedDisplay:YES];
+//}
 
-- (void)splitView:(RBSplitView*)sender didExpand:(RBSplitSubview*)subview 
-{
-	// When we expand, make the file view first responder
-//	[self selectFirstResponder];
-//	[viewAsIconsController connectKeyFocus:scrollView];
-//	[mainVitaminSeeWindow setViewsNeedDisplay:YES];
-}
-
-- (void)splitView:(RBSplitView*)sender wasResizedFrom:(float)oldDimension 
-			   to:(float)newDimension
-{
-//	[mainVitaminSeeWindow setViewsNeedDisplay:YES];
-}
+//- (void)splitView:(RBSplitView*)sender wasResizedFrom:(float)oldDimension 
+//			   to:(float)newDimension
+//{
+////	NSLog(@"-splitView:wasResizedFrom:to:");
+////	[mainVitaminSeeWindow setViewsNeedDisplay:YES];
+//}
 
 // Redraw the window when the seperator between the file list and image view
 // is moved.
--(void)splitViewDidResizeSubviews:(NSNotification*)notification
-{
+//-(void)splitViewDidResizeSubviews:(NSNotification*)notification
+//{
 //	[viewAsIconsController clearCache];
+//	NSLog(@"-splitViewDidResizeSubviews:");
 //	[self redraw];
-}
+//}
 
 // Progress indicator control
 -(void)startProgressIndicator

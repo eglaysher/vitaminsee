@@ -7,13 +7,17 @@
 //
 
 #import "ThumbnailManager.h"
+#import "NSObject+Invocations.h"
 #import "EGPath.h"
 #import "IconFamily.h"
+
 
 @interface ThumbnailManager (Private)
 +(void)addThumbnailToCache:(NSImage*)image file:(EGPath*)path;
 +(NSImage*)buildThumbnail:(EGPath*)path;
 +(EGPath*)getNextThumbnailToBuild;
++(void)removePathFromBuildQueue:(EGPath*)path;
++(void)notifySubscribersThat:(EGPath*)nextToBuild hasImage:(NSImage*)image;
 +(void)resetBuildQueueEnumerator;
 @end
 
@@ -114,32 +118,43 @@ static enum ThumbnailStorageType thumbnailStorageType;
 		
 		if([thumbnailBuildQueue count])
 		{
-			EGPath* nextToBuild = [self getNextThumbnailToBuild];
+			// Object retained because it gets released during
+			// -addThumbnailToCache:file:
+			EGPath* nextToBuild = [[self getNextThumbnailToBuild] retain];
 
 			// Unlock the mutex
 			pthread_mutex_unlock(&thumbnailBuildQueueLock);
 
-			NSImage* image;
 			if([nextToBuild isImage]) 
 			{
+				NSImage* image;
+
 				if([nextToBuild hasThumbnailIcon])
 				{
+					// If there's already an thumbnail, load it and put it in 
+					// the cache
 					image = [nextToBuild iconImageOfSize:ICON_SIZE];
+					[self addThumbnailToCache:image file:nextToBuild];
 				}
 				else 
+				{
+					// Build the new image for the file and stick it in the 
+					// cache
 					image = [self buildThumbnail:nextToBuild];
-				
-				// Add the image to the cache and remove it from the queue
-				[self addThumbnailToCache:image file:nextToBuild];
+					[self addThumbnailToCache:image file:nextToBuild];
+					[image release];
+				}
 				
 				// Notify all people in the subscribers list
+				[self notifySubscribersThat:nextToBuild hasImage:image];
 			}
 			else
 			{
-				// Add an icon for this not-image.
-				image = [nextToBuild iconImageOfSize:ICON_SIZE];
-				[self addThumbnailToCache:image file:nextToBuild];
+				// Remove the entry from the build queue. 
+				[self removePathFromBuildQueue:nextToBuild];
 			}
+			
+			[nextToBuild release];
 		}
 		else
 		{
@@ -155,7 +170,6 @@ static enum ThumbnailStorageType thumbnailStorageType;
 
 +(void)subscribe:(id)object toDirectory:(EGPath*)directory
 {
-//	NSLog(@"%@ is subscribed to %@", object, directory);
 	pthread_mutex_lock(&subscriberListLock);
 	{
 		NSMutableArray* subscribers = [subscriberList objectForKey:directory];
@@ -218,6 +232,7 @@ static enum ThumbnailStorageType thumbnailStorageType;
 			[subscribers removeObject:object];
 			if([subscribers count] == 0)
 			{
+				NSLog(@"Removing all data structures for %@", directory);
 				// Subscribers is now invalid.
 				[subscriberList removeObjectForKey:directory];
 				subscribers = 0;
@@ -259,10 +274,24 @@ static enum ThumbnailStorageType thumbnailStorageType;
 		return thumbnail;
 	
 	// So the image isn't in the cache yet. 
+	NSImage* image = [path iconImageOfSize:ICON_SIZE];
+	if([path isImage]) 
+	{
+		if([path hasThumbnailIcon] && directoryCache)
+		{
+			pthread_rwlock_wrlock(&thumbnailCacheLock);
+			{
+				[directoryCache setObject:image forKey:path];
+			}	
+			pthread_rwlock_unlock(&thumbnailCacheLock);		
+		}
+		else
+		{
+			// TODO: Put it in a priority queue to build ASAP!			
+		}
+	}
 	
-	// TODO: Put it in a priority queue!
-	
-	return [path iconImageOfSize:ICON_SIZE];
+	return image;
 }
 
 @end
@@ -283,25 +312,27 @@ static enum ThumbnailStorageType thumbnailStorageType;
 	}
 	pthread_rwlock_unlock(&thumbnailCacheLock);
 	
+	[self removePathFromBuildQueue:path];
+}
+
++(void)removePathFromBuildQueue:(EGPath*)path
+{
+	EGPath* directory = [path pathByDeletingLastPathComponent];
+	
 	// Remove this image from the build queue
 	pthread_mutex_lock(&thumbnailBuildQueueLock);
 	{
 		NSMutableSet* buildSet = [thumbnailBuildQueue objectForKey:directory];
-
+		
 		if(buildSet) {
+			// Remove the object if it exists
 			if([buildSet member:path])
 				[buildSet removeObject:path];
-			else
-				NSLog(@"Warning. Found build set for %@, but %@ isn't a member.",
-					  directory, path);
 			
+			// Remove the set if if's emtpy
 			if([buildSet count] == 0)
 				[thumbnailBuildQueue removeObjectForKey:directory];
 		}
-//		else {
-//			NSLog(@"Warning. No build set for %@", directory);
-//			NSLog(@"Known build sets: %@", [thumbnailBuildQueue ]);
-//		}
 	}
 	pthread_mutex_unlock(&thumbnailBuildQueueLock);
 }
@@ -333,13 +364,16 @@ static enum ThumbnailStorageType thumbnailStorageType;
 	{
 		if([path isNaturalFile]) // && shouldSaveIconToDisk)
 		{
-			NSLog(@"Setting the thumbnail for %@", path);
+//			NSLog(@"Setting the thumbnail for %@", path);
 			[iconFamily setAsCustomIconForFile:[path fileSystemPath]];
 		}
 		
 		thumbnail = [iconFamily imageWithAllRepsNoAutorelease];
+//		NSLog(@"Found thumbnail: %@", thumbnail);
 		[iconFamily release];
 	}
+	else
+		NSLog(@"Couldn't build iconFamily for %@!", path);
 	
 	[image release];
 	return thumbnail;
@@ -369,6 +403,28 @@ static enum ThumbnailStorageType thumbnailStorageType;
 	[thumbnailBuildQueueValueEnumerator release];
 	thumbnailBuildQueueValueEnumerator = 
 		[[thumbnailBuildQueue objectEnumerator] retain];				
+}
+
++(void)notifySubscribersThat:(EGPath*)nextToBuild hasImage:(NSImage*)image
+{
+	EGPath* directory = [nextToBuild pathByDeletingLastPathComponent];
+	
+	pthread_mutex_lock(&subscriberListLock);
+	{
+		NSMutableArray* subscribers = 
+			[subscriberList objectForKey:directory];
+		
+		NSEnumerator* e = [subscribers objectEnumerator];
+		id subscriber;
+		while(subscriber = [e nextObject]) 
+		{
+			[[subscriber performOnMainThreadWaitUntilDone:NO]
+				receiveThumbnail:image forFile:nextToBuild];
+//				
+//				receiveThumbnailObject:image forPath:nextToBuild];
+		}
+	}
+	pthread_mutex_unlock(&subscriberListLock);
 }
 
 @end

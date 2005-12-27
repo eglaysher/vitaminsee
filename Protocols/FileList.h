@@ -206,6 +206,21 @@
 
 //@}
 
+
+//-----------------------------------------------------------------------------
+
+/** @name Thumbnail management
+ */
+//@{
+
+/** Many FileList objects display thumbnails representing files. When a 
+ * thumbnail is generated for the first time, a receiveThumbnail:forFile:
+ * message is sent to the FileList object, to allow it to change the thumbnail.
+ */
+-(void)receiveThumbnail:(NSImage*)image forFile:(EGPath*)path;
+
+//@}
+
 @end
 
 //-----------------------------------------------------------------------------

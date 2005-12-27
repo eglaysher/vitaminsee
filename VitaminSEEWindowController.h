@@ -14,7 +14,7 @@
 @class ViewerDocument;
 
 @interface VitaminSEEWindowController : NSWindowController {
-	VitaminSEEPicture* pictureState;
+//	VitaminSEEPicture* pictureState;
     
 	IBOutlet NSImageView *imageViewer;
 	IBOutlet NSTextField * fileSizeLabel;

@@ -819,6 +819,8 @@
 				8B2448B408FB2033004716BC,
 				8B2448B508FB2033004716BC,
 				8B2448B608FB2033004716BC,
+				8BAE04EC095F6C5C007C387D,
+				8BAE04ED095F6C5D007C387D,
 			);
 			isa = PBXGroup;
 			name = Widgets;
@@ -1773,6 +1775,7 @@
 				8B98BF300939515D00CBBF00,
 				8B2064F4094CD90D0062D0CC,
 				8B20650C094CDB670062D0CC,
+				8BAE04EE095F6C5D007C387D,
 			);
 			isa = PBXCopyFilesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2851,6 +2854,34 @@
 			settings = {
 			};
 		};
+		8BAE04EC095F6C5C007C387D = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			path = "NSObject+Invocations.h";
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8BAE04ED095F6C5D007C387D = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
+			path = "NSObject+Invocations.m";
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8BAE04EE095F6C5D007C387D = {
+			fileRef = 8BAE04EC095F6C5C007C387D;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8BAE04EF095F6C5D007C387D = {
+			fileRef = 8BAE04ED095F6C5D007C387D;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
 		8BC0786B0938024B0098E29B = {
 			fileEncoding = 30;
 			isa = PBXFileReference;
@@ -3418,6 +3449,7 @@
 				8B98BF310939515D00CBBF00,
 				8B2064F5094CD90D0062D0CC,
 				8B20650D094CDB670062D0CC,
+				8BAE04EF095F6C5D007C387D,
 			);
 			isa = PBXSourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;

@@ -184,10 +184,7 @@
 
 + (BOOL) removeCustomIconFromFile:(NSString*)path;
 
--(OSErr)performInvocation:(IconFamilyHandle)iconFamily osType:(OSType)iconType
-				   handle:(Handle)h;
--(OSErr)handleInvocation:(NSInvocation*)a;
--(OSErr)setIconFamilyData:(IconFamilyHandle)iconFamily osType:(OSType)iconType
+-(void)setIconFamilyData:(IconFamilyHandle)iconFamily osType:(OSType)iconType
 				   handle:(Handle)h;
 
 @end

@@ -15,6 +15,7 @@
 
 #import "IconFamily.h"
 #import "NSString+CarbonFSSpecCreation.h"
+#import "NSObject+Invocations.h"
 
 @interface IconFamily (Internals)
 
@@ -577,38 +578,15 @@
 	// is much more rare, but I want thread safety damnit!). Therefore, go 
 	// through this hack to get SetIconFamilyData running on the main thread
 	// where it won't do any damage.
-	[self performInvocation:hIconFamily osType:elementType handle:hRawData];
+	[[self performOnMainThreadWaitUntilDone:YES] setIconFamilyData:hIconFamily
+															osType:elementType
+															handle:hRawData];
     DisposeHandle( hRawData );	
 	
     return YES;
 }
 
--(OSErr)performInvocation:(IconFamilyHandle)iconFamily osType:(OSType)iconType
-				   handle:(Handle)h
-{
-	SEL aSelector = @selector(setIconFamilyData:osType:handle:);
-	NSInvocation *invocation;
-	invocation = [NSInvocation invocationWithMethodSignature:
-		[self methodSignatureForSelector:aSelector]];
-	
-	[invocation setSelector:aSelector];
-	[invocation setArgument:&iconFamily atIndex:2];
-	[invocation setArgument:&iconType atIndex:3];
-	[invocation setArgument:&h atIndex:4];
-	
-	[self performSelectorOnMainThread:@selector(handleInvocation:) 
-						   withObject:invocation 
-						waitUntilDone:YES];	
-	return 0;
-}
-
--(OSErr)handleInvocation:(NSInvocation*)a
-{
-	[a invokeWithTarget:self];
-	return 0;
-}
-
--(OSErr)setIconFamilyData:(IconFamilyHandle)iconFamily osType:(OSType)iconType
+-(void)setIconFamilyData:(IconFamilyHandle)iconFamily osType:(OSType)iconType
 				   handle:(Handle)h
 {
 	OSErr result = SetIconFamilyData(iconFamily, iconType, h);
@@ -620,7 +598,6 @@
 	{
 		NSLog(@"SetIconFamilyData() returned error %d", result);
 	}
-	return result;
 }
 
 - (BOOL) setAsCustomIconForFile:(NSString*)path

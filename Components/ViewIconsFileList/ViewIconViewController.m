@@ -411,6 +411,11 @@ willDisplayCell:(id)cell
 	[window makeFirstResponder:ourBrowser];
 }
 
+-(void)receiveThumbnail:(NSImage*)image forFile:(EGPath*)path
+{
+	[self setThumbnail:image forFile:[path fileSystemPath]];
+}
+
 -(void)setThumbnail:(NSImage*)image forFile:(NSString*)path
 {
 	unsigned index = [fileList binarySearchFor:path
