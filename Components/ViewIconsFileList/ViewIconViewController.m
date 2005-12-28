@@ -465,9 +465,8 @@ willDisplayCell:(id)cell
 {
 	NSArray* paths = [currentDirectory pathComponents];
 	EGPath* currentDirCopy = [currentDirectory retain];
-	// fixme: Possible problem
 	[self setDirectory:[paths objectAtIndex:[paths count] - 2]];
-//				  currentFile:[currentDirCopy fileSystemPath]];
+	[self focusOnFile:currentDirCopy];
 	[currentDirCopy release];
 }
 
