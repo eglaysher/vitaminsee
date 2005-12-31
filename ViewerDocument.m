@@ -40,7 +40,7 @@
 	[viewerNotifications release];
 	[super dealloc];	
 	
-	NSLog(@"Document %@ dealloccated", documentID);
+//	NSLog(@"Document %@ dealloccated", documentID);
 }
 
 //-----------------------------------------------------------------------------
