@@ -245,6 +245,8 @@ static ApplicationController* appControl;
 	[viewMenu setDelegate:[[ViewMenuDelegate alloc] init]];
 }
 
+//-----------------------------------------------------------------------------
+
 -(void)dealloc
 {
 	[super dealloc];
@@ -274,12 +276,18 @@ static ApplicationController* appControl;
 	return NO;
 }
 
-// This initialization can safely be delayed until after the main window has
-// been shown.
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
+//-----------------------------------------------------------------------------
+
+/** This method gets called when there are no documents open, but one needs to
+ * be created. It just calls -newWindow:.
+ */
+- (BOOL)applicationOpenUntitledFile:(NSApplication *)theApplication
 {
 	[self newWindow:self];
+	return YES;
 }
+
+//-----------------------------------------------------------------------------
 
 /** Opens up a new window to the startup folder.
  */

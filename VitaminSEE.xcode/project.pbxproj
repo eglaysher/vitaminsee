@@ -173,7 +173,6 @@
 		};
 		29B97314FDCFA39411CA2CEA = {
 			children = (
-				8B44DA0809661E3D0039BF19,
 				8B24490F08FB546C004716BC,
 				8B2448E208FB20BE004716BC,
 				8B2448D808FB2086004716BC,
@@ -2036,14 +2035,6 @@
 			isa = PBXBuildFile;
 			settings = {
 			};
-		};
-		8B44DA0809661E3D0039BF19 = {
-			isa = PBXFileReference;
-			lastKnownFileType = wrapper.framework;
-			name = ExceptionHandling.framework;
-			path = /System/Library/Frameworks/ExceptionHandling.framework;
-			refType = 0;
-			sourceTree = "<absolute>";
 		};
 		8B5EDA220916E62900EE5414 = {
 			buildActionMask = 2147483647;
