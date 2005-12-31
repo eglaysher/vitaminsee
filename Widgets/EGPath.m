@@ -69,10 +69,29 @@ static NSArray* fileExtensions = 0;
 }
 
 // ----- Comparator
+// Sort in the class order of:
+// - EGPathRoot
+// - EGPathFilesystemPath
 -(NSComparisonResult)compare:(id)object
 {
 	// TODO: This will have to be more robust.
-	return [[self fileSystemPath] caseInsensitiveCompare:[object fileSystemPath]];
+	if([self isMemberOfClass:[object class]])
+	{
+		if([self isKindOfClass:[EGPathRoot class]])
+			return NSOrderedSame;
+		else if([self isKindOfClass:[EGPathFilesystemPath class]])
+			return [[self fileSystemPath] caseInsensitiveCompare:
+				[object fileSystemPath]];
+	}
+	else
+	{
+		// Sort order:
+		if([object isKindOfClass:[EGPathRoot class]] &&
+		   [self isKindOfClass:[EGPathFilesystemPath class]])
+			return NSOrderedDescending;
+		else
+			return NSOrderedAscending;
+	}
 }
 
 -(BOOL)isEqual:(id)rhs

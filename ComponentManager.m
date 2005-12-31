@@ -9,10 +9,6 @@
 #import "ComponentManager.h"
 #import "NSString+FileTasks.h"
 
-
-#include <mach-o/dyld.h>
-#include <mach/mach.h>
-
 // 
 static int initialized = 0;
 
@@ -25,6 +21,12 @@ static NSMutableDictionary* currentFilePlugins = 0;
 // Dictionaries of names to Internal Components
 static NSMutableDictionary* internalComponents = 0;
 
+// Dictionaries of View menu entries to names of FileListPlugins
+static NSMutableArray* viewMenuNamesToBundleName = 0;
+
+// Dictionaries of 
+static NSMutableArray* viewMenuCurrentFilePluginsToBundleName = 0;
+
 // PUBLIC INTERFACE
 @implementation ComponentManager
 
@@ -35,17 +37,26 @@ static NSMutableDictionary* internalComponents = 0;
 //<key>VSFLMenuName</key>
 //<string>as Icons</string>
 
-
-+(void)scanDirectoryForPlugins:(NSString*)path
+/** Builds the static components of this class. Guarenteed to be called before
+ * any other method is called.
+ */
++(void)initialize
 {
-	// First, make sure we have somewhere in memory to stick our plugins
-	if(!fileListPlugins)
-		fileListPlugins = [[NSMutableDictionary alloc] init];
-	if(!currentFilePlugins)
-		currentFilePlugins = [[NSMutableDictionary alloc] init];
-	if(!internalComponents)
-		internalComponents = [[NSMutableDictionary alloc] init];
-	
+	fileListPlugins = [[NSMutableDictionary alloc] init];	
+	currentFilePlugins = [[NSMutableDictionary alloc] init];
+	internalComponents = [[NSMutableDictionary alloc] init];
+	viewMenuNamesToBundleName = [[NSMutableArray alloc] init];
+	viewMenuCurrentFilePluginsToBundleName = [[NSMutableArray alloc] init];
+}
+
+/** Scans through the directory path, looking for ".bundle"s that are components
+ * of VitaminSEE. We check the Info.plist of each Bundle, checking certain keys
+ * so we have information on all the possible plugins that could be loaded at
+ * runtime.
+ *
+ */
++(void)scanDirectoryForPlugins:(NSString*)path
+{	
 	// Look for all paths in the directory "path" that have the suffix ".bundle"
 	NSArray* itemsInPath = [[NSFileManager defaultManager] 
 		directoryContentsAtPath:path];
@@ -69,7 +80,14 @@ static NSMutableDictionary* internalComponents = 0;
 					@"FileList", @"PluginType", 
 					menuName, @"MenuName",
 					nil];
-								
+				
+				// Add this FileList to the list of array of FileLists that will
+				// be displayed in the View menu.
+				[viewMenuNamesToBundleName addObject:
+					[NSDictionary dictionaryWithObjectsAndKeys:
+						menuName, @"MenuName",
+						pluginName, @"PluginName", nil]];
+				
 				[fileListPlugins setObject:pluginInfo forKey:pluginName];
 			}
 			else if([pluginType isEqual:@"CurrentFile"]) {
@@ -81,10 +99,13 @@ static NSMutableDictionary* internalComponents = 0;
 					menuName, @"MenuItemName", menuLocation, @"MenuLocation",
 					nil];
 
-				// More shit goes here. Fixme.
+				// Add the plugin's menu entries to one of the various names
+				//
+
 				[currentFilePlugins setObject:pluginInfo forKey:pluginName];
 			}
 			else if([pluginType isEqual:@"InternalUse"]) {
+				// The plugin equivalent of cheating.
 				NSMutableDictionary* pluginInfo = [NSMutableDictionary dictionaryWithObjectsAndKeys:
 					pluginName, @"PluginName", 
 					@"Internal Use", @"PluginType",
@@ -102,6 +123,13 @@ static NSMutableDictionary* internalComponents = 0;
 	initialized = 1;
 }
 
+/** Gets a FileList, loading the bundle that contains it from disk if 
+ * neccessary.
+ *
+ * @param name The name of the FileList
+ * @return An instantiation of the FileList, which is owned by the 
+ *         ComponentManager, and should not be released.
+ */
 +(id <FileListFactory>)getFileListPluginNamed:(NSString*)name
 {
 	BOOL firstTime;
@@ -120,20 +148,53 @@ static NSMutableDictionary* internalComponents = 0;
 //	return nil;
 //}
 
+/** Gets a internal component (A piece of code that we cheated and stuck
+ * in a plugin without defining some sort of formal interface).
+ *
+ * @param name The name of the component
+ * @return An instantiation of the component, which is owned by the 
+ *         ComponentManager, and should not be released.
+ */
 +(id)getInteranlComponentNamed:(NSString*)name
 {
 	BOOL firstTime;
+	NSLog(@"Loading component %@", name);
 	return [self returnPluginNamed:name
 					fromDictionary:internalComponents
 						  protocol:nil
 						 firstTime:&firstTime];	
 }
 
+/** Returns the array of all FileLists loaded and unloaded for display in the
+ * view menu.
+ */
++(NSArray*)getFileListsToDisplayInMenu
+{
+	return viewMenuNamesToBundleName;
+}
+
+/** Returns the array of all CurrentFilePlugins that should be displayed in the
+ * view menu.
+ */
++(NSArray*)getCurrentFilePluginsInViewMenu
+{
+	return viewMenuCurrentFilePluginsToBundleName;
+}
 
 //-----------------------------------------------------------------------------
 
-/** Private internal function used to 
+/** Private internal function used to lookup/load plugins. When the plugin has
+ * already been loaded into memory, the plugin will be pulled from a dictionary,
+ * and NO will be assigned to firstTime. When the requested plugin hasn't been
+ * loaded yet, it will be loaded from disk and firstTime will be set to YES.
  *
+ * @param name The key to lookup in the dictionary
+ * @param dictionary A dictionary of string keys to plugin objects.
+ * @param protocol A protocol to check the object against.
+ * @param firstTime A pointer to a variable. It will set based on whether the
+ *                  plugin had to be loaded from disk.
+ * @return The plugin instance object, which is owned by the ComponentManager
+ *         and should not be released.
  */
 +(id)returnPluginNamed:(NSString*)name 
 		fromDictionary:(NSDictionary*)dictionary
@@ -169,7 +230,8 @@ static NSMutableDictionary* internalComponents = 0;
 			NSLog(@"WARNING! Component named '%@' claims to conform to '%@' but doesn't!",
 				  [pluginInfo objectForKey:@"PluginName"],
 				  [pluginInfo objectForKey:@"PluginType"]);
-			NSLog(@"This component's principle class is %@", NSStringFromClass(principle));
+			NSLog(@"This component's principle class is %@", 
+				  NSStringFromClass(principle));
 			return nil;
 		}
 		

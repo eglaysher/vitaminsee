@@ -24,6 +24,8 @@
 				8B2448D108FB2080004716BC,
 				8B98BF2E0939515D00CBBF00,
 				8B98BF2F0939515D00CBBF00,
+				8BAE07A609622634007C387D,
+				8BAE07A709622634007C387D,
 			);
 			isa = PBXGroup;
 			name = Classes;
@@ -60,6 +62,7 @@
 //104
 		1058C7A0FEA54F0111CA2CBB = {
 			children = (
+				8B7F0DA10964A94E00B7A46D,
 				1058C7A1FEA54F0111CA2CBB,
 			);
 			isa = PBXGroup;
@@ -170,6 +173,7 @@
 		};
 		29B97314FDCFA39411CA2CEA = {
 			children = (
+				8B44DA0809661E3D0039BF19,
 				8B24490F08FB546C004716BC,
 				8B2448E208FB20BE004716BC,
 				8B2448D808FB2086004716BC,
@@ -754,12 +758,6 @@
 			refType = 4;
 			sourceTree = "<group>";
 		};
-		8B2064F4094CD90D0062D0CC = {
-			fileRef = 8B2064F2094CD90D0062D0CC;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
 		8B2064F5094CD90D0062D0CC = {
 			fileRef = 8B2064F3094CD90D0062D0CC;
 			isa = PBXBuildFile;
@@ -783,12 +781,6 @@
 			path = "Widgets/NSString+CarbonFSSpecCreation.m";
 			refType = 4;
 			sourceTree = "<group>";
-		};
-		8B20650C094CDB670062D0CC = {
-			fileRef = 8B20650A094CDB670062D0CC;
-			isa = PBXBuildFile;
-			settings = {
-			};
 		};
 		8B20650D094CDB670062D0CC = {
 			fileRef = 8B20650B094CDB670062D0CC;
@@ -1772,10 +1764,6 @@
 				8B8B7241090C138A006DDF10,
 				8BEA54B8090BE19D00F83026,
 				8B24492B08FB5680004716BC,
-				8B98BF300939515D00CBBF00,
-				8B2064F4094CD90D0062D0CC,
-				8B20650C094CDB670062D0CC,
-				8BAE04EE095F6C5D007C387D,
 			);
 			isa = PBXCopyFilesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2048,6 +2036,14 @@
 			isa = PBXBuildFile;
 			settings = {
 			};
+		};
+		8B44DA0809661E3D0039BF19 = {
+			isa = PBXFileReference;
+			lastKnownFileType = wrapper.framework;
+			name = ExceptionHandling.framework;
+			path = /System/Library/Frameworks/ExceptionHandling.framework;
+			refType = 0;
+			sourceTree = "<absolute>";
 		};
 		8B5EDA220916E62900EE5414 = {
 			buildActionMask = 2147483647;
@@ -2647,6 +2643,20 @@
 			settings = {
 			};
 		};
+		8B7F0DA10964A94E00B7A46D = {
+			isa = PBXFileReference;
+			lastKnownFileType = wrapper.framework;
+			name = Carbon.framework;
+			path = /System/Library/Frameworks/Carbon.framework;
+			refType = 0;
+			sourceTree = "<absolute>";
+		};
+		8B7F0DA20964A94E00B7A46D = {
+			fileRef = 8B7F0DA10964A94E00B7A46D;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
 		8B8B7229090C1323006DDF10 = {
 			fileEncoding = 30;
 			isa = PBXFileReference;
@@ -2689,12 +2699,6 @@
 			path = ThumbnailManager.m;
 			refType = 4;
 			sourceTree = "<group>";
-		};
-		8B98BF300939515D00CBBF00 = {
-			fileRef = 8B98BF2E0939515D00CBBF00;
-			isa = PBXBuildFile;
-			settings = {
-			};
 		};
 		8B98BF310939515D00CBBF00 = {
 			fileRef = 8B98BF2F0939515D00CBBF00;
@@ -2870,14 +2874,30 @@
 			refType = 4;
 			sourceTree = "<group>";
 		};
-		8BAE04EE095F6C5D007C387D = {
-			fileRef = 8BAE04EC095F6C5C007C387D;
+		8BAE04EF095F6C5D007C387D = {
+			fileRef = 8BAE04ED095F6C5D007C387D;
 			isa = PBXBuildFile;
 			settings = {
 			};
 		};
-		8BAE04EF095F6C5D007C387D = {
-			fileRef = 8BAE04ED095F6C5D007C387D;
+		8BAE07A609622634007C387D = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			path = ViewMenuDelegate.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8BAE07A709622634007C387D = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
+			path = ViewMenuDelegate.m;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8BAE07A909622634007C387D = {
+			fileRef = 8BAE07A709622634007C387D;
 			isa = PBXBuildFile;
 			settings = {
 			};
@@ -3358,6 +3378,7 @@
 			);
 			buildSettings = {
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_FAST_OBJC_DISPATCH = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = VitaminSEE_Prefix.pch;
@@ -3450,6 +3471,7 @@
 				8B2064F5094CD90D0062D0CC,
 				8B20650D094CDB670062D0CC,
 				8BAE04EF095F6C5D007C387D,
+				8BAE07A909622634007C387D,
 			);
 			isa = PBXSourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3466,6 +3488,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D11072F0486CEB800E47090,
+				8B7F0DA20964A94E00B7A46D,
 			);
 			isa = PBXFrameworksBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;

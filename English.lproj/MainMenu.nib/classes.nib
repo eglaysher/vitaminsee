@@ -59,7 +59,8 @@
             LANGUAGE = ObjC; 
             OUTLETS = {mainController = CQViewController; }; 
             SUPERCLASS = NSWindowController; 
-        }
+        }, 
+        {CLASS = ViewMenuDelegate; LANGUAGE = ObjC; SUPERCLASS = NSObject; }
     ); 
     IBVersion = 1; 
 }

@@ -28,12 +28,19 @@
 		objectForKey:@"DefaultStartupPath"]];
 }
 
+/** Deallocator
+ */
 -(void)dealloc
 {
-	NSLog(@"Document %@ dealloccated", documentID);
-	[window release];
+	[window release];		
+		
+	[fileList cleanup];
+	[fileList release];
+
 	[viewerNotifications release];
 	[super dealloc];	
+	
+	NSLog(@"Document %@ dealloccated", documentID);
 }
 
 //-----------------------------------------------------------------------------
@@ -52,19 +59,27 @@
 		[documentID retain];
 		
 		// We need a file list
-		fileList = [[ComponentManager getFileListPluginNamed:@"ViewAsIcons"] build];
+		fileListName = @"ViewAsIcons";
+		fileList = [[ComponentManager getFileListPluginNamed:fileListName] build];
 		[fileList setDelegate:self];
+		NSLog(@"Refcount to fileList b: %d", [fileList retainCount]);
 
 		window = [[VitaminSEEWindowController alloc] initWithFileList:fileList
 													   document:self];
 		viewerNotifications = [[NSNotificationCenter alloc] init];
-
+		
+		NSLog(@"Refcount to fileList a: %d", [fileList retainCount]);	
+		
 		[window showWindow:window];
 
 		scaleRatio = 1.0f;
 		scaleMode = SCALE_IMAGE_TO_FIT;
+
+		NSLog(@"Refcount to fileList a: %d", [fileList retainCount]);	
 		
 		[fileList setDirectory:path];
+
+		NSLog(@"Refcount to fileList a: %d", [fileList retainCount]);	
 	}
 
 	return self;
@@ -97,12 +112,26 @@
 
 //-----------------------------------------------------------------------------
 
-/** 
+/** Will set the directory of the FileList if the FileList canSetDirectory.
  */
 -(void)setDirectory:(EGPath*)path
 {
-	// Set the new path
-	[fileList setDirectory:path];
+	if([path isDirectory])
+		[fileList setDirectory:path];
+	else
+		AlertSoundPlay();
+}
+
+//-----------------------------------------------------------------------------
+
+/** Focuses on a file in the FileList, and set it as the displayed file. This
+ * method is meant to be invoked by objects unrelated to the FileList or the
+ * ViewerDocument/VitaminSEEWindowController classes.
+ */
+-(void)focusOnFile:(EGPath*)path
+{
+	[fileList focusOnFile:path];
+	[self setDisplayedFileTo:path];
 }
 
 //-----------------------------------------------------------------------------
@@ -216,8 +245,31 @@
 	// Check to see if we have to change the label on the desktop pictures item.
 	if(action == @selector(setAsDesktopImage:))
 		enable = [self validateSetAsDesktopImageItem:anItem];
+	else if(action == @selector(setFileListFromMenu:))
+	{
+		// These entries will always be on. The big thing we have to do is
+		// check to see if this item should be checked.
+		enable = YES;
 		
+		NSString* name = [anItem representedObject];
+		if([fileListName isEqualTo:name])
+			[anItem setState:NSOnState];
+		else
+			[anItem setState:NSOffState];
+	}
+
+	
 	return enable;
+}
+
+-(void)setFileListFromMenu:(id)menuItem
+{
+	NSString* name = [menuItem representedObject];
+	if(![name isEqualTo:fileListName])
+	{
+		// Set the new file here
+		// TODO: Make this work.
+	}
 }
 
 //-----------------------------------------------------------------------------

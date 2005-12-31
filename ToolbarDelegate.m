@@ -23,7 +23,8 @@
 //
 // You should have received a copy of the GNU General Public License
 // along with this program; if not, write to the Free Software
-// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, 
+// USA.
 //
 ////////////////////////////////////////////////////////////////////////
 
@@ -36,7 +37,8 @@
 #import "FavoritesMenuFactory.h"
 
 // Our Viewer's ID
-static NSString* MainViewerWindowToolbarIdentifier = @"Main Viewere Window Toolbar Identifier";
+static NSString* MainViewerWindowToolbarIdentifier = 
+	@"Main Viewere Window Toolbar Identifier";
 
 // Our Toolbar items...
 static NSString* ZoomInToolbarID = @"Zoom in Toolbar Identifier";
@@ -45,7 +47,7 @@ static NSString* ZoomToFitToolbarID = @"Zoom to Fit Toolbar Identifier";
 static NSString* ActualSizeToolbarID = @"Actual Size Toolbar Identifier";
 
 static NSString* RevealInFinderToolbarID = @"View in Finder Toolbar Identifier";
-static NSString* ViewInPreviewToolbarID = @"Reveal in Finder Toolbar Identifier";
+static NSString* ViewInPreviewToolbarID =@"Reveal in Finder Toolbar Identifier";
 
 static NSString* MoveToTrashID = @"Move Item to Trash Toolbar Identifier";
 
@@ -55,7 +57,8 @@ static NSString* GotoHomeID = @"Goto Home Toolbar Identifier";
 static NSString* FavoritesID = @"Favorites Toolbar Identifier";
 
 static NSString* NextPictureToolbarID = @"Next Picture Toolbar Identifier";
-static NSString* PreviousPictureToolbarID = @"Previous Picture Toolbar Identifier";
+static NSString* PreviousPictureToolbarID = 
+	@"Previous Picture Toolbar Identifier";
 
 /** This instance of the class is created once and is used to validate all
  * toolbars for viewer windows.
@@ -90,7 +93,9 @@ static ToolbarDelegate* toolbarDelegateObject = 0;
 	  itemForItemIdentifier:(NSString *)itemIdent
   willBeInsertedIntoToolbar:(BOOL) willBeInserted
 {
-	NSToolbarItem* item = [[[NSToolbarItem alloc] initWithItemIdentifier:itemIdent] autorelease];
+	NSToolbarItem* item = [[[NSToolbarItem alloc] 
+		initWithItemIdentifier:itemIdent] autorelease];
+	
 	if([itemIdent isEqual:ZoomInToolbarID])
 	{
 		[item setLabel:NSLocalizedString(@"Zoom in", @"Toolbar Item")];
@@ -110,7 +115,8 @@ static ToolbarDelegate* toolbarDelegateObject = 0;
 	else if([itemIdent isEqual:ZoomToFitToolbarID])
 	{
 		[item setLabel:NSLocalizedString(@"Zoom to fit", @"Toolbar Item")];
-		[item setPaletteLabel:NSLocalizedString(@"Zoom to fit", @"Toolbar Item")];
+		[item setPaletteLabel:NSLocalizedString(@"Zoom to fit", 
+												@"Toolbar Item")];
 		[item setToolTip:NSLocalizedString(@"Zoom to fit", @"Toolbar Item")];
 		[item setImage:[NSImage imageNamed:@"ZoomToFitToolbarImage"]];
 		[item setAction:@selector(zoomToFit:)];
@@ -118,7 +124,8 @@ static ToolbarDelegate* toolbarDelegateObject = 0;
 	else if([itemIdent isEqual:ActualSizeToolbarID])
 	{
 		[item setLabel:NSLocalizedString(@"Actual Size", @"Toolbar Item")];
-		[item setPaletteLabel:NSLocalizedString(@"Actual Size", @"Toolbar Item")];
+		[item setPaletteLabel:NSLocalizedString(@"Actual Size", 
+												@"Toolbar Item")];
 		[item setToolTip:NSLocalizedString(@"Actual Size", @"Toolbar Item")];
 		[item setImage:[NSImage imageNamed:@"ActualSizeToolbarImage"]];
 		[item setAction:@selector(actualSize:)];	
@@ -126,19 +133,25 @@ static ToolbarDelegate* toolbarDelegateObject = 0;
 	else if([itemIdent isEqual:RevealInFinderToolbarID])
 	{
 		[item setLabel:NSLocalizedString(@"Finder", @"Toolbar Item")];
-		[item setPaletteLabel:NSLocalizedString(@"Reveal in Finder", @"Toolbar Item")];
-		[item setToolTip:NSLocalizedString(@"Reveal in Finder", @"Toolbar Item")];
+		[item setPaletteLabel:NSLocalizedString(@"Reveal in Finder",
+												@"Toolbar Item")];
+		[item setToolTip:NSLocalizedString(@"Reveal in Finder", 
+										   @"Toolbar Item")];
 		// fixme: This slows stuff down. Perhaps I'd like to not suck?
-		[item setImage:[[NSWorkspace sharedWorkspace] iconForApplication:@"Finder"]];
+		[item setImage:[[NSWorkspace sharedWorkspace] 
+			iconForApplication:@"Finder"]];
 		[item setAction:@selector(revealInFinder:)];
 	}
 	else if([itemIdent isEqual:ViewInPreviewToolbarID])
 	{
 		[item setLabel:NSLocalizedString(@"Preview", @"Toolbar Item")];
-		[item setPaletteLabel:NSLocalizedString(@"View in Preview", @"Toolbar Item")];
-		[item setToolTip:NSLocalizedString(@"View in Preview", @"Toolbar Item")];
+		[item setPaletteLabel:NSLocalizedString(@"View in Preview", 
+												@"Toolbar Item")];
+		[item setToolTip:NSLocalizedString(@"View in Preview", 
+										   @"Toolbar Item")];
 		// fixme: This slows stuff down. Perhaps I'd like to not suck?
-		[item setImage:[[NSWorkspace sharedWorkspace] iconForApplication:@"Preview"]];
+		[item setImage:[[NSWorkspace sharedWorkspace] 
+			iconForApplication:@"Preview"]];
 		[item setAction:@selector(openInPreview:)];		
 	}
 	else if([itemIdent isEqual:MoveToTrashID])
@@ -203,24 +216,23 @@ static ToolbarDelegate* toolbarDelegateObject = 0;
 
 - (NSArray *) toolbarDefaultItemIdentifiers: (NSToolbar *) toolbar
 {
-	// 
 	return [NSArray arrayWithObjects:RevealInFinderToolbarID, 
 		ViewInPreviewToolbarID, NSToolbarSeparatorItemIdentifier,
 		NextPictureToolbarID, PreviousPictureToolbarID,
 		NSToolbarSeparatorItemIdentifier, GotoComputerID,
-		GotoHomeID, GotoPicturesID, FavoritesID, NSToolbarSeparatorItemIdentifier,
-		NSToolbarFlexibleSpaceItemIdentifier, 
+		GotoHomeID, GotoPicturesID, FavoritesID, 
+		NSToolbarSeparatorItemIdentifier, NSToolbarFlexibleSpaceItemIdentifier, 
 		ZoomInToolbarID, ZoomOutToolbarID, ZoomToFitToolbarID, 
 		ActualSizeToolbarID, nil];
 }
 
 - (NSArray *) toolbarAllowedItemIdentifiers: (NSToolbar *) toolbar
 {
-	// FavoritesID,
-	return [NSArray arrayWithObjects:RevealInFinderToolbarID, ViewInPreviewToolbarID, 
-		MoveToTrashID, GotoComputerID, GotoHomeID, GotoPicturesID,  FavoritesID, ZoomInToolbarID, ZoomOutToolbarID,
-		ZoomToFitToolbarID, ActualSizeToolbarID, NextPictureToolbarID, PreviousPictureToolbarID,
-		NSToolbarSeparatorItemIdentifier,
+	return [NSArray arrayWithObjects:RevealInFinderToolbarID, 
+		ViewInPreviewToolbarID, MoveToTrashID, GotoComputerID, GotoHomeID, 
+		GotoPicturesID,  FavoritesID, ZoomInToolbarID, ZoomOutToolbarID,
+		ZoomToFitToolbarID, ActualSizeToolbarID, NextPictureToolbarID, 
+		PreviousPictureToolbarID, NSToolbarSeparatorItemIdentifier,
 		NSToolbarSpaceItemIdentifier, NSToolbarFlexibleSpaceItemIdentifier,
 		NSToolbarCustomizeToolbarItemIdentifier, nil];
 }

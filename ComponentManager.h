@@ -56,4 +56,7 @@
 		fromDictionary:(NSDictionary*)dictionary
 			  protocol:(Protocol*)protocol
 			 firstTime:(BOOL*)firstTime;
+
++(NSArray*)getFileListsToDisplayInMenu;
++(NSArray*)getCurrentFilePluginsInViewMenu;
 @end

@@ -53,6 +53,7 @@
 
 #import "SS_PrefsController.h"
 #import "SSPrefsControllerFactory.h"
+#import "ViewMenuDelegate.h"
 
 #import "EGPath.h"
 
@@ -227,7 +228,7 @@ static ApplicationController* appControl;
 {
 	nextDocumentID = 0;
 	appControl = self;
-//	NSLog(@"-[ApplicationController awakeFromNib]");
+
 	// Set our plugins to nil
 	loadedBasePlugins = [[NSMutableDictionary alloc] init];
 	loadedViewPlugins = [[NSMutableDictionary alloc] init];
@@ -237,6 +238,11 @@ static ApplicationController* appControl;
 	
 	setPathForFirstTime = NO;
 	loadedOpenWithMenu = NO;
+	
+	// Set up our view menu delegate. This is important so plugins work.
+	NSMenu* mainMenu = [NSApp mainMenu];
+	NSMenu* viewMenu = [[mainMenu itemAtIndex:3] submenu];
+	[viewMenu setDelegate:[[ViewMenuDelegate alloc] init]];
 }
 
 -(void)dealloc
@@ -246,6 +252,28 @@ static ApplicationController* appControl;
 
 ////////////////////////////////////////////////////////// APPLICATION DELEGATE
 
+/** Handle the opening of files by double-clicks from the Finder and drags to
+ * the dock icon.
+ */
+-(BOOL)application:(NSApplication*)theApplication openFile:(NSString*)filename
+{
+	if([filename isDir]) 
+	{
+		[[ViewerDocument alloc] initWithPath:[EGPath pathWithPath:filename]];
+		return YES;
+	}
+	else if([filename isImage])
+	{
+		id doc = [[ViewerDocument alloc] initWithPath:[EGPath pathWithPath:
+			[filename stringByDeletingLastPathComponent]]];
+		[doc focusOnFile:[EGPath pathWithPath:filename]];
+		return YES;
+	}
+
+	AlertSoundPlay();
+	return NO;
+}
+
 // This initialization can safely be delayed until after the main window has
 // been shown.
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
@@ -253,10 +281,14 @@ static ApplicationController* appControl;
 	[self newWindow:self];
 }
 
+/** Opens up a new window to the startup folder.
+ */
 -(IBAction)newWindow:(id)sender
 {
+	NSString* defaultFolder = [[NSUserDefaults standardUserDefaults] 
+		objectForKey:@"DefaultStartupPath"];
 	[[ViewerDocument alloc] initWithPath:
-		[EGPath pathWithPath:[@"~/Pictures" stringByExpandingTildeInPath]]];
+		[EGPath pathWithPath:[defaultFolder stringByExpandingTildeInPath]]];
 }
 
 //-----------------------------------------------------------------------------
@@ -361,7 +393,8 @@ static ApplicationController* appControl;
 	// Set the icon if we don't have one yet.
 	if(![item image])
 	{
-		NSImage* img = [[NSWorkspace sharedWorkspace] iconForFile:NSHomeDirectory()];
+		NSImage* img = [[NSWorkspace sharedWorkspace] 
+			iconForFile:NSHomeDirectory()];
 		[img setSize:NSMakeSize(16, 16)];
 		[item setImage:img];
 	}	
@@ -377,7 +410,8 @@ static ApplicationController* appControl;
  */
 -(BOOL)validateGoToPicturesDirectoryMenuItem:(NSMenuItem*)item
 {
-	BOOL enable = [[NSHomeDirectory() stringByAppendingPathComponent:@"Pictures"] isDir];
+	BOOL enable = [[NSHomeDirectory() 
+		stringByAppendingPathComponent:@"Pictures"] isDir];
 	
 	// Set the icon if we haven't done so yet.
 	if(![item image])
@@ -385,7 +419,8 @@ static ApplicationController* appControl;
 		NSImage* img;
 		if(enable)
 		{
-			img = [[[NSImage imageNamed:@"ToolbarPicturesFolderIcon"] copy] autorelease];
+			img = [[[NSImage imageNamed:@"ToolbarPicturesFolderIcon"] copy] 
+				autorelease];
 			[img setScalesWhenResized:YES];
 			[img setSize:NSMakeSize(16, 16)];
 		}
@@ -460,7 +495,7 @@ static ApplicationController* appControl;
  */
 -(IBAction)goToHomeDirectory:(id)sender
 {
-	[self goToDirectory:[EGPath pathWithPath:[@"~/" stringByExpandingTildeInPath]]];
+	[self goToDirectory:[EGPath pathWithPath:NSHomeDirectory()]];
 }
 
 //-----------------------------------------------------------------------------
@@ -474,19 +509,22 @@ static ApplicationController* appControl;
  */
 -(IBAction)goToPicturesDirectory:(id)sender
 {
-	[self goToDirectory:[EGPath pathWithPath:[@"~/Pictures" stringByExpandingTildeInPath]]];
+	[self goToDirectory:[EGPath pathWithPath:
+		[NSHomeDirectory() stringByAppendingPathComponent:@"Pictures"]]];
 }
 
 //-----------------------------------------------------------------------------
 
-/** 
- *
+/** Displays the GotoFolder sheet/modal dialog depending on if there's a 
+ * displayed window.
  */
 -(IBAction)goToFolder:(id)sender
 {
 	if([NSApp mainWindow]) 
 	{
-		id gotoDelegate = [[ComponentManager getInteranlComponentNamed:@"GotoFolderSheet"] build];
+		id gotoDelegate = [[ComponentManager 
+			getInteranlComponentNamed:@"GotoFolderSheet"] build];
+		
 		NSWindow* mainWindow = [NSApp mainWindow];
 		NSWindowController* controller = [mainWindow windowController];
 		ViewerDocument* document = [controller document];
@@ -501,7 +539,8 @@ static ApplicationController* appControl;
 	}
 	else
 	{
-		id gotoDelegate = [[ComponentManager getInteranlComponentNamed:@"GotoFolderWindow"] build];
+		id gotoDelegate = [[ComponentManager	
+			getInteranlComponentNamed:@"GotoFolderWindow"] build];
 		
 		[gotoDelegate showModalWindowWithInitialValue:@"~/Pictures"
 											   target:self

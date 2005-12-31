@@ -58,6 +58,8 @@ pthread_cond_t thumbnailBuildQueueCondition;
 static NSEnumerator* thumbnailBuildQueueValueEnumerator;
 static NSMutableDictionary* thumbnailBuildQueue;
 
+// Put the priority queue here. Hmmmm.
+
 // Configuration stuff
 static BOOL shouldBuildThumbnails;
 
@@ -420,8 +422,6 @@ static enum ThumbnailStorageType thumbnailStorageType;
 		{
 			[[subscriber performOnMainThreadWaitUntilDone:NO]
 				receiveThumbnail:image forFile:nextToBuild];
-//				
-//				receiveThumbnailObject:image forPath:nextToBuild];
 		}
 	}
 	pthread_mutex_unlock(&subscriberListLock);

@@ -27,6 +27,7 @@
 	NSNumber* documentID;
 	
 	// The document owns the current file list
+	NSString* fileListName;
 	id<FileList> fileList;
 	
 	// CurrentFile we're looking at.
@@ -51,4 +52,5 @@
 -(BOOL)validateAction:(SEL)action;
 
 -(void)setDirectoryFromRawPath:(NSString*)path;
+-(void)focusOnFile:(EGPath*)path;
 @end

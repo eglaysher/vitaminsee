@@ -75,21 +75,37 @@
 
 		pathManager = [[NSUndoManager alloc] init];
 		fileWatcher = [[UKKQueue alloc] init];
+		NSLog(@"Retain count: %d", [fileWatcher retainCount]);
 		[fileWatcher setDelegate:self];
 	}
 
 	return self;
 }
 
--(void)dealloc
+/** Cleanup retain cycles that are caused by the ThumbnailManager retaining the
+ * subscriber object because I don't know how to force NSArray to be a bunch of
+ * weak refs!
+ */
+-(void)cleanup
 {
 	// Unregister for notifications
 	NSNotificationCenter* nc = [[NSWorkspace sharedWorkspace] notificationCenter];
 	[nc removeObserver:self];
 	
-	[fileWatcher release];
+	// Unregister from the thumbnail manager
+	[ThumbnailManager unsubscribe:self fromDirectory:currentDirectory];
+
+	// Unregister for our path notifications
+	if([currentDirectory isNaturalFile])
+		[fileWatcher removePath:[currentDirectory fileSystemPath]];	
+}
+
+-(void)dealloc
+{
+	[fileWatcher release];	
 	[pathManager release];
 	[super dealloc];
+	NSLog(@"-[ViewIconViewController dealloc]");
 }
 
 -(void)setDelegate:(id<FileListDelegate>)newDelegate
@@ -143,7 +159,7 @@
 									 object:currentDirectory];
 		[pathManager registerUndoWithTarget:self 
 								   selector:@selector(focusOnFile:) 
-									 object:currentFile];		
+									 object:[delegate currentFile]];		
 		
 		// Stop watching this directory if it's something kqueue will alert us
 		// about.

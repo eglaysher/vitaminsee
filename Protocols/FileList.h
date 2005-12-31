@@ -12,10 +12,32 @@
  * ComponentManager system. Each FileList bundle must have a principle class
  * that implements the FileListFactory protocol.
  *
+ * The NSBundle that contains a file list is expected to have a few properties:
+ * * The Principle Class is expected to conform to the protocol FileListFactory
+ * * The Info.plist file is expected to have the following keys that are used
+ *   by the plugin system.
+ *   * VSFLMenuName: The name of the menu as displayed in the view menu where 
+ *     the user can switch FileLists
+ *   * VSPluginName: The internal name of the plugin
+ *   * VSPluginType: Always expected to be "FileList" with this type of plugin.
+ *
  * @see ComponentManager
  * @see FileListFactory
  */
 @protocol FileList
+
+/** @name General
+ */
+//@{
+
+/** Cleanup method called before deallocation of a FileList. Usefull for 
+ * resolving circular dependencies that would otherwise cause leakage because
+ * Objective-C doesn't have weak references
+ */
+-(void)cleanup;
+
+//@}
+
 
 /** @name Delegate functions
  */
