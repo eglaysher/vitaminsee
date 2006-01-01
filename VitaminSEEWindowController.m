@@ -192,6 +192,11 @@
 			width, height]];
 }
 
+-(void)updateWindowTitle
+{
+	[fileList setWindowTitle:[self window]];
+}
+
 //-(IBAction)setImageAsDesktop:(id)sender
 //{
 //	if([currentImageFile isImage])

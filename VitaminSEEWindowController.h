@@ -49,6 +49,8 @@
 //-(IBAction)deleteFileClicked:(id)sender;
 //-(IBAction)addCurrentDirectoryToFavorites:(id)sender;
 
+-(void)updateWindowTitle;
+
 -(void)setImage:(NSImage*)image;
 -(void)setFileSizeLabelText:(int)fileSize;
 -(void)setImageSizeLabelText:(NSSize)size;

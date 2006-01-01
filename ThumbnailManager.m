@@ -371,7 +371,7 @@ static enum ThumbnailStorageType thumbnailStorageType;
 		}
 		
 		thumbnail = [iconFamily imageWithAllRepsNoAutorelease];
-//		NSLog(@"Found thumbnail: %@", thumbnail);
+		//		NSLog(@"Found thumbnail: %@", thumbnail);
 		[iconFamily release];
 	}
 	else

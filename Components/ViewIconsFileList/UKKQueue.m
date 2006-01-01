@@ -121,7 +121,7 @@ static UKKQueue * gUKKQueueSharedQueueSingleton = nil;
 {
     AT_SYNCHRONIZED(self)
     {
-        NSLog(@"%@ (%d)", self, [self retainCount]);
+//        NSLog(@"%@ (%d)", self, [self retainCount]);
         if( [self retainCount] == 2 && keepThreadRunning )
             keepThreadRunning = NO;
     }
@@ -161,7 +161,7 @@ static UKKQueue * gUKKQueueSharedQueueSingleton = nil;
 	
 	[super dealloc];
     
-    NSLog(@"kqueue released.");
+//    NSLog(@"kqueue released.");
 }
 
 

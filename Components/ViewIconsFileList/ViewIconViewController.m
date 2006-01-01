@@ -75,7 +75,6 @@
 
 		pathManager = [[NSUndoManager alloc] init];
 		fileWatcher = [[UKKQueue alloc] init];
-		NSLog(@"Retain count: %d", [fileWatcher retainCount]);
 		[fileWatcher setDelegate:self];
 	}
 
@@ -105,7 +104,6 @@
 	[fileWatcher release];	
 	[pathManager release];
 	[super dealloc];
-	NSLog(@"-[ViewIconViewController dealloc]");
 }
 
 -(void)setDelegate:(id<FileListDelegate>)newDelegate
@@ -234,6 +232,9 @@
 	// Select the first file on the list
 	[ourBrowser selectRow:0 inColumn:0];
 	[self singleClick:ourBrowser];
+
+	// Update the window title
+	[delegate updateWindowTitle];
 	
 	[[ourBrowser window] makeFirstResponder:ourBrowser];
 	
@@ -244,7 +245,6 @@
 
 -(BOOL)focusOnFile:(EGPath*)file
 {
-	NSLog(@"Egpath: '%@'", file);
 	unsigned index = [fileList binarySearchFor:[file fileSystemPath]
 							  withSortSelector:@selector(caseInsensitiveCompare:)];
 
@@ -296,7 +296,6 @@
 //-----------------------------------------------------------------------------
 -(void)openCurrentItem
 {
-	NSLog(@"-[ViewIconViewController openCurrentItem]");
 	[self doubleClick:self];
 }
 
@@ -585,7 +584,13 @@ willDisplayCell:(id)cell
 
 -(void)setWindowTitle:(NSWindow*)window
 {
-	// For now, do nothing.
+	[window setTitle:[currentDirectory displayName]];
+	
+	// Set the proxy icon if we're dealing with a real file
+	if([currentDirectory isNaturalFile])
+		[window setRepresentedFilename:[currentDirectory fileSystemPath]];
+	else
+		[window setRepresentedFilename:@""];
 }
 
 @end
@@ -695,7 +700,7 @@ willDisplayCell:(id)cell
 -(void) watcher: (id<UKFileWatcher>)kq receivedNotification: (NSString*)nm 
 		forPath: (NSString*)fpath
 {
-	NSLog(@"Notification: '%@' for '%@'", nm, fpath);
+//	NSLog(@"Notification: '%@' for '%@'", nm, fpath);
 	
 	if([currentDirectory isNaturalFile]) 
 	{
@@ -718,6 +723,7 @@ willDisplayCell:(id)cell
 		{
 			// If we can't focus on the same file as before, then that means
 			// we got rid of the file we're currently viewing; and we need to
+			
 		}
 		
 		[curFile release];

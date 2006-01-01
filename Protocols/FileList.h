@@ -272,5 +272,10 @@
 @protocol FileListDelegate
 -(void)setDisplayedFileTo:(EGPath*)file;
 -(EGPath*)currentFile;
+
+/** Called whenever the window title needs to be updated.
+ */
+-(void)updateWindowTitle;
+
 @end
 
