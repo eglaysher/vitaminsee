@@ -16,9 +16,14 @@
 +(void)addThumbnailToCache:(NSImage*)image file:(EGPath*)path;
 +(NSImage*)buildThumbnail:(EGPath*)path;
 +(EGPath*)getNextThumbnailToBuild;
++(EGPath*)getNextPriorityBuild;
 +(void)removePathFromBuildQueue:(EGPath*)path;
 +(void)notifySubscribersThat:(EGPath*)nextToBuild hasImage:(NSImage*)image;
+
 +(void)resetBuildQueueEnumerator;
++(void)resetPriorityQueueEnumerator;
+
++(void)doBuildThumbnailIconFor:(EGPath*)path;
 @end
 
 static NSSize ICON_SIZE = {128.0f, 128.0f};
@@ -58,7 +63,22 @@ pthread_cond_t thumbnailBuildQueueCondition;
 static NSEnumerator* thumbnailBuildQueueValueEnumerator;
 static NSMutableDictionary* thumbnailBuildQueue;
 
-// Put the priority queue here. Hmmmm.
+/** Thumbnail Priority Build Stack:
+ * {
+ *   'dir' => [
+ *     EGPATH, EGPATH
+ *   ],
+ *   'dir' => [
+ *     EGPATH, EGPATH
+ *   ]
+ * }
+ *
+ * The Priority Build Stacks are first-in-last-out structures; the idea being
+ * that if a thumbnail was requested recently, it probably wasn't just scrolled
+ * by.
+ */
+static NSEnumerator* thumbnailPriorityBuildEnumerator;
+static NSMutableDictionary* thumbnailPriorityBuildStack;
 
 // Configuration stuff
 static BOOL shouldBuildThumbnails;
@@ -84,6 +104,7 @@ static enum ThumbnailStorageType thumbnailStorageType;
 	pthread_mutex_init(&thumbnailBuildQueueLock, NULL);
 	pthread_cond_init(&thumbnailBuildQueueCondition, NULL);
 	thumbnailBuildQueue = [[NSMutableDictionary alloc] init];
+	thumbnailPriorityBuildStack = [[NSMutableDictionary alloc] init];
 	thumbnailBuildQueueValueEnumerator = 0;
 	
 	// Subscribe to updates to the main notification of changes to user defaults
@@ -111,14 +132,41 @@ static enum ThumbnailStorageType thumbnailStorageType;
 		
 		// Let's wait for stuff
 		pthread_mutex_lock(&thumbnailBuildQueueLock);
-		while([thumbnailBuildQueue count] == 0)
+		while([thumbnailBuildQueue count] == 0 &&
+			  [thumbnailPriorityBuildStack count] == 0)
 		{
 			if(pthread_cond_wait(&thumbnailBuildQueueCondition,
 								 &thumbnailBuildQueueLock))
 				NSLog(@"Invalid wait!?");
 		}
 		
-		if([thumbnailBuildQueue count])
+		if([thumbnailPriorityBuildStack count])
+		{
+			EGPath* nextToBuild = [[self getNextPriorityBuild] retain];
+
+			// Unlock the mutex
+			pthread_mutex_unlock(&thumbnailBuildQueueLock);
+		
+			NSLog(@"Priority building: %@", nextToBuild);
+			
+			[self doBuildThumbnailIconFor:nextToBuild];
+			
+//			// Now we have to check to see if we've completed all the priority
+//			// build tasks. If we have, remove the directory from the 
+//			// thumbnailPriorityBuildStack structure.
+//			pthread_mutex_lock(&thumbnailBuildQueueLock);
+//			{
+//				EGPath* dirpath = [nextToBuild pathByDeletingLastPathComponent];
+//				NSArray* buildStack = [thumbnailPriorityBuildStack objectForKey:dirpath];
+//				
+//				if([buildStack count] == 0)
+//					[thumbnailPriorityBuildStack removeObjectForKey:dirpath];
+//			}
+//			pthread_mutex_unlock(&thumbnailBuildQueueLock);
+
+			[nextToBuild release];
+		}
+		else if([thumbnailBuildQueue count])
 		{
 			// Object retained because it gets released during
 			// -addThumbnailToCache:file:
@@ -127,35 +175,8 @@ static enum ThumbnailStorageType thumbnailStorageType;
 			// Unlock the mutex
 			pthread_mutex_unlock(&thumbnailBuildQueueLock);
 
-			if([nextToBuild isImage]) 
-			{
-				NSImage* image;
-
-				if([nextToBuild hasThumbnailIcon])
-				{
-					// If there's already an thumbnail, load it and put it in 
-					// the cache
-					image = [nextToBuild iconImageOfSize:ICON_SIZE];
-					[self addThumbnailToCache:image file:nextToBuild];
-				}
-				else 
-				{
-					// Build the new image for the file and stick it in the 
-					// cache
-					image = [self buildThumbnail:nextToBuild];
-					[self addThumbnailToCache:image file:nextToBuild];
-					[image release];
-				}
-				
-				// Notify all people in the subscribers list
-				[self notifySubscribersThat:nextToBuild hasImage:image];
-			}
-			else
-			{
-				// Remove the entry from the build queue. 
-				[self removePathFromBuildQueue:nextToBuild];
-			}
-			
+			NSLog(@"Normal building: %@", nextToBuild);
+			[self doBuildThumbnailIconFor:nextToBuild];
 			[nextToBuild release];
 		}
 		else
@@ -202,7 +223,7 @@ static enum ThumbnailStorageType thumbnailStorageType;
 			pthread_rwlock_unlock(&thumbnailCacheLock);
 			
 			// Build the set of files that need to have thumbnails generated.
-			NSMutableArray* files = [directory directoryContents];
+			NSArray* files = [directory directoryContents];
 			NSSet* buildSet = [NSMutableSet setWithArray:files];
 			pthread_mutex_lock(&thumbnailBuildQueueLock);
 			{
@@ -279,17 +300,40 @@ static enum ThumbnailStorageType thumbnailStorageType;
 	NSImage* image = [path iconImageOfSize:ICON_SIZE];
 	if([path isImage]) 
 	{
-		if([path hasThumbnailIcon] && directoryCache)
+		if([path hasThumbnailIcon])
 		{
-			pthread_rwlock_wrlock(&thumbnailCacheLock);
+			if(directoryCache)
 			{
-				[directoryCache setObject:image forKey:path];
-			}	
-			pthread_rwlock_unlock(&thumbnailCacheLock);		
+				pthread_rwlock_wrlock(&thumbnailCacheLock);
+				{
+					[directoryCache setObject:image forKey:path];
+				}	
+				pthread_rwlock_unlock(&thumbnailCacheLock);		
+			}
 		}
 		else
 		{
-			// TODO: Put it in a priority queue to build ASAP!			
+			// TODO: Put it in a priority stack to build ASAP!				
+			pthread_mutex_lock(&thumbnailBuildQueueLock);
+			{
+				NSMutableArray* stack = [thumbnailPriorityBuildStack 
+					objectForKey:dirPath];
+				
+				// We may need to build the stack for this directory
+				if(!stack)
+				{
+					stack = [NSMutableArray array];
+					[thumbnailPriorityBuildStack setObject:stack 
+													forKey:dirPath];
+					[self resetPriorityQueueEnumerator];
+				}
+				
+				[stack addObject:path];			
+			}
+			pthread_mutex_unlock(&thumbnailBuildQueueLock);
+			
+			// Notify the thumbnail thread that it has work to do.
+			pthread_cond_signal(&thumbnailBuildQueueCondition);
 		}
 	}
 	
@@ -400,11 +444,46 @@ static enum ThumbnailStorageType thumbnailStorageType;
 	return nextToBuild;
 }
 
+/**
+ *
+ */
++(EGPath*)getNextPriorityBuild
+{
+	EGPath* nextToBuild;
+	NSMutableArray* buildQueue = [thumbnailPriorityBuildEnumerator nextObject];
+	if(!buildQueue) {
+		[self resetPriorityQueueEnumerator];
+		buildQueue = [thumbnailPriorityBuildEnumerator nextObject];
+	}
+
+	EGPath* ret = [[buildQueue lastObject] retain];
+	
+	if(ret)
+	{
+		[buildQueue removeLastObject];
+	
+		if([buildQueue count] == 0)
+		{
+			[thumbnailPriorityBuildStack removeObjectForKey:
+				[ret pathByDeletingLastPathComponent]];
+			[self resetPriorityQueueEnumerator];
+		}
+	}
+	return [ret autorelease];	
+}
+
 +(void)resetBuildQueueEnumerator
 {
 	[thumbnailBuildQueueValueEnumerator release];
 	thumbnailBuildQueueValueEnumerator = 
 		[[thumbnailBuildQueue objectEnumerator] retain];				
+}
+
++(void)resetPriorityQueueEnumerator
+{
+	[thumbnailPriorityBuildEnumerator release];
+	thumbnailPriorityBuildEnumerator = 
+		[[thumbnailPriorityBuildStack objectEnumerator] retain];
 }
 
 +(void)notifySubscribersThat:(EGPath*)nextToBuild hasImage:(NSImage*)image
@@ -425,6 +504,42 @@ static enum ThumbnailStorageType thumbnailStorageType;
 		}
 	}
 	pthread_mutex_unlock(&subscriberListLock);
+}
+
++(void)doBuildThumbnailIconFor:(EGPath*)nextToBuild
+{
+	if([nextToBuild isImage]) 
+	{
+		NSImage* image;
+		
+		// Check to see if this file has an icon. (Make sure to do
+		// it on the main thread; the Carbon Resource Manager isn't
+		// thread safe!)
+		if([[nextToBuild performOnMainThreadWaitUntilDone:YES] 
+			hasThumbnailIcon])
+		{
+			// If there's already an thumbnail, load it and put it in 
+			// the cache
+			image = [nextToBuild iconImageOfSize:ICON_SIZE];
+			[self addThumbnailToCache:image file:nextToBuild];
+		}
+		else 
+		{
+			// Build the new image for the file and stick it in the 
+			// cache
+			image = [self buildThumbnail:nextToBuild];
+			[self addThumbnailToCache:image file:nextToBuild];
+			[image release];
+		}
+		
+		// Notify all people in the subscribers list
+		[self notifySubscribersThat:nextToBuild hasImage:image];
+	}
+	else
+	{
+		// Remove the entry from the build queue. 
+		[self removePathFromBuildQueue:nextToBuild];
+	}	
 }
 
 @end

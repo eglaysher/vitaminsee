@@ -11,6 +11,7 @@
 //////////
 @interface EGPerformOnMainThreadTrampoline : NSProxy {
 	id object;
+	id returnObject;
 	BOOL waitUntilDone;
 }
 
@@ -33,12 +34,18 @@
 	[super dealloc];
 }
 
-- (void)forwardInvocation:(NSInvocation *)anInvocation 
+-(id)fakeInvocationReturningSelector {
+    return returnObject;
+}
+
+-(void)forwardInvocation:(NSInvocation *)anInvocation 
 {
-	[anInvocation retainArguments];
+	if(!waitUntilDone)
+		[anInvocation retainArguments];
+
 	[object performSelectorOnMainThread:@selector(handleInvocation:)
 							 withObject:anInvocation 
-						  waitUntilDone:waitUntilDone];
+						  waitUntilDone:waitUntilDone];		
 }
 
 -(NSMethodSignature*)methodSignatureForSelector:(SEL)aSelector

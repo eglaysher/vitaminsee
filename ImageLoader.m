@@ -273,6 +273,9 @@ static BOOL newTaskThatPreemptsPreload(NSDictionary* currentTask)
  * the requester asks for, and then pass the image back to the main thread.
  *
  * @param task Task Dictionary representing the current task
+ *
+ * @note This function is way too long; it is a textbook example of a function
+ *       that is too long, takes on too many responsibilities and is confusing.
  */
 +(void)doDisplayImage:(NSMutableDictionary*)task
 {	

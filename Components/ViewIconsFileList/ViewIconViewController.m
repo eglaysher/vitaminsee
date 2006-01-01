@@ -334,7 +334,8 @@ willDisplayCell:(id)cell
 	if(![cell iconImage])
 	{
 		// If there's an entry in the thumbnail cache, use it
-		NSImage* icon = [ThumbnailManager getThumbnailFor:[NSClassFromString(@"EGPath") pathWithPath:path]];
+		NSImage* icon = [ThumbnailManager getThumbnailFor:
+			[NSClassFromString(@"EGPath") pathWithPath:path]];
 		
 		// If there isn't, use the file icon...
 		if(!icon)
@@ -622,13 +623,6 @@ willDisplayCell:(id)cell
 	// present files sorted alphabetically and we do binary searches to avoid
 	// O(n) overhead later on.
 	[myFileList sortUsingSelector:@selector(caseInsensitiveCompare:)];	
-
-	// Now build thumbnails for each file in the directory (since we can be 
-	// confident they'll be built in order)
-	// FIXME
-	// When I fix this, make sure to use -[NSArray makeObjectsPerformSelector:withObject:]...
-	//	[pluginLayer performSelector:@selector(generateThumbnailForFile:)
-//				withEachObjectIn:myFileList];
 	
 	// Now let's keep our new list of files. (Note it was allocated earlier)
 	[fileList release];	

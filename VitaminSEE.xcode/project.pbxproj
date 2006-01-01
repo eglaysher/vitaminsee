@@ -812,6 +812,10 @@
 				8B2448B608FB2033004716BC,
 				8BAE04EC095F6C5C007C387D,
 				8BAE04ED095F6C5D007C387D,
+				8B44DC3D09679AD60039BF19,
+				8B44DC3E09679AD60039BF19,
+				8B44DC4609679B6F0039BF19,
+				8B44DC4709679B6F0039BF19,
 			);
 			isa = PBXGroup;
 			name = Widgets;
@@ -2032,6 +2036,54 @@
 		};
 		8B426112090EFCAB0006EE43 = {
 			fileRef = 8B64CD5E090EF8030060CB34;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B44DC3D09679AD60039BF19 = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = BSTrampoline.h;
+			path = Widgets/BSTrampoline.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B44DC3E09679AD60039BF19 = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
+			name = BSTrampoline.m;
+			path = Widgets/BSTrampoline.m;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B44DC4609679B6F0039BF19 = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = HigherOrderMessaging.h;
+			path = Widgets/HigherOrderMessaging.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B44DC4709679B6F0039BF19 = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
+			name = HigherOrderMessaging.m;
+			path = Widgets/HigherOrderMessaging.m;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B44DC5509679C250039BF19 = {
+			fileRef = 8B44DC3E09679AD60039BF19;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B44DC5609679C250039BF19 = {
+			fileRef = 8B44DC4709679B6F0039BF19;
 			isa = PBXBuildFile;
 			settings = {
 			};
@@ -3438,6 +3490,8 @@
 		8D11072C0486CEB800E47090 = {
 			buildActionMask = 2147483647;
 			files = (
+				8B44DC5509679C250039BF19,
+				8B44DC5609679C250039BF19,
 				8D11072D0486CEB800E47090,
 				8B2448B708FB2033004716BC,
 				8B2448B808FB2033004716BC,
