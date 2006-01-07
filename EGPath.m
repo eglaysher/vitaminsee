@@ -85,13 +85,16 @@
 
 -(BOOL)exists
 {
-	[self doesNotRecognizeSelector:_cmd];
+	return NO;
+}
+
+-(BOOL)isNaturalFile
+{
 	return NO;
 }
 
 -(BOOL)isDirectory
 {
-	[self doesNotRecognizeSelector:_cmd];
 	return NO;	
 }
 
@@ -184,6 +187,11 @@ static NSString* egPathRootDisplayName = 0;
 -(BOOL)exists
 {
 	return YES;
+}
+
+-(BOOL)isNaturalFile
+{
+	return NO;
 }
 
 -(BOOL)isRoot
@@ -281,6 +289,11 @@ static NSString* egPathRootDisplayName = 0;
 -(BOOL)exists
 {
 	return [[NSFileManager defaultManager] fileExistsAtPath:fileSystemPath];
+}
+
+-(BOOL)isNaturalFile
+{
+	return NO;
 }
 
 -(BOOL)isDirectory

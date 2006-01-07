@@ -79,7 +79,12 @@ using namespace std;
 
 -(void)setKeywords:(NSArray*)keywords forJPEGFile:(NSString*)file
 {
-	// First, read the IPTC data for the file. We don't want to clobber other
+	// Take note of the creation time. The Exiv2 library will recreate the file,
+	// losing creation time data, and we're going to have to reset that later.
+	NSFileManager* fm = [NSFileManager defaultManager];
+	NSDictionary* attributes = [fm fileAttributesAtPath:file traverseLink:YES];
+	
+	// Read the IPTC data for the file. We don't want to clobber other
 	// metadata.
 	Exiv2::IptcData iptcData;
 	// Ignore return value. Doesn't matter if there is no IPTC data...
@@ -103,6 +108,13 @@ using namespace std;
 	
 	// write to file.
 	iptcData.write([file fileSystemRepresentation]);
+	
+	// Restore the creation time
+	NSDictionary* creationDictionary = 
+		[NSDictionary dictionaryWithObject:[attributes objectForKey:NSFileCreationDate]
+									forKey:NSFileCreationDate];
+	if(![fm changeFileAttributes:creationDictionary atPath:file])
+		NSLog(@"Failed to change creation date back to orriginal date.");
 }
 
 ////////////////////// PNG KEYWORDS
