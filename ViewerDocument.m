@@ -176,16 +176,16 @@
 			// When you're resizing a window, you'll want to consider the 
 			// real pixel size when you're fitting the image, otherwise, some
 			// sort of zoom means size of the current zoom level.
-			if([task objectForKey:@"Scale Mode"] == SCALE_IMAGE_TO_FIT) 
-			{
+//			if([task objectForKey:@"Scale Mode"] == SCALE_IMAGE_TO_FIT) 
+//			{
 				pixelWidth = [[task objectForKey:@"Pixel Width"] floatValue];
 				pixelHeight = [[task objectForKey:@"Pixel Height"] floatValue];				
-			}
-			else
-			{
-				pixelWidth = [image size].width;
-				pixelHeight = [image size].height;
-			}
+//			}
+//			else
+//			{
+//				pixelWidth = [image size].width;
+//				pixelHeight = [image size].height;
+//			}
 			
 			// Set the image size label
 			[window setImageSizeLabelText:NSMakeSize(
@@ -223,6 +223,11 @@
 -(float)pixelHeight
 {
 	return pixelHeight;
+}
+
+-(NSString*)scaleMode
+{
+	return scaleMode;
 }
 
 //-----------------------------------------------------------------------------

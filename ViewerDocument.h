@@ -62,6 +62,7 @@
 -(void)setDirectoryFromRawPath:(NSString*)path;
 -(void)focusOnFile:(EGPath*)path;
 
+-(NSString*)scaleMode;
 -(float)pixelWidth;
 -(float)pixelHeight;
 @end

@@ -13,6 +13,7 @@
 #import "ToolbarDelegate.h"
 #import "ComponentManager.h"
 #import "AppKitAdditions.h"
+#import "ImageLoader.h"
 
 @implementation VitaminSEEWindowController
 
@@ -63,7 +64,7 @@
 	[scrollView setFocusRingType:NSFocusRingAbove];
 	
 	// Set up our split view. We do this because the pallete is broken...
-//	[splitView setDelegate:self];
+	[splitView setDelegate:self];
 	RBSplitSubview* leftView = [splitView subviewAtPosition:0];
 	[leftView setCanCollapse:YES];
 	[leftView setMinDimension:92 andMaxDimension:0];
@@ -83,45 +84,38 @@
 
 //////////////////////////////////////////////////////// SUBVIEW DELEGATE STUFF
 
-//-(void)didAdjustSubviews:(id)rbview
-//{
-//	NSLog(@"View redraw...");
-//	id doc = [self document];
-//	[doc setDisplayedFileTo:[doc currentFile]];	
-//}
-//
-//- (void)splitView:(RBSplitView*)sender didCollapse:(RBSplitSubview*)subview
-//{
-//	// When we collapse, give the image viewer focus
-//	[scrollView setNextKeyView:nil];
-////	[self selectFirstResponder];
-//	[imageViewer setNextKeyView:imageViewer];
-//}
+-(void)didAdjustSubviews:(id)rbview
+{
+	NSLog(@"View redraw...");
+	[[self document] redraw];
+}
 
-//- (void)splitView:(RBSplitView*)sender didExpand:(RBSplitSubview*)subview 
-//{
-//	// When we expand, make the file view first responder
-////	NSLog(@"-splitView:didExpand:");
-////	[self selectFirstResponder];
-////	[viewAsIconsController connectKeyFocus:scrollView];
-////	[mainVitaminSeeWindow setViewsNeedDisplay:YES];
-//}
+- (void)splitView:(RBSplitView*)sender didCollapse:(RBSplitSubview*)subview
+{
+	NSLog(@"didCollapse:");
+	[[self document] redraw];
+	
+	// When we collapse, give the image viewer focus
+	[[self window] makeFirstResponder:imageViewer];
+}
 
-//- (void)splitView:(RBSplitView*)sender wasResizedFrom:(float)oldDimension 
-//			   to:(float)newDimension
-//{
-////	NSLog(@"-splitView:wasResizedFrom:to:");
-////	[mainVitaminSeeWindow setViewsNeedDisplay:YES];
-//}
+- (void)splitView:(RBSplitView*)sender didExpand:(RBSplitSubview*)subview 
+{
+	// When we expand, make the file view first responder
+	NSLog(@"-splitView:didExpand:");
+	[[self document] redraw];
+//	[self selectFirstResponder];
+//	[viewAsIconsController connectKeyFocus:scrollView];
+//	[mainVitaminSeeWindow setViewsNeedDisplay:YES];
+}
 
-// Redraw the window when the seperator between the file list and image view
-// is moved.
-//-(void)splitViewDidResizeSubviews:(NSNotification*)notification
-//{
-//	[viewAsIconsController clearCache];
-//	NSLog(@"-splitViewDidResizeSubviews:");
-//	[self redraw];
-//}
+- (void)splitView:(RBSplitView*)sender wasResizedFrom:(float)oldDimension 
+			   to:(float)newDimension
+{
+	NSLog(@"-splitView:wasResizedFrom:to:");
+//	[mainVitaminSeeWindow setViewsNeedDisplay:YES];
+	[[self document] redraw];
+}
 
 // Progress indicator control
 -(void)startProgressIndicator
@@ -140,13 +134,14 @@
 -(void)stopProgressIndicator
 {
 //	[scrollView setNeedsDisplay:YES];
-	
+
 	if(currentlyAnimated) 
 	{
+		NSLog(@"doing stuff!");
 		[progressIndicator stopAnimation:self];
 		currentlyAnimated = false;
 	}
-
+	
 //	[progressIndicator setHidden:YES];
 }
 
@@ -196,6 +191,8 @@
 
 -(void)updateWindowTitle
 {
+	// pass the responsibility to the fileilst, who will also mess with the
+	// proxy icon
 	[fileList setWindowTitle:[self window]];
 }
 
@@ -238,11 +235,17 @@
 
 	// Figure out the correct size for the clipview and set it here. Usually,
 	// resizing of the subviews takes place AFTERWARDS, (and this will be undone
-	// by that), but redrawing needs the new window size.
-	NSSize windowSize = [[self window] frame].size;
-	float w = windowSize.width - [self nonImageWidth];
-	float h = windowSize.height - [self nonImageHeight];
-	[[scrollView contentView] setFrameSize:NSMakeSize(w,h)];
+	// by that), but redrawing needs the new window size. This isn't a problem
+	// when we're displaying an unscaled image, but is serious when we're 
+	// "fitting" and image to the view.
+	if([[[self document] scaleMode] isEqual:SCALE_IMAGE_TO_FIT])
+	{
+		NSLog(@"Reworking contentView size!");
+		NSSize windowSize = [[self window] frame].size;
+		float w = windowSize.width - [self nonImageWidth];
+		float h = windowSize.height - [self nonImageHeight];
+		[[scrollView contentView] setFrameSize:NSMakeSize(w,h)];		
+	}
 	
 	// Get in queue for the full redraw
 	[[self document] redraw];
@@ -279,9 +282,6 @@
 	if(newHeight > NSHeight(defaultFrame) ||
 	   newWidth > NSWidth(defaultFrame))
 	{
-//		NSLog(@"This isn't going to fit (%f x %f) vs %@...", newWidth, newHeight,
-//			  NSStringFromSize(defaultFrame.size));
-		
 		float defaultImageWidth = NSWidth(defaultFrame) - nonImageWidth;
 		float defaultImageHeight = NSHeight(defaultFrame) - nonImageHeight;
 
@@ -291,8 +291,6 @@
 			ratio = defaultImageWidth / pixelWidth;
 		else
 			ratio = defaultImageHeight / pixelHeight;
-		
-//		NSLog(@"Ratio: %f", ratio);
 		
 		newWidth = nonImageWidth + (pixelWidth * ratio);
 		newHeight = nonImageHeight + (pixelHeight * ratio);
