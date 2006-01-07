@@ -47,7 +47,9 @@
 	// Set the fileList for real.
 	[self setFileList:fileList];
 	
-	[scrollView setAutohidesScrollers:YES];
+//	[scrollView setAutohidesScrollers:YES];
+	[scrollView setHasVerticalScroller:NO];
+	[scrollView setHasHorizontalScroller:NO];
 	
 	// Set up the scroll view on the right
 	id docView = [[scrollView documentView] retain];
@@ -86,7 +88,6 @@
 
 -(void)didAdjustSubviews:(id)rbview
 {
-	NSLog(@"View redraw...");
 	[[self document] redraw];
 }
 
@@ -162,7 +163,19 @@
 {
 	[imageViewer setAnimates:YES];
 	[imageViewer setImage:image];
-	[imageViewer setFrameSize:[image size]];
+	NSSize imageSize = [image size];
+	
+	// Check to see if the image's size excedes its content frame
+	NSSize contentFrame = 
+		[NSScrollView contentSizeForFrameSize:[scrollView frame].size
+						hasHorizontalScroller:NO
+						  hasVerticalScroller:NO
+								   borderType:[scrollView borderType]];
+	
+	[scrollView setHasHorizontalScroller:(imageSize.width > contentFrame.width)];
+	[scrollView setHasVerticalScroller:(imageSize.height > contentFrame.height)];
+
+	[imageViewer setFrameSize:imageSize];
 	
 	// Set the correct cursor by simulating the user releasing the mouse.
 	[imageViewer mouseUp:nil];
@@ -241,7 +254,9 @@
 	if([[[self document] scaleMode] isEqual:SCALE_IMAGE_TO_FIT])
 	{
 		NSLog(@"Reworking contentView size!");
-		NSSize windowSize = [[self window] frame].size;
+		NSSize windowSize = [NSWindow contentRectForFrameRect:[[self window] frame]
+													styleMask:[[self window] styleMask]].size;
+//		NSSize windowSize = [[self window] frame].size;
 		float w = windowSize.width - [self nonImageWidth];
 		float h = windowSize.height - [self nonImageHeight];
 		[[scrollView contentView] setFrameSize:NSMakeSize(w,h)];		
@@ -278,32 +293,29 @@
 	float newHeight = nonImageHeight + pixelHeight;
 	
 	// If the image won't fit even in the maximized window, then calculate which
-	// side is too large, and shrink it based on that.
-	if(newHeight > NSHeight(defaultFrame) ||
-	   newWidth > NSWidth(defaultFrame))
+	// side is too large, and shrink it based on that if we are in scaled image
+	// mode
+	if(([[[self document] scaleMode] isEqual:SCALE_IMAGE_TO_FIT]) &&
+	   (newHeight > NSHeight(defaultFrame) ||
+		newWidth > NSWidth(defaultFrame)))
 	{
-		float defaultImageWidth = NSWidth(defaultFrame) - nonImageWidth;
-		float defaultImageHeight = NSHeight(defaultFrame) - nonImageHeight;
+		NSRect defaultContentFrame = 
+			[NSWindow contentRectForFrameRect:defaultFrame
+									styleMask:[[self window] styleMask]];
+		
+		float defaultImageWidth = NSWidth(defaultContentFrame) - nonImageWidth;
+		float defaultImageHeight = NSHeight(defaultContentFrame) - nonImageHeight;
 
-		float ratio = 1.0;
-		if(pixelWidth < pixelHeight)
-		{
-			// This is a wide image.
-			ratio = defaultImageWidth / pixelWidth;
-			NSLog(@"Wide Image");
-		}
-		else
-		{
-			ratio = defaultImageHeight / pixelHeight;
-			NSLog(@"Tall Image");
-		}
+		float ratio = MIN(defaultImageWidth / pixelWidth,
+						  defaultImageHeight / pixelHeight);
 		
 		newWidth = nonImageWidth + (pixelWidth * ratio);
 		newHeight = nonImageHeight + (pixelHeight * ratio);
-		NSLog(@"Revised window: %@ defaultFrame: %@",
-			  NSStringFromSize(NSMakeSize(newWidth,newHeight)),
-			  NSStringFromSize(defaultFrame.size));
 	}
+	
+	NSLog(@"new: %@ defaultSize: %@", 
+		  NSStringFromSize(NSMakeSize(newWidth,newHeight)),
+		  NSStringFromSize(defaultFrame.size));
 	
 	// Code taken from a very nice Mac Dev Center article on window zooming:
 	// http://www.macdevcenter.com/pub/a/mac/2002/05/16/cocoa.html?page=2
@@ -332,22 +344,19 @@
     defH = defaultFrame.size.height;
     
     if ( stdH > defH ) {
-		NSLog(@"Using default height");
+		
 		stdFrame.size.height = defH;
 		stdFrame.origin.y = defY;
     } else if ( stdY < defY ) {
-		NSLog(@"Using our height");
 		stdFrame.origin.y = defY;
     }
     
     if ( stdW > defW ) {
-		NSLog(@"Using default width");
 		stdFrame.size.width = defW;
 		stdFrame.origin.x = defX;
     } else if ( stdX < defX ) {
-		NSLog(@"Using our width");
 		stdFrame.origin.x = defX;
-    }
+    } 
 	
 	NSLog(@"--- end -windowWillUseStandardFrame:defaultFrame:");
 	
@@ -357,23 +366,28 @@
 -(float)nonImageWidth
 {
 	return
-		20 + /* Left Margin */
-		NSWidth([[splitView subviewAtPosition:0] frame]) + /* File List View */
-		[splitView dividerThickness] + /* Divider thickness */
-		([scrollView hasVerticalRuler] ?
-		 NSWidth([[scrollView verticalScroller] frame]) : 0) +
-		/* Additional room for vertical scroller */
-		20 + 2; /* Right Margin */
+	20 + /* Left Margin */
+	NSWidth([[splitView subviewAtPosition:0] frame]) + /* File List View */
+	[splitView dividerThickness] + /* Divider thickness */
+	([scrollView hasVerticalScroller] ?
+	 NSWidth([[scrollView verticalScroller] frame]) : 0) +
+	/* Additional room for vertical scroller */
+	20 + 2; /* Right Margin */	
 }
 
+/** The size of the window's content view that isn't taken up by the scrollView.
+ * We can't just subtract the scrollView's contentView's frame size from the
+ * window's content rect because we call this method while we're resizing said
+ * content view!
+ */
 -(float)nonImageHeight
 {
-	return [[self window] titleBarHeight] +
-		20 + /* Top Margin */
-		([scrollView hasHorizontalRuler] ?
-		  NSHeight([[scrollView horizontalScroller] frame]) : 0) +
-		/* Additional room for horrizontal scroller */
-		20 + 2;  /* Bottom Margin */
+	return   //[[self window] titleBarHeight] +
+	20 + /* Top Margin */
+	([scrollView hasHorizontalScroller] ?
+	 NSHeight([[scrollView horizontalScroller] frame]) : 0) +
+	/* Additional room for horrizontal scroller */
+	20 + 2;  /* Bottom Margin */
 }
 
 //-----------------------------------------------------------------------------

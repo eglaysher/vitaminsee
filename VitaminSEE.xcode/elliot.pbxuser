@@ -2173,6 +2173,187 @@
 			8B9C7EE409702FB9009ED6CC = 8B9C7EE409702FB9009ED6CC;
 			8B9C7EEA09702FC5009ED6CC = 8B9C7EEA09702FC5009ED6CC;
 			8B9C7EEB09702FC5009ED6CC = 8B9C7EEB09702FC5009ED6CC;
+			8B9C7EF009703020009ED6CC = 8B9C7EF009703020009ED6CC;
+			8B9C7EF109703020009ED6CC = 8B9C7EF109703020009ED6CC;
+			8B9C7EF6097030B3009ED6CC = 8B9C7EF6097030B3009ED6CC;
+			8B9C7EF7097030B3009ED6CC = 8B9C7EF7097030B3009ED6CC;
+			8B9C7EFA097030FD009ED6CC = 8B9C7EFA097030FD009ED6CC;
+			8B9C7EFB097030FD009ED6CC = 8B9C7EFB097030FD009ED6CC;
+			8B9C7EFC097030FF009ED6CC = 8B9C7EFC097030FF009ED6CC;
+			8B9C7EFF09703113009ED6CC = 8B9C7EFF09703113009ED6CC;
+			8B9C7F0009703113009ED6CC = 8B9C7F0009703113009ED6CC;
+			8B9C7F0109703114009ED6CC = 8B9C7F0109703114009ED6CC;
+			8B9C7F060970317A009ED6CC = 8B9C7F060970317A009ED6CC;
+			8B9C7F070970317A009ED6CC = 8B9C7F070970317A009ED6CC;
+			8B9C7F080970317B009ED6CC = 8B9C7F080970317B009ED6CC;
+			8B9C7F0B09703190009ED6CC = 8B9C7F0B09703190009ED6CC;
+			8B9C7F0E097031D4009ED6CC = 8B9C7F0E097031D4009ED6CC;
+			8B9C7F0F097031D4009ED6CC = 8B9C7F0F097031D4009ED6CC;
+			8B9C7F10097031D5009ED6CC = 8B9C7F10097031D5009ED6CC;
+			8B9C7F13097031FF009ED6CC = 8B9C7F13097031FF009ED6CC;
+			8B9C7F14097031FF009ED6CC = 8B9C7F14097031FF009ED6CC;
+			8B9C7F1509703200009ED6CC = 8B9C7F1509703200009ED6CC;
+			8B9C7F1809703222009ED6CC = 8B9C7F1809703222009ED6CC;
+			8B9C7F1909703222009ED6CC = 8B9C7F1909703222009ED6CC;
+			8B9C7F1A09703223009ED6CC = 8B9C7F1A09703223009ED6CC;
+			8B9C7F1D09703236009ED6CC = 8B9C7F1D09703236009ED6CC;
+			8B9C7F1E09703236009ED6CC = 8B9C7F1E09703236009ED6CC;
+			8B9C7F1F09703238009ED6CC = 8B9C7F1F09703238009ED6CC;
+			8B9C7F220970342E009ED6CC = 8B9C7F220970342E009ED6CC;
+			8B9C7F230970342E009ED6CC = 8B9C7F230970342E009ED6CC;
+			8B9C7F240970342F009ED6CC = 8B9C7F240970342F009ED6CC;
+			8B9C7F2B097034C8009ED6CC = 8B9C7F2B097034C8009ED6CC;
+			8B9C7F2C097034C8009ED6CC = 8B9C7F2C097034C8009ED6CC;
+			8B9C7F2D097034C9009ED6CC = 8B9C7F2D097034C9009ED6CC;
+			8B9C7F30097034FE009ED6CC = 8B9C7F30097034FE009ED6CC;
+			8B9C7F31097034FE009ED6CC = 8B9C7F31097034FE009ED6CC;
+			8B9C7F32097034FF009ED6CC = 8B9C7F32097034FF009ED6CC;
+			8B9C7F330970363B009ED6CC = 8B9C7F330970363B009ED6CC;
+			8B9C7F340970363B009ED6CC = 8B9C7F340970363B009ED6CC;
+			8B9C7F350970363C009ED6CC = 8B9C7F350970363C009ED6CC;
+			8B9C7F3609703684009ED6CC = 8B9C7F3609703684009ED6CC;
+			8B9C7F3709703684009ED6CC = 8B9C7F3709703684009ED6CC;
+			8B9C7F3809703685009ED6CC = 8B9C7F3809703685009ED6CC;
+			8B9C7F3B097036F7009ED6CC = 8B9C7F3B097036F7009ED6CC;
+			8B9C7F3C097036F7009ED6CC = 8B9C7F3C097036F7009ED6CC;
+			8B9C7F3D097036F8009ED6CC = 8B9C7F3D097036F8009ED6CC;
+			8B9C7F3E0970373D009ED6CC = 8B9C7F3E0970373D009ED6CC;
+			8B9C7F3F0970373D009ED6CC = 8B9C7F3F0970373D009ED6CC;
+			8B9C7F400970373E009ED6CC = 8B9C7F400970373E009ED6CC;
+			8B9C7F43097037C9009ED6CC = 8B9C7F43097037C9009ED6CC;
+			8B9C7F44097037C9009ED6CC = 8B9C7F44097037C9009ED6CC;
+			8B9C7F45097037CA009ED6CC = 8B9C7F45097037CA009ED6CC;
+			8B9C7F48097037F6009ED6CC = 8B9C7F48097037F6009ED6CC;
+			8B9C7F49097037F6009ED6CC = 8B9C7F49097037F6009ED6CC;
+			8B9C7F4A097037F7009ED6CC = 8B9C7F4A097037F7009ED6CC;
+			8B9C7F4D0970381C009ED6CC = 8B9C7F4D0970381C009ED6CC;
+			8B9C7F4E0970381C009ED6CC = 8B9C7F4E0970381C009ED6CC;
+			8B9C7F4F0970381D009ED6CC = 8B9C7F4F0970381D009ED6CC;
+			8B9C7F5209703856009ED6CC = 8B9C7F5209703856009ED6CC;
+			8B9C7F5309703856009ED6CC = 8B9C7F5309703856009ED6CC;
+			8B9C7F5409703857009ED6CC = 8B9C7F5409703857009ED6CC;
+			8B9C7F570970386C009ED6CC = 8B9C7F570970386C009ED6CC;
+			8B9C7F580970386C009ED6CC = 8B9C7F580970386C009ED6CC;
+			8B9C7F590970386D009ED6CC = 8B9C7F590970386D009ED6CC;
+			8B9C7F5A0970389F009ED6CC = 8B9C7F5A0970389F009ED6CC;
+			8B9C7F5D097038F8009ED6CC = 8B9C7F5D097038F8009ED6CC;
+			8B9C7F5E097038F8009ED6CC = 8B9C7F5E097038F8009ED6CC;
+			8B9C7F5F097038FA009ED6CC = 8B9C7F5F097038FA009ED6CC;
+			8B9C7F62097038FA009ED6CC = 8B9C7F62097038FA009ED6CC;
+			8B9C7F6509703919009ED6CC = 8B9C7F6509703919009ED6CC;
+			8B9C7F6609703919009ED6CC = 8B9C7F6609703919009ED6CC;
+			8B9C7F670970391A009ED6CC = 8B9C7F670970391A009ED6CC;
+			8B9C7F680970391A009ED6CC = 8B9C7F680970391A009ED6CC;
+			8B9C7F6B09703944009ED6CC = 8B9C7F6B09703944009ED6CC;
+			8B9C7F6C09703944009ED6CC = 8B9C7F6C09703944009ED6CC;
+			8B9C7F6D09703945009ED6CC = 8B9C7F6D09703945009ED6CC;
+			8B9C7F6E09703945009ED6CC = 8B9C7F6E09703945009ED6CC;
+			8B9C7F75097039A8009ED6CC = 8B9C7F75097039A8009ED6CC;
+			8B9C7F76097039A8009ED6CC = 8B9C7F76097039A8009ED6CC;
+			8B9C7F77097039A9009ED6CC = 8B9C7F77097039A9009ED6CC;
+			8B9C7F78097039A9009ED6CC = 8B9C7F78097039A9009ED6CC;
+			8B9C7F79097039BF009ED6CC = 8B9C7F79097039BF009ED6CC;
+			8B9C7F7A097039BF009ED6CC = 8B9C7F7A097039BF009ED6CC;
+			8B9C7F7B097039C0009ED6CC = 8B9C7F7B097039C0009ED6CC;
+			8B9C7F7C097039C0009ED6CC = 8B9C7F7C097039C0009ED6CC;
+			8B9C7F8109703A3F009ED6CC = 8B9C7F8109703A3F009ED6CC;
+			8B9C7F8209703A3F009ED6CC = 8B9C7F8209703A3F009ED6CC;
+			8B9C7F8309703A3F009ED6CC = 8B9C7F8309703A3F009ED6CC;
+			8B9C7F8409703A40009ED6CC = 8B9C7F8409703A40009ED6CC;
+			8B9C7F8509703A40009ED6CC = 8B9C7F8509703A40009ED6CC;
+			8B9C7F8809703A63009ED6CC = 8B9C7F8809703A63009ED6CC;
+			8B9C7F8909703A63009ED6CC = 8B9C7F8909703A63009ED6CC;
+			8B9C7F8A09703A64009ED6CC = 8B9C7F8A09703A64009ED6CC;
+			8B9C7F8B09703A64009ED6CC = 8B9C7F8B09703A64009ED6CC;
+			8B9C7F8E09703A86009ED6CC = 8B9C7F8E09703A86009ED6CC;
+			8B9C7F8F09703A86009ED6CC = 8B9C7F8F09703A86009ED6CC;
+			8B9C7F9009703A87009ED6CC = 8B9C7F9009703A87009ED6CC;
+			8B9C7F9109703A87009ED6CC = 8B9C7F9109703A87009ED6CC;
+			8B9C7F9609703B10009ED6CC = 8B9C7F9609703B10009ED6CC;
+			8B9C7F9709703B10009ED6CC = 8B9C7F9709703B10009ED6CC;
+			8B9C7F9A09703B23009ED6CC = 8B9C7F9A09703B23009ED6CC;
+			8B9C7F9B09703B23009ED6CC = 8B9C7F9B09703B23009ED6CC;
+			8B9C7F9C09703B24009ED6CC = 8B9C7F9C09703B24009ED6CC;
+			8B9C7F9D09703B24009ED6CC = 8B9C7F9D09703B24009ED6CC;
+			8B9C7FA009703BAA009ED6CC = 8B9C7FA009703BAA009ED6CC;
+			8B9C7FA109703BAA009ED6CC = 8B9C7FA109703BAA009ED6CC;
+			8B9C7FA209703BAB009ED6CC = 8B9C7FA209703BAB009ED6CC;
+			8B9C7FA309703BAB009ED6CC = 8B9C7FA309703BAB009ED6CC;
+			8B9C7FA609703C38009ED6CC = 8B9C7FA609703C38009ED6CC;
+			8B9C7FA709703C38009ED6CC = 8B9C7FA709703C38009ED6CC;
+			8B9C7FA809703C3A009ED6CC = 8B9C7FA809703C3A009ED6CC;
+			8B9C7FA909703C3A009ED6CC = 8B9C7FA909703C3A009ED6CC;
+			8B9C7FAC09703C70009ED6CC = 8B9C7FAC09703C70009ED6CC;
+			8B9C7FAD09703C70009ED6CC = 8B9C7FAD09703C70009ED6CC;
+			8B9C7FB009703CBD009ED6CC = 8B9C7FB009703CBD009ED6CC;
+			8B9C7FB109703CBD009ED6CC = 8B9C7FB109703CBD009ED6CC;
+			8B9C7FB209703CBF009ED6CC = 8B9C7FB209703CBF009ED6CC;
+			8B9C7FB309703CBF009ED6CC = 8B9C7FB309703CBF009ED6CC;
+			8B9C7FB609703EB1009ED6CC = 8B9C7FB609703EB1009ED6CC;
+			8B9C7FB709703EB1009ED6CC = 8B9C7FB709703EB1009ED6CC;
+			8B9C7FB809703EB3009ED6CC = 8B9C7FB809703EB3009ED6CC;
+			8B9C7FB909703EB3009ED6CC = 8B9C7FB909703EB3009ED6CC;
+			8B9C7FBA09703F46009ED6CC = 8B9C7FBA09703F46009ED6CC;
+			8B9C7FBB09703F46009ED6CC = 8B9C7FBB09703F46009ED6CC;
+			8B9C7FBC09703F48009ED6CC = 8B9C7FBC09703F48009ED6CC;
+			8B9C7FBD09703F48009ED6CC = 8B9C7FBD09703F48009ED6CC;
+			8B9C7FC009703FAD009ED6CC = 8B9C7FC009703FAD009ED6CC;
+			8B9C7FC109703FAD009ED6CC = 8B9C7FC109703FAD009ED6CC;
+			8B9C7FC209703FAE009ED6CC = 8B9C7FC209703FAE009ED6CC;
+			8B9C7FC309703FAE009ED6CC = 8B9C7FC309703FAE009ED6CC;
+			8B9C7FC609704076009ED6CC = 8B9C7FC609704076009ED6CC;
+			8B9C7FC709704076009ED6CC = 8B9C7FC709704076009ED6CC;
+			8B9C7FCA097040B1009ED6CC = 8B9C7FCA097040B1009ED6CC;
+			8B9C7FCB097040B1009ED6CC = 8B9C7FCB097040B1009ED6CC;
+			8B9C811209705897009ED6CC = 8B9C811209705897009ED6CC;
+			8B9C811309705897009ED6CC = 8B9C811309705897009ED6CC;
+			8B9C811409705899009ED6CC = 8B9C811409705899009ED6CC;
+			8B9C8117097058FA009ED6CC = 8B9C8117097058FA009ED6CC;
+			8B9C8118097058FA009ED6CC = 8B9C8118097058FA009ED6CC;
+			8B9C8119097058FA009ED6CC = 8B9C8119097058FA009ED6CC;
+			8B9C811A097058FA009ED6CC = 8B9C811A097058FA009ED6CC;
+			8B9C811B097058FA009ED6CC = 8B9C811B097058FA009ED6CC;
+			8B9C811C0970590E009ED6CC = 8B9C811C0970590E009ED6CC;
+			8B9C811F09705A95009ED6CC = 8B9C811F09705A95009ED6CC;
+			8B9C812009705A95009ED6CC = 8B9C812009705A95009ED6CC;
+			8B9C812109705A96009ED6CC = 8B9C812109705A96009ED6CC;
+			8B9C812409705AC6009ED6CC = 8B9C812409705AC6009ED6CC;
+			8B9C812509705AC7009ED6CC = 8B9C812509705AC7009ED6CC;
+			8B9C812609705AC8009ED6CC = 8B9C812609705AC8009ED6CC;
+			8B9C812909705B47009ED6CC = 8B9C812909705B47009ED6CC;
+			8B9C812E09705CEB009ED6CC = 8B9C812E09705CEB009ED6CC;
+			8B9C813109705D22009ED6CC = 8B9C813109705D22009ED6CC;
+			8B9C813209705D22009ED6CC = 8B9C813209705D22009ED6CC;
+			8B9C813309705D24009ED6CC = 8B9C813309705D24009ED6CC;
+			8B9C8134097067F4009ED6CC = 8B9C8134097067F4009ED6CC;
+			8B9C8135097067F4009ED6CC = 8B9C8135097067F4009ED6CC;
+			8B9C8136097067F5009ED6CC = 8B9C8136097067F5009ED6CC;
+			8B9C813909706854009ED6CC = 8B9C813909706854009ED6CC;
+			8B9C813A09706854009ED6CC = 8B9C813A09706854009ED6CC;
+			8B9C813B09706856009ED6CC = 8B9C813B09706856009ED6CC;
+			8B9C8146097069F4009ED6CC = 8B9C8146097069F4009ED6CC;
+			8B9C8147097069F4009ED6CC = 8B9C8147097069F4009ED6CC;
+			8B9C8148097069F4009ED6CC = 8B9C8148097069F4009ED6CC;
+			8B9C8149097069F6009ED6CC = 8B9C8149097069F6009ED6CC;
+			8B9C814E09706A26009ED6CC = 8B9C814E09706A26009ED6CC;
+			8B9C814F09706A26009ED6CC = 8B9C814F09706A26009ED6CC;
+			8B9C815009706A28009ED6CC = 8B9C815009706A28009ED6CC;
+			8B9C815309706A58009ED6CC = 8B9C815309706A58009ED6CC;
+			8B9C815409706A58009ED6CC = 8B9C815409706A58009ED6CC;
+			8B9C815509706A5A009ED6CC = 8B9C815509706A5A009ED6CC;
+			8B9C815809706A84009ED6CC = 8B9C815809706A84009ED6CC;
+			8B9C815909706A84009ED6CC = 8B9C815909706A84009ED6CC;
+			8B9C815A09706A85009ED6CC = 8B9C815A09706A85009ED6CC;
+			8B9C815D09706ABB009ED6CC = 8B9C815D09706ABB009ED6CC;
+			8B9C815E09706ABB009ED6CC = 8B9C815E09706ABB009ED6CC;
+			8B9C815F09706ABD009ED6CC = 8B9C815F09706ABD009ED6CC;
+			8B9C816209706B3B009ED6CC = 8B9C816209706B3B009ED6CC;
+			8B9C816309706B3B009ED6CC = 8B9C816309706B3B009ED6CC;
+			8B9C816409706B3C009ED6CC = 8B9C816409706B3C009ED6CC;
+			8B9C816709706B5D009ED6CC = 8B9C816709706B5D009ED6CC;
+			8B9C816809706B5D009ED6CC = 8B9C816809706B5D009ED6CC;
+			8B9C816909706B5E009ED6CC = 8B9C816909706B5E009ED6CC;
+			8B9C816E09706D82009ED6CC = 8B9C816E09706D82009ED6CC;
 		};
 		sourceControlManager = 8B24488B08FADC51004716BC;
 		userBuildSettings = {
@@ -3028,7 +3209,7 @@
 	8B2448A308FB2033004716BC = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {776, 4800}}";
-			sepNavSelRange = "{9315, 0}";
+			sepNavSelRange = "{8837, 0}";
 			sepNavVisRect = "{{0, 4132}, {746, 648}}";
 			sepNavWindowFrame = "{{15, 20}, {791, 721}}";
 		};
@@ -3235,9 +3416,9 @@
 	};
 	8B2448D108FB2080004716BC = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {746, 6512}}";
-			sepNavSelRange = "{5279, 0}";
-			sepNavVisRect = "{{0, 3018}, {746, 648}}";
+			sepNavIntBoundsRect = "{{0, 0}, {980, 6944}}";
+			sepNavSelRange = "{4735, 0}";
+			sepNavVisRect = "{{0, 2482}, {980, 717}}";
 			sepNavWindowFrame = "{{818, 201}, {791, 721}}";
 		};
 	};
@@ -4080,7 +4261,7 @@
 		fRef = 8B2448D108FB2080004716BC;
 		isa = PBXTextBookmark;
 		rLen = 0;
-		rLoc = 302;
+		rLoc = 323;
 		rType = 1;
 	};
 	8B9C7444096CB9BE009ED6CC = {
@@ -4088,7 +4269,7 @@
 		isa = PBXTextBookmark;
 		name = "if(largestY < NSHeight(defaultFrame))";
 		rLen = 0;
-		rLoc = 8454;
+		rLoc = 9466;
 		rType = 0;
 		vrLen = 441;
 		vrLoc = 6489;
@@ -4098,7 +4279,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 238";
 		rLen = 0;
-		rLoc = 7443;
+		rLoc = 8155;
 		rType = 0;
 		vrLen = 1177;
 		vrLoc = 5646;
@@ -4108,7 +4289,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 259";
 		rLen = 0;
-		rLoc = 10162;
+		rLoc = 11472;
 		rType = 0;
 		vrLen = 1364;
 		vrLoc = 6181;
@@ -4188,7 +4369,7 @@
 		isa = PBXTextBookmark;
 		name = "if(largestY < NSHeight(defaultFrame))";
 		rLen = 0;
-		rLoc = 8454;
+		rLoc = 9466;
 		rType = 0;
 		vrLen = 463;
 		vrLoc = 6527;
@@ -4198,7 +4379,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 240";
 		rLen = 0;
-		rLoc = 7457;
+		rLoc = 8169;
 		rType = 0;
 		vrLen = 1291;
 		vrLoc = 5955;
@@ -4268,7 +4449,7 @@
 		isa = PBXTextBookmark;
 		name = "if(largestY < NSHeight(defaultFrame))";
 		rLen = 0;
-		rLoc = 8454;
+		rLoc = 9466;
 		rType = 0;
 		vrLen = 441;
 		vrLoc = 6482;
@@ -4278,7 +4459,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 247";
 		rLen = 0;
-		rLoc = 7506;
+		rLoc = 8218;
 		rType = 0;
 		vrLen = 1277;
 		vrLoc = 5646;
@@ -4348,7 +4529,7 @@
 		isa = PBXTextBookmark;
 		name = "if(largestY < NSHeight(defaultFrame))";
 		rLen = 0;
-		rLoc = 8454;
+		rLoc = 9466;
 		rType = 0;
 		vrLen = 517;
 		vrLoc = 6513;
@@ -4358,7 +4539,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 252";
 		rLen = 0;
-		rLoc = 7459;
+		rLoc = 8171;
 		rType = 0;
 		vrLen = 1384;
 		vrLoc = 5646;
@@ -4428,7 +4609,7 @@
 		isa = PBXTextBookmark;
 		name = "if(largestY < NSHeight(defaultFrame))";
 		rLen = 0;
-		rLoc = 8454;
+		rLoc = 9466;
 		rType = 0;
 		vrLen = 522;
 		vrLoc = 6521;
@@ -4438,7 +4619,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 249";
 		rLen = 0;
-		rLoc = 7459;
+		rLoc = 8171;
 		rType = 0;
 		vrLen = 1372;
 		vrLoc = 5872;
@@ -4508,7 +4689,7 @@
 		isa = PBXTextBookmark;
 		name = "if(largestY < NSHeight(defaultFrame))";
 		rLen = 0;
-		rLoc = 8454;
+		rLoc = 9466;
 		rType = 0;
 		vrLen = 513;
 		vrLoc = 6515;
@@ -4518,7 +4699,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 245";
 		rLen = 0;
-		rLoc = 7459;
+		rLoc = 8171;
 		rType = 0;
 		vrLen = 1314;
 		vrLoc = 5872;
@@ -4588,7 +4769,7 @@
 		isa = PBXTextBookmark;
 		name = "if(largestY < NSHeight(defaultFrame))";
 		rLen = 0;
-		rLoc = 8454;
+		rLoc = 9466;
 		rType = 0;
 		vrLen = 513;
 		vrLoc = 6515;
@@ -4598,7 +4779,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 267";
 		rLen = 0;
-		rLoc = 8454;
+		rLoc = 9466;
 		rType = 0;
 		vrLen = 1209;
 		vrLoc = 6515;
@@ -4668,7 +4849,7 @@
 		isa = PBXTextBookmark;
 		name = "if(largestY < NSHeight(defaultFrame))";
 		rLen = 0;
-		rLoc = 8454;
+		rLoc = 9466;
 		rType = 0;
 		vrLen = 481;
 		vrLoc = 6507;
@@ -4678,7 +4859,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 49";
 		rLen = 0;
-		rLoc = 1248;
+		rLoc = 1334;
 		rType = 0;
 		vrLen = 1224;
 		vrLoc = 992;
@@ -4752,7 +4933,7 @@
 		isa = PBXTextBookmark;
 		name = "if(largestY < NSHeight(defaultFrame))";
 		rLen = 0;
-		rLoc = 8454;
+		rLoc = 9466;
 		rType = 0;
 		vrLen = 481;
 		vrLoc = 6507;
@@ -4789,7 +4970,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 49";
 		rLen = 0;
-		rLoc = 1248;
+		rLoc = 1334;
 		rType = 0;
 		vrLen = 1224;
 		vrLoc = 992;
@@ -4859,7 +5040,7 @@
 		isa = PBXTextBookmark;
 		name = "if(largestY < NSHeight(defaultFrame))";
 		rLen = 0;
-		rLoc = 8454;
+		rLoc = 9466;
 		rType = 0;
 		vrLen = 481;
 		vrLoc = 6507;
@@ -4889,7 +5070,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 49";
 		rLen = 0;
-		rLoc = 1248;
+		rLoc = 1334;
 		rType = 0;
 		vrLen = 1224;
 		vrLoc = 992;
@@ -4959,7 +5140,7 @@
 		isa = PBXTextBookmark;
 		name = "if(largestY < NSHeight(defaultFrame))";
 		rLen = 0;
-		rLoc = 8454;
+		rLoc = 9466;
 		rType = 0;
 		vrLen = 447;
 		vrLoc = 6513;
@@ -4969,7 +5150,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 242";
 		rLen = 0;
-		rLoc = 7456;
+		rLoc = 8168;
 		rType = 0;
 		vrLen = 1418;
 		vrLoc = 5918;
@@ -5059,7 +5240,7 @@
 		isa = PBXTextBookmark;
 		name = "if(largestY < NSHeight(defaultFrame))";
 		rLen = 0;
-		rLoc = 8454;
+		rLoc = 9466;
 		rType = 0;
 		vrLen = 447;
 		vrLoc = 6513;
@@ -5096,7 +5277,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 242";
 		rLen = 0;
-		rLoc = 7456;
+		rLoc = 8168;
 		rType = 0;
 		vrLen = 1418;
 		vrLoc = 5918;
@@ -5156,7 +5337,7 @@
 		fRef = 8B2448D108FB2080004716BC;
 		isa = PBXTextBookmark;
 		rLen = 1;
-		rLoc = 277;
+		rLoc = 292;
 		rType = 1;
 	};
 	8B9C74F5096CC2DD009ED6CC = {
@@ -5164,7 +5345,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 258";
 		rLen = 0;
-		rLoc = 7506;
+		rLoc = 8218;
 		rType = 0;
 		vrLen = 441;
 		vrLoc = 6513;
@@ -5174,7 +5355,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 259";
 		rLen = 0;
-		rLoc = 7506;
+		rLoc = 8218;
 		rType = 0;
 		vrLen = 1384;
 		vrLoc = 5918;
@@ -5254,7 +5435,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 258";
 		rLen = 0;
-		rLoc = 7506;
+		rLoc = 8218;
 		rType = 0;
 		vrLen = 445;
 		vrLoc = 6513;
@@ -5264,7 +5445,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 246";
 		rLen = 0;
-		rLoc = 7457;
+		rLoc = 8169;
 		rType = 0;
 		vrLen = 1392;
 		vrLoc = 5918;
@@ -5344,7 +5525,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 230";
 		rLen = 0;
-		rLoc = 6703;
+		rLoc = 7353;
 		rType = 0;
 		vrLen = 1001;
 		vrLoc = 5462;
@@ -5414,7 +5595,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 232";
 		rLen = 0;
-		rLoc = 5757;
+		rLoc = 6271;
 		rType = 0;
 		vrLen = 939;
 		vrLoc = 5462;
@@ -5498,7 +5679,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 269";
 		rLen = 0;
-		rLoc = 7506;
+		rLoc = 8218;
 		rType = 0;
 		vrLen = 543;
 		vrLoc = 6368;
@@ -5525,7 +5706,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 232";
 		rLen = 0;
-		rLoc = 5757;
+		rLoc = 6271;
 		rType = 0;
 		vrLen = 969;
 		vrLoc = 5462;
@@ -5605,7 +5786,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 271";
 		rLen = 0;
-		rLoc = 7506;
+		rLoc = 8218;
 		rType = 0;
 		vrLen = 544;
 		vrLoc = 6422;
@@ -5615,7 +5796,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 232";
 		rLen = 0;
-		rLoc = 5757;
+		rLoc = 6271;
 		rType = 0;
 		vrLen = 1061;
 		vrLoc = 5462;
@@ -5705,7 +5886,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 271";
 		rLen = 0;
-		rLoc = 7506;
+		rLoc = 8218;
 		rType = 0;
 		vrLen = 544;
 		vrLoc = 6432;
@@ -5715,7 +5896,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 229";
 		rLen = 0;
-		rLoc = 5756;
+		rLoc = 6270;
 		rType = 0;
 		vrLen = 1071;
 		vrLoc = 5462;
@@ -5805,7 +5986,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 274";
 		rLen = 0;
-		rLoc = 7506;
+		rLoc = 8218;
 		rType = 0;
 		vrLen = 588;
 		vrLoc = 6432;
@@ -5815,7 +5996,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 251";
 		rLen = 0;
-		rLoc = 7259;
+		rLoc = 7909;
 		rType = 0;
 		vrLen = 1410;
 		vrLoc = 5689;
@@ -5905,7 +6086,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 274";
 		rLen = 0;
-		rLoc = 7506;
+		rLoc = 8218;
 		rType = 0;
 		vrLen = 591;
 		vrLoc = 6435;
@@ -5915,7 +6096,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 282";
 		rLen = 0;
-		rLoc = 8454;
+		rLoc = 9466;
 		rType = 0;
 		vrLen = 1234;
 		vrLoc = 7073;
@@ -6005,7 +6186,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 274";
 		rLen = 0;
-		rLoc = 7506;
+		rLoc = 8218;
 		rType = 0;
 		vrLen = 591;
 		vrLoc = 6425;
@@ -6015,7 +6196,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 229";
 		rLen = 0;
-		rLoc = 5756;
+		rLoc = 6270;
 		rType = 0;
 		vrLen = 1406;
 		vrLoc = 5689;
@@ -6105,7 +6286,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 276";
 		rLen = 0;
-		rLoc = 7506;
+		rLoc = 8218;
 		rType = 0;
 		vrLen = 499;
 		vrLoc = 6449;
@@ -6115,7 +6296,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 235";
 		rLen = 0;
-		rLoc = 6702;
+		rLoc = 7352;
 		rType = 0;
 		vrLen = 1356;
 		vrLoc = 5689;
@@ -6205,7 +6386,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 276";
 		rLen = 0;
-		rLoc = 7506;
+		rLoc = 8218;
 		rType = 0;
 		vrLen = 499;
 		vrLoc = 6449;
@@ -6215,7 +6396,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 235";
 		rLen = 0;
-		rLoc = 6702;
+		rLoc = 7352;
 		rType = 0;
 		vrLen = 1356;
 		vrLoc = 5689;
@@ -6305,7 +6486,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 276";
 		rLen = 0;
-		rLoc = 7506;
+		rLoc = 8218;
 		rType = 0;
 		vrLen = 499;
 		vrLoc = 6449;
@@ -6315,7 +6496,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 235";
 		rLen = 0;
-		rLoc = 6639;
+		rLoc = 7289;
 		rType = 0;
 		vrLen = 1356;
 		vrLoc = 5689;
@@ -6405,7 +6586,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 276";
 		rLen = 0;
-		rLoc = 7506;
+		rLoc = 8218;
 		rType = 0;
 		vrLen = 499;
 		vrLoc = 6454;
@@ -6415,7 +6596,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 235";
 		rLen = 0;
-		rLoc = 6702;
+		rLoc = 7352;
 		rType = 0;
 		vrLen = 1361;
 		vrLoc = 5689;
@@ -6505,7 +6686,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 236";
 		rLen = 0;
-		rLoc = 6702;
+		rLoc = 7352;
 		rType = 0;
 		vrLen = 1343;
 		vrLoc = 5689;
@@ -6615,7 +6796,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 236";
 		rLen = 0;
-		rLoc = 6702;
+		rLoc = 7352;
 		rType = 0;
 		vrLen = 1343;
 		vrLoc = 5689;
@@ -6695,7 +6876,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 277";
 		rLen = 0;
-		rLoc = 7506;
+		rLoc = 8218;
 		rType = 0;
 		vrLen = 547;
 		vrLoc = 6405;
@@ -6715,7 +6896,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 236";
 		rLen = 0;
-		rLoc = 6702;
+		rLoc = 7352;
 		rType = 0;
 		vrLen = 1343;
 		vrLoc = 5689;
@@ -6795,7 +6976,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 277";
 		rLen = 0;
-		rLoc = 7506;
+		rLoc = 8218;
 		rType = 0;
 		vrLen = 547;
 		vrLoc = 6405;
@@ -6815,7 +6996,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 236";
 		rLen = 0;
-		rLoc = 6702;
+		rLoc = 7352;
 		rType = 0;
 		vrLen = 1343;
 		vrLoc = 5689;
@@ -6895,7 +7076,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 267";
 		rLen = 0;
-		rLoc = 7506;
+		rLoc = 8218;
 		rType = 0;
 		vrLen = 542;
 		vrLoc = 6405;
@@ -6905,7 +7086,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 275";
 		rLen = 0;
-		rLoc = 8454;
+		rLoc = 9466;
 		rType = 0;
 		vrLen = 1287;
 		vrLoc = 6486;
@@ -7015,7 +7196,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 236";
 		rLen = 0;
-		rLoc = 6702;
+		rLoc = 7352;
 		rType = 0;
 		vrLen = 1134;
 		vrLoc = 5337;
@@ -7099,7 +7280,7 @@
 		fRef = 8B2448D108FB2080004716BC;
 		isa = PBXTextBookmark;
 		rLen = 0;
-		rLoc = 251;
+		rLoc = 266;
 		rType = 1;
 	};
 	8B9C760C096DEDCF009ED6CC = {
@@ -7107,7 +7288,7 @@
 		isa = PBXTextBookmark;
 		name = "//\t[ fastRefresh:]";
 		rLen = 0;
-		rLoc = 6702;
+		rLoc = 7352;
 		rType = 0;
 		vrLen = 473;
 		vrLoc = 5917;
@@ -7154,7 +7335,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 236";
 		rLen = 0;
-		rLoc = 6702;
+		rLoc = 7352;
 		rType = 0;
 		vrLen = 1136;
 		vrLoc = 5337;
@@ -7234,7 +7415,7 @@
 		isa = PBXTextBookmark;
 		name = "//\t[ fastRefresh:]";
 		rLen = 0;
-		rLoc = 6702;
+		rLoc = 7352;
 		rType = 0;
 		vrLen = 473;
 		vrLoc = 5917;
@@ -7274,7 +7455,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 236";
 		rLen = 0;
-		rLoc = 6702;
+		rLoc = 7352;
 		rType = 0;
 		vrLen = 1136;
 		vrLoc = 5337;
@@ -7354,7 +7535,7 @@
 		isa = PBXTextBookmark;
 		name = "//\t[ fastRefresh:]";
 		rLen = 0;
-		rLoc = 6702;
+		rLoc = 7352;
 		rType = 0;
 		vrLen = 473;
 		vrLoc = 5917;
@@ -7394,7 +7575,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 236";
 		rLen = 0;
-		rLoc = 6702;
+		rLoc = 7352;
 		rType = 0;
 		vrLen = 1136;
 		vrLoc = 5337;
@@ -7474,7 +7655,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 237";
 		rLen = 0;
-		rLoc = 6702;
+		rLoc = 7352;
 		rType = 0;
 		vrLen = 478;
 		vrLoc = 5917;
@@ -7494,7 +7675,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 236";
 		rLen = 0;
-		rLoc = 6702;
+		rLoc = 7352;
 		rType = 0;
 		vrLen = 1136;
 		vrLoc = 5337;
@@ -7504,7 +7685,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 237";
 		rLen = 0;
-		rLoc = 6702;
+		rLoc = 7352;
 		rType = 0;
 		vrLen = 1088;
 		vrLoc = 5337;
@@ -7614,7 +7795,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 237";
 		rLen = 0;
-		rLoc = 6702;
+		rLoc = 7352;
 		rType = 0;
 		vrLen = 1088;
 		vrLoc = 5337;
@@ -7714,7 +7895,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 237";
 		rLen = 0;
-		rLoc = 6702;
+		rLoc = 7352;
 		rType = 0;
 		vrLen = 1088;
 		vrLoc = 5337;
@@ -7804,7 +7985,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 237";
 		rLen = 0;
-		rLoc = 6702;
+		rLoc = 7352;
 		rType = 0;
 		vrLen = 488;
 		vrLoc = 5917;
@@ -7824,7 +8005,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 237";
 		rLen = 0;
-		rLoc = 6702;
+		rLoc = 7352;
 		rType = 0;
 		vrLen = 1088;
 		vrLoc = 5337;
@@ -7834,7 +8015,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 236";
 		rLen = 0;
-		rLoc = 6702;
+		rLoc = 7352;
 		rType = 0;
 		vrLen = 1098;
 		vrLoc = 5337;
@@ -7954,7 +8135,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 237";
 		rLen = 0;
-		rLoc = 6702;
+		rLoc = 7352;
 		rType = 0;
 		vrLen = 488;
 		vrLoc = 5917;
@@ -7974,7 +8155,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 253";
 		rLen = 0;
-		rLoc = 7130;
+		rLoc = 7780;
 		rType = 0;
 		vrLen = 1265;
 		vrLoc = 5608;
@@ -8074,7 +8255,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 237";
 		rLen = 0;
-		rLoc = 6702;
+		rLoc = 7352;
 		rType = 0;
 		vrLen = 488;
 		vrLoc = 5917;
@@ -8094,7 +8275,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 254";
 		rLen = 0;
-		rLoc = 7132;
+		rLoc = 7782;
 		rType = 0;
 		vrLen = 1323;
 		vrLoc = 5751;
@@ -8194,7 +8375,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 237";
 		rLen = 0;
-		rLoc = 6702;
+		rLoc = 7352;
 		rType = 0;
 		vrLen = 488;
 		vrLoc = 5917;
@@ -8214,7 +8395,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 239";
 		rLen = 0;
-		rLoc = 6704;
+		rLoc = 7354;
 		rType = 0;
 		vrLen = 1323;
 		vrLoc = 5751;
@@ -8314,7 +8495,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 239";
 		rLen = 0;
-		rLoc = 6704;
+		rLoc = 7354;
 		rType = 0;
 		vrLen = 1323;
 		vrLoc = 5751;
@@ -8414,7 +8595,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 237";
 		rLen = 0;
-		rLoc = 6702;
+		rLoc = 7352;
 		rType = 0;
 		vrLen = 488;
 		vrLoc = 5917;
@@ -8434,7 +8615,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 239";
 		rLen = 0;
-		rLoc = 6704;
+		rLoc = 7354;
 		rType = 0;
 		vrLen = 1323;
 		vrLoc = 5751;
@@ -8534,7 +8715,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 247";
 		rLen = 0;
-		rLoc = 6702;
+		rLoc = 7352;
 		rType = 0;
 		vrLen = 349;
 		vrLoc = 5917;
@@ -8554,7 +8735,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 239";
 		rLen = 0;
-		rLoc = 6704;
+		rLoc = 7354;
 		rType = 0;
 		vrLen = 1323;
 		vrLoc = 5751;
@@ -8564,7 +8745,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 243";
 		rLen = 0;
-		rLoc = 6675;
+		rLoc = 7325;
 		rType = 0;
 		vrLen = 1013;
 		vrLoc = 5751;
@@ -8664,7 +8845,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 237";
 		rLen = 0;
-		rLoc = 6702;
+		rLoc = 7352;
 		rType = 0;
 		vrLen = 482;
 		vrLoc = 5917;
@@ -8684,7 +8865,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 237";
 		rLen = 0;
-		rLoc = 6702;
+		rLoc = 7352;
 		rType = 0;
 		vrLen = 1337;
 		vrLoc = 5751;
@@ -8784,7 +8965,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 236";
 		rLen = 0;
-		rLoc = 6638;
+		rLoc = 7288;
 		rType = 0;
 		vrLen = 1247;
 		vrLoc = 5751;
@@ -8884,7 +9065,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 236";
 		rLen = 0;
-		rLoc = 6638;
+		rLoc = 7288;
 		rType = 0;
 		vrLen = 1247;
 		vrLoc = 5751;
@@ -9004,7 +9185,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 236";
 		rLen = 0;
-		rLoc = 6638;
+		rLoc = 7288;
 		rType = 0;
 		vrLen = 1277;
 		vrLoc = 5751;
@@ -9104,7 +9285,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 236";
 		rLen = 0;
-		rLoc = 6638;
+		rLoc = 7288;
 		rType = 0;
 		vrLen = 1277;
 		vrLoc = 5751;
@@ -9194,7 +9375,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 240";
 		rLen = 0;
-		rLoc = 6702;
+		rLoc = 7352;
 		rType = 0;
 		vrLen = 413;
 		vrLoc = 5917;
@@ -9224,7 +9405,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 236";
 		rLen = 0;
-		rLoc = 6638;
+		rLoc = 7288;
 		rType = 0;
 		vrLen = 1277;
 		vrLoc = 5751;
@@ -9314,7 +9495,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 245";
 		rLen = 0;
-		rLoc = 6702;
+		rLoc = 7352;
 		rType = 0;
 		vrLen = 409;
 		vrLoc = 5893;
@@ -9334,7 +9515,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 236";
 		rLen = 0;
-		rLoc = 6638;
+		rLoc = 7288;
 		rType = 0;
 		vrLen = 1277;
 		vrLoc = 5751;
@@ -9344,7 +9525,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 172";
 		rLen = 0;
-		rLoc = 4275;
+		rLoc = 4789;
 		rType = 0;
 		vrLen = 817;
 		vrLoc = 3932;
@@ -9431,7 +9612,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 245";
 		rLen = 0;
-		rLoc = 6702;
+		rLoc = 7352;
 		rType = 0;
 		vrLen = 409;
 		vrLoc = 5893;
@@ -9478,7 +9659,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 201";
 		rLen = 0;
-		rLoc = 4823;
+		rLoc = 5337;
 		rType = 0;
 		vrLen = 1142;
 		vrLoc = 7862;
@@ -9552,7 +9733,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 245";
 		rLen = 0;
-		rLoc = 6702;
+		rLoc = 7352;
 		rType = 0;
 		vrLen = 409;
 		vrLoc = 5893;
@@ -9582,7 +9763,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 201";
 		rLen = 0;
-		rLoc = 4823;
+		rLoc = 5337;
 		rType = 0;
 		vrLen = 892;
 		vrLoc = 4317;
@@ -9592,7 +9773,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 244";
 		rLen = 0;
-		rLoc = 6675;
+		rLoc = 7325;
 		rType = 0;
 		vrLen = 1084;
 		vrLoc = 5578;
@@ -9682,7 +9863,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 242";
 		rLen = 0;
-		rLoc = 6702;
+		rLoc = 7352;
 		rType = 0;
 		vrLen = 365;
 		vrLoc = 5893;
@@ -9702,7 +9883,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 237";
 		rLen = 0;
-		rLoc = 6702;
+		rLoc = 7352;
 		rType = 0;
 		vrLen = 490;
 		vrLoc = 5917;
@@ -9796,7 +9977,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 275";
 		rLen = 0;
-		rLoc = 8454;
+		rLoc = 9466;
 		rType = 0;
 		vrLen = 1382;
 		vrLoc = 6554;
@@ -9866,7 +10047,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 237";
 		rLen = 0;
-		rLoc = 6702;
+		rLoc = 7352;
 		rType = 0;
 		vrLen = 490;
 		vrLoc = 5917;
@@ -9886,7 +10067,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 288";
 		rLen = 0;
-		rLoc = 8513;
+		rLoc = 9525;
 		rType = 0;
 		vrLen = 1432;
 		vrLoc = 7049;
@@ -9956,7 +10137,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 237";
 		rLen = 0;
-		rLoc = 6702;
+		rLoc = 7352;
 		rType = 0;
 		vrLen = 494;
 		vrLoc = 5917;
@@ -9976,7 +10157,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 232";
 		rLen = 0;
-		rLoc = 5968;
+		rLoc = 6482;
 		rType = 0;
 		vrLen = 1193;
 		vrLoc = 5537;
@@ -10046,7 +10227,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 237";
 		rLen = 0;
-		rLoc = 6702;
+		rLoc = 7352;
 		rType = 0;
 		vrLen = 494;
 		vrLoc = 5917;
@@ -10066,7 +10247,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 261";
 		rLen = 0;
-		rLoc = 7457;
+		rLoc = 8169;
 		rType = 0;
 		vrLen = 1516;
 		vrLoc = 6730;
@@ -10136,7 +10317,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 237";
 		rLen = 0;
-		rLoc = 6702;
+		rLoc = 7352;
 		rType = 0;
 		vrLen = 494;
 		vrLoc = 5917;
@@ -10156,7 +10337,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 267";
 		rLen = 0;
-		rLoc = 7459;
+		rLoc = 8171;
 		rType = 0;
 		vrLen = 1432;
 		vrLoc = 6730;
@@ -10226,7 +10407,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 275";
 		rLen = 0;
-		rLoc = 8216;
+		rLoc = 9228;
 		rType = 0;
 		vrLen = 1420;
 		vrLoc = 6730;
@@ -10296,7 +10477,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 278";
 		rLen = 0;
-		rLoc = 8453;
+		rLoc = 9465;
 		rType = 0;
 		vrLen = 1623;
 		vrLoc = 6256;
@@ -10366,7 +10547,7 @@
 		fRef = 8B2448D108FB2080004716BC;
 		isa = PBXTextBookmark;
 		rLen = 1;
-		rLoc = 307;
+		rLoc = 328;
 		rType = 1;
 	};
 	8B9C77D5096F6DC3009ED6CC = {
@@ -10374,7 +10555,7 @@
 		isa = PBXTextBookmark;
 		name = "stdFrame.origin.y -= newHeight;";
 		rLen = 36;
-		rLoc = 8681;
+		rLoc = 9693;
 		rType = 0;
 		vrLen = 592;
 		vrLoc = 7592;
@@ -10394,7 +10575,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 266";
 		rLen = 0;
-		rLoc = 7480;
+		rLoc = 8192;
 		rType = 0;
 		vrLen = 1624;
 		vrLoc = 6256;
@@ -10464,7 +10645,7 @@
 		isa = PBXTextBookmark;
 		name = "stdFrame.origin.y -= newHeight;";
 		rLen = 36;
-		rLoc = 8681;
+		rLoc = 9693;
 		rType = 0;
 		vrLen = 592;
 		vrLoc = 7560;
@@ -10484,7 +10665,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 232";
 		rLen = 0;
-		rLoc = 5968;
+		rLoc = 6482;
 		rType = 0;
 		vrLen = 1263;
 		vrLoc = 5806;
@@ -10554,7 +10735,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 276";
 		rLen = 0;
-		rLoc = 8193;
+		rLoc = 9205;
 		rType = 0;
 		vrLen = 1650;
 		vrLoc = 6526;
@@ -10624,7 +10805,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 276";
 		rLen = 0;
-		rLoc = 8193;
+		rLoc = 9205;
 		rType = 0;
 		vrLen = 1680;
 		vrLoc = 6526;
@@ -10694,7 +10875,7 @@
 		isa = PBXTextBookmark;
 		name = "stdFrame.origin.y -= newHeight;";
 		rLen = 36;
-		rLoc = 8681;
+		rLoc = 9693;
 		rType = 0;
 		vrLen = 614;
 		vrLoc = 7545;
@@ -10714,7 +10895,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 280";
 		rLen = 0;
-		rLoc = 8191;
+		rLoc = 9069;
 		rType = 0;
 		vrLen = 1510;
 		vrLoc = 6379;
@@ -10784,7 +10965,7 @@
 		isa = PBXTextBookmark;
 		name = "stdFrame.origin.y -= newHeight;";
 		rLen = 36;
-		rLoc = 8681;
+		rLoc = 9693;
 		rType = 0;
 		vrLen = 645;
 		vrLoc = 7545;
@@ -10804,7 +10985,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 280";
 		rLen = 0;
-		rLoc = 7770;
+		rLoc = 8714;
 		rType = 0;
 		vrLen = 1666;
 		vrLoc = 6639;
@@ -10874,7 +11055,7 @@
 		isa = PBXTextBookmark;
 		name = "stdFrame.origin.y -= newHeight;";
 		rLen = 36;
-		rLoc = 8681;
+		rLoc = 9693;
 		rType = 0;
 		vrLen = 646;
 		vrLoc = 7545;
@@ -10894,7 +11075,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 281";
 		rLen = 0;
-		rLoc = 7770;
+		rLoc = 8714;
 		rType = 0;
 		vrLen = 1712;
 		vrLoc = 6526;
@@ -10964,7 +11145,7 @@
 		isa = PBXTextBookmark;
 		name = "stdFrame.origin.y -= newHeight;";
 		rLen = 36;
-		rLoc = 8681;
+		rLoc = 9693;
 		rType = 0;
 		vrLen = 645;
 		vrLoc = 7545;
@@ -10984,7 +11165,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 278";
 		rLen = 0;
-		rLoc = 7751;
+		rLoc = 8562;
 		rType = 0;
 		vrLen = 1711;
 		vrLoc = 6526;
@@ -11054,7 +11235,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 273";
 		rLen = 0;
-		rLoc = 7554;
+		rLoc = 8266;
 		rType = 0;
 		vrLen = 1746;
 		vrLoc = 6526;
@@ -11128,7 +11309,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 286";
 		rLen = 0;
-		rLoc = 8191;
+		rLoc = 9069;
 		rType = 0;
 		vrLen = 1625;
 		vrLoc = 6526;
@@ -11208,7 +11389,7 @@
 		isa = PBXTextBookmark;
 		name = "stdFrame.origin.y -= newHeight;";
 		rLen = 36;
-		rLoc = 8681;
+		rLoc = 9693;
 		rType = 0;
 		vrLen = 621;
 		vrLoc = 7516;
@@ -11228,7 +11409,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 305";
 		rLen = 0;
-		rLoc = 8191;
+		rLoc = 9069;
 		rType = 0;
 		vrLen = 1570;
 		vrLoc = 7728;
@@ -11308,7 +11489,7 @@
 		isa = PBXTextBookmark;
 		name = "stdFrame.origin.y -= newHeight;";
 		rLen = 36;
-		rLoc = 8681;
+		rLoc = 9693;
 		rType = 0;
 		vrLen = 621;
 		vrLoc = 7516;
@@ -11328,7 +11509,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 306";
 		rLen = 0;
-		rLoc = 8191;
+		rLoc = 9069;
 		rType = 0;
 		vrLen = 1659;
 		vrLoc = 7518;
@@ -11408,7 +11589,7 @@
 		fRef = 8B2448D108FB2080004716BC;
 		isa = PBXTextBookmark;
 		rLen = 0;
-		rLoc = 296;
+		rLoc = 313;
 		rType = 1;
 	};
 	8B9C7860096F7895009ED6CC = {
@@ -11416,7 +11597,7 @@
 		isa = PBXTextBookmark;
 		name = "if(pixelWidth > defaultImageWidth && pixelHeight > defaultImageHeight)";
 		rLen = 0;
-		rLoc = 8191;
+		rLoc = 9069;
 		rType = 0;
 		vrLen = 473;
 		vrLoc = 7807;
@@ -11436,7 +11617,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 289";
 		rLen = 0;
-		rLoc = 8191;
+		rLoc = 9069;
 		rType = 0;
 		vrLen = 1598;
 		vrLoc = 7518;
@@ -11516,7 +11697,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 289";
 		rLen = 0;
-		rLoc = 8191;
+		rLoc = 9069;
 		rType = 0;
 		vrLen = 629;
 		vrLoc = 7807;
@@ -11536,7 +11717,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 288";
 		rLen = 0;
-		rLoc = 7908;
+		rLoc = 8866;
 		rType = 0;
 		vrLen = 1673;
 		vrLoc = 6984;
@@ -11616,7 +11797,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 289";
 		rLen = 0;
-		rLoc = 8191;
+		rLoc = 9069;
 		rType = 0;
 		vrLen = 629;
 		vrLoc = 7807;
@@ -11636,7 +11817,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 288";
 		rLen = 0;
-		rLoc = 7908;
+		rLoc = 8866;
 		rType = 0;
 		vrLen = 1673;
 		vrLoc = 6984;
@@ -11716,7 +11897,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 289";
 		rLen = 0;
-		rLoc = 8190;
+		rLoc = 9069;
 		rType = 0;
 		vrLen = 1631;
 		vrLoc = 6927;
@@ -11817,7 +11998,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 298";
 		rLen = 0;
-		rLoc = 8191;
+		rLoc = 9069;
 		rType = 0;
 		vrLen = 473;
 		vrLoc = 7807;
@@ -11837,7 +12018,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 294";
 		rLen = 0;
-		rLoc = 8082;
+		rLoc = 8961;
 		rType = 0;
 		vrLen = 1570;
 		vrLoc = 6927;
@@ -11917,7 +12098,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 300";
 		rLen = 0;
-		rLoc = 8191;
+		rLoc = 9069;
 		rType = 0;
 		vrLen = 446;
 		vrLoc = 7807;
@@ -11937,7 +12118,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 296";
 		rLen = 0;
-		rLoc = 8086;
+		rLoc = 8964;
 		rType = 0;
 		vrLen = 1459;
 		vrLoc = 6927;
@@ -12017,7 +12198,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 300";
 		rLen = 0;
-		rLoc = 8191;
+		rLoc = 9069;
 		rType = 0;
 		vrLen = 446;
 		vrLoc = 7807;
@@ -12037,7 +12218,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 294";
 		rLen = 0;
-		rLoc = 8082;
+		rLoc = 8961;
 		rType = 0;
 		vrLen = 1459;
 		vrLoc = 6927;
@@ -12121,7 +12302,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 236";
 		rLen = 0;
-		rLoc = 6675;
+		rLoc = 7325;
 		rType = 0;
 		vrLen = 1186;
 		vrLoc = 5751;
@@ -12211,7 +12392,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 305";
 		rLen = 0;
-		rLoc = 8191;
+		rLoc = 9069;
 		rType = 0;
 		vrLen = 525;
 		vrLoc = 7801;
@@ -12231,7 +12412,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 238";
 		rLen = 0;
-		rLoc = 6675;
+		rLoc = 7325;
 		rType = 0;
 		vrLen = 1258;
 		vrLoc = 5751;
@@ -12321,7 +12502,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 305";
 		rLen = 0;
-		rLoc = 8191;
+		rLoc = 9069;
 		rType = 0;
 		vrLen = 525;
 		vrLoc = 7801;
@@ -12341,7 +12522,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 241";
 		rLen = 0;
-		rLoc = 6675;
+		rLoc = 7325;
 		rType = 0;
 		vrLen = 1258;
 		vrLoc = 5751;
@@ -12431,7 +12612,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 305";
 		rLen = 0;
-		rLoc = 8191;
+		rLoc = 9069;
 		rType = 0;
 		vrLen = 529;
 		vrLoc = 7801;
@@ -12461,7 +12642,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 301";
 		rLen = 0;
-		rLoc = 8086;
+		rLoc = 8964;
 		rType = 0;
 		vrLen = 1553;
 		vrLoc = 7672;
@@ -12545,7 +12726,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 305";
 		rLen = 0;
-		rLoc = 8191;
+		rLoc = 9069;
 		rType = 0;
 		vrLen = 529;
 		vrLoc = 7801;
@@ -12585,7 +12766,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 301";
 		rLen = 0;
-		rLoc = 8086;
+		rLoc = 8964;
 		rType = 0;
 		vrLen = 1553;
 		vrLoc = 7672;
@@ -12665,7 +12846,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 305";
 		rLen = 0;
-		rLoc = 8191;
+		rLoc = 9069;
 		rType = 0;
 		vrLen = 529;
 		vrLoc = 7801;
@@ -12685,7 +12866,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 301";
 		rLen = 0;
-		rLoc = 8086;
+		rLoc = 8964;
 		rType = 0;
 		vrLen = 1444;
 		vrLoc = 5918;
@@ -12785,7 +12966,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 305";
 		rLen = 0;
-		rLoc = 8191;
+		rLoc = 9069;
 		rType = 0;
 		vrLen = 529;
 		vrLoc = 7801;
@@ -12815,7 +12996,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 301";
 		rLen = 0;
-		rLoc = 8086;
+		rLoc = 8964;
 		rType = 0;
 		vrLen = 1444;
 		vrLoc = 5918;
@@ -12905,7 +13086,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 306";
 		rLen = 0;
-		rLoc = 8191;
+		rLoc = 9069;
 		rType = 0;
 		vrLen = 600;
 		vrLoc = 7762;
@@ -12925,7 +13106,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 242";
 		rLen = 0;
-		rLoc = 6701;
+		rLoc = 7351;
 		rType = 0;
 		vrLen = 1451;
 		vrLoc = 5918;
@@ -13025,7 +13206,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 306";
 		rLen = 0;
-		rLoc = 8191;
+		rLoc = 9069;
 		rType = 0;
 		vrLen = 600;
 		vrLoc = 7760;
@@ -13045,7 +13226,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 242";
 		rLen = 0;
-		rLoc = 6701;
+		rLoc = 7351;
 		rType = 0;
 		vrLen = 1451;
 		vrLoc = 5918;
@@ -13055,7 +13236,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 217";
 		rLen = 0;
-		rLoc = 5439;
+		rLoc = 5953;
 		rType = 0;
 		vrLen = 1080;
 		vrLoc = 5098;
@@ -13155,7 +13336,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 306";
 		rLen = 0;
-		rLoc = 8191;
+		rLoc = 9069;
 		rType = 0;
 		vrLen = 600;
 		vrLoc = 7768;
@@ -13175,7 +13356,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 217";
 		rLen = 0;
-		rLoc = 5445;
+		rLoc = 5959;
 		rType = 0;
 		vrLen = 1088;
 		vrLoc = 5098;
@@ -13275,7 +13456,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 306";
 		rLen = 0;
-		rLoc = 8191;
+		rLoc = 9069;
 		rType = 0;
 		vrLen = 600;
 		vrLoc = 7788;
@@ -13295,7 +13476,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 217";
 		rLen = 0;
-		rLoc = 5445;
+		rLoc = 5959;
 		rType = 0;
 		vrLen = 1108;
 		vrLoc = 5098;
@@ -13416,7 +13597,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 306";
 		rLen = 0;
-		rLoc = 8191;
+		rLoc = 9069;
 		rType = 0;
 		vrLen = 600;
 		vrLoc = 7788;
@@ -13456,7 +13637,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 217";
 		rLen = 0;
-		rLoc = 5445;
+		rLoc = 5959;
 		rType = 0;
 		vrLen = 1108;
 		vrLoc = 5098;
@@ -13546,7 +13727,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 306";
 		rLen = 0;
-		rLoc = 8191;
+		rLoc = 9069;
 		rType = 0;
 		vrLen = 600;
 		vrLoc = 7788;
@@ -13586,7 +13767,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 217";
 		rLen = 0;
-		rLoc = 5445;
+		rLoc = 5959;
 		rType = 0;
 		vrLen = 1108;
 		vrLoc = 5098;
@@ -13676,7 +13857,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 306";
 		rLen = 0;
-		rLoc = 8191;
+		rLoc = 9069;
 		rType = 0;
 		vrLen = 600;
 		vrLoc = 7778;
@@ -13696,7 +13877,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 235";
 		rLen = 0;
-		rLoc = 6638;
+		rLoc = 7288;
 		rType = 0;
 		vrLen = 1323;
 		vrLoc = 5637;
@@ -13806,7 +13987,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 242";
 		rLen = 0;
-		rLoc = 6675;
+		rLoc = 7325;
 		rType = 0;
 		vrLen = 1335;
 		vrLoc = 5637;
@@ -13916,7 +14097,7 @@
 		fRef = 8B2448D108FB2080004716BC;
 		isa = PBXTextBookmark;
 		rLen = 0;
-		rLoc = 250;
+		rLoc = 265;
 		rType = 1;
 	};
 	8B9C79A1096F8592009ED6CC = {
@@ -13924,7 +14105,7 @@
 		isa = PBXTextBookmark;
 		name = "[[self document] redraw];";
 		rLen = 27;
-		rLoc = 6675;
+		rLoc = 7325;
 		rType = 0;
 		vrLen = 518;
 		vrLoc = 6137;
@@ -13964,7 +14145,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 242";
 		rLen = 0;
-		rLoc = 6675;
+		rLoc = 7325;
 		rType = 0;
 		vrLen = 1337;
 		vrLoc = 5637;
@@ -14054,7 +14235,7 @@
 		isa = PBXTextBookmark;
 		name = "[[self document] redraw];";
 		rLen = 27;
-		rLoc = 6675;
+		rLoc = 7325;
 		rType = 0;
 		vrLen = 518;
 		vrLoc = 6137;
@@ -14094,7 +14275,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 242";
 		rLen = 0;
-		rLoc = 6675;
+		rLoc = 7325;
 		rType = 0;
 		vrLen = 1337;
 		vrLoc = 5637;
@@ -14184,7 +14365,7 @@
 		isa = PBXTextBookmark;
 		name = "[[self document] redraw];";
 		rLen = 27;
-		rLoc = 6675;
+		rLoc = 7325;
 		rType = 0;
 		vrLen = 518;
 		vrLoc = 6137;
@@ -14224,7 +14405,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 242";
 		rLen = 0;
-		rLoc = 6675;
+		rLoc = 7325;
 		rType = 0;
 		vrLen = 1337;
 		vrLoc = 5637;
@@ -14334,7 +14515,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 242";
 		rLen = 0;
-		rLoc = 6675;
+		rLoc = 7325;
 		rType = 0;
 		vrLen = 1337;
 		vrLoc = 5637;
@@ -14424,7 +14605,7 @@
 		isa = PBXTextBookmark;
 		name = "[[self document] redraw];";
 		rLen = 27;
-		rLoc = 6675;
+		rLoc = 7325;
 		rType = 0;
 		vrLen = 518;
 		vrLoc = 6137;
@@ -14464,7 +14645,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 242";
 		rLen = 0;
-		rLoc = 6675;
+		rLoc = 7325;
 		rType = 0;
 		vrLen = 1337;
 		vrLoc = 5637;
@@ -14554,7 +14735,7 @@
 		isa = PBXTextBookmark;
 		name = "[[self document] redraw];";
 		rLen = 27;
-		rLoc = 6675;
+		rLoc = 7325;
 		rType = 0;
 		vrLen = 503;
 		vrLoc = 6137;
@@ -14574,7 +14755,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 241";
 		rLen = 0;
-		rLoc = 6675;
+		rLoc = 7325;
 		rType = 0;
 		vrLen = 1184;
 		vrLoc = 5777;
@@ -14684,7 +14865,7 @@
 		isa = PBXTextBookmark;
 		name = "[[self document] redraw];";
 		rLen = 27;
-		rLoc = 6675;
+		rLoc = 7325;
 		rType = 0;
 		vrLen = 502;
 		vrLoc = 6137;
@@ -14704,7 +14885,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 241";
 		rLen = 0;
-		rLoc = 6675;
+		rLoc = 7325;
 		rType = 0;
 		vrLen = 1183;
 		vrLoc = 5777;
@@ -14814,7 +14995,7 @@
 		isa = PBXTextBookmark;
 		name = "[[self document] redraw];";
 		rLen = 27;
-		rLoc = 6675;
+		rLoc = 7325;
 		rType = 0;
 		vrLen = 500;
 		vrLoc = 6137;
@@ -14834,7 +15015,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 241";
 		rLen = 0;
-		rLoc = 6675;
+		rLoc = 7325;
 		rType = 0;
 		vrLen = 1181;
 		vrLoc = 5777;
@@ -14944,7 +15125,7 @@
 		isa = PBXTextBookmark;
 		name = "[[self document] redraw];";
 		rLen = 27;
-		rLoc = 6675;
+		rLoc = 7325;
 		rType = 0;
 		vrLen = 471;
 		vrLoc = 6137;
@@ -14964,7 +15145,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 243";
 		rLen = 0;
-		rLoc = 6675;
+		rLoc = 7325;
 		rType = 0;
 		vrLen = 1177;
 		vrLoc = 5777;
@@ -15074,7 +15255,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 236";
 		rLen = 0;
-		rLoc = 6675;
+		rLoc = 7325;
 		rType = 0;
 		vrLen = 1221;
 		vrLoc = 5777;
@@ -15184,7 +15365,7 @@
 		isa = PBXTextBookmark;
 		name = "[[self document] redraw];";
 		rLen = 27;
-		rLoc = 6675;
+		rLoc = 7325;
 		rType = 0;
 		vrLen = 513;
 		vrLoc = 6137;
@@ -15204,7 +15385,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 250";
 		rLen = 0;
-		rLoc = 6857;
+		rLoc = 7507;
 		rType = 0;
 		vrLen = 1219;
 		vrLoc = 5777;
@@ -15314,7 +15495,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 245";
 		rLen = 0;
-		rLoc = 6701;
+		rLoc = 7351;
 		rType = 0;
 		vrLen = 489;
 		vrLoc = 6143;
@@ -15334,7 +15515,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 245";
 		rLen = 0;
-		rLoc = 6701;
+		rLoc = 7351;
 		rType = 0;
 		vrLen = 1359;
 		vrLoc = 6000;
@@ -15444,7 +15625,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 245";
 		rLen = 0;
-		rLoc = 6701;
+		rLoc = 7351;
 		rType = 0;
 		vrLen = 489;
 		vrLoc = 6143;
@@ -15474,7 +15655,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 251";
 		rLen = 0;
-		rLoc = 6857;
+		rLoc = 7507;
 		rType = 0;
 		vrLen = 1361;
 		vrLoc = 6000;
@@ -15574,7 +15755,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 245";
 		rLen = 0;
-		rLoc = 6701;
+		rLoc = 7351;
 		rType = 0;
 		vrLen = 489;
 		vrLoc = 6143;
@@ -15594,7 +15775,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 251";
 		rLen = 0;
-		rLoc = 6857;
+		rLoc = 7507;
 		rType = 0;
 		vrLen = 1361;
 		vrLoc = 6000;
@@ -15704,7 +15885,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 245";
 		rLen = 0;
-		rLoc = 6701;
+		rLoc = 7351;
 		rType = 0;
 		vrLen = 489;
 		vrLoc = 6143;
@@ -15724,7 +15905,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 244";
 		rLen = 0;
-		rLoc = 6679;
+		rLoc = 7329;
 		rType = 0;
 		vrLen = 1342;
 		vrLoc = 6000;
@@ -15834,7 +16015,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 246";
 		rLen = 0;
-		rLoc = 6701;
+		rLoc = 7351;
 		rType = 0;
 		vrLen = 470;
 		vrLoc = 6143;
@@ -15854,7 +16035,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 244";
 		rLen = 0;
-		rLoc = 6675;
+		rLoc = 7325;
 		rType = 0;
 		vrLen = 1373;
 		vrLoc = 6000;
@@ -15964,7 +16145,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 246";
 		rLen = 0;
-		rLoc = 6701;
+		rLoc = 7351;
 		rType = 0;
 		vrLen = 470;
 		vrLoc = 6143;
@@ -15984,7 +16165,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 244";
 		rLen = 0;
-		rLoc = 6675;
+		rLoc = 7325;
 		rType = 0;
 		vrLen = 1373;
 		vrLoc = 6000;
@@ -16094,7 +16275,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 246";
 		rLen = 0;
-		rLoc = 6701;
+		rLoc = 7351;
 		rType = 0;
 		vrLen = 470;
 		vrLoc = 6143;
@@ -16114,7 +16295,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 244";
 		rLen = 0;
-		rLoc = 6675;
+		rLoc = 7325;
 		rType = 0;
 		vrLen = 1373;
 		vrLoc = 6000;
@@ -16224,7 +16405,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 239";
 		rLen = 0;
-		rLoc = 6643;
+		rLoc = 7293;
 		rType = 0;
 		vrLen = 1381;
 		vrLoc = 6000;
@@ -16337,8 +16518,8 @@
 		comments = "warning: control reaches end of non-void function";
 		fRef = 8B2448D108FB2080004716BC;
 		isa = PBXTextBookmark;
-		rLen = 1;
-		rLoc = 363;
+		rLen = 0;
+		rLoc = 390;
 		rType = 1;
 	};
 	8B9C7AD4096F8E59009ED6CC = {
@@ -16346,7 +16527,7 @@
 		isa = PBXTextBookmark;
 		name = "}";
 		rLen = 2;
-		rLoc = 10161;
+		rLoc = 11471;
 		rType = 0;
 		vrLen = 405;
 		vrLoc = 9861;
@@ -16393,7 +16574,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 242";
 		rLen = 0;
-		rLoc = 6675;
+		rLoc = 7325;
 		rType = 0;
 		vrLen = 1419;
 		vrLoc = 6000;
@@ -16523,7 +16704,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 243";
 		rLen = 0;
-		rLoc = 6641;
+		rLoc = 7291;
 		rType = 0;
 		vrLen = 1489;
 		vrLoc = 7523;
@@ -16667,7 +16848,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 243";
 		rLen = 0;
-		rLoc = 6641;
+		rLoc = 7291;
 		rType = 0;
 		vrLen = 1489;
 		vrLoc = 7523;
@@ -16811,7 +16992,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 243";
 		rLen = 0;
-		rLoc = 6641;
+		rLoc = 7291;
 		rType = 0;
 		vrLen = 1489;
 		vrLoc = 7523;
@@ -16931,7 +17112,7 @@
 		isa = PBXTextBookmark;
 		name = "}";
 		rLen = 2;
-		rLoc = 10161;
+		rLoc = 11471;
 		rType = 0;
 		vrLen = 405;
 		vrLoc = 9930;
@@ -16951,7 +17132,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 231";
 		rLen = 0;
-		rLoc = 5968;
+		rLoc = 6482;
 		rType = 0;
 		vrLen = 1371;
 		vrLoc = 5941;
@@ -17081,7 +17262,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 231";
 		rLen = 0;
-		rLoc = 5968;
+		rLoc = 6482;
 		rType = 0;
 		vrLen = 1371;
 		vrLoc = 5941;
@@ -17201,7 +17382,7 @@
 		isa = PBXTextBookmark;
 		name = "}";
 		rLen = 2;
-		rLoc = 10161;
+		rLoc = 11471;
 		rType = 0;
 		vrLen = 405;
 		vrLoc = 9930;
@@ -17221,7 +17402,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 231";
 		rLen = 0;
-		rLoc = 5968;
+		rLoc = 6482;
 		rType = 0;
 		vrLen = 1371;
 		vrLoc = 5941;
@@ -17341,7 +17522,7 @@
 		isa = PBXTextBookmark;
 		name = "}";
 		rLen = 2;
-		rLoc = 10161;
+		rLoc = 11471;
 		rType = 0;
 		vrLen = 426;
 		vrLoc = 9937;
@@ -17361,7 +17542,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 232";
 		rLen = 0;
-		rLoc = 5968;
+		rLoc = 6482;
 		rType = 0;
 		vrLen = 1399;
 		vrLoc = 5941;
@@ -17481,7 +17662,7 @@
 		isa = PBXTextBookmark;
 		name = "}";
 		rLen = 2;
-		rLoc = 10161;
+		rLoc = 11471;
 		rType = 0;
 		vrLen = 429;
 		vrLoc = 9918;
@@ -17501,7 +17682,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 232";
 		rLen = 0;
-		rLoc = 5817;
+		rLoc = 6331;
 		rType = 0;
 		vrLen = 1313;
 		vrLoc = 5941;
@@ -17621,7 +17802,7 @@
 		isa = PBXTextBookmark;
 		name = "}";
 		rLen = 2;
-		rLoc = 10161;
+		rLoc = 11471;
 		rType = 0;
 		vrLen = 429;
 		vrLoc = 9918;
@@ -17688,7 +17869,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 232";
 		rLen = 0;
-		rLoc = 5817;
+		rLoc = 6331;
 		rType = 0;
 		vrLen = 1313;
 		vrLoc = 5941;
@@ -17813,7 +17994,7 @@
 		isa = PBXTextBookmark;
 		name = "}";
 		rLen = 2;
-		rLoc = 10161;
+		rLoc = 11471;
 		rType = 0;
 		vrLen = 429;
 		vrLoc = 9918;
@@ -17843,7 +18024,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 232";
 		rLen = 0;
-		rLoc = 5817;
+		rLoc = 6331;
 		rType = 0;
 		vrLen = 1313;
 		vrLoc = 5941;
@@ -17853,7 +18034,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 252";
 		rLen = 0;
-		rLoc = 6785;
+		rLoc = 7435;
 		rType = 0;
 		vrLen = 1313;
 		vrLoc = 5941;
@@ -17950,7 +18131,7 @@
 		fRef = 8B9C7BB1096F929C009ED6CC;
 		isa = PBXTextBookmark;
 		rLen = 1;
-		rLoc = 405;
+		rLoc = 432;
 		rType = 1;
 	};
 	8B9C7BB9096F92C6009ED6CC = {
@@ -17958,7 +18139,7 @@
 		isa = PBXTextBookmark;
 		name = "}";
 		rLen = 2;
-		rLoc = 10161;
+		rLoc = 11471;
 		rType = 0;
 		vrLen = 429;
 		vrLoc = 9918;
@@ -17998,7 +18179,7 @@
 		isa = PBXTextBookmark;
 		name = "@end";
 		rLen = 5;
-		rLoc = 11381;
+		rLoc = 12691;
 		rType = 0;
 		vrLen = 1142;
 		vrLoc = 10347;
@@ -18098,7 +18279,7 @@
 		isa = PBXTextBookmark;
 		name = "@end";
 		rLen = 5;
-		rLoc = 11381;
+		rLoc = 12691;
 		rType = 0;
 		vrLen = 1142;
 		vrLoc = 10347;
@@ -18188,7 +18369,7 @@
 		isa = PBXTextBookmark;
 		name = "}";
 		rLen = 2;
-		rLoc = 10161;
+		rLoc = 11471;
 		rType = 0;
 		vrLen = 429;
 		vrLoc = 9918;
@@ -18218,7 +18399,7 @@
 		isa = PBXTextBookmark;
 		name = "@end";
 		rLen = 5;
-		rLoc = 11381;
+		rLoc = 12691;
 		rType = 0;
 		vrLen = 1142;
 		vrLoc = 10347;
@@ -18308,7 +18489,7 @@
 		isa = PBXTextBookmark;
 		name = "}";
 		rLen = 2;
-		rLoc = 10161;
+		rLoc = 11471;
 		rType = 0;
 		vrLen = 426;
 		vrLoc = 9885;
@@ -18328,7 +18509,7 @@
 		isa = PBXTextBookmark;
 		name = "@end";
 		rLen = 5;
-		rLoc = 11381;
+		rLoc = 12691;
 		rType = 0;
 		vrLen = 1142;
 		vrLoc = 10347;
@@ -18338,7 +18519,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 120";
 		rLen = 0;
-		rLoc = 3325;
+		rLoc = 3384;
 		rType = 0;
 		vrLen = 783;
 		vrLoc = 3357;
@@ -18438,7 +18619,7 @@
 		isa = PBXTextBookmark;
 		name = "}";
 		rLen = 2;
-		rLoc = 10161;
+		rLoc = 11471;
 		rType = 0;
 		vrLen = 382;
 		vrLoc = 9907;
@@ -18458,7 +18639,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 115";
 		rLen = 0;
-		rLoc = 3322;
+		rLoc = 3381;
 		rType = 0;
 		vrLen = 1095;
 		vrLoc = 2820;
@@ -18558,7 +18739,7 @@
 		isa = PBXTextBookmark;
 		name = "}";
 		rLen = 2;
-		rLoc = 10161;
+		rLoc = 11471;
 		rType = 0;
 		vrLen = 382;
 		vrLoc = 9905;
@@ -18605,7 +18786,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 66";
 		rLen = 0;
-		rLoc = 1850;
+		rLoc = 1936;
 		rType = 0;
 		vrLen = 1351;
 		vrLoc = 1059;
@@ -18705,7 +18886,7 @@
 		isa = PBXTextBookmark;
 		name = "}";
 		rLen = 2;
-		rLoc = 10161;
+		rLoc = 11471;
 		rType = 0;
 		vrLen = 380;
 		vrLoc = 9892;
@@ -18725,7 +18906,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 88";
 		rLen = 0;
-		rLoc = 2472;
+		rLoc = 2557;
 		rType = 0;
 		vrLen = 1266;
 		vrLoc = 2328;
@@ -18825,7 +19006,7 @@
 		isa = PBXTextBookmark;
 		name = "}";
 		rLen = 2;
-		rLoc = 10161;
+		rLoc = 11471;
 		rType = 0;
 		vrLen = 384;
 		vrLoc = 9867;
@@ -18845,7 +19026,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 106";
 		rLen = 0;
-		rLoc = 2955;
+		rLoc = 3014;
 		rType = 0;
 		vrLen = 1241;
 		vrLoc = 2328;
@@ -18945,7 +19126,7 @@
 		isa = PBXTextBookmark;
 		name = "}";
 		rLen = 2;
-		rLoc = 10161;
+		rLoc = 11471;
 		rType = 0;
 		vrLen = 384;
 		vrLoc = 9867;
@@ -18965,7 +19146,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 97";
 		rLen = 0;
-		rLoc = 2760;
+		rLoc = 2819;
 		rType = 0;
 		vrLen = 1241;
 		vrLoc = 2328;
@@ -19065,7 +19246,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 98";
 		rLen = 0;
-		rLoc = 2759;
+		rLoc = 2818;
 		rType = 0;
 		vrLen = 1048;
 		vrLoc = 2328;
@@ -19165,7 +19346,7 @@
 		isa = PBXTextBookmark;
 		name = "}";
 		rLen = 2;
-		rLoc = 10161;
+		rLoc = 11471;
 		rType = 0;
 		vrLen = 538;
 		vrLoc = 9655;
@@ -19185,7 +19366,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 98";
 		rLen = 0;
-		rLoc = 2759;
+		rLoc = 2818;
 		rType = 0;
 		vrLen = 1095;
 		vrLoc = 2328;
@@ -19285,7 +19466,7 @@
 		isa = PBXTextBookmark;
 		name = "}";
 		rLen = 2;
-		rLoc = 10161;
+		rLoc = 11471;
 		rType = 0;
 		vrLen = 431;
 		vrLoc = 9859;
@@ -19305,7 +19486,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 135";
 		rLen = 0;
-		rLoc = 3670;
+		rLoc = 3729;
 		rType = 0;
 		vrLen = 880;
 		vrLoc = 3019;
@@ -19405,7 +19586,7 @@
 		isa = PBXTextBookmark;
 		name = "}";
 		rLen = 2;
-		rLoc = 10161;
+		rLoc = 11471;
 		rType = 0;
 		vrLen = 431;
 		vrLoc = 9859;
@@ -19445,7 +19626,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 135";
 		rLen = 0;
-		rLoc = 3670;
+		rLoc = 3729;
 		rType = 0;
 		vrLen = 880;
 		vrLoc = 3019;
@@ -19535,7 +19716,7 @@
 		isa = PBXTextBookmark;
 		name = "}";
 		rLen = 2;
-		rLoc = 10161;
+		rLoc = 11471;
 		rType = 0;
 		vrLen = 431;
 		vrLoc = 9859;
@@ -19565,7 +19746,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 135";
 		rLen = 0;
-		rLoc = 3670;
+		rLoc = 3729;
 		rType = 0;
 		vrLen = 880;
 		vrLoc = 3019;
@@ -19655,7 +19836,7 @@
 		isa = PBXTextBookmark;
 		name = "}";
 		rLen = 2;
-		rLoc = 10161;
+		rLoc = 11471;
 		rType = 0;
 		vrLen = 434;
 		vrLoc = 9850;
@@ -19675,7 +19856,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 136";
 		rLen = 0;
-		rLoc = 3668;
+		rLoc = 3727;
 		rType = 0;
 		vrLen = 895;
 		vrLoc = 3019;
@@ -19775,7 +19956,7 @@
 		isa = PBXTextBookmark;
 		name = "}";
 		rLen = 2;
-		rLoc = 10161;
+		rLoc = 11471;
 		rType = 0;
 		vrLen = 434;
 		vrLoc = 9850;
@@ -19805,7 +19986,7 @@
 		isa = PBXTextBookmark;
 		name = startProgressIndicator;
 		rLen = 22;
-		rLoc = 3363;
+		rLoc = 3422;
 		rType = 0;
 		vrLen = 895;
 		vrLoc = 3019;
@@ -19895,7 +20076,7 @@
 		isa = PBXTextBookmark;
 		name = "}";
 		rLen = 2;
-		rLoc = 10161;
+		rLoc = 11471;
 		rType = 0;
 		vrLen = 434;
 		vrLoc = 9850;
@@ -19915,7 +20096,7 @@
 		isa = PBXTextBookmark;
 		name = startProgressIndicator;
 		rLen = 22;
-		rLoc = 3363;
+		rLoc = 3422;
 		rType = 0;
 		vrLen = 895;
 		vrLoc = 3019;
@@ -20005,7 +20186,7 @@
 		isa = PBXTextBookmark;
 		name = "}";
 		rLen = 2;
-		rLoc = 10161;
+		rLoc = 11471;
 		rType = 0;
 		vrLen = 434;
 		vrLoc = 9850;
@@ -20035,7 +20216,7 @@
 		isa = PBXTextBookmark;
 		name = startProgressIndicator;
 		rLen = 22;
-		rLoc = 3363;
+		rLoc = 3422;
 		rType = 0;
 		vrLen = 895;
 		vrLoc = 3019;
@@ -20115,7 +20296,7 @@
 		isa = PBXTextBookmark;
 		name = "}";
 		rLen = 2;
-		rLoc = 10161;
+		rLoc = 11471;
 		rType = 0;
 		vrLen = 434;
 		vrLoc = 9850;
@@ -20165,7 +20346,7 @@
 		isa = PBXTextBookmark;
 		name = startProgressIndicator;
 		rLen = 22;
-		rLoc = 3363;
+		rLoc = 3422;
 		rType = 0;
 		vrLen = 895;
 		vrLoc = 3019;
@@ -20245,7 +20426,7 @@
 		isa = PBXTextBookmark;
 		name = "}";
 		rLen = 2;
-		rLoc = 10161;
+		rLoc = 11471;
 		rType = 0;
 		vrLen = 434;
 		vrLoc = 9850;
@@ -20285,7 +20466,7 @@
 		isa = PBXTextBookmark;
 		name = startProgressIndicator;
 		rLen = 22;
-		rLoc = 3363;
+		rLoc = 3422;
 		rType = 0;
 		vrLen = 895;
 		vrLoc = 3019;
@@ -20365,7 +20546,7 @@
 		isa = PBXTextBookmark;
 		name = "}";
 		rLen = 2;
-		rLoc = 10161;
+		rLoc = 11471;
 		rType = 0;
 		vrLen = 434;
 		vrLoc = 9850;
@@ -20405,7 +20586,7 @@
 		isa = PBXTextBookmark;
 		name = startProgressIndicator;
 		rLen = 22;
-		rLoc = 3363;
+		rLoc = 3422;
 		rType = 0;
 		vrLen = 895;
 		vrLoc = 3019;
@@ -20485,7 +20666,7 @@
 		isa = PBXTextBookmark;
 		name = "}";
 		rLen = 2;
-		rLoc = 10161;
+		rLoc = 11471;
 		rType = 0;
 		vrLen = 453;
 		vrLoc = 9815;
@@ -20505,7 +20686,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 139";
 		rLen = 0;
-		rLoc = 3721;
+		rLoc = 3780;
 		rType = 0;
 		vrLen = 958;
 		vrLoc = 2964;
@@ -20605,7 +20786,7 @@
 		isa = PBXTextBookmark;
 		name = "}";
 		rLen = 2;
-		rLoc = 10161;
+		rLoc = 11471;
 		rType = 0;
 		vrLen = 453;
 		vrLoc = 9815;
@@ -20625,7 +20806,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 139";
 		rLen = 0;
-		rLoc = 3721;
+		rLoc = 3780;
 		rType = 0;
 		vrLen = 958;
 		vrLoc = 2964;
@@ -20729,7 +20910,7 @@
 		isa = PBXTextBookmark;
 		name = "}";
 		rLen = 2;
-		rLoc = 10161;
+		rLoc = 11471;
 		rType = 0;
 		vrLen = 453;
 		vrLoc = 9815;
@@ -20759,7 +20940,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 139";
 		rLen = 0;
-		rLoc = 3721;
+		rLoc = 3780;
 		rType = 0;
 		vrLen = 958;
 		vrLoc = 2964;
@@ -20859,7 +21040,7 @@
 		isa = PBXTextBookmark;
 		name = "}";
 		rLen = 2;
-		rLoc = 10161;
+		rLoc = 11471;
 		rType = 0;
 		vrLen = 453;
 		vrLoc = 9815;
@@ -20889,7 +21070,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 139";
 		rLen = 0;
-		rLoc = 3721;
+		rLoc = 3780;
 		rType = 0;
 		vrLen = 958;
 		vrLoc = 2964;
@@ -20989,7 +21170,7 @@
 		isa = PBXTextBookmark;
 		name = "}";
 		rLen = 2;
-		rLoc = 10161;
+		rLoc = 11471;
 		rType = 0;
 		vrLen = 453;
 		vrLoc = 9815;
@@ -21019,7 +21200,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 139";
 		rLen = 0;
-		rLoc = 3721;
+		rLoc = 3780;
 		rType = 0;
 		vrLen = 958;
 		vrLoc = 2964;
@@ -21119,7 +21300,7 @@
 		isa = PBXTextBookmark;
 		name = "}";
 		rLen = 2;
-		rLoc = 10161;
+		rLoc = 11471;
 		rType = 0;
 		vrLen = 453;
 		vrLoc = 9815;
@@ -21159,7 +21340,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 139";
 		rLen = 0;
-		rLoc = 3721;
+		rLoc = 3780;
 		rType = 0;
 		vrLen = 958;
 		vrLoc = 2964;
@@ -21249,7 +21430,7 @@
 		isa = PBXTextBookmark;
 		name = "}";
 		rLen = 2;
-		rLoc = 10161;
+		rLoc = 11471;
 		rType = 0;
 		vrLen = 453;
 		vrLoc = 9823;
@@ -21269,7 +21450,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 139";
 		rLen = 0;
-		rLoc = 3721;
+		rLoc = 3780;
 		rType = 0;
 		vrLen = 958;
 		vrLoc = 2964;
@@ -21279,7 +21460,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 126";
 		rLen = 0;
-		rLoc = 3489;
+		rLoc = 3548;
 		rType = 0;
 		vrLen = 966;
 		vrLoc = 2964;
@@ -21423,7 +21604,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 126";
 		rLen = 0;
-		rLoc = 3489;
+		rLoc = 3548;
 		rType = 0;
 		vrLen = 966;
 		vrLoc = 2964;
@@ -21563,7 +21744,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 126";
 		rLen = 0;
-		rLoc = 3489;
+		rLoc = 3548;
 		rType = 0;
 		vrLen = 966;
 		vrLoc = 2964;
@@ -21633,7 +21814,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 126";
 		rLen = 0;
-		rLoc = 3489;
+		rLoc = 3548;
 		rType = 0;
 		vrLen = 966;
 		vrLoc = 2964;
@@ -21643,7 +21824,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 126";
 		rLen = 0;
-		rLoc = 3489;
+		rLoc = 3548;
 		rType = 0;
 		vrLen = 966;
 		vrLoc = 2964;
@@ -21723,7 +21904,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 145";
 		rLen = 0;
-		rLoc = 3837;
+		rLoc = 3896;
 		rType = 0;
 		vrLen = 894;
 		vrLoc = 2964;
@@ -21803,7 +21984,7 @@
 		isa = PBXTextBookmark;
 		name = "}";
 		rLen = 2;
-		rLoc = 10161;
+		rLoc = 11471;
 		rType = 0;
 		vrLen = 453;
 		vrLoc = 9751;
@@ -21823,7 +22004,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 122";
 		rLen = 0;
-		rLoc = 3395;
+		rLoc = 3454;
 		rType = 0;
 		vrLen = 894;
 		vrLoc = 2964;
@@ -21907,7 +22088,7 @@
 		isa = PBXTextBookmark;
 		name = "}";
 		rLen = 2;
-		rLoc = 10161;
+		rLoc = 11471;
 		rType = 0;
 		vrLen = 453;
 		vrLoc = 9751;
@@ -21927,7 +22108,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 122";
 		rLen = 0;
-		rLoc = 3395;
+		rLoc = 3454;
 		rType = 0;
 		vrLen = 996;
 		vrLoc = 2816;
@@ -22011,7 +22192,7 @@
 		isa = PBXTextBookmark;
 		name = "}";
 		rLen = 2;
-		rLoc = 10161;
+		rLoc = 11471;
 		rType = 0;
 		vrLen = 453;
 		vrLoc = 9751;
@@ -22041,7 +22222,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 122";
 		rLen = 0;
-		rLoc = 3395;
+		rLoc = 3454;
 		rType = 0;
 		vrLen = 996;
 		vrLoc = 2816;
@@ -22121,7 +22302,7 @@
 		isa = PBXTextBookmark;
 		name = "}";
 		rLen = 2;
-		rLoc = 10161;
+		rLoc = 11471;
 		rType = 0;
 		vrLen = 453;
 		vrLoc = 9751;
@@ -22161,7 +22342,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 122";
 		rLen = 0;
-		rLoc = 3395;
+		rLoc = 3454;
 		rType = 0;
 		vrLen = 996;
 		vrLoc = 2816;
@@ -22241,7 +22422,7 @@
 		isa = PBXTextBookmark;
 		name = "}";
 		rLen = 2;
-		rLoc = 10161;
+		rLoc = 11471;
 		rType = 0;
 		vrLen = 488;
 		vrLoc = 9759;
@@ -22261,7 +22442,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 122";
 		rLen = 0;
-		rLoc = 3395;
+		rLoc = 3454;
 		rType = 0;
 		vrLen = 996;
 		vrLoc = 2816;
@@ -22271,7 +22452,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 243";
 		rLen = 0;
-		rLoc = 6638;
+		rLoc = 7288;
 		rType = 0;
 		vrLen = 1377;
 		vrLoc = 5423;
@@ -22361,7 +22542,7 @@
 		isa = PBXTextBookmark;
 		name = "}";
 		rLen = 2;
-		rLoc = 10161;
+		rLoc = 11471;
 		rType = 0;
 		vrLen = 470;
 		vrLoc = 9793;
@@ -22381,7 +22562,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 245";
 		rLen = 0;
-		rLoc = 6638;
+		rLoc = 7288;
 		rType = 0;
 		vrLen = 1395;
 		vrLoc = 5423;
@@ -22471,7 +22652,7 @@
 		isa = PBXTextBookmark;
 		name = "}";
 		rLen = 2;
-		rLoc = 10161;
+		rLoc = 11471;
 		rType = 0;
 		vrLen = 470;
 		vrLoc = 9793;
@@ -22491,7 +22672,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 245";
 		rLen = 0;
-		rLoc = 6638;
+		rLoc = 7288;
 		rType = 0;
 		vrLen = 1395;
 		vrLoc = 5423;
@@ -22608,7 +22789,7 @@
 		isa = PBXTextBookmark;
 		name = "}";
 		rLen = 2;
-		rLoc = 10161;
+		rLoc = 11471;
 		rType = 0;
 		vrLen = 470;
 		vrLoc = 9807;
@@ -22628,7 +22809,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 243";
 		rLen = 0;
-		rLoc = 6638;
+		rLoc = 7288;
 		rType = 0;
 		vrLen = 1409;
 		vrLoc = 5423;
@@ -22728,7 +22909,7 @@
 		isa = PBXTextBookmark;
 		name = "}";
 		rLen = 2;
-		rLoc = 10161;
+		rLoc = 11471;
 		rType = 0;
 		vrLen = 429;
 		vrLoc = 9917;
@@ -22848,7 +23029,7 @@
 		isa = PBXTextBookmark;
 		name = "}";
 		rLen = 2;
-		rLoc = 10161;
+		rLoc = 11471;
 		rType = 0;
 		vrLen = 406;
 		vrLoc = 9901;
@@ -22868,7 +23049,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 243";
 		rLen = 0;
-		rLoc = 6413;
+		rLoc = 6822;
 		rType = 0;
 		vrLen = 1379;
 		vrLoc = 5708;
@@ -22958,7 +23139,7 @@
 		isa = PBXTextBookmark;
 		name = "}";
 		rLen = 2;
-		rLoc = 10161;
+		rLoc = 11471;
 		rType = 0;
 		vrLen = 514;
 		vrLoc = 9780;
@@ -22978,7 +23159,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 251";
 		rLen = 0;
-		rLoc = 6636;
+		rLoc = 7286;
 		rType = 0;
 		vrLen = 1360;
 		vrLoc = 5708;
@@ -23068,7 +23249,7 @@
 		isa = PBXTextBookmark;
 		name = "}";
 		rLen = 2;
-		rLoc = 10161;
+		rLoc = 11471;
 		rType = 0;
 		vrLen = 514;
 		vrLoc = 9787;
@@ -23088,7 +23269,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 241";
 		rLen = 0;
-		rLoc = 6368;
+		rLoc = 6822;
 		rType = 0;
 		vrLen = 1367;
 		vrLoc = 5708;
@@ -23178,7 +23359,7 @@
 		isa = PBXTextBookmark;
 		name = "}";
 		rLen = 2;
-		rLoc = 10161;
+		rLoc = 11471;
 		rType = 0;
 		vrLen = 380;
 		vrLoc = 9890;
@@ -23198,7 +23379,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 250";
 		rLen = 0;
-		rLoc = 6638;
+		rLoc = 7288;
 		rType = 0;
 		vrLen = 1321;
 		vrLoc = 5708;
@@ -23288,7 +23469,7 @@
 		isa = PBXTextBookmark;
 		name = "}";
 		rLen = 2;
-		rLoc = 10161;
+		rLoc = 11471;
 		rType = 0;
 		vrLen = 380;
 		vrLoc = 9890;
@@ -23318,7 +23499,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 250";
 		rLen = 0;
-		rLoc = 6638;
+		rLoc = 7288;
 		rType = 0;
 		vrLen = 1073;
 		vrLoc = 4801;
@@ -23398,7 +23579,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 250";
 		rLen = 0;
-		rLoc = 6638;
+		rLoc = 7288;
 		rType = 0;
 		vrLen = 1073;
 		vrLoc = 4801;
@@ -23418,7 +23599,7 @@
 		isa = PBXTextBookmark;
 		name = "}";
 		rLen = 2;
-		rLoc = 10161;
+		rLoc = 11471;
 		rType = 0;
 		vrLen = 380;
 		vrLoc = 9890;
@@ -23438,7 +23619,7 @@
 		isa = PBXTextBookmark;
 		name = "}";
 		rLen = 2;
-		rLoc = 10161;
+		rLoc = 11471;
 		rType = 0;
 		vrLen = 380;
 		vrLoc = 9890;
@@ -23458,7 +23639,7 @@
 		isa = PBXTextBookmark;
 		name = "VitaminSEEWindowController.m: 250";
 		rLen = 0;
-		rLoc = 6638;
+		rLoc = 7288;
 		rType = 0;
 		vrLen = 1073;
 		vrLoc = 4801;
@@ -23478,7 +23659,7 @@
 		isa = PBXTextBookmark;
 		name = "}";
 		rLen = 2;
-		rLoc = 10161;
+		rLoc = 11471;
 		rType = 0;
 		vrLen = 380;
 		vrLoc = 9890;
@@ -23498,7 +23679,7 @@
 		isa = PBXTextBookmark;
 		name = "}";
 		rLen = 2;
-		rLoc = 10161;
+		rLoc = 11471;
 		rType = 0;
 		vrLen = 380;
 		vrLoc = 9890;
@@ -23512,6 +23693,1803 @@
 		rType = 0;
 		vrLen = 566;
 		vrLoc = 17930;
+	};
+	8B9C7EF009703020009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "}";
+		rLen = 2;
+		rLoc = 11471;
+		rType = 0;
+		vrLen = 380;
+		vrLoc = 9890;
+	};
+	8B9C7EF109703020009ED6CC = {
+		fRef = 8B2448B308FB2033004716BC;
+		isa = PBXTextBookmark;
+		name = "RBSplitView.m: 545";
+		rLen = 0;
+		rLoc = 18192;
+		rType = 0;
+		vrLen = 566;
+		vrLoc = 17930;
+	};
+	8B9C7EF6097030B3009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "}";
+		rLen = 2;
+		rLoc = 11471;
+		rType = 0;
+		vrLen = 461;
+		vrLoc = 9725;
+	};
+	8B9C7EF7097030B3009ED6CC = {
+		fRef = 8B2448B308FB2033004716BC;
+		isa = PBXTextBookmark;
+		name = "RBSplitView.m: 545";
+		rLen = 0;
+		rLoc = 18192;
+		rType = 0;
+		vrLen = 566;
+		vrLoc = 17930;
+	};
+	8B9C7EFA097030FD009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "}";
+		rLen = 2;
+		rLoc = 11471;
+		rType = 0;
+		vrLen = 424;
+		vrLoc = 9825;
+	};
+	8B9C7EFB097030FD009ED6CC = {
+		fRef = 8B2448B308FB2033004716BC;
+		isa = PBXTextBookmark;
+		name = "RBSplitView.m: 545";
+		rLen = 0;
+		rLoc = 18192;
+		rType = 0;
+		vrLen = 566;
+		vrLoc = 17930;
+	};
+	8B9C7EFC097030FF009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "VitaminSEEWindowController.m: 349";
+		rLen = 0;
+		rLoc = 10517;
+		rType = 0;
+		vrLen = 1064;
+		vrLoc = 8761;
+	};
+	8B9C7EFF09703113009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "}";
+		rLen = 2;
+		rLoc = 11471;
+		rType = 0;
+		vrLen = 424;
+		vrLoc = 9827;
+	};
+	8B9C7F0009703113009ED6CC = {
+		fRef = 8B2448B308FB2033004716BC;
+		isa = PBXTextBookmark;
+		name = "RBSplitView.m: 545";
+		rLen = 0;
+		rLoc = 18192;
+		rType = 0;
+		vrLen = 566;
+		vrLoc = 17930;
+	};
+	8B9C7F0109703114009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "VitaminSEEWindowController.m: 270";
+		rLen = 0;
+		rLoc = 7918;
+		rType = 0;
+		vrLen = 1295;
+		vrLoc = 7029;
+	};
+	8B9C7F060970317A009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "}";
+		rLen = 2;
+		rLoc = 11471;
+		rType = 0;
+		vrLen = 416;
+		vrLoc = 9759;
+	};
+	8B9C7F070970317A009ED6CC = {
+		fRef = 8B2448B308FB2033004716BC;
+		isa = PBXTextBookmark;
+		name = "RBSplitView.m: 545";
+		rLen = 0;
+		rLoc = 18192;
+		rType = 0;
+		vrLen = 566;
+		vrLoc = 17930;
+	};
+	8B9C7F080970317B009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "VitaminSEEWindowController.m: 348";
+		rLen = 17;
+		rLoc = 10446;
+		rType = 0;
+		vrLen = 904;
+		vrLoc = 9302;
+	};
+	8B9C7F0B09703190009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "VitaminSEEWindowController.m: 336";
+		rLen = 0;
+		rLoc = 10309;
+		rType = 0;
+		vrLen = 1010;
+		vrLoc = 9302;
+	};
+	8B9C7F0E097031D4009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "}";
+		rLen = 2;
+		rLoc = 11471;
+		rType = 0;
+		vrLen = 382;
+		vrLoc = 9949;
+	};
+	8B9C7F0F097031D4009ED6CC = {
+		fRef = 8B2448B308FB2033004716BC;
+		isa = PBXTextBookmark;
+		name = "RBSplitView.m: 545";
+		rLen = 0;
+		rLoc = 18192;
+		rType = 0;
+		vrLen = 566;
+		vrLoc = 17930;
+	};
+	8B9C7F10097031D5009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "VitaminSEEWindowController.m: 305";
+		rLen = 0;
+		rLoc = 9069;
+		rType = 0;
+		vrLen = 1382;
+		vrLoc = 7088;
+	};
+	8B9C7F13097031FF009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "}";
+		rLen = 2;
+		rLoc = 11471;
+		rType = 0;
+		vrLen = 382;
+		vrLoc = 9949;
+	};
+	8B9C7F14097031FF009ED6CC = {
+		fRef = 8B2448B308FB2033004716BC;
+		isa = PBXTextBookmark;
+		name = "RBSplitView.m: 545";
+		rLen = 0;
+		rLoc = 18192;
+		rType = 0;
+		vrLen = 566;
+		vrLoc = 17930;
+	};
+	8B9C7F1509703200009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "VitaminSEEWindowController.m: 289";
+		rLen = 0;
+		rLoc = 8961;
+		rType = 0;
+		vrLen = 1382;
+		vrLoc = 7088;
+	};
+	8B9C7F1809703222009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "}";
+		rLen = 2;
+		rLoc = 11471;
+		rType = 0;
+		vrLen = 382;
+		vrLoc = 9949;
+	};
+	8B9C7F1909703222009ED6CC = {
+		fRef = 8B2448B308FB2033004716BC;
+		isa = PBXTextBookmark;
+		name = "RBSplitView.m: 545";
+		rLen = 0;
+		rLoc = 18192;
+		rType = 0;
+		vrLen = 566;
+		vrLoc = 17930;
+	};
+	8B9C7F1A09703223009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "VitaminSEEWindowController.m: 289";
+		rLen = 0;
+		rLoc = 8961;
+		rType = 0;
+		vrLen = 1382;
+		vrLoc = 7088;
+	};
+	8B9C7F1D09703236009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "}";
+		rLen = 2;
+		rLoc = 11471;
+		rType = 0;
+		vrLen = 382;
+		vrLoc = 9949;
+	};
+	8B9C7F1E09703236009ED6CC = {
+		fRef = 8B2448B308FB2033004716BC;
+		isa = PBXTextBookmark;
+		name = "RBSplitView.m: 545";
+		rLen = 0;
+		rLoc = 18192;
+		rType = 0;
+		vrLen = 566;
+		vrLoc = 17930;
+	};
+	8B9C7F1F09703238009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "VitaminSEEWindowController.m: 289";
+		rLen = 0;
+		rLoc = 8961;
+		rType = 0;
+		vrLen = 1382;
+		vrLoc = 7088;
+	};
+	8B9C7F220970342E009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "}";
+		rLen = 2;
+		rLoc = 11471;
+		rType = 0;
+		vrLen = 382;
+		vrLoc = 9949;
+	};
+	8B9C7F230970342E009ED6CC = {
+		fRef = 8B2448B308FB2033004716BC;
+		isa = PBXTextBookmark;
+		name = "RBSplitView.m: 545";
+		rLen = 0;
+		rLoc = 18192;
+		rType = 0;
+		vrLen = 566;
+		vrLoc = 17930;
+	};
+	8B9C7F240970342F009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "VitaminSEEWindowController.m: 372";
+		rLen = 0;
+		rLoc = 11471;
+		rType = 0;
+		vrLen = 1132;
+		vrLoc = 9849;
+	};
+	8B9C7F2B097034C8009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "}";
+		rLen = 2;
+		rLoc = 11471;
+		rType = 0;
+		vrLen = 382;
+		vrLoc = 9949;
+	};
+	8B9C7F2C097034C8009ED6CC = {
+		fRef = 8B2448B308FB2033004716BC;
+		isa = PBXTextBookmark;
+		name = "RBSplitView.m: 545";
+		rLen = 0;
+		rLoc = 18192;
+		rType = 0;
+		vrLen = 566;
+		vrLoc = 17930;
+	};
+	8B9C7F2D097034C9009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "VitaminSEEWindowController.m: 374";
+		rLen = 0;
+		rLoc = 11471;
+		rType = 0;
+		vrLen = 1086;
+		vrLoc = 9849;
+	};
+	8B9C7F30097034FE009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "}";
+		rLen = 2;
+		rLoc = 11471;
+		rType = 0;
+		vrLen = 262;
+		vrLoc = 9949;
+	};
+	8B9C7F31097034FE009ED6CC = {
+		fRef = 8B2448B308FB2033004716BC;
+		isa = PBXTextBookmark;
+		name = "RBSplitView.m: 545";
+		rLen = 0;
+		rLoc = 18192;
+		rType = 0;
+		vrLen = 566;
+		vrLoc = 17930;
+	};
+	8B9C7F32097034FF009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "VitaminSEEWindowController.m: 360";
+		rLen = 0;
+		rLoc = 10941;
+		rType = 0;
+		vrLen = 1077;
+		vrLoc = 9849;
+	};
+	8B9C7F330970363B009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "}";
+		rLen = 2;
+		rLoc = 11471;
+		rType = 0;
+		vrLen = 262;
+		vrLoc = 9949;
+	};
+	8B9C7F340970363B009ED6CC = {
+		fRef = 8B2448B308FB2033004716BC;
+		isa = PBXTextBookmark;
+		name = "RBSplitView.m: 545";
+		rLen = 0;
+		rLoc = 18192;
+		rType = 0;
+		vrLen = 566;
+		vrLoc = 17930;
+	};
+	8B9C7F350970363C009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "VitaminSEEWindowController.m: 381";
+		rLen = 0;
+		rLoc = 11901;
+		rType = 0;
+		vrLen = 1407;
+		vrLoc = 8470;
+	};
+	8B9C7F3609703684009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "}";
+		rLen = 2;
+		rLoc = 11471;
+		rType = 0;
+		vrLen = 262;
+		vrLoc = 9949;
+	};
+	8B9C7F3709703684009ED6CC = {
+		fRef = 8B2448B308FB2033004716BC;
+		isa = PBXTextBookmark;
+		name = "RBSplitView.m: 545";
+		rLen = 0;
+		rLoc = 18192;
+		rType = 0;
+		vrLen = 566;
+		vrLoc = 17930;
+	};
+	8B9C7F3809703685009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "VitaminSEEWindowController.m: 279";
+		rLen = 0;
+		rLoc = 8267;
+		rType = 0;
+		vrLen = 1395;
+		vrLoc = 6702;
+	};
+	8B9C7F3B097036F7009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "}";
+		rLen = 2;
+		rLoc = 11471;
+		rType = 0;
+		vrLen = 262;
+		vrLoc = 9950;
+	};
+	8B9C7F3C097036F7009ED6CC = {
+		fRef = 8B2448B308FB2033004716BC;
+		isa = PBXTextBookmark;
+		name = "RBSplitView.m: 545";
+		rLen = 0;
+		rLoc = 18192;
+		rType = 0;
+		vrLen = 566;
+		vrLoc = 17930;
+	};
+	8B9C7F3D097036F8009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "VitaminSEEWindowController.m: 351";
+		rLen = 0;
+		rLoc = 10500;
+		rType = 0;
+		vrLen = 943;
+		vrLoc = 9269;
+	};
+	8B9C7F3E0970373D009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "}";
+		rLen = 2;
+		rLoc = 11471;
+		rType = 0;
+		vrLen = 262;
+		vrLoc = 9950;
+	};
+	8B9C7F3F0970373D009ED6CC = {
+		fRef = 8B2448B308FB2033004716BC;
+		isa = PBXTextBookmark;
+		name = "RBSplitView.m: 545";
+		rLen = 0;
+		rLoc = 18192;
+		rType = 0;
+		vrLen = 566;
+		vrLoc = 17930;
+	};
+	8B9C7F400970373E009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "VitaminSEEWindowController.m: 351";
+		rLen = 0;
+		rLoc = 10500;
+		rType = 0;
+		vrLen = 1163;
+		vrLoc = 8787;
+	};
+	8B9C7F43097037C9009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "}";
+		rLen = 2;
+		rLoc = 11471;
+		rType = 0;
+		vrLen = 377;
+		vrLoc = 9851;
+	};
+	8B9C7F44097037C9009ED6CC = {
+		fRef = 8B2448B308FB2033004716BC;
+		isa = PBXTextBookmark;
+		name = "RBSplitView.m: 545";
+		rLen = 0;
+		rLoc = 18192;
+		rType = 0;
+		vrLen = 566;
+		vrLoc = 17930;
+	};
+	8B9C7F45097037CA009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "VitaminSEEWindowController.m: 363";
+		rLen = 0;
+		rLoc = 11471;
+		rType = 0;
+		vrLen = 976;
+		vrLoc = 9453;
+	};
+	8B9C7F48097037F6009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "}";
+		rLen = 2;
+		rLoc = 11471;
+		rType = 0;
+		vrLen = 380;
+		vrLoc = 9851;
+	};
+	8B9C7F49097037F6009ED6CC = {
+		fRef = 8B2448B308FB2033004716BC;
+		isa = PBXTextBookmark;
+		name = "RBSplitView.m: 545";
+		rLen = 0;
+		rLoc = 18192;
+		rType = 0;
+		vrLen = 566;
+		vrLoc = 17930;
+	};
+	8B9C7F4A097037F7009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "VitaminSEEWindowController.m: 363";
+		rLen = 0;
+		rLoc = 11471;
+		rType = 0;
+		vrLen = 979;
+		vrLoc = 9453;
+	};
+	8B9C7F4D0970381C009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "}";
+		rLen = 2;
+		rLoc = 11471;
+		rType = 0;
+		vrLen = 344;
+		vrLoc = 9884;
+	};
+	8B9C7F4E0970381C009ED6CC = {
+		fRef = 8B2448B308FB2033004716BC;
+		isa = PBXTextBookmark;
+		name = "RBSplitView.m: 545";
+		rLen = 0;
+		rLoc = 18192;
+		rType = 0;
+		vrLen = 566;
+		vrLoc = 17930;
+	};
+	8B9C7F4F0970381D009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "VitaminSEEWindowController.m: 278";
+		rLen = 0;
+		rLoc = 8265;
+		rType = 0;
+		vrLen = 1373;
+		vrLoc = 7130;
+	};
+	8B9C7F5209703856009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "}";
+		rLen = 2;
+		rLoc = 11471;
+		rType = 0;
+		vrLen = 344;
+		vrLoc = 9917;
+	};
+	8B9C7F5309703856009ED6CC = {
+		fRef = 8B2448B308FB2033004716BC;
+		isa = PBXTextBookmark;
+		name = "RBSplitView.m: 545";
+		rLen = 0;
+		rLoc = 18192;
+		rType = 0;
+		vrLen = 566;
+		vrLoc = 17930;
+	};
+	8B9C7F5409703857009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "VitaminSEEWindowController.m: 246";
+		rLen = 0;
+		rLoc = 6822;
+		rType = 0;
+		vrLen = 1478;
+		vrLoc = 5815;
+	};
+	8B9C7F570970386C009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "}";
+		rLen = 2;
+		rLoc = 11471;
+		rType = 0;
+		vrLen = 344;
+		vrLoc = 9933;
+	};
+	8B9C7F580970386C009ED6CC = {
+		fRef = 8B2448B308FB2033004716BC;
+		isa = PBXTextBookmark;
+		name = "RBSplitView.m: 545";
+		rLen = 0;
+		rLoc = 18192;
+		rType = 0;
+		vrLen = 566;
+		vrLoc = 17930;
+	};
+	8B9C7F590970386D009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "VitaminSEEWindowController.m: 240";
+		rLen = 0;
+		rLoc = 6785;
+		rType = 0;
+		vrLen = 1494;
+		vrLoc = 5815;
+	};
+	8B9C7F5A0970389F009ED6CC = {
+		fRef = 8B2448A308FB2033004716BC;
+		isa = PBXBookmark;
+	};
+	8B9C7F5D097038F8009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "}";
+		rLen = 2;
+		rLoc = 11471;
+		rType = 0;
+		vrLen = 482;
+		vrLoc = 9933;
+	};
+	8B9C7F5E097038F8009ED6CC = {
+		fRef = 8B2448B308FB2033004716BC;
+		isa = PBXTextBookmark;
+		name = "RBSplitView.m: 545";
+		rLen = 0;
+		rLoc = 18192;
+		rType = 0;
+		vrLen = 566;
+		vrLoc = 17930;
+	};
+	8B9C7F5F097038FA009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "VitaminSEEWindowController.m: 364";
+		rLen = 0;
+		rLoc = 11471;
+		rType = 0;
+		vrLen = 1030;
+		vrLoc = 9560;
+	};
+	8B9C7F62097038FA009ED6CC = {
+		fRef = 8B2448A308FB2033004716BC;
+		isa = PBXTextBookmark;
+		name = "AppKitAdditions.m: 280";
+		rLen = 0;
+		rLoc = 8837;
+		rType = 0;
+		vrLen = 878;
+		vrLoc = 8437;
+	};
+	8B9C7F6509703919009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "}";
+		rLen = 2;
+		rLoc = 11471;
+		rType = 0;
+		vrLen = 482;
+		vrLoc = 9851;
+	};
+	8B9C7F6609703919009ED6CC = {
+		fRef = 8B2448B308FB2033004716BC;
+		isa = PBXTextBookmark;
+		name = "RBSplitView.m: 545";
+		rLen = 0;
+		rLoc = 18192;
+		rType = 0;
+		vrLen = 566;
+		vrLoc = 17930;
+	};
+	8B9C7F670970391A009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "VitaminSEEWindowController.m: 278";
+		rLen = 0;
+		rLoc = 8266;
+		rType = 0;
+		vrLen = 1416;
+		vrLoc = 6638;
+	};
+	8B9C7F680970391A009ED6CC = {
+		fRef = 8B2448A308FB2033004716BC;
+		isa = PBXTextBookmark;
+		name = "AppKitAdditions.m: 280";
+		rLen = 0;
+		rLoc = 8837;
+		rType = 0;
+		vrLen = 878;
+		vrLoc = 8437;
+	};
+	8B9C7F6B09703944009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "}";
+		rLen = 2;
+		rLoc = 11471;
+		rType = 0;
+		vrLen = 482;
+		vrLoc = 9865;
+	};
+	8B9C7F6C09703944009ED6CC = {
+		fRef = 8B2448B308FB2033004716BC;
+		isa = PBXTextBookmark;
+		name = "RBSplitView.m: 545";
+		rLen = 0;
+		rLoc = 18192;
+		rType = 0;
+		vrLen = 566;
+		vrLoc = 17930;
+	};
+	8B9C7F6D09703945009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "VitaminSEEWindowController.m: 244";
+		rLen = 0;
+		rLoc = 6822;
+		rType = 0;
+		vrLen = 1514;
+		vrLoc = 5874;
+	};
+	8B9C7F6E09703945009ED6CC = {
+		fRef = 8B2448A308FB2033004716BC;
+		isa = PBXTextBookmark;
+		name = "AppKitAdditions.m: 280";
+		rLen = 0;
+		rLoc = 8837;
+		rType = 0;
+		vrLen = 878;
+		vrLoc = 8437;
+	};
+	8B9C7F75097039A8009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "}";
+		rLen = 2;
+		rLoc = 11471;
+		rType = 0;
+		vrLen = 403;
+		vrLoc = 9934;
+	};
+	8B9C7F76097039A8009ED6CC = {
+		fRef = 8B2448B308FB2033004716BC;
+		isa = PBXTextBookmark;
+		name = "RBSplitView.m: 545";
+		rLen = 0;
+		rLoc = 18192;
+		rType = 0;
+		vrLen = 566;
+		vrLoc = 17930;
+	};
+	8B9C7F77097039A9009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "VitaminSEEWindowController.m: 246";
+		rLen = 0;
+		rLoc = 6822;
+		rType = 0;
+		vrLen = 1416;
+		vrLoc = 5756;
+	};
+	8B9C7F78097039A9009ED6CC = {
+		fRef = 8B2448A308FB2033004716BC;
+		isa = PBXTextBookmark;
+		name = "AppKitAdditions.m: 280";
+		rLen = 0;
+		rLoc = 8837;
+		rType = 0;
+		vrLen = 878;
+		vrLoc = 8437;
+	};
+	8B9C7F79097039BF009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "}";
+		rLen = 2;
+		rLoc = 11471;
+		rType = 0;
+		vrLen = 403;
+		vrLoc = 9934;
+	};
+	8B9C7F7A097039BF009ED6CC = {
+		fRef = 8B2448B308FB2033004716BC;
+		isa = PBXTextBookmark;
+		name = "RBSplitView.m: 545";
+		rLen = 0;
+		rLoc = 18192;
+		rType = 0;
+		vrLen = 566;
+		vrLoc = 17930;
+	};
+	8B9C7F7B097039C0009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "VitaminSEEWindowController.m: 246";
+		rLen = 0;
+		rLoc = 6822;
+		rType = 0;
+		vrLen = 1389;
+		vrLoc = 6717;
+	};
+	8B9C7F7C097039C0009ED6CC = {
+		fRef = 8B2448A308FB2033004716BC;
+		isa = PBXTextBookmark;
+		name = "AppKitAdditions.m: 280";
+		rLen = 0;
+		rLoc = 8837;
+		rType = 0;
+		vrLen = 878;
+		vrLoc = 8437;
+	};
+	8B9C7F8109703A3F009ED6CC = {
+		comments = "error: 'NSFrame' undeclared (first use in this function)";
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		rLen = 1;
+		rLoc = 301;
+		rType = 1;
+	};
+	8B9C7F8209703A3F009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "NSRect defaultContentFrame =";
+		rLen = 32;
+		rLoc = 8582;
+		rType = 0;
+		vrLen = 569;
+		vrLoc = 7652;
+	};
+	8B9C7F8309703A3F009ED6CC = {
+		fRef = 8B2448B308FB2033004716BC;
+		isa = PBXTextBookmark;
+		name = "RBSplitView.m: 545";
+		rLen = 0;
+		rLoc = 18192;
+		rType = 0;
+		vrLen = 566;
+		vrLoc = 17930;
+	};
+	8B9C7F8409703A40009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "VitaminSEEWindowController.m: 286";
+		rLen = 0;
+		rLoc = 8590;
+		rType = 0;
+		vrLen = 1460;
+		vrLoc = 7557;
+	};
+	8B9C7F8509703A40009ED6CC = {
+		fRef = 8B2448A308FB2033004716BC;
+		isa = PBXTextBookmark;
+		name = "AppKitAdditions.m: 280";
+		rLen = 0;
+		rLoc = 8837;
+		rType = 0;
+		vrLen = 878;
+		vrLoc = 8437;
+	};
+	8B9C7F8809703A63009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "NSRect defaultContentFrame =";
+		rLen = 32;
+		rLoc = 8582;
+		rType = 0;
+		vrLen = 569;
+		vrLoc = 7670;
+	};
+	8B9C7F8909703A63009ED6CC = {
+		fRef = 8B2448B308FB2033004716BC;
+		isa = PBXTextBookmark;
+		name = "RBSplitView.m: 545";
+		rLen = 0;
+		rLoc = 18192;
+		rType = 0;
+		vrLen = 566;
+		vrLoc = 17930;
+	};
+	8B9C7F8A09703A64009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "VitaminSEEWindowController.m: 240";
+		rLen = 0;
+		rLoc = 6785;
+		rType = 0;
+		vrLen = 1552;
+		vrLoc = 5874;
+	};
+	8B9C7F8B09703A64009ED6CC = {
+		fRef = 8B2448A308FB2033004716BC;
+		isa = PBXTextBookmark;
+		name = "AppKitAdditions.m: 280";
+		rLen = 0;
+		rLoc = 8837;
+		rType = 0;
+		vrLen = 878;
+		vrLoc = 8437;
+	};
+	8B9C7F8E09703A86009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "NSRect defaultContentFrame =";
+		rLen = 32;
+		rLoc = 8582;
+		rType = 0;
+		vrLen = 595;
+		vrLoc = 7659;
+	};
+	8B9C7F8F09703A86009ED6CC = {
+		fRef = 8B2448B308FB2033004716BC;
+		isa = PBXTextBookmark;
+		name = "RBSplitView.m: 545";
+		rLen = 0;
+		rLoc = 18192;
+		rType = 0;
+		vrLen = 566;
+		vrLoc = 17930;
+	};
+	8B9C7F9009703A87009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "VitaminSEEWindowController.m: 246";
+		rLen = 0;
+		rLoc = 7113;
+		rType = 0;
+		vrLen = 1524;
+		vrLoc = 5874;
+	};
+	8B9C7F9109703A87009ED6CC = {
+		fRef = 8B2448A308FB2033004716BC;
+		isa = PBXTextBookmark;
+		name = "AppKitAdditions.m: 280";
+		rLen = 0;
+		rLoc = 8837;
+		rType = 0;
+		vrLen = 878;
+		vrLoc = 8437;
+	};
+	8B9C7F9609703B10009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "VitaminSEEWindowController.m: 369";
+		rLen = 0;
+		rLoc = 10939;
+		rType = 0;
+		vrLen = 1279;
+		vrLoc = 10109;
+	};
+	8B9C7F9709703B10009ED6CC = {
+		fRef = 8B2448A308FB2033004716BC;
+		isa = PBXTextBookmark;
+		name = "AppKitAdditions.m: 280";
+		rLen = 0;
+		rLoc = 8837;
+		rType = 0;
+		vrLen = 878;
+		vrLoc = 8437;
+	};
+	8B9C7F9A09703B23009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "NSRect defaultContentFrame =";
+		rLen = 32;
+		rLoc = 8582;
+		rType = 0;
+		vrLen = 595;
+		vrLoc = 7657;
+	};
+	8B9C7F9B09703B23009ED6CC = {
+		fRef = 8B2448B308FB2033004716BC;
+		isa = PBXTextBookmark;
+		name = "RBSplitView.m: 545";
+		rLen = 0;
+		rLoc = 18192;
+		rType = 0;
+		vrLen = 566;
+		vrLoc = 17930;
+	};
+	8B9C7F9C09703B24009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "VitaminSEEWindowController.m: 377";
+		rLen = 0;
+		rLoc = 11239;
+		rType = 0;
+		vrLen = 1356;
+		vrLoc = 10109;
+	};
+	8B9C7F9D09703B24009ED6CC = {
+		fRef = 8B2448A308FB2033004716BC;
+		isa = PBXTextBookmark;
+		name = "AppKitAdditions.m: 280";
+		rLen = 0;
+		rLoc = 8837;
+		rType = 0;
+		vrLen = 878;
+		vrLoc = 8437;
+	};
+	8B9C7FA009703BAA009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "NSRect defaultContentFrame =";
+		rLen = 32;
+		rLoc = 8582;
+		rType = 0;
+		vrLen = 595;
+		vrLoc = 7657;
+	};
+	8B9C7FA109703BAA009ED6CC = {
+		fRef = 8B2448B308FB2033004716BC;
+		isa = PBXTextBookmark;
+		name = "RBSplitView.m: 545";
+		rLen = 0;
+		rLoc = 18192;
+		rType = 0;
+		vrLen = 566;
+		vrLoc = 17930;
+	};
+	8B9C7FA209703BAB009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "VitaminSEEWindowController.m: 370";
+		rLen = 0;
+		rLoc = 10941;
+		rType = 0;
+		vrLen = 1257;
+		vrLoc = 10109;
+	};
+	8B9C7FA309703BAB009ED6CC = {
+		fRef = 8B2448A308FB2033004716BC;
+		isa = PBXTextBookmark;
+		name = "AppKitAdditions.m: 280";
+		rLen = 0;
+		rLoc = 8837;
+		rType = 0;
+		vrLen = 878;
+		vrLoc = 8437;
+	};
+	8B9C7FA609703C38009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "NSRect defaultContentFrame =";
+		rLen = 32;
+		rLoc = 8582;
+		rType = 0;
+		vrLen = 595;
+		vrLoc = 7657;
+	};
+	8B9C7FA709703C38009ED6CC = {
+		fRef = 8B2448B308FB2033004716BC;
+		isa = PBXTextBookmark;
+		name = "RBSplitView.m: 545";
+		rLen = 0;
+		rLoc = 18192;
+		rType = 0;
+		vrLen = 566;
+		vrLoc = 17930;
+	};
+	8B9C7FA809703C3A009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "VitaminSEEWindowController.m: 295";
+		rLen = 0;
+		rLoc = 8961;
+		rType = 0;
+		vrLen = 1446;
+		vrLoc = 7965;
+	};
+	8B9C7FA909703C3A009ED6CC = {
+		fRef = 8B2448A308FB2033004716BC;
+		isa = PBXTextBookmark;
+		name = "AppKitAdditions.m: 280";
+		rLen = 0;
+		rLoc = 8837;
+		rType = 0;
+		vrLen = 878;
+		vrLoc = 8437;
+	};
+	8B9C7FAC09703C70009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "NSRect defaultContentFrame =";
+		rLen = 32;
+		rLoc = 8582;
+		rType = 0;
+		vrLen = 595;
+		vrLoc = 7657;
+	};
+	8B9C7FAD09703C70009ED6CC = {
+		fRef = 8B2448B308FB2033004716BC;
+		isa = PBXTextBookmark;
+		name = "RBSplitView.m: 545";
+		rLen = 0;
+		rLoc = 18192;
+		rType = 0;
+		vrLen = 566;
+		vrLoc = 17930;
+	};
+	8B9C7FB009703CBD009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "NSRect defaultContentFrame =";
+		rLen = 32;
+		rLoc = 8582;
+		rType = 0;
+		vrLen = 595;
+		vrLoc = 7657;
+	};
+	8B9C7FB109703CBD009ED6CC = {
+		fRef = 8B2448B308FB2033004716BC;
+		isa = PBXTextBookmark;
+		name = "RBSplitView.m: 545";
+		rLen = 0;
+		rLoc = 18192;
+		rType = 0;
+		vrLen = 566;
+		vrLoc = 17930;
+	};
+	8B9C7FB209703CBF009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "VitaminSEEWindowController.m: 282";
+		rLen = 0;
+		rLoc = 8269;
+		rType = 0;
+		vrLen = 1039;
+		vrLoc = 0;
+	};
+	8B9C7FB309703CBF009ED6CC = {
+		fRef = 8B2448A308FB2033004716BC;
+		isa = PBXTextBookmark;
+		name = "AppKitAdditions.m: 280";
+		rLen = 0;
+		rLoc = 8837;
+		rType = 0;
+		vrLen = 878;
+		vrLoc = 8437;
+	};
+	8B9C7FB609703EB1009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "NSRect defaultContentFrame =";
+		rLen = 32;
+		rLoc = 8582;
+		rType = 0;
+		vrLen = 617;
+		vrLoc = 7657;
+	};
+	8B9C7FB709703EB1009ED6CC = {
+		fRef = 8B2448B308FB2033004716BC;
+		isa = PBXTextBookmark;
+		name = "RBSplitView.m: 545";
+		rLen = 0;
+		rLoc = 18192;
+		rType = 0;
+		vrLen = 566;
+		vrLoc = 17930;
+	};
+	8B9C7FB809703EB3009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "VitaminSEEWindowController.m: 287";
+		rLen = 0;
+		rLoc = 8578;
+		rType = 0;
+		vrLen = 1653;
+		vrLoc = 7165;
+	};
+	8B9C7FB909703EB3009ED6CC = {
+		fRef = 8B2448A308FB2033004716BC;
+		isa = PBXTextBookmark;
+		name = "AppKitAdditions.m: 280";
+		rLen = 0;
+		rLoc = 8837;
+		rType = 0;
+		vrLen = 878;
+		vrLoc = 8437;
+	};
+	8B9C7FBA09703F46009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "NSRect defaultContentFrame =";
+		rLen = 32;
+		rLoc = 8582;
+		rType = 0;
+		vrLen = 617;
+		vrLoc = 7657;
+	};
+	8B9C7FBB09703F46009ED6CC = {
+		fRef = 8B2448B308FB2033004716BC;
+		isa = PBXTextBookmark;
+		name = "RBSplitView.m: 545";
+		rLen = 0;
+		rLoc = 18192;
+		rType = 0;
+		vrLen = 566;
+		vrLoc = 17930;
+	};
+	8B9C7FBC09703F48009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "VitaminSEEWindowController.m: 290";
+		rLen = 0;
+		rLoc = 8653;
+		rType = 0;
+		vrLen = 1653;
+		vrLoc = 7165;
+	};
+	8B9C7FBD09703F48009ED6CC = {
+		fRef = 8B2448A308FB2033004716BC;
+		isa = PBXTextBookmark;
+		name = "AppKitAdditions.m: 280";
+		rLen = 0;
+		rLoc = 8837;
+		rType = 0;
+		vrLen = 878;
+		vrLoc = 8437;
+	};
+	8B9C7FC009703FAD009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "NSRect defaultContentFrame =";
+		rLen = 32;
+		rLoc = 8582;
+		rType = 0;
+		vrLen = 617;
+		vrLoc = 7657;
+	};
+	8B9C7FC109703FAD009ED6CC = {
+		fRef = 8B2448B308FB2033004716BC;
+		isa = PBXTextBookmark;
+		name = "RBSplitView.m: 545";
+		rLen = 0;
+		rLoc = 18192;
+		rType = 0;
+		vrLen = 566;
+		vrLoc = 17930;
+	};
+	8B9C7FC209703FAE009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "VitaminSEEWindowController.m: 305";
+		rLen = 0;
+		rLoc = 9205;
+		rType = 0;
+		vrLen = 1617;
+		vrLoc = 7562;
+	};
+	8B9C7FC309703FAE009ED6CC = {
+		fRef = 8B2448A308FB2033004716BC;
+		isa = PBXTextBookmark;
+		name = "AppKitAdditions.m: 280";
+		rLen = 0;
+		rLoc = 8837;
+		rType = 0;
+		vrLen = 878;
+		vrLoc = 8437;
+	};
+	8B9C7FC609704076009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "VitaminSEEWindowController.m: 373";
+		rLen = 0;
+		rLoc = 11227;
+		rType = 0;
+		vrLen = 1379;
+		vrLoc = 10075;
+	};
+	8B9C7FC709704076009ED6CC = {
+		fRef = 8B2448A308FB2033004716BC;
+		isa = PBXTextBookmark;
+		name = "AppKitAdditions.m: 280";
+		rLen = 0;
+		rLoc = 8837;
+		rType = 0;
+		vrLen = 878;
+		vrLoc = 8437;
+	};
+	8B9C7FCA097040B1009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "NSRect defaultContentFrame =";
+		rLen = 32;
+		rLoc = 8582;
+		rType = 0;
+		vrLen = 617;
+		vrLoc = 7657;
+	};
+	8B9C7FCB097040B1009ED6CC = {
+		fRef = 8B2448B308FB2033004716BC;
+		isa = PBXTextBookmark;
+		name = "RBSplitView.m: 545";
+		rLen = 0;
+		rLoc = 18192;
+		rType = 0;
+		vrLen = 566;
+		vrLoc = 17930;
+	};
+	8B9C811209705897009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "NSRect defaultContentFrame =";
+		rLen = 32;
+		rLoc = 8582;
+		rType = 0;
+		vrLen = 617;
+		vrLoc = 7657;
+	};
+	8B9C811309705897009ED6CC = {
+		fRef = 8B2448B308FB2033004716BC;
+		isa = PBXTextBookmark;
+		name = "RBSplitView.m: 545";
+		rLen = 0;
+		rLoc = 18192;
+		rType = 0;
+		vrLen = 566;
+		vrLoc = 17930;
+	};
+	8B9C811409705899009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "VitaminSEEWindowController.m: 378";
+		rLen = 0;
+		rLoc = 11306;
+		rType = 0;
+		vrLen = 1246;
+		vrLoc = 9950;
+	};
+	8B9C8117097058FA009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "NSRect defaultContentFrame =";
+		rLen = 32;
+		rLoc = 8582;
+		rType = 0;
+		vrLen = 647;
+		vrLoc = 7677;
+	};
+	8B9C8118097058FA009ED6CC = {
+		fRef = 8B2448B308FB2033004716BC;
+		isa = PBXTextBookmark;
+		name = "RBSplitView.m: 545";
+		rLen = 0;
+		rLoc = 18192;
+		rType = 0;
+		vrLen = 566;
+		vrLoc = 17930;
+	};
+	8B9C8119097058FA009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		rLen = 0;
+		rLoc = 2557;
+		rType = 0;
+	};
+	8B9C811A097058FA009ED6CC = {
+		fRef = 8B2448B308FB2033004716BC;
+		isa = PBXTextBookmark;
+		name = "RBSplitView.m: 545";
+		rLen = 0;
+		rLoc = 18192;
+		rType = 0;
+		vrLen = 566;
+		vrLoc = 17930;
+	};
+	8B9C811B097058FA009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "VitaminSEEWindowController.m: 88";
+		rLen = 0;
+		rLoc = 2557;
+		rType = 0;
+		vrLen = 282;
+		vrLoc = 2350;
+	};
+	8B9C811C0970590E009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "VitaminSEEWindowController.m: 373";
+		rLen = 0;
+		rLoc = 11227;
+		rType = 0;
+		vrLen = 1222;
+		vrLoc = 9951;
+	};
+	8B9C811F09705A95009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "NSRect defaultContentFrame =";
+		rLen = 32;
+		rLoc = 8582;
+		rType = 0;
+		vrLen = 647;
+		vrLoc = 7677;
+	};
+	8B9C812009705A95009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "VitaminSEEWindowController.m: 88";
+		rLen = 0;
+		rLoc = 2557;
+		rType = 0;
+		vrLen = 282;
+		vrLoc = 2350;
+	};
+	8B9C812109705A96009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "VitaminSEEWindowController.m: 361";
+		rLen = 0;
+		rLoc = 10859;
+		rType = 0;
+		vrLen = 1230;
+		vrLoc = 9958;
+	};
+	8B9C812409705AC6009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "NSRect defaultContentFrame =";
+		rLen = 32;
+		rLoc = 8582;
+		rType = 0;
+		vrLen = 647;
+		vrLoc = 7677;
+	};
+	8B9C812509705AC7009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "VitaminSEEWindowController.m: 88";
+		rLen = 0;
+		rLoc = 2557;
+		rType = 0;
+		vrLen = 282;
+		vrLoc = 2350;
+	};
+	8B9C812609705AC8009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "VitaminSEEWindowController.m: 378";
+		rLen = 0;
+		rLoc = 11386;
+		rType = 0;
+		vrLen = 1219;
+		vrLoc = 9958;
+	};
+	8B9C812909705B47009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "VitaminSEEWindowController.m: 380";
+		rLen = 0;
+		rLoc = 11470;
+		rType = 0;
+		vrLen = 1219;
+		vrLoc = 9958;
+	};
+	8B9C812E09705CEB009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "VitaminSEEWindowController.m: 50";
+		rLen = 0;
+		rLoc = 1210;
+		rType = 0;
+		vrLen = 1206;
+		vrLoc = 484;
+	};
+	8B9C813109705D22009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "NSRect defaultContentFrame =";
+		rLen = 32;
+		rLoc = 8582;
+		rType = 0;
+		vrLen = 647;
+		vrLoc = 7679;
+	};
+	8B9C813209705D22009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "VitaminSEEWindowController.m: 88";
+		rLen = 0;
+		rLoc = 2557;
+		rType = 0;
+		vrLen = 282;
+		vrLoc = 2352;
+	};
+	8B9C813309705D24009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "VitaminSEEWindowController.m: 355";
+		rLen = 0;
+		rLoc = 10613;
+		rType = 0;
+		vrLen = 1335;
+		vrLoc = 10049;
+	};
+	8B9C8134097067F4009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "NSRect defaultContentFrame =";
+		rLen = 32;
+		rLoc = 8582;
+		rType = 0;
+		vrLen = 647;
+		vrLoc = 7679;
+	};
+	8B9C8135097067F4009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "VitaminSEEWindowController.m: 88";
+		rLen = 0;
+		rLoc = 2557;
+		rType = 0;
+		vrLen = 282;
+		vrLoc = 2352;
+	};
+	8B9C8136097067F5009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "VitaminSEEWindowController.m: 355";
+		rLen = 0;
+		rLoc = 10613;
+		rType = 0;
+		vrLen = 1335;
+		vrLoc = 10049;
+	};
+	8B9C813909706854009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "NSRect defaultContentFrame =";
+		rLen = 32;
+		rLoc = 8582;
+		rType = 0;
+		vrLen = 647;
+		vrLoc = 7677;
+	};
+	8B9C813A09706854009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "VitaminSEEWindowController.m: 88";
+		rLen = 0;
+		rLoc = 2557;
+		rType = 0;
+		vrLen = 282;
+		vrLoc = 2350;
+	};
+	8B9C813B09706856009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "VitaminSEEWindowController.m: 50";
+		rLen = 0;
+		rLoc = 1210;
+		rType = 0;
+		vrLen = 1225;
+		vrLoc = 1036;
+	};
+	8B9C8146097069F4009ED6CC = {
+		comments = "error: incompatible type for argument 1 of 'contentSizeForFrameSize:hasHorizontalScroller:hasVerticalScroller:borderType:'";
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		rLen = 0;
+		rLoc = 168;
+		rType = 1;
+	};
+	8B9C8147097069F4009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "VitaminSEEWindowController.m: 175";
+		rLen = 0;
+		rLoc = 4691;
+		rType = 0;
+		vrLen = 565;
+		vrLoc = 4188;
+	};
+	8B9C8148097069F4009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "VitaminSEEWindowController.m: 88";
+		rLen = 0;
+		rLoc = 2557;
+		rType = 0;
+		vrLen = 282;
+		vrLoc = 2352;
+	};
+	8B9C8149097069F6009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "VitaminSEEWindowController.m: 168";
+		rLen = 0;
+		rLoc = 4337;
+		rType = 0;
+		vrLen = 1194;
+		vrLoc = 4056;
+	};
+	8B9C814E09706A26009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "VitaminSEEWindowController.m: 174";
+		rLen = 0;
+		rLoc = 4691;
+		rType = 0;
+		vrLen = 564;
+		vrLoc = 4188;
+	};
+	8B9C814F09706A26009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "VitaminSEEWindowController.m: 88";
+		rLen = 0;
+		rLoc = 2557;
+		rType = 0;
+		vrLen = 282;
+		vrLoc = 2352;
+	};
+	8B9C815009706A28009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "VitaminSEEWindowController.m: 174";
+		rLen = 0;
+		rLoc = 4694;
+		rType = 0;
+		vrLen = 1175;
+		vrLoc = 4056;
+	};
+	8B9C815309706A58009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "VitaminSEEWindowController.m: 175";
+		rLen = 0;
+		rLoc = 4695;
+		rType = 0;
+		vrLen = 580;
+		vrLoc = 4188;
+	};
+	8B9C815409706A58009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "VitaminSEEWindowController.m: 88";
+		rLen = 0;
+		rLoc = 2557;
+		rType = 0;
+		vrLen = 282;
+		vrLoc = 2352;
+	};
+	8B9C815509706A5A009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "VitaminSEEWindowController.m: 168";
+		rLen = 0;
+		rLoc = 4337;
+		rType = 0;
+		vrLen = 1336;
+		vrLoc = 4091;
+	};
+	8B9C815809706A84009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "VitaminSEEWindowController.m: 175";
+		rLen = 0;
+		rLoc = 4695;
+		rType = 0;
+		vrLen = 564;
+		vrLoc = 4188;
+	};
+	8B9C815909706A84009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "VitaminSEEWindowController.m: 88";
+		rLen = 0;
+		rLoc = 2557;
+		rType = 0;
+		vrLen = 282;
+		vrLoc = 2352;
+	};
+	8B9C815A09706A85009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "VitaminSEEWindowController.m: 175";
+		rLen = 0;
+		rLoc = 4695;
+		rType = 0;
+		vrLen = 1259;
+		vrLoc = 3972;
+	};
+	8B9C815D09706ABB009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "VitaminSEEWindowController.m: 177";
+		rLen = 0;
+		rLoc = 4695;
+		rType = 0;
+		vrLen = 530;
+		vrLoc = 4207;
+	};
+	8B9C815E09706ABB009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "VitaminSEEWindowController.m: 90";
+		rLen = 0;
+		rLoc = 2557;
+		rType = 0;
+		vrLen = 319;
+		vrLoc = 2347;
+	};
+	8B9C815F09706ABD009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "VitaminSEEWindowController.m: 52";
+		rLen = 0;
+		rLoc = 1334;
+		rType = 0;
+		vrLen = 1357;
+		vrLoc = 671;
+	};
+	8B9C816209706B3B009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "VitaminSEEWindowController.m: 177";
+		rLen = 0;
+		rLoc = 4695;
+		rType = 0;
+		vrLen = 530;
+		vrLoc = 4207;
+	};
+	8B9C816309706B3B009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "VitaminSEEWindowController.m: 90";
+		rLen = 0;
+		rLoc = 2557;
+		rType = 0;
+		vrLen = 319;
+		vrLoc = 2347;
+	};
+	8B9C816409706B3C009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "VitaminSEEWindowController.m: 377";
+		rLen = 0;
+		rLoc = 10919;
+		rType = 0;
+		vrLen = 1540;
+		vrLoc = 10785;
+	};
+	8B9C816709706B5D009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "VitaminSEEWindowController.m: 177";
+		rLen = 0;
+		rLoc = 4695;
+		rType = 0;
+		vrLen = 530;
+		vrLoc = 4207;
+	};
+	8B9C816809706B5D009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "VitaminSEEWindowController.m: 90";
+		rLen = 0;
+		rLoc = 2557;
+		rType = 0;
+		vrLen = 319;
+		vrLoc = 2347;
+	};
+	8B9C816909706B5E009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "VitaminSEEWindowController.m: 377";
+		rLen = 0;
+		rLoc = 10919;
+		rType = 0;
+		vrLen = 1548;
+		vrLoc = 10785;
+	};
+	8B9C816E09706D82009ED6CC = {
+		fRef = 8B2448D108FB2080004716BC;
+		isa = PBXTextBookmark;
+		name = "VitaminSEEWindowController.m: 179";
+		rLen = 0;
+		rLoc = 4735;
+		rType = 0;
+		vrLen = 1186;
+		vrLoc = 4056;
 	};
 	8BAE04EC095F6C5C007C387D = {
 		uiCtxt = {
