@@ -267,7 +267,7 @@
 {
 	oldFileListSize = NSWidth([[splitView subviewAtPosition:0] frame]);
 //	NSLog(@"Old file list size -- is %f", oldFileListSize);
-	
+	NSLog(@"--- begin -windowWillUseStandardFrame:defaultFrame:");
 	float pixelWidth = [[self document] pixelWidth];
 	float pixelHeight = [[self document] pixelHeight];
 	
@@ -286,14 +286,23 @@
 		float defaultImageHeight = NSHeight(defaultFrame) - nonImageHeight;
 
 		float ratio = 1.0;
-		if(pixelWidth > pixelHeight)
+		if(pixelWidth < pixelHeight)
+		{
 			// This is a wide image.
 			ratio = defaultImageWidth / pixelWidth;
+			NSLog(@"Wide Image");
+		}
 		else
+		{
 			ratio = defaultImageHeight / pixelHeight;
+			NSLog(@"Tall Image");
+		}
 		
 		newWidth = nonImageWidth + (pixelWidth * ratio);
 		newHeight = nonImageHeight + (pixelHeight * ratio);
+		NSLog(@"Revised window: %@ defaultFrame: %@",
+			  NSStringFromSize(NSMakeSize(newWidth,newHeight)),
+			  NSStringFromSize(defaultFrame.size));
 	}
 	
 	// Code taken from a very nice Mac Dev Center article on window zooming:
@@ -323,22 +332,26 @@
     defH = defaultFrame.size.height;
     
     if ( stdH > defH ) {
+		NSLog(@"Using default height");
 		stdFrame.size.height = defH;
 		stdFrame.origin.y = defY;
     } else if ( stdY < defY ) {
+		NSLog(@"Using our height");
 		stdFrame.origin.y = defY;
     }
     
     if ( stdW > defW ) {
+		NSLog(@"Using default width");
 		stdFrame.size.width = defW;
 		stdFrame.origin.x = defX;
     } else if ( stdX < defX ) {
+		NSLog(@"Using our width");
 		stdFrame.origin.x = defX;
     }
 	
-    return stdFrame;
+	NSLog(@"--- end -windowWillUseStandardFrame:defaultFrame:");
 	
-//	return defaultFrame;
+    return stdFrame;
 }
 
 -(float)nonImageWidth
