@@ -39,3 +39,7 @@
 -(void)setSubview:(NSView *)inView;
 -(id)subview;
 @end
+
+@interface NSWindow (TitleBarWidth)
+- (float) titleBarHeight;
+@end

@@ -33,6 +33,8 @@
 	
 	NSCursor *handCursor;
 	NSUndoManager* pathManager;	
+	
+	float oldFileListSize;
 }
 -(id)initWithFileList:(id<FileList>)inFileList
 			 document:(ViewerDocument*)viewerDocument;
@@ -59,5 +61,8 @@
 
 -(double)viewingAreaWidth;
 -(double)viewingAreaHeight;
+
+-(float)nonImageWidth;
+-(float)nonImageHeight;
 
 @end

@@ -46,6 +46,8 @@
 	// Set the fileList for real.
 	[self setFileList:fileList];
 	
+	[scrollView setAutohidesScrollers:YES];
+	
 	// Set up the scroll view on the right
 	id docView = [[scrollView documentView] retain];
 	id newClipView = [[SBCenteringClipView alloc] initWithFrame:[[scrollView 
@@ -207,12 +209,12 @@
 
 -(double)viewingAreaWidth
 {
-	return [scrollView contentSize].width;
+	return [[scrollView contentView] frame].size.width;
 }
 
 -(double)viewingAreaHeight
 {
-	return [scrollView contentSize].height;
+	return [[scrollView contentView] frame].size.height;
 }
 
 // We only hack around the document architecture to get some of its features.
@@ -225,6 +227,143 @@
 	[document release];
 }
 
+- (void)windowDidResize:(NSNotification *)aNotification
+{
+//	NSLog(@"-windowDidResize:");
+	if(oldFileListSize != 0) 
+	{
+		[[splitView subviewAtPosition:0] setDimension:oldFileListSize];
+		oldFileListSize = 0;
+	}
+
+	// Figure out the correct size for the clipview and set it here. Usually,
+	// resizing of the subviews takes place AFTERWARDS, (and this will be undone
+	// by that), but redrawing needs the new window size.
+	NSSize windowSize = [[self window] frame].size;
+	float w = windowSize.width - [self nonImageWidth];
+	float h = windowSize.height - [self nonImageHeight];
+	[[scrollView contentView] setFrameSize:NSMakeSize(w,h)];
+	
+	// Get in queue for the full redraw
+	[[self document] redraw];
+}
+
+- (NSSize)windowWillResize:(NSWindow *)sender toSize:(NSSize)proposedFrameSize
+{
+	oldFileListSize = NSWidth([[splitView subviewAtPosition:0] frame]);
+//	NSLog(@"Old file list size ++ is %f", oldFileListSize);
+	return proposedFrameSize;
+}
+
+//-----------------------------------------------------------------------------
+
+/**
+ */
+-(NSRect)windowWillUseStandardFrame:(NSWindow *)sender
+					   defaultFrame:(NSRect)defaultFrame
+{
+	oldFileListSize = NSWidth([[splitView subviewAtPosition:0] frame]);
+//	NSLog(@"Old file list size -- is %f", oldFileListSize);
+	
+	float pixelWidth = [[self document] pixelWidth];
+	float pixelHeight = [[self document] pixelHeight];
+	
+	float nonImageWidth = [self nonImageWidth];
+	float newWidth = nonImageWidth + pixelWidth;
+	
+	float nonImageHeight = [self nonImageHeight];
+	float newHeight = nonImageHeight + pixelHeight;
+	
+	// If the image won't fit even in the maximized window, then calculate which
+	// side is too large, and shrink it based on that.
+	if(newHeight > NSHeight(defaultFrame) ||
+	   newWidth > NSWidth(defaultFrame))
+	{
+//		NSLog(@"This isn't going to fit (%f x %f) vs %@...", newWidth, newHeight,
+//			  NSStringFromSize(defaultFrame.size));
+		
+		float defaultImageWidth = NSWidth(defaultFrame) - nonImageWidth;
+		float defaultImageHeight = NSHeight(defaultFrame) - nonImageHeight;
+
+		float ratio = 1.0;
+		if(pixelWidth > pixelHeight)
+			// This is a wide image.
+			ratio = defaultImageWidth / pixelWidth;
+		else
+			ratio = defaultImageHeight / pixelHeight;
+		
+//		NSLog(@"Ratio: %f", ratio);
+		
+		newWidth = nonImageWidth + (pixelWidth * ratio);
+		newHeight = nonImageHeight + (pixelHeight * ratio);
+	}
+	
+	// Code taken from a very nice Mac Dev Center article on window zooming:
+	// http://www.macdevcenter.com/pub/a/mac/2002/05/16/cocoa.html?page=2
+	// Hint to Apple: Incorporate that into an official tutorial! That's
+	// exactly what's needed to explain this!
+	float stdX, stdY, stdW, stdH, defX, defY, defW, defH;    
+    NSRect stdFrame = [NSWindow contentRectForFrameRect:[sender frame] 
+											  styleMask:[sender styleMask]];
+    
+    stdFrame.origin.y += stdFrame.size.height;
+    stdFrame.origin.y -= newHeight;
+    stdFrame.size.height = newHeight;
+    stdFrame.size.width = newWidth;
+    
+    stdFrame = [NSWindow frameRectForContentRect:stdFrame 
+									   styleMask:[sender styleMask]];
+    
+    stdX = stdFrame.origin.x;
+    stdY = stdFrame.origin.y;
+    stdW = stdFrame.size.width;
+    stdH = stdFrame.size.height;
+    
+    defX = defaultFrame.origin.x;
+    defY = defaultFrame.origin.y;
+    defW = defaultFrame.size.width;
+    defH = defaultFrame.size.height;
+    
+    if ( stdH > defH ) {
+		stdFrame.size.height = defH;
+		stdFrame.origin.y = defY;
+    } else if ( stdY < defY ) {
+		stdFrame.origin.y = defY;
+    }
+    
+    if ( stdW > defW ) {
+		stdFrame.size.width = defW;
+		stdFrame.origin.x = defX;
+    } else if ( stdX < defX ) {
+		stdFrame.origin.x = defX;
+    }
+	
+    return stdFrame;
+	
+//	return defaultFrame;
+}
+
+-(float)nonImageWidth
+{
+	return
+		20 + /* Left Margin */
+		NSWidth([[splitView subviewAtPosition:0] frame]) + /* File List View */
+		[splitView dividerThickness] + /* Divider thickness */
+		([scrollView hasVerticalRuler] ?
+		 NSWidth([[scrollView verticalScroller] frame]) : 0) +
+		/* Additional room for vertical scroller */
+		20 + 2; /* Right Margin */
+}
+
+-(float)nonImageHeight
+{
+	return [[self window] titleBarHeight] +
+		20 + /* Top Margin */
+		([scrollView hasHorizontalRuler] ?
+		  NSHeight([[scrollView horizontalScroller] frame]) : 0) +
+		/* Additional room for horrizontal scroller */
+		20 + 2;  /* Bottom Margin */
+}
 
 //-----------------------------------------------------------------------------
 

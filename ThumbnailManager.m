@@ -10,7 +10,7 @@
 #import "NSObject+Invocations.h"
 #import "EGPath.h"
 #import "IconFamily.h"
-
+#import "FileList.h"
 
 @interface ThumbnailManager (Private)
 +(void)addThumbnailToCache:(NSImage*)image file:(EGPath*)path;
@@ -81,7 +81,7 @@ static NSEnumerator* thumbnailPriorityBuildEnumerator;
 static NSMutableDictionary* thumbnailPriorityBuildStack;
 
 // Configuration stuff
-static BOOL shouldBuildThumbnails;
+//static BOOL shouldBuildThumbnails;
 
 enum ThumbnailStorageType {
 	THUMBNAILSTORAGE_DONT_STORE,
@@ -118,6 +118,8 @@ static enum ThumbnailStorageType thumbnailStorageType;
 						   withObject:nil];
 }
 
+//-----------------------------------------------------------------------------
+
 +(void)taskHandlerThread:(id)nothing
 {	
 	NSAutoreleasePool* npool = [[NSAutoreleasePool alloc] init];
@@ -143,27 +145,11 @@ static enum ThumbnailStorageType thumbnailStorageType;
 		if([thumbnailPriorityBuildStack count])
 		{
 			EGPath* nextToBuild = [[self getNextPriorityBuild] retain];
-
+			
 			// Unlock the mutex
 			pthread_mutex_unlock(&thumbnailBuildQueueLock);
 		
-			NSLog(@"Priority building: %@", nextToBuild);
-			
 			[self doBuildThumbnailIconFor:nextToBuild];
-			
-//			// Now we have to check to see if we've completed all the priority
-//			// build tasks. If we have, remove the directory from the 
-//			// thumbnailPriorityBuildStack structure.
-//			pthread_mutex_lock(&thumbnailBuildQueueLock);
-//			{
-//				EGPath* dirpath = [nextToBuild pathByDeletingLastPathComponent];
-//				NSArray* buildStack = [thumbnailPriorityBuildStack objectForKey:dirpath];
-//				
-//				if([buildStack count] == 0)
-//					[thumbnailPriorityBuildStack removeObjectForKey:dirpath];
-//			}
-//			pthread_mutex_unlock(&thumbnailBuildQueueLock);
-
 			[nextToBuild release];
 		}
 		else if([thumbnailBuildQueue count])
@@ -175,7 +161,6 @@ static enum ThumbnailStorageType thumbnailStorageType;
 			// Unlock the mutex
 			pthread_mutex_unlock(&thumbnailBuildQueueLock);
 
-			NSLog(@"Normal building: %@", nextToBuild);
 			[self doBuildThumbnailIconFor:nextToBuild];
 			[nextToBuild release];
 		}
@@ -190,6 +175,8 @@ static enum ThumbnailStorageType thumbnailStorageType;
 	
 	[npool release];
 }
+
+//-----------------------------------------------------------------------------
 
 +(void)subscribe:(id)object toDirectory:(EGPath*)directory
 {
@@ -208,7 +195,7 @@ static enum ThumbnailStorageType thumbnailStorageType;
 		else
 		{
 			// Nobody is subscribed to this directory. Build all the data 
-			// structures for this 
+			// structures for this directory.
 			
 			// Build a subscription object
 			[subscriberList setObject:[NSMutableArray arrayWithObject:object]
@@ -238,6 +225,8 @@ static enum ThumbnailStorageType thumbnailStorageType;
 	}
 	pthread_mutex_unlock(&subscriberListLock);
 }
+
+//-----------------------------------------------------------------------------
 
 +(void)unsubscribe:(id)object fromDirectory:(EGPath*)directory
 {
@@ -278,6 +267,8 @@ static enum ThumbnailStorageType thumbnailStorageType;
 	pthread_mutex_unlock(&subscriberListLock);
 }
 
+//-----------------------------------------------------------------------------
+
 +(NSImage*)getThumbnailFor:(EGPath*)path
 {
 	// First check to see if the thumbnail is in the cache. If it is not, do
@@ -313,7 +304,8 @@ static enum ThumbnailStorageType thumbnailStorageType;
 		}
 		else
 		{
-			// TODO: Put it in a priority stack to build ASAP!				
+			// If this is an image, but doesn't have a thumbnail, put it in the
+			// priority thumbnail build stack, so it gets generated ASAP.
 			pthread_mutex_lock(&thumbnailBuildQueueLock);
 			{
 				NSMutableArray* stack = [thumbnailPriorityBuildStack 
@@ -340,26 +332,40 @@ static enum ThumbnailStorageType thumbnailStorageType;
 	return image;
 }
 
+//-----------------------------------------------------------------------------
+
 @end
 
+//-----------------------------------------------------------------------------
+
 @implementation ThumbnailManager (Private)
+
+//-----------------------------------------------------------------------------
 
 /** Adds an image to the cache and removes it from the build queue.
  */
 +(void)addThumbnailToCache:(NSImage*)image file:(EGPath*)path
 {
-	EGPath* directory = [path pathByDeletingLastPathComponent];
-
-	// Add the image to the cache!
-	pthread_rwlock_wrlock(&thumbnailCacheLock);
+	if(image)
 	{
-		NSMutableDictionary* dict = [thumbnailCache objectForKey:directory];
-		[dict setObject:image forKey:path];
+		EGPath* directory = [path pathByDeletingLastPathComponent];
+
+		// Add the image to the cache!
+		pthread_rwlock_wrlock(&thumbnailCacheLock);
+		{
+			NSMutableDictionary* dict = [thumbnailCache objectForKey:directory];		
+			[dict setObject:image forKey:path];
+		}
+		pthread_rwlock_unlock(&thumbnailCacheLock);
 	}
-	pthread_rwlock_unlock(&thumbnailCacheLock);
 	
+	// Note that whether we remove the path from the build queue is independent
+	// of whether a valid thumbnail was generated. If it fails once, it's 
+	// probably going to keep on failing.
 	[self removePathFromBuildQueue:path];
 }
+
+//-----------------------------------------------------------------------------
 
 +(void)removePathFromBuildQueue:(EGPath*)path
 {
@@ -375,13 +381,15 @@ static enum ThumbnailStorageType thumbnailStorageType;
 			if([buildSet member:path])
 				[buildSet removeObject:path];
 			
-			// Remove the set if if's emtpy
+			// Clean up the the set if if's emtpy
 			if([buildSet count] == 0)
 				[thumbnailBuildQueue removeObjectForKey:directory];
 		}
 	}
 	pthread_mutex_unlock(&thumbnailBuildQueueLock);
 }
+
+//-----------------------------------------------------------------------------
 
 /** Builds a thumbnail (checking with the ImageLoader's cache 
  */
@@ -425,6 +433,8 @@ static enum ThumbnailStorageType thumbnailStorageType;
 	return thumbnail;
 }
 
+//-----------------------------------------------------------------------------
+
 /** Get the next queue from the enumerator, starting over if we're
  * at the end of the enumerated list. Then get the next file from
  * that build queue.
@@ -444,25 +454,31 @@ static enum ThumbnailStorageType thumbnailStorageType;
 	return nextToBuild;
 }
 
-/**
- *
+//-----------------------------------------------------------------------------
+
+/** Get the next priority build task, removing any exhausted build stacks as
+ * neccessary.
  */
 +(EGPath*)getNextPriorityBuild
 {
-	EGPath* nextToBuild;
-	NSMutableArray* buildQueue = [thumbnailPriorityBuildEnumerator nextObject];
-	if(!buildQueue) {
+	// Get the next build stack
+//	EGPath* nextToBuild;
+	NSMutableArray* buildStack = [thumbnailPriorityBuildEnumerator nextObject];
+	if(!buildStack) {
 		[self resetPriorityQueueEnumerator];
-		buildQueue = [thumbnailPriorityBuildEnumerator nextObject];
+		buildStack = [thumbnailPriorityBuildEnumerator nextObject];
 	}
 
-	EGPath* ret = [[buildQueue lastObject] retain];
-	
+	EGPath* ret = [[buildStack lastObject] retain];
+
+	// If we got an actual object off the stack, then remove it from the stack
+	// and check to see if we should remove the stack from rotation if it's
+	// empty.
 	if(ret)
 	{
-		[buildQueue removeLastObject];
+		[buildStack removeLastObject];
 	
-		if([buildQueue count] == 0)
+		if([buildStack count] == 0)
 		{
 			[thumbnailPriorityBuildStack removeObjectForKey:
 				[ret pathByDeletingLastPathComponent]];
@@ -472,6 +488,8 @@ static enum ThumbnailStorageType thumbnailStorageType;
 	return [ret autorelease];	
 }
 
+//-----------------------------------------------------------------------------
+
 +(void)resetBuildQueueEnumerator
 {
 	[thumbnailBuildQueueValueEnumerator release];
@@ -479,12 +497,16 @@ static enum ThumbnailStorageType thumbnailStorageType;
 		[[thumbnailBuildQueue objectEnumerator] retain];				
 }
 
+//-----------------------------------------------------------------------------
+
 +(void)resetPriorityQueueEnumerator
 {
 	[thumbnailPriorityBuildEnumerator release];
 	thumbnailPriorityBuildEnumerator = 
 		[[thumbnailPriorityBuildStack objectEnumerator] retain];
 }
+
+//-----------------------------------------------------------------------------
 
 +(void)notifySubscribersThat:(EGPath*)nextToBuild hasImage:(NSImage*)image
 {
@@ -505,6 +527,8 @@ static enum ThumbnailStorageType thumbnailStorageType;
 	}
 	pthread_mutex_unlock(&subscriberListLock);
 }
+
+//-----------------------------------------------------------------------------
 
 +(void)doBuildThumbnailIconFor:(EGPath*)nextToBuild
 {

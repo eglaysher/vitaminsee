@@ -1027,6 +1027,7 @@
 			children = (
 				8B11382009130304008FBD78,
 				8B2448C408FB2061004716BC,
+				8B9C7374096884C6009ED6CC,
 			);
 			isa = PBXGroup;
 			name = Protocols;
@@ -1767,6 +1768,7 @@
 				8B8B7241090C138A006DDF10,
 				8BEA54B8090BE19D00F83026,
 				8B24492B08FB5680004716BC,
+				8B9C7375096884C6009ED6CC,
 			);
 			isa = PBXCopyFilesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2897,6 +2899,21 @@
 		};
 		8B9B2F9B090DB44D009C69B7 = {
 			fileRef = 8B9B2F15090DAE69009C69B7;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B9C7374096884C6009ED6CC = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = CurrentFilePlugin.h;
+			path = Protocols/CurrentFilePlugin.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B9C7375096884C6009ED6CC = {
+			fileRef = 8B9C7374096884C6009ED6CC;
 			isa = PBXBuildFile;
 			settings = {
 			};

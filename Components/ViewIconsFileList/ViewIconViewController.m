@@ -696,6 +696,7 @@ willDisplayCell:(id)cell
 {
 //	NSLog(@"Notification: '%@' for '%@'", nm, fpath);
 	
+	// Handle the deletion of the directory	
 	if([currentDirectory isNaturalFile]) 
 	{
 		EGPath* curFile = [[delegate currentFile] retain];

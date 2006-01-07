@@ -36,6 +36,12 @@
 	// Scale data
 	NSString* scaleMode;
 	float scaleRatio;
+	
+	// Used during resizing
+	float oldFileListSize;
+	
+	// Image data
+	float pixelWidth, pixelHeight;
 }
 
 -(id)init;
@@ -48,9 +54,14 @@
 -(void)startProgressIndicator;
 -(void)stopProgressIndicator;
 
+-(void)redraw;
+
 -(BOOL)validateSetAsDesktopImageItem:(NSMenuItem*)item;
 -(BOOL)validateAction:(SEL)action;
 
 -(void)setDirectoryFromRawPath:(NSString*)path;
 -(void)focusOnFile:(EGPath*)path;
+
+-(float)pixelWidth;
+-(float)pixelHeight;
 @end

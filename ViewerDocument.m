@@ -141,7 +141,7 @@
 	[currentFile release];
 	currentFile = file;
 	
-	if([[file fileSystemPath] isImage]) {	
+	if([[file fileSystemPath] isImage]) {			
 		NSMutableDictionary* dic = [NSMutableDictionary 
 			dictionaryWithObjectsAndKeys:
 				scaleMode, @"Scale Mode",
@@ -173,6 +173,20 @@
 			// Set the image
 			[window setImage:image];
 			
+			// When you're resizing a window, you'll want to consider the 
+			// real pixel size when you're fitting the image, otherwise, some
+			// sort of zoom means size of the current zoom level.
+			if([task objectForKey:@"Scale Mode"] == SCALE_IMAGE_TO_FIT) 
+			{
+				pixelWidth = [[task objectForKey:@"Pixel Width"] floatValue];
+				pixelHeight = [[task objectForKey:@"Pixel Height"] floatValue];				
+			}
+			else
+			{
+				pixelWidth = [image size].width;
+				pixelHeight = [image size].height;
+			}
+			
 			// Set the image size label
 			[window setImageSizeLabelText:NSMakeSize(
 				[[task objectForKey:@"Pixel Width"] floatValue],
@@ -187,6 +201,28 @@
 	[task release];
 	
 	[self stopProgressIndicator];
+}
+
+//-----------------------------------------------------------------------------
+
+/** Perform a full redraw event, which will ask the ImageLoader to rescale the
+ * iamge.
+ */
+-(void)redraw
+{	
+	[self setDisplayedFileTo:currentFile];
+}
+
+//-----------------------------------------------------------------------------
+
+-(float)pixelWidth
+{
+	return pixelWidth;
+}
+
+-(float)pixelHeight
+{
+	return pixelHeight;
 }
 
 //-----------------------------------------------------------------------------
