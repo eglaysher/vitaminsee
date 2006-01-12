@@ -78,9 +78,15 @@ static SEL menuActions[12] = {0};
 
 - (int)numberOfItemsInMenu:(NSMenu *)menu
 {	
-	return 
-		[[ComponentManager getFileListsToDisplayInMenu] count] +
-		12;
+	int count = 0;
+
+	// If we have more then one file
+	int fileListCount = [[ComponentManager getFileListsToDisplayInMenu] count];
+	if(fileListCount > 1)
+		count += fileListCount + 1;
+
+	count += 11;
+	return count;
 }
 
 /** Generate 
@@ -94,8 +100,9 @@ shouldCancel:(BOOL)shouldCancel
 	NSArray* fileLists = [ComponentManager getFileListsToDisplayInMenu];
 	NSArray* currentFilePlugins = 
 		[ComponentManager getCurrentFilePluginsInViewMenu];
+	BOOL shouldDisplayFileLists = [fileLists count] > 1;
 	
-	if(index < [fileLists count]) 
+	if(shouldDisplayFileLists && index < [fileLists count]) 
 	{
 		NSString* menuName = [[fileLists objectAtIndex:index] 
 			objectForKey:@"MenuName"];
@@ -116,7 +123,12 @@ shouldCancel:(BOOL)shouldCancel
 	}
 	else
 	{
-		int localIndex = index - [fileLists count];
+		int localIndex;
+		if(shouldDisplayFileLists)
+			localIndex = index - [fileLists count];
+		else
+			localIndex = index + 1;
+		
 		NSString* title = menuTitles[localIndex];
 		
 		if([title isEqual:@"---"]) 
