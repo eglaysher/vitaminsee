@@ -251,6 +251,11 @@
 	if(index != NSNotFound)
 	{
 		[ourBrowser selectRow:index inColumn:0];
+
+		// Now notify the delegate like it's a normal file selection operation.
+		[delegate setDisplayedFileTo:
+			[EGPath pathWithPath:[fileList objectAtIndex:index]]];
+		
 		return YES;
 	}
 	else 
@@ -415,12 +420,15 @@ willDisplayCell:(id)cell
 		[self setDirectory:[EGPath pathWithPath:absolutePath]];
 }
 
--(void)selectFile:(NSString*)fileToSelect
-{
-	if(fileToSelect)
-		[ourBrowser setPath:[NSString pathWithComponents:[NSArray arrayWithObjects:
-			@"/", [fileToSelect lastPathComponent], nil]]];
-}
+// Spoilers: This method was responsible for quite a bit of lag in the 0.6 
+// version, since -[NSBrowser setPath:] does a linear search across ALL CELLS
+// EVEN IF IT FINDS IT IN THE FIRST CELL! Replaced with a binary search in 0.7.
+//-(void):(NSString*)fileToSelect
+//{
+//	if(fileToSelect)
+//		[ourBrowser setPath:[NSString pathWithComponents:[NSArray arrayWithObjects:
+//			@"/", [fileToSelect lastPathComponent], nil]]];
+//}
 
 -(void)makeFirstResponderTo:(NSWindow*)window
 {
@@ -729,6 +737,14 @@ willDisplayCell:(id)cell
 		{
 			// If we can't focus on the same file as before, then that means
 			// we got rid of the file we're currently viewing; and we need to
+			// find the closest file to the one we were on.
+			unsigned closestPosition = [fileList 
+				lowerBoundToInsert:[curFile fileSystemPath] 
+				  withSortSelector:@selector(caseInsensitiveCompare:)];
+			[ourBrowser selectRow:closestPosition inColumn:0];
+			// Now notify the delegate like it's a normal file selection operation.
+			[delegate setDisplayedFileTo:
+				[EGPath pathWithPath:[fileList objectAtIndex:closestPosition]]];
 			
 		}
 		
