@@ -28,6 +28,10 @@
  *          identifying information. -->
  *     <key>VSMenuName</key>
  *     <string>Title in menu</string>
+ *     <key>VSMeuCategory</key>
+ *     <string>Info</string>
+ *     <key>VSPosition</key>
+ *     <number>0</number>
  *   </dict>
  *   <dict>
  *     <-- This dictionary, being a submenu, is never passed as a context. -->
@@ -35,6 +39,10 @@
  *     <string>VSSubmenu</string>
  *     <key>VSMenuName</key>
  *     <string>Submenu</string>
+ *     <key>VSMeuCategory</key>
+ *     <string>Info</string>
+ *     <key>VSPosition</key>
+ *     <number>0</number>
  *     <key>VSSubmenu</key>
  *     <array>
  *       <dict>

@@ -47,9 +47,7 @@
 	// Set the fileList for real.
 	[self setFileList:fileList];
 	
-//	[scrollView setAutohidesScrollers:YES];
-	[scrollView setHasVerticalScroller:NO];
-	[scrollView setHasHorizontalScroller:NO];
+	[scrollView setAutohidesScrollers:YES];
 	
 	// Set up the scroll view on the right
 	id docView = [[scrollView documentView] retain];
@@ -163,19 +161,7 @@
 {
 	[imageViewer setAnimates:YES];
 	[imageViewer setImage:image];
-	NSSize imageSize = [image size];
-	
-	// Check to see if the image's size excedes its content frame
-	NSSize contentFrame = 
-		[NSScrollView contentSizeForFrameSize:[scrollView frame].size
-						hasHorizontalScroller:NO
-						  hasVerticalScroller:NO
-								   borderType:[scrollView borderType]];
-	
-	[scrollView setHasHorizontalScroller:(imageSize.width > contentFrame.width)];
-	[scrollView setHasVerticalScroller:(imageSize.height > contentFrame.height)];
-
-	[imageViewer setFrameSize:imageSize];
+	[imageViewer setFrameSize:[image size]];
 	
 	// Set the correct cursor by simulating the user releasing the mouse.
 	[imageViewer mouseUp:nil];
@@ -219,12 +205,18 @@
 
 -(double)viewingAreaWidth
 {
-	return [[scrollView contentView] frame].size.width;
+	return [NSScrollView contentSizeForFrameSize:[scrollView frame].size
+						   hasHorizontalScroller:NO
+							 hasVerticalScroller:NO
+									  borderType:[scrollView borderType]].width;
 }
 
 -(double)viewingAreaHeight
 {
-	return [[scrollView contentView] frame].size.height;
+	return [NSScrollView contentSizeForFrameSize:[scrollView frame].size
+						   hasHorizontalScroller:NO
+							 hasVerticalScroller:NO
+									  borderType:[scrollView borderType]].height;
 }
 
 // We only hack around the document architecture to get some of its features.
@@ -239,27 +231,26 @@
 
 - (void)windowDidResize:(NSNotification *)aNotification
 {
-//	NSLog(@"-windowDidResize:");
 	if(oldFileListSize != 0) 
 	{
 		[[splitView subviewAtPosition:0] setDimension:oldFileListSize];
 		oldFileListSize = 0;
-	}
 
-	// Figure out the correct size for the clipview and set it here. Usually,
-	// resizing of the subviews takes place AFTERWARDS, (and this will be undone
-	// by that), but redrawing needs the new window size. This isn't a problem
-	// when we're displaying an unscaled image, but is serious when we're 
-	// "fitting" and image to the view.
-	if([[[self document] scaleMode] isEqual:SCALE_IMAGE_TO_FIT])
-	{
-		NSLog(@"Reworking contentView size!");
-		NSSize windowSize = [NSWindow contentRectForFrameRect:[[self window] frame]
-													styleMask:[[self window] styleMask]].size;
-//		NSSize windowSize = [[self window] frame].size;
-		float w = windowSize.width - [self nonImageWidth];
-		float h = windowSize.height - [self nonImageHeight];
-		[[scrollView contentView] setFrameSize:NSMakeSize(w,h)];		
+		// Figure out the correct size for the clipview and set it here. 
+		// Usually, resizing of the subviews takes place AFTERWARDS, (and this 
+		// will be undone by that), but redrawing needs the new window size. 
+		// This isn't a problem when we're displaying an unscaled image, but is
+		// serious when we're "fitting" and image to the view.
+		if([[[self document] scaleMode] isEqual:SCALE_IMAGE_TO_FIT])
+		{
+			NSSize windowSize = 
+				[NSWindow contentRectForFrameRect:[[self window] frame]
+										styleMask:[[self window] styleMask]]
+				.size;
+			float w = windowSize.width - [self nonImageWidth];
+			float h = windowSize.height - [self nonImageHeight];
+			[[scrollView contentView] setFrameSize:NSMakeSize(w,h)];
+		}
 	}
 	
 	// Get in queue for the full redraw
@@ -311,6 +302,15 @@
 		
 		newWidth = nonImageWidth + (pixelWidth * ratio);
 		newHeight = nonImageHeight + (pixelHeight * ratio);
+	}
+	else {
+		// We aren't in a scaling mode. That means we have to make sure that the
+		// scroll bars aren't a menace, displaying both when only one is needed
+		// because we didn't compensate for it.
+		if(newHeight > NSHeight(defaultFrame))
+			newWidth += NSWidth([[scrollView horizontalScroller] frame]);
+		if(newWidth > NSWidth(defaultFrame))
+			newHeight += NSHeight([[scrollView horizontalScroller] frame]);
 	}
 	
 	NSLog(@"new: %@ defaultSize: %@", 
@@ -369,8 +369,8 @@
 	20 + /* Left Margin */
 	NSWidth([[splitView subviewAtPosition:0] frame]) + /* File List View */
 	[splitView dividerThickness] + /* Divider thickness */
-	([scrollView hasVerticalScroller] ?
-	 NSWidth([[scrollView verticalScroller] frame]) : 0) +
+//	([scrollView hasVerticalScroller] ?
+//	 NSWidth([[scrollView verticalScroller] frame]) : 0) +
 	/* Additional room for vertical scroller */
 	20 + 2; /* Right Margin */	
 }
@@ -384,8 +384,8 @@
 {
 	return   //[[self window] titleBarHeight] +
 	20 + /* Top Margin */
-	([scrollView hasHorizontalScroller] ?
-	 NSHeight([[scrollView horizontalScroller] frame]) : 0) +
+//	([scrollView hasHorizontalScroller] ?
+//	 NSHeight([[scrollView horizontalScroller] frame]) : 0) +
 	/* Additional room for horrizontal scroller */
 	20 + 2;  /* Bottom Margin */
 }
