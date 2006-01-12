@@ -141,7 +141,8 @@
 	[currentFile release];
 	currentFile = file;
 	
-	if([[file fileSystemPath] isImage]) {			
+	if([[file fileSystemPath] isImage])
+	{			
 		NSMutableDictionary* dic = [NSMutableDictionary 
 			dictionaryWithObjectsAndKeys:
 				scaleMode, @"Scale Mode",
@@ -156,6 +157,17 @@
 			nil];
 		
 		[ImageLoader loadTask:dic];
+	}
+	else 
+	{
+		// We want to display the folder icon (or whatever it is), since it
+		// isn't an image and we want to reflect that.		
+		[window setImageSizeLabelText:NSMakeSize(0,0)];
+		[window setFileSizeLabelText:-1];
+		
+		// Display the icon.
+		NSImage* image = [file iconImageOfSize:NSMakeSize(128,128)];
+		[window setImage:image];
 	}
 }
 
