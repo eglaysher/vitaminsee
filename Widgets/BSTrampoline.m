@@ -11,25 +11,36 @@
 
 @implementation BSTrampoline
 
-- (id)initWithEnumerator:(NSEnumerator *)inEnumerator mode:(int)operationMode {
+- (id)initWithEnumerator:(NSEnumerator *)inEnumerator mode:(int)operationMode
+			sampleObject:(id)inSample
+{
     if (operationMode < kDoMode | operationMode > kRejectMode)
         [NSException raise:@"InvalidArgumentException" format:@"operationMode argument of initWithEnumerator:mode: was %d, outside %d-%d range.", operationMode, kDoMode, kRejectMode];
     enumerator = [inEnumerator retain];
+	sampleObject = [inSample retain];
     mode = operationMode;
     return self;
 }
 
 - (void)dealloc {
+	[sampleObject release];
     [enumerator release];
     [super dealloc];
 }
 
 
 - (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector {
-    if (mode > kCollectMode)	//For select&reject, return BOOL
-        return [NSMethodSignature signatureWithObjCTypes:"c^v^c"];
-    else			//For do&collect, return id (lowest common denominator)
-        return [NSMethodSignature signatureWithObjCTypes:"@^v^c"];
+	if(sampleObject)
+	{
+		return [sampleObject methodSignatureForSelector:aSelector];
+	}
+	else
+	{
+		if (mode > kCollectMode)	//For select&reject, return BOOL
+			return [NSMethodSignature signatureWithObjCTypes:"c^v^c"];
+		else			//For do&collect, return id (lowest common denominator)
+			return [NSMethodSignature signatureWithObjCTypes:"@^v^c"];		
+	}
 }
 
 - (void)forwardInvocation:(NSInvocation *)anInvocation {

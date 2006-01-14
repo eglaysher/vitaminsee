@@ -91,4 +91,6 @@
 -(IBAction)fakeFavoritesMenuSelector:(id)sender;
 -(IBAction)fakeOpenWithMenuSelector:(id)sender;
 
+-(void)becomeMainDocument:(id)mainDocument;
+-(void)resignMainDocument:(id)mainDocument;
 @end

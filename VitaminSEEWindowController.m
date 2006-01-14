@@ -14,6 +14,7 @@
 #import "ComponentManager.h"
 #import "AppKitAdditions.h"
 #import "ImageLoader.h"
+#import "ApplicationController.h"
 
 @implementation VitaminSEEWindowController
 
@@ -361,6 +362,22 @@
 	NSLog(@"--- end -windowWillUseStandardFrame:defaultFrame:");
 	
     return stdFrame;
+}
+
+- (void)windowDidBecomeMain:(NSNotification *)aNotification
+{
+//	NSLog(@"Became main!");
+	// Notify the Application controller that this window has become main,
+	// and that it's 
+	[[ApplicationController controller] becomeMainDocument:[self document]];
+}
+
+-(void)windowDidResignMain:(NSNotification *)aNotification
+{
+//	NSLog(@"Lost main!");
+	// Notify the Application controller that it should check to see if there
+	// are any windows left.
+	[[ApplicationController controller] resignMainDocument:[self document]];
 }
 
 -(float)nonImageWidth

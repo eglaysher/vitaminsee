@@ -1,4 +1,5 @@
 
+@class EGPath;
 
 /** The CurrentFilePlugin system allows other people to add their own code
  * to VitaminSEE through a standardized interface. The NSBundles that 
@@ -14,8 +15,6 @@
  * * VSMenu - Top level container for all menu objects
  * * VSMenuItem - A container for an individual menu item.
  * * VSSubmenu - A container for a submenu. Contains VSMenuItems.
-
-
  * Here is an example of an entry that exports a menu item and a submenu with
  * two items:
  *
@@ -91,6 +90,8 @@
 
 /** All plugins, after their initial activation, are sent this message.
  *
+ * This method must be able to deal with path being null, meaning that no file
+ * is selected.
  */
 -(void)currentImageSetTo:(EGPath*)path;
 

@@ -141,6 +141,8 @@
 	[currentFile release];
 	currentFile = file;
 	
+	[[ApplicationController controller] becomeMainDocument:self];
+	
 	if([[file fileSystemPath] isImage])
 	{			
 		NSMutableDictionary* dic = [NSMutableDictionary 

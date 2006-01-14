@@ -13,22 +13,30 @@
 
 - (id)do {
     return [[[BSTrampoline alloc] initWithEnumerator:[self objectEnumerator]
-												mode:kDoMode] autorelease];
+												mode:kDoMode
+										sampleObject:[self objectAtIndex:0]
+		] autorelease];
 }
 
 - (id)collect {
     return [[[BSTrampoline alloc] initWithEnumerator:[self objectEnumerator]
-												mode:kCollectMode] autorelease];
+												mode:kCollectMode
+										sampleObject:[self objectAtIndex:0]
+		] autorelease];
 }
 
 - (id)select {
     return [[[BSTrampoline alloc] initWithEnumerator:[self objectEnumerator] 
-												mode:kSelectMode] autorelease];
+												mode:kSelectMode
+										sampleObject:[self objectAtIndex:0]
+		] autorelease];
 }
 
 - (id)reject {
     return [[[BSTrampoline alloc] initWithEnumerator:[self objectEnumerator] 
-												mode:kRejectMode] autorelease];
+												mode:kRejectMode
+										sampleObject:[self objectAtIndex:0]
+		] autorelease];
 }
 
 @end

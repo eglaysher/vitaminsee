@@ -98,8 +98,6 @@ static SEL menuActions[12] = {0};
 shouldCancel:(BOOL)shouldCancel
 {
 	NSArray* fileLists = [ComponentManager getFileListsToDisplayInMenu];
-	NSArray* currentFilePlugins = 
-		[ComponentManager getCurrentFilePluginsInViewMenu];
 	BOOL shouldDisplayFileLists = [fileLists count] > 1;
 	
 	if(shouldDisplayFileLists && index < [fileLists count]) 

@@ -59,4 +59,6 @@
 
 +(NSArray*)getFileListsToDisplayInMenu;
 +(NSArray*)getCurrentFilePluginsInViewMenu;
+
++(NSArray*)getLoadedCurrentFilePlugins;
 @end

@@ -26,6 +26,8 @@
 				8B98BF2F0939515D00CBBF00,
 				8BAE07A609622634007C387D,
 				8BAE07A709622634007C387D,
+				8B91ECAE0978A5B1001B95BE,
+				8B91ECAF0978A5B1001B95BE,
 			);
 			isa = PBXGroup;
 			name = Classes;
@@ -130,6 +132,7 @@
 				8B113881091304FE008FBD78,
 				8B2B8CF60916C0EA00691A7B,
 				8B5EDA260916E62900EE5414,
+				8B91ECED0978ACE3001B95BE,
 			);
 			isa = PBXGroup;
 			name = Products;
@@ -169,6 +172,7 @@
 				8B113880091304FE008FBD78,
 				8B2B8CF50916C0EA00691A7B,
 				8B5EDA250916E62900EE5414,
+				8B91ECEC0978ACE3001B95BE,
 			);
 		};
 		29B97314FDCFA39411CA2CEA = {
@@ -183,6 +187,7 @@
 				29B97317FDCFA39411CA2CEA,
 				29B97323FDCFA39411CA2CEA,
 				19C28FACFE9D520D11CA2CBB,
+				8B91ECEE0978ACE4001B95BE,
 			);
 			isa = PBXGroup;
 			name = VitaminSEE;
@@ -1527,6 +1532,7 @@
 		};
 		8B24490F08FB546C004716BC = {
 			children = (
+				8B91ECEF0978ACEE001B95BE,
 				8B5EDA3A0916E63300EE5414,
 				8B2B8D0C0916C10200691A7B,
 				8B1138910913050E008FBD78,
@@ -1758,6 +1764,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				8B91ED380978AFC4001B95BE,
 				8B5EDA900916E71B00EE5414,
 				8B2B8D600916C16C00691A7B,
 				8B1138E0091305F4008FBD78,
@@ -2729,6 +2736,242 @@
 			settings = {
 			};
 		};
+		8B91ECAE0978A5B1001B95BE = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			path = ToolMenuDelegate.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B91ECAF0978A5B1001B95BE = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
+			path = ToolMenuDelegate.m;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B91ECB10978A5B1001B95BE = {
+			fileRef = 8B91ECAF0978A5B1001B95BE;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B91ECE90978ACE3001B95BE = {
+			buildActionMask = 2147483647;
+			files = (
+				8B91ED010978AD06001B95BE,
+				8B91ED070978AD1B001B95BE,
+				8B91ED080978AD1B001B95BE,
+			);
+			isa = PBXResourcesBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B91ECEA0978ACE3001B95BE = {
+			buildActionMask = 2147483647;
+			files = (
+				8B91ED020978AD06001B95BE,
+			);
+			isa = PBXSourcesBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B91ECEB0978ACE3001B95BE = {
+			buildActionMask = 2147483647;
+			files = (
+			);
+			isa = PBXFrameworksBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B91ECEC0978ACE3001B95BE = {
+			buildPhases = (
+				8B91ECE90978ACE3001B95BE,
+				8B91ECEA0978ACE3001B95BE,
+				8B91ECEB0978ACE3001B95BE,
+			);
+			buildRules = (
+			);
+			buildSettings = {
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = "Components/SortManager/SortManager-Info.plist";
+				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
+				LIBRARY_STYLE = BUNDLE;
+				OPTIMIZATION_CFLAGS = "";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "-framework Foundation -framework AppKit";
+				OTHER_REZFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = SortManager;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = "-Wmost -Wno-four-char-constants -Wno-unknown-pragmas";
+			};
+			dependencies = (
+			);
+			isa = PBXNativeTarget;
+			name = SortManager;
+			productName = SortManager;
+			productReference = 8B91ECED0978ACE3001B95BE;
+			productSettingsXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
+<!DOCTYPE plist PUBLIC \"-//Apple Computer//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">
+<plist version=\"1.0\">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>English</string>
+	<key>CFBundleExecutable</key>
+	<string>SortManager</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.yourcompany.SortManager</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
+	<key>CFBundleVersion</key>
+	<string>1.0</string>
+</dict>
+</plist>
+";
+			productType = "com.apple.product-type.bundle";
+		};
+		8B91ECED0978ACE3001B95BE = {
+			explicitFileType = wrapper.cfbundle;
+			includeInIndex = 0;
+			isa = PBXFileReference;
+			name = SortManager.bundle;
+			path = build/SortManager.bundle;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B91ECEE0978ACE4001B95BE = {
+			isa = PBXFileReference;
+			lastKnownFileType = text.xml;
+			path = "SortManager-Info.plist";
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B91ECEF0978ACEE001B95BE = {
+			children = (
+				8B91ED030978AD1B001B95BE,
+				8B91ED050978AD1B001B95BE,
+				8B91ECFA0978AD06001B95BE,
+				8B91ECFB0978AD06001B95BE,
+				8B91ECFC0978AD06001B95BE,
+			);
+			isa = PBXGroup;
+			name = SortManager;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B91ECFA0978AD06001B95BE = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = text.xml;
+			name = "SortManager-Info.plist";
+			path = "Components/SortManager/SortManager-Info.plist";
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B91ECFB0978AD06001B95BE = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = SortManagerController.h;
+			path = Components/SortManager/SortManagerController.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B91ECFC0978AD06001B95BE = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
+			name = SortManagerController.m;
+			path = Components/SortManager/SortManagerController.m;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B91ED010978AD06001B95BE = {
+			fileRef = 8B91ECFA0978AD06001B95BE;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B91ED020978AD06001B95BE = {
+			fileRef = 8B91ECFC0978AD06001B95BE;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B91ED030978AD1B001B95BE = {
+			children = (
+				8B91ED040978AD1B001B95BE,
+			);
+			isa = PBXVariantGroup;
+			name = Localizable.strings;
+			path = "";
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B91ED040978AD1B001B95BE = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = text.plist.strings;
+			name = English;
+			path = Components/SortManager/English.lproj/Localizable.strings;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B91ED050978AD1B001B95BE = {
+			children = (
+				8B91ED060978AD1B001B95BE,
+			);
+			isa = PBXVariantGroup;
+			name = SortManager.nib;
+			path = "";
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B91ED060978AD1B001B95BE = {
+			isa = PBXFileReference;
+			lastKnownFileType = wrapper.nib;
+			name = English;
+			path = Components/SortManager/English.lproj/SortManager.nib;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B91ED070978AD1B001B95BE = {
+			fileRef = 8B91ED030978AD1B001B95BE;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B91ED080978AD1B001B95BE = {
+			fileRef = 8B91ED050978AD1B001B95BE;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B91ED2C0978AFB1001B95BE = {
+			containerPortal = 29B97313FDCFA39411CA2CEA;
+			isa = PBXContainerItemProxy;
+			proxyType = 1;
+			remoteGlobalIDString = 8B91ECEC0978ACE3001B95BE;
+			remoteInfo = SortManager;
+		};
+		8B91ED2D0978AFB1001B95BE = {
+			isa = PBXTargetDependency;
+			target = 8B91ECEC0978ACE3001B95BE;
+			targetProxy = 8B91ED2C0978AFB1001B95BE;
+		};
+		8B91ED380978AFC4001B95BE = {
+			fileRef = 8B91ECED0978ACE3001B95BE;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
 		8B98BF2E0939515D00CBBF00 = {
 			fileEncoding = 4;
 			isa = PBXFileReference;
@@ -3450,6 +3693,7 @@
 				WRAPPER_EXTENSION = app;
 			};
 			dependencies = (
+				8B91ED2D0978AFB1001B95BE,
 				8B7AA5F4090C999000A351DF,
 				8B24492A08FB567D004716BC,
 				8BEA54B6090BE19900F83026,
@@ -3534,6 +3778,7 @@
 				8B20650D094CDB670062D0CC,
 				8BAE04EF095F6C5D007C387D,
 				8BAE07A909622634007C387D,
+				8B91ECB10978A5B1001B95BE,
 			);
 			isa = PBXSourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;

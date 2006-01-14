@@ -54,8 +54,11 @@
 #import "SS_PrefsController.h"
 #import "SSPrefsControllerFactory.h"
 #import "ViewMenuDelegate.h"
+#import "ToolMenuDelegate.h"
 
 #import "EGPath.h"
+#import "HigherOrderMessaging.h"
+#import "CurrentFilePlugin.h"
 
 @implementation ApplicationController
 
@@ -242,7 +245,9 @@ static ApplicationController* appControl;
 	// Set up our view menu delegate. This is important so plugins work.
 	NSMenu* mainMenu = [NSApp mainMenu];
 	NSMenu* viewMenu = [[mainMenu itemAtIndex:3] submenu];
+	NSMenu* toolMenu = [[mainMenu itemAtIndex:4] submenu];
 	[viewMenu setDelegate:[[ViewMenuDelegate alloc] init]];
+	[toolMenu setDelegate:[[ToolMenuDelegate alloc] init]];
 }
 
 //-----------------------------------------------------------------------------
@@ -592,5 +597,32 @@ static ApplicationController* appControl;
  */
 -(IBAction)fakeOpenWithMenuSelector:(id)sender
 {}
+
+//-----------------------------------------------------------------------------
+-(void)becomeMainDocument:(id)mainDocument
+{
+//	NSLog(@"Main document is now %@, with the file %@", mainDocument,
+//		  [mainDocument currentFile]);
+	
+	// Tell all loaded CurrentFilePlugins that things have changed!
+	id components = [ComponentManager getLoadedCurrentFilePlugins];
+	if([components count]) 
+	{	
+//		NSEnumerator* e = [components objectEnumerator];
+//		id tmp;
+//		while(tmp = [e nextObject])
+//			[tmp currentImageSetTo:[mainDocument currentFile]];
+		[[components do] currentImageSetTo:[mainDocument currentFile]];
+	}
+}
+
+-(void)resignMainDocument:(id)mainDocument
+{
+	if([[NSApp orderedDocuments] count] == 0)
+	{
+		[[[ComponentManager getLoadedCurrentFilePlugins] do] 
+			currentImageSetTo:0];
+	}
+}
 
 @end

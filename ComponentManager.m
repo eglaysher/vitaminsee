@@ -8,6 +8,7 @@
 
 #import "ComponentManager.h"
 #import "NSString+FileTasks.h"
+#import "CurrentFilePlugin.h"
 
 // 
 static int initialized = 0;
@@ -24,8 +25,13 @@ static NSMutableDictionary* internalComponents = 0;
 // Dictionaries of View menu entries to names of FileListPlugins
 static NSMutableArray* viewMenuNamesToBundleName = 0;
 
-// Dictionaries of 
+// Dictionaries of simple dictionaries of menu contexts.
 static NSMutableArray* viewMenuCurrentFilePluginsToBundleName = 0;
+
+// Array of CurrentFile plugins that have already been loaded (and therefore
+// have to have their state updated whenever the user changes images/image
+// viewer windows)
+static NSMutableArray* loadedCurrentFilePlugins = 0;
 
 // PUBLIC INTERFACE
 @implementation ComponentManager
@@ -47,6 +53,7 @@ static NSMutableArray* viewMenuCurrentFilePluginsToBundleName = 0;
 	internalComponents = [[NSMutableDictionary alloc] init];
 	viewMenuNamesToBundleName = [[NSMutableArray alloc] init];
 	viewMenuCurrentFilePluginsToBundleName = [[NSMutableArray alloc] init];
+	loadedCurrentFilePlugins = [[NSMutableArray alloc] init];
 }
 
 /** Scans through the directory path, looking for ".bundle"s that are components
@@ -98,9 +105,15 @@ static NSMutableArray* viewMenuCurrentFilePluginsToBundleName = 0;
 					@"CurrentFile", @"PluginType", 
 					menuName, @"MenuItemName", menuLocation, @"MenuLocation",
 					nil];
+				
+				NSLog(@"Noticing plugin named %@", pluginName);
 
 				// Add the plugin's menu entries to one of the various names
 				//
+				[viewMenuCurrentFilePluginsToBundleName addObject:
+					[NSDictionary dictionaryWithObjectsAndKeys:
+						menuName, @"Menu Name",
+						pluginName, @"Plugin Name", nil]];
 
 				[currentFilePlugins setObject:pluginInfo forKey:pluginName];
 			}
@@ -139,14 +152,30 @@ static NSMutableArray* viewMenuCurrentFilePluginsToBundleName = 0;
 						 firstTime:&firstTime];
 }
 
-//+(id<CurrentFilePlugin>)getCurrentFilePluginNamed:(NSString*)name
-//{
-//	if(!initialized)
-//		return nil;
-//		
-//	// fixme
-//	return nil;
-//}
+/** Gets a CurrentFilePlugin, loading the bundle that contains it from disk if
+ * neccessary.
+ *
+ * @param name The name of the CurrentFilePlugin
+ * @return An instantiation of the CurrentFilePlugin, which is owned by the 
+ *         ComponentManager, and should not be released.
+ */
++(id<CurrentFilePlugin>)getCurrentFilePluginNamed:(NSString*)name
+{
+	BOOL firstTime = NO;
+	id<CurrentFilePlugin> component = [self returnPluginNamed:name
+											   fromDictionary:currentFilePlugins
+													 protocol:nil
+													firstTime:&firstTime];
+
+	// Make sure that the component gets thrown in a list of loaded components
+	// so we can make sure their state is updated whenever necessary.
+	if(firstTime) 
+	{
+		[loadedCurrentFilePlugins addObject:component];
+	}
+	
+	return component;
+}
 
 /** Gets a internal component (A piece of code that we cheated and stuck
  * in a plugin without defining some sort of formal interface).
@@ -179,6 +208,11 @@ static NSMutableArray* viewMenuCurrentFilePluginsToBundleName = 0;
 +(NSArray*)getCurrentFilePluginsInViewMenu
 {
 	return viewMenuCurrentFilePluginsToBundleName;
+}
+
++(NSArray *)getLoadedCurrentFilePlugins
+{
+	return loadedCurrentFilePlugins;
 }
 
 //-----------------------------------------------------------------------------
