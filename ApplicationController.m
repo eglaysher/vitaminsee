@@ -608,10 +608,6 @@ static ApplicationController* appControl;
 	id components = [ComponentManager getLoadedCurrentFilePlugins];
 	if([components count]) 
 	{	
-//		NSEnumerator* e = [components objectEnumerator];
-//		id tmp;
-//		while(tmp = [e nextObject])
-//			[tmp currentImageSetTo:[mainDocument currentFile]];
 		[[components do] currentImageSetTo:[mainDocument currentFile]];
 	}
 }

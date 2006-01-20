@@ -30,6 +30,8 @@
 #import "SortManagerController.h"
 #import "NSString+FileTasks.h"
 #import "EGPath.h"
+#import "ComponentManager.h"
+#import "FileOperations.h"
 
 @implementation SortManagerController
 
@@ -68,6 +70,10 @@
 		objectForKey:@"SortManagerPaths"] objectAtIndex:rowIndex];
 	NSString* destination = [cellProperties objectForKey:@"Path"];	
 
+	[[ComponentManager getInteranlComponentNamed:@"FileOperations"]
+		moveFile:currentFile
+			  to:[EGPath pathWithPath:destination]];	
+	
 //	id currentFile = [pluginLayer currentFile];
 //	[pluginLayer moveFile:currentFile
 //					   to:destination];
@@ -80,13 +86,19 @@
 		objectForKey:@"SortManagerPaths"] objectAtIndex:rowIndex];
 	NSString* destination = [cellProperties objectForKey:@"Path"];
 
+	[[ComponentManager getInteranlComponentNamed:@"FileOperations"]
+		copyFile:currentFile
+			  to:[EGPath pathWithPath:destination]];
+	
 //	[pluginLayer copyFile:[pluginLayer currentFile]
 //					   to:destination];
 }
 
--(void)fileSetTo:(NSString*)newPath
+-(void)fileSetTo:(EGPath*)newPath
 {
 	NSNumber* valid;
+	[currentFile release];
+	currentFile = [newPath retain];
 	
 	if(newPath)
 	{
@@ -114,14 +126,13 @@
 -(void)activatePluginWithFile:(EGPath*)path inWindow:(NSWindow*)window
 					  context:(NSDictionary*)context
 {
-	NSLog(@"Received activation signal!" );
 	[self showWindow:self];	
-	[self fileSetTo:[path fileSystemPath]];
+	[self fileSetTo:path];
 }
 
 -(void)currentImageSetTo:(EGPath*)path
 {
-	[self fileSetTo:[path fileSystemPath]];
+	[self fileSetTo:path];
 }
 
 //////////////////////////////////////////////////////////// NSTable Datasource
@@ -141,12 +152,5 @@
 		[cell bind:@"enabled2" toObject:keyValues withKeyPath:@"ValidDirectory" options:nil];
 	}
 }
-
-//////// 
-//-(NSUndoManager*)windowWillReturnUndoManager:(id)window
-//{
-//	return [pluginLayer undoManager];
-//}
-
 
 @end

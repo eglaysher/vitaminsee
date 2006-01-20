@@ -133,6 +133,7 @@
 				8B2B8CF60916C0EA00691A7B,
 				8B5EDA260916E62900EE5414,
 				8B91ECED0978ACE3001B95BE,
+				8B91EF6E097C9596001B95BE,
 			);
 			isa = PBXGroup;
 			name = Products;
@@ -173,6 +174,7 @@
 				8B2B8CF50916C0EA00691A7B,
 				8B5EDA250916E62900EE5414,
 				8B91ECEC0978ACE3001B95BE,
+				8B91EF6D097C9596001B95BE,
 			);
 		};
 		29B97314FDCFA39411CA2CEA = {
@@ -187,7 +189,6 @@
 				29B97317FDCFA39411CA2CEA,
 				29B97323FDCFA39411CA2CEA,
 				19C28FACFE9D520D11CA2CBB,
-				8B91ECEE0978ACE4001B95BE,
 			);
 			isa = PBXGroup;
 			name = VitaminSEE;
@@ -1532,6 +1533,7 @@
 		};
 		8B24490F08FB546C004716BC = {
 			children = (
+				8B91EF58097C93CF001B95BE,
 				8B91ECEF0978ACEE001B95BE,
 				8B5EDA3A0916E63300EE5414,
 				8B2B8D0C0916C10200691A7B,
@@ -1764,6 +1766,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				8B91F01D09807ED1001B95BE,
 				8B91ED380978AFC4001B95BE,
 				8B5EDA900916E71B00EE5414,
 				8B2B8D600916C16C00691A7B,
@@ -1775,7 +1778,6 @@
 				8B8B7241090C138A006DDF10,
 				8BEA54B8090BE19D00F83026,
 				8B24492B08FB5680004716BC,
-				8B9C7375096884C6009ED6CC,
 			);
 			isa = PBXCopyFilesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1869,6 +1871,7 @@
 				INFOPLIST_FILE = "Components/AdvancedPreferences/AdvancedPreferences-Info.plist";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
 				LIBRARY_STYLE = BUNDLE;
+				MACOSX_DEPLOYMENT_TARGET = 10.3;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "-framework Foundation -framework AppKit";
 				OTHER_REZFLAGS = "";
@@ -2761,7 +2764,6 @@
 		8B91ECE90978ACE3001B95BE = {
 			buildActionMask = 2147483647;
 			files = (
-				8B91ED010978AD06001B95BE,
 				8B91ED070978AD1B001B95BE,
 				8B91ED080978AD1B001B95BE,
 			);
@@ -2799,9 +2801,9 @@
 				INFOPLIST_FILE = "Components/SortManager/SortManager-Info.plist";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
 				LIBRARY_STYLE = BUNDLE;
-				OPTIMIZATION_CFLAGS = "";
+				MACOSX_DEPLOYMENT_TARGET = 10.3;
 				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "-framework Foundation -framework AppKit";
+				OTHER_LDFLAGS = "-framework Foundation -framework AppKit -undefined dynamic_lookup";
 				OTHER_REZFLAGS = "";
 				PREBINDING = NO;
 				PRODUCT_NAME = SortManager;
@@ -2841,17 +2843,9 @@
 			explicitFileType = wrapper.cfbundle;
 			includeInIndex = 0;
 			isa = PBXFileReference;
-			name = SortManager.bundle;
-			path = build/SortManager.bundle;
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		8B91ECEE0978ACE4001B95BE = {
-			isa = PBXFileReference;
-			lastKnownFileType = text.xml;
-			path = "SortManager-Info.plist";
-			refType = 4;
-			sourceTree = "<group>";
+			path = SortManager.bundle;
+			refType = 3;
+			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		8B91ECEF0978ACEE001B95BE = {
 			children = (
@@ -2892,12 +2886,6 @@
 			path = Components/SortManager/SortManagerController.m;
 			refType = 4;
 			sourceTree = "<group>";
-		};
-		8B91ED010978AD06001B95BE = {
-			fileRef = 8B91ECFA0978AD06001B95BE;
-			isa = PBXBuildFile;
-			settings = {
-			};
 		};
 		8B91ED020978AD06001B95BE = {
 			fileRef = 8B91ECFC0978AD06001B95BE;
@@ -2971,6 +2959,160 @@
 			isa = PBXBuildFile;
 			settings = {
 			};
+		};
+		8B91EF1609795CBF001B95BE = {
+			buildActionMask = 2147483647;
+			files = (
+				8B9C7375096884C6009ED6CC,
+			);
+			isa = PBXHeadersBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B91EF58097C93CF001B95BE = {
+			children = (
+				8B91F0AC09808782001B95BE,
+				8B91EF62097C9489001B95BE,
+				8B91EF63097C9489001B95BE,
+			);
+			isa = PBXGroup;
+			name = FileOperations;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B91EF62097C9489001B95BE = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = FileOperations.h;
+			path = Components/FileOperations/FileOperations.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B91EF63097C9489001B95BE = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
+			name = FileOperations.m;
+			path = Components/FileOperations/FileOperations.m;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B91EF6A097C9596001B95BE = {
+			buildActionMask = 2147483647;
+			files = (
+			);
+			isa = PBXResourcesBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B91EF6B097C9596001B95BE = {
+			buildActionMask = 2147483647;
+			files = (
+				8B91EF85097C95AA001B95BE,
+			);
+			isa = PBXSourcesBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B91EF6C097C9596001B95BE = {
+			buildActionMask = 2147483647;
+			files = (
+			);
+			isa = PBXFrameworksBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B91EF6D097C9596001B95BE = {
+			buildPhases = (
+				8B91EF6A097C9596001B95BE,
+				8B91EF6B097C9596001B95BE,
+				8B91EF6C097C9596001B95BE,
+			);
+			buildRules = (
+			);
+			buildSettings = {
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = "Components/FileOperations/FileOperations-Info.plist";
+				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
+				LIBRARY_STYLE = BUNDLE;
+				MACOSX_DEPLOYMENT_TARGET = 10.3;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "-framework Foundation -framework AppKit -undefined dynamic_lookup";
+				OTHER_REZFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = FileOperations;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = "-Wmost -Wno-four-char-constants -Wno-unknown-pragmas";
+			};
+			dependencies = (
+			);
+			isa = PBXNativeTarget;
+			name = FileOperations;
+			productName = FileOperations;
+			productReference = 8B91EF6E097C9596001B95BE;
+			productSettingsXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
+<!DOCTYPE plist PUBLIC \"-//Apple Computer//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">
+<plist version=\"1.0\">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>English</string>
+	<key>CFBundleExecutable</key>
+	<string>FileOperations</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.yourcompany.FileOperations</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
+	<key>CFBundleVersion</key>
+	<string>1.0</string>
+</dict>
+</plist>
+";
+			productType = "com.apple.product-type.bundle";
+		};
+		8B91EF6E097C9596001B95BE = {
+			explicitFileType = wrapper.cfbundle;
+			includeInIndex = 0;
+			isa = PBXFileReference;
+			path = FileOperations.bundle;
+			refType = 3;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		8B91EF85097C95AA001B95BE = {
+			fileRef = 8B91EF63097C9489001B95BE;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B91F01A09807ECC001B95BE = {
+			containerPortal = 29B97313FDCFA39411CA2CEA;
+			isa = PBXContainerItemProxy;
+			proxyType = 1;
+			remoteGlobalIDString = 8B91EF6D097C9596001B95BE;
+			remoteInfo = FileOperations;
+		};
+		8B91F01B09807ECC001B95BE = {
+			isa = PBXTargetDependency;
+			target = 8B91EF6D097C9596001B95BE;
+			targetProxy = 8B91F01A09807ECC001B95BE;
+		};
+		8B91F01D09807ED1001B95BE = {
+			fileRef = 8B91EF6E097C9596001B95BE;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B91F0AC09808782001B95BE = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = text.xml;
+			name = "FileOperations-Info.plist";
+			path = "Components/FileOperations/FileOperations-Info.plist";
+			refType = 4;
+			sourceTree = "<group>";
 		};
 		8B98BF2E0939515D00CBBF00 = {
 			fileEncoding = 4;
@@ -3676,6 +3818,7 @@
 				8D11072C0486CEB800E47090,
 				8D11072E0486CEB800E47090,
 				8B24492608FB5670004716BC,
+				8B91EF1609795CBF001B95BE,
 			);
 			buildRules = (
 			);
@@ -3702,6 +3845,7 @@
 				8B9B2F77090DB441009C69B7,
 				8B1138D9091305CD008FBD78,
 				8B426110090EFCA10006EE43,
+				8B91F01B09807ECC001B95BE,
 				8B1137E0091301F2008FBD78,
 				8B2B8D5E0916C16200691A7B,
 			);

@@ -380,6 +380,8 @@
 	[[ApplicationController controller] resignMainDocument:[self document]];
 }
 
+//windowWillReturnUndoManager:
+
 -(float)nonImageWidth
 {
 	return

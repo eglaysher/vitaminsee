@@ -46,5 +46,5 @@
 -(IBAction)moveButtonPushed:(id)sender;
 -(IBAction)copyButtonPushed:(id)sender;
 
--(void)fileSetTo:(NSString*)newPath;
+-(void)fileSetTo:(EGPath*)newPath;
 @end

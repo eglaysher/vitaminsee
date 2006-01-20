@@ -5,9 +5,9 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleExecutable</key>
-	<string>SortManager</string>
+	<string>FileOperations</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.yourcompany.SortManager</string>
+	<string>com.yourcompany.FileOperations</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundlePackageType</key>
@@ -16,5 +16,11 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
+	<key>NSPrincipalClass</key>
+	<string>FileOperations</string>
+	<key>VSPluginName</key>
+	<string>FileOperations</string>
+	<key>VSPluginType</key>
+	<string>InternalUse</string>
 </dict>
 </plist>

@@ -140,8 +140,18 @@
 	[file retain];
 	[currentFile release];
 	currentFile = file;
-	
-	[[ApplicationController controller] becomeMainDocument:self];
+
+	// OK, so we're going to cancel any recent becomeMainDocument: message,
+	// and then we're going to try to become the main document after a 
+	// moment. (So if the user is just holding "down" while scrolling
+	// throught the filelist, we aren't going to have slowdowns...)
+	id appController = [ApplicationController controller];
+	[NSObject cancelPreviousPerformRequestsWithTarget:appController
+											 selector:@selector(becomeMainDocument:)
+											   object:self];
+	[appController performSelector:@selector(becomeMainDocument:)
+						withObject:self
+						afterDelay:0.15];
 	
 	if([[file fileSystemPath] isImage])
 	{			
@@ -183,6 +193,7 @@
 	// If this is still the current file (i.e., not stale...)
 	if([[task objectForKey:@"Path"]  isEqual:currentFile]) {
 		NSImage* image = [task objectForKey:@"Image"];
+		
 		if(image) {			
 			// Set the image
 			[window setImage:image];
