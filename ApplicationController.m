@@ -190,11 +190,6 @@
 	[defaultPrefs setObject:[NSNumber numberWithBool:NO] forKey:@"GenerateThumbnailsInArchives"];
 	[defaultPrefs setObject:[NSNumber numberWithBool:YES] forKey:@"PreloadImages"];
 	[defaultPrefs setObject:[NSNumber numberWithBool:NO] forKey:@"ShowHiddenFiles"];
-
-	// Keyword preferences
-//	KeywordNode* node = [[[KeywordNode alloc] initWithParent:nil keyword:@"Keywords"] autorelease];
-//	NSData* emptyKeywordNode = [NSKeyedArchiver archivedDataWithRootObject:node];
-//	[defaultPrefs setObject:emptyKeywordNode forKey:@"KeywordTree"];
 	
 	// Default sort manager array
 	NSArray* sortManagerPaths;

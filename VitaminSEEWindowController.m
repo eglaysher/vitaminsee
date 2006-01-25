@@ -160,12 +160,21 @@
 
 -(void)setImage:(NSImage*)image
 {
+	id previousImage = [imageViewer image];
+	
 	[imageViewer setAnimates:YES];
 	[imageViewer setImage:image];
 	[imageViewer setFrameSize:[image size]];
 	
 	// Set the correct cursor by simulating the user releasing the mouse.
 	[imageViewer mouseUp:nil];
+	
+	if(!previousImage) 
+	{
+		// This is the first time an image is being displayed; we need to
+		// update the display NOW.
+		[imageViewer setNeedsDisplay];
+	}
 }
 
 -(void)setFileSizeLabelText:(int)fileSize

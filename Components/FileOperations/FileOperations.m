@@ -22,7 +22,7 @@
 
 -(int)deleteFile:(EGPath*)path
 {
-	if([path isNaturalFile]) {
+	if(![path isNaturalFile]) {
 		AlertSoundPlay();
 		return -1;
 	}
@@ -33,6 +33,8 @@
 	// We move the current file to the trash.
 	BOOL worked;
 	int tag = 0;
+	
+	NSLog(@"Going to delete file : %@", file);
 	
 	if([[NSFileManager defaultManager] fileExistsAtPath:file])
 	{
@@ -51,8 +53,10 @@
 		{
 //			[viewAsIconsController removeFile:currentImageFile];
 		}
-		else
+		else {
 			AlertSoundPlay();
+			NSLog(@"Didn't work.");
+		}
 	}
 	
 	[file release];

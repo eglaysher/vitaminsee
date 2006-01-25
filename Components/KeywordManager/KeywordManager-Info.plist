@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>English</string>
+	<key>CFBundleExecutable</key>
+	<string>KeywordManager</string>
+	<key>CFBundleIdentifier</key>
+	<string>org.elliotglaysher.VitaminSEE.KeywordManager</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundlePackageType</key>
+	<string>BNDL</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
+	<key>CFBundleVersion</key>
+	<string>1.0</string>
+	<key>NSPrincipalClass</key>
+	<string>KeywordManagerController</string>
+	<key>VSPluginName</key>
+	<string>KeywordManager</string>
+	<key>VSPluginType</key>
+	<string>CurrentFile</string>
+	<key>VSCFMenuName</key>
+	<string>Keywords</string>
+</dict>
+</plist>

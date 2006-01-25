@@ -106,8 +106,6 @@ static NSMutableArray* loadedCurrentFilePlugins = 0;
 					menuName, @"MenuItemName", menuLocation, @"MenuLocation",
 					nil];
 				
-				NSLog(@"Noticing plugin named %@", pluginName);
-
 				// Add the plugin's menu entries to one of the various names
 				//
 				[viewMenuCurrentFilePluginsToBundleName addObject:
@@ -187,7 +185,6 @@ static NSMutableArray* loadedCurrentFilePlugins = 0;
 +(id)getInteranlComponentNamed:(NSString*)name
 {
 	BOOL firstTime;
-	NSLog(@"Loading component %@", name);
 	return [self returnPluginNamed:name
 					fromDictionary:internalComponents
 						  protocol:nil
@@ -269,7 +266,7 @@ static NSMutableArray* loadedCurrentFilePlugins = 0;
 			return nil;
 		}
 		
-		NSLog(@"Class: %@", principle);
+//		NSLog(@"Class: %@", principle);
 		// Create the instance
 		instance = [[principle alloc] init];
 		[pluginInfo setObject:instance forKey:@"Instance"];
