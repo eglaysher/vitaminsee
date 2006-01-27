@@ -83,6 +83,7 @@ static NSMutableDictionary* thumbnailPriorityBuildStack;
 // Configuration stuff
 //static BOOL shouldBuildThumbnails;
 
+pthread_mutex_t thumbnailConfLock;
 enum ThumbnailStorageType {
 	THUMBNAILSTORAGE_DONT_STORE,
 	THUMBNAILSTORAGE_STORE_RESOURCEFORK
@@ -101,6 +102,8 @@ static enum ThumbnailStorageType thumbnailStorageType;
 	pthread_rwlock_init(&thumbnailCacheLock, NULL);
 	thumbnailCache = [[NSMutableDictionary alloc] init];
 	
+	pthread_mutex_init(&thumbnailConfLock, NULL);
+	
 	pthread_mutex_init(&thumbnailBuildQueueLock, NULL);
 	pthread_cond_init(&thumbnailBuildQueueCondition, NULL);
 	thumbnailBuildQueue = [[NSMutableDictionary alloc] init];
@@ -110,12 +113,36 @@ static enum ThumbnailStorageType thumbnailStorageType;
 	// Subscribe to updates to the main notification of changes to user defaults
 	// and alert 
 	// FIXME: TODO
-	
+	[self updatePreferences];
+	[[NSNotificationCenter defaultCenter] 
+		addObserver:self
+		   selector:@selector(updatePreferences)
+			   name:NSUserDefaultsDidChangeNotification
+			 object:nil];
 	
 	// Spawn off the worker thread.
 	[NSThread detachNewThreadSelector:@selector(taskHandlerThread:)
 							 toTarget:[ThumbnailManager class]
 						   withObject:nil];
+}
+
+//-----------------------------------------------------------------------------
+
+/** Method called on NSUserDefaultsDidChangeNotification. Tracks changes to the
+ * user defaults, and copies them into our local data structures.
+ */
++(void)updatePreferences
+{
+	NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
+	
+	pthread_mutex_lock(&thumbnailConfLock);
+	{
+		if([[userDefaults objectForKey:@"SaveThumbnails"] boolValue])
+			thumbnailStorageType = THUMBNAILSTORAGE_STORE_RESOURCEFORK;
+		else
+			thumbnailStorageType = THUMBNAILSTORAGE_DONT_STORE;					
+	}
+	pthread_mutex_unlock(&thumbnailConfLock);
 }
 
 //-----------------------------------------------------------------------------
@@ -416,7 +443,13 @@ static enum ThumbnailStorageType thumbnailStorageType;
 	NSImage* thumbnail;
 	if(iconFamily)
 	{
-		if([path isNaturalFile]) // && shouldSaveIconToDisk)
+		BOOL shouldSaveIconToDisk;
+		pthread_mutex_lock(&thumbnailConfLock);
+		shouldSaveIconToDisk = 
+			(thumbnailStorageType == THUMBNAILSTORAGE_STORE_RESOURCEFORK);
+		pthread_mutex_unlock(&thumbnailConfLock);
+		
+		if([path isNaturalFile] && shouldSaveIconToDisk)
 		{
 //			NSLog(@"Setting the thumbnail for %@", path);
 			[iconFamily setAsCustomIconForFile:[path fileSystemPath]];

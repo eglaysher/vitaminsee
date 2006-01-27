@@ -20,6 +20,8 @@
 
 }
 
++(void)updatePreferences;
+
 +(void)subscribe:(id)object toDirectory:(EGPath*)directory;
 +(void)unsubscribe:(id)object fromDirectory:(EGPath*)directory;
 
