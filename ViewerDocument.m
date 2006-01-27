@@ -155,6 +155,23 @@
 	
 	if([[file fileSystemPath] isImage])
 	{			
+		NSNumber* tag = [[NSUserDefaults standardUserDefaults]
+				objectForKey:@"SmoothingTag"];
+		id smoothing;
+		
+		switch([tag intValue]) 
+		{
+		case 1:
+			smoothing = NO_SMOOTHING;
+			break;
+		case 2:
+			smoothing = LOW_SMOOTHING;
+			break;
+		default:
+		case 3:
+			smoothing = HIGH_SMOOTHING;
+		}
+	
 		NSMutableDictionary* dic = [NSMutableDictionary 
 			dictionaryWithObjectsAndKeys:
 				scaleMode, @"Scale Mode",
@@ -162,7 +179,7 @@
 				@"Viewing Area Width",
 				[NSNumber numberWithDouble:[window viewingAreaHeight]], 
 				@"Viewing Area Height",
-				HIGH_SMOOTHING, @"Smoothing",
+				smoothing, @"Smoothing",
 				[NSNumber numberWithDouble:scaleRatio], @"Scale Ratio",
 				currentFile, @"Path",
 				self, @"Requester",

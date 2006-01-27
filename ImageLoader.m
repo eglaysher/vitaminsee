@@ -319,7 +319,7 @@ static BOOL newTaskThatPreemptsPreload(NSDictionary* currentTask)
 	
 	NSImage* imageToRet;
 	NSString* smoothing = [task objectForKey:@"Smoothing"];
-	if(smoothing == NO_SMOOTHING || 
+	if([smoothing isEqualTo:NO_SMOOTHING] || 
 	   // The image is naturally smaller then the window
 	   ([imageRep pixelsWide] <= displaySize.width && 
 		[imageRep pixelsHigh] <= displaySize.height) || 
@@ -430,7 +430,7 @@ static BOOL newTaskThatPreemptsPreload(NSDictionary* currentTask)
 		imageToRet = [[NSImage alloc] initWithSize:displaySize];
 		[imageToRet lockFocus];
 		{
-			if([taskCopy objectForKey:@"Smoothing"] == LOW_SMOOTHING)
+			if([[taskCopy objectForKey:@"Smoothing"] isEqualTo:LOW_SMOOTHING])
 				[[NSGraphicsContext currentContext] 
 					setImageInterpolation:NSImageInterpolationLow];
 			else

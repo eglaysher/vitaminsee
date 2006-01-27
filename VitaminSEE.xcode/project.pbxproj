@@ -3551,7 +3551,6 @@
 				INFOPLIST_FILE = "Components/ImageMetadata/ImageMetadata-Info.plist";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
 				LIBRARY_STYLE = BUNDLE;
-				OPTIMIZATION_CFLAGS = "";
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "-framework Foundation -framework AppKit";
 				OTHER_REZFLAGS = "";
@@ -3593,10 +3592,9 @@
 			explicitFileType = wrapper.cfbundle;
 			includeInIndex = 0;
 			isa = PBXFileReference;
-			name = ImageMetadata.bundle;
-			path = build/ImageMetadata.bundle;
-			refType = 4;
-			sourceTree = "<group>";
+			path = ImageMetadata.bundle;
+			refType = 3;
+			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		8BC9D2D209846A16006F6B16 = {
 			fileEncoding = 30;
@@ -4044,7 +4042,6 @@
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
 				LIBRARY_STYLE = BUNDLE;
 				MACOSX_DEPLOYMENT_TARGET = 10.3;
-				OPTIMIZATION_CFLAGS = "";
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "-framework Foundation -framework AppKit -undefined dynamic_lookup";
 				OTHER_REZFLAGS = "";
@@ -4086,10 +4083,9 @@
 			explicitFileType = wrapper.cfbundle;
 			includeInIndex = 0;
 			isa = PBXFileReference;
-			name = KeywordManager.bundle;
-			path = build/KeywordManager.bundle;
-			refType = 4;
-			sourceTree = "<group>";
+			path = KeywordManager.bundle;
+			refType = 3;
+			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		8BC9D342098487A4006F6B16 = {
 			children = (
@@ -4365,7 +4361,6 @@
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
 				LIBRARY_STYLE = BUNDLE;
 				MACOSX_DEPLOYMENT_TARGET = 10.3;
-				OPTIMIZATION_CFLAGS = "";
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "-framework Foundation -framework AppKit -undefined dynamic_lookup";
 				OTHER_REZFLAGS = "";
