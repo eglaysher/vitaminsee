@@ -552,7 +552,6 @@ static BOOL newTaskThatPreemptsPreload(NSDictionary* currentTask)
 	while(obj = [e nextObject])
 	{
 		if([[obj objectForKey:@"Path"] isEqual:path]) {
-//			NSLog(@"Displaying a CACHED image...");
 			[task setObject:[obj objectForKey:@"Data Size"] forKey:@"Data Size"];
 			return [[obj objectForKey:@"Image Rep"] retain];
 		}

@@ -89,6 +89,7 @@ enum ThumbnailStorageType {
 	THUMBNAILSTORAGE_STORE_RESOURCEFORK
 };
 static enum ThumbnailStorageType thumbnailStorageType;
+static BOOL generateThumbnails;
 
 @implementation ThumbnailManager
 
@@ -140,9 +141,25 @@ static enum ThumbnailStorageType thumbnailStorageType;
 		if([[userDefaults objectForKey:@"SaveThumbnails"] boolValue])
 			thumbnailStorageType = THUMBNAILSTORAGE_STORE_RESOURCEFORK;
 		else
-			thumbnailStorageType = THUMBNAILSTORAGE_DONT_STORE;					
+			thumbnailStorageType = THUMBNAILSTORAGE_DONT_STORE;
+		
+		generateThumbnails = [[userDefaults objectForKey:@"GenerateThumbnails"]
+			boolValue];
 	}
 	pthread_mutex_unlock(&thumbnailConfLock);
+}
+
+/** Move this to private */
++(BOOL)getGenerateThumbnails
+{
+	BOOL tmp;
+	pthread_mutex_lock(&thumbnailConfLock);
+	{
+		tmp = generateThumbnails;
+	}
+	pthread_mutex_unlock(&thumbnailConfLock);
+
+	return tmp;
 }
 
 //-----------------------------------------------------------------------------
@@ -573,7 +590,7 @@ static enum ThumbnailStorageType thumbnailStorageType;
 		// it on the main thread; the Carbon Resource Manager isn't
 		// thread safe!)
 		if([[nextToBuild performOnMainThreadWaitUntilDone:YES] 
-			hasThumbnailIcon])
+			hasThumbnailIcon] || ![self getGenerateThumbnails])
 		{
 			// If there's already an thumbnail, load it and put it in 
 			// the cache

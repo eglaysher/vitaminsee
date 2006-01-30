@@ -57,6 +57,8 @@
 	UKKQueue* fileWatcher;
 }
 
++(void)updatePreferences;
+
 //-(void)setDirectory:(EGPath*)directory currentFile:(NSString*)file;
 
 // Methods to handle clicks

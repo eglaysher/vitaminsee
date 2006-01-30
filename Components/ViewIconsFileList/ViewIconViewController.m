@@ -45,7 +45,27 @@
 -(void)handleDidUnmountNotification:(id)notification;
 @end
 
+static BOOL shouldPreloadImages;
+
 @implementation ViewIconViewController
+
++(void)initialize
+{
+	// Register to listen for preference updates, so we don't have to fetch them
+	// during things that could be running quite a bit...
+	[self updatePreferences];
+	[[NSNotificationCenter defaultCenter] 
+		addObserver:self
+		   selector:@selector(updatePreferences)
+			   name:NSUserDefaultsDidChangeNotification
+			 object:nil];	
+}
+
++(void)updatePreferences
+{
+	shouldPreloadImages = [[[NSUserDefaults standardUserDefaults]
+		objectForKey:@"PreloadImages"] boolValue];
+}
 
 -(id)init
 {
@@ -378,28 +398,33 @@ willDisplayCell:(id)cell
 		// AppKit version number for it.
 		[ourBrowser setNeedsDisplay];
 	}
-	
-	// Now we figure out which file we preload next.
-	int preloadRow = -1;
-	int newPosition = [sender selectedRowInColumn:0];
 
-	if(newPosition > oldPosition)
-	{
-		// We are moving down (positive) so preload the next file
-		preloadRow = newPosition + 1;
-	}
-	else if(newPosition < oldPosition)
-	{
-		// We are moving up (negative) so preload the previous file
-		preloadRow = newPosition - 1;
-	}
+	int newPosition = [sender selectedRowInColumn:0];
 	
-	if(preloadRow > -1)
+	if(shouldPreloadImages) 
 	{
-		id node = [[ourBrowser loadedCellAtRow:preloadRow column:0] cellPath];
-		// FIXME
-		if(node && [node isImage])
-			[ImageLoader preloadImage:[EGPath pathWithPath:node]];
+		NSLog(@"Going to preload image...");
+		// Now we figure out which file we preload next.
+		int preloadRow = -1;
+		
+		if(newPosition > oldPosition)
+		{
+			// We are moving down (positive) so preload the next file
+			preloadRow = newPosition + 1;
+		}
+		else if(newPosition < oldPosition)
+		{
+			// We are moving up (negative) so preload the previous file
+			preloadRow = newPosition - 1;
+		}
+		
+		if(preloadRow > -1)
+		{
+			id node = [[ourBrowser loadedCellAtRow:preloadRow column:0] cellPath];
+			// FIXME
+			if(node && [node isImage])
+				[ImageLoader preloadImage:[EGPath pathWithPath:node]];
+		}		
 	}
 
 	oldPosition = newPosition;
@@ -705,18 +730,27 @@ willDisplayCell:(id)cell
 //	NSLog(@"Notification: '%@' for '%@'", nm, fpath);
 	
 	// Handle the deletion of the directory	
-//	if(![currentDirectory exists])
-//	{
-//		while(![currentDirectory exists]) 
-//		{
-//			id tmp = [currentDirectory
-//		}
-//
-//		// Rebuild the data
-//
-//	}
-//	else 
-	if([currentDirectory isNaturalFile]) 
+	if(![currentDirectory exists])
+	{
+		while(![currentDirectory exists]) 
+		{
+			id tmp = [currentDirectory pathByDeletingLastPathComponent];
+			[tmp retain];
+			[currentDirectory release];
+			currentDirectory = tmp;
+		}
+
+		// Rebuild the data
+		[self rebuildInternalFileArray];
+		
+		oldPosition = -1;
+		
+		// Now reload the data
+		[ourBrowser setCellClass:[ViewIconsCell class]];
+		//	[ourBrowser setSendsActionOnArrowKeys:NO];
+		[ourBrowser loadColumnZero];
+	}
+	else if([currentDirectory isNaturalFile]) 
 	{
 		EGPath* curFile = [[delegate currentFile] retain];
 		
