@@ -44,6 +44,8 @@
 //-(IBAction)goToFolder:(id)sender;
 //-(void)finishedGotoFolder:(NSString*)done;
 
+-(void)beginCountdownToDisplayProgressIndicator;
+
 -(void)startProgressIndicator;
 -(void)stopProgressIndicator;
 

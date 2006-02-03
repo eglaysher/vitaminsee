@@ -117,32 +117,42 @@
 	[[self document] redraw];
 }
 
+-(void)beginCountdownToDisplayProgressIndicator
+{
+	[NSObject cancelPreviousPerformRequestsWithTarget:self
+											 selector:@selector(startProgressIndicator)
+											   object:nil];
+	[self performSelector:@selector(startProgressIndicator)
+			   withObject:nil
+			   afterDelay:0.10];
+}
+
+-(void)cancelCountdown
+{
+	[NSObject cancelPreviousPerformRequestsWithTarget:self
+											 selector:@selector(startProgressIndicator)
+											   object:nil];		
+}
+
 // Progress indicator control
 -(void)startProgressIndicator
 {
-//	[scrollView setNeedsDisplay:YES];
-//	[progressIndicator setHidden:NO];
 	if(!currentlyAnimated)
 	{
 		[progressIndicator startAnimation:self];		
 		currentlyAnimated = true;
 	}
-	else
-		NSLog(@"Allready on!");
 }
 
 -(void)stopProgressIndicator
 {
-//	[scrollView setNeedsDisplay:YES];
-
+	[self cancelCountdown];
+	
 	if(currentlyAnimated) 
 	{
-		NSLog(@"doing stuff!");
 		[progressIndicator stopAnimation:self];
 		currentlyAnimated = false;
 	}
-	
-//	[progressIndicator setHidden:YES];
 }
 
 -(void)setStatusText:(NSString*)statusText

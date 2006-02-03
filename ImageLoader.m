@@ -15,6 +15,17 @@
 
 #define CACHE_SIZE 3
 
+// Externed constants
+NSString* SCALE_IMAGE_PROPORTIONALLY = @"Scale Image Proportionally";
+NSString* SCALE_IMAGE_TO_FIT         = @"Scale Image to Fit";
+NSString* SCALE_IMAGE_TO_FIT_WIDTH   = @"Scale Image to Fit Width";
+NSString* SCALE_IMAGE_TO_FIT_HEIGHT  = @"Scale Image to Fit Height";
+
+NSString* NO_SMOOTHING               = @"No Smoothing";
+NSString* LOW_SMOOTHING              = @"Low Smoothing";
+NSString* HIGH_SMOOTHING             = @"High Smoothing";
+
+
 // No data structures can be written to when the taskQueueLock is locked.
 static pthread_mutex_t taskQueueLock;
 static pthread_cond_t conditionLock;
@@ -288,6 +299,10 @@ static BOOL newTaskThatPreemptsPreload(NSDictionary* currentTask)
 //		NSLog(@"Bailing at first sight!");
 		return;	
 	}
+	
+	[requester performSelectorOnMainThread:@selector(beginCountdownToDisplayProgressIndicator)
+								withObject:nil
+							 waitUntilDone:NO];		
 
 	// Get an imageRep for the current image requested in task
 	NSImageRep* imageRep = [self loadImageForTask:task 
@@ -299,7 +314,7 @@ static BOOL newTaskThatPreemptsPreload(NSDictionary* currentTask)
 		[task release];
 		[size release];
 		return;	
-	}
+	}	
 
 	// Now we get the target size of the image.
 	NSSize displaySize = [self calculateTargetImageSize:task imageRep:imageRep];
@@ -312,20 +327,16 @@ static BOOL newTaskThatPreemptsPreload(NSDictionary* currentTask)
 //		NSLog(@"Bailing after building image size");
 		return;
 	}
-		
-	[requester performSelectorOnMainThread:@selector(startProgressIndicator)
-								withObject:nil
-							 waitUntilDone:NO];
 	
 	NSImage* imageToRet;
 	NSString* smoothing = [task objectForKey:@"Smoothing"];
-	if([smoothing isEqualTo:NO_SMOOTHING] || 
-	   // The image is naturally smaller then the window
-	   ([imageRep pixelsWide] <= displaySize.width && 
-		[imageRep pixelsHigh] <= displaySize.height) || 
-	   imageRepIsAnimated(imageRep))
-	{
-//		NSLog(@"QUICK RENDER!");
+	
+	BOOL noSmoothing = [smoothing isEqual:NO_SMOOTHING];
+	BOOL naturalSize = ([imageRep pixelsWide] <= displaySize.width && 
+						[imageRep pixelsHigh] <= displaySize.height);
+	BOOL animated = imageRepIsAnimated(imageRep);
+	if(noSmoothing || naturalSize || animated)
+	{		
 		// Draw the image by just making an NSImage from the imageRep. This is
 		// done when the image will have no smoothing, or when we are 
 		// rendering an animated GIF.
@@ -419,6 +430,7 @@ static BOOL newTaskThatPreemptsPreload(NSDictionary* currentTask)
 		// Bundle imageToRet up for transport across thread boundaries.
 		NSMutableDictionary* taskCopy = [task mutableCopy];
 		[task setObject:imageToRet forKey:@"Image"];
+		[task setObject:[NSNumber numberWithBool:NO] forKey:@"Partial"];
 		[imageToRet release];
 		[requester performSelectorOnMainThread:@selector(receiveImage:)
 									withObject:task
@@ -430,12 +442,16 @@ static BOOL newTaskThatPreemptsPreload(NSDictionary* currentTask)
 		imageToRet = [[NSImage alloc] initWithSize:displaySize];
 		[imageToRet lockFocus];
 		{
-			if([[taskCopy objectForKey:@"Smoothing"] isEqualTo:LOW_SMOOTHING])
+			if([[taskCopy objectForKey:@"Smoothing"] isEqual:LOW_SMOOTHING])
+			{
 				[[NSGraphicsContext currentContext] 
 					setImageInterpolation:NSImageInterpolationLow];
+			}
 			else
+			{
 				[[NSGraphicsContext currentContext] 
 					setImageInterpolation:NSImageInterpolationHigh];
+			}
 			
 			[imageRep drawInRect:NSMakeRect(0,0,displaySize.width,displaySize.													height)];
 		}

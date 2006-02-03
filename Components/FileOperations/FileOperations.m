@@ -219,11 +219,6 @@
 		
 		if(worked)
 		{
-//			[viewAsIconsController removeFile:file];
-//			[viewAsIconsController addFile:destinationPath];
-			
-			// fixme! file is often not of type NSString when undoing this!?
-			
 			if(canUndo)
 			{
 				[[self undoManager] setActionName:NSLocalizedString(@"Rename", @"Rename undo label")];

@@ -8,15 +8,14 @@
 
 #import <Cocoa/Cocoa.h>
 
-#define SCALE_IMAGE_PROPORTIONALLY @"Scale Image Proportionally"
-#define SCALE_IMAGE_TO_FIT         @"Scale Image to Fit"
-#define SCALE_IMAGE_TO_FIT_WIDTH   @"Scale Image to Fit Width"
-#define SCALE_IMAGE_TO_FIT_HEIGHT  @"Scale Image to Fit Height"
+extern NSString* SCALE_IMAGE_PROPORTIONALLY;
+extern NSString* SCALE_IMAGE_TO_FIT;
+extern NSString* SCALE_IMAGE_TO_FIT_WIDTH;
+extern NSString* SCALE_IMAGE_TO_FIT_HEIGHT;
 
-
-#define NO_SMOOTHING    @"No Smoothing"
-#define LOW_SMOOTHING   @"Low Smoothing"
-#define HIGH_SMOOTHING  @"High Smoothing"
+extern NSString* NO_SMOOTHING;
+extern NSString* LOW_SMOOTHING;
+extern NSString* HIGH_SMOOTHING;
 
 @class EGPath;
 

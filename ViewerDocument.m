@@ -39,8 +39,6 @@
 
 	[viewerNotifications release];
 	[super dealloc];	
-	
-//	NSLog(@"Document %@ dealloccated", documentID);
 }
 
 //-----------------------------------------------------------------------------
@@ -96,7 +94,6 @@
  */
 -(void)setDirectoryFromRawPath:(NSString*)path
 {
-	NSLog(@"Receiving the path %@", path);
 	if([path isDir])  
 		[fileList setDirectory:[EGPath pathWithPath:path]];
 	else
@@ -152,6 +149,9 @@
 	[appController performSelector:@selector(becomeMainDocument:)
 						withObject:self
 						afterDelay:0.15];
+	
+	// Now tell the actual window to hide that stupid progress spinner.
+	[window stopProgressIndicator];
 	
 	if([[file fileSystemPath] isImage])
 	{			
@@ -236,13 +236,17 @@
 			
 			// Set the size of the image in bytes
 			[window setFileSizeLabelText:[[task objectForKey:@"Data Size"] 
-				intValue]];	
+				intValue]];
 		}
 	}
 
-	[task release];
+	// Only stop the progress spinner (and the countdown to display it) if this
+	// task message doesn't have a @"Partial" tag on it (since the final results
+	// are on the way
+	if(![task objectForKey:@"Partial"]) 
+		[self stopProgressIndicator];		
 	
-	[self stopProgressIndicator];
+	[task release];
 }
 
 //-----------------------------------------------------------------------------
@@ -283,17 +287,24 @@
 
 //----------------------------------------------------------------------------- 
 
+-(void)beginCountdownToDisplayProgressIndicator
+{
+	[window beginCountdownToDisplayProgressIndicator];
+}
+
+//----------------------------------------------------------------------------- 
+
 -(void)startProgressIndicator
 {
 	// Pass this message on to the Window
-//	[window startProgressIndicator];
+	[window startProgressIndicator];
 }
 
 //-----------------------------------------------------------------------------
  
 -(void)stopProgressIndicator
 {
-//	[window stopProgressIndicator];
+	[window stopProgressIndicator];
 }
 
 //-----------------------------------------------------------------------------
