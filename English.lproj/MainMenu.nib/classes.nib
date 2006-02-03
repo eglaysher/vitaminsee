@@ -37,6 +37,7 @@
                 moveToTrash = id; 
                 openCurrentItem = id; 
                 openInPreview = id; 
+                renameFile = id; 
                 revealInFinder = id; 
                 setAsDesktopImage = id; 
                 toggleFileList = id; 

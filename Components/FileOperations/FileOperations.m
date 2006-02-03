@@ -9,6 +9,7 @@
 #import "FileOperations.h"
 #import "EGPath.h"
 #import "NSString+FileTasks.h"
+#import "RenameFileSheetController.h"
 
 @interface FileOperations (UndoCategory)
 -(BOOL)unCopyFile:(NSString*)oldDestination from:(NSString*)oldSource;
@@ -180,14 +181,18 @@
 	return tag;
 }
 
--(BOOL)renameFile:(EGPath*)inFile to:(EGPath*)inDestination
+-(id)buildRenameSheetController
 {
-	if(![inFile isNaturalFile] || ![inDestination isNaturalFile]) {
+	return [[RenameFileSheetController alloc] initWithFileOperations:self];
+}
+
+-(BOOL)renameFile:(EGPath*)inFile to:(NSString*)destination
+{
+	if(![inFile isNaturalFile]) {
 		AlertSoundPlay();
 		return -1;
 	}
 	NSString* file = [[inFile fileSystemPath] retain];
-	NSString* destination = [inDestination fileSystemPath];
 	
 	// Rename the file.
 	NSFileManager* fileManager = [NSFileManager defaultManager];
@@ -225,7 +230,7 @@
 				NSString* originalFilename = [file lastPathComponent];
 				[[[self undoManager] prepareWithInvocationTarget:self] 
 					renameFile:[EGPath pathWithPath:destinationPath]
-							to:[EGPath pathWithPath:originalFilename]];
+							to:originalFilename];
 			}
 		}
 		else

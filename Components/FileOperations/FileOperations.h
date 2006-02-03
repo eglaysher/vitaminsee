@@ -18,4 +18,7 @@
 -(int)moveFile:(EGPath*)inFile to:(EGPath*)inDestination;
 -(int)copyFile:(EGPath*)file to:(EGPath*)destination;
 
+-(id)buildRenameSheetController;
+-(BOOL)renameFile:(EGPath*)inFile to:(NSString*)newName;
+
 @end

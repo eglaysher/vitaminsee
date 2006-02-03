@@ -2116,6 +2116,57 @@
 			settings = {
 			};
 		};
+		8B51670A0992E494005C38C7 = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			path = RenameFileSheetController.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B51670B0992E494005C38C7 = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
+			path = RenameFileSheetController.m;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B51670C0992E494005C38C7 = {
+			fileRef = 8B51670B0992E494005C38C7;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B5167180992E8CD005C38C7 = {
+			isa = PBXFileReference;
+			lastKnownFileType = wrapper.nib;
+			name = English;
+			path = Components/FileOperations/English.lproj/RenameFileSheet.nib;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B51671A0992E8E5005C38C7 = {
+			children = (
+				8B5167180992E8CD005C38C7,
+			);
+			isa = PBXVariantGroup;
+			name = RenameFileSheet.nib;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		8B51671B0992E8E5005C38C7 = {
+			fileRef = 8B51671A0992E8E5005C38C7;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8B5168EC09930C08005C38C7 = {
+			fileRef = 8B7F0DA10964A94E00B7A46D;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
 		8B5EDA220916E62900EE5414 = {
 			buildActionMask = 2147483647;
 			files = (
@@ -2990,9 +3041,12 @@
 		};
 		8B91EF58097C93CF001B95BE = {
 			children = (
+				8B51671A0992E8E5005C38C7,
 				8B91F0AC09808782001B95BE,
 				8B91EF62097C9489001B95BE,
 				8B91EF63097C9489001B95BE,
+				8B51670A0992E494005C38C7,
+				8B51670B0992E494005C38C7,
 			);
 			isa = PBXGroup;
 			name = FileOperations;
@@ -3020,6 +3074,7 @@
 		8B91EF6A097C9596001B95BE = {
 			buildActionMask = 2147483647;
 			files = (
+				8B51671B0992E8E5005C38C7,
 			);
 			isa = PBXResourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3028,6 +3083,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B91EF85097C95AA001B95BE,
+				8B51670C0992E494005C38C7,
 			);
 			isa = PBXSourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3035,6 +3091,7 @@
 		8B91EF6C097C9596001B95BE = {
 			buildActionMask = 2147483647;
 			files = (
+				8B5168EC09930C08005C38C7,
 			);
 			isa = PBXFrameworksBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;

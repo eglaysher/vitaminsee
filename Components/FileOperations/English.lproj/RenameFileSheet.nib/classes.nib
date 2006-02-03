@@ -1,0 +1,13 @@
+{
+    IBClasses = (
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {
+            ACTIONS = {clickCancel = id; clickOK = id; }; 
+            CLASS = RenameFileSheetController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {folderName = NSTextField; labelName = NSTextField; }; 
+            SUPERCLASS = NSWindowController; 
+        }
+    ); 
+    IBVersion = 1; 
+}

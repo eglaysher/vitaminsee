@@ -462,6 +462,19 @@
 
 //-----------------------------------------------------------------------------
 
+/** Cause the rename dialog to display
+ */
+-(void)renameFile:(id)sender
+{
+	id fileop = [ComponentManager getInteranlComponentNamed:@"FileOperations"];
+	id controller = [fileop buildRenameSheetController];
+	[controller showSheet:[window window] 
+			 initialValue:currentFile
+		   notifyWhenDone:self];
+}
+
+//-----------------------------------------------------------------------------
+
 /** Add the current directory to the favorites.
  */
 -(void)addToFavorites:(id)sender
