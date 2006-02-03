@@ -14,10 +14,8 @@
  */
 BOOL imageRepIsAnimated(NSImageRep* rep)
 {
-	// This could possibly fix the animation issues.
 	if([rep isKindOfClass:[NSBitmapImageRep class]] &&
-	   ([[(NSBitmapImageRep*)rep valueForProperty:NSImageFrameCount] intValue] > 1 ||
-		[[(NSBitmapImageRep*)rep valueForProperty:NSImageCurrentFrameDuration] floatValue] > 0.0f))
+	   ([[(NSBitmapImageRep*)rep valueForProperty:NSImageFrameCount] intValue] > 1))
 		return YES;
 	else
 		return NO;
