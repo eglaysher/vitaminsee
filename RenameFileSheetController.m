@@ -86,12 +86,24 @@
 				stringByDeletingLastPathComponent] 
 			stringByAppendingPathComponent:rawName];
 			
-			[doc focusOnFile:[EGPath pathWithPath:newPath]];
+			[self undoableFocusOnFile:newPath oldPath:initialPath doc:doc];
 		}		
 	}
 	
 	[initialPath release];
 	[doc release];
+}
+
+-(void)undoableFocusOnFile:(NSString*)newPath oldPath:(EGPath*)oldPath
+					   doc:(id)document
+{
+	// If we undo this rename, we want to make sure to focus on the old
+	// file.
+	NSUndoManager* um = [doc undoManager];
+	[[um prepareWithInvocationTarget:self] undoableFocusOnFile:[oldPath fileSystemPath]
+													   oldPath:[EGPath pathWithPath:newPath]
+														   doc:document];
+	[document focusOnFile:[EGPath pathWithPath:newPath]];	
 }
 
 @end

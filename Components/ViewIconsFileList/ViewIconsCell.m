@@ -63,8 +63,6 @@ NSSize IMAGE_SIZE = {128.0f, 128.0f};
 {
 	[title release];
 	unsigned refcount = [iconImage retainCount];
-	if(refcount > 1)
-		NSLog(@"WARNING! MEMORY LEAK! %@ has %d references", thisCellsFullPath, refcount);
 	[iconImage release];
 	[cachedCellTitle release];
 	[thisCellsFullPath release];

@@ -31,4 +31,7 @@
   notifyWhenDone:(id)document;
 
 
+-(void)undoableFocusOnFile:(NSString*)newPath oldPath:(EGPath*)oldPath
+					   doc:(id)document;
+
 @end
