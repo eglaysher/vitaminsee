@@ -112,7 +112,7 @@ static BOOL newTaskThatPreemptsPreload(NSDictionary* currentTask)
 				NSDictionary* dic = [taskQueue objectForKey:[keys objectAtIndex:i]]; 
 				EGPath* thisPath = [dic objectForKey:@"Path"];
 				if([path isEqual:thisPath]) {
-					NSLog(@"Continuing with preload because a display command needs it.");
+//					NSLog(@"Continuing with preload because a display command needs it.");
 					cancel = NO;
 					break;
 				}

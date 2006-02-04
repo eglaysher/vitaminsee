@@ -90,6 +90,8 @@
 	[[self document] redraw];
 }
 
+//-----------------------------------------------------------------------------
+
 - (void)splitView:(RBSplitView*)sender didCollapse:(RBSplitSubview*)subview
 {
 	NSLog(@"didCollapse:");
@@ -98,6 +100,8 @@
 	// When we collapse, give the image viewer focus
 	[[self window] makeFirstResponder:imageViewer];
 }
+
+//-----------------------------------------------------------------------------
 
 - (void)splitView:(RBSplitView*)sender didExpand:(RBSplitSubview*)subview 
 {
@@ -109,6 +113,8 @@
 //	[mainVitaminSeeWindow setViewsNeedDisplay:YES];
 }
 
+//-----------------------------------------------------------------------------
+
 - (void)splitView:(RBSplitView*)sender wasResizedFrom:(float)oldDimension 
 			   to:(float)newDimension
 {
@@ -116,6 +122,8 @@
 //	[mainVitaminSeeWindow setViewsNeedDisplay:YES];
 	[[self document] redraw];
 }
+
+//-----------------------------------------------------------------------------
 
 -(void)beginCountdownToDisplayProgressIndicator
 {
@@ -127,12 +135,16 @@
 			   afterDelay:0.10];
 }
 
+//-----------------------------------------------------------------------------
+
 -(void)cancelCountdown
 {
 	[NSObject cancelPreviousPerformRequestsWithTarget:self
 											 selector:@selector(startProgressIndicator)
 											   object:nil];		
 }
+
+//-----------------------------------------------------------------------------
 
 // Progress indicator control
 -(void)startProgressIndicator
@@ -144,6 +156,8 @@
 	}
 }
 
+//-----------------------------------------------------------------------------
+
 -(void)stopProgressIndicator
 {
 	[self cancelCountdown];
@@ -154,6 +168,8 @@
 		currentlyAnimated = false;
 	}
 }
+
+//-----------------------------------------------------------------------------
 
 -(void)setStatusText:(NSString*)statusText
 {
@@ -167,6 +183,8 @@
 	
 	[scrollView setNeedsDisplay:YES];
 }
+
+//-----------------------------------------------------------------------------
 
 -(void)setImage:(NSImage*)image
 {
@@ -187,6 +205,8 @@
 	}
 }
 
+//-----------------------------------------------------------------------------
+
 -(void)setFileSizeLabelText:(int)fileSize
 {
 	if(fileSize == -1)
@@ -194,6 +214,8 @@
 	else
 		[fileSizeLabel setObjectValue:[NSNumber numberWithInt:fileSize]];
 }
+
+//-----------------------------------------------------------------------------
 
 -(void)setImageSizeLabelText:(NSSize)size
 {
@@ -208,12 +230,16 @@
 			width, height]];
 }
 
+//-----------------------------------------------------------------------------
+
 -(void)updateWindowTitle
 {
 	// pass the responsibility to the fileilst, who will also mess with the
 	// proxy icon
 	[fileList setWindowTitle:[self window]];
 }
+
+//-----------------------------------------------------------------------------
 
 //-(IBAction)setImageAsDesktop:(id)sender
 //{
@@ -222,6 +248,8 @@
 //	else if([currentImageFile isDir])
 //		[[self desktopBackgroundController] setDesktopBackgroundToFolder:currentImageFile];
 //}
+	
+//-----------------------------------------------------------------------------
 
 -(double)viewingAreaWidth
 {
@@ -230,6 +258,8 @@
 							 hasVerticalScroller:NO
 									  borderType:[scrollView borderType]].width;
 }
+
+//-----------------------------------------------------------------------------
 
 -(double)viewingAreaHeight
 {

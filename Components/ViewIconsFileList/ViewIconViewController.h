@@ -43,7 +43,7 @@
 	
 	NSCell* currentlySelectedCell;
 	EGPath* currentDirectory;
-	EGPath* currentFile;
+//	EGPath* currentFile;
 	
 	NSMutableArray* fileList;	
 	int oldPosition;

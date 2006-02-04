@@ -24,7 +24,7 @@
  * @see ComponentManager
  * @see FileListFactory
  */
-@protocol FileList
+@protocol FileList <NSObject>
 
 /** @name General
  */
@@ -92,10 +92,10 @@
  */
 -(BOOL)setDirectory:(EGPath*)newDirectory;
 
-/** Returns the currently highlighted file, or NULL if no file is currently
- * selected.
- */
--(EGPath*)file;
+///** Returns the currently highlighted file, or NULL if no file is currently
+// * selected.
+// */
+//-(EGPath*)file;
 
 /** Tell the plugin to try to select a certain file. Returns YES if it could
  * select the file or NO if it couldn't select the file or if the file isn't

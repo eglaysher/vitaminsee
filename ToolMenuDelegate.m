@@ -15,7 +15,7 @@
 - (int)numberOfItemsInMenu:(NSMenu *)menu
 {	
 	int number =[[ComponentManager getCurrentFilePluginsInViewMenu] count];
-	NSLog(@"Number of items %d", number);
+//	NSLog(@"Number of items %d", number);
 	return number;
 }
 

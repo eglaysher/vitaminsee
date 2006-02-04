@@ -8,6 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import "FileList.h"
+#import "CurrentFilePlugin.h"
 
 // The ComponentManager keeps track of plugins that can be loaded. These plugins
 // are scaned for at startup, but aren't actually loaded until needed.
@@ -48,8 +49,7 @@
 +(void)scanDirectoryForPlugins:(NSString*)path;
 
 +(id<FileListFactory>)getFileListPluginNamed:(NSString*)name;
-//+(id<CurrentFilePlugin>)getCurrentFilePluginNamed:(NSString*)name;
-
++(id<CurrentFilePlugin>)getCurrentFilePluginNamed:(NSString*)name;
 +(id)getInteranlComponentNamed:(NSString*)name;
 
 +(id)returnPluginNamed:(NSString*)name 

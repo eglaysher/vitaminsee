@@ -121,8 +121,10 @@ static BOOL shouldPreloadImages;
 
 -(void)dealloc
 {
+	[fileList release];
 	[fileWatcher release];	
 	[pathManager release];
+	[currentDirectory release];
 	[super dealloc];
 }
 
@@ -164,7 +166,7 @@ static BOOL shouldPreloadImages;
 }
 
 - (BOOL)setDirectory:(EGPath*)newCurrentDirectory
-{	
+{		
 //	[pluginLayer flushImageCache];
 	
 	// First subscribe to the new directory.
@@ -192,10 +194,6 @@ static BOOL shouldPreloadImages;
 	
 	if([newCurrentDirectory isNaturalFile])
 		[fileWatcher addPath:[newCurrentDirectory fileSystemPath]];
-
-	// Clear the thumbnails. They need to be regenerated...
-	// FIXME: Update
-//	[pluginLayer clearThumbnailQueue];
 	
 	// Set the current Directory
 	[newCurrentDirectory retain];
@@ -326,7 +324,7 @@ static BOOL shouldPreloadImages;
 
 -(BOOL)canOpenCurrentItem
 {
-	return [currentFile isDirectory];
+	return [[delegate currentFile] isDirectory];
 }
 //-----------------------------------------------------------------------------
 //------------------------------------------------------------ BROWSER DELEGATE
@@ -403,7 +401,7 @@ willDisplayCell:(id)cell
 	
 	if(shouldPreloadImages) 
 	{
-		NSLog(@"Going to preload image...");
+//		NSLog(@"Going to preload image...");
 		// Now we figure out which file we preload next.
 		int preloadRow = -1;
 		
@@ -439,10 +437,11 @@ willDisplayCell:(id)cell
 	// Double clicking sets the directory...if it's a directory
 	NSString* absolutePath = [fileList objectAtIndex:[[ourBrowser matrixInColumn:0] selectedRow]];
 
-	// FIXME
+	// If this path is a directory, then set it to the current 
 	if([absolutePath isDir])
-//		// Get the first image in the directory:		
+	{
 		[self setDirectory:[EGPath pathWithPath:absolutePath]];
+	}
 }
 
 // Spoilers: This method was responsible for quite a bit of lag in the 0.6 
@@ -514,7 +513,7 @@ willDisplayCell:(id)cell
 {
 	NSArray* paths = [currentDirectory pathComponents];
 	EGPath* currentDirCopy = [currentDirectory retain];
-	[self setDirectory:[paths objectAtIndex:[paths count] - 2]];
+	[self setDirectory:[paths objectAtIndex:([paths count] - 2)]];
 	[self focusOnFile:currentDirCopy];
 	[currentDirCopy release];
 }
@@ -605,13 +604,6 @@ willDisplayCell:(id)cell
 -(EGPath*)directory
 {
 	return currentDirectory;
-}
-
-//-----------------------------------------------------------------------------
-
--(EGPath*)file
-{
-	return currentFile;
 }
 
 //-----------------------------------------------------------------------------

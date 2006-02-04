@@ -11,32 +11,33 @@
 
 @implementation NSArray(HigherOrderMessaging)
 
+-(id)trampolineWithMode:(int)mode
+{
+	id obj;
+	if([self count])
+		obj = [self objectAtIndex:0];
+	else
+		obj = nil;
+	
+	return [[[BSTrampoline alloc] initWithEnumerator:[self objectEnumerator]
+												mode:mode
+										sampleObject:obj] autorelease];
+}
+
 - (id)do {
-    return [[[BSTrampoline alloc] initWithEnumerator:[self objectEnumerator]
-												mode:kDoMode
-										sampleObject:[self objectAtIndex:0]
-		] autorelease];
+    return [self trampolineWithMode:kDoMode];
 }
 
 - (id)collect {
-    return [[[BSTrampoline alloc] initWithEnumerator:[self objectEnumerator]
-												mode:kCollectMode
-										sampleObject:[self objectAtIndex:0]
-		] autorelease];
+	return [self trampolineWithMode:kCollectMode];
 }
 
 - (id)select {
-    return [[[BSTrampoline alloc] initWithEnumerator:[self objectEnumerator] 
-												mode:kSelectMode
-										sampleObject:[self objectAtIndex:0]
-		] autorelease];
+    return [self trampolineWithMode:kSelectMode];
 }
 
 - (id)reject {
-    return [[[BSTrampoline alloc] initWithEnumerator:[self objectEnumerator] 
-												mode:kRejectMode
-										sampleObject:[self objectAtIndex:0]
-		] autorelease];
+	return [self trampolineWithMode:kRejectMode];
 }
 
 @end

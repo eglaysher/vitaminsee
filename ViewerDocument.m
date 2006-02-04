@@ -16,6 +16,8 @@
 #import "DesktopBackground.h"
 #import "FavoritesMenuFactory.h"
 #import "Util.h"
+#import "FileOperations.h"
+#import "RenameFileSheetController.h"
 
 @implementation ViewerDocument
 
@@ -34,6 +36,8 @@
 {
 	[window release];		
 		
+	[currentFile release];
+	
 	[fileList cleanup];
 	[fileList release];
 
@@ -118,10 +122,11 @@
  * method is meant to be invoked by objects unrelated to the FileList or the
  * ViewerDocument/VitaminSEEWindowController classes.
  */
--(void)focusOnFile:(EGPath*)path
+-(BOOL)focusOnFile:(EGPath*)path
 {
-	[fileList focusOnFile:path];
+	BOOL ret = [fileList focusOnFile:path];
 	[self setDisplayedFileTo:path];
+	return ret;
 }
 
 //-----------------------------------------------------------------------------

@@ -103,6 +103,8 @@ extern void _LSCopyAllApplicationURLs(NSArray**);
 		objectForKey:extensionOfCurrentFile];
 	if(listOfApplications)
 		return [listOfApplications count];
+	else if(currentFile == NULL)
+		return 0;
 	else
 	{
 		listOfApplications = [self getOpenWithMenuFor:currentFile urls:allApplications];		
@@ -163,6 +165,7 @@ extern void _LSCopyAllApplicationURLs(NSArray**);
 @end
 
 @implementation EGOpenWithMenuDelegate (Private)
+
 -(NSString*)getCurrentFile
 {
 	NSString* currentFile = 0;

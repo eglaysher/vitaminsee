@@ -74,13 +74,15 @@ static NSArray* fileExtensions = 0;
 // - EGPathFilesystemPath
 -(NSComparisonResult)compare:(id)object
 {
+	NSComparisonResult result;
+	
 	// TODO: This will have to be more robust.
 	if([self isMemberOfClass:[object class]])
 	{
 		if([self isKindOfClass:[EGPathRoot class]])
-			return NSOrderedSame;
+			result = NSOrderedSame;
 		else if([self isKindOfClass:[EGPathFilesystemPath class]])
-			return [[self fileSystemPath] caseInsensitiveCompare:
+			result = [[self fileSystemPath] caseInsensitiveCompare:
 				[object fileSystemPath]];
 	}
 	else
@@ -88,10 +90,12 @@ static NSArray* fileExtensions = 0;
 		// Sort order:
 		if([object isKindOfClass:[EGPathRoot class]] &&
 		   [self isKindOfClass:[EGPathFilesystemPath class]])
-			return NSOrderedDescending;
+			result = NSOrderedDescending;
 		else
-			return NSOrderedAscending;
+			result = NSOrderedAscending;
 	}
+	
+	return result;
 }
 
 -(BOOL)isEqual:(id)rhs
@@ -331,7 +335,9 @@ static NSString* egPathRootDisplayName = 0;
 -(id)initWithPath:(NSString*)path
 {
 	if(self = [super init])
-		fileSystemPath = [[path stringByStandardizingPath] retain];
+	{
+		fileSystemPath = [[path stringByStandardizingPath] retain];		
+	}
 	
 	return self;
 }
@@ -527,6 +533,13 @@ static NSString* egPathRootDisplayName = 0;
 //	
 //	return equal;
 //}
+	
+-(id)retain
+{
+	[super retain];
+	
+	return self;
+}
 
 @end
 

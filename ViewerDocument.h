@@ -11,6 +11,7 @@
 #import "FileList.h"
 
 @class VitaminSEEWindowController;
+@class EGPath;
 
 // Notifications that are posted to a ViewerDocument's NotificationCenter
 
@@ -60,7 +61,7 @@
 -(BOOL)validateAction:(SEL)action;
 
 -(void)setDirectoryFromRawPath:(NSString*)path;
--(void)focusOnFile:(EGPath*)path;
+-(BOOL)focusOnFile:(EGPath*)path;
 
 -(NSString*)scaleMode;
 -(float)pixelWidth;
