@@ -8,7 +8,7 @@
 // Last edited:   $Date: 2005-10-23 11:29:01 -0500 (Sun, 23 Oct 2005) $
 // Author:        $Author: elliot $
 // Copyright:     (c) 2005 Elliot Glaysher
-// Created:       3/10/05
+// Created:       10/23/05
 //
 /////////////////////////////////////////////////////////////////////////
 //

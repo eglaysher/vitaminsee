@@ -1,6 +1,6 @@
 /////////////////////////////////////////////////////////////////////////
 // File:          $Name$
-// Module:        PluginBase wrapper around Matt Gemmell's SS_PrefsController
+// Module:        Wrapper around Matt Gemmell's SS_PrefsController
 //                modle
 // Part of:       VitaminSEE
 //

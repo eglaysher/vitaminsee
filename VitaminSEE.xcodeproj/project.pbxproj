@@ -347,7 +347,6 @@
 		8B2448C608FB2080004716BC /* ApplicationController.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = ApplicationController.m; sourceTree = "<group>"; };
 		8B2448C708FB2080004716BC /* ComponentManager.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = ComponentManager.h; sourceTree = "<group>"; };
 		8B2448C808FB2080004716BC /* ComponentManager.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = ComponentManager.m; sourceTree = "<group>"; };
-		8B2448C908FB2080004716BC /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		8B2448CA08FB2080004716BC /* ImageLoader.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = ImageLoader.h; sourceTree = "<group>"; };
 		8B2448CB08FB2080004716BC /* ImageLoader.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = ImageLoader.m; sourceTree = "<group>"; };
 		8B2448CC08FB2080004716BC /* Util.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
@@ -400,6 +399,7 @@
 		8B44DC3E09679AD60039BF19 /* BSTrampoline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BSTrampoline.m; path = Widgets/BSTrampoline.m; sourceTree = "<group>"; };
 		8B44DC4609679B6F0039BF19 /* HigherOrderMessaging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HigherOrderMessaging.h; path = Widgets/HigherOrderMessaging.h; sourceTree = "<group>"; };
 		8B44DC4709679B6F0039BF19 /* HigherOrderMessaging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HigherOrderMessaging.m; path = Widgets/HigherOrderMessaging.m; sourceTree = "<group>"; };
+		8B4FEFD80996780300922127 /* ImageMetaData.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImageMetaData.pch; path = Components/ImageMetadata/ImageMetaData.pch; sourceTree = "<group>"; };
 		8B51670A0992E494005C38C7 /* RenameFileSheetController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RenameFileSheetController.h; sourceTree = "<group>"; };
 		8B51670B0992E494005C38C7 /* RenameFileSheetController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RenameFileSheetController.m; sourceTree = "<group>"; };
 		8B5167180992E8CD005C38C7 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = Components/FileOperations/English.lproj/RenameFileSheet.nib; sourceTree = "<group>"; };
@@ -664,7 +664,6 @@
 				8B2448C608FB2080004716BC /* ApplicationController.m */,
 				8B2448C708FB2080004716BC /* ComponentManager.h */,
 				8B2448C808FB2080004716BC /* ComponentManager.m */,
-				8B2448C908FB2080004716BC /* Constants.h */,
 				8B2448CA08FB2080004716BC /* ImageLoader.h */,
 				8B2448CB08FB2080004716BC /* ImageLoader.m */,
 				8B2448CC08FB2080004716BC /* Util.h */,
@@ -1013,6 +1012,7 @@
 				8BC9D2D209846A16006F6B16 /* ImageMetadata-Info.plist */,
 				8BC9D2D309846A16006F6B16 /* ImageMetadata.h */,
 				8BC9D2D409846A16006F6B16 /* ImageMetadata.mm */,
+				8B4FEFD80996780300922127 /* ImageMetaData.pch */,
 				8BC9D2CB0984696A006F6B16 /* Exiv2 */,
 			);
 			name = ImageMetadata;
@@ -2972,9 +2972,9 @@
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PFE_FILE_C_DIALECTS = "c objective-c objective-c++";
+				GCC_PFE_FILE_C_DIALECTS = "c objective-c objective-c++ c++";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				GCC_PREFIX_HEADER = Components/ImageMetadata/ImageMetadata.pch;
 				INFOPLIST_FILE = "Components/ImageMetadata/ImageMetadata-Info.plist";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
 				LIBRARY_STYLE = BUNDLE;
@@ -3005,9 +3005,9 @@
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_MODEL_TUNING = G5;
-				GCC_PFE_FILE_C_DIALECTS = "c objective-c objective-c++";
+				GCC_PFE_FILE_C_DIALECTS = "c objective-c objective-c++ c++";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				GCC_PREFIX_HEADER = Components/ImageMetadata/ImageMetadata.pch;
 				INFOPLIST_FILE = "Components/ImageMetadata/ImageMetadata-Info.plist";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
 				LIBRARY_STYLE = BUNDLE;
@@ -3036,9 +3036,9 @@
 			buildSettings = {
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_MODEL_TUNING = G5;
-				GCC_PFE_FILE_C_DIALECTS = "c objective-c objective-c++";
+				GCC_PFE_FILE_C_DIALECTS = "c objective-c objective-c++ c++";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				GCC_PREFIX_HEADER = Components/ImageMetadata/ImageMetadata.pch;
 				INFOPLIST_FILE = "Components/ImageMetadata/ImageMetadata-Info.plist";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
 				LIBRARY_STYLE = BUNDLE;

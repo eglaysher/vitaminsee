@@ -1,13 +1,13 @@
 /////////////////////////////////////////////////////////////////////////
 // File:          $Name$
-// Module:        Implements the renaming sheet. Ripped off from GotoFileSheet.
+// Module:        Precompiled header for most of Exiv2 to make compiling faster.
 // Part of:       VitaminSEE
 //
 // Revision:      $Revision: 331 $
 // Last edited:   $Date: 2006-01-24 21:36:22 -0600 (Tue, 24 Jan 2006) $
 // Author:        $Author: elliot $
 // Copyright:     (c) 2005 Elliot Glaysher
-// Created:       2/2/06
+// Created:       2/5/06
 //
 /////////////////////////////////////////////////////////////////////////
 //
@@ -27,32 +27,36 @@
 //
 ////////////////////////////////////////////////////////////////////////
 
-#import <Cocoa/Cocoa.h>
 
-@class EGPath;
+#ifdef __cplusplus
 
-@interface RenameFileSheetController : NSWindowController {
-	IBOutlet NSTextField* labelName;
-	IBOutlet NSTextField* folderName;
-	
-	bool cancel;
-	EGPath* initialPath;
-	
-	id fileOperations;
-	id doc;
-}
+// Almost the entire standard library
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <utility>
+#include <algorithm>
+#include <map>
+#include <cstring>
+#include <cassert>
+#include <cstdio>
+#include <vector>
 
--(id)initWithFileOperations:(id)operations;
+// Exiv2 headers
+#include "canonmn.hpp"
+#include "datasets.hpp"
+#include "error.hpp"
+#include "exif.hpp"
+#include "fujimn.hpp"
+#include "ifd.hpp"
+#include "image.hpp"
+#include "iptc.hpp"
+#include "makernote.hpp"
+#include "nikonmn.hpp"
+#include "rcsid.hpp"
+#include "sigmamn.hpp"
+#include "tags.hpp"
+#include "types.hpp"
+#include "value.hpp"
 
--(IBAction)clickOK:(id)sender;
--(IBAction)clickCancel:(id)sender;
-
--(void)showSheet:(NSWindow*)window 
-	initialValue:(EGPath*)initial
-  notifyWhenDone:(id)document;
-
-
--(void)undoableFocusOnFile:(NSString*)newPath oldPath:(EGPath*)oldPath
-					   doc:(id)document;
-
-@end
+#endif
