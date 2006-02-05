@@ -40,9 +40,13 @@
 
 @interface ViewIconViewController (Private)
 -(void)rebuildInternalFileArray;
+-(void)watchPath:(EGPath*)path;
+-(void)unwatchPath:(EGPath*)path;
 -(void)handleDidMountNotification:(id)notification;
 -(void)handleWillUnmountNotification:(id)notification;
 -(void)handleDidUnmountNotification:(id)notification;
+-(void)goUpUntilExistingFolder;
+-(void)rebuildDropdownMenu;
 @end
 
 static BOOL shouldPreloadImages;
@@ -116,7 +120,8 @@ static BOOL shouldPreloadImages;
 
 	// Unregister for our path notifications
 	if([currentDirectory isNaturalFile])
-		[fileWatcher removePath:[currentDirectory fileSystemPath]];	
+		[self unwatchPath:currentDirectory];
+//		[fileWatcher removePath:[currentDirectory fileSystemPath]];	
 }
 
 -(void)dealloc
@@ -185,59 +190,27 @@ static BOOL shouldPreloadImages;
 		// about.
 		if([currentDirectory isNaturalFile]) 
 		{
-			[fileWatcher removePath:[currentDirectory fileSystemPath]];
+			[self unwatchPath:currentDirectory];
+//			[fileWatcher removePath:[currentDirectory fileSystemPath]];
 		}
 		
 		// Note that we unsubscribe from the old directory after 
 		[ThumbnailManager unsubscribe:self fromDirectory:currentDirectory];
 	}
 	
-	if([newCurrentDirectory isNaturalFile])
-		[fileWatcher addPath:[newCurrentDirectory fileSystemPath]];
+	if([newCurrentDirectory isNaturalFile]) {
+		// TODO: Watch every path all the way down.
+//		[fileWatcher addPath:[newCurrentDirectory fileSystemPath]];		
+		[self watchPath:newCurrentDirectory];
+	}
 	
 	// Set the current Directory
 	[newCurrentDirectory retain];
 	[currentDirectory release];
-	currentDirectory = newCurrentDirectory;
-	
-	// We need the display names to present to the user.
-	NSArray* displayNames = [currentDirectory pathDisplayComponents];
-	NSArray* paths = [currentDirectory pathComponents];
-	
-	// Make an NSMenu with all the path components
-	NSMenu* newMenu = [[[NSMenu alloc] init] autorelease];	
-	unsigned count = [paths count];
-	unsigned i;
-	for(i = 0; i < count; ++i)
-	{
-		NSString* menuPathComponentName = [displayNames objectAtIndex: count - i - 1];
-		NSMenuItem* newMenuItem = [[[NSMenuItem alloc] 
-			initWithTitle:menuPathComponentName
-				   action:@selector(directoryMenuSelected:)
-			keyEquivalent:@""] autorelease];
-		
-		id currentPathRep = [paths objectAtIndex:count - i - 1];
+	currentDirectory = newCurrentDirectory;	
 
-		// Only load the image for the currently displayed image, since this
-		// is the only one that is initially displayed. Set the others in the
-		// validation method.
-		if(i == 0)
-		{
-			NSImage* img = [currentPathRep fileIcon];
-			[img setScalesWhenResized:YES];
-			[img setSize:NSMakeSize(16,16)];
-			[newMenuItem setImage:img];
-		}
-
-		[newMenuItem setRepresentedObject:currentPathRep];
-		[newMenuItem setTarget:self];
-		[newMenu addItem:newMenuItem];	
-	}
+	[self rebuildDropdownMenu];
 	
-	// Set this menu as the pull down...
-	[directoryDropdown setMenu:newMenu];
-	[directoryDropdown setEnabled:YES];
-
 	[self rebuildInternalFileArray];
 	
 	oldPosition = -1;
@@ -654,6 +627,32 @@ willDisplayCell:(id)cell
 	fileList = myFileList;
 }
 
+-(void)watchPath:(EGPath*)path
+{
+	NSArray* pathsToWatch = [path pathComponents];
+	
+	NSEnumerator* e = [pathsToWatch objectEnumerator];
+	id obj;
+	while(obj = [e nextObject]) 
+	{
+		if([obj isNaturalFile])
+			[fileWatcher addPath:[obj fileSystemPath]];
+	}
+}
+
+-(void)unwatchPath:(EGPath*)path
+{
+	NSArray* pathsToWatch = [path pathComponents];
+	
+	NSEnumerator* e = [pathsToWatch objectEnumerator];
+	id obj;
+	while(obj = [e nextObject]) 
+	{
+		if([obj isNaturalFile])
+			[fileWatcher removePath:[obj fileSystemPath]];
+	}
+}
+
 // Handle notifications
 -(void)handleDidMountNotification:(id)notification
 {
@@ -719,63 +718,120 @@ willDisplayCell:(id)cell
 -(void) watcher: (id<UKFileWatcher>)kq receivedNotification: (NSString*)nm 
 		forPath: (NSString*)fpath
 {
-//	NSLog(@"Notification: '%@' for '%@'", nm, fpath);
-	
-	// Handle the deletion of the directory	
-	if(![currentDirectory exists])
-	{
-		while(![currentDirectory exists]) 
-		{
-			id tmp = [currentDirectory pathByDeletingLastPathComponent];
-			[tmp retain];
-			[currentDirectory release];
-			currentDirectory = tmp;
-		}
+	NSLog(@"Notification: '%@' for '%@'", nm, fpath);
 
-		// Rebuild the data
-		[self rebuildInternalFileArray];
-		
-		oldPosition = -1;
-		
-		// Now reload the data
-		[ourBrowser setCellClass:[ViewIconsCell class]];
-		//	[ourBrowser setSendsActionOnArrowKeys:NO];
-		[ourBrowser loadColumnZero];
-	}
-	else if([currentDirectory isNaturalFile]) 
+	if([[currentDirectory fileSystemPath] isEqualTo:fpath])
 	{
-		EGPath* curFile = [[delegate currentFile] retain];
-		
-		// Update the filelist, tell the browser to reload its data, and then
-		// set the file back to the current file.
-		
-		[self rebuildInternalFileArray];
-		
-		oldPosition = -1;
-		
-		// Now reload the data
-		[ourBrowser setCellClass:[ViewIconsCell class]];
-		//	[ourBrowser setSendsActionOnArrowKeys:NO];
-		[ourBrowser loadColumnZero];
-		
-		// Focus on the file we were focused on before.
-		if(![self focusOnFile:curFile]) 
+		// Handle the deletion of the directory	
+		if(![currentDirectory exists])
 		{
-			// If we can't focus on the same file as before, then that means
-			// we got rid of the file we're currently viewing; and we need to
-			// find the closest file to the one we were on.
-			unsigned closestPosition = [fileList 
+			[self goUpUntilExistingFolder];
+		}
+		else if([currentDirectory isNaturalFile]) 
+		{
+			EGPath* curFile = [[delegate currentFile] retain];
+			
+			// Update the filelist, tell the browser to reload its data, and then
+			// set the file back to the current file.
+			
+			[self rebuildInternalFileArray];
+			
+			oldPosition = -1;
+			
+			// Now reload the data
+			[ourBrowser setCellClass:[ViewIconsCell class]];
+			//	[ourBrowser setSendsActionOnArrowKeys:NO];
+			[ourBrowser loadColumnZero];
+			
+			// Focus on the file we were focused on before.
+			if(![self focusOnFile:curFile] && [fileList count]) 
+			{
+				// If we can't focus on the same file as before, then that means
+				// we got rid of the file we're currently viewing; and we need to
+				// find the closest file to the one we were on.
+				unsigned closestPosition = [fileList 
 				lowerBoundToInsert:[curFile fileSystemPath] 
 				  withSortSelector:@selector(caseInsensitiveCompare:)];
-			[ourBrowser selectRow:closestPosition inColumn:0];
-			// Now notify the delegate like it's a normal file selection operation.
-			[delegate setDisplayedFileTo:
-				[EGPath pathWithPath:[fileList objectAtIndex:closestPosition]]];
+				[ourBrowser selectRow:closestPosition inColumn:0];
+				// Now notify the delegate like it's a normal file selection operation.
+				[delegate setDisplayedFileTo:
+					[EGPath pathWithPath:[fileList objectAtIndex:closestPosition]]];
+				
+			}
 			
+			[curFile release];
+		}
+	}
+	else if( ! [currentDirectory exists] &&
+			[[currentDirectory fileSystemPath] hasPrefix:fpath])
+	{
+		[self goUpUntilExistingFolder];
+	}
+}
+
+-(void)goUpUntilExistingFolder
+{
+	while(![currentDirectory exists]) 
+	{
+		id tmp = [currentDirectory pathByDeletingLastPathComponent];
+		[tmp retain];
+		[currentDirectory release];
+		currentDirectory = tmp;
+	}
+	
+	// Rebuild the dropdown
+	[self rebuildDropdownMenu];
+	
+	// Rebuild the data
+	[self rebuildInternalFileArray];
+	
+	oldPosition = -1;
+	
+	// Now reload the data
+	[ourBrowser setCellClass:[ViewIconsCell class]];
+	//	[ourBrowser setSendsActionOnArrowKeys:NO];
+	[ourBrowser loadColumnZero];	
+}
+
+-(void)rebuildDropdownMenu
+{
+	// We need the display names to present to the user.
+	NSArray* displayNames = [currentDirectory pathDisplayComponents];
+	NSArray* paths = [currentDirectory pathComponents];
+	
+	// Make an NSMenu with all the path components
+	NSMenu* newMenu = [[[NSMenu alloc] init] autorelease];	
+	unsigned count = [paths count];
+	unsigned i;
+	for(i = 0; i < count; ++i)
+	{
+		NSString* menuPathComponentName = [displayNames objectAtIndex: count - i - 1];
+		NSMenuItem* newMenuItem = [[[NSMenuItem alloc] 
+			initWithTitle:menuPathComponentName
+				   action:@selector(directoryMenuSelected:)
+			keyEquivalent:@""] autorelease];
+		
+		id currentPathRep = [paths objectAtIndex:count - i - 1];
+		
+		// Only load the image for the currently displayed image, since this
+		// is the only one that is initially displayed. Set the others in the
+		// validation method.
+		if(i == 0)
+		{
+			NSImage* img = [currentPathRep fileIcon];
+			[img setScalesWhenResized:YES];
+			[img setSize:NSMakeSize(16,16)];
+			[newMenuItem setImage:img];
 		}
 		
-		[curFile release];
+		[newMenuItem setRepresentedObject:currentPathRep];
+		[newMenuItem setTarget:self];
+		[newMenu addItem:newMenuItem];	
 	}
+	
+	// Set this menu as the pull down...
+	[directoryDropdown setMenu:newMenu];
+	[directoryDropdown setEnabled:YES];	
 }
 
 @end

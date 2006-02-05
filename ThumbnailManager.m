@@ -288,7 +288,7 @@ static BOOL generateThumbnails;
 			[subscribers removeObject:object];
 			if([subscribers count] == 0)
 			{
-				NSLog(@"Removing all data structures for %@", directory);
+//				NSLog(@"Removing all data structures for %@", directory);
 				// Subscribers is now invalid.
 				[subscriberList removeObjectForKey:directory];
 				subscribers = 0;

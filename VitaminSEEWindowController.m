@@ -94,7 +94,7 @@
 
 - (void)splitView:(RBSplitView*)sender didCollapse:(RBSplitSubview*)subview
 {
-	NSLog(@"didCollapse:");
+//	NSLog(@"didCollapse:");
 	[[self document] redraw];
 	
 	// When we collapse, give the image viewer focus
@@ -106,7 +106,7 @@
 - (void)splitView:(RBSplitView*)sender didExpand:(RBSplitSubview*)subview 
 {
 	// When we expand, make the file view first responder
-	NSLog(@"-splitView:didExpand:");
+//	NSLog(@"-splitView:didExpand:");
 	[[self document] redraw];
 //	[self selectFirstResponder];
 //	[viewAsIconsController connectKeyFocus:scrollView];
@@ -118,7 +118,7 @@
 - (void)splitView:(RBSplitView*)sender wasResizedFrom:(float)oldDimension 
 			   to:(float)newDimension
 {
-	NSLog(@"-splitView:wasResizedFrom:to:");
+//	NSLog(@"-splitView:wasResizedFrom:to:");
 //	[mainVitaminSeeWindow setViewsNeedDisplay:YES];
 	[[self document] redraw];
 }
@@ -323,7 +323,7 @@
 {
 	oldFileListSize = NSWidth([[splitView subviewAtPosition:0] frame]);
 //	NSLog(@"Old file list size -- is %f", oldFileListSize);
-	NSLog(@"--- begin -windowWillUseStandardFrame:defaultFrame:");
+//	NSLog(@"--- begin -windowWillUseStandardFrame:defaultFrame:");
 	float pixelWidth = [[self document] pixelWidth];
 	float pixelHeight = [[self document] pixelHeight];
 	
@@ -363,9 +363,9 @@
 			newHeight += NSHeight([[scrollView horizontalScroller] frame]);
 	}
 	
-	NSLog(@"new: %@ defaultSize: %@", 
-		  NSStringFromSize(NSMakeSize(newWidth,newHeight)),
-		  NSStringFromSize(defaultFrame.size));
+//	NSLog(@"new: %@ defaultSize: %@", 
+//		  NSStringFromSize(NSMakeSize(newWidth,newHeight)),
+//		  NSStringFromSize(defaultFrame.size));
 	
 	// Code taken from a very nice Mac Dev Center article on window zooming:
 	// http://www.macdevcenter.com/pub/a/mac/2002/05/16/cocoa.html?page=2
@@ -408,7 +408,7 @@
 		stdFrame.origin.x = defX;
     } 
 	
-	NSLog(@"--- end -windowWillUseStandardFrame:defaultFrame:");
+//	NSLog(@"--- end -windowWillUseStandardFrame:defaultFrame:");
 	
     return stdFrame;
 }
