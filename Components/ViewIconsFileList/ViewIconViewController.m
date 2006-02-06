@@ -718,7 +718,7 @@ willDisplayCell:(id)cell
 -(void) watcher: (id<UKFileWatcher>)kq receivedNotification: (NSString*)nm 
 		forPath: (NSString*)fpath
 {
-	NSLog(@"Notification: '%@' for '%@'", nm, fpath);
+//	NSLog(@"Notification: '%@' for '%@'", nm, fpath);
 
 	if([[currentDirectory fileSystemPath] isEqualTo:fpath])
 	{

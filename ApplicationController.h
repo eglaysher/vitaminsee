@@ -93,4 +93,5 @@
 
 -(void)becomeMainDocument:(id)mainDocument;
 -(void)resignMainDocument:(id)mainDocument;
+-(void)sendPluginActivationSignal:(id)menuItem;
 @end

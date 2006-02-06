@@ -240,9 +240,27 @@ static ApplicationController* appControl;
 	// Set up our view menu delegate. This is important so plugins work.
 	NSMenu* mainMenu = [NSApp mainMenu];
 	NSMenu* viewMenu = [[mainMenu itemAtIndex:3] submenu];
-	NSMenu* toolMenu = [[mainMenu itemAtIndex:4] submenu];
+//	NSMenu* toolMenu = [[mainMenu itemAtIndex:4] submenu];
+	NSMenu* windowMenu = [[mainMenu itemAtIndex:5] submenu];
 	[viewMenu setDelegate:[[ViewMenuDelegate alloc] init]];
-	[toolMenu setDelegate:[[ToolMenuDelegate alloc] init]];
+//	[toolMenu setDelegate:[[ToolMenuDelegate alloc] init]];
+	
+	// Add all the currentfileplugins to the Windows menu. Do it like this 
+	// instead of a delegate so we don't screw everything up with the
+	// NOTE: Check to see if a NSMenu delegate screws things up later.
+	NSArray* currentViews = [ComponentManager getCurrentFilePluginsInViewMenu];
+	NSEnumerator* e = [currentViews reverseObjectEnumerator];
+	id obj;
+	while(obj = [e nextObject]) 
+	{
+		NSMenuItem* item = [[NSMenuItem alloc] init];
+		[item setTitle:[obj objectForKey:@"Menu Name"]];
+		[item setAction:@selector(sendPluginActivationSignal:)];
+		[item setTarget:self];
+		[item setRepresentedObject:obj];
+		[windowMenu insertItem:item atIndex:3];
+		[item release];
+	}
 }
 
 //-----------------------------------------------------------------------------
@@ -615,5 +633,20 @@ static ApplicationController* appControl;
 			currentImageSetTo:0];
 	}
 }
+
+-(void)sendPluginActivationSignal:(id)menuItem
+{
+	NSDictionary* pluginLine = [menuItem representedObject];
+	NSWindow* mainWindow = [NSApp mainWindow];
+	EGPath* mainFile = [[[mainWindow windowController] document] currentFile];
+	
+	NSString* name = [pluginLine objectForKey:@"Plugin Name"];
+	id component = [ComponentManager getCurrentFilePluginNamed:name];
+	
+	[component activatePluginWithFile:mainFile
+							 inWindow:mainWindow
+							  context:pluginLine];
+}
+
 
 @end
