@@ -58,6 +58,9 @@
 		8B2B8D360916C13700691A7B /* AdvancedPreferences.nib in Resources */ = {isa = PBXBuildFile; fileRef = 8B2B8D340916C13700691A7B /* AdvancedPreferences.nib */; };
 		8B44DC5509679C250039BF19 /* BSTrampoline.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B44DC3E09679AD60039BF19 /* BSTrampoline.m */; };
 		8B44DC5609679C250039BF19 /* HigherOrderMessaging.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B44DC4709679B6F0039BF19 /* HigherOrderMessaging.m */; };
+		8B4DC48A0996D94300B58051 /* SetWallpaperFolder.action in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8B4DC4630996D8A900B58051 /* SetWallpaperFolder.action */; };
+		8B4DC48B0996D94800B58051 /* RemoveIcon.action in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8B4DC43E0996D84900B58051 /* RemoveIcon.action */; };
+		8B4DC48C0996D94D00B58051 /* AddIcon.action in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8B4DC4150996D7BC00B58051 /* AddIcon.action */; };
 		8B51670C0992E494005C38C7 /* RenameFileSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B51670B0992E494005C38C7 /* RenameFileSheetController.m */; };
 		8B51671B0992E8E5005C38C7 /* RenameFileSheet.nib in Resources */ = {isa = PBXBuildFile; fileRef = 8B51671A0992E8E5005C38C7 /* RenameFileSheet.nib */; };
 		8B5168EC09930C08005C38C7 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B7F0DA10964A94E00B7A46D /* Carbon.framework */; };
@@ -200,6 +203,48 @@
 			remoteGlobalIDString = 8B64CD5D090EF8030060CB34;
 			remoteInfo = OpenWithMenu;
 		};
+		8B4DC4140996D7BC00B58051 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8B4DC4100996D7BC00B58051 /* AddIcon.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8D5B49B6048680CD000E48DA /* AddIcon.action */;
+			remoteInfo = AddIcon;
+		};
+		8B4DC43D0996D84900B58051 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8B4DC4390996D84900B58051 /* RemoveIcon.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8D5B49B6048680CD000E48DA /* RemoveIcon.action */;
+			remoteInfo = RemoveIcon;
+		};
+		8B4DC4620996D8A900B58051 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8B4DC45E0996D8A900B58051 /* SetWallpaperFolder.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8D5B49B6048680CD000E48DA /* SetWallpaperFolder.action */;
+			remoteInfo = SetWallpaperFolder;
+		};
+		8B4DC48F0996D95B00B58051 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8B4DC4390996D84900B58051 /* RemoveIcon.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 8D5B49AC048680CD000E48DA /* RemoveIcon */;
+			remoteInfo = RemoveIcon;
+		};
+		8B4DC4910996D95B00B58051 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8B4DC45E0996D8A900B58051 /* SetWallpaperFolder.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 8D5B49AC048680CD000E48DA /* SetWallpaperFolder */;
+			remoteInfo = SetWallpaperFolder;
+		};
+		8B4DC4930996D95B00B58051 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8B4DC4100996D7BC00B58051 /* AddIcon.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 8D5B49AC048680CD000E48DA /* AddIcon */;
+			remoteInfo = AddIcon;
+		};
 		8B5EDA8D0916E71500EE5414 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
@@ -294,6 +339,18 @@
 				8B63839209953D2C0010DFEF /* KeywordManagerPreferences.VSPref in CopyFiles */,
 				8B63839309953D2C0010DFEF /* ImageMetadata.bundle in CopyFiles */,
 				8B63839409953D2C0010DFEF /* SSPrefsController.bundle in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B4DC4690996D8EA00B58051 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = VitaminSEE.app/Contents/Library/Automator;
+			dstSubfolderSpec = 16;
+			files = (
+				8B4DC48C0996D94D00B58051 /* AddIcon.action in CopyFiles */,
+				8B4DC48B0996D94800B58051 /* RemoveIcon.action in CopyFiles */,
+				8B4DC48A0996D94300B58051 /* SetWallpaperFolder.action in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -399,6 +456,9 @@
 		8B44DC3E09679AD60039BF19 /* BSTrampoline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BSTrampoline.m; path = Widgets/BSTrampoline.m; sourceTree = "<group>"; };
 		8B44DC4609679B6F0039BF19 /* HigherOrderMessaging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HigherOrderMessaging.h; path = Widgets/HigherOrderMessaging.h; sourceTree = "<group>"; };
 		8B44DC4709679B6F0039BF19 /* HigherOrderMessaging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HigherOrderMessaging.m; path = Widgets/HigherOrderMessaging.m; sourceTree = "<group>"; };
+		8B4DC4100996D7BC00B58051 /* AddIcon.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = AddIcon.xcodeproj; path = AutomatorActions/AddIcon/AddIcon.xcodeproj; sourceTree = "<group>"; };
+		8B4DC4390996D84900B58051 /* RemoveIcon.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RemoveIcon.xcodeproj; path = AutomatorActions/RemoveIcon/RemoveIcon.xcodeproj; sourceTree = "<group>"; };
+		8B4DC45E0996D8A900B58051 /* SetWallpaperFolder.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SetWallpaperFolder.xcodeproj; path = AutomatorActions/SetWallpaperFolder/SetWallpaperFolder.xcodeproj; sourceTree = "<group>"; };
 		8B4FEFD80996780300922127 /* ImageMetaData.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImageMetaData.pch; path = Components/ImageMetadata/ImageMetaData.pch; sourceTree = "<group>"; };
 		8B51670A0992E494005C38C7 /* RenameFileSheetController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RenameFileSheetController.h; sourceTree = "<group>"; };
 		8B51670B0992E494005C38C7 /* RenameFileSheetController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RenameFileSheetController.m; sourceTree = "<group>"; };
@@ -727,6 +787,7 @@
 		29B97314FDCFA39411CA2CEA /* VitaminSEE */ = {
 			isa = PBXGroup;
 			children = (
+				8B4DC3990996D6E500B58051 /* Automator Actions */,
 				8B24490F08FB546C004716BC /* Components */,
 				8B2448E208FB20BE004716BC /* Formatters */,
 				8B2448D808FB2086004716BC /* Value Transformers */,
@@ -943,6 +1004,40 @@
 				8BEA5551090BE82800F83026 /* GotoFolderSheetFactory.m */,
 			);
 			name = GotoFolderSheet;
+			sourceTree = "<group>";
+		};
+		8B4DC3990996D6E500B58051 /* Automator Actions */ = {
+			isa = PBXGroup;
+			children = (
+				8B4DC45E0996D8A900B58051 /* SetWallpaperFolder.xcodeproj */,
+				8B4DC4390996D84900B58051 /* RemoveIcon.xcodeproj */,
+				8B4DC4100996D7BC00B58051 /* AddIcon.xcodeproj */,
+			);
+			name = "Automator Actions";
+			sourceTree = "<group>";
+		};
+		8B4DC4110996D7BC00B58051 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8B4DC4150996D7BC00B58051 /* AddIcon.action */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8B4DC43A0996D84900B58051 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8B4DC43E0996D84900B58051 /* RemoveIcon.action */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8B4DC45F0996D8A900B58051 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8B4DC4630996D8A900B58051 /* SetWallpaperFolder.action */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		8B5EDA3A0916E63300EE5414 /* FavoritesPreferences */ = {
@@ -2109,6 +2204,7 @@
 				8D11072E0486CEB800E47090 /* Frameworks */,
 				8B24492608FB5670004716BC /* CopyFiles */,
 				8B91EF1609795CBF001B95BE /* Headers */,
+				8B4DC4690996D8EA00B58051 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -2141,6 +2237,9 @@
 				8B91F01B09807ECC001B95BE /* PBXTargetDependency */,
 				8B1137E0091301F2008FBD78 /* PBXTargetDependency */,
 				8B2B8D5E0916C16200691A7B /* PBXTargetDependency */,
+				8B4DC4900996D95B00B58051 /* PBXTargetDependency */,
+				8B4DC4920996D95B00B58051 /* PBXTargetDependency */,
+				8B4DC4940996D95B00B58051 /* PBXTargetDependency */,
 			);
 			name = VitaminSEE;
 			productInstallPath = "$(HOME)/Applications";
@@ -2163,6 +2262,20 @@
 			hasScannedForEncodings = 1;
 			mainGroup = 29B97314FDCFA39411CA2CEA /* VitaminSEE */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 8B4DC4110996D7BC00B58051 /* Products */;
+					ProjectRef = 8B4DC4100996D7BC00B58051 /* AddIcon.xcodeproj */;
+				},
+				{
+					ProductGroup = 8B4DC43A0996D84900B58051 /* Products */;
+					ProjectRef = 8B4DC4390996D84900B58051 /* RemoveIcon.xcodeproj */;
+				},
+				{
+					ProductGroup = 8B4DC45F0996D8A900B58051 /* Products */;
+					ProjectRef = 8B4DC45E0996D8A900B58051 /* SetWallpaperFolder.xcodeproj */;
+				},
+			);
 			targets = (
 				8D1107260486CEB800E47090 /* VitaminSEE */,
 				8B24491408FB5587004716BC /* ViewIconsFileList */,
@@ -2183,6 +2296,30 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		8B4DC4150996D7BC00B58051 /* AddIcon.action */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = AddIcon.action;
+			remoteRef = 8B4DC4140996D7BC00B58051 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		8B4DC43E0996D84900B58051 /* RemoveIcon.action */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = RemoveIcon.action;
+			remoteRef = 8B4DC43D0996D84900B58051 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		8B4DC4630996D8A900B58051 /* SetWallpaperFolder.action */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SetWallpaperFolder.action;
+			remoteRef = 8B4DC4620996D8A900B58051 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		8B1137C909130185008FBD78 /* Resources */ = {
@@ -2548,6 +2685,21 @@
 			isa = PBXTargetDependency;
 			target = 8B64CD5D090EF8030060CB34 /* OpenWithMenu */;
 			targetProxy = 8B42610F090EFCA10006EE43 /* PBXContainerItemProxy */;
+		};
+		8B4DC4900996D95B00B58051 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = RemoveIcon;
+			targetProxy = 8B4DC48F0996D95B00B58051 /* PBXContainerItemProxy */;
+		};
+		8B4DC4920996D95B00B58051 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SetWallpaperFolder;
+			targetProxy = 8B4DC4910996D95B00B58051 /* PBXContainerItemProxy */;
+		};
+		8B4DC4940996D95B00B58051 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = AddIcon;
+			targetProxy = 8B4DC4930996D95B00B58051 /* PBXContainerItemProxy */;
 		};
 		8B5EDA8E0916E71500EE5414 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -4291,6 +4443,7 @@
 				INSTALL_PATH = "$(HOME)/Applications";
 				PREBINDING = NO;
 				PRODUCT_NAME = VitaminSEE;
+				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
 				WRAPPER_EXTENSION = app;
 				ZERO_LINK = YES;
 			};
@@ -4312,6 +4465,7 @@
 				INSTALL_PATH = "$(HOME)/Applications";
 				PREBINDING = NO;
 				PRODUCT_NAME = VitaminSEE;
+				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
 				WRAPPER_EXTENSION = app;
 				ZERO_LINK = NO;
 			};
@@ -4330,6 +4484,7 @@
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				PRODUCT_NAME = VitaminSEE;
+				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Default;
