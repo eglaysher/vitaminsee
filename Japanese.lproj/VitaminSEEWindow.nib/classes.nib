@@ -1,0 +1,39 @@
+{
+    IBClasses = (
+        {CLASS = EGScrollView; LANGUAGE = ObjC; SUPERCLASS = NSScrollView; }, 
+        {CLASS = FileSizeFormatter; LANGUAGE = ObjC; SUPERCLASS = NSFormatter; }, 
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {
+            CLASS = MyImageView; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {scrollView = EGScrollView; }; 
+            SUPERCLASS = NSImageView; 
+        }, 
+        {
+            ACTIONS = {
+                actualSize = id; 
+                addCurrentDirectoryToFavorites = id; 
+                deleteFileClicked = id; 
+                goToFolder = id; 
+                setImageAsDesktop = id; 
+                zoomIn = id; 
+                zoomOut = id; 
+                zoomToFit = id; 
+            }; 
+            CLASS = VitaminSEEWindowController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {
+                currentFileViewHolder = NSView; 
+                fileSizeLabel = NSTextField; 
+                imageSizeLabel = NSTextField; 
+                imageViewer = NSImageView; 
+                progressCurrentTask = NSTextField; 
+                progressIndicator = NSProgressIndicator; 
+                scrollView = NSScrollView; 
+                splitView = RBSplitView; 
+            }; 
+            SUPERCLASS = NSWindowController; 
+        }
+    ); 
+    IBVersion = 1; 
+}

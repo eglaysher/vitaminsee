@@ -521,6 +521,8 @@
 		8BC0786F0938024B0098E29B /* UKKQueue.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = UKKQueue.m; path = Components/ViewIconsFileList/UKKQueue.m; sourceTree = "<group>"; };
 		8BC078700938024B0098E29B /* UKMainThreadProxy.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = UKMainThreadProxy.h; path = Components/ViewIconsFileList/UKMainThreadProxy.h; sourceTree = "<group>"; };
 		8BC078710938024B0098E29B /* UKMainThreadProxy.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = UKMainThreadProxy.m; path = Components/ViewIconsFileList/UKMainThreadProxy.m; sourceTree = "<group>"; };
+		8BC2CDCD09985A05009676CB /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Japanese; path = Japanese.lproj/MainMenu.nib; sourceTree = "<group>"; };
+		8BC2CDCE09985A19009676CB /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Japanese; path = Japanese.lproj/VitaminSEEWindow.nib; sourceTree = "<group>"; };
 		8BC9D2D209846A16006F6B16 /* ImageMetadata-Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xml; name = "ImageMetadata-Info.plist"; path = "Components/ImageMetadata/ImageMetadata-Info.plist"; sourceTree = "<group>"; };
 		8BC9D2D309846A16006F6B16 /* ImageMetadata.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = ImageMetadata.h; path = Components/ImageMetadata/ImageMetadata.h; sourceTree = "<group>"; };
 		8BC9D2D409846A16006F6B16 /* ImageMetadata.mm */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.objcpp; name = ImageMetadata.mm; path = Components/ImageMetadata/ImageMetadata.mm; sourceTree = "<group>"; };
@@ -2766,6 +2768,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				29B97319FDCFA39411CA2CEA /* English */,
+				8BC2CDCD09985A05009676CB /* Japanese */,
 			);
 			name = MainMenu.nib;
 			sourceTree = "<group>";
@@ -2792,6 +2795,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				8B24490708FB20EF004716BC /* English */,
+				8BC2CDCE09985A19009676CB /* Japanese */,
 			);
 			name = VitaminSEEWindow.nib;
 			sourceTree = "<group>";

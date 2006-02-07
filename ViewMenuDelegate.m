@@ -130,7 +130,10 @@ shouldCancel:(BOOL)shouldCancel
 		NSString* fileListName = [[fileLists objectAtIndex:index]
 			objectForKey:@"PluginName"];
 
-		[item setTitle:menuName];
+		NSString* localalized = NSLocalizedString(menuName, @"View menu");
+		NSLog(@"%@ => %@", menuName, localalized);
+		
+		[item setTitle:localalized];
 		[item setAction:@selector(setFileListFromMenu:)];
 		[item setRepresentedObject:fileListName];
 
