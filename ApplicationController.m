@@ -54,7 +54,7 @@
 #import "SS_PrefsController.h"
 #import "SSPrefsControllerFactory.h"
 #import "ViewMenuDelegate.h"
-#import "ToolMenuDelegate.h"
+//#import "ToolMenuDelegate.h"
 
 #import "EGPath.h"
 #import "HigherOrderMessaging.h"
