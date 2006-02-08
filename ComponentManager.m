@@ -99,11 +99,15 @@ static NSMutableArray* loadedCurrentFilePlugins = 0;
 		if([[current pathExtension] isEqual:@"bundle"] && [current isDir]) {
 			NSBundle* currentBundle = [NSBundle bundleWithPath:current];
 			NSDictionary* info = [currentBundle infoDictionary];
+			NSDictionary* localized = [currentBundle localizedInfoDictionary];
 			NSString* pluginName = [info objectForKey:@"VSPluginName"];
 			NSString* pluginType = [info objectForKey:@"VSPluginType"];
 			
 			if([pluginType isEqual:@"FileList"]) {
-				NSString* menuName = [info objectForKey:@"VSFLMenuName"];
+				NSString* menuName = [localized objectForKey:@"VSFLMenuName"];
+				if(!menuName)
+					menuName = [info objectForKey:@"VSFLMenuName"];
+				
 				NSMutableDictionary* pluginInfo = [NSMutableDictionary dictionaryWithObjectsAndKeys:
 					pluginName, @"PluginName", 
 					currentBundle, @"Bundle",
@@ -121,7 +125,10 @@ static NSMutableArray* loadedCurrentFilePlugins = 0;
 				[fileListPlugins setObject:pluginInfo forKey:pluginName];
 			}
 			else if([pluginType isEqual:@"CurrentFile"]) {
-				NSString* menuName = [info objectForKey:@"VSCFMenuName"];
+				NSString* menuName = [localized objectForKey:@"VSFLMenuName"];
+				if(!menuName)
+					menuName = [info objectForKey:@"VSCFMenuName"];
+				
 				NSString* menuLocation = [info objectForKey:@"VSCFMenuItemLocation"];
 				NSMutableDictionary* pluginInfo = [NSMutableDictionary dictionaryWithObjectsAndKeys:
 					pluginName, @"PluginName", currentBundle, @"Bundle",

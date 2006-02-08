@@ -131,7 +131,7 @@ shouldCancel:(BOOL)shouldCancel
 			objectForKey:@"PluginName"];
 
 		NSString* localalized = NSLocalizedString(menuName, @"View menu");
-		NSLog(@"%@ => %@", menuName, localalized);
+//		NSLog(@"%@ => %@", menuName, localalized);
 		
 		[item setTitle:localalized];
 		[item setAction:@selector(setFileListFromMenu:)];
@@ -154,6 +154,8 @@ shouldCancel:(BOOL)shouldCancel
 			localIndex = index + 1;
 		
 		NSString* title = menuTitles[localIndex];
+		NSString* localalized = NSLocalizedString(title, @"View menu");
+//		NSLog(@"%@ => %@", title, localalized);
 		
 		if([title isEqual:@"---"]) 
 		{
@@ -162,7 +164,7 @@ shouldCancel:(BOOL)shouldCancel
 		}
 		else
 		{
-			[item setTitle:title];
+			[item setTitle:localalized];
 			[item setAction:menuActions[localIndex]];
 			[item setKeyEquivalent:keyEquivalents[localIndex]];
 		}
