@@ -1,3 +1,26 @@
+0.7-Beta Release (February 8th, 2006)
+-------------------------------------
+* Move to a multi-window interface. This required a substantial refactoring/
+  rewrite of the core of VitaminSEE. The new organization should allow me to
+  add features quicker.
+* UI is more responsive while:
+  * Scrolling through very large images (2000x2000 or greater)
+  * Moving, copying and renaming files
+* VitaminSEE windows now zoom properly, and should no longer overlap with the
+  Dock.
+* Monitor the filesystem for changes so there's no longer a reason to reload.
+  (Buzzword: kqueue)
+* Renaming a file has been moved off the Keywords window (which doesn't make
+  any sense), and is now an option on the File menu.
+* Fix Keywords, so the creation date of a file isn't lost when you modify the
+  keywords.
+* Universal binary release.
+
+0.6.4.2 Bugfix Release (August 28th, 2005)
+------------------------------------------
+* Fix crash by memory exhaustion in the "Add Thumbnail" Automator action.
+  (Thanks to Sergiu Partenie for the bug report.)
+
 0.6.4.1 Emergency Bugfix Release (July 13th, 2005)
 --------------------------------------------------
 * Fix crashing in thumbnailing code.

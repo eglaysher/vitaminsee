@@ -605,7 +605,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>0.7</string>
+	<string>0.7-beta</string>
 	<key>LSMinimumSystemVersion</key>
 	<string>10.3</string>
 	<key>NSMainNibFile</key>
