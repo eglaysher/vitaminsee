@@ -307,22 +307,6 @@
 	{
 		[[splitView subviewAtPosition:0] setDimension:oldFileListSize];
 		oldFileListSize = 0;
-
-		// Figure out the correct size for the clipview and set it here. 
-		// Usually, resizing of the subviews takes place AFTERWARDS, (and this 
-		// will be undone by that), but redrawing needs the new window size. 
-		// This isn't a problem when we're displaying an unscaled image, but is
-		// serious when we're "fitting" and image to the view.
-		if([[[self document] scaleMode] isEqual:SCALE_IMAGE_TO_FIT])
-		{
-			NSSize windowSize = 
-				[NSWindow contentRectForFrameRect:[[self window] frame]
-										styleMask:[[self window] styleMask]]
-				.size;
-			float w = windowSize.width - [self nonImageWidth];
-			float h = windowSize.height - [self nonImageHeight];
-			[[scrollView contentView] setFrameSize:NSMakeSize(w,h)];
-		}
 	}
 	
 	// Get in queue for the full redraw
@@ -332,7 +316,6 @@
 - (NSSize)windowWillResize:(NSWindow *)sender toSize:(NSSize)proposedFrameSize
 {
 	oldFileListSize = NSWidth([[splitView subviewAtPosition:0] frame]);
-//	NSLog(@"Old file list size ++ is %f", oldFileListSize);
 	return proposedFrameSize;
 }
 
@@ -396,7 +379,7 @@
 	float stdX, stdY, stdW, stdH, defX, defY, defW, defH;    
     NSRect stdFrame = [NSWindow contentRectForFrameRect:[sender frame] 
 											  styleMask:[sender styleMask]];
-    
+	
     stdFrame.origin.y += stdFrame.size.height;
     stdFrame.origin.y -= newHeight;
     stdFrame.size.height = newHeight;
@@ -416,7 +399,6 @@
     defH = defaultFrame.size.height;
     
     if ( stdH > defH ) {
-		
 		stdFrame.size.height = defH;
 		stdFrame.origin.y = defY;
     } else if ( stdY < defY ) {
@@ -430,9 +412,7 @@
 		stdFrame.origin.x = defX;
     } 
 	
-//	NSLog(@"--- end -windowWillUseStandardFrame:defaultFrame:");
-	
-    return stdFrame;
+	return stdFrame;
 }
 
 - (void)windowDidBecomeMain:(NSNotification *)aNotification
@@ -455,14 +435,12 @@
 
 -(float)nonImageWidth
 {
-	return
-	20 + /* Left Margin */
-	NSWidth([[splitView subviewAtPosition:0] frame]) + /* File List View */
-	[splitView dividerThickness] + /* Divider thickness */
-//	([scrollView hasVerticalScroller] ?
-//	 NSWidth([[scrollView verticalScroller] frame]) : 0) +
-	/* Additional room for vertical scroller */
-	20 + 2; /* Right Margin */	
+	// Get the subtract the scrollView's frame width from the 
+	NSRect content = [NSWindow contentRectForFrameRect:[[self window] frame] 
+											 styleMask:[[self window] styleMask]];
+	
+	
+	return content.size.width - [scrollView frame].size.width;
 }
 
 /** The size of the window's content view that isn't taken up by the scrollView.
@@ -472,12 +450,12 @@
  */
 -(float)nonImageHeight
 {
-	return   //[[self window] titleBarHeight] +
-	20 + /* Top Margin */
-//	([scrollView hasHorizontalScroller] ?
-//	 NSHeight([[scrollView horizontalScroller] frame]) : 0) +
-	/* Additional room for horrizontal scroller */
-	20 + 2;  /* Bottom Margin */
+	int toolbarsize = 0;
+	
+	NSRect content = [NSWindow contentRectForFrameRect:[[self window] frame] 
+											 styleMask:[[self window] styleMask]];
+	
+	return content.size.height - [scrollView frame].size.height;
 }
 
 //-----------------------------------------------------------------------------
