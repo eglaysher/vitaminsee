@@ -56,7 +56,7 @@
 	BOOL worked;
 	int tag = 0;
 	
-	NSLog(@"Going to delete file : %@", file);
+//	NSLog(@"Going to delete file : %@", file);
 	
 	if([[NSFileManager defaultManager] fileExistsAtPath:file])
 	{
@@ -88,7 +88,7 @@
 
 -(int)moveFile:(EGPath*)inFile to:(EGPath*)inDestination
 {
-	NSLog(@"%@ => %@", inFile, inDestination);
+//	NSLog(@"%@ => %@", inFile, inDestination);
 	if(![inFile isNaturalFile] || ![inDestination isNaturalFile]) {
 		AlertSoundPlay();
 		return -1;

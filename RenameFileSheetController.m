@@ -69,8 +69,9 @@
 	
 	// Clear the 
 	NSString* firstName = [[initialPath fileSystemPath] lastPathComponent];
-	[labelName setStringValue:[NSString stringWithFormat:@"Rename '%@' to:",
-		firstName]];
+	NSString* format = NSLocalizedString(@"Rename '%@' to:", 
+										 @"Label on RenameFileSheetController");
+	[labelName setStringValue:[NSString stringWithFormat:format, firstName]];
 	[folderName setStringValue:firstName];
 	
 	[NSApp beginSheet:[self window]
