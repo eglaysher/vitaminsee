@@ -464,8 +464,8 @@
 	8B2448C608FB2080004716BC /* ApplicationController.m */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {734, 10592}}";
-			sepNavSelRange = "{20896, 0}";
-			sepNavVisRect = "{{0, 9731}, {593, 861}}";
+			sepNavSelRange = "{17977, 0}";
+			sepNavVisRect = "{{0, 8492}, {593, 861}}";
 			sepNavWindowFrame = "{{112, 4}, {638, 934}}";
 		};
 	};
@@ -682,18 +682,18 @@
 	};
 	8B244B3C08FC886A004716BC /* ToolbarDelegate.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {746, 648}}";
+			sepNavIntBoundsRect = "{{0, 0}, {746, 608}}";
 			sepNavSelRange = "{401, 0}";
-			sepNavVisRect = "{{0, 0}, {746, 648}}";
+			sepNavVisRect = "{{0, 0}, {746, 608}}";
 			sepNavWindowFrame = "{{181, 25}, {791, 721}}";
 		};
 	};
 	8B244B3D08FC886A004716BC /* ToolbarDelegate.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {629, 4032}}";
-			sepNavSelRange = "{9337, 0}";
-			sepNavVisRect = "{{0, 3373}, {584, 659}}";
-			sepNavWindowFrame = "{{411, 147}, {629, 732}}";
+			sepNavIntBoundsRect = "{{0, 0}, {629, 4224}}";
+			sepNavSelRange = "{8548, 0}";
+			sepNavVisRect = "{{0, 3059}, {584, 659}}";
+			sepNavWindowFrame = "{{475, 150}, {629, 772}}";
 		};
 	};
 	8B2B8CF50916C0EA00691A7B /* AdvancedPreferences */ = {
@@ -820,6 +820,14 @@
 			sepNavSelRange = "{4081, 0}";
 			sepNavVisRect = "{{0, 0}, {746, 648}}";
 			sepNavWindowFrame = "{{15, 20}, {791, 721}}";
+		};
+	};
+	8B5EDA780916E6FF00EE5414 /* English */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1161, 851}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRect = "{{0, 0}, {1058, 851}}";
+			sepNavWindowFrame = "{{15, 9}, {1103, 924}}";
 		};
 	};
 	8B64CD5D090EF8030060CB34 /* OpenWithMenu */ = {
@@ -1079,10 +1087,18 @@
 	};
 	8BAE07A709622634007C387D /* ViewMenuDelegate.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1166, 2832}}";
+			sepNavIntBoundsRect = "{{0, 0}, {594, 2832}}";
 			sepNavSelRange = "{4254, 0}";
-			sepNavVisRect = "{{0, 2408}, {1166, 225}}";
-			sepNavWindowFrame = "{{749, 4}, {619, 934}}";
+			sepNavVisRect = "{{0, 1528}, {574, 821}}";
+			sepNavWindowFrame = "{{749, 44}, {619, 894}}";
+		};
+	};
+	8BB690A9099DA961001AE27B /* English */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1308, 2208}}";
+			sepNavSelRange = "{599, 0}";
+			sepNavVisRect = "{{0, 1397}, {1058, 811}}";
+			sepNavWindowFrame = "{{297, 14}, {1103, 924}}";
 		};
 	};
 	8BC0786B0938024B0098E29B /* UKFileWatcher.h */ = {
@@ -1278,11 +1294,19 @@
 			sepNavWindowFrame = "{{15, -1}, {791, 934}}";
 		};
 	};
+	8BC9D5B8098707B1006F6B16 /* Japanese */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1058, 851}}";
+			sepNavSelRange = "{140, 0}";
+			sepNavVisRect = "{{0, 0}, {1058, 851}}";
+			sepNavWindowFrame = "{{15, 9}, {1103, 924}}";
+		};
+	};
 	8BC9D5D609870A4D006F6B16 /* Japanese */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {2799, 1984}}";
+			sepNavIntBoundsRect = "{{0, 0}, {2799, 2032}}";
 			sepNavSelRange = "{1284, 0}";
-			sepNavVisRect = "{{0, 0}, {746, 861}}";
+			sepNavVisRect = "{{0, 0}, {746, 821}}";
 			sepNavWindowFrame = "{{15, -1}, {791, 934}}";
 		};
 	};

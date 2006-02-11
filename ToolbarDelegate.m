@@ -35,6 +35,7 @@
 #import "AppKitAdditions.h"
 #import "ComponentManager.h"
 #import "FavoritesMenuFactory.h"
+#import "ApplicationController.h"
 
 // Our Viewer's ID
 static NSString* MainViewerWindowToolbarIdentifier = 
@@ -57,6 +58,8 @@ static NSString* GotoComputerID = @"Goto Computer Toolbar Identifier";
 static NSString* GotoPicturesID = @"Goto Pictures Toolbar Identifier";
 static NSString* GotoHomeID = @"Goto Home Toolbar Identifier";
 static NSString* FavoritesID = @"Favorites Toolbar Identifier";
+
+static NSString* GotoFolderID = @"Goto Folder Toolbar Identifier";
 
 static NSString* NextPictureToolbarID = @"Next Picture Toolbar Identifier";
 static NSString* PreviousPictureToolbarID = 
@@ -196,6 +199,15 @@ static ToolbarDelegate* toolbarDelegateObject = 0;
 		[item setImage:[NSImage imageNamed:@"ToolbarPicturesFolderIcon"]];
 		[item setAction:@selector(goToPicturesDirectory:)];
 	}
+	else if([itemIdent isEqual:GotoFolderID])
+	{
+		[item setLabel:NSLocalizedString(@"Go To...", @"Toolbar Item")];
+		[item setPaletteLabel:NSLocalizedString(@"Go To Folder...", @"Toolbar Item")];
+		[item setToolTip:NSLocalizedString(@"Go To Folder...", @"Toolbar Item")];
+		[item setImage:[NSImage imageNamed:@"goto"]];
+		[item setTarget:[ApplicationController controller]];
+		[item setAction:@selector(goToFolder:)];
+	}
 	else if([itemIdent isEqual:FavoritesID])
 	{
 		// FavoritesToolbarItem is special.
@@ -240,8 +252,8 @@ static ToolbarDelegate* toolbarDelegateObject = 0;
 {
 	return [NSArray arrayWithObjects:RevealInFinderToolbarID, 
 		ViewInPreviewToolbarID, MoveToTrashID, EnclosingFolderID, 
-		GotoComputerID, GotoHomeID, 
-		GotoPicturesID,  FavoritesID, ZoomInToolbarID, ZoomOutToolbarID,
+		GotoComputerID, GotoHomeID, GotoPicturesID,  FavoritesID, GotoFolderID,
+		ZoomInToolbarID, ZoomOutToolbarID,
 		ZoomToFitToolbarID, ActualSizeToolbarID, NextPictureToolbarID, 
 		PreviousPictureToolbarID, NSToolbarSeparatorItemIdentifier,
 		NSToolbarSpaceItemIdentifier, NSToolbarFlexibleSpaceItemIdentifier,
