@@ -515,6 +515,7 @@
 		8BAE07A609622634007C387D /* ViewMenuDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewMenuDelegate.h; sourceTree = "<group>"; };
 		8BAE07A709622634007C387D /* ViewMenuDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewMenuDelegate.m; sourceTree = "<group>"; };
 		8BB68FCA099D9E21001AE27B /* UpArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = UpArrow.png; path = Resources/UpArrow.png; sourceTree = "<group>"; };
+		8BB690A9099DA961001AE27B /* English */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8BC0786B0938024B0098E29B /* UKFileWatcher.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = UKFileWatcher.h; path = Components/ViewIconsFileList/UKFileWatcher.h; sourceTree = "<group>"; };
 		8BC0786C0938024B0098E29B /* UKFNSubscribeFileWatcher.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = UKFNSubscribeFileWatcher.h; path = Components/ViewIconsFileList/UKFNSubscribeFileWatcher.h; sourceTree = "<group>"; };
 		8BC0786D0938024B0098E29B /* UKFNSubscribeFileWatcher.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = UKFNSubscribeFileWatcher.m; path = Components/ViewIconsFileList/UKFNSubscribeFileWatcher.m; sourceTree = "<group>"; };
@@ -2896,6 +2897,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				8BC9D5D609870A4D006F6B16 /* Japanese */,
+				8BB690A9099DA961001AE27B /* English */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

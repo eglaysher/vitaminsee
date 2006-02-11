@@ -459,17 +459,17 @@
 	};
 	8B2448C508FB2080004716BC /* ApplicationController.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {746, 1568}}";
-			sepNavSelRange = "{2161, 0}";
-			sepNavVisRect = "{{0, 904}, {746, 648}}";
+			sepNavIntBoundsRect = "{{0, 0}, {746, 1616}}";
+			sepNavSelRange = "{3086, 0}";
+			sepNavVisRect = "{{0, 952}, {746, 648}}";
 			sepNavWindowFrame = "{{105, 23}, {791, 721}}";
 		};
 	};
 	8B2448C608FB2080004716BC /* ApplicationController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {734, 10448}}";
-			sepNavSelRange = "{2182, 0}";
-			sepNavVisRect = "{{0, 624}, {593, 861}}";
+			sepNavIntBoundsRect = "{{0, 0}, {734, 10592}}";
+			sepNavSelRange = "{20913, 30}";
+			sepNavVisRect = "{{0, 9731}, {593, 861}}";
 			sepNavWindowFrame = "{{112, 4}, {638, 934}}";
 		};
 	};
@@ -695,8 +695,8 @@
 	8B244B3D08FC886A004716BC /* ToolbarDelegate.m */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {629, 4032}}";
-			sepNavSelRange = "{6909, 0}";
-			sepNavVisRect = "{{0, 2438}, {584, 659}}";
+			sepNavSelRange = "{9337, 0}";
+			sepNavVisRect = "{{0, 3373}, {584, 659}}";
 			sepNavWindowFrame = "{{147, 14}, {629, 732}}";
 		};
 	};
@@ -1305,7 +1305,7 @@
 	8BC9D5D609870A4D006F6B16 /* Japanese */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {2799, 1984}}";
-			sepNavSelRange = "{1164, 0}";
+			sepNavSelRange = "{1284, 0}";
 			sepNavVisRect = "{{0, 0}, {746, 861}}";
 			sepNavWindowFrame = "{{15, -1}, {791, 934}}";
 		};
