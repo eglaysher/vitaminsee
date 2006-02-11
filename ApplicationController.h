@@ -94,4 +94,7 @@
 -(void)becomeMainDocument:(id)mainDocument;
 -(void)resignMainDocument:(id)mainDocument;
 -(void)sendPluginActivationSignal:(id)menuItem;
+
+-(IBAction)showGPL:(id)sender;
+
 @end

@@ -648,5 +648,14 @@ static ApplicationController* appControl;
 							  context:pluginLine];
 }
 
+// -----------
+
+-(IBAction)showGPL:(id)sender
+{
+	[[NSWorkspace sharedWorkspace] openFile:[[NSBundle mainBundle] 
+		pathForResource:@"GPL"
+				 ofType:@"txt"]];
+}
+
 
 @end

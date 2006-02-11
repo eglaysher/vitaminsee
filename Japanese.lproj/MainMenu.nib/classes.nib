@@ -5,6 +5,7 @@
                 fakeFavoritesMenuSelector = id; 
                 fakeOpenWithMenuSelector = id; 
                 newWindow = id; 
+                showGPL = id; 
                 showPreferences = id; 
             }; 
             CLASS = ApplicationController; 
