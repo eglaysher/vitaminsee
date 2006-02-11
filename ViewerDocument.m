@@ -442,6 +442,8 @@
 	// Disable menu items when they would put the image in the state it's 
 	// already currently in.
 	// File menu
+	if(action == @selector(openCurrentItem:))
+		enable = [fileList canOpenCurrentItem];
 	if(action == @selector(openInPreview:))
 		enable = [currentFile isImage];
 	else if(action == @selector(addToFavorites:))

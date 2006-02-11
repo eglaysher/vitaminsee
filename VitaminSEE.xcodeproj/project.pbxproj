@@ -104,6 +104,7 @@
 		8BB68FCB099D9E21001AE27B /* UpArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BB68FCA099D9E21001AE27B /* UpArrow.png */; };
 		8BB691FE099DBA3E001AE27B /* VitaminSEE Help in Resources */ = {isa = PBXBuildFile; fileRef = 8BB691CE099DBA3E001AE27B /* VitaminSEE Help */; };
 		8BB695B7099E3309001AE27B /* goto.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BB695B6099E3309001AE27B /* goto.png */; };
+		8BB695FF099E4329001AE27B /* Changelog in Resources */ = {isa = PBXBuildFile; fileRef = 8BB695FE099E4329001AE27B /* Changelog */; };
 		8BC078720938024B0098E29B /* UKFNSubscribeFileWatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BC0786D0938024B0098E29B /* UKFNSubscribeFileWatcher.m */; };
 		8BC078730938024B0098E29B /* UKKQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BC0786F0938024B0098E29B /* UKKQueue.m */; };
 		8BC078740938024B0098E29B /* UKMainThreadProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BC078710938024B0098E29B /* UKMainThreadProxy.m */; };
@@ -521,6 +522,7 @@
 		8BB691CF099DBA3E001AE27B /* English */ = {isa = PBXFileReference; lastKnownFileType = folder; name = English; path = "English.lproj/VitaminSEE Help"; sourceTree = "<group>"; };
 		8BB69201099DBA57001AE27B /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Japanese; path = "Japanese.lproj/VitaminSEE Help"; sourceTree = "<group>"; };
 		8BB695B6099E3309001AE27B /* goto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = goto.png; path = Resources/goto.png; sourceTree = "<group>"; };
+		8BB695FE099E4329001AE27B /* Changelog */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = Changelog; sourceTree = "<group>"; };
 		8BC0786B0938024B0098E29B /* UKFileWatcher.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = UKFileWatcher.h; path = Components/ViewIconsFileList/UKFileWatcher.h; sourceTree = "<group>"; };
 		8BC0786C0938024B0098E29B /* UKFNSubscribeFileWatcher.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = UKFNSubscribeFileWatcher.h; path = Components/ViewIconsFileList/UKFNSubscribeFileWatcher.h; sourceTree = "<group>"; };
 		8BC0786D0938024B0098E29B /* UKFNSubscribeFileWatcher.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = UKFNSubscribeFileWatcher.m; path = Components/ViewIconsFileList/UKFNSubscribeFileWatcher.m; sourceTree = "<group>"; };
@@ -823,6 +825,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8BB695FE099E4329001AE27B /* Changelog */,
 				8BB695B6099E3309001AE27B /* goto.png */,
 				8BB691CE099DBA3E001AE27B /* VitaminSEE Help */,
 				8BB68FCA099D9E21001AE27B /* UpArrow.png */,
@@ -2487,6 +2490,7 @@
 				8BB68FCB099D9E21001AE27B /* UpArrow.png in Resources */,
 				8BB691FE099DBA3E001AE27B /* VitaminSEE Help in Resources */,
 				8BB695B7099E3309001AE27B /* goto.png in Resources */,
+				8BB695FF099E4329001AE27B /* Changelog in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
