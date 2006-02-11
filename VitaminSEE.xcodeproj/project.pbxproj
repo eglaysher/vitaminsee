@@ -101,6 +101,7 @@
 		8B9C7375096884C6009ED6CC /* CurrentFilePlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B9C7374096884C6009ED6CC /* CurrentFilePlugin.h */; };
 		8BAE04EF095F6C5D007C387D /* NSObject+Invocations.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BAE04ED095F6C5D007C387D /* NSObject+Invocations.m */; };
 		8BAE07A909622634007C387D /* ViewMenuDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BAE07A709622634007C387D /* ViewMenuDelegate.m */; };
+		8BB68FCB099D9E21001AE27B /* UpArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BB68FCA099D9E21001AE27B /* UpArrow.png */; };
 		8BC078720938024B0098E29B /* UKFNSubscribeFileWatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BC0786D0938024B0098E29B /* UKFNSubscribeFileWatcher.m */; };
 		8BC078730938024B0098E29B /* UKKQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BC0786F0938024B0098E29B /* UKKQueue.m */; };
 		8BC078740938024B0098E29B /* UKMainThreadProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BC078710938024B0098E29B /* UKMainThreadProxy.m */; };
@@ -513,6 +514,7 @@
 		8BAE04ED095F6C5D007C387D /* NSObject+Invocations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Invocations.m"; sourceTree = "<group>"; };
 		8BAE07A609622634007C387D /* ViewMenuDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewMenuDelegate.h; sourceTree = "<group>"; };
 		8BAE07A709622634007C387D /* ViewMenuDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewMenuDelegate.m; sourceTree = "<group>"; };
+		8BB68FCA099D9E21001AE27B /* UpArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = UpArrow.png; path = Resources/UpArrow.png; sourceTree = "<group>"; };
 		8BC0786B0938024B0098E29B /* UKFileWatcher.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = UKFileWatcher.h; path = Components/ViewIconsFileList/UKFileWatcher.h; sourceTree = "<group>"; };
 		8BC0786C0938024B0098E29B /* UKFNSubscribeFileWatcher.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = UKFNSubscribeFileWatcher.h; path = Components/ViewIconsFileList/UKFNSubscribeFileWatcher.h; sourceTree = "<group>"; };
 		8BC0786D0938024B0098E29B /* UKFNSubscribeFileWatcher.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = UKFNSubscribeFileWatcher.m; path = Components/ViewIconsFileList/UKFNSubscribeFileWatcher.m; sourceTree = "<group>"; };
@@ -596,7 +598,7 @@
 		8BEA55DC090C0EDF00F83026 /* GotoFolderWindowFactory.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = GotoFolderWindowFactory.m; path = Components/GotoFolderWindow/GotoFolderWindowFactory.m; sourceTree = "<group>"; };
 		8BEA55E0090C0EFB00F83026 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = Components/GotoFolderWindow/English.lproj/GotoFolderWindow.nib; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		8D1107320486CEB800E47090 /* VitaminSEE.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = VitaminSEE.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D1107320486CEB800E47090 /* VitaminSEE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VitaminSEE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -815,6 +817,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8BB68FCA099D9E21001AE27B /* UpArrow.png */,
 				8BC9D5D509870A4D006F6B16 /* Localizable.strings */,
 				29B97318FDCFA39411CA2CEA /* MainMenu.nib */,
 				8B24490608FB20EF004716BC /* VitaminSEEWindow.nib */,
@@ -2473,6 +2476,7 @@
 				8B24490508FB20E2004716BC /* ZoomToFitToolbarImage.tiff in Resources */,
 				8B24490808FB20EF004716BC /* VitaminSEEWindow.nib in Resources */,
 				8BC9D5D709870A4D006F6B16 /* Localizable.strings in Resources */,
+				8BB68FCB099D9E21001AE27B /* UpArrow.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

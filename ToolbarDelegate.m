@@ -51,6 +51,8 @@ static NSString* ViewInPreviewToolbarID =@"Reveal in Finder Toolbar Identifier";
 
 static NSString* MoveToTrashID = @"Move Item to Trash Toolbar Identifier";
 
+static NSString* EnclosingFolderID = @"Enclosing Folder Toolbar Identifier";
+
 static NSString* GotoComputerID = @"Goto Computer Toolbar Identifier";
 static NSString* GotoPicturesID = @"Goto Pictures Toolbar Identifier";
 static NSString* GotoHomeID = @"Goto Home Toolbar Identifier";
@@ -162,6 +164,14 @@ static ToolbarDelegate* toolbarDelegateObject = 0;
 		[item setImage:[NSImage imageNamed:@"ToolbarDeleteIcon"]];
 		[item setAction:@selector(deleteFileClicked:)];				
 	}
+	else if([itemIdent isEqual:EnclosingFolderID])
+	{
+		[item setLabel:NSLocalizedString(@"Enclosing", @"Toolbar Item")];
+		[item setPaletteLabel:NSLocalizedString(@"Enclosing Folder", @"Toolbar Item")];
+		[item setToolTip:NSLocalizedString(@"Enclosing Folder", @"Toolbar Item")];
+		[item setImage:[NSImage imageNamed:@"UpArrow"]];
+		[item setAction:@selector(goEnclosingFolder:)];						
+	}
 	else if([itemIdent isEqual:GotoComputerID])
 	{
 		[item setLabel:NSLocalizedString(@"Computer", @"Toolbar Item")];
@@ -229,7 +239,8 @@ static ToolbarDelegate* toolbarDelegateObject = 0;
 - (NSArray *) toolbarAllowedItemIdentifiers: (NSToolbar *) toolbar
 {
 	return [NSArray arrayWithObjects:RevealInFinderToolbarID, 
-		ViewInPreviewToolbarID, MoveToTrashID, GotoComputerID, GotoHomeID, 
+		ViewInPreviewToolbarID, MoveToTrashID, EnclosingFolderID, 
+		GotoComputerID, GotoHomeID, 
 		GotoPicturesID,  FavoritesID, ZoomInToolbarID, ZoomOutToolbarID,
 		ZoomToFitToolbarID, ActualSizeToolbarID, NextPictureToolbarID, 
 		PreviousPictureToolbarID, NSToolbarSeparatorItemIdentifier,
