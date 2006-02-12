@@ -28,13 +28,9 @@
 //
 ////////////////////////////////////////////////////////////////////////
 
-
 #import <Cocoa/Cocoa.h>
 
-#import "PluginBase.h"
-
-@interface OpenWithMenuController : NSObject <PluginBase> {
-	PluginLayer* pluginLayer;
+@interface OpenWithMenuController : NSObject {
 }
 
 -(id)buildMenuDelegate;

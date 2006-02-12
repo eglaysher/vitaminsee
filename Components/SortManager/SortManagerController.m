@@ -28,20 +28,20 @@
 ////////////////////////////////////////////////////////////////////////
 
 #import "SortManagerController.h"
-#import "PluginLayer.h"
 #import "NSString+FileTasks.h"
+#import "EGPath.h"
+#import "ComponentManager.h"
+#import "FileOperations.h"
 
 @implementation SortManagerController
 
 ////////////////////////////////////////////////////////// PROTOCOL: PluginBase
--(id)initWithPluginLayer:(PluginLayer*)inPluginLayer;
+-(id)init
 {
 	// Load the nib file
 	if(self = [super initWithWindowNibName:@"SortManager"])
 	{
 		// stuff could go here.
-		pluginLayer = inPluginLayer;
-		[pluginLayer retain];
 		keyValues = [[NSMutableDictionary alloc] init];
 	}
 	
@@ -50,7 +50,6 @@
 
 -(void)dealloc
 {
-	[pluginLayer release];
 	[keyValues release];
 	[super dealloc];
 }
@@ -71,9 +70,13 @@
 		objectForKey:@"SortManagerPaths"] objectAtIndex:rowIndex];
 	NSString* destination = [cellProperties objectForKey:@"Path"];	
 
-	id currentFile = [pluginLayer currentFile];
-	[pluginLayer moveFile:currentFile
-					   to:destination];
+	[[ComponentManager getInteranlComponentNamed:@"FileOperations"]
+		moveFile:currentFile
+			  to:[EGPath pathWithPath:destination]];	
+	
+//	id currentFile = [pluginLayer currentFile];
+//	[pluginLayer moveFile:currentFile
+//					   to:destination];
 }
 
 -(IBAction)copyButtonPushed:(id)sender
@@ -83,13 +86,19 @@
 		objectForKey:@"SortManagerPaths"] objectAtIndex:rowIndex];
 	NSString* destination = [cellProperties objectForKey:@"Path"];
 
-	[pluginLayer copyFile:[pluginLayer currentFile]
-					   to:destination];
+	[[ComponentManager getInteranlComponentNamed:@"FileOperations"]
+		copyFile:currentFile
+			  to:[EGPath pathWithPath:destination]];
+	
+//	[pluginLayer copyFile:[pluginLayer currentFile]
+//					   to:destination];
 }
 
--(void)fileSetTo:(NSString*)newPath
+-(void)fileSetTo:(EGPath*)newPath
 {
 	NSNumber* valid;
+	[currentFile release];
+	currentFile = [newPath retain];
 	
 	if(newPath)
 	{
@@ -114,19 +123,16 @@
 }
 
 /////////////////////////////////////////////////// PROTOCOL: CurrentFilePlugin
--(NSString*)name
+-(void)activatePluginWithFile:(EGPath*)path inWindow:(NSWindow*)window
+					  context:(NSDictionary*)context
 {
-	return @"Sort Manager";
+	[self showWindow:self];	
+	[self fileSetTo:path];
 }
 
--(void)activate
+-(void)currentImageSetTo:(EGPath*)path
 {
-	[self showWindow:self];
-}
-
--(NSArray*)contextMenuItems
-{
-	return nil;
+	[self fileSetTo:path];
 }
 
 //////////////////////////////////////////////////////////// NSTable Datasource
@@ -146,12 +152,5 @@
 		[cell bind:@"enabled2" toObject:keyValues withKeyPath:@"ValidDirectory" options:nil];
 	}
 }
-
-//////////// 
--(NSUndoManager*)windowWillReturnUndoManager:(id)window
-{
-	return [pluginLayer undoManager];
-}
-
 
 @end

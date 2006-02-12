@@ -3,7 +3,7 @@
 // Module:        Main Controller Class
 // Part of:       VitaminSEE
 //
-// ID:            $Id: VitaminSEEController.m 123 2005-04-18 00:21:02Z elliot $
+// ID:            $Id: ApplicationController.m 123 2005-04-18 00:21:02Z elliot $
 // Revision:      $Revision$
 // Last edited:   $Date$
 // Author:        $Author$

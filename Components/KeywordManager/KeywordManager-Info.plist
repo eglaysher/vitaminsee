@@ -18,5 +18,11 @@
 	<string>1.0</string>
 	<key>NSPrincipalClass</key>
 	<string>KeywordManagerController</string>
+	<key>VSPluginName</key>
+	<string>KeywordManager</string>
+	<key>VSPluginType</key>
+	<string>CurrentFile</string>
+	<key>VSCFMenuName</key>
+	<string>Keywords</string>
 </dict>
 </plist>

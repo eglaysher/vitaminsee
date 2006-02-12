@@ -18,5 +18,9 @@
 	<string>1.0</string>
 	<key>NSPrincipalClass</key>
 	<string>OpenWithMenuController</string>
+	<key>VSPluginName</key>
+	<string>OpenWithMenu</string>
+	<key>VSPluginType</key>
+	<string>InternalUse</string>
 </dict>
 </plist>

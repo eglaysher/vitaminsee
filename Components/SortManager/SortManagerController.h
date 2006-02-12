@@ -32,18 +32,19 @@
 #import "CurrentFilePlugin.h"
 
 @class PluginLayer;
+@class EGPath;
 
 @interface SortManagerController : NSWindowController <CurrentFilePlugin>
 {
 	IBOutlet NSArrayController* pathsController;
 	IBOutlet NSTableView* tableView;
-	PluginLayer* pluginLayer;
 	NSMutableDictionary* keyValues;
+	EGPath* currentFile;
 }
 
 // Actions from the form
 -(IBAction)moveButtonPushed:(id)sender;
 -(IBAction)copyButtonPushed:(id)sender;
 
--(void)fileSetTo:(NSString*)newPath;
+-(void)fileSetTo:(EGPath*)newPath;
 @end

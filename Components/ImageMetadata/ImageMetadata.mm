@@ -37,12 +37,6 @@ using namespace std;
 
 @implementation ImageMetadata
 
--(id)initWithPluginLayer:(PluginLayer*)pl
-{
-	// We don't really do or need anything.
-	return [self init];
-}
-
 ////////////////////////////////// EXIV2 WRAPPER! //////////////////////////////
 -(NSMutableArray*)getKeywordsFromJPEGFile:(NSString*)file
 {

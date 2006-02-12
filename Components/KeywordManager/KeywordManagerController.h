@@ -42,8 +42,6 @@
 	IBOutlet NSTextField* outlineViewLabel;
 	IBOutlet NSOutlineView* outlineView;
 
-	PluginLayer* pluginLayer;
-//	VitaminSEEController* pluginLayer;	
 	KeywordNode* keywordRoot;
 	
 	BOOL keywordsDirty;
@@ -53,7 +51,7 @@
 
 -(IBAction)cellClicked:(id)sender;
 -(IBAction)keywordTextViewChanged:(id)sender;
--(IBAction)fileChanged:(id)sender;
+//-(IBAction)fileChanged:(id)sender;
 
 -(void)saveKeywords;
 -(void)loadKeywords;
@@ -65,15 +63,7 @@
 -(void)loadKeywordsIntoTextViewFromList;
 -(void)loadKeywordsIntoListFromTextView;
 
--(void)fileSetTo:(NSString*)newPath;
-
-// Get the plugin name
--(NSString*)name;
-
-// Most plugins will have a show window
--(void)activate;
-
-// Context menu items for this plugin.
--(NSArray*)contextMenuItems;
+-(BOOL)supportsKeywords:(NSString*)file;
+//-(void)fileSetTo:(NSString*)newPath;
 
 @end

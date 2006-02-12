@@ -28,8 +28,14 @@
 ////////////////////////////////////////////////////////////////////////
 
 #import "KeywordManagerPreferences.h"
+#import "ComponentManager.h"
 
 @implementation KeywordManagerPreferences
+
++(void)initialize
+{
+	[ComponentManager getCurrentFilePluginNamed:@"KeywordManager"];
+}
 
 -(void)awakeFromNib
 {

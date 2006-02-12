@@ -17,9 +17,11 @@
 // cursor and allow dragging.
 //
 // 5/10/05: Adding code to make the image viewer accept key
+//
 
 #import "MyImageView.h"
 #import "EGScrollView.h"
+#import "ImageLoader.h"
 
 @implementation MyImageView
 
@@ -28,44 +30,50 @@
 	[scrollView noteMouseDown];
 	
 	NSSize imageSize = [[self image] size];
-	NSSize contentSize = [(NSScrollView*)[[self superview] superview] contentSize];
-	if(imageSize.height > contentSize.height || imageSize.width > contentSize.width)
+	NSSize contentSize = [(NSScrollView*)[[self superview] superview]
+		contentSize];
+	if(imageSize.height > contentSize.height || 
+	   imageSize.width > contentSize.width)
 	{
 		startPt = [theEvent locationInWindow];
-		startOrigin = [(NSClipView*)[self superview] documentVisibleRect].origin;
-
-		NSCursor *grabCursor = [[NSCursor alloc] initWithImage:[NSImage 
-			imageNamed:@"hand_closed"] hotSpot:NSMakePoint(8, 8)];
+		startOrigin = [(NSClipView*)[self superview] documentVisibleRect]
+			.origin;
 		
-//		id superview = [[[self superview] superview] superview];
+		NSCursor *grabCursor = [NSCursor closedHandCursor];
+		
 		[scrollView setDocumentCursor:grabCursor];
-		[grabCursor release];
 	}
+	else
+		[scrollView setDocumentCursor:nil];
 }
 
 - (void)mouseDragged:(NSEvent *)theEvent
 {
 	NSSize imageSize = [[self image] size];
-	NSSize contentSize = [(NSScrollView*)[[self superview] superview] contentSize];
-	if(imageSize.height > contentSize.height || imageSize.width > contentSize.width)
+	NSSize contentSize = [(NSScrollView*)[[self superview] superview] 
+		contentSize];
+	if(imageSize.height > contentSize.height || 
+	   imageSize.width > contentSize.width)
 	{
-		[self scrollPoint:
-			NSMakePoint(startOrigin.x - ([theEvent locationInWindow].x - startPt.x),
-						startOrigin.y - ([theEvent locationInWindow].y - startPt.y))];
+		float x = startOrigin.x - ([theEvent locationInWindow].x - startPt.x);
+		float y = startOrigin.y - ([theEvent locationInWindow].y - startPt.y);
+		[self scrollPoint:NSMakePoint(x, y)];
 	}
 }
 
 - (void)mouseUp:(NSEvent *)theEvent
 {	
 	NSSize imageSize = [[self image] size];
-	NSSize contentSize = [(NSScrollView*)[[self superview] superview] contentSize];
-	if(imageSize.height > contentSize.height || imageSize.width > contentSize.width)
+	NSSize contentSize = [(NSScrollView*)[[self superview] superview] 
+		contentSize];
+	if(imageSize.height > contentSize.height || 
+	   imageSize.width > contentSize.width)
 	{
-		NSCursor *handCursor = [[NSCursor alloc] initWithImage:[NSImage 
-			imageNamed:@"hand_open"] hotSpot:NSMakePoint(8, 8)];
+		NSCursor *handCursor = [NSCursor openHandCursor];
 		[(NSScrollView*)[self superview] setDocumentCursor:handCursor];
-		[handCursor release];
 	}
+	else
+		[(NSScrollView*)[self superview] setDocumentCursor:nil];
 }
 
 @end

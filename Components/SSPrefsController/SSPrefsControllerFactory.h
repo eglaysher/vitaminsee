@@ -1,6 +1,6 @@
 /////////////////////////////////////////////////////////////////////////
 // File:          $Name$
-// Module:        PluginBase wrapper around Matt Gemmell's SS_PrefsController
+// Module:        Wrapper around Matt Gemmell's SS_PrefsController
 //                modle
 // Part of:       VitaminSEE
 //
@@ -29,12 +29,9 @@
 //
 ////////////////////////////////////////////////////////////////////////
 
-
 #import <Cocoa/Cocoa.h>
 
-#import "PluginBase.h"
-
-@interface SSPrefsControllerFactory : NSObject <PluginBase> {
+@interface SSPrefsControllerFactory : NSObject {
 }
 
 -(id)buildWithPanesSearchPath:(NSString*)path bundleExtension:(NSString*)ext;

@@ -1,13 +1,14 @@
 /////////////////////////////////////////////////////////////////////////
 // File:          $Name$
-// Module:        Seperate thread for building of thumbnails.
+// Module:        Window object for a viewer window.
 // Part of:       VitaminSEE
 //
-// Revision:      $Revision$
-// Last edited:   $Date$
-// Author:        $Author$
+// ID:            $Id: ApplicationController.m 123 2005-04-18 00:21:02Z elliot $
+// Revision:      $Revision: 248 $
+// Last edited:   $Date: 2005-07-13 20:26:59 -0500 (Wed, 13 Jul 2005) $
+// Author:        $Author: elliot $
 // Copyright:     (c) 2005 Elliot Glaysher
-// Created:       3/18/05
+// Created:       11/26/05
 //
 /////////////////////////////////////////////////////////////////////////
 //
@@ -27,45 +28,31 @@
 //
 ////////////////////////////////////////////////////////////////////////
 
+
+
 #import <Cocoa/Cocoa.h>
 
-#import <pthread.h>
+@class EGPath;
 
-@class IconFamily;
-@class VitaminSEEController;
-
+/** The ThumbnailManager class is responsible for loading, creating, and owning
+ * all the thumbnails. The ThumbnailManager works on a subscription model; 
+ * various viewer windows "subscribe" to a directory. This will start loading
+ * the thumbnails for all 
+ *
+ */
 @interface ThumbnailManager : NSObject {
-	// TASK QUEUE:
-	pthread_mutex_t taskQueueLock;
-	NSMutableArray* thumbnailQueue;
-	
-	pthread_mutex_t imageScalingProperties;
-		
-	pthread_cond_t conditionLock;		
-	
-	NSImage* currentIconFamilyThumbnail;
-	NSString* currentPath;
-	int thumbnailLoadingPosition;
-	
-	id vitaminSEEController;
-	
-	BOOL shouldBuildIcon;
-	BOOL shouldSaveIconToDisk;
+
 }
 
--(id)initWithController:(id)parrentController;
++(void)updatePreferences;
++(BOOL)getGenerateThumbnails;
 
++(void)subscribe:(id)object toDirectory:(EGPath*)directory;
++(void)unsubscribe:(id)object fromDirectory:(EGPath*)directory;
 
--(void)buildThumbnail:(NSString*)path;
--(void)clearThumbnailQueue;
-
--(void)setShouldBuildIcon:(BOOL)newShouldBuildIcon;
--(void)setShouldSaveIconToDisk:(BOOL)newShouldSaveIconToDisk;
-
--(void)setThumbnailLoadingPosition:(int)newPosition;
-
--(NSString*)getCurrentPath;
--(NSImage*)getCurrentThumbnail;
--(void)clearThumbnailQueue;
+/** Call this function to retrieve a thumbnail from the cache, loading it if it
+ * isn't already in memory.
+ */
++(NSImage*)getThumbnailFor:(EGPath*)path;
 
 @end

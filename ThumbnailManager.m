@@ -1,13 +1,14 @@
 /////////////////////////////////////////////////////////////////////////
 // File:          $Name$
-// Module:        Seperate thread for building of thumbnails.
+// Module:        Window object for a viewer window.
 // Part of:       VitaminSEE
 //
-// Revision:      $Revision$
-// Last edited:   $Date$
-// Author:        $Author$
+// ID:            $Id: ApplicationController.m 123 2005-04-18 00:21:02Z elliot $
+// Revision:      $Revision: 248 $
+// Last edited:   $Date: 2005-07-13 20:26:59 -0500 (Wed, 13 Jul 2005) $
+// Author:        $Author: elliot $
 // Copyright:     (c) 2005 Elliot Glaysher
-// Created:       3/18/05
+// Created:       11/26/05
 //
 /////////////////////////////////////////////////////////////////////////
 //
@@ -28,72 +29,166 @@
 ////////////////////////////////////////////////////////////////////////
 
 #import "ThumbnailManager.h"
-#import "Util.h"
+#import "NSObject+Invocations.h"
+#import "EGPath.h"
 #import "IconFamily.h"
-#import "VitaminSEEController.h"
-#import "NSString+FileTasks.h"
-
-#define CACHE_SIZE 3
+#import "FileList.h"
 
 @interface ThumbnailManager (Private)
--(void)doBuildIcon:(NSString*)options;
++(void)addThumbnailToCache:(NSImage*)image file:(EGPath*)path;
++(NSImage*)buildThumbnail:(EGPath*)path;
++(EGPath*)getNextThumbnailToBuild;
++(EGPath*)getNextPriorityBuild;
++(void)removePathFromBuildQueue:(EGPath*)path;
++(void)notifySubscribersThat:(EGPath*)nextToBuild hasImage:(NSImage*)image;
+
++(void)resetBuildQueueEnumerator;
++(void)resetPriorityQueueEnumerator;
+
++(void)doBuildThumbnailIconFor:(EGPath*)path;
 @end
+
+static NSSize ICON_SIZE = {128.0f, 128.0f};
+
+/** Subscriber List:
+ * {
+ *   'directory' => [
+ *     SUBSCRIBER1, SUBSCRIBER2  
+ *   ]
+ * }
+ */
+pthread_mutex_t subscriberListLock;
+static NSMutableDictionary* subscriberList;
+
+/** Thumbnail Cache Index:
+ * {
+ *   'directory' => {
+ *       'file' => NSImage, 'file' =>, NSImage
+ *   }
+ * }
+ */
+pthread_rwlock_t thumbnailCacheLock;
+static NSMutableDictionary* thumbnailCache;
+
+/** Thumbnail Build Queue:
+ * {
+ *   'dir' => Set[
+ *     EGPATH, EGPATH
+ *   ],
+ *   'dir' => Set[
+ *     EGPATH, EGPATH
+ *   ]
+ * }
+ */
+pthread_mutex_t thumbnailBuildQueueLock;
+pthread_cond_t thumbnailBuildQueueCondition;
+static NSEnumerator* thumbnailBuildQueueValueEnumerator;
+static NSMutableDictionary* thumbnailBuildQueue;
+
+/** Thumbnail Priority Build Stack:
+ * {
+ *   'dir' => [
+ *     EGPATH, EGPATH
+ *   ],
+ *   'dir' => [
+ *     EGPATH, EGPATH
+ *   ]
+ * }
+ *
+ * The Priority Build Stacks are first-in-last-out structures; the idea being
+ * that if a thumbnail was requested recently, it probably wasn't just scrolled
+ * by.
+ */
+static NSEnumerator* thumbnailPriorityBuildEnumerator;
+static NSMutableDictionary* thumbnailPriorityBuildStack;
+
+// Configuration stuff
+//static BOOL shouldBuildThumbnails;
+
+pthread_mutex_t thumbnailConfLock;
+enum ThumbnailStorageType {
+	THUMBNAILSTORAGE_DONT_STORE,
+	THUMBNAILSTORAGE_STORE_RESOURCEFORK
+};
+static enum ThumbnailStorageType thumbnailStorageType;
+static BOOL generateThumbnails;
 
 @implementation ThumbnailManager
 
--(id)initWithController:(id)parentController
++(void)initialize
 {
-	if(self = [super init])
+	thumbnailStorageType = THUMBNAILSTORAGE_STORE_RESOURCEFORK;
+	
+	pthread_mutex_init(&subscriberListLock, NULL);
+	subscriberList = [[NSMutableDictionary alloc] init];
+	
+	pthread_rwlock_init(&thumbnailCacheLock, NULL);
+	thumbnailCache = [[NSMutableDictionary alloc] init];
+	
+	pthread_mutex_init(&thumbnailConfLock, NULL);
+	
+	pthread_mutex_init(&thumbnailBuildQueueLock, NULL);
+	pthread_cond_init(&thumbnailBuildQueueCondition, NULL);
+	thumbnailBuildQueue = [[NSMutableDictionary alloc] init];
+	thumbnailPriorityBuildStack = [[NSMutableDictionary alloc] init];
+	thumbnailBuildQueueValueEnumerator = 0;
+	
+	// Subscribe to updates to the main notification of changes to user defaults
+	// and alert 
+	// FIXME: TODO
+	[self updatePreferences];
+	[[NSNotificationCenter defaultCenter] 
+		addObserver:self
+		   selector:@selector(updatePreferences)
+			   name:NSUserDefaultsDidChangeNotification
+			 object:nil];
+	
+	// Spawn off the worker thread.
+	[NSThread detachNewThreadSelector:@selector(taskHandlerThread:)
+							 toTarget:[ThumbnailManager class]
+						   withObject:nil];
+}
+
+//-----------------------------------------------------------------------------
+
+/** Method called on NSUserDefaultsDidChangeNotification. Tracks changes to the
+ * user defaults, and copies them into our local data structures.
+ */
++(void)updatePreferences
+{
+	NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
+	
+	pthread_mutex_lock(&thumbnailConfLock);
 	{
-		pthread_mutex_init(&imageScalingProperties, NULL);
-		pthread_mutex_init(&taskQueueLock, NULL);
-		pthread_cond_init(&conditionLock, NULL);
+		if([[userDefaults objectForKey:@"SaveThumbnails"] boolValue])
+			thumbnailStorageType = THUMBNAILSTORAGE_STORE_RESOURCEFORK;
+		else
+			thumbnailStorageType = THUMBNAILSTORAGE_DONT_STORE;
 		
-		thumbnailQueue = [[NSMutableArray alloc] init];
-		thumbnailLoadingPosition = 0;
-		
-		// Now we start work on thread communication.
-		NSPort *port1 = [NSPort port];
-		NSPort *port2 = [NSPort port];
-		NSConnection* kitConnection = [[NSConnection alloc] 
-			initWithReceivePort:port1 sendPort:port2];
-		[kitConnection setRootObject:parentController];
-		
-		NSArray *portArray = [NSArray arrayWithObjects:port2, port1, nil];		
-		
-		// spawn off a new thread
-		[NSThread detachNewThreadSelector:@selector(taskHandlerThread:) 
-								 toTarget:self
-							   withObject:portArray];
+		generateThumbnails = [[userDefaults objectForKey:@"GenerateThumbnails"]
+			boolValue];
 	}
-	return self;
+	pthread_mutex_unlock(&thumbnailConfLock);
 }
 
--(void)dealloc
+/** Move this to private */
++(BOOL)getGenerateThumbnails
 {
-	// shut down taskHandlerThread...
-	
-	// destroy our mutexes!
-	pthread_mutex_destroy(&imageScalingProperties);
-	pthread_mutex_destroy(&taskQueueLock);
-	pthread_cond_destroy(&conditionLock);
-	
-	// destroy our mutexed data!
-	[thumbnailQueue release];
-	[super dealloc];
+	BOOL tmp;
+	pthread_mutex_lock(&thumbnailConfLock);
+	{
+		tmp = generateThumbnails;
+	}
+	pthread_mutex_unlock(&thumbnailConfLock);
+
+	return tmp;
 }
 
--(void)taskHandlerThread:(id)portArray
-{
-//	NSDictionary* currentTask;
-	
-	// Okay, first we get the distributed object VitaminSEEController up and running...
-	NSAutoreleasePool *npool = [[NSAutoreleasePool alloc] init];
-	NSConnection *serverConnection = [NSConnection
-		connectionWithReceivePort:[portArray objectAtIndex:0]
-						 sendPort:[portArray objectAtIndex:1]];
-	vitaminSEEController = [serverConnection rootProxy];
-	[vitaminSEEController setProtocolForProxy:@protocol(ImageDisplayer)];
+//-----------------------------------------------------------------------------
+
++(void)taskHandlerThread:(id)nothing
+{	
+	NSAutoreleasePool* npool = [[NSAutoreleasePool alloc] init];
 	
 	// Don't delude ourselves. We're not as important as displaying images
 	[NSThread setThreadPriority:0.2];
@@ -104,27 +199,41 @@
 		NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 		
 		// Let's wait for stuff
-		pthread_mutex_lock(&taskQueueLock);
-		while([thumbnailQueue count] == 0)
+		pthread_mutex_lock(&thumbnailBuildQueueLock);
+		while([thumbnailBuildQueue count] == 0 &&
+			  [thumbnailPriorityBuildStack count] == 0)
 		{
-			if(pthread_cond_wait(&conditionLock, &taskQueueLock))
+			if(pthread_cond_wait(&thumbnailBuildQueueCondition,
+								 &thumbnailBuildQueueLock))
 				NSLog(@"Invalid wait!?");
 		}
-
-		if([thumbnailQueue count])
+		
+		if([thumbnailPriorityBuildStack count])
 		{
-			NSString* path = [thumbnailQueue objectAtIndex:0];
-			[path retain];
-			[thumbnailQueue removeObjectAtIndex:0];
-			pthread_mutex_unlock(&taskQueueLock);
+			EGPath* nextToBuild = [[self getNextPriorityBuild] retain];
 			
-			[self doBuildIcon:path];
-			[path release];
+			// Unlock the mutex
+			pthread_mutex_unlock(&thumbnailBuildQueueLock);
+		
+			[self doBuildThumbnailIconFor:nextToBuild];
+			[nextToBuild release];
+		}
+		else if([thumbnailBuildQueue count])
+		{
+			// Object retained because it gets released during
+			// -addThumbnailToCache:file:
+			EGPath* nextToBuild = [[self getNextThumbnailToBuild] retain];
+
+			// Unlock the mutex
+			pthread_mutex_unlock(&thumbnailBuildQueueLock);
+
+			[self doBuildThumbnailIconFor:nextToBuild];
+			[nextToBuild release];
 		}
 		else
 		{
 			// Unlock the mutex
-			pthread_mutex_unlock(&taskQueueLock);
+			pthread_mutex_unlock(&thumbnailBuildQueueLock);
 		}
 		
 		[pool release];
@@ -133,111 +242,400 @@
 	[npool release];
 }
 
--(void)setShouldBuildIcon:(BOOL)newShouldBuildIcon
+//-----------------------------------------------------------------------------
+
++(void)subscribe:(id)object toDirectory:(EGPath*)directory
 {
-	pthread_mutex_lock(&imageScalingProperties);
-	shouldBuildIcon = newShouldBuildIcon;
-	pthread_mutex_unlock(&imageScalingProperties);
+	pthread_mutex_lock(&subscriberListLock);
+	{
+		NSMutableArray* subscribers = [subscriberList objectForKey:directory];
+		
+		// Check to see if anybody is subscribed (meaning that there's an array
+		// of subscribers associated with this directory)
+		if(subscribers)
+		{
+			// Check to see if this object is already subscribed.
+			if(![subscribers containsObject:object])
+				[subscribers addObject:object];
+		}
+		else
+		{
+			// Nobody is subscribed to this directory. Build all the data 
+			// structures for this directory.
+			
+			// Build a subscription object
+			[subscriberList setObject:[NSMutableArray arrayWithObject:object]
+							   forKey:directory];
+
+			// Build the thumbnail cache
+			pthread_rwlock_wrlock(&thumbnailCacheLock);
+			{
+				[thumbnailCache setObject:[NSMutableDictionary dictionary]
+								   forKey:directory];
+			}
+			pthread_rwlock_unlock(&thumbnailCacheLock);
+			
+			// Build the set of files that need to have thumbnails generated.
+			NSArray* files = [directory directoryContents];
+			NSSet* buildSet = [NSMutableSet setWithArray:files];
+			pthread_mutex_lock(&thumbnailBuildQueueLock);
+			{
+				[thumbnailBuildQueue setObject:buildSet forKey:directory];
+				[self resetBuildQueueEnumerator];
+			}
+			pthread_mutex_unlock(&thumbnailBuildQueueLock);
+			
+			// Notify the thumbnail thread that it has work to do.
+			pthread_cond_signal(&thumbnailBuildQueueCondition);
+		}
+	}
+	pthread_mutex_unlock(&subscriberListLock);
 }
 
--(void)setShouldSaveIconToDisk:(BOOL)newShouldSaveIconToDisk
+//-----------------------------------------------------------------------------
+
++(void)unsubscribe:(id)object fromDirectory:(EGPath*)directory
 {
-	pthread_mutex_lock(&imageScalingProperties);
-	shouldSaveIconToDisk = newShouldSaveIconToDisk;
-	pthread_mutex_unlock(&imageScalingProperties);	
+//	NSLog(@"%@ is unsubscribed to %@", object, directory);
+	pthread_mutex_lock(&subscriberListLock);
+	{
+		// Make sure that we are unsubscribing from a directory that somebody
+		// (us) has subscribed to
+		NSMutableArray* subscribers = [subscriberList objectForKey:directory];
+		if(subscribers && [subscribers containsObject:object]) 
+		{
+			// Remove object from the list of subscribers, and check to see if
+			// we need to destroy all the data structures for this directory
+			// since nobody is subscribed to it anymore.
+			[subscribers removeObject:object];
+			if([subscribers count] == 0)
+			{
+//				NSLog(@"Removing all data structures for %@", directory);
+				// Subscribers is now invalid.
+				[subscriberList removeObjectForKey:directory];
+				subscribers = 0;
+				
+				pthread_rwlock_wrlock(&thumbnailCacheLock);
+				{
+					[thumbnailCache removeObjectForKey:directory];
+				}
+				pthread_rwlock_unlock(&thumbnailCacheLock);
+				
+				pthread_mutex_lock(&thumbnailBuildQueueLock);
+				{	
+					[thumbnailBuildQueue removeObjectForKey:directory];
+					[self resetBuildQueueEnumerator];
+				}
+				pthread_mutex_unlock(&thumbnailBuildQueueLock);
+			}
+		}
+	}
+	pthread_mutex_unlock(&subscriberListLock);
 }
 
--(void)buildThumbnail:(NSString*)path
-{	
-	pthread_mutex_lock(&taskQueueLock);
+//-----------------------------------------------------------------------------
 
-	// Add the object
-	[thumbnailQueue addObject:path];
++(NSImage*)getThumbnailFor:(EGPath*)path
+{
+	// First check to see if the thumbnail is in the cache. If it is not, do
+	// the loading ourselves...
+	NSImage* thumbnail;
+	NSMutableDictionary* directoryCache;
+	EGPath* dirPath = [path pathByDeletingLastPathComponent];
+	pthread_rwlock_rdlock(&thumbnailCacheLock);
+	{
+		directoryCache = [thumbnailCache objectForKey:dirPath];
+	}	
+	pthread_rwlock_unlock(&thumbnailCacheLock);
+
+	thumbnail = [directoryCache objectForKey:path];
+	// Return the image if we found it in the cache
+	if(thumbnail)
+		return thumbnail;
 	
-	// Tell the worker thread that it has work to do.
-	pthread_cond_signal(&conditionLock);
-	pthread_mutex_unlock(&taskQueueLock);	
+	// So the image isn't in the cache yet. 
+	NSImage* image = [path iconImageOfSize:ICON_SIZE];
+	if([path isImage]) 
+	{
+		if([path hasThumbnailIcon])
+		{
+			if(directoryCache)
+			{
+				pthread_rwlock_wrlock(&thumbnailCacheLock);
+				{
+					[directoryCache setObject:image forKey:path];
+				}	
+				pthread_rwlock_unlock(&thumbnailCacheLock);		
+			}
+		}
+		else
+		{
+			// If this is an image, but doesn't have a thumbnail, put it in the
+			// priority thumbnail build stack, so it gets generated ASAP.
+			pthread_mutex_lock(&thumbnailBuildQueueLock);
+			{
+				NSMutableArray* stack = [thumbnailPriorityBuildStack 
+					objectForKey:dirPath];
+				
+				// We may need to build the stack for this directory
+				if(!stack)
+				{
+					stack = [NSMutableArray array];
+					[thumbnailPriorityBuildStack setObject:stack 
+													forKey:dirPath];
+					[self resetPriorityQueueEnumerator];
+				}
+				
+				[stack addObject:path];			
+			}
+			pthread_mutex_unlock(&thumbnailBuildQueueLock);
+			
+			// Notify the thumbnail thread that it has work to do.
+			pthread_cond_signal(&thumbnailBuildQueueCondition);
+		}
+	}
+	
+	return image;
 }
 
--(void)setThumbnailLoadingPosition:(int)newPosition
-{
-	pthread_mutex_lock(&taskQueueLock);
-	if(newPosition < [thumbnailQueue count])
-		thumbnailLoadingPosition = newPosition;
-	pthread_mutex_unlock(&taskQueueLock);
-}
-
--(NSString*)getCurrentPath
-{
-	return currentPath;
-}
-
--(NSImage*)getCurrentThumbnail
-{
-	return currentIconFamilyThumbnail;
-}
-
--(void)clearThumbnailQueue
-{
-	pthread_mutex_lock(&taskQueueLock);
-	[thumbnailQueue removeAllObjects];
-	pthread_mutex_unlock(&taskQueueLock);
-}
+//-----------------------------------------------------------------------------
 
 @end
 
+//-----------------------------------------------------------------------------
+
 @implementation ThumbnailManager (Private)
 
--(void)doBuildIcon:(NSString*)path
+//-----------------------------------------------------------------------------
+
+/** Adds an image to the cache and removes it from the build queue.
+ */
++(void)addThumbnailToCache:(NSImage*)image file:(EGPath*)path
 {
-	NSImage* thumbnail;
-	IconFamily* iconFamily;
-	
-	pthread_mutex_lock(&imageScalingProperties);
-	BOOL localShouldBuild = shouldBuildIcon;
-	pthread_mutex_unlock(&imageScalingProperties);
-	
-	// Build the thumbnail and set it to the file...
-	BOOL isDirectory;
-	if(localShouldBuild && [[NSFileManager defaultManager] fileExistsAtPath:path isDirectory:&isDirectory] &&
-	   !isDirectory && [path isImage] && ![IconFamily fileHasCustomIcon:path])
+	if(image)
 	{
-		[vitaminSEEController setStatusText:[NSString 
-			stringWithFormat:@"Building thumbnail for %@...", [path lastPathComponent]]];
+		EGPath* directory = [path pathByDeletingLastPathComponent];
 
-		// I don't think there IS an autorelease...
-		NSData* data = [[NSData alloc] initWithContentsOfFile:path];
-		if(!data) {
-			NSLog(@"WARNING! Couldn't load file %@ so we could make a thumbnail...", path);
-			return;
-		}
-		NSImage* image = [[NSImage alloc] initWithData:data];
-		[data release];
-		if(!image) {
-			NSLog(@"WARNING! Couldn't make an image from the data in %@ so we could make a thumbnail...", path);
-			return;
-		}
-
-		// Set icon
-		iconFamily = [[IconFamily alloc] initWithThumbnailsOfImage:image];
-		if(iconFamily)
+		// Add the image to the cache!
+		pthread_rwlock_wrlock(&thumbnailCacheLock);
 		{
-			if(shouldSaveIconToDisk)
-				[iconFamily setAsCustomIconForFile:path];
+			NSMutableDictionary* dict = [thumbnailCache objectForKey:directory];		
+			[dict setObject:image forKey:path];
+		}
+		pthread_rwlock_unlock(&thumbnailCacheLock);
+	}
+	
+	// Note that whether we remove the path from the build queue is independent
+	// of whether a valid thumbnail was generated. If it fails once, it's 
+	// probably going to keep on failing.
+	[self removePathFromBuildQueue:path];
+}
 
-			thumbnail = [iconFamily imageWithAllRepsNoAutorelease];
-			[iconFamily release];
+//-----------------------------------------------------------------------------
 
-			currentIconFamilyThumbnail = thumbnail;
-			currentPath = path;
-			[vitaminSEEController setIcon];
-			[thumbnail release];
++(void)removePathFromBuildQueue:(EGPath*)path
+{
+	EGPath* directory = [path pathByDeletingLastPathComponent];
+	
+	// Remove this image from the build queue
+	pthread_mutex_lock(&thumbnailBuildQueueLock);
+	{
+		NSMutableSet* buildSet = [thumbnailBuildQueue objectForKey:directory];
+		
+		if(buildSet) {
+			// Remove the object if it exists
+			if([buildSet member:path])
+				[buildSet removeObject:path];
+			
+			// Clean up the the set if if's emtpy
+			if([buildSet count] == 0)
+				[thumbnailBuildQueue removeObjectForKey:directory];
+		}
+	}
+	pthread_mutex_unlock(&thumbnailBuildQueueLock);
+}
 
-			[vitaminSEEController setStatusText:nil];
+//-----------------------------------------------------------------------------
+
+/** Builds a thumbnail (checking with the ImageLoader's cache 
+ */
++(NSImage*)buildThumbnail:(EGPath*)path
+{
+	// I don't think there IS an autorelease...
+	NSData* data = [path dataRepresentationOfPath];
+	//[[NSData alloc] initWithContentsOfFile:path];
+	if(!data) 
+	{
+		NSLog(@"WARNING! Couldn't load file %@ so we could make a thumbnail...", path);
+		return 0;
+	}
+	NSImage* image = [[NSImage alloc] initWithData:data];
+	[data release];
+	if(!image) 
+	{
+		NSLog(@"WARNING! Couldn't make an image from the data in %@ so we could make a thumbnail...", path);
+		return 0;
+	}
+	
+	// Set icon
+	IconFamily* iconFamily = [[IconFamily alloc] initWithThumbnailsOfImage:image];
+	NSImage* thumbnail;
+	if(iconFamily)
+	{
+		BOOL shouldSaveIconToDisk;
+		pthread_mutex_lock(&thumbnailConfLock);
+		shouldSaveIconToDisk = 
+			(thumbnailStorageType == THUMBNAILSTORAGE_STORE_RESOURCEFORK);
+		pthread_mutex_unlock(&thumbnailConfLock);
+		
+		if([path isNaturalFile] && shouldSaveIconToDisk)
+		{
+//			NSLog(@"Setting the thumbnail for %@", path);
+			[iconFamily setAsCustomIconForFile:[path fileSystemPath]];
 		}
 		
-		[image release];
+		thumbnail = [iconFamily imageWithAllRepsNoAutorelease];
+		//		NSLog(@"Found thumbnail: %@", thumbnail);
+		[iconFamily release];
 	}
+	else
+		NSLog(@"Couldn't build iconFamily for %@!", path);
+	
+	[image release];
+	return thumbnail;
+}
+
+//-----------------------------------------------------------------------------
+
+/** Get the next queue from the enumerator, starting over if we're
+ * at the end of the enumerated list. Then get the next file from
+ * that build queue.
+ */
++(EGPath*)getNextThumbnailToBuild
+{
+	EGPath* nextToBuild;
+	NSSet* buildQueue = [thumbnailBuildQueueValueEnumerator nextObject];
+	if(!buildQueue) {
+		[self resetBuildQueueEnumerator];
+		buildQueue = [thumbnailBuildQueueValueEnumerator nextObject];
+	}
+	
+	NSEnumerator* e = [buildQueue objectEnumerator];
+	nextToBuild = [e nextObject];
+	
+	return nextToBuild;
+}
+
+//-----------------------------------------------------------------------------
+
+/** Get the next priority build task, removing any exhausted build stacks as
+ * neccessary.
+ */
++(EGPath*)getNextPriorityBuild
+{
+	// Get the next build stack
+//	EGPath* nextToBuild;
+	NSMutableArray* buildStack = [thumbnailPriorityBuildEnumerator nextObject];
+	if(!buildStack) {
+		[self resetPriorityQueueEnumerator];
+		buildStack = [thumbnailPriorityBuildEnumerator nextObject];
+	}
+
+	EGPath* ret = [[buildStack lastObject] retain];
+
+	// If we got an actual object off the stack, then remove it from the stack
+	// and check to see if we should remove the stack from rotation if it's
+	// empty.
+	if(ret)
+	{
+		[buildStack removeLastObject];
+	
+		if([buildStack count] == 0)
+		{
+			[thumbnailPriorityBuildStack removeObjectForKey:
+				[ret pathByDeletingLastPathComponent]];
+			[self resetPriorityQueueEnumerator];
+		}
+	}
+	return [ret autorelease];	
+}
+
+//-----------------------------------------------------------------------------
+
++(void)resetBuildQueueEnumerator
+{
+	[thumbnailBuildQueueValueEnumerator release];
+	thumbnailBuildQueueValueEnumerator = 
+		[[thumbnailBuildQueue objectEnumerator] retain];				
+}
+
+//-----------------------------------------------------------------------------
+
++(void)resetPriorityQueueEnumerator
+{
+	[thumbnailPriorityBuildEnumerator release];
+	thumbnailPriorityBuildEnumerator = 
+		[[thumbnailPriorityBuildStack objectEnumerator] retain];
+}
+
+//-----------------------------------------------------------------------------
+
++(void)notifySubscribersThat:(EGPath*)nextToBuild hasImage:(NSImage*)image
+{
+	EGPath* directory = [nextToBuild pathByDeletingLastPathComponent];
+	
+	pthread_mutex_lock(&subscriberListLock);
+	{
+		NSMutableArray* subscribers = 
+			[subscriberList objectForKey:directory];
+		
+		NSEnumerator* e = [subscribers objectEnumerator];
+		id subscriber;
+		while(subscriber = [e nextObject]) 
+		{
+			[[subscriber performOnMainThreadWaitUntilDone:NO]
+				receiveThumbnail:image forFile:nextToBuild];
+		}
+	}
+	pthread_mutex_unlock(&subscriberListLock);
+}
+
+//-----------------------------------------------------------------------------
+
++(void)doBuildThumbnailIconFor:(EGPath*)nextToBuild
+{
+	if([nextToBuild isImage]) 
+	{
+		NSImage* image;
+		
+		// Check to see if this file has an icon. (Make sure to do
+		// it on the main thread; the Carbon Resource Manager isn't
+		// thread safe!)
+		if([[nextToBuild performOnMainThreadWaitUntilDone:YES] 
+			hasThumbnailIcon] || ![self getGenerateThumbnails])
+		{
+			// If there's already an thumbnail, load it and put it in 
+			// the cache
+			image = [nextToBuild iconImageOfSize:ICON_SIZE];
+			[self addThumbnailToCache:image file:nextToBuild];
+		}
+		else 
+		{
+			// Build the new image for the file and stick it in the 
+			// cache
+			image = [self buildThumbnail:nextToBuild];
+			[self addThumbnailToCache:image file:nextToBuild];
+			[image release];
+		}
+		
+		// Notify all people in the subscribers list
+		[self notifySubscribersThat:nextToBuild hasImage:image];
+	}
+	else
+	{
+		// Remove the entry from the build queue. 
+		[self removePathFromBuildQueue:nextToBuild];
+	}	
 }
 
 @end

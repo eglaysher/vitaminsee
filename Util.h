@@ -3,11 +3,12 @@
 // Module:        Utility functions
 // Part of:       VitaminSEE
 //
+// ID:            $Id: ApplicationController.m 123 2005-04-18 00:21:02Z elliot $
 // Revision:      $Revision$
 // Last edited:   $Date$
 // Author:        $Author$
 // Copyright:     (c) 2005 Elliot Glaysher
-// Created:       2/6/05
+// Created:       9/18/05
 //
 /////////////////////////////////////////////////////////////////////////
 //
@@ -27,18 +28,20 @@
 //
 ////////////////////////////////////////////////////////////////////////
 
+
 #import <Cocoa/Cocoa.h>
 
-#define min(a,b) (((a)<(b))?(a):(b))
-struct DS {
-	int width;
-	int height;
-};
+#ifdef __cplusplus
+extern "C"
+{
+#endif        /* __cplusplus */
 
-NSImageRep* loadImage(NSString* path);
-struct DS buildImageSize(int boxWidth, int boxHeight, int imageWidth, int imageHeight,
-					  BOOL canScaleProportionally, float ratioToScale,
-					  BOOL*canGetAwayWithQuickRender, float* ratioUsed);
-float buildRatio(int first, int second);
+NSNumber* buildRatio(float first, float second);
 BOOL imageRepIsAnimated(NSImageRep* rep);
-//BOOL floatEquals(float one, float two, float tolerance = 0.001);
+BOOL floatEquals(float one, float two, float tolerance);
+BOOL isInFavorites(NSString* path);
+
+#ifdef __cplusplus
+}
+#endif        /* __cplusplus */
+	

@@ -1,7 +1,55 @@
 {
     IBClasses = (
+        {
+            ACTIONS = {
+                fakeFavoritesMenuSelector = id; 
+                fakeOpenWithMenuSelector = id; 
+                newWindow = id; 
+                showGPL = id; 
+                showPreferences = id; 
+            }; 
+            CLASS = ApplicationController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {
+                computerFolderMenuItem = NSMenuItem; 
+                favoritesMenuItem = NSMenuItem; 
+                homeFolderMenuItem = NSMenuItem; 
+                mainVitaminSeeWindow = NSWindow; 
+                openWithMenuItem = NSMenuItem; 
+                pictureFolderMenuItem = NSMenuItem; 
+                prefs = id; 
+            }; 
+            SUPERCLASS = NSObject; 
+        }, 
         {CLASS = EGScrollView; LANGUAGE = ObjC; SUPERCLASS = NSScrollView; }, 
-        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {
+            ACTIONS = {
+                actualSize = id; 
+                addToFavorites = id; 
+                goBack = id; 
+                goEnclosingFolder = id; 
+                goForward = id; 
+                goNextFile = id; 
+                goPreviousFile = id; 
+                goToComputer = id; 
+                goToFolder = id; 
+                goToHomeDirectory = id; 
+                goToPicturesDirectory = id; 
+                moveToTrash = id; 
+                openCurrentItem = id; 
+                openInPreview = id; 
+                renameFile = id; 
+                revealInFinder = id; 
+                setAsDesktopImage = id; 
+                toggleFileList = id; 
+                zoomIn = id; 
+                zoomOut = id; 
+                zoomToFit = id; 
+            }; 
+            CLASS = FirstResponder; 
+            LANGUAGE = ObjC; 
+            SUPERCLASS = NSObject; 
+        }, 
         {
             CLASS = MyImageView; 
             LANGUAGE = ObjC; 
@@ -15,61 +63,7 @@
             OUTLETS = {mainController = CQViewController; }; 
             SUPERCLASS = NSWindowController; 
         }, 
-        {
-            ACTIONS = {
-                actualSize = id; 
-                addCurrentDirectoryToFavorites = id; 
-                closeWindow = id; 
-                deleteFileClicked = id; 
-                fakeFavoritesMenuSelector = id; 
-                fakeOpenWithMenuSelector = id; 
-                goBack = id; 
-                goEnclosingFolder = id; 
-                goForward = id; 
-                goNextFile = id; 
-                goPreviousFile = id; 
-                goToComputerFolder = id; 
-                goToFolder = id; 
-                goToHomeFolder = id; 
-                goToPicturesFolder = id; 
-                openFolder = id; 
-                referesh = id; 
-                revealInFinder = id; 
-                runToolbarCustomizationPalette = id; 
-                setImageAsDesktop = id; 
-                showGPL = id; 
-                showPreferences = id; 
-                toggleFileList = id; 
-                toggleKeywordManager = id; 
-                toggleSortManager = id; 
-                toggleToolbarShown = id; 
-                toggleVitaminSee = id; 
-                viewInPreview = id; 
-                zoomIn = id; 
-                zoomOut = id; 
-                zoomToFit = id; 
-            }; 
-            CLASS = VitaminSEEController; 
-            LANGUAGE = ObjC; 
-            OUTLETS = {
-                computerFolderMenuItem = NSMenuItem; 
-                currentFileViewHolder = NSView; 
-                favoritesMenuItem = NSMenuItem; 
-                fileSizeLabel = NSTextField; 
-                homeFolderMenuItem = NSMenuItem; 
-                imageSizeLabel = NSTextField; 
-                imageViewer = NSImageView; 
-                mainVitaminSeeWindow = NSWindow; 
-                openWithMenuItem = NSMenuItem; 
-                pictureFolderMenuItem = NSMenuItem; 
-                progressCurrentTask = NSTextField; 
-                progressIndicator = NSProgressIndicator; 
-                scrollView = NSScrollView; 
-                splitView = RBSplitView; 
-                viewerWindow = NSWindow; 
-            }; 
-            SUPERCLASS = NSObject; 
-        }
+        {CLASS = ViewMenuDelegate; LANGUAGE = ObjC; SUPERCLASS = NSObject; }
     ); 
     IBVersion = 1; 
 }

@@ -18,5 +18,9 @@
 	<string>1.0</string>
 	<key>NSPrincipalClass</key>
 	<string>SSPrefsControllerFactory</string>
+	<key>VSPluginName</key>
+	<string>SSPrefsController</string>
+	<key>VSPluginType</key>
+	<string>InternalUse</string>
 </dict>
 </plist>

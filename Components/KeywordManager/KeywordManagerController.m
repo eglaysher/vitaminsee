@@ -28,27 +28,40 @@
 ////////////////////////////////////////////////////////////////////////
 
 #import "KeywordManagerController.h"
-#import "PluginLayer.h"
 #import "KeywordNode.h"
+#import "ComponentManager.h"
+#import "EGPath.h"
+#import "ImageMetadata.h"
 
 @implementation KeywordManagerController
 
--(id)initWithPluginLayer:(PluginLayer*)pl
++(void)initialize
+{
+	// Set up this application's default preferences	
+    NSMutableDictionary *defaultPrefs = [NSMutableDictionary dictionary];
+	
+	// Keyword preferences
+	KeywordNode* node = [[[KeywordNode alloc] initWithParent:nil keyword:@"Keywords"] autorelease];
+	NSData* emptyKeywordNode = [NSKeyedArchiver archivedDataWithRootObject:node];
+	[defaultPrefs setObject:emptyKeywordNode forKey:@"KeywordTree"];
+	
+	[[NSUserDefaults standardUserDefaults] registerDefaults: defaultPrefs];
+}
+
+-(id)init
 {
 	// Load the nib file
 	if(self = [super initWithWindowNibName:@"KeywordManager"])
 	{
 		keywords = [[NSMutableArray alloc] init];
 		
-		pluginLayer = pl;
-		[pluginLayer retain];
-		
 		// Before we thaw the window, we need to have a valid KeywordNode tree,
 		// so load them from the user defaults.
 		[self loadKeywordTree];
 		
 		// We need to be alerted when the keyword root has changed. Bindings would
-		// take care of this for us, but NSOutlineView has no #@$%!& bindings.
+		// take care of this for us, but NSOutlineView has no #@$%!& bindings in
+		// Panther and we want to stay compatible for a bit longer.
 		[[NSNotificationCenter defaultCenter] addObserver:self 
 												 selector:@selector(loadKeywordTree)
 													 name:NSUserDefaultsDidChangeNotification
@@ -71,7 +84,6 @@
 		[self saveKeywords];
 	
 	[keywords release];
-	[pluginLayer release];
 	[super dealloc];
 }
 
@@ -105,18 +117,19 @@
 	[self loadKeywordsIntoListFromTextView]; 
 }
 
--(IBAction)fileChanged:(id)sender
-{
-	if(![[sender stringValue] isEqual:[[pluginLayer currentFile] lastPathComponent]])
-	{
-		BOOL worked = [pluginLayer renameFile:[pluginLayer currentFile] 
-										   to:[sender stringValue]];
-
-		// If the operation didn't work, then revert to the name before.
-		if(!worked)
-			[sender setStringValue:[[pluginLayer currentFile] lastPathComponent]];
-	}
-}
+//-(IBAction)fileChanged:(id)sender
+//{
+//	NSLog(@"File changed!");
+////	if(![[sender stringValue] isEqual:[currentPath lastPathComponent]])
+////	{
+////		BOOL worked = [pluginLayer renameFile:[EGPath pathWithPath:[pluginLayer currentFile]]
+////										   to:[EGPath pathWithPath:[sender stringValue]]];
+////
+////		// If the operation didn't work, then revert to the name before.
+////		if(!worked)
+////			[sender setStringValue:[currentFile lastPathComponent]];
+////	}
+//}
 
 -(void)loadKeywordsIntoTextViewFromList
 {
@@ -158,7 +171,8 @@
 -(void)saveKeywords
 {
 	// Save the keywords to disk
-	[pluginLayer setKeywords:keywords forFile:currentPath];	
+	[[ComponentManager getInteranlComponentNamed:@"ImageMetadata"]
+		setKeywords:keywords forJPEGFile:currentPath];	
 	keywordsDirty = NO;
 }
 
@@ -166,7 +180,9 @@
 {
 	// Print out the key
 	keywordsDirty = NO;
-	id newkeywords = [pluginLayer getKeywordsFromFile:currentPath];
+	id newkeywords = [[ComponentManager getInteranlComponentNamed:@"ImageMetadata"] 
+		getKeywordsFromJPEGFile:currentPath];
+	
 	if(newkeywords)
 	{
 		// This file already has keywords. Use them.
@@ -260,8 +276,21 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
 
 /////////////////////////////////////////////////// Protocol: CurrentFilePlugin
 
--(void)fileSetTo:(NSString*)newPath
+-(void)activatePluginWithFile:(EGPath*)path inWindow:(NSWindow*)window
+					  context:(NSDictionary*)context
 {
+	[self showWindow:self];
+	[self currentImageSetTo:path];
+}
+
+-(void)currentImageSetTo:(EGPath*)path;
+{
+	NSString* newPath;
+	if([path isNaturalFile]) 
+		newPath = [path fileSystemPath];
+	else
+		newPath = nil;
+	
 	// save the old data if needed
 	if(keywordsDirty)
 		[self saveKeywords];
@@ -273,12 +302,12 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
 		[currentPath release];
 		currentPath = newPath;
 
-		[fileNameTextFieldLabel setEnabled:YES];
-		[fileNameTextField setEnabled:YES];
-		[fileNameTextField setStringValue:[currentPath lastPathComponent]];
-
+//		[fileNameTextFieldLabel setEnabled:YES];
+//		[fileNameTextField setEnabled:YES];
+//		[fileNameTextField setStringValue:[currentPath lastPathComponent]];
+//
 		// Let's check if we can set keywords
-		if([pluginLayer supportsKeywords:newPath])
+		if([self supportsKeywords:newPath])
 		{
 			// First, make sure the relevant sections are enabled:
 			[outlineViewLabel setEnabled:YES];
@@ -296,11 +325,16 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
 			[outlineView setEnabled:NO];
 			[self disableAllCells];
 			[outlineView setNeedsDisplay:YES];
+			[currentKeywordsTextViewLabel setEnabled:NO];
+			[currentKeywordsTextView setString:@""];
 			[currentKeywordsTextView setEditable:NO];
 		}
 	}
 	else
 	{
+		[currentPath release];
+		currentPath = 0;
+		
 		// Disable everything
 		[fileNameTextFieldLabel setEnabled:NO];
 		[fileNameTextField setStringValue:@""];
@@ -318,24 +352,19 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
 	}
 }
 
--(NSString*)name
+-(BOOL)supportsKeywords:(NSString*)file
 {
-	return NSLocalizedString(@"Keywords", @"Localized name of preference pane in toolbar");
+	NSString* type = [[file pathExtension] uppercaseString];
+	BOOL canKeyword = NO;
+	if([type isEqualTo:@"JPG"] || [type isEqualTo:@"JPEG"])
+		canKeyword = YES;
+	
+	return canKeyword;
 }
 
--(void)activate
+-(NSUndoManager*)undoManager
 {
-	[self showWindow:self];
-}
-
--(NSArray*)contextMenuItems
-{
-	return nil;
-}
-
--(NSUndoManager*)windowWillReturnUndoManager:(id)window
-{
-	return [pluginLayer undoManager];
+	return [[[[NSApp mainWindow] windowController] document] undoManager];
 }
 
 @end

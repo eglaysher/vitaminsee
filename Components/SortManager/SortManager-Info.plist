@@ -18,5 +18,11 @@
 	<string>1.0</string>
 	<key>NSPrincipalClass</key>
 	<string>SortManagerController</string>
+	<key>VSPluginName</key>
+	<string>SortManager</string>
+	<key>VSPluginType</key>
+	<string>CurrentFile</string>
+	<key>VSCFMenuName</key>
+	<string>Sort Manager</string>
 </dict>
 </plist>

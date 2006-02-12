@@ -29,9 +29,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-#import "PluginBase.h"
-
-@interface ImageMetadata : NSObject <PluginBase>
+@interface ImageMetadata : NSObject
 {}
 
 // ObjC wrapper around exiv2. 

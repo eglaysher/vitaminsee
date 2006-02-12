@@ -29,26 +29,11 @@
 ////////////////////////////////////////////////////////////////////////
 
 #import "OpenWithMenuController.h"
-#import "PluginLayer.h"
 #import "EGOpenWithMenuDelegate.h"
+#import "ApplicationController.h"
+#import "EGPath.h"
 
 @implementation OpenWithMenuController
-
--(id)initWithPluginLayer:(PluginLayer*)inPluginLayer
-{
-	if(self = [super init])
-	{
-		pluginLayer = [inPluginLayer retain];
-	}
-	
-	return self;
-}
-
--(void)dealloc
-{
-	[pluginLayer release];
-	[super dealloc];
-}
 
 -(id)buildMenuDelegate
 {
@@ -64,13 +49,13 @@
 -(void)openWithMenuDelegate:(EGOpenWithMenuDelegate*)openWithMenu
 		openCurrentFileWith:(NSString*)pathToApplication
 {
-	[[NSWorkspace sharedWorkspace] openFile:[pluginLayer currentFile]
+	[[NSWorkspace sharedWorkspace] openFile:[[[ApplicationController controller] currentFile] fileSystemPath]
 							withApplication:pathToApplication];
 }
 
 -(NSString*)currentFilePathForOpenWithMenuDelegate
 {
-	return [pluginLayer currentFile];
+	return [[[ApplicationController controller] currentFile] fileSystemPath];
 }
 
 -(BOOL)openWithMenuDelegate:(EGOpenWithMenuDelegate*)openWithMenu
