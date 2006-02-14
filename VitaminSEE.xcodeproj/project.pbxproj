@@ -534,6 +534,8 @@
 		8BC2CDCE09985A19009676CB /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Japanese; path = Japanese.lproj/VitaminSEEWindow.nib; sourceTree = "<group>"; };
 		8BC2CF1109998E37009676CB /* Japanese */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist.strings; name = Japanese; path = Components/SortManager/Japanese.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8BC2CF1D09998EE9009676CB /* Japanese */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist.strings; name = Japanese; path = Components/KeywordManager/Japanese.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		8BC3626B09A16FEB0044BC57 /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Japanese; path = Components/FileOperations/Japanese.lproj/RenameFileSheet.nib; sourceTree = "<group>"; };
+		8BC3626C09A170170044BC57 /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Japanese; path = Components/ViewIconsFileList/Japanese.lproj/ViewIconsFileView.nib; sourceTree = "<group>"; };
 		8BC9D2D209846A16006F6B16 /* ImageMetadata-Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xml; name = "ImageMetadata-Info.plist"; path = "Components/ImageMetadata/ImageMetadata-Info.plist"; sourceTree = "<group>"; };
 		8BC9D2D309846A16006F6B16 /* ImageMetadata.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = ImageMetadata.h; path = Components/ImageMetadata/ImageMetadata.h; sourceTree = "<group>"; };
 		8BC9D2D409846A16006F6B16 /* ImageMetadata.mm */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.objcpp; name = ImageMetadata.mm; path = Components/ImageMetadata/ImageMetadata.mm; sourceTree = "<group>"; };
@@ -2824,6 +2826,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				8B24492408FB563E004716BC /* English */,
+				8BC3626C09A170170044BC57 /* Japanese */,
 			);
 			name = ViewIconsFileView.nib;
 			sourceTree = "<group>";
@@ -2841,6 +2844,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				8B5167180992E8CD005C38C7 /* English */,
+				8BC3626B09A16FEB0044BC57 /* Japanese */,
 			);
 			name = RenameFileSheet.nib;
 			sourceTree = "<group>";

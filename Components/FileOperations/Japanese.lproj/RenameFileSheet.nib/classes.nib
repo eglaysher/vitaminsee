@@ -2,10 +2,10 @@
     IBClasses = (
         {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
         {
-            ACTIONS = {clickCancel = id; clickOK = id; completeText = id; type = id; }; 
-            CLASS = GotoFolderWindowController; 
+            ACTIONS = {clickCancel = id; clickOK = id; }; 
+            CLASS = RenameFileSheetController; 
             LANGUAGE = ObjC; 
-            OUTLETS = {folderName = NSTextField; target = id; }; 
+            OUTLETS = {folderName = NSTextField; labelName = NSTextField; }; 
             SUPERCLASS = NSWindowController; 
         }
     ); 

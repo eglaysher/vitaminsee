@@ -14,7 +14,7 @@
 		activeExecutable = 8B24487D08FADC49004716BC /* VitaminSEE */;
 		activeTarget = 8D1107260486CEB800E47090 /* VitaminSEE */;
 		addToTargets = (
-			8D1107260486CEB800E47090 /* VitaminSEE */,
+			8B24491408FB5587004716BC /* ViewIconsFileList */,
 		);
 		breakpoints = (
 			8BC5D7B00902DCCE00C2FA0C /* -[NSException raise] */,
@@ -162,14 +162,8 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 161458202;
-			PBXWorkspaceStateSaveDate = 161458202;
-		};
-		perUserProjectItems = {
-			8B8CBAF9099FA81D00601416 /* PBXBookmark */ = 8B8CBAF9099FA81D00601416 /* PBXBookmark */;
-			8B8CBAFF099FA82A00601416 /* PBXTextBookmark */ = 8B8CBAFF099FA82A00601416 /* PBXTextBookmark */;
-			8B8CBB15099FAA4700601416 /* PBXTextBookmark */ = 8B8CBB15099FAA4700601416 /* PBXTextBookmark */;
-			8B8CBB17099FAA4700601416 /* PBXTextBookmark */ = 8B8CBB17099FAA4700601416 /* PBXTextBookmark */;
+			PBXPerProjectTemplateStateSaveDate = 161574855;
+			PBXWorkspaceStateSaveDate = 161574855;
 		};
 		sourceControlManager = 8B24488B08FADC51004716BC /* Source Control */;
 		userBuildSettings = {
@@ -961,56 +955,6 @@
 			sepNavVisRect = "{{0, 0}, {746, 648}}";
 			sepNavWindowFrame = "{{15, 20}, {791, 721}}";
 		};
-	};
-	8B8CBAF9099FA81D00601416 /* PBXBookmark */ = {
-		isa = PBXBookmark;
-		fRef = 8D1107310486CEB800E47090 /* Info.plist */;
-	};
-	8B8CBAFF099FA82A00601416 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 8D1107310486CEB800E47090 /* Info.plist */;
-		name = CFBundleShortVersionString;
-		rLen = 26;
-		rLoc = 14808;
-		rType = 0;
-		vrLen = 1267;
-		vrLoc = 13785;
-	};
-	8B8CBB15099FAA4700601416 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 8B8CBB16099FAA4700601416 /* PXGifExporter.m */;
-		rLen = 0;
-		rLoc = 2147483647;
-		rType = 0;
-	};
-	8B8CBB16099FAA4700601416 /* PXGifExporter.m */ = {
-		isa = PBXFileReference;
-		lastKnownFileType = sourcecode.c.objc;
-		name = PXGifExporter.m;
-		path = "/Volumes/Pixen r2v4 Source/Pixen/PXGifExporter.m";
-		sourceTree = "<absolute>";
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {2470, 2032}}";
-			sepNavSelRange = "{598, 0}";
-			sepNavVisRect = "{{0, 0}, {1058, 851}}";
-			sepNavWindowFrame = "{{15, 9}, {1103, 924}}";
-		};
-	};
-	8B8CBB17099FAA4700601416 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 8B8CBB18099FAA4700601416 /* PXGifExporter.m */;
-		name = "(null): 24";
-		rLen = 0;
-		rLoc = 598;
-		rType = 0;
-		vrLen = 2076;
-		vrLoc = 0;
-	};
-	8B8CBB18099FAA4700601416 /* PXGifExporter.m */ = {
-		isa = PBXFileReference;
-		name = PXGifExporter.m;
-		path = "/Volumes/Pixen r2v4 Source/Pixen/PXGifExporter.m";
-		sourceTree = "<absolute>";
 	};
 	8B91ECEC0978ACE3001B95BE /* SortManager */ = {
 		activeExec = 0;
