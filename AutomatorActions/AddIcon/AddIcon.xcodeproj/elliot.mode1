@@ -232,8 +232,6 @@
 			<key>Layout</key>
 			<array>
 				<dict>
-					<key>BecomeActive</key>
-					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -270,7 +268,7 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateExpansionKey</key>
 							<array>
 								<string>089C166AFE841209C02AAC07</string>
-								<string>08FB77AFFE84173DC02AAC07</string>
+								<string>8BD1298D09A2B84B009E0275</string>
 								<string>1C37FABC05509CD000000102</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
@@ -344,6 +342,8 @@
 							<string>0pt</string>
 						</dict>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -380,9 +380,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>8B4DC4D80996DE1300B58051</string>
+				<string>8BD1299609A2B89C009E0275</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>8B4DC4D90996DE1300B58051</string>
+				<string>8BD1299709A2B89C009E0275</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -501,7 +501,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>160882187.493577</real>
+	<real>161658947.03045699</real>
 	<key>ToolbarDisplayMode</key>
 	<integer>2</integer>
 	<key>ToolbarIsVisible</key>
@@ -516,7 +516,7 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>/Users/elliot/Projects/VitaminSEE-0.7-dev/AutomatorActions/AddIcon/AddIcon.xcodeproj</string>
+		<string>/Users/elliot/Projects/VitaminSEE/AutomatorActions/AddIcon/AddIcon.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
 	<string>588 264 690 397 0 0 1440 938 </string>

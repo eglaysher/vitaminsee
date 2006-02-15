@@ -9,12 +9,12 @@
 		};
 	};
 	29B97313FDCFA39411CA2CEA /* Project object */ = {
-		activeBuildConfigurationName = Deployment;
+		activeBuildConfigurationName = Development;
 		activeBuildStyle = 4A9504CCFFE6A4B311CA0CBA /* Development */;
 		activeExecutable = 8B24487D08FADC49004716BC /* VitaminSEE */;
 		activeTarget = 8D1107260486CEB800E47090 /* VitaminSEE */;
 		addToTargets = (
-			8B24491408FB5587004716BC /* ViewIconsFileList */,
+			8D1107260486CEB800E47090 /* VitaminSEE */,
 		);
 		breakpoints = (
 			8BC5D7B00902DCCE00C2FA0C /* -[NSException raise] */,
@@ -162,8 +162,8 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 161574855;
-			PBXWorkspaceStateSaveDate = 161574855;
+			PBXPerProjectTemplateStateSaveDate = 161659721;
+			PBXWorkspaceStateSaveDate = 161659721;
 		};
 		sourceControlManager = 8B24488B08FADC51004716BC /* Source Control */;
 		userBuildSettings = {
@@ -1355,6 +1355,22 @@
 			sepNavWindowFrame = "{{396, 4}, {791, 934}}";
 		};
 	};
+	8BD128C509A2B470009E0275 /* Deployment.xcconfig */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {577, 847}}";
+			sepNavSelRange = "{27, 31}";
+			sepNavVisRect = "{{0, 0}, {577, 847}}";
+			sepNavWindowFrame = "{{767, 18}, {622, 920}}";
+		};
+	};
+	8BD128D309A2B4EB009E0275 /* Development.xcconfig */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {577, 847}}";
+			sepNavSelRange = "{11, 0}";
+			sepNavVisRect = "{{0, 0}, {577, 847}}";
+			sepNavWindowFrame = "{{15, 13}, {622, 920}}";
+		};
+	};
 	8BEA546E090BDFA000F83026 /* GotoFolderSheet-Info.plist */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {797, 648}}";
@@ -1431,6 +1447,14 @@
 			sepNavSelRange = "{366, 0}";
 			sepNavVisRect = "{{0, 0}, {746, 648}}";
 			sepNavWindowFrame = "{{15, 20}, {791, 721}}";
+		};
+	};
+	8BF1038C09A2AFBE00FE21A7 /* Panther.xcconfig */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {577, 847}}";
+			sepNavSelRange = "{12, 0}";
+			sepNavVisRect = "{{0, 0}, {577, 847}}";
+			sepNavWindowFrame = "{{350, 18}, {622, 920}}";
 		};
 	};
 	8D1107260486CEB800E47090 /* VitaminSEE */ = {

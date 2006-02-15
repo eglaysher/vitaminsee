@@ -133,12 +133,15 @@
 		8BC9D62C0987280D006F6B16 /* KeywordManagerPreferences-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8BC9D6280987280D006F6B16 /* KeywordManagerPreferences-Info.plist */; };
 		8BC9D62D0987280D006F6B16 /* KeywordManagerPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BC9D62A0987280D006F6B16 /* KeywordManagerPreferences.m */; };
 		8BC9D6300987281C006F6B16 /* KeywordManagerPreferences.nib in Resources */ = {isa = PBXBuildFile; fileRef = 8BC9D62E0987281C006F6B16 /* KeywordManagerPreferences.nib */; };
+		8BD128C609A2B470009E0275 /* Deployment.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 8BD128C509A2B470009E0275 /* Deployment.xcconfig */; };
+		8BD128D409A2B4EB009E0275 /* Development.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 8BD128D309A2B4EB009E0275 /* Development.xcconfig */; };
 		8BEA54AF090BE18C00F83026 /* GotoFolderSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BEA5470090BDFA000F83026 /* GotoFolderSheetController.m */; };
 		8BEA54C1090BE22D00F83026 /* GotoFolderSheet.nib in Resources */ = {isa = PBXBuildFile; fileRef = 8BEA54BF090BE22D00F83026 /* GotoFolderSheet.nib */; };
 		8BEA5552090BE82800F83026 /* GotoFolderSheetFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BEA5551090BE82800F83026 /* GotoFolderSheetFactory.m */; };
 		8BEA55DD090C0EDF00F83026 /* GotoFolderWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BEA55DA090C0EDF00F83026 /* GotoFolderWindowController.m */; };
 		8BEA55DE090C0EDF00F83026 /* GotoFolderWindowFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BEA55DC090C0EDF00F83026 /* GotoFolderWindowFactory.m */; };
 		8BEA55E1090C0EFB00F83026 /* GotoFolderWindow.nib in Resources */ = {isa = PBXBuildFile; fileRef = 8BEA55DF090C0EFB00F83026 /* GotoFolderWindow.nib */; };
+		8BF1038D09A2AFBE00FE21A7 /* Panther.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 8BF1038C09A2AFBE00FE21A7 /* Panther.xcconfig */; };
 		8D11072A0486CEB800E47090 /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 29B97318FDCFA39411CA2CEA /* MainMenu.nib */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
@@ -594,6 +597,8 @@
 		8BC9D62A0987280D006F6B16 /* KeywordManagerPreferences.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = KeywordManagerPreferences.m; path = Components/KeywordManagerPreferences/KeywordManagerPreferences.m; sourceTree = "<group>"; };
 		8BC9D62F0987281C006F6B16 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = Components/KeywordManagerPreferences/English.lproj/KeywordManagerPreferences.nib; sourceTree = "<group>"; };
 		8BC9D63109872826006F6B16 /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Japanese; path = Components/KeywordManagerPreferences/Japanese.lproj/KeywordManagerPreferences.nib; sourceTree = "<group>"; };
+		8BD128C509A2B470009E0275 /* Deployment.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Deployment.xcconfig; path = config/Deployment.xcconfig; sourceTree = "<group>"; };
+		8BD128D309A2B4EB009E0275 /* Development.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Development.xcconfig; path = config/Development.xcconfig; sourceTree = "<group>"; };
 		8BEA546E090BDFA000F83026 /* GotoFolderSheet-Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xml; name = "GotoFolderSheet-Info.plist"; path = "Components/GotoFolderSheet/GotoFolderSheet-Info.plist"; sourceTree = "<group>"; };
 		8BEA546F090BDFA000F83026 /* GotoFolderSheetController.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = GotoFolderSheetController.h; path = Components/GotoFolderSheet/GotoFolderSheetController.h; sourceTree = "<group>"; };
 		8BEA5470090BDFA000F83026 /* GotoFolderSheetController.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = GotoFolderSheetController.m; path = Components/GotoFolderSheet/GotoFolderSheetController.m; sourceTree = "<group>"; };
@@ -607,8 +612,9 @@
 		8BEA55DB090C0EDF00F83026 /* GotoFolderWindowFactory.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = GotoFolderWindowFactory.h; path = Components/GotoFolderWindow/GotoFolderWindowFactory.h; sourceTree = "<group>"; };
 		8BEA55DC090C0EDF00F83026 /* GotoFolderWindowFactory.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = GotoFolderWindowFactory.m; path = Components/GotoFolderWindow/GotoFolderWindowFactory.m; sourceTree = "<group>"; };
 		8BEA55E0090C0EFB00F83026 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = Components/GotoFolderWindow/English.lproj/GotoFolderWindow.nib; sourceTree = "<group>"; };
+		8BF1038C09A2AFBE00FE21A7 /* Panther.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Panther.xcconfig; path = config/Panther.xcconfig; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		8D1107320486CEB800E47090 /* VitaminSEE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VitaminSEE.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D1107320486CEB800E47090 /* VitaminSEE.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = VitaminSEE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -800,6 +806,7 @@
 		29B97314FDCFA39411CA2CEA /* VitaminSEE */ = {
 			isa = PBXGroup;
 			children = (
+				8BF1038B09A2AFA100FE21A7 /* Config */,
 				8B4DC3990996D6E500B58051 /* Automator Actions */,
 				8B24490F08FB546C004716BC /* Components */,
 				8B2448E208FB20BE004716BC /* Formatters */,
@@ -1221,6 +1228,16 @@
 				8BEA55DC090C0EDF00F83026 /* GotoFolderWindowFactory.m */,
 			);
 			name = GotoFolderWindow;
+			sourceTree = "<group>";
+		};
+		8BF1038B09A2AFA100FE21A7 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				8BF1038C09A2AFBE00FE21A7 /* Panther.xcconfig */,
+				8BD128C509A2B470009E0275 /* Deployment.xcconfig */,
+				8BD128D309A2B4EB009E0275 /* Development.xcconfig */,
+			);
+			name = Config;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -2493,6 +2510,9 @@
 				8BB691FE099DBA3E001AE27B /* VitaminSEE Help in Resources */,
 				8BB695B7099E3309001AE27B /* goto.png in Resources */,
 				8BB695FF099E4329001AE27B /* Changelog in Resources */,
+				8BF1038D09A2AFBE00FE21A7 /* Panther.xcconfig in Resources */,
+				8BD128C609A2B470009E0275 /* Deployment.xcconfig in Resources */,
+				8BD128D409A2B4EB009E0275 /* Development.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2958,15 +2978,14 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		8B63805F09953AA60010DFEF /* Development */ = {
+		8B4E7C3809A2B27F005A8401 /* Panther */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8BF1038C09A2AFBE00FE21A7 /* Panther.xcconfig */;
 			buildSettings = {
-				COPY_PHASE_STRIP = NO;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				COPY_PHASE_STRIP = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_MODEL_TUNING = G5;
-				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
 				INFOPLIST_FILE = "Components/KeywordManagerPreferences/KeywordManagerPreferences-Info.plist";
@@ -2992,12 +3011,575 @@
 					"-Wno-unknown-pragmas",
 				);
 				WRAPPER_EXTENSION = VSPref;
+				ZERO_LINK = NO;
+			};
+			name = Panther;
+		};
+		8B4E7C3909A2B27F005A8401 /* Panther */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8BF1038C09A2AFBE00FE21A7 /* Panther.xcconfig */;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = "Components/KeywordManager/KeywordManager-Info.plist";
+				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
+				LIBRARY_STYLE = BUNDLE;
+				MACOSX_DEPLOYMENT_TARGET = 10.3;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+					"-undefined",
+					dynamic_lookup,
+				);
+				OTHER_REZFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = KeywordManager;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+				ZERO_LINK = NO;
+			};
+			name = Panther;
+		};
+		8B4E7C3A09A2B27F005A8401 /* Panther */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8BF1038C09A2AFBE00FE21A7 /* Panther.xcconfig */;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PFE_FILE_C_DIALECTS = "c objective-c objective-c++ c++";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Components/ImageMetadata/ImageMetadata.pch;
+				INFOPLIST_FILE = "Components/ImageMetadata/ImageMetadata-Info.plist";
+				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
+				LIBRARY_STYLE = BUNDLE;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				OTHER_REZFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = ImageMetadata;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+				ZERO_LINK = NO;
+			};
+			name = Panther;
+		};
+		8B4E7C3B09A2B27F005A8401 /* Panther */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8BF1038C09A2AFBE00FE21A7 /* Panther.xcconfig */;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = "Components/SortManager/SortManager-Info.plist";
+				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
+				LIBRARY_STYLE = BUNDLE;
+				MACOSX_DEPLOYMENT_TARGET = 10.3;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+					"-undefined",
+					dynamic_lookup,
+				);
+				OTHER_REZFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = SortManager;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+				ZERO_LINK = NO;
+			};
+			name = Panther;
+		};
+		8B4E7C3C09A2B27F005A8401 /* Panther */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8BF1038C09A2AFBE00FE21A7 /* Panther.xcconfig */;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = "Components/FavoritesMenu/FavoritesMenu-Info.plist";
+				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
+				LIBRARY_STYLE = BUNDLE;
+				MACOSX_DEPLOYMENT_TARGET = 10.3;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+					"-undefined",
+					dynamic_lookup,
+				);
+				OTHER_REZFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = FavoritesMenu;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+				ZERO_LINK = NO;
+			};
+			name = Panther;
+		};
+		8B4E7C3D09A2B27F005A8401 /* Panther */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8BF1038C09A2AFBE00FE21A7 /* Panther.xcconfig */;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G4;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = "Components/ViewIconsFileList/ViewIconsFileList-Info.plist";
+				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
+				LIBRARY_STYLE = BUNDLE;
+				MACOSX_DEPLOYMENT_TARGET = 10.3;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+					"-undefined",
+					dynamic_lookup,
+				);
+				OTHER_REZFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = ViewIconsFileList;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+				ZERO_LINK = NO;
+			};
+			name = Panther;
+		};
+		8B4E7C3E09A2B27F005A8401 /* Panther */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8BF1038C09A2AFBE00FE21A7 /* Panther.xcconfig */;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = "Components/GotoFolderSheet/GotoFolderSheet-Info.plist";
+				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
+				LIBRARY_STYLE = BUNDLE;
+				MACOSX_DEPLOYMENT_TARGET = 10.3;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				OTHER_REZFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = GotoFolderSheet;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+				ZERO_LINK = NO;
+			};
+			name = Panther;
+		};
+		8B4E7C3F09A2B27F005A8401 /* Panther */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8BF1038C09A2AFBE00FE21A7 /* Panther.xcconfig */;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = "Components/FavoritesPreferences/FavoritesPreferences-Info.plist";
+				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
+				LIBRARY_STYLE = BUNDLE;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				OTHER_REZFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = FavoritesPreferences;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+				WRAPPER_EXTENSION = VSPref;
+				ZERO_LINK = NO;
+			};
+			name = Panther;
+		};
+		8B4E7C4009A2B27F005A8401 /* Panther */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8BF1038C09A2AFBE00FE21A7 /* Panther.xcconfig */;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = "Components/GotoFolderWindow/GotoFolderWindow-Info.plist";
+				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
+				LIBRARY_STYLE = BUNDLE;
+				MACOSX_DEPLOYMENT_TARGET = 10.3;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+					"-undefined",
+					dynamic_lookup,
+				);
+				OTHER_REZFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = GotoFolderWindow;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+				ZERO_LINK = NO;
+			};
+			name = Panther;
+		};
+		8B4E7C4109A2B27F005A8401 /* Panther */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8BF1038C09A2AFBE00FE21A7 /* Panther.xcconfig */;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = "Components/DesktopBackground/DesktopBackground-Info.plist";
+				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
+				LIBRARY_STYLE = BUNDLE;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				OTHER_REZFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = DesktopBackground;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+				ZERO_LINK = NO;
+			};
+			name = Panther;
+		};
+		8B4E7C4209A2B27F005A8401 /* Panther */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8BF1038C09A2AFBE00FE21A7 /* Panther.xcconfig */;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = "Components/GeneralPreferences/GeneralPreferences-Info.plist";
+				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
+				LIBRARY_STYLE = BUNDLE;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				OTHER_REZFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = GeneralPreferences;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+				WRAPPER_EXTENSION = VSPref;
+				ZERO_LINK = NO;
+			};
+			name = Panther;
+		};
+		8B4E7C4309A2B27F005A8401 /* Panther */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8BF1038C09A2AFBE00FE21A7 /* Panther.xcconfig */;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = "Components/OpenWithMenu/OpenWithMenu-Info.plist";
+				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
+				LIBRARY_STYLE = BUNDLE;
+				MACOSX_DEPLOYMENT_TARGET = 10.3;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+					"-undefined",
+					dynamic_lookup,
+				);
+				OTHER_REZFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = OpenWithMenu;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+				ZERO_LINK = NO;
+			};
+			name = Panther;
+		};
+		8B4E7C4409A2B27F005A8401 /* Panther */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8BF1038C09A2AFBE00FE21A7 /* Panther.xcconfig */;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = "Components/FileOperations/FileOperations-Info.plist";
+				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
+				LIBRARY_STYLE = BUNDLE;
+				MACOSX_DEPLOYMENT_TARGET = 10.3;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+					"-undefined",
+					dynamic_lookup,
+				);
+				OTHER_REZFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = FileOperations;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+				ZERO_LINK = NO;
+			};
+			name = Panther;
+		};
+		8B4E7C4509A2B27F005A8401 /* Panther */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8BF1038C09A2AFBE00FE21A7 /* Panther.xcconfig */;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = "Components/SSPrefsController/SSPrefsController-Info.plist";
+				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
+				LIBRARY_STYLE = BUNDLE;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				OTHER_REZFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = SSPrefsController;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+				ZERO_LINK = NO;
+			};
+			name = Panther;
+		};
+		8B4E7C4609A2B27F005A8401 /* Panther */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8BF1038C09A2AFBE00FE21A7 /* Panther.xcconfig */;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = "Components/AdvancedPreferences/AdvancedPreferences-Info.plist";
+				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
+				LIBRARY_STYLE = BUNDLE;
+				MACOSX_DEPLOYMENT_TARGET = 10.3;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				OTHER_REZFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = AdvancedPreferences;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+				WRAPPER_EXTENSION = VSPref;
+				ZERO_LINK = NO;
+			};
+			name = Panther;
+		};
+		8B4E7C4709A2B27F005A8401 /* Panther */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8BF1038C09A2AFBE00FE21A7 /* Panther.xcconfig */;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_FAST_OBJC_DISPATCH = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = VitaminSEE_Prefix.pch;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				PREBINDING = NO;
+				PRODUCT_NAME = VitaminSEE;
+				WRAPPER_EXTENSION = app;
+				ZERO_LINK = NO;
+			};
+			name = Panther;
+		};
+		8B4E7C4809A2B27F005A8401 /* Panther */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8BF1038C09A2AFBE00FE21A7 /* Panther.xcconfig */;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				DEPLOYMENT_POSTPROCESSING = YES;
+				GCC_FAST_OBJC_DISPATCH = NO;
+				MACOSX_DEPLOYMENT_TARGET = "";
+				SDKROOT = "";
+				STRIP_INSTALLED_PRODUCT = NO;
+			};
+			name = Panther;
+		};
+		8B63805F09953AA60010DFEF /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = "Components/KeywordManagerPreferences/KeywordManagerPreferences-Info.plist";
+				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
+				LIBRARY_STYLE = BUNDLE;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+					"-undefined",
+					dynamic_lookup,
+				);
+				OTHER_REZFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = KeywordManagerPreferences;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+				WRAPPER_EXTENSION = VSPref;
 				ZERO_LINK = YES;
 			};
 			name = Development;
 		};
 		8B63806009953AA60010DFEF /* Deployment */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8BD128C509A2B470009E0275 /* Deployment.xcconfig */;
 			buildSettings = {
 				COPY_PHASE_STRIP = YES;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
@@ -3008,7 +3590,6 @@
 				INFOPLIST_FILE = "Components/KeywordManagerPreferences/KeywordManagerPreferences-Info.plist";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
 				LIBRARY_STYLE = BUNDLE;
-				MACOSX_DEPLOYMENT_TARGET = 10.3;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -3079,7 +3660,6 @@
 				INFOPLIST_FILE = "Components/KeywordManager/KeywordManager-Info.plist";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
 				LIBRARY_STYLE = BUNDLE;
-				MACOSX_DEPLOYMENT_TARGET = 10.3;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -3104,6 +3684,7 @@
 		};
 		8B63806409953AA60010DFEF /* Deployment */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8BD128C509A2B470009E0275 /* Deployment.xcconfig */;
 			buildSettings = {
 				COPY_PHASE_STRIP = YES;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
@@ -3114,7 +3695,6 @@
 				INFOPLIST_FILE = "Components/KeywordManager/KeywordManager-Info.plist";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
 				LIBRARY_STYLE = BUNDLE;
-				MACOSX_DEPLOYMENT_TARGET = 10.3;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -3206,6 +3786,7 @@
 		};
 		8B63806809953AA60010DFEF /* Deployment */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8BD128C509A2B470009E0275 /* Deployment.xcconfig */;
 			buildSettings = {
 				COPY_PHASE_STRIP = YES;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
@@ -3281,7 +3862,6 @@
 				INFOPLIST_FILE = "Components/SortManager/SortManager-Info.plist";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
 				LIBRARY_STYLE = BUNDLE;
-				MACOSX_DEPLOYMENT_TARGET = 10.3;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -3306,6 +3886,7 @@
 		};
 		8B63806C09953AA60010DFEF /* Deployment */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8BD128C509A2B470009E0275 /* Deployment.xcconfig */;
 			buildSettings = {
 				COPY_PHASE_STRIP = YES;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
@@ -3316,7 +3897,6 @@
 				INFOPLIST_FILE = "Components/SortManager/SortManager-Info.plist";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
 				LIBRARY_STYLE = BUNDLE;
-				MACOSX_DEPLOYMENT_TARGET = 10.3;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -3385,7 +3965,6 @@
 				INFOPLIST_FILE = "Components/FavoritesMenu/FavoritesMenu-Info.plist";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
 				LIBRARY_STYLE = BUNDLE;
-				MACOSX_DEPLOYMENT_TARGET = 10.3;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -3410,6 +3989,7 @@
 		};
 		8B63807009953AA60010DFEF /* Deployment */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8BD128C509A2B470009E0275 /* Deployment.xcconfig */;
 			buildSettings = {
 				COPY_PHASE_STRIP = YES;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
@@ -3420,7 +4000,6 @@
 				INFOPLIST_FILE = "Components/FavoritesMenu/FavoritesMenu-Info.plist";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
 				LIBRARY_STYLE = BUNDLE;
-				MACOSX_DEPLOYMENT_TARGET = 10.3;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -3490,7 +4069,6 @@
 				INFOPLIST_FILE = "Components/ViewIconsFileList/ViewIconsFileList-Info.plist";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
 				LIBRARY_STYLE = BUNDLE;
-				MACOSX_DEPLOYMENT_TARGET = 10.3;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -3515,6 +4093,7 @@
 		};
 		8B63807409953AA60010DFEF /* Deployment */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8BD128C509A2B470009E0275 /* Deployment.xcconfig */;
 			buildSettings = {
 				COPY_PHASE_STRIP = YES;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
@@ -3526,7 +4105,6 @@
 				INFOPLIST_FILE = "Components/ViewIconsFileList/ViewIconsFileList-Info.plist";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
 				LIBRARY_STYLE = BUNDLE;
-				MACOSX_DEPLOYMENT_TARGET = 10.3;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -3596,7 +4174,6 @@
 				INFOPLIST_FILE = "Components/GotoFolderSheet/GotoFolderSheet-Info.plist";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
 				LIBRARY_STYLE = BUNDLE;
-				MACOSX_DEPLOYMENT_TARGET = 10.3;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -3619,6 +4196,7 @@
 		};
 		8B63807809953AA60010DFEF /* Deployment */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8BD128C509A2B470009E0275 /* Deployment.xcconfig */;
 			buildSettings = {
 				COPY_PHASE_STRIP = YES;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
@@ -3629,7 +4207,6 @@
 				INFOPLIST_FILE = "Components/GotoFolderSheet/GotoFolderSheet-Info.plist";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
 				LIBRARY_STYLE = BUNDLE;
-				MACOSX_DEPLOYMENT_TARGET = 10.3;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -3717,6 +4294,7 @@
 		};
 		8B63807C09953AA60010DFEF /* Deployment */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8BD128C509A2B470009E0275 /* Deployment.xcconfig */;
 			buildSettings = {
 				COPY_PHASE_STRIP = YES;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
@@ -3792,7 +4370,6 @@
 				INFOPLIST_FILE = "Components/GotoFolderWindow/GotoFolderWindow-Info.plist";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
 				LIBRARY_STYLE = BUNDLE;
-				MACOSX_DEPLOYMENT_TARGET = 10.3;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -3817,6 +4394,7 @@
 		};
 		8B63808009953AA60010DFEF /* Deployment */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8BD128C509A2B470009E0275 /* Deployment.xcconfig */;
 			buildSettings = {
 				COPY_PHASE_STRIP = YES;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
@@ -3827,7 +4405,6 @@
 				INFOPLIST_FILE = "Components/GotoFolderWindow/GotoFolderWindow-Info.plist";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
 				LIBRARY_STYLE = BUNDLE;
-				MACOSX_DEPLOYMENT_TARGET = 10.3;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -3918,6 +4495,7 @@
 		};
 		8B63808409953AA60010DFEF /* Deployment */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8BD128C509A2B470009E0275 /* Deployment.xcconfig */;
 			buildSettings = {
 				COPY_PHASE_STRIP = YES;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
@@ -4014,6 +4592,7 @@
 		};
 		8B63808809953AA60010DFEF /* Deployment */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8BD128C509A2B470009E0275 /* Deployment.xcconfig */;
 			buildSettings = {
 				COPY_PHASE_STRIP = YES;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
@@ -4089,7 +4668,6 @@
 				INFOPLIST_FILE = "Components/OpenWithMenu/OpenWithMenu-Info.plist";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
 				LIBRARY_STYLE = BUNDLE;
-				MACOSX_DEPLOYMENT_TARGET = 10.3;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -4114,6 +4692,7 @@
 		};
 		8B63808C09953AA60010DFEF /* Deployment */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8BD128C509A2B470009E0275 /* Deployment.xcconfig */;
 			buildSettings = {
 				COPY_PHASE_STRIP = YES;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
@@ -4124,7 +4703,6 @@
 				INFOPLIST_FILE = "Components/OpenWithMenu/OpenWithMenu-Info.plist";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
 				LIBRARY_STYLE = BUNDLE;
-				MACOSX_DEPLOYMENT_TARGET = 10.3;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -4193,7 +4771,6 @@
 				INFOPLIST_FILE = "Components/FileOperations/FileOperations-Info.plist";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
 				LIBRARY_STYLE = BUNDLE;
-				MACOSX_DEPLOYMENT_TARGET = 10.3;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -4218,6 +4795,7 @@
 		};
 		8B63809009953AA60010DFEF /* Deployment */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8BD128C509A2B470009E0275 /* Deployment.xcconfig */;
 			buildSettings = {
 				COPY_PHASE_STRIP = YES;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
@@ -4228,7 +4806,6 @@
 				INFOPLIST_FILE = "Components/FileOperations/FileOperations-Info.plist";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
 				LIBRARY_STYLE = BUNDLE;
-				MACOSX_DEPLOYMENT_TARGET = 10.3;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -4319,6 +4896,7 @@
 		};
 		8B63809409953AA60010DFEF /* Deployment */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8BD128C509A2B470009E0275 /* Deployment.xcconfig */;
 			buildSettings = {
 				COPY_PHASE_STRIP = YES;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
@@ -4392,7 +4970,6 @@
 				INFOPLIST_FILE = "Components/AdvancedPreferences/AdvancedPreferences-Info.plist";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
 				LIBRARY_STYLE = BUNDLE;
-				MACOSX_DEPLOYMENT_TARGET = 10.3;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -4416,6 +4993,7 @@
 		};
 		8B63809809953AA60010DFEF /* Deployment */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8BD128C509A2B470009E0275 /* Deployment.xcconfig */;
 			buildSettings = {
 				COPY_PHASE_STRIP = YES;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
@@ -4426,7 +5004,6 @@
 				INFOPLIST_FILE = "Components/AdvancedPreferences/AdvancedPreferences-Info.plist";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
 				LIBRARY_STYLE = BUNDLE;
-				MACOSX_DEPLOYMENT_TARGET = 10.3;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -4486,7 +5063,6 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_FAST_OBJC_DISPATCH = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -4497,7 +5073,6 @@
 				INSTALL_PATH = "$(HOME)/Applications";
 				PREBINDING = NO;
 				PRODUCT_NAME = VitaminSEE;
-				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
 				WRAPPER_EXTENSION = app;
 				ZERO_LINK = YES;
 			};
@@ -4505,11 +5080,11 @@
 		};
 		8B63809C09953AA60010DFEF /* Deployment */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8BD128C509A2B470009E0275 /* Deployment.xcconfig */;
 			buildSettings = {
 				COPY_PHASE_STRIP = YES;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_FAST_OBJC_DISPATCH = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = VitaminSEE_Prefix.pch;
@@ -4519,7 +5094,6 @@
 				INSTALL_PATH = "$(HOME)/Applications";
 				PREBINDING = NO;
 				PRODUCT_NAME = VitaminSEE;
-				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
 				WRAPPER_EXTENSION = app;
 				ZERO_LINK = NO;
 			};
@@ -4546,10 +5120,7 @@
 		8B63809F09953AA60010DFEF /* Development */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					ppc,
-					i386,
-				);
+				ARCHS = ppc;
 				COPY_PHASE_STRIP = NO;
 				DEPLOYMENT_POSTPROCESSING = YES;
 				GCC_FAST_OBJC_DISPATCH = YES;
@@ -4561,6 +5132,7 @@
 		};
 		8B6380A009953AA60010DFEF /* Deployment */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8BD128C509A2B470009E0275 /* Deployment.xcconfig */;
 			buildSettings = {
 				ARCHS = (
 					ppc,
@@ -4578,15 +5150,11 @@
 		8B6380A109953AA60010DFEF /* Default */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					ppc,
-					i386,
-				);
 				COPY_PHASE_STRIP = NO;
 				DEPLOYMENT_POSTPROCESSING = YES;
 				GCC_FAST_OBJC_DISPATCH = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.4;
-				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
+				MACOSX_DEPLOYMENT_TARGET = "";
+				SDKROOT = "";
 				STRIP_INSTALLED_PRODUCT = NO;
 			};
 			name = Default;
@@ -4599,6 +5167,7 @@
 			buildConfigurations = (
 				8B63805F09953AA60010DFEF /* Development */,
 				8B63806009953AA60010DFEF /* Deployment */,
+				8B4E7C3809A2B27F005A8401 /* Panther */,
 				8B63806109953AA60010DFEF /* Default */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -4609,6 +5178,7 @@
 			buildConfigurations = (
 				8B63806309953AA60010DFEF /* Development */,
 				8B63806409953AA60010DFEF /* Deployment */,
+				8B4E7C3909A2B27F005A8401 /* Panther */,
 				8B63806509953AA60010DFEF /* Default */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -4619,6 +5189,7 @@
 			buildConfigurations = (
 				8B63806709953AA60010DFEF /* Development */,
 				8B63806809953AA60010DFEF /* Deployment */,
+				8B4E7C3A09A2B27F005A8401 /* Panther */,
 				8B63806909953AA60010DFEF /* Default */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -4629,6 +5200,7 @@
 			buildConfigurations = (
 				8B63806B09953AA60010DFEF /* Development */,
 				8B63806C09953AA60010DFEF /* Deployment */,
+				8B4E7C3B09A2B27F005A8401 /* Panther */,
 				8B63806D09953AA60010DFEF /* Default */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -4639,6 +5211,7 @@
 			buildConfigurations = (
 				8B63806F09953AA60010DFEF /* Development */,
 				8B63807009953AA60010DFEF /* Deployment */,
+				8B4E7C3C09A2B27F005A8401 /* Panther */,
 				8B63807109953AA60010DFEF /* Default */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -4649,6 +5222,7 @@
 			buildConfigurations = (
 				8B63807309953AA60010DFEF /* Development */,
 				8B63807409953AA60010DFEF /* Deployment */,
+				8B4E7C3D09A2B27F005A8401 /* Panther */,
 				8B63807509953AA60010DFEF /* Default */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -4659,6 +5233,7 @@
 			buildConfigurations = (
 				8B63807709953AA60010DFEF /* Development */,
 				8B63807809953AA60010DFEF /* Deployment */,
+				8B4E7C3E09A2B27F005A8401 /* Panther */,
 				8B63807909953AA60010DFEF /* Default */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -4669,6 +5244,7 @@
 			buildConfigurations = (
 				8B63807B09953AA60010DFEF /* Development */,
 				8B63807C09953AA60010DFEF /* Deployment */,
+				8B4E7C3F09A2B27F005A8401 /* Panther */,
 				8B63807D09953AA60010DFEF /* Default */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -4679,6 +5255,7 @@
 			buildConfigurations = (
 				8B63807F09953AA60010DFEF /* Development */,
 				8B63808009953AA60010DFEF /* Deployment */,
+				8B4E7C4009A2B27F005A8401 /* Panther */,
 				8B63808109953AA60010DFEF /* Default */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -4689,6 +5266,7 @@
 			buildConfigurations = (
 				8B63808309953AA60010DFEF /* Development */,
 				8B63808409953AA60010DFEF /* Deployment */,
+				8B4E7C4109A2B27F005A8401 /* Panther */,
 				8B63808509953AA60010DFEF /* Default */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -4699,6 +5277,7 @@
 			buildConfigurations = (
 				8B63808709953AA60010DFEF /* Development */,
 				8B63808809953AA60010DFEF /* Deployment */,
+				8B4E7C4209A2B27F005A8401 /* Panther */,
 				8B63808909953AA60010DFEF /* Default */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -4709,6 +5288,7 @@
 			buildConfigurations = (
 				8B63808B09953AA60010DFEF /* Development */,
 				8B63808C09953AA60010DFEF /* Deployment */,
+				8B4E7C4309A2B27F005A8401 /* Panther */,
 				8B63808D09953AA60010DFEF /* Default */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -4719,6 +5299,7 @@
 			buildConfigurations = (
 				8B63808F09953AA60010DFEF /* Development */,
 				8B63809009953AA60010DFEF /* Deployment */,
+				8B4E7C4409A2B27F005A8401 /* Panther */,
 				8B63809109953AA60010DFEF /* Default */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -4729,6 +5310,7 @@
 			buildConfigurations = (
 				8B63809309953AA60010DFEF /* Development */,
 				8B63809409953AA60010DFEF /* Deployment */,
+				8B4E7C4509A2B27F005A8401 /* Panther */,
 				8B63809509953AA60010DFEF /* Default */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -4739,6 +5321,7 @@
 			buildConfigurations = (
 				8B63809709953AA60010DFEF /* Development */,
 				8B63809809953AA60010DFEF /* Deployment */,
+				8B4E7C4609A2B27F005A8401 /* Panther */,
 				8B63809909953AA60010DFEF /* Default */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -4749,6 +5332,7 @@
 			buildConfigurations = (
 				8B63809B09953AA60010DFEF /* Development */,
 				8B63809C09953AA60010DFEF /* Deployment */,
+				8B4E7C4709A2B27F005A8401 /* Panther */,
 				8B63809D09953AA60010DFEF /* Default */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -4759,6 +5343,7 @@
 			buildConfigurations = (
 				8B63809F09953AA60010DFEF /* Development */,
 				8B6380A009953AA60010DFEF /* Deployment */,
+				8B4E7C4809A2B27F005A8401 /* Panther */,
 				8B6380A109953AA60010DFEF /* Default */,
 			);
 			defaultConfigurationIsVisible = 0;

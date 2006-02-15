@@ -13,6 +13,9 @@
 		8B4DC42C0996D82700B58051 /* IconFamily.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B4DC4270996D82700B58051 /* IconFamily.m */; };
 		8B4DC42D0996D82700B58051 /* NSString+CarbonFSSpecCreation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B4DC4290996D82700B58051 /* NSString+CarbonFSSpecCreation.m */; };
 		8B4DC42E0996D82700B58051 /* NSString+FileTasks.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B4DC42B0996D82700B58051 /* NSString+FileTasks.m */; };
+		8BD1298209A2B7B6009E0275 /* Panther.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 8BD1297F09A2B7B6009E0275 /* Panther.xcconfig */; };
+		8BD1298309A2B7B6009E0275 /* Deployment.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 8BD1298009A2B7B6009E0275 /* Deployment.xcconfig */; };
+		8BD1298409A2B7B6009E0275 /* Development.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 8BD1298109A2B7B6009E0275 /* Development.xcconfig */; };
 		8D5B49B0048680CD000E48DA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C167DFE841241C02AAC07 /* InfoPlist.strings */; };
 		8D5B49B4048680CD000E48DA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */; };
 		CDAFE88A08527FD4009DD3FC /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDAFE88908527FD4009DD3FC /* Carbon.framework */; };
@@ -61,6 +64,9 @@
 		8B4DC4290996D82700B58051 /* NSString+CarbonFSSpecCreation.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = "NSString+CarbonFSSpecCreation.m"; path = "../../Widgets/NSString+CarbonFSSpecCreation.m"; sourceTree = SOURCE_ROOT; };
 		8B4DC42A0996D82700B58051 /* NSString+FileTasks.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = "NSString+FileTasks.h"; path = "../../Widgets/NSString+FileTasks.h"; sourceTree = SOURCE_ROOT; };
 		8B4DC42B0996D82700B58051 /* NSString+FileTasks.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = "NSString+FileTasks.m"; path = "../../Widgets/NSString+FileTasks.m"; sourceTree = SOURCE_ROOT; };
+		8BD1297F09A2B7B6009E0275 /* Panther.xcconfig */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xcconfig; name = Panther.xcconfig; path = ../../config/Panther.xcconfig; sourceTree = SOURCE_ROOT; };
+		8BD1298009A2B7B6009E0275 /* Deployment.xcconfig */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xcconfig; name = Deployment.xcconfig; path = ../../config/Deployment.xcconfig; sourceTree = SOURCE_ROOT; };
+		8BD1298109A2B7B6009E0275 /* Development.xcconfig */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xcconfig; name = Development.xcconfig; path = ../../config/Development.xcconfig; sourceTree = SOURCE_ROOT; };
 		8D5B49B6048680CD000E48DA /* RemoveIcon.action */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RemoveIcon.action; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D5B49B7048680CD000E48DA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD26702E08610CDD00432EF1 /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Japanese; path = Japanese.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -84,6 +90,7 @@
 		089C166AFE841209C02AAC07 /* RemoveIcon */ = {
 			isa = PBXGroup;
 			children = (
+				8BD1297E09A2B7B6009E0275 /* Config */,
 				08FB77AFFE84173DC02AAC07 /* Classes */,
 				32C88E010371C26100C91783 /* Other Sources */,
 				089C167CFE841241C02AAC07 /* Resources */,
@@ -163,6 +170,16 @@
 			name = "Other Sources";
 			sourceTree = "<group>";
 		};
+		8BD1297E09A2B7B6009E0275 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				8BD1297F09A2B7B6009E0275 /* Panther.xcconfig */,
+				8BD1298009A2B7B6009E0275 /* Deployment.xcconfig */,
+				8BD1298109A2B7B6009E0275 /* Development.xcconfig */,
+			);
+			name = Config;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -225,6 +242,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D5B49B0048680CD000E48DA /* InfoPlist.strings in Resources */,
+				8BD1298209A2B7B6009E0275 /* Panther.xcconfig in Resources */,
+				8BD1298309A2B7B6009E0275 /* Deployment.xcconfig in Resources */,
+				8BD1298409A2B7B6009E0275 /* Development.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,23 +342,15 @@
 		};
 		8B4DC41F0996D80A00B58051 /* Development */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8BD1298109A2B7B6009E0275 /* Development.xcconfig */;
 			buildSettings = {
-				ARCHS = (
-					ppc,
-					i386,
-				);
-				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
 			};
 			name = Development;
 		};
 		8B4DC4200996D80A00B58051 /* Deployment */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8BD1298009A2B7B6009E0275 /* Deployment.xcconfig */;
 			buildSettings = {
-				ARCHS = (
-					ppc,
-					i386,
-				);
-				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
 			};
 			name = Deployment;
 		};
@@ -353,6 +365,31 @@
 			};
 			name = Default;
 		};
+		8BD1298B09A2B84A009E0275 /* Panther */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = RemoveIcon_Prefix.pch;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Library/Automator";
+				OTHER_OSAFLAGS = "-x -t 0 -c 0";
+				PREBINDING = NO;
+				PRODUCT_NAME = RemoveIcon;
+				SYMROOT = ../../build;
+				WRAPPER_EXTENSION = action;
+			};
+			name = Panther;
+		};
+		8BD1298C09A2B84A009E0275 /* Panther */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8BD1297F09A2B7B6009E0275 /* Panther.xcconfig */;
+			buildSettings = {
+			};
+			name = Panther;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -362,9 +399,10 @@
 				8B4DC41B0996D80A00B58051 /* Development */,
 				8B4DC41C0996D80A00B58051 /* Deployment */,
 				8B4DC41D0996D80A00B58051 /* Default */,
+				8BD1298B09A2B84A009E0275 /* Panther */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Default;
+			defaultConfigurationName = Panther;
 		};
 		8B4DC41E0996D80A00B58051 /* Build configuration list for PBXProject "RemoveIcon" */ = {
 			isa = XCConfigurationList;
@@ -372,9 +410,10 @@
 				8B4DC41F0996D80A00B58051 /* Development */,
 				8B4DC4200996D80A00B58051 /* Deployment */,
 				8B4DC4210996D80A00B58051 /* Default */,
+				8BD1298C09A2B84A009E0275 /* Panther */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Default;
+			defaultConfigurationName = Panther;
 		};
 /* End XCConfigurationList section */
 	};
