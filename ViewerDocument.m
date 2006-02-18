@@ -434,6 +434,8 @@
 	return enable;
 }
 
+//-----------------------------------------------------------------------------
+
 -(BOOL)validateAction:(SEL)action
 {
 	// Default behaviour: only enable if we respond to this selector.
@@ -446,6 +448,8 @@
 		enable = [fileList canOpenCurrentItem];
 	if(action == @selector(openInPreview:))
 		enable = [currentFile isImage];
+	else if(action == @selector(moveToTrash:))
+		enable = [currentFile isNaturalFile]; //[self validateMoveToTrash];
 	else if(action == @selector(addToFavorites:))
 		enable = [currentFile isDirectory] && [currentFile isNaturalFile] &&
 			!isInFavorites([currentFile fileSystemPath]);
@@ -473,6 +477,29 @@
 		enable = [fileList canGoEnclosingFolder];
 	
 	return enable;
+}
+
+//-----------------------------------------------------------------------------
+
+/** This is a high level TODO!
+ *
+ */
+-(BOOL)validateMoveToTrash
+{
+	BOOL ok = YES;
+	NSFileManager* fm = [NSFileManager defaultManager];
+	
+	// If our user doesn't have +w on the current folder, set ok to NO.
+//	unsigned long folderPermissions = [fm fileAttributesAtPath:<#(NSString *)path#>
+//												  traverseLink:NO];
+	
+	// If our user doesn't have +w on the current file, set ok to NO.
+//	unsigned long filePermissions = [fm fileAttributesAtPath:<#(NSString *)path#>
+//												traverseLink:NO];
+	
+	// FIXME HERE! Detect 
+	
+	return ok;
 }
 
 //-----------------------------------------------------------------------------

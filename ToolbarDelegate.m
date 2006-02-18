@@ -165,7 +165,7 @@ static ToolbarDelegate* toolbarDelegateObject = 0;
 		[item setPaletteLabel:NSLocalizedString(@"Delete", @"Toolbar Item")];
 		[item setToolTip:NSLocalizedString(@"Delete", @"Toolbar Item")];
 		[item setImage:[NSImage imageNamed:@"ToolbarDeleteIcon"]];
-		[item setAction:@selector(deleteFileClicked:)];				
+		[item setAction:@selector(moveToTrash:)];				
 	}
 	else if([itemIdent isEqual:EnclosingFolderID])
 	{

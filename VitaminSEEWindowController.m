@@ -450,8 +450,6 @@
  */
 -(float)nonImageHeight
 {
-	int toolbarsize = 0;
-	
 	NSRect content = [NSWindow contentRectForFrameRect:[[self window] frame] 
 											 styleMask:[[self window] styleMask]];
 	
