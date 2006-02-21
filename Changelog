@@ -1,7 +1,10 @@
-0.7 Final Release (?????)
+0.7 Final Release (February 20th, 2006)
 -------------------------
 * Add "Enclosing Folder" and "Go to Folder..." toolbar items.
+* Fix Delete toolbar item
 * Fix the Help menu
+* Build both a Universal Binary, and an unsupported Panther build. (The Panther
+  build has a few cosmetic bugs that WONTFIX.)
 
 0.7-Beta Release (February 8th, 2006)
 -------------------------------------
