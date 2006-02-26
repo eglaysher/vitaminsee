@@ -43,7 +43,6 @@
 @implementation VitaminSEEWindowController
 
 -(id)initWithFileList:(id<FileList>)inFileList 
-			 document:(ViewerDocument*)viewerDocument
 {
 	if(self = [super initWithWindowNibName:@"VitaminSEEWindow"]) {
 		// Set the file list. Note that we aren't *really* setting the file list;
@@ -51,8 +50,7 @@
 		// variable here, since we can't -setFileList: until after the window has
 		// been loaded, so have -awakeFromNib actually -setFileList:.
 		fileList = inFileList;
-		
-		[self setDocument:viewerDocument];
+
 		currentlyAnimated = false;
 	}
 	
@@ -61,7 +59,8 @@
 
 -(void)dealloc
 {
-//	SetSystemUIMode(kUIModeNormal, 0); // to exit fullscreen
+	[NSObject cancelPreviousPerformRequestsWithTarget:self];
+	[currentFileViewHolder setSubview:0];	
 	[super dealloc];
 }
 
@@ -133,11 +132,7 @@
 - (void)splitView:(RBSplitView*)sender didExpand:(RBSplitSubview*)subview 
 {
 	// When we expand, make the file view first responder
-//	NSLog(@"-splitView:didExpand:");
 	[[self document] redraw];
-//	[self selectFirstResponder];
-//	[viewAsIconsController connectKeyFocus:scrollView];
-//	[mainVitaminSeeWindow setViewsNeedDisplay:YES];
 }
 
 //-----------------------------------------------------------------------------
@@ -145,8 +140,6 @@
 - (void)splitView:(RBSplitView*)sender wasResizedFrom:(float)oldDimension 
 			   to:(float)newDimension
 {
-//	NSLog(@"-splitView:wasResizedFrom:to:");
-//	[mainVitaminSeeWindow setViewsNeedDisplay:YES];
 	[[self document] redraw];
 }
 
@@ -251,16 +244,6 @@
 	// proxy icon
 	[fileList setWindowTitle:[self window]];
 }
-
-//-----------------------------------------------------------------------------
-
-//-(IBAction)setImageAsDesktop:(id)sender
-//{
-//	if([currentImageFile isImage])
-//		[[self desktopBackgroundController] setDesktopBackgroundToFile:currentImageFile];
-//	else if([currentImageFile isDir])
-//		[[self desktopBackgroundController] setDesktopBackgroundToFolder:currentImageFile];
-//}
 	
 //-----------------------------------------------------------------------------
 

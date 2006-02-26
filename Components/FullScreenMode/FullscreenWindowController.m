@@ -16,8 +16,6 @@
 -(id)init
 {
 	if(self = [super initWithWindowNibName:@"ImageViewing"]) {
-		NSLog(@"Nib succedded!");
-//		[self window];
 	}
 	
 	return self;
@@ -35,8 +33,6 @@
 {
 	// Set up the main window
 	NSRect screenRect = [[NSScreen mainScreen] frame];
-	
-	NSLog(@"Screen size: %@", NSStringFromRect(screenRect));
 	
 	// Set up the scroll view on the right
 	id docView = [[scrollView documentView] retain];
@@ -67,7 +63,6 @@
 {
 	// Capture the screen for fullscreen:
 	NSWindow* fullscreenWindow = [self window];
-	NSLog(@"Window: %@", fullscreenWindow);
 	
 	[fullscreenWindow setFrame:[[NSScreen mainScreen] frame] display:YES];
 	[fullscreenWindow makeKeyAndOrderFront:self];
@@ -116,18 +111,15 @@
 						   hasHorizontalScroller:NO
 							 hasVerticalScroller:NO
 									  borderType:[scrollView borderType]].width;
-	NSLog(@"Width: %f", width);
 	return width;
 }
 
 -(double)viewingAreaHeight
 {
-	NSLog(@"ScrollView frame: %@", NSStringFromRect([scrollView frame]));
 	double height = [NSScrollView contentSizeForFrameSize:[scrollView frame].size
 						   hasHorizontalScroller:NO
 							 hasVerticalScroller:NO
 									  borderType:[scrollView borderType]].height;
-	NSLog(@"Height: %f", height);
 	return height;
 }
 

@@ -90,8 +90,8 @@
 		fileList = [[ComponentManager getFileListPluginNamed:fileListName] build];
 		[fileList setDelegate:self];
 
-		window = [[VitaminSEEWindowController alloc] initWithFileList:fileList
-													   document:self];
+		window = [[VitaminSEEWindowController alloc] initWithFileList:fileList];
+		[self addWindowController:window];
 		viewerNotifications = [[NSNotificationCenter alloc] init];
 		
 		[window showWindow:window];
@@ -100,8 +100,6 @@
 		scaleMode = SCALE_IMAGE_TO_FIT;
 
 		[fileList setDirectory:path];
-		
-		old = 0;
 	}
 
 	return self;
@@ -217,7 +215,7 @@
 				self, @"Requester",
 			nil];
 		
-		NSLog(@"Task dictionary: %@", dic);
+//		NSLog(@"Task dictionary: %@", dic);
 		
 		[ImageLoader loadTask:dic];
 	}
@@ -366,6 +364,7 @@
  */
 -(BOOL)validateMenuItem:(NSMenuItem *)anItem
 {
+	NSLog(@"Validating %@", anItem);
 	SEL action = [anItem action];
 	BOOL enable = [self validateAction:action];	
 
@@ -386,7 +385,7 @@
 	}
 	else if(action == @selector(becomeFullScreen:))
 	{
-		if(old) 
+		if(![[window class] isEqual:[VitaminSEEWindowController class]]) 
 			[anItem setState:NSOnState];
 		else
 			[anItem setState:NSOffState];			
@@ -652,21 +651,26 @@
  */
 -(void)becomeFullScreen:(id)sender
 {
-	if(!old)
+	if([[window class] isEqual:[VitaminSEEWindowController class]])
 	{
 		// Become fullscreen
-		old = window;
+		NSWindow* old = window;
 		window = [[ComponentManager getInteranlComponentNamed:@"FullScreenMode"]
 			build];
+		[self addWindowController:window];
 		[window becomeFullscreen];
-		[self redraw];		
+		[self redraw];
+		[old close];
 	}
 	else
 	{
 		// Leave fullscreen
 		[window release];
-		window = old;
-		old = 0;
+
+		window = [[VitaminSEEWindowController alloc] initWithFileList:fileList];
+		[self addWindowController:window];		
+		[window setFileList:fileList];
+		[[window window] makeKeyAndOrderFront:self];
 		[self redraw];
 	}
 }

@@ -60,8 +60,7 @@
 	
 	float oldFileListSize;
 }
--(id)initWithFileList:(id<FileList>)inFileList
-			 document:(ViewerDocument*)viewerDocument;
+-(id)initWithFileList:(id<FileList>)inFileList;
 
 -(void)setFileList:(id<FileList>)newList;
 

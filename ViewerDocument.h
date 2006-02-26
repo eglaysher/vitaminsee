@@ -45,7 +45,6 @@
 
 @interface ViewerDocument : NSDocument <FileListDelegate> {
 	VitaminSEEWindowController* window;
-	VitaminSEEWindowController* old;
 	
 	NSNotificationCenter* viewerNotifications;
 	
