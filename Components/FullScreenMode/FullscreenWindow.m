@@ -1,20 +1,27 @@
 #import "FullscreenWindow.h"
 
+
+
 @implementation FullscreenWindow
 
-- (id)initWithContentRect:(NSRect)contentRect styleMask:(unsigned int)aStyle backing:(NSBackingStoreType)bufferingType defer:(BOOL)flag
+-(id)initWithContentRect:(NSRect)contentRect
+			   styleMask:(unsigned int)aStyle
+				 backing:(NSBackingStoreType)bufferingType
+				   defer:(BOOL)flag
 {
-	NSLog(@"Custom super build!");
 	self = [super initWithContentRect:contentRect 
 							styleMask:NSBorderlessWindowMask 
 							  backing:NSBackingStoreBuffered 
-								defer:YES];
-//	[self setMovableByWindowBackground:YES];
-	
+								defer:YES];	
 	return self;
 }
 
-- (BOOL) canBecomeKeyWindow
+-(BOOL)canBecomeKeyWindow
+{
+	return YES;
+}
+
+-(BOOL)canBecomeMainWindow
 {
 	return YES;
 }
