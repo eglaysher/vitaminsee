@@ -43,7 +43,6 @@
 	[[self window] makeFirstResponder:self];
 }
 
-// Move this to a NSScrollView subclass!?
 - (BOOL)acceptsFirstResponder
 {
 	return YES;

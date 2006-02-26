@@ -58,6 +58,7 @@ static NSString* menuTitles[] = {
 	@"---",
 	@"Reveal in Finder",
 	@"---",
+	@"Fullscreen",
 	@"Show File List",
 	@"---",
 	@"Show Toolbar",
@@ -73,13 +74,14 @@ static NSString* keyEquivalents[] = {
 	@"",
 	@"",
 	@"",
+	@"",
 	@"l",
 	@"",
 	@"",
 	@""
 };
 
-static SEL menuActions[12] = {0};
+static SEL menuActions[13] = {0};
 
 @implementation ViewMenuDelegate
 
@@ -93,10 +95,11 @@ static SEL menuActions[12] = {0};
 	menuActions[5] = 0;
 	menuActions[6] = @selector(revealInFinder:);
 	menuActions[7] = 0;
-	menuActions[8] = @selector(toggleFileList:);
-	menuActions[9] = 0;
-	menuActions[10] = @selector(toggleToolbarShown:);
-	menuActions[11] = @selector(runToolbarCustomizationPalette:);
+	menuActions[8] = @selector(becomeFullScreen:);
+	menuActions[9] = @selector(toggleFileList:);
+	menuActions[10] = 0;
+	menuActions[11] = @selector(toggleToolbarShown:);
+	menuActions[12] = @selector(runToolbarCustomizationPalette:);
 }
 
 - (int)numberOfItemsInMenu:(NSMenu *)menu

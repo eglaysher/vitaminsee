@@ -25,6 +25,31 @@
 
 @implementation MyImageView
 
+/** This is the image setting code. Note that we try to animate if neccessary,
+* that we do management related to getting the currsor correct, and that we
+* force display on the first image.
+*/
+-(void)setImage:(NSImage*)image
+{
+	id previousImage = [self image];
+	
+	[self setAnimates:YES];
+	[super setImage:image];
+	[self setFrameSize:[image size]];
+	
+	// Set the correct cursor by simulating the user releasing the mouse.
+	[self mouseUp:nil];
+	
+	if(!previousImage)
+	{
+		// This is the first time an image is being displayed; we need to
+		// update the display NOW.
+		[self setNeedsDisplay];
+	}
+}
+
+// ---------------------------------------------------------------------------
+
 - (void)mouseDown:(NSEvent *)theEvent
 {
 	[scrollView noteMouseDown];
@@ -47,6 +72,8 @@
 		[scrollView setDocumentCursor:nil];
 }
 
+// ---------------------------------------------------------------------------
+
 - (void)mouseDragged:(NSEvent *)theEvent
 {
 	NSSize imageSize = [[self image] size];
@@ -60,6 +87,8 @@
 		[self scrollPoint:NSMakePoint(x, y)];
 	}
 }
+
+// ---------------------------------------------------------------------------
 
 - (void)mouseUp:(NSEvent *)theEvent
 {	

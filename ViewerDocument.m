@@ -58,6 +58,7 @@
  */
 -(void)dealloc
 {
+	NSLog(@"Destroyed!");
 	[window release];		
 		
 	[currentFile release];
@@ -99,6 +100,8 @@
 		scaleMode = SCALE_IMAGE_TO_FIT;
 
 		[fileList setDirectory:path];
+		
+		old = 0;
 	}
 
 	return self;
@@ -213,6 +216,8 @@
 				currentFile, @"Path",
 				self, @"Requester",
 			nil];
+		
+		NSLog(@"Task dictionary: %@", dic);
 		
 		[ImageLoader loadTask:dic];
 	}
@@ -379,7 +384,13 @@
 		else
 			[anItem setState:NSOffState];
 	}
-
+	else if(action == @selector(becomeFullScreen:))
+	{
+		if(old) 
+			[anItem setState:NSOnState];
+		else
+			[anItem setState:NSOffState];			
+	}
 	
 	return enable;
 }
@@ -634,6 +645,30 @@
 {
 	[[NSWorkspace sharedWorkspace] selectFile:[currentFile fileSystemPath]
 					 inFileViewerRootedAtPath:@""];
+}
+
+
+/** Switch between fullscreen and not.
+ */
+-(void)becomeFullScreen:(id)sender
+{
+	if(!old)
+	{
+		// Become fullscreen
+		old = window;
+		window = [[ComponentManager getInteranlComponentNamed:@"FullScreenMode"]
+			build];
+		[window becomeFullscreen];
+		[self redraw];		
+	}
+	else
+	{
+		// Leave fullscreen
+		[window release];
+		window = old;
+		old = 0;
+		[self redraw];
+	}
 }
 
 //-----------------------------------------------------------------------------

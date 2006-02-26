@@ -45,6 +45,8 @@
 
 @interface ViewerDocument : NSDocument <FileListDelegate> {
 	VitaminSEEWindowController* window;
+	VitaminSEEWindowController* old;
+	
 	NSNotificationCenter* viewerNotifications;
 	
 	// The document ID. This is how we identify ourselves. This doesn't change
