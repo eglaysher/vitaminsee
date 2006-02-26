@@ -2,6 +2,7 @@
     IBClasses = (
         {CLASS = EGScrollView; LANGUAGE = ObjC; SUPERCLASS = NSScrollView; }, 
         {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {CLASS = FullscreenWindow; LANGUAGE = ObjC; SUPERCLASS = NSWindow; }, 
         {
             CLASS = FullscreenWindowController; 
             LANGUAGE = ObjC; 

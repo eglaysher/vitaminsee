@@ -364,7 +364,6 @@
  */
 -(BOOL)validateMenuItem:(NSMenuItem *)anItem
 {
-	NSLog(@"Validating %@", anItem);
 	SEL action = [anItem action];
 	BOOL enable = [self validateAction:action];	
 
@@ -665,13 +664,19 @@
 	else
 	{
 		// Leave fullscreen
-		[window release];
-
+		NSWindow* old = window;
+		
+		// Recreate the real VitaminSEE window.
 		window = [[VitaminSEEWindowController alloc] initWithFileList:fileList];
 		[self addWindowController:window];		
 		[window setFileList:fileList];
+		[window updateWindowTitle];
+		
 		[[window window] makeKeyAndOrderFront:self];
 		[self redraw];
+		[old close];
+		
+		NSLog(@"Window controllers: %@", [self windowControllers]);
 	}
 }
 

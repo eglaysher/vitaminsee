@@ -21,12 +21,10 @@
 	return self;
 }
 
--(void)dealloc
+-(void)windowWillClose:(id)huh
 {
-	NSLog(@"Closing fullscreen window.");
-	[[self window] close];
-	SetSystemUIMode(kUIModeNormal, kUIOptionAutoShowMenuBar); // to enter fullscreen	
-	[super dealloc];
+	NSLog(@"Window will close");
+	SetSystemUIMode(kUIModeNormal, 0); // to enter fullscreen	
 }
 
 -(void)awakeFromNib
@@ -45,15 +43,17 @@
 	[scrollView setDocumentView:docView];
 	[docView release];
 	
-	[self setWindow:[[NSWindow alloc] initWithContentRect:screenRect
-												styleMask:NSBorderlessWindowMask
-												  backing:NSBackingStoreBuffered
-													defer:NO
-												   screen:[NSScreen mainScreen]]];
-	
-	// Now fish out the content view from the panel in the NIB.
-	[viewerPanel setFrame:screenRect display:YES];
-	[[self window] setContentView:[viewerPanel contentView]];
+//	[self setWindow:[[NSWindow alloc] initWithContentRect:screenRect
+//												styleMask:NSBorderlessWindowMask
+//												  backing:NSBackingStoreBuffered
+//													defer:NO
+//												   screen:[NSScreen mainScreen]]];
+//	
+//	// Now fish out the content view from the panel in the NIB.
+//	[viewerPanel setFrame:screenRect display:YES];
+//	[[self window] setContentView:[viewerPanel contentView]];
+//	[[self window] setSty
+	[[self window] setFrame:screenRect display:YES];
 	
 	// Now set up the image view
 	[scrollView setAutohidesScrollers:YES];
