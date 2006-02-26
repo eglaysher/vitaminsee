@@ -8,6 +8,7 @@
 
 #import "FullscreenWindowController.h"
 #import "SBCenteringClipView.h"
+#import "FileListWindowController.h"
 
 #import <Carbon/Carbon.h>
 
@@ -21,10 +22,19 @@
 	return self;
 }
 
+-(void)dealloc
+{
+	[fileListViewerController release];
+	[super dealloc];
+}
+
 -(void)windowWillClose:(id)huh
 {
-	NSLog(@"Window will close");
-	SetSystemUIMode(kUIModeNormal, 0); // to enter fullscreen	
+	// Close the other windows
+	[fileListViewerController close];
+	
+	// Restore the menu bar to the way it was before fullscreen mode.
+	SetSystemUIMode(kUIModeNormal, 0); 
 }
 
 -(void)awakeFromNib
@@ -43,16 +53,6 @@
 	[scrollView setDocumentView:docView];
 	[docView release];
 	
-//	[self setWindow:[[NSWindow alloc] initWithContentRect:screenRect
-//												styleMask:NSBorderlessWindowMask
-//												  backing:NSBackingStoreBuffered
-//													defer:NO
-//												   screen:[NSScreen mainScreen]]];
-//	
-//	// Now fish out the content view from the panel in the NIB.
-//	[viewerPanel setFrame:screenRect display:YES];
-//	[[self window] setContentView:[viewerPanel contentView]];
-//	[[self window] setSty
 	[[self window] setFrame:screenRect display:YES];
 	
 	// Now set up the image view
@@ -67,7 +67,12 @@
 	[fullscreenWindow setFrame:[[NSScreen mainScreen] frame] display:YES];
 	[fullscreenWindow makeKeyAndOrderFront:self];
 	
-	SetSystemUIMode(kUIModeAllHidden, kUIOptionAutoShowMenuBar); // to enter fullscreen	
+	// Hide everything, but allow the menu bar to slide down.
+	SetSystemUIMode(kUIModeAllHidden, kUIOptionAutoShowMenuBar); 
+	
+	// Now, we show the file list.
+	fileListViewerController = [[FileListWindowController alloc] init];
+	[fileListViewerController showWindow:self];
 }
 
 // ---------------------------------------------------------------------------
@@ -75,6 +80,9 @@
 /// Set the file list 
 -(void)setFileList:(id<FileList>)newList
 {
+	// Pass this message off to the FileListWindowController
+	[fileListViewerController setFileList:newList];
+	
 //	fileList = newList;
 //	
 //	id fileListView = [fileList getView];
@@ -95,8 +103,15 @@
 -(void)stopProgressIndicator {}
 
 // These need to be set eventually.
--(void)setFileSizeLabelText:(int)fileSize {}
--(void)setImageSizeLabelText:(NSSize)size {}
+-(void)setFileSizeLabelText:(int)fileSize 
+{
+	[fileListViewerController setFileSizeLabelText:fileSize];
+}
+
+-(void)setImageSizeLabelText:(NSSize)size 
+{
+	[fileListViewerController setImageSizeLabelText:size];
+}
 
 //-----------------------------------------------------------------------------
 
@@ -137,12 +152,12 @@
 	{
 		// In case of toggleFileList:, we need to make sure that we present the
 		// correct label to the user.
-//		if([[splitView subviewAtPosition:0] isCollapsed])
-//			[anItem setTitle:NSLocalizedString(@"Show File List", 
-//											   @"Text in View menu")];
-//		else
-//			[anItem setTitle:NSLocalizedString(@"Hide File List",
-//											   @"Text in View menu")];		
+		if(![[fileListViewerController window] isVisible])
+			[anItem setTitle:NSLocalizedString(@"Show File List", 
+											   @"Text in View menu")];
+		else
+			[anItem setTitle:NSLocalizedString(@"Hide File List",
+											   @"Text in View menu")];		
 	}
 	
 	return enable;
@@ -156,7 +171,10 @@
 */
 -(void)toggleFileList:(id)sender
 {
-	// The semantics here change quite a lot. Fix this.
+	if(![[fileListViewerController window] isVisible])
+		[fileListViewerController showWindow:self];
+	else
+		[[fileListViewerController window] performClose:self];
 }
 
 @end

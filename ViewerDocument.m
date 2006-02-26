@@ -657,6 +657,7 @@
 		window = [[ComponentManager getInteranlComponentNamed:@"FullScreenMode"]
 			build];
 		[self addWindowController:window];
+		[window setFileList:fileList];
 		[window becomeFullscreen];
 		[self redraw];
 		[old close];

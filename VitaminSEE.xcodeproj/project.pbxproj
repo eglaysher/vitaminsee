@@ -65,6 +65,8 @@
 		8B51671B0992E8E5005C38C7 /* RenameFileSheet.nib in Resources */ = {isa = PBXBuildFile; fileRef = 8B51671A0992E8E5005C38C7 /* RenameFileSheet.nib */; };
 		8B5168EC09930C08005C38C7 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B7F0DA10964A94E00B7A46D /* Carbon.framework */; };
 		8B5A812F09B21C5200F7303C /* FullscreenWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5A812E09B21C5200F7303C /* FullscreenWindow.m */; };
+		8B5A827B09B2401000F7303C /* FileList.nib in Resources */ = {isa = PBXBuildFile; fileRef = 8B5A827909B2401000F7303C /* FileList.nib */; };
+		8B5A828709B2405600F7303C /* FileListWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5A828509B2405600F7303C /* FileListWindowController.m */; };
 		8B5EDA520916E65E00EE5414 /* DNDArrayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5EDA4E0916E65E00EE5414 /* DNDArrayController.m */; };
 		8B5EDA540916E65E00EE5414 /* FavoritesPreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5EDA510916E65E00EE5414 /* FavoritesPreferencesController.m */; };
 		8B5EDA790916E6FF00EE5414 /* FavoritesPreferences.nib in Resources */ = {isa = PBXBuildFile; fileRef = 8B5EDA750916E6FF00EE5414 /* FavoritesPreferences.nib */; };
@@ -487,6 +489,9 @@
 		8B5167180992E8CD005C38C7 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = Components/FileOperations/English.lproj/RenameFileSheet.nib; sourceTree = "<group>"; };
 		8B5A812D09B21C5200F7303C /* FullscreenWindow.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = FullscreenWindow.h; path = Components/FullScreenMode/FullscreenWindow.h; sourceTree = "<group>"; };
 		8B5A812E09B21C5200F7303C /* FullscreenWindow.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = FullscreenWindow.m; path = Components/FullScreenMode/FullscreenWindow.m; sourceTree = "<group>"; };
+		8B5A827A09B2401000F7303C /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = Components/FullScreenMode/English.lproj/FileList.nib; sourceTree = "<group>"; };
+		8B5A828509B2405600F7303C /* FileListWindowController.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = FileListWindowController.m; path = Components/FullScreenMode/FileListWindowController.m; sourceTree = "<group>"; };
+		8B5A828609B2405600F7303C /* FileListWindowController.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = FileListWindowController.h; path = Components/FullScreenMode/FileListWindowController.h; sourceTree = "<group>"; };
 		8B5EDA260916E62900EE5414 /* FavoritesPreferences.VSPref */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FavoritesPreferences.VSPref; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B5EDA4D0916E65E00EE5414 /* DNDArrayController.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = DNDArrayController.h; path = Components/FavoritesPreferences/DNDArrayController.h; sourceTree = "<group>"; };
 		8B5EDA4E0916E65E00EE5414 /* DNDArrayController.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = DNDArrayController.m; path = Components/FavoritesPreferences/DNDArrayController.m; sourceTree = "<group>"; };
@@ -1127,6 +1132,7 @@
 			isa = PBXGroup;
 			children = (
 				8B7BA8E609B155BC002D34D8 /* FullScreenMode-Info.plist */,
+				8B5A827909B2401000F7303C /* FileList.nib */,
 				8B7BA8D009B1553B002D34D8 /* ImageViewing.nib */,
 				8B7BA8CA09B154B3002D34D8 /* FullscreenWindowController.h */,
 				8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */,
@@ -1134,6 +1140,8 @@
 				8B7BA8CD09B154B3002D34D8 /* FullScreenWindowControllerFactory.m */,
 				8B5A812D09B21C5200F7303C /* FullscreenWindow.h */,
 				8B5A812E09B21C5200F7303C /* FullscreenWindow.m */,
+				8B5A828509B2405600F7303C /* FileListWindowController.m */,
+				8B5A828609B2405600F7303C /* FileListWindowController.h */,
 			);
 			name = FullScreenMode;
 			sourceTree = "<group>";
@@ -2527,6 +2535,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B7BA91D09B15721002D34D8 /* ImageViewing.nib in Resources */,
+				8B5A827B09B2401000F7303C /* FileList.nib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2707,6 +2716,7 @@
 				8B7BA91509B15718002D34D8 /* FullscreenWindowController.m in Sources */,
 				8B7BA91609B15718002D34D8 /* FullScreenWindowControllerFactory.m in Sources */,
 				8B5A812F09B21C5200F7303C /* FullscreenWindow.m in Sources */,
+				8B5A828709B2405600F7303C /* FileListWindowController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2996,6 +3006,14 @@
 				8BC3626B09A16FEB0044BC57 /* Japanese */,
 			);
 			name = RenameFileSheet.nib;
+			sourceTree = "<group>";
+		};
+		8B5A827909B2401000F7303C /* FileList.nib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8B5A827A09B2401000F7303C /* English */,
+			);
+			name = FileList.nib;
 			sourceTree = "<group>";
 		};
 		8B5EDA750916E6FF00EE5414 /* FavoritesPreferences.nib */ = {

@@ -10,6 +10,7 @@
 #import "FileList.h"
 
 @class ViewerDocument;
+@class FileListWindowController;
 
 @interface FullscreenWindowController : NSWindowController {
 	IBOutlet NSImageView *imageViewer;
@@ -17,7 +18,7 @@
 	IBOutlet NSPanel* viewerPanel;
 
 	// We own this because we have no other choice design wise.
-	NSWindowController* fileListViewerController;
+	FileListWindowController* fileListViewerController;
 }
 
 -(id)initWithFileList:(id<FileList>)inFileList
