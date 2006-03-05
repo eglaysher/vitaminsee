@@ -36,6 +36,8 @@
 -(void)setupExtensions;
 -(void)addExtension;
 -(void)removeExtension;
+-(NSString*)handleDualExtensionProblem:(NSString*)rawName 
+							   realExt:(NSString*)realExt;
 @end
 
 @implementation RenameFileSheetController
@@ -182,15 +184,27 @@
 			return;
 		}
 		
-		
-		// Now we reconstruct the new name based off of the properties of
-		// the "Hide Extensions" checkbox.
-		BOOL hideExtension = [hideExtensionButton state] == NSOnState;
-		if(hideExtension)
-			rawName = [rawName stringByAppendingPathExtension:trueExtension];
-		
-		if(hideExtensionOrig != hideExtension)
-			[self undoableSetExtensionHidden:initialPath hidden:hideExtension];
+		// Now we check to see if the user did something stupid like trying to
+		// make a ".gif.jpg" file. We'll need to deal with that as a special
+		// case.
+		NSString* currentExtensionInBox = [rawName pathExtension];
+		if(![currentExtensionInBox isEqualTo:@""] &&
+		   ![trueExtension isEqualToString:[rawName pathExtension]])
+		{
+			rawName = [self handleDualExtensionProblem:rawName realExt:trueExtension];
+		}
+		// Otherwise, we try to reconstruct the file name and set the hidden
+		// extension bit normally.
+		else
+		{
+			BOOL hideExtension = [hideExtensionButton state] == NSOnState;
+			if(hideExtension)
+				rawName = [rawName stringByAppendingPathExtension:trueExtension];
+			
+			// Note that setting the hiden bit is here; 
+			if(hideExtensionOrig != hideExtension)
+				[self undoableSetExtensionHidden:initialPath hidden:hideExtension];
+		}
 		
 		if(![rawName isEqualTo:[[initialPath fileSystemPath] lastPathComponent]])
 		{
@@ -203,6 +217,11 @@
 				
 				[self undoableFocusOnFile:newPath oldPath:initialPath doc:doc];
 			}			
+		}
+		else
+		{
+			[self undoableFocusOnFile:[initialPath fileSystemPath]
+							  oldPath:initialPath doc:doc];			
 		}
 	}
 }
@@ -227,13 +246,23 @@
 {
 	NSUndoManager* um = [doc undoManager];
 	NSFileManager* manager = [NSFileManager defaultManager];
-	[[um prepareWithInvocationTarget:self] undoableSetExtensionHidden:file
-															   hidden:!hidden];
-	
-	NSDictionary *dic = [NSDictionary dictionaryWithObject:[NSNumber numberWithBool:hidden]
-													forKey:NSFileExtensionHidden];
-	
-	[manager changeFileAttributes:dic atPath:[file fileSystemPath]];
+		
+	// Get the current state of the hidden bit.
+	NSDictionary* fattrs = [manager fileAttributesAtPath:[file fileSystemPath]
+											traverseLink:NO];
+	BOOL currentHideExtension = [[fattrs objectForKey:NSFileExtensionHidden] boolValue];
+
+	if(currentHideExtension != hidden)
+	{
+		[[um prepareWithInvocationTarget:self] undoableSetExtensionHidden:file
+																   hidden:!hidden];
+		
+		NSDictionary *dic = [NSDictionary dictionaryWithObject:[NSNumber numberWithBool:hidden]
+														forKey:NSFileExtensionHidden];
+		
+		[manager changeFileAttributes:dic atPath:[file fileSystemPath]];
+		
+	}
 }
 
 @end
@@ -279,6 +308,39 @@
 {
 	[folderName setStringValue:
 		[[folderName stringValue] stringByAppendingPathExtension:trueExtension]];
+}
+
+//-----------------------------------------------------------------------------
+
+/** Handles the case where a user has decided to try to do something like 
+ * ".jpg.gif". Brings up a standard dialog about this, and then will take the
+ * appropriate 
+ *
+ * @returns The corrected file name. NULL if the user canceled.
+ */
+-(NSString*)handleDualExtensionProblem:(NSString*)rawName realExt:(NSString*)realExt
+{
+	NSUndoManager* um = [doc undoManager];
+	
+	NSAlert *alert = [[NSAlert alloc] init];
+	[alert addButtonWithTitle:[NSString stringWithFormat:@"Keep .%@", realExt]];
+	[alert addButtonWithTitle:[NSString stringWithFormat:@"Use .%@", 
+		[rawName pathExtension]]];
+	[alert setMessageText:[NSString stringWithFormat:
+		@"Are you sure you want to change the extension from \".%@\" to \".%@\"?",
+		realExt, [rawName pathExtension]]];
+	[alert setInformativeText:@"If you make this change, your document may open in a different application."];
+
+	if ([alert runModal] == NSAlertFirstButtonReturn) {
+		rawName = [[rawName stringByDeletingPathExtension] 
+			stringByAppendingPathExtension:realExt];
+		
+	}
+	[self undoableSetExtensionHidden:initialPath hidden:NO];
+	
+	[alert release];
+	
+	return rawName;
 }
 
 @end

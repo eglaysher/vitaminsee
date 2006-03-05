@@ -59,5 +59,4 @@
 -(void)undoableFocusOnFile:(NSString*)newPath oldPath:(EGPath*)oldPath
 					   doc:(id)document;
 -(void)undoableSetExtensionHidden:(EGPath*)file hidden:(BOOL)hidden;
-
 @end

@@ -238,9 +238,12 @@ static BOOL shouldPreloadImages;
 {
 	unsigned index = [fileList binarySearchFor:[file fileSystemPath]
 							  withSortSelector:@selector(caseInsensitiveCompare:)];
-
+	
 	if(index != NSNotFound)
 	{
+		//[[ourBrowser loadedCellAtRow:index column:0] setNeedsDisplay];
+		NSLog(@"Need display!");
+		[ourBrowser setNeedsDisplay];
 		[ourBrowser selectRow:index inColumn:0];
 
 		// Now notify the delegate like it's a normal file selection operation.

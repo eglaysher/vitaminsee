@@ -42,6 +42,8 @@
 
 	float cachedTitleWidth;
 	NSString* cachedCellTitle;
+	
+	NSString* displayName;
 }
 
 -(void)setCellPropertiesFromPath:(NSString*)path andEGPath:(EGPath*)egpath;

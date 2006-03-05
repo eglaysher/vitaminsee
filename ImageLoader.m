@@ -524,6 +524,11 @@ static BOOL newTaskThatPreemptsPreload(NSDictionary* currentTask)
 	// store our data.
 	NSString* filesystemPath = [path fileSystemPath];
 	FILE* inFile = fopen([filesystemPath fileSystemRepresentation], "r");
+	if(inFile == 0)
+	{
+		NSLog(@"Error! Could not open file %@!", filesystemPath);
+		return NULL;		
+	}
 	int fileSize = [filesystemPath fileSize];
 	void* rawdata = malloc(fileSize);
 	
