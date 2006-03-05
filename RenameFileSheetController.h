@@ -34,25 +34,30 @@
 @interface RenameFileSheetController : NSWindowController {
 	IBOutlet NSTextField* labelName;
 	IBOutlet NSTextField* folderName;
+	IBOutlet NSButton* hideExtensionButton;
 	
-	bool cancel;
+	BOOL cancel;
 	EGPath* initialPath;
 	
 	id fileOperations;
 	id doc;
+	
+	NSString* trueExtension;
+	BOOL hideExtensionOrig;
 }
 
 -(id)initWithFileOperations:(id)operations;
 
 -(IBAction)clickOK:(id)sender;
 -(IBAction)clickCancel:(id)sender;
+-(IBAction)clickHideExtensions:(id)sender;
 
 -(void)showSheet:(NSWindow*)window 
 	initialValue:(EGPath*)initial
   notifyWhenDone:(id)document;
 
-
 -(void)undoableFocusOnFile:(NSString*)newPath oldPath:(EGPath*)oldPath
 					   doc:(id)document;
+-(void)undoableSetExtensionHidden:(EGPath*)file hidden:(BOOL)hidden;
 
 @end

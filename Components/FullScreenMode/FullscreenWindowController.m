@@ -17,6 +17,12 @@
 -(id)init
 {
 	if(self = [super initWithWindowNibName:@"ImageViewing"]) {
+		// Load the FileList
+		fileListViewerController = [[FileListWindowController alloc] init];
+		[fileListViewerController window];
+		
+		// Load the Controls
+		
 	}
 	
 	return self;
@@ -69,10 +75,6 @@
 	
 	// Hide everything, but allow the menu bar to slide down.
 	SetSystemUIMode(kUIModeAllHidden, kUIOptionAutoShowMenuBar); 
-	
-	// Now, we show the file list.
-	fileListViewerController = [[FileListWindowController alloc] init];
-	[fileListViewerController showWindow:self];
 }
 
 // ---------------------------------------------------------------------------
@@ -82,11 +84,6 @@
 {
 	// Pass this message off to the FileListWindowController
 	[fileListViewerController setFileList:newList];
-	
-//	fileList = newList;
-//	
-//	id fileListView = [fileList getView];
-//	[currentFileViewHolder setSubview:fileListView];
 }
 
 //-----------------------------------------------------------------------------
@@ -138,10 +135,15 @@
 	return height;
 }
 
+-(BOOL)fileListControllerVisible
+{
+	[[fileListViewerController window] isVisible];
+}
+
 //-----------------------------------------------------------------------------
 
 /** Menu item validation
-*/
+ */
 -(BOOL)validateMenuItem:(NSMenuItem *)anItem
 {
 	// Default behaviour: only enable if we respond to this selector.

@@ -70,13 +70,6 @@
 
 ////////////////////////////////////////////////// WHERE TO GO FROM HERE...
 
-// Required tasks:
-// * Make the FileList use a UKKqueue instance to monitor the current directory;
-//   makes stupid, hacky old file management code go away, and make the FileList
-//   more self contained.
-// * Integrate preferences
-// * SPEED UP SORT MANAGER AND FILE OPERATIONS!
-
 // For Version 0.7
 // * Delete key in sort manager preferences should do something. + UNDO!!!!
 // * Automator actions:
@@ -112,29 +105,10 @@
 // For Version 1.0
 // ??????
 
-// For Version 0.6.2
-// * Cache control. How large?
-// * Check for file on remote volume.
-
 // KNOWN ISSUES:
 // * GIF animation speed.
 // * (Some) Animated GIFs broken in Tiger?
-// * Very rare Kotoeri crash at startup. No clue what's causing it.
 // * Disable labels in KeywordManager (wishlist)
-
-/* Okay, refactoring responsibilities:
-  * ApplicationController is responsible for ONLY:
-    * Displaying the image
-    * Knowing the name of the current image
-    * Responding to UI events
-  * FileDisplay
-    * Knows about the current directory. Draws stuff. Et cetera.
-*/
-
-/**
-  Non-required improvements that would be a good idea:
-  * Fit to height/Fit to width
-  */
 
 /////////////////////////////////////////////////////////// POST CONTEST GOALS:
 
@@ -326,7 +300,16 @@ static ApplicationController* appControl;
 	BOOL enable = [self respondsToSelector:[theMenuItem action]];
 	SEL action = [theMenuItem action];
 	
-	if(action == @selector(fakeOpenWithMenuSelector:))
+	if(action == @selector(newWindow:))
+	{
+		// This checks to make sure that if there's already a window out there,
+		// then check to make sure its the normal one. If there's a fullscreen
+		// window displayed, we do NOT want to be able to make new windows.
+		id windowController = [[NSApp mainWindow] windowController];
+		if(![windowController isKindOfClass:[VitaminSEEWindowController class]])
+			enable = NO;
+	}
+	else if(action == @selector(fakeOpenWithMenuSelector:))
 		enable = [self validateOpenWithMenuItem:theMenuItem];
 	else if (action == @selector(fakeFavoritesMenuSelector:))
 		enable = [self validateFavoritesMenuItem:theMenuItem];
@@ -466,10 +449,7 @@ static ApplicationController* appControl;
  */
 -(EGPath*)currentFile
 {
-	NSWindow* mainWindow = [NSApp mainWindow];
-	NSWindowController* controller = [mainWindow windowController];
-	ViewerDocument* document = [controller document];
-
+	ViewerDocument* document = [[[NSApp mainWindow] windowController] document];
 	return [document currentFile];
 }
 

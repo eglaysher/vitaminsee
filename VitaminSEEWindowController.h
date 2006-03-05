@@ -90,4 +90,7 @@
 -(float)nonImageWidth;
 -(float)nonImageHeight;
 
+-(BOOL)fileListHidden;
+
+-(void)setFileListVisible:(BOOL)visible;
 @end

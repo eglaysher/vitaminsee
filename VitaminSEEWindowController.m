@@ -430,6 +430,11 @@
 	return content.size.height - [scrollView frame].size.height;
 }
 
+-(BOOL)fileListHidden
+{
+	return [[splitView subviewAtPosition:0] isCollapsed];
+}
+
 //-----------------------------------------------------------------------------
 
 /** Menu item validation
@@ -444,7 +449,7 @@
 	{
 		// In case of toggleFileList:, we need to make sure that we present the
 		// correct label to the user.
-		if([[splitView subviewAtPosition:0] isCollapsed])
+		if([self fileListHidden])
 			[anItem setTitle:NSLocalizedString(@"Show File List", 
 											   @"Text in View menu")];
 		else
@@ -467,6 +472,16 @@
 	if ([firstSplit isCollapsed]) 
 		[firstSplit expandWithAnimation:NO withResize:NO];
 	else 
+		[firstSplit collapseWithAnimation:NO withResize:NO];
+}
+
+-(void)setFileListVisible:(BOOL)visible
+{
+	RBSplitSubview* firstSplit = [splitView subviewAtPosition:0];
+
+	if(visible && [firstSplit isCollapsed])
+		[firstSplit expandWithAnimation:NO withResize:NO];
+	else if(!visible && ![firstSplit isCollapsed])
 		[firstSplit collapseWithAnimation:NO withResize:NO];
 }
 

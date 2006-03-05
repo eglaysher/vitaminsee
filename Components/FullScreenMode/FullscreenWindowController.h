@@ -43,4 +43,6 @@
 -(double)viewingAreaHeight;
 
 -(void)becomeFullscreen;
+
+-(BOOL)fileListControllerVisible;
 @end

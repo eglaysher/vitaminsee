@@ -658,6 +658,8 @@
 			build];
 		[self addWindowController:window];
 		[window setFileList:fileList];
+		if(![old fileListHidden])
+			[window toggleFileList:self];
 		[window becomeFullscreen];
 		[self redraw];
 		[old close];
@@ -665,13 +667,18 @@
 	else
 	{
 		// Leave fullscreen
-		NSWindow* old = window;
+		NSWindowController* old = window;
 		
 		// Recreate the real VitaminSEE window.
 		window = [[VitaminSEEWindowController alloc] initWithFileList:fileList];
 		[self addWindowController:window];		
 		[window setFileList:fileList];
 		[window updateWindowTitle];
+		
+		// Right here, we need to get the state of the file list from the
+		// Fullscreen window controller and set it back to whatever it is
+		// right here be collapsing or expanding the system.
+		[window setFileListVisible:[old fileListControllerVisible]];
 		
 		[[window window] makeKeyAndOrderFront:self];
 		[self redraw];
