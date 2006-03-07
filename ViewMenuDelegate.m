@@ -31,6 +31,12 @@
 
 #import "ViewMenuDelegate.h"
 #import "ComponentManager.h"
+#import "VitaminSEEWindowController.h"
+
+/** This entire class needs to be better thought out; it started out clean, but
+ * is now a layer of hacks.
+ *
+ */
 
 // Here is the structure to the View menu:
 //
@@ -60,6 +66,7 @@ static NSString* menuTitles[] = {
 	@"---",
 	@"Fullscreen",
 	@"Show File List",
+	@"Show Fullscreen Controlls",
 	@"---",
 	@"Show Toolbar",
 	@"Customize Toolbar..."
@@ -78,10 +85,11 @@ static NSString* keyEquivalents[] = {
 	@"l",
 	@"",
 	@"",
+	@"",
 	@""
 };
 
-static SEL menuActions[13] = {0};
+static SEL menuActions[14] = {0};
 
 @implementation ViewMenuDelegate
 
@@ -97,21 +105,30 @@ static SEL menuActions[13] = {0};
 	menuActions[7] = 0;
 	menuActions[8] = @selector(becomeFullScreen:);
 	menuActions[9] = @selector(toggleFileList:);
-	menuActions[10] = 0;
-	menuActions[11] = @selector(toggleToolbarShown:);
-	menuActions[12] = @selector(runToolbarCustomizationPalette:);
+	menuActions[10] = @selector(toggleFullScreenControls:);
+	menuActions[11] = 0;
+	menuActions[12] = @selector(toggleToolbarShown:);
+	menuActions[13] = @selector(runToolbarCustomizationPalette:);
 }
 
 - (int)numberOfItemsInMenu:(NSMenu *)menu
 {	
 	int count = 0;
 
-	// If we have more then one file
+	// If we have more then one FileList, we want a check box list of them, so
+	// count them, plus one for the divider.
 	int fileListCount = [[ComponentManager getFileListsToDisplayInMenu] count];
 	if(fileListCount > 1)
 		count += fileListCount + 1;
 
-	count += 11;
+	// If we're in fullscreen mode, we need to display 12 items (the
+	// toggleFullScreenControls: item), otherwise don't display.
+	id windowController = [[NSApp mainWindow] windowController];
+	if(![windowController isKindOfClass:[VitaminSEEWindowController class]])
+		count += 13;
+	else
+		count += 12;
+	
 	return count;
 }
 
@@ -125,6 +142,9 @@ shouldCancel:(BOOL)shouldCancel
 {
 	NSArray* fileLists = [ComponentManager getFileListsToDisplayInMenu];
 	BOOL shouldDisplayFileLists = [fileLists count] > 1;
+	id windowController = [[NSApp mainWindow] windowController];
+	BOOL isFullscreen = 
+		![windowController isKindOfClass:[VitaminSEEWindowController class]];
 	
 	if(shouldDisplayFileLists && index < [fileLists count]) 
 	{
@@ -152,12 +172,21 @@ shouldCancel:(BOOL)shouldCancel
 		int localIndex;
 		if(shouldDisplayFileLists)
 			localIndex = index - [fileLists count];
-		else
+		else if(isFullscreen)
+		{
 			localIndex = index + 1;
+		}
+		else
+		{
+			if(index <= 8)
+				localIndex = index + 1;
+			else
+				localIndex = index + 2;
+		}
 		
 		NSString* title = menuTitles[localIndex];
 		NSString* localalized = NSLocalizedString(title, @"View menu");
-		
+				
 		if([title isEqual:@"---"]) 
 		{
 			[menu removeItemAtIndex:index];
@@ -165,9 +194,13 @@ shouldCancel:(BOOL)shouldCancel
 		}
 		else
 		{
-			[item setTitle:localalized];
-			[item setAction:menuActions[localIndex]];
-			[item setKeyEquivalent:keyEquivalents[localIndex]];
+			NSMenuItem* newItem = [[NSMenuItem alloc] init];
+			[newItem setTitle:localalized];
+			[newItem setAction:menuActions[localIndex]];
+			[newItem setKeyEquivalent:keyEquivalents[localIndex]];
+			
+			[menu removeItemAtIndex:index];
+			[menu insertItem:newItem atIndex:index];
 		}
 	}
 	

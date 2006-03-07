@@ -26,6 +26,7 @@
             ACTIONS = {
                 actualSize = id; 
                 addToFavorites = id; 
+                becomeFullScreen = id; 
                 goBack = id; 
                 goEnclosingFolder = id; 
                 goForward = id; 

@@ -11,6 +11,7 @@
 
 @class ViewerDocument;
 @class FileListWindowController;
+@class FullScreenControlWindowController;
 
 @interface FullscreenWindowController : NSWindowController {
 	IBOutlet NSImageView *imageViewer;
@@ -19,6 +20,7 @@
 
 	// We own this because we have no other choice design wise.
 	FileListWindowController* fileListViewerController;
+	FullScreenControlWindowController* fullScreenControlWindowController;
 }
 
 -(id)initWithFileList:(id<FileList>)inFileList
@@ -43,6 +45,4 @@
 -(double)viewingAreaHeight;
 
 -(void)becomeFullscreen;
-
--(BOOL)fileListControllerVisible;
 @end

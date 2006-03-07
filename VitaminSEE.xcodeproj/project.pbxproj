@@ -113,6 +113,8 @@
 		8BB691FE099DBA3E001AE27B /* VitaminSEE Help in Resources */ = {isa = PBXBuildFile; fileRef = 8BB691CE099DBA3E001AE27B /* VitaminSEE Help */; };
 		8BB695B7099E3309001AE27B /* goto.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BB695B6099E3309001AE27B /* goto.png */; };
 		8BB695FF099E4329001AE27B /* Changelog in Resources */ = {isa = PBXBuildFile; fileRef = 8BB695FE099E4329001AE27B /* Changelog */; };
+		8BBAE76009BD300F00789AEF /* Controls.nib in Resources */ = {isa = PBXBuildFile; fileRef = 8BBAE75E09BD300F00789AEF /* Controls.nib */; };
+		8BBAE76709BD308200789AEF /* FullScreenControlWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BBAE76609BD308200789AEF /* FullScreenControlWindowController.m */; };
 		8BC078720938024B0098E29B /* UKFNSubscribeFileWatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BC0786D0938024B0098E29B /* UKFNSubscribeFileWatcher.m */; };
 		8BC078730938024B0098E29B /* UKKQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BC0786F0938024B0098E29B /* UKKQueue.m */; };
 		8BC078740938024B0098E29B /* UKMainThreadProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BC078710938024B0098E29B /* UKMainThreadProxy.m */; };
@@ -554,6 +556,9 @@
 		8BB69201099DBA57001AE27B /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Japanese; path = "Japanese.lproj/VitaminSEE Help"; sourceTree = "<group>"; };
 		8BB695B6099E3309001AE27B /* goto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = goto.png; path = Resources/goto.png; sourceTree = "<group>"; };
 		8BB695FE099E4329001AE27B /* Changelog */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = Changelog; sourceTree = "<group>"; };
+		8BBAE75F09BD300F00789AEF /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = Components/FullScreenMode/English.lproj/Controls.nib; sourceTree = "<group>"; };
+		8BBAE76509BD308200789AEF /* FullScreenControlWindowController.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = FullScreenControlWindowController.h; path = Components/FullScreenMode/FullScreenControlWindowController.h; sourceTree = "<group>"; };
+		8BBAE76609BD308200789AEF /* FullScreenControlWindowController.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = FullScreenControlWindowController.m; path = Components/FullScreenMode/FullScreenControlWindowController.m; sourceTree = "<group>"; };
 		8BC0786B0938024B0098E29B /* UKFileWatcher.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = UKFileWatcher.h; path = Components/ViewIconsFileList/UKFileWatcher.h; sourceTree = "<group>"; };
 		8BC0786C0938024B0098E29B /* UKFNSubscribeFileWatcher.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = UKFNSubscribeFileWatcher.h; path = Components/ViewIconsFileList/UKFNSubscribeFileWatcher.h; sourceTree = "<group>"; };
 		8BC0786D0938024B0098E29B /* UKFNSubscribeFileWatcher.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = UKFNSubscribeFileWatcher.m; path = Components/ViewIconsFileList/UKFNSubscribeFileWatcher.m; sourceTree = "<group>"; };
@@ -1134,6 +1139,7 @@
 				8B7BA8E609B155BC002D34D8 /* FullScreenMode-Info.plist */,
 				8B5A827909B2401000F7303C /* FileList.nib */,
 				8B7BA8D009B1553B002D34D8 /* ImageViewing.nib */,
+				8BBAE75E09BD300F00789AEF /* Controls.nib */,
 				8B7BA8CA09B154B3002D34D8 /* FullscreenWindowController.h */,
 				8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */,
 				8B7BA8CC09B154B3002D34D8 /* FullScreenWindowControllerFactory.h */,
@@ -1142,6 +1148,8 @@
 				8B5A812E09B21C5200F7303C /* FullscreenWindow.m */,
 				8B5A828509B2405600F7303C /* FileListWindowController.m */,
 				8B5A828609B2405600F7303C /* FileListWindowController.h */,
+				8BBAE76509BD308200789AEF /* FullScreenControlWindowController.h */,
+				8BBAE76609BD308200789AEF /* FullScreenControlWindowController.m */,
 			);
 			name = FullScreenMode;
 			sourceTree = "<group>";
@@ -2536,6 +2544,7 @@
 			files = (
 				8B7BA91D09B15721002D34D8 /* ImageViewing.nib in Resources */,
 				8B5A827B09B2401000F7303C /* FileList.nib in Resources */,
+				8BBAE76009BD300F00789AEF /* Controls.nib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2717,6 +2726,7 @@
 				8B7BA91609B15718002D34D8 /* FullScreenWindowControllerFactory.m in Sources */,
 				8B5A812F09B21C5200F7303C /* FullscreenWindow.m in Sources */,
 				8B5A828709B2405600F7303C /* FileListWindowController.m in Sources */,
+				8BBAE76709BD308200789AEF /* FullScreenControlWindowController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3067,6 +3077,14 @@
 				8BB69201099DBA57001AE27B /* Japanese */,
 			);
 			name = "VitaminSEE Help";
+			sourceTree = "<group>";
+		};
+		8BBAE75E09BD300F00789AEF /* Controls.nib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8BBAE75F09BD300F00789AEF /* English */,
+			);
+			name = Controls.nib;
 			sourceTree = "<group>";
 		};
 		8BC2CF1009998E37009676CB /* InfoPlist.strings */ = {

@@ -658,8 +658,8 @@
 			build];
 		[self addWindowController:window];
 		[window setFileList:fileList];
-		if(![old fileListHidden])
-			[window toggleFileList:self];
+//		if(![old fileListHidden])
+//			[window toggleFileList:self];
 		[window becomeFullscreen];
 		[self redraw];
 		[old close];
@@ -678,7 +678,7 @@
 		// Right here, we need to get the state of the file list from the
 		// Fullscreen window controller and set it back to whatever it is
 		// right here be collapsing or expanding the system.
-		[window setFileListVisible:[old fileListControllerVisible]];
+//		[window setFileListVisible:[old fileListControllerVisible]];
 		
 		[[window window] makeKeyAndOrderFront:self];
 		[self redraw];

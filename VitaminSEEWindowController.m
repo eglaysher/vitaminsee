@@ -475,6 +475,8 @@
 		[firstSplit collapseWithAnimation:NO withResize:NO];
 }
 
+//-----------------------------------------------------------------------------
+
 -(void)setFileListVisible:(BOOL)visible
 {
 	RBSplitSubview* firstSplit = [splitView subviewAtPosition:0];

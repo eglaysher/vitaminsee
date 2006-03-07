@@ -196,7 +196,7 @@ static ApplicationController* appControl;
 	return docid;
 }
 
-- (void)awakeFromNib
+-(void)awakeFromNib
 {
 	nextDocumentID = 0;
 	appControl = self;

@@ -9,10 +9,23 @@
 #import "FullscreenWindowController.h"
 #import "SBCenteringClipView.h"
 #import "FileListWindowController.h"
+#import "FullScreenControlWindowController.h"
 
 #import <Carbon/Carbon.h>
 
 @implementation FullscreenWindowController
+
++(void)initialize
+{
+	// Note fullscreen default preferences
+	NSMutableDictionary *defaultPrefs = [NSMutableDictionary dictionary];
+	[defaultPrefs setObject:[NSNumber numberWithBool:YES] forKey:@"FullscreenDisplayFileList"];
+	[defaultPrefs setObject:[NSNumber numberWithBool:YES] forKey:@"FullscreenDisplayControls"];
+
+	[[NSUserDefaults standardUserDefaults] registerDefaults: defaultPrefs];
+}
+
+// ---------------------------------------------------------------------------
 
 -(id)init
 {
@@ -22,26 +35,45 @@
 		[fileListViewerController window];
 		
 		// Load the Controls
-		
+		fullScreenControlWindowController = 
+			[[FullScreenControlWindowController alloc] init];
+		[fullScreenControlWindowController window];
 	}
 	
 	return self;
 }
 
+// ---------------------------------------------------------------------------
+
 -(void)dealloc
 {
 	[fileListViewerController release];
+	[fullScreenControlWindowController release];
 	[super dealloc];
 }
 
+// ---------------------------------------------------------------------------
+
 -(void)windowWillClose:(id)huh
 {
-	// Close the other windows
+	// Record the current state of the windows.
+	NSUserDefaults* ud = [NSUserDefaults standardUserDefaults];
+	BOOL visible = [[fileListViewerController window] isVisible];
+	[ud setObject:[NSNumber numberWithBool:visible]
+		   forKey:@"FullscreenDisplayFileList"];
+	visible = [[fullScreenControlWindowController window] isVisible];
+	[ud setObject:[NSNumber numberWithBool:visible]
+		   forKey:@"FullscreenDisplayControls"];
+	
+	// Now close the windows
 	[fileListViewerController close];
+	[fullScreenControlWindowController close];
 	
 	// Restore the menu bar to the way it was before fullscreen mode.
 	SetSystemUIMode(kUIModeNormal, 0); 
 }
+
+// ---------------------------------------------------------------------------
 
 -(void)awakeFromNib
 {
@@ -65,6 +97,8 @@
 	[scrollView setAutohidesScrollers:YES];
 }
 
+// ---------------------------------------------------------------------------
+
 -(void)becomeFullscreen
 {
 	// Capture the screen for fullscreen:
@@ -75,6 +109,14 @@
 	
 	// Hide everything, but allow the menu bar to slide down.
 	SetSystemUIMode(kUIModeAllHidden, kUIOptionAutoShowMenuBar); 
+	
+	// Now lets check if we should display the file list and the fullscreen
+	// controls
+	NSUserDefaults* ud = [NSUserDefaults standardUserDefaults];
+	if([[ud objectForKey:@"FullscreenDisplayFileList"] boolValue])
+		[fileListViewerController showWindow:self];
+	if([[ud objectForKey:@"FullscreenDisplayControls"] boolValue])
+		[fullScreenControlWindowController showWindow:self];
 }
 
 // ---------------------------------------------------------------------------
@@ -105,6 +147,8 @@
 	[fileListViewerController setFileSizeLabelText:fileSize];
 }
 
+// ---------------------------------------------------------------------------
+
 -(void)setImageSizeLabelText:(NSSize)size 
 {
 	[fileListViewerController setImageSizeLabelText:size];
@@ -117,27 +161,24 @@
 	[imageViewer setImage:image];
 }
 
+// ---------------------------------------------------------------------------
+
 -(double)viewingAreaWidth
 {
-	double width = [NSScrollView contentSizeForFrameSize:[scrollView frame].size
+	return [NSScrollView contentSizeForFrameSize:[scrollView frame].size
 						   hasHorizontalScroller:NO
 							 hasVerticalScroller:NO
 									  borderType:[scrollView borderType]].width;
-	return width;
 }
+
+// ---------------------------------------------------------------------------
 
 -(double)viewingAreaHeight
 {
-	double height = [NSScrollView contentSizeForFrameSize:[scrollView frame].size
+	return [NSScrollView contentSizeForFrameSize:[scrollView frame].size
 						   hasHorizontalScroller:NO
 							 hasVerticalScroller:NO
 									  borderType:[scrollView borderType]].height;
-	return height;
-}
-
--(BOOL)fileListControllerVisible
-{
-	[[fileListViewerController window] isVisible];
 }
 
 //-----------------------------------------------------------------------------
@@ -161,6 +202,15 @@
 			[anItem setTitle:NSLocalizedString(@"Hide File List",
 											   @"Text in View menu")];		
 	}
+	else if(action == @selector(toggleFullScreenControls:))
+	{
+		if(![[fullScreenControlWindowController window] isVisible])
+			[anItem setTitle:NSLocalizedString(@"Show Fullscreen Controls", 
+											   @"Text in View menu")];
+		else
+			[anItem setTitle:NSLocalizedString(@"Hide Fullscreen Controls",
+											   @"Text in View menu")];		
+	}
 	
 	return enable;
 }
@@ -177,6 +227,18 @@
 		[fileListViewerController showWindow:self];
 	else
 		[[fileListViewerController window] performClose:self];
+}
+
+//-----------------------------------------------------------------------------
+
+/**
+ */
+-(void)toggleFullScreenControls:(id)sender
+{
+	if(![[fullScreenControlWindowController window] isVisible])
+		[fullScreenControlWindowController showWindow:self];
+	else
+		[[fullScreenControlWindowController window] performClose:self];	
 }
 
 @end
