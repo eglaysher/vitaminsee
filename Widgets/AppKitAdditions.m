@@ -280,20 +280,5 @@ zeroing in on the optimum length.
 
 @end
 
-@implementation NSWindow (TitleBarWidth)
-// SRC: http://borkware.com/quickies/one?topic=NSWindow
-- (float) titleBarHeight
-{
-    NSRect frame = NSMakeRect (0, 0, 100, 100);
-	
-    NSRect contentRect;
-    contentRect = [NSWindow contentRectForFrameRect: frame
-										  styleMask: NSTitledWindowMask];
-	
-    return (frame.size.height - contentRect.size.height);
-	
-} // titleBarHeight
-@end
-
 // -----------------------------------------------------------------------------
 
