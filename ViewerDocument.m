@@ -229,6 +229,11 @@
 		// Display the icon.
 		NSImage* image = [file iconImageOfSize:NSMakeSize(128,128)];
 		[window setImage:image];
+		
+		if(pixelWidth == 0)
+			pixelWidth = 128;
+		if(pixelHeight == 0)
+			pixelHeight = 128;
 	}
 }
 
