@@ -23,9 +23,6 @@
 	FullScreenControlWindowController* fullScreenControlWindowController;
 }
 
--(id)initWithFileList:(id<FileList>)inFileList
-			 document:(ViewerDocument*)viewerDocument;
-
 -(void)setFileList:(id<FileList>)newList;
 
 

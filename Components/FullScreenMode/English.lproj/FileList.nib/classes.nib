@@ -7,9 +7,11 @@
                 currentFileViewHolder = NSView; 
                 fileSizeLabel = NSTextField; 
                 imageSizeLabel = NSTextField; 
+                progressIndicator = NSProgressIndicator; 
             }; 
             SUPERCLASS = NSWindowController; 
         }, 
+        {CLASS = FileSizeFormatter; LANGUAGE = ObjC; SUPERCLASS = NSFormatter; }, 
         {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }
     ); 
     IBVersion = 1; 

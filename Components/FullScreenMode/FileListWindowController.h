@@ -8,9 +8,18 @@
     IBOutlet NSView *currentFileViewHolder;
     IBOutlet NSTextField *fileSizeLabel;
     IBOutlet NSTextField *imageSizeLabel;
+	IBOutlet NSProgressIndicator* progressIndicator;
 	
 	id<FileList> fileList;
+	
+	BOOL currentlyAnimated;
 }
+
+// Methods that deal with the progress indicatator
+-(void)beginCountdownToDisplayProgressIndicator;
+-(void)startProgressIndicator;
+-(void)stopProgressIndicator;
+-(void)updateWindowTitle;
 
 -(void)setFileList:(id<FileList>)newList;
 -(void)setFileSizeLabelText:(int)fileSize;

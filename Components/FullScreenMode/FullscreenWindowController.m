@@ -133,15 +133,34 @@
 // The following functions exist soley so that exceptions aren't raised at 
 // runtime about their non-existance. They all deal with functionality that's
 // stripped out in full screen mode.
-
--(void)beginCountdownToDisplayProgressIndicator {}
--(void)cancelCountdown {}
 -(void)setStatusText:(NSString*)statusText {}
 -(void)updateWindowTitle {}
--(void)startProgressIndicator {}
--(void)stopProgressIndicator {}
 
-// These need to be set eventually.
+
+// These functions get forwarded to the file list window
+
+-(void)beginCountdownToDisplayProgressIndicator
+{
+	[fileListViewerController beginCountdownToDisplayProgressIndicator];
+}
+
+-(void)cancelCountdown
+{
+	[fileListViewerController cancelCountdown];
+}
+
+-(void)startProgressIndicator
+{
+	[fileListViewerController startProgressIndicator];
+}
+
+-(void)stopProgressIndicator
+{
+	[fileListViewerController stopProgressIndicator];
+}
+
+//-----------------------------------------------------------------------------
+
 -(void)setFileSizeLabelText:(int)fileSize 
 {
 	[fileListViewerController setFileSizeLabelText:fileSize];

@@ -668,6 +668,7 @@
 		[window becomeFullscreen];
 		[self redraw];
 		[old close];
+		[old release];
 	}
 	else
 	{
@@ -688,8 +689,7 @@
 		[[window window] makeKeyAndOrderFront:self];
 		[self redraw];
 		[old close];
-		
-		NSLog(@"Window controllers: %@", [self windowControllers]);
+		[old release];
 	}
 }
 

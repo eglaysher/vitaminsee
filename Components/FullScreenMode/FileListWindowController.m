@@ -5,6 +5,7 @@
 
 -(id)init
 {	
+	currentlyAnimated = NO;
 	return [super initWithWindowNibName:@"FileList"];
 }
 
@@ -14,7 +15,59 @@
 {
 	[super windowDidLoad];
 	[self setWindowFrameAutosaveName:@"FullScreenFileList"];
+	
+	// Prevent the zoom button from displaying; I am 100% sure that the user
+	// does not mean to hit it, and the resulting window would be confusing.
+	[[[self window] standardWindowButton:NSWindowZoomButton] setEnabled:NO];
 }
+
+//-----------------------------------------------------------------------------
+
+-(void)beginCountdownToDisplayProgressIndicator
+{
+	[NSObject cancelPreviousPerformRequestsWithTarget:self
+											 selector:@selector(startProgressIndicator)
+											   object:nil];
+	[self performSelector:@selector(startProgressIndicator)
+			   withObject:nil
+			   afterDelay:0.10];
+}
+
+//-----------------------------------------------------------------------------
+
+-(void)cancelCountdown
+{
+	[NSObject cancelPreviousPerformRequestsWithTarget:self
+											 selector:@selector(startProgressIndicator)
+											   object:nil];		
+}
+
+//-----------------------------------------------------------------------------
+
+// Progress indicator control
+-(void)startProgressIndicator
+{
+	if(!currentlyAnimated)
+	{
+		[progressIndicator startAnimation:self];		
+		currentlyAnimated = true;
+	}
+}
+
+//-----------------------------------------------------------------------------
+
+-(void)stopProgressIndicator
+{
+	[self cancelCountdown];
+	
+	if(currentlyAnimated) 
+	{
+		[progressIndicator stopAnimation:self];
+		currentlyAnimated = false;
+	}
+}
+
+//-----------------------------------------------------------------------------
 
 -(void)setFileList:(id<FileList>)newList
 {
