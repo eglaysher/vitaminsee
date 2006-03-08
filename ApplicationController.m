@@ -57,7 +57,7 @@
 //#import "ToolMenuDelegate.h"
 
 #import "EGPath.h"
-#import "HigherOrderMessaging.h"
+//#import "HigherOrderMessaging.h"
 #import "CurrentFilePlugin.h"
 
 @implementation ApplicationController
@@ -306,7 +306,7 @@ static ApplicationController* appControl;
 		// then check to make sure its the normal one. If there's a fullscreen
 		// window displayed, we do NOT want to be able to make new windows.
 		id windowController = [[NSApp mainWindow] windowController];
-		if(![windowController isKindOfClass:[VitaminSEEWindowController class]])
+		if(windowController && ![windowController isKindOfClass:[VitaminSEEWindowController class]])
 			enable = NO;
 	}
 	else if(action == @selector(fakeOpenWithMenuSelector:))
@@ -601,7 +601,12 @@ static ApplicationController* appControl;
 	id components = [ComponentManager getLoadedCurrentFilePlugins];
 	if([components count]) 
 	{	
-		[[components do] currentImageSetTo:[mainDocument currentFile]];
+		NSEnumerator* e = [components objectEnumerator];
+		id obj;
+		while(obj = [e nextObject]) {
+			[obj currentImageSetTo:[mainDocument currentFile]];
+		}
+//		[[components do] currentImageSetTo:[mainDocument currentFile]];
 	}
 }
 
@@ -609,8 +614,15 @@ static ApplicationController* appControl;
 {
 	if([[NSApp orderedDocuments] count] == 0)
 	{
-		[[[ComponentManager getLoadedCurrentFilePlugins] do] 
-			currentImageSetTo:0];
+		id components = [ComponentManager getLoadedCurrentFilePlugins];
+		NSEnumerator* e = [components objectEnumerator];
+		id obj;
+		while(obj = [e nextObject]) {
+			[obj currentImageSetTo:0];
+		}		
+		
+//		[[[ComponentManager getLoadedCurrentFilePlugins] do] 
+//			currentImageSetTo:0];
 	}
 }
 

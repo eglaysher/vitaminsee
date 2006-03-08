@@ -56,8 +56,6 @@
 		8B2B8D220916C12600691A7B /* AdvancedPreferences.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B2B8D1E0916C12500691A7B /* AdvancedPreferences.png */; };
 		8B2B8D230916C12600691A7B /* AdvancedPreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B2B8D200916C12500691A7B /* AdvancedPreferencesController.m */; };
 		8B2B8D360916C13700691A7B /* AdvancedPreferences.nib in Resources */ = {isa = PBXBuildFile; fileRef = 8B2B8D340916C13700691A7B /* AdvancedPreferences.nib */; };
-		8B44DC5509679C250039BF19 /* BSTrampoline.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B44DC3E09679AD60039BF19 /* BSTrampoline.m */; };
-		8B44DC5609679C250039BF19 /* HigherOrderMessaging.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B44DC4709679B6F0039BF19 /* HigherOrderMessaging.m */; };
 		8B4DC48A0996D94300B58051 /* SetWallpaperFolder.action in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8B4DC4630996D8A900B58051 /* SetWallpaperFolder.action */; };
 		8B4DC48B0996D94800B58051 /* RemoveIcon.action in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8B4DC43E0996D84900B58051 /* RemoveIcon.action */; };
 		8B4DC48C0996D94D00B58051 /* AddIcon.action in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8B4DC4150996D7BC00B58051 /* AddIcon.action */; };
@@ -478,10 +476,6 @@
 		8B2B8D1F0916C12500691A7B /* AdvancedPreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = AdvancedPreferencesController.h; path = Components/AdvancedPreferences/AdvancedPreferencesController.h; sourceTree = "<group>"; };
 		8B2B8D200916C12500691A7B /* AdvancedPreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = AdvancedPreferencesController.m; path = Components/AdvancedPreferences/AdvancedPreferencesController.m; sourceTree = "<group>"; };
 		8B2B8D350916C13700691A7B /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = Components/AdvancedPreferences/English.lproj/AdvancedPreferences.nib; sourceTree = "<group>"; };
-		8B44DC3D09679AD60039BF19 /* BSTrampoline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BSTrampoline.h; path = Widgets/BSTrampoline.h; sourceTree = "<group>"; };
-		8B44DC3E09679AD60039BF19 /* BSTrampoline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BSTrampoline.m; path = Widgets/BSTrampoline.m; sourceTree = "<group>"; };
-		8B44DC4609679B6F0039BF19 /* HigherOrderMessaging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HigherOrderMessaging.h; path = Widgets/HigherOrderMessaging.h; sourceTree = "<group>"; };
-		8B44DC4709679B6F0039BF19 /* HigherOrderMessaging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HigherOrderMessaging.m; path = Widgets/HigherOrderMessaging.m; sourceTree = "<group>"; };
 		8B4DC4100996D7BC00B58051 /* AddIcon.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = AddIcon.xcodeproj; path = AutomatorActions/AddIcon/AddIcon.xcodeproj; sourceTree = "<group>"; };
 		8B4DC4390996D84900B58051 /* RemoveIcon.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RemoveIcon.xcodeproj; path = AutomatorActions/RemoveIcon/RemoveIcon.xcodeproj; sourceTree = "<group>"; };
 		8B4DC45E0996D8A900B58051 /* SetWallpaperFolder.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SetWallpaperFolder.xcodeproj; path = AutomatorActions/SetWallpaperFolder/SetWallpaperFolder.xcodeproj; sourceTree = "<group>"; };
@@ -963,10 +957,6 @@
 				8B2448B608FB2033004716BC /* SBCenteringClipView.m */,
 				8BAE04EC095F6C5C007C387D /* NSObject+Invocations.h */,
 				8BAE04ED095F6C5D007C387D /* NSObject+Invocations.m */,
-				8B44DC3D09679AD60039BF19 /* BSTrampoline.h */,
-				8B44DC3E09679AD60039BF19 /* BSTrampoline.m */,
-				8B44DC4609679B6F0039BF19 /* HigherOrderMessaging.h */,
-				8B44DC4709679B6F0039BF19 /* HigherOrderMessaging.m */,
 			);
 			name = Widgets;
 			sourceTree = "<group>";
@@ -2816,8 +2806,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B44DC5509679C250039BF19 /* BSTrampoline.m in Sources */,
-				8B44DC5609679C250039BF19 /* HigherOrderMessaging.m in Sources */,
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				8B2448B708FB2033004716BC /* AppKitAdditions.m in Sources */,
 				8B2448B808FB2033004716BC /* EGPath.m in Sources */,
@@ -5388,6 +5376,7 @@
 		};
 		8B7BA8E209B15589002D34D8 /* Panther */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8BF1038C09A2AFBE00FE21A7 /* Panther.xcconfig */;
 			buildSettings = {
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_MODEL_TUNING = G5;

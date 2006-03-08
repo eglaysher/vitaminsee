@@ -461,20 +461,19 @@
 								<string>8B24491008FB5498004716BC</string>
 								<string>8B2448A108FB2018004716BC</string>
 								<string>080E96DDFE201D6D7F000001</string>
+								<string>1C37FBAC04509CD000000102</string>
 								<string>1C37FAAC04509CD000000102</string>
 								<string>1C37FABC05509CD000000102</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>8</integer>
-									<integer>4</integer>
-									<integer>3</integer>
-									<integer>0</integer>
+									<integer>129</integer>
+									<integer>112</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 4}, {320, 836}}</string>
+							<string>{{0, 1581}, {320, 836}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -514,7 +513,7 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>8BBAE03B09B91C8900789AEF</string>
+				<string>8B0226DD09BD49A800995096</string>
 				<string>11E0B1FE06471DED0097A5F4</string>
 			</array>
 			<key>ToolbarConfiguration</key>
@@ -530,7 +529,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>163399242.988785</real>
+	<real>163404665.47110099</real>
 	<key>ToolbarDisplayMode</key>
 	<integer>2</integer>
 	<key>ToolbarIsVisible</key>
@@ -545,15 +544,9 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>1C530D57069F1CE1000CFCEE</string>
-		<string>8BBAE60B09BB520A00789AEF</string>
-		<string>8BBAE60C09BB520A00789AEF</string>
-		<string>8BC5D7C30902DCDF00C2FA0C</string>
-		<string>1CD10A99069EF8BA00B06720</string>
-		<string>8BBAE60609BB520800789AEF</string>
 		<string>8BD128CD09A2B4C0009E0275</string>
-		<string>/Users/elliot/Projects/VitaminSEE/VitaminSEE.xcodeproj</string>
 		<string>1C0AD2B3069F1EA900FABCE6</string>
+		<string>/Users/elliot/Projects/VitaminSEE/VitaminSEE.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
 	<string>3 43 337 895 0 0 1440 938 </string>
@@ -577,7 +570,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>ViewMenuDelegate.m</string>
+								<string></string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -635,7 +628,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>8BD128CD09A2B4C0009E0275</string>
-				<string>8BBADFB609B8EA7700789AEF</string>
+				<string>8B0226DA09BD49A600995096</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -997,9 +990,9 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C0AD2B3069F1EA900FABCE6</string>
-				<string>8BBADFB709B8EA7700789AEF</string>
+				<string>8B0226DB09BD49A600995096</string>
 				<string>1CD0528B0623707200166675</string>
-				<string>8BBADFB809B8EA7700789AEF</string>
+				<string>8B0226DC09BD49A600995096</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.run</string>
