@@ -7,8 +7,14 @@
 	return [super initWithWindowNibName:@"Controls"];
 }
 
+-(void)awakeFromNib
+{
+	// Don't cascade windows so that autosave positioning works correctly.
+	[self setShouldCascadeWindows:NO];
+}
+
 /** Make the window display in the correct location.
-*/
+ */
 -(void)windowDidLoad
 {
 	[super windowDidLoad];

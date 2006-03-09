@@ -9,6 +9,16 @@
 	return [super initWithWindowNibName:@"FileList"];
 }
 
+//-----------------------------------------------------------------------------
+
+-(void)awakeFromNib
+{
+	// Don't cascade windows so that autosave positioning works correctly.
+	[self setShouldCascadeWindows:NO];
+}
+
+//-----------------------------------------------------------------------------
+
 /** Make the window display in the correct location.
  */
 -(void)windowDidLoad
@@ -77,6 +87,8 @@
 	[currentFileViewHolder setSubview:fileListView];	
 }
 
+//-----------------------------------------------------------------------------
+
 -(void)setFileSizeLabelText:(int)fileSize 
 {
 	if(fileSize == -1)
@@ -84,6 +96,8 @@
 	else
 		[fileSizeLabel setObjectValue:[NSNumber numberWithInt:fileSize]];	
 }
+
+//-----------------------------------------------------------------------------
 
 -(void)setImageSizeLabelText:(NSSize)size 
 {

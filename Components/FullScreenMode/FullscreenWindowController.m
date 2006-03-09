@@ -77,8 +77,12 @@
 
 -(void)windowWillClose:(id)huh
 {
+	// Record the windows' states if we aren't immediatly closing down the 
+	// application
 	if(shouldRecordWindowState)
+	{
 		[self recordWindowStates];
+	}
 	
 	// Now close the windows
 	[fileListViewerController close];
@@ -94,16 +98,11 @@
 {
 	// Record the current state of the windows.
 	NSUserDefaults* ud = [NSUserDefaults standardUserDefaults];
-//	NSLog(@"FileListViewerController: %@", [fileListViewerController window]);
 	BOOL visible = [[fileListViewerController window] isVisible];
-//	NSLog(@"FullscreenDisplayFileList @ close: %d", visible);
 	[ud setObject:[NSNumber numberWithBool:visible]
 		   forKey:@"FullscreenDisplayFileList"];
 	
-//	NSLog(@"FullScreenControlWindowController: %@", 
-//		  [fullScreenControlWindowController window]);
 	visible = [[fullScreenControlWindowController window] isVisible];
-//	NSLog(@"FullscreenDisplayControls @ close: %d", visible);
 	[ud setObject:[NSNumber numberWithBool:visible]
 		   forKey:@"FullscreenDisplayControls"];	
 }
