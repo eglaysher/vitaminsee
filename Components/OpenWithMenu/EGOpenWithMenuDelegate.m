@@ -38,7 +38,7 @@
 //static NSArray* getOpenWithMenuFor(NSString* file, NSArray* applicationURLs);
 static NSArray* getListOfApplicationsThatCanOpenExtension(NSString* file, NSArray* array);
 static BOOL applicationCanHandleFileType(NSURL* applicationURL, NSString* fileExtension);
-static NSArray* buildApplicationArray(NSArray* arrayOfURLs);
+static NSMutableArray* buildApplicationArray(NSArray* arrayOfURLs);
 static void removeTrashedPathsFromArray(NSMutableArray* applicationArray);
 static void removeDuplicateEntries(NSMutableArray* appilcationArray);
 static void checkForDuplicateEntries(NSMutableArray* entriesToDoubleCheck, 
@@ -287,7 +287,7 @@ BOOL applicationCanHandleFileType(NSURL* applicationURL, NSString* fileExtension
 	return NO;
 }
 
-NSArray* buildApplicationArray(NSArray* arrayOfURLs)
+NSMutableArray* buildApplicationArray(NSArray* arrayOfURLs)
 {
 	// Make list into an array of dictionaries where each dictionary has data such as 
 	NSEnumerator* e = [arrayOfURLs objectEnumerator];

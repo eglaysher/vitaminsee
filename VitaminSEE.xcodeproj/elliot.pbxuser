@@ -45,7 +45,7 @@
 				PBXFileTableDataSourceColumnWidthsKey = (
 					20,
 					428,
-					646,
+					446,
 				);
 				PBXFileTableDataSourceColumnsKey = (
 					PBXErrorsWarningsDataSource_TypeID,
@@ -333,6 +333,153 @@
 			8B022C0009BE8E4800995096 /* PBXTextBookmark */ = 8B022C0009BE8E4800995096 /* PBXTextBookmark */;
 			8B022C0109BE8E4800995096 /* PBXTextBookmark */ = 8B022C0109BE8E4800995096 /* PBXTextBookmark */;
 			8B022C0209BE8E4A00995096 /* PBXTextBookmark */ = 8B022C0209BE8E4A00995096 /* PBXTextBookmark */;
+			8B022F6609BE8EB200995096 /* PBXBookmark */ = 8B022F6609BE8EB200995096 /* PBXBookmark */;
+			8B022F6A09BE8F1800995096 /* PBXTextBookmark */ = 8B022F6A09BE8F1800995096 /* PBXTextBookmark */;
+			8B022F6B09BE8F1800995096 /* PBXTextBookmark */ = 8B022F6B09BE8F1800995096 /* PBXTextBookmark */;
+			8B022F6C09BE8F1800995096 /* PBXTextBookmark */ = 8B022F6C09BE8F1800995096 /* PBXTextBookmark */;
+			8B022F6F09BE8F1900995096 /* PBXTextBookmark */ = 8B022F6F09BE8F1900995096 /* PBXTextBookmark */;
+			8B022F7109BE8FAD00995096 /* PBXTextBookmark */ = 8B022F7109BE8FAD00995096 /* PBXTextBookmark */;
+			8B022F7209BE8FAD00995096 /* PBXTextBookmark */ = 8B022F7209BE8FAD00995096 /* PBXTextBookmark */;
+			8B022F7309BE8FAD00995096 /* PBXTextBookmark */ = 8B022F7309BE8FAD00995096 /* PBXTextBookmark */;
+			8B022F7409BE8FAF00995096 /* PBXTextBookmark */ = 8B022F7409BE8FAF00995096 /* PBXTextBookmark */;
+			8B022F7609BE8FC600995096 /* PBXTextBookmark */ = 8B022F7609BE8FC600995096 /* PBXTextBookmark */;
+			8B022F7709BE8FC700995096 /* PBXTextBookmark */ = 8B022F7709BE8FC700995096 /* PBXTextBookmark */;
+			8B022F7809BE8FC700995096 /* PBXTextBookmark */ = 8B022F7809BE8FC700995096 /* PBXTextBookmark */;
+			8B022F7909BE8FC700995096 /* PBXTextBookmark */ = 8B022F7909BE8FC700995096 /* PBXTextBookmark */;
+			8B022F7B09BE901600995096 /* PBXTextBookmark */ = 8B022F7B09BE901600995096 /* PBXTextBookmark */;
+			8B022F7C09BE901600995096 /* PBXTextBookmark */ = 8B022F7C09BE901600995096 /* PBXTextBookmark */;
+			8B022F7D09BE901600995096 /* PBXTextBookmark */ = 8B022F7D09BE901600995096 /* PBXTextBookmark */;
+			8B022F7E09BE901800995096 /* PBXTextBookmark */ = 8B022F7E09BE901800995096 /* PBXTextBookmark */;
+			8B022F8009BE902000995096 /* PBXTextBookmark */ = 8B022F8009BE902000995096 /* PBXTextBookmark */;
+			8B022F8109BE902000995096 /* PBXTextBookmark */ = 8B022F8109BE902000995096 /* PBXTextBookmark */;
+			8B022F8209BE902100995096 /* PBXTextBookmark */ = 8B022F8209BE902100995096 /* PBXTextBookmark */;
+			8B022F8309BE902200995096 /* PBXTextBookmark */ = 8B022F8309BE902200995096 /* PBXTextBookmark */;
+			8B022F8509BE902A00995096 /* PBXTextBookmark */ = 8B022F8509BE902A00995096 /* PBXTextBookmark */;
+			8B022F8609BE902A00995096 /* PBXTextBookmark */ = 8B022F8609BE902A00995096 /* PBXTextBookmark */;
+			8B022F8709BE902B00995096 /* PBXTextBookmark */ = 8B022F8709BE902B00995096 /* PBXTextBookmark */;
+			8B022F8909BE903300995096 /* PBXTextBookmark */ = 8B022F8909BE903300995096 /* PBXTextBookmark */;
+			8B022F8A09BE903300995096 /* PBXTextBookmark */ = 8B022F8A09BE903300995096 /* PBXTextBookmark */;
+			8B022F8B09BE903400995096 /* PBXTextBookmark */ = 8B022F8B09BE903400995096 /* PBXTextBookmark */;
+			8B022F8D09BE903C00995096 /* PBXTextBookmark */ = 8B022F8D09BE903C00995096 /* PBXTextBookmark */;
+			8B022F8E09BE903C00995096 /* PBXTextBookmark */ = 8B022F8E09BE903C00995096 /* PBXTextBookmark */;
+			8B022F8F09BE903C00995096 /* PBXTextBookmark */ = 8B022F8F09BE903C00995096 /* PBXTextBookmark */;
+			8B022F9009BE903D00995096 /* PBXTextBookmark */ = 8B022F9009BE903D00995096 /* PBXTextBookmark */;
+			8B022F9209BE906F00995096 /* PBXTextBookmark */ = 8B022F9209BE906F00995096 /* PBXTextBookmark */;
+			8B022F9309BE906F00995096 /* PBXTextBookmark */ = 8B022F9309BE906F00995096 /* PBXTextBookmark */;
+			8B022F9409BE906F00995096 /* PBXTextBookmark */ = 8B022F9409BE906F00995096 /* PBXTextBookmark */;
+			8B022F9509BE907100995096 /* PBXTextBookmark */ = 8B022F9509BE907100995096 /* PBXTextBookmark */;
+			8B022F9909BE908000995096 /* PBXTextBookmark */ = 8B022F9909BE908000995096 /* PBXTextBookmark */;
+			8B022F9A09BE908100995096 /* PBXTextBookmark */ = 8B022F9A09BE908100995096 /* PBXTextBookmark */;
+			8B022F9B09BE908100995096 /* PBXTextBookmark */ = 8B022F9B09BE908100995096 /* PBXTextBookmark */;
+			8B022F9C09BE908200995096 /* PBXTextBookmark */ = 8B022F9C09BE908200995096 /* PBXTextBookmark */;
+			8B022F9E09BE908900995096 /* PBXTextBookmark */ = 8B022F9E09BE908900995096 /* PBXTextBookmark */;
+			8B022F9F09BE908900995096 /* PBXTextBookmark */ = 8B022F9F09BE908900995096 /* PBXTextBookmark */;
+			8B022FA009BE908900995096 /* PBXTextBookmark */ = 8B022FA009BE908900995096 /* PBXTextBookmark */;
+			8B022FA109BE908B00995096 /* PBXTextBookmark */ = 8B022FA109BE908B00995096 /* PBXTextBookmark */;
+			8B022FA309BE909400995096 /* PBXTextBookmark */ = 8B022FA309BE909400995096 /* PBXTextBookmark */;
+			8B022FA409BE909500995096 /* PBXTextBookmark */ = 8B022FA409BE909500995096 /* PBXTextBookmark */;
+			8B022FA509BE909500995096 /* PBXTextBookmark */ = 8B022FA509BE909500995096 /* PBXTextBookmark */;
+			8B022FA609BE909600995096 /* PBXTextBookmark */ = 8B022FA609BE909600995096 /* PBXTextBookmark */;
+			8B022FA809BE945100995096 /* PBXTextBookmark */ = 8B022FA809BE945100995096 /* PBXTextBookmark */;
+			8B022FA909BE945100995096 /* PBXTextBookmark */ = 8B022FA909BE945100995096 /* PBXTextBookmark */;
+			8B022FAA09BE945100995096 /* PBXTextBookmark */ = 8B022FAA09BE945100995096 /* PBXTextBookmark */;
+			8B022FAB09BE945300995096 /* PBXTextBookmark */ = 8B022FAB09BE945300995096 /* PBXTextBookmark */;
+			8B022FAD09BE945F00995096 /* PBXTextBookmark */ = 8B022FAD09BE945F00995096 /* PBXTextBookmark */;
+			8B022FAE09BE945F00995096 /* PBXTextBookmark */ = 8B022FAE09BE945F00995096 /* PBXTextBookmark */;
+			8B022FAF09BE945F00995096 /* PBXTextBookmark */ = 8B022FAF09BE945F00995096 /* PBXTextBookmark */;
+			8B022FB009BE946000995096 /* PBXTextBookmark */ = 8B022FB009BE946000995096 /* PBXTextBookmark */;
+			8B022FB409BE94AA00995096 /* PBXTextBookmark */ = 8B022FB409BE94AA00995096 /* PBXTextBookmark */;
+			8B022FB509BE94AA00995096 /* PBXTextBookmark */ = 8B022FB509BE94AA00995096 /* PBXTextBookmark */;
+			8B022FB609BE94AB00995096 /* PBXTextBookmark */ = 8B022FB609BE94AB00995096 /* PBXTextBookmark */;
+			8B022FB709BE94AC00995096 /* PBXTextBookmark */ = 8B022FB709BE94AC00995096 /* PBXTextBookmark */;
+			8B022FBA09BE94B700995096 /* PBXTextBookmark */ = 8B022FBA09BE94B700995096 /* PBXTextBookmark */;
+			8B022FBF09BE94B900995096 /* PBXTextBookmark */ = 8B022FBF09BE94B900995096 /* PBXTextBookmark */;
+			8B022FC009BE94B900995096 /* PBXTextBookmark */ = 8B022FC009BE94B900995096 /* PBXTextBookmark */;
+			8B022FC109BE94B900995096 /* PBXTextBookmark */ = 8B022FC109BE94B900995096 /* PBXTextBookmark */;
+			8B022FC209BE94BA00995096 /* PBXTextBookmark */ = 8B022FC209BE94BA00995096 /* PBXTextBookmark */;
+			8B022FC409BE94C300995096 /* PBXTextBookmark */ = 8B022FC409BE94C300995096 /* PBXTextBookmark */;
+			8B022FC509BE94C300995096 /* PBXTextBookmark */ = 8B022FC509BE94C300995096 /* PBXTextBookmark */;
+			8B022FC609BE94C300995096 /* PBXTextBookmark */ = 8B022FC609BE94C300995096 /* PBXTextBookmark */;
+			8B022FC709BE94C400995096 /* PBXTextBookmark */ = 8B022FC709BE94C400995096 /* PBXTextBookmark */;
+			8B022FC809BE975D00995096 /* PBXBookmark */ = 8B022FC809BE975D00995096 /* PBXBookmark */;
+			8B022FD109BE979600995096 /* PBXTextBookmark */ = 8B022FD109BE979600995096 /* PBXTextBookmark */;
+			8B022FD209BE979600995096 /* PBXTextBookmark */ = 8B022FD209BE979600995096 /* PBXTextBookmark */;
+			8B022FD309BE979600995096 /* PBXTextBookmark */ = 8B022FD309BE979600995096 /* PBXTextBookmark */;
+			8B022FD609BE979800995096 /* PBXTextBookmark */ = 8B022FD609BE979800995096 /* PBXTextBookmark */;
+			8B022FD709BE979800995096 /* PBXTextBookmark */ = 8B022FD709BE979800995096 /* PBXTextBookmark */;
+			8B022FDB09BE97A500995096 /* PBXTextBookmark */ = 8B022FDB09BE97A500995096 /* PBXTextBookmark */;
+			8B022FDC09BE97A500995096 /* PBXTextBookmark */ = 8B022FDC09BE97A500995096 /* PBXTextBookmark */;
+			8B022FDD09BE97A600995096 /* PBXTextBookmark */ = 8B022FDD09BE97A600995096 /* PBXTextBookmark */;
+			8B022FDE09BE97A700995096 /* PBXTextBookmark */ = 8B022FDE09BE97A700995096 /* PBXTextBookmark */;
+			8B022FE109BE97BE00995096 /* PBXTextBookmark */ = 8B022FE109BE97BE00995096 /* PBXTextBookmark */;
+			8B022FEA09BFD12400995096 /* PBXBookmark */ = 8B022FEA09BFD12400995096 /* PBXBookmark */;
+			8B022FEB09BFD12400995096 /* PBXTextBookmark */ = 8B022FEB09BFD12400995096 /* PBXTextBookmark */;
+			8B022FEE09BFD12400995096 /* PBXBookmark */ = 8B022FEE09BFD12400995096 /* PBXBookmark */;
+			8B022FEF09BFD12400995096 /* PBXTextBookmark */ = 8B022FEF09BFD12400995096 /* PBXTextBookmark */;
+			8B022FF009BFD12400995096 /* PBXTextBookmark */ = 8B022FF009BFD12400995096 /* PBXTextBookmark */;
+			8B022FF409BFD13D00995096 /* PBXTextBookmark */ = 8B022FF409BFD13D00995096 /* PBXTextBookmark */;
+			8B022FF509BFD13D00995096 /* PBXTextBookmark */ = 8B022FF509BFD13D00995096 /* PBXTextBookmark */;
+			8B022FF609BFD13D00995096 /* PBXTextBookmark */ = 8B022FF609BFD13D00995096 /* PBXTextBookmark */;
+			8B022FF709BFD13F00995096 /* PBXTextBookmark */ = 8B022FF709BFD13F00995096 /* PBXTextBookmark */;
+			8B022FF809BFD13F00995096 /* PBXTextBookmark */ = 8B022FF809BFD13F00995096 /* PBXTextBookmark */;
+			8B022FF909BFD13F00995096 /* PBXTextBookmark */ = 8B022FF909BFD13F00995096 /* PBXTextBookmark */;
+			8B02300B09BFD29A00995096 /* PBXTextBookmark */ = 8B02300B09BFD29A00995096 /* PBXTextBookmark */;
+			8B02300C09BFD29A00995096 /* PBXTextBookmark */ = 8B02300C09BFD29A00995096 /* PBXTextBookmark */;
+			8B02300D09BFD29B00995096 /* PBXTextBookmark */ = 8B02300D09BFD29B00995096 /* PBXTextBookmark */;
+			8B02300E09BFD29D00995096 /* PBXTextBookmark */ = 8B02300E09BFD29D00995096 /* PBXTextBookmark */;
+			8B02300F09BFD29D00995096 /* PBXTextBookmark */ = 8B02300F09BFD29D00995096 /* PBXTextBookmark */;
+			8B02301209BFD29D00995096 /* PBXTextBookmark */ = 8B02301209BFD29D00995096 /* PBXTextBookmark */;
+			8B02301309BFD29D00995096 /* PBXTextBookmark */ = 8B02301309BFD29D00995096 /* PBXTextBookmark */;
+			8B02301509BFD2A600995096 /* PBXTextBookmark */ = 8B02301509BFD2A600995096 /* PBXTextBookmark */;
+			8B02301609BFD2A700995096 /* PBXTextBookmark */ = 8B02301609BFD2A700995096 /* PBXTextBookmark */;
+			8B02301709BFD2A700995096 /* PBXTextBookmark */ = 8B02301709BFD2A700995096 /* PBXTextBookmark */;
+			8B02301809BFD2A800995096 /* PBXTextBookmark */ = 8B02301809BFD2A800995096 /* PBXTextBookmark */;
+			8B02301909BFD2A800995096 /* PBXTextBookmark */ = 8B02301909BFD2A800995096 /* PBXTextBookmark */;
+			8B02301D09BFD2BD00995096 /* PBXTextBookmark */ = 8B02301D09BFD2BD00995096 /* PBXTextBookmark */;
+			8B02301E09BFD2BD00995096 /* PBXTextBookmark */ = 8B02301E09BFD2BD00995096 /* PBXTextBookmark */;
+			8B02301F09BFD2BE00995096 /* PBXTextBookmark */ = 8B02301F09BFD2BE00995096 /* PBXTextBookmark */;
+			8B02302009BFD2BE00995096 /* PBXTextBookmark */ = 8B02302009BFD2BE00995096 /* PBXTextBookmark */;
+			8B02302209BFD2C300995096 /* PBXTextBookmark */ = 8B02302209BFD2C300995096 /* PBXTextBookmark */;
+			8B02302309BFD2C300995096 /* PBXTextBookmark */ = 8B02302309BFD2C300995096 /* PBXTextBookmark */;
+			8B02302409BFD2C400995096 /* PBXTextBookmark */ = 8B02302409BFD2C400995096 /* PBXTextBookmark */;
+			8B02302509BFD2C500995096 /* PBXTextBookmark */ = 8B02302509BFD2C500995096 /* PBXTextBookmark */;
+			8B02302609BFD2C500995096 /* PBXTextBookmark */ = 8B02302609BFD2C500995096 /* PBXTextBookmark */;
+			8B02302A09BFD31200995096 /* PBXTextBookmark */ = 8B02302A09BFD31200995096 /* PBXTextBookmark */;
+			8B02302B09BFD31200995096 /* PBXTextBookmark */ = 8B02302B09BFD31200995096 /* PBXTextBookmark */;
+			8B02302C09BFD31200995096 /* PBXTextBookmark */ = 8B02302C09BFD31200995096 /* PBXTextBookmark */;
+			8B02302D09BFD31400995096 /* PBXTextBookmark */ = 8B02302D09BFD31400995096 /* PBXTextBookmark */;
+			8B02302E09BFD31400995096 /* PBXTextBookmark */ = 8B02302E09BFD31400995096 /* PBXTextBookmark */;
+			8B02303009BFD31A00995096 /* PBXTextBookmark */ = 8B02303009BFD31A00995096 /* PBXTextBookmark */;
+			8B02303109BFD31A00995096 /* PBXTextBookmark */ = 8B02303109BFD31A00995096 /* PBXTextBookmark */;
+			8B02303209BFD31A00995096 /* PBXTextBookmark */ = 8B02303209BFD31A00995096 /* PBXTextBookmark */;
+			8B02303309BFD31B00995096 /* PBXTextBookmark */ = 8B02303309BFD31B00995096 /* PBXTextBookmark */;
+			8B02303409BFD31B00995096 /* PBXTextBookmark */ = 8B02303409BFD31B00995096 /* PBXTextBookmark */;
+			8B02303609BFD32500995096 /* PBXTextBookmark */ = 8B02303609BFD32500995096 /* PBXTextBookmark */;
+			8B02303709BFD32500995096 /* PBXTextBookmark */ = 8B02303709BFD32500995096 /* PBXTextBookmark */;
+			8B02303809BFD32600995096 /* PBXTextBookmark */ = 8B02303809BFD32600995096 /* PBXTextBookmark */;
+			8B02303909BFD32600995096 /* PBXTextBookmark */ = 8B02303909BFD32600995096 /* PBXTextBookmark */;
+			8B02303B09BFD33C00995096 /* PBXTextBookmark */ = 8B02303B09BFD33C00995096 /* PBXTextBookmark */;
+			8B02303C09BFD33C00995096 /* PBXTextBookmark */ = 8B02303C09BFD33C00995096 /* PBXTextBookmark */;
+			8B02303D09BFD33C00995096 /* PBXTextBookmark */ = 8B02303D09BFD33C00995096 /* PBXTextBookmark */;
+			8B02303E09BFD33D00995096 /* PBXTextBookmark */ = 8B02303E09BFD33D00995096 /* PBXTextBookmark */;
+			8B02303F09BFD33D00995096 /* PBXTextBookmark */ = 8B02303F09BFD33D00995096 /* PBXTextBookmark */;
+			8B02304209BFD35F00995096 /* PBXBookmark */ = 8B02304209BFD35F00995096 /* PBXBookmark */;
+			8B02304509BFD36200995096 /* PBXTextBookmark */ = 8B02304509BFD36200995096 /* PBXTextBookmark */;
+			8B02304609BFD36200995096 /* PBXTextBookmark */ = 8B02304609BFD36200995096 /* PBXTextBookmark */;
+			8B02304709BFD36200995096 /* PBXTextBookmark */ = 8B02304709BFD36200995096 /* PBXTextBookmark */;
+			8B02305309BFD38F00995096 /* PBXTextBookmark */ = 8B02305309BFD38F00995096 /* PBXTextBookmark */;
+			8B02307009BFD40B00995096 /* PBXTextBookmark */ = 8B02307009BFD40B00995096 /* PBXTextBookmark */;
+			8B02307109BFD40B00995096 /* PBXTextBookmark */ = 8B02307109BFD40B00995096 /* PBXTextBookmark */;
+			8B02307209BFD40B00995096 /* PBXTextBookmark */ = 8B02307209BFD40B00995096 /* PBXTextBookmark */;
+			8B02307309BFD40B00995096 /* PBXTextBookmark */ = 8B02307309BFD40B00995096 /* PBXTextBookmark */;
+			8B02307609BFD40D00995096 /* PBXTextBookmark */ = 8B02307609BFD40D00995096 /* PBXTextBookmark */;
+			8B02307709BFD40D00995096 /* PBXTextBookmark */ = 8B02307709BFD40D00995096 /* PBXTextBookmark */;
+			8B02308B09BFD44000995096 /* PBXTextBookmark */ = 8B02308B09BFD44000995096 /* PBXTextBookmark */;
+			8B02308C09BFD44000995096 /* PBXTextBookmark */ = 8B02308C09BFD44000995096 /* PBXTextBookmark */;
+			8B02308D09BFD44100995096 /* PBXTextBookmark */ = 8B02308D09BFD44100995096 /* PBXTextBookmark */;
+			8B02308E09BFD44200995096 /* PBXTextBookmark */ = 8B02308E09BFD44200995096 /* PBXTextBookmark */;
+			8B02308F09BFD44200995096 /* PBXTextBookmark */ = 8B02308F09BFD44200995096 /* PBXTextBookmark */;
+			8B02309209BFD44500995096 /* PBXTextBookmark */ = 8B02309209BFD44500995096 /* PBXTextBookmark */;
 			8B5A83D209B7DB9D00F7303C = 8B5A83D209B7DB9D00F7303C /* PBXTextBookmark */;
 			8BBADB8809B8CD3D00789AEF = 8BBADB8809B8CD3D00789AEF /* PBXTextBookmark */;
 			8BBAE01909B9164C00789AEF = 8BBAE01909B9164C00789AEF /* PBXBookmark */;
@@ -1272,7 +1419,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 70";
 		rLen = 0;
-		rLoc = 2039;
+		rLoc = 2331;
 		rType = 0;
 		vrLen = 1220;
 		vrLoc = 0;
@@ -1312,7 +1459,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 70";
 		rLen = 0;
-		rLoc = 2039;
+		rLoc = 2331;
 		rType = 0;
 		vrLen = 1220;
 		vrLoc = 0;
@@ -1342,7 +1489,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 70";
 		rLen = 0;
-		rLoc = 2039;
+		rLoc = 2331;
 		rType = 0;
 		vrLen = 1220;
 		vrLoc = 0;
@@ -1366,7 +1513,7 @@
 		fRef = 8B5A828509B2405600F7303C /* FileListWindowController.m */;
 		name = "FileListWindowController.m: 18";
 		rLen = 0;
-		rLoc = 583;
+		rLoc = 609;
 		rType = 0;
 		vrLen = 900;
 		vrLoc = 0;
@@ -1416,7 +1563,7 @@
 		comments = "error: ‘currentlyAnimated’ undeclared (first use in this function)";
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		rLen = 0;
-		rLoc = 160;
+		rLoc = 195;
 		rType = 1;
 	};
 	8B022B1609BE883100995096 /* PBXTextBookmark */ = {
@@ -1424,7 +1571,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "if(currentlyAnimated)";
 		rLen = 0;
-		rLoc = 4769;
+		rLoc = 5898;
 		rType = 0;
 		vrLen = 248;
 		vrLoc = 5239;
@@ -1434,7 +1581,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "if(currentlyAnimated)";
 		rLen = 0;
-		rLoc = 4769;
+		rLoc = 5898;
 		rType = 0;
 		vrLen = 248;
 		vrLoc = 5239;
@@ -1444,7 +1591,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "if(currentlyAnimated)";
 		rLen = 0;
-		rLoc = 4769;
+		rLoc = 5898;
 		rType = 0;
 		vrLen = 248;
 		vrLoc = 5239;
@@ -1454,9 +1601,9 @@
 		fRef = 8B7BA8CA09B154B3002D34D8 /* FullscreenWindowController.h */;
 		name = "FullscreenWindowController.h: 26";
 		rLen = 0;
-		rLoc = 647;
+		rLoc = 680;
 		rType = 0;
-		vrLen = 1222;
+		vrLen = 932;
 		vrLoc = 151;
 	};
 	8B022B1C09BE883300995096 /* PBXTextBookmark */ = {
@@ -1464,9 +1611,9 @@
 		fRef = 8B7BA8CA09B154B3002D34D8 /* FullscreenWindowController.h */;
 		name = "FullscreenWindowController.h: 26";
 		rLen = 0;
-		rLoc = 647;
+		rLoc = 680;
 		rType = 0;
-		vrLen = 1223;
+		vrLen = 933;
 		vrLoc = 150;
 	};
 	8B022B1F09BE883300995096 /* PBXTextBookmark */ = {
@@ -1484,9 +1631,9 @@
 		fRef = 8B7BA8CA09B154B3002D34D8 /* FullscreenWindowController.h */;
 		name = "FullscreenWindowController.h: 28";
 		rLen = 0;
-		rLoc = 649;
+		rLoc = 682;
 		rType = 0;
-		vrLen = 1159;
+		vrLen = 933;
 		vrLoc = 150;
 	};
 	8B022B2309BE883800995096 /* PBXTextBookmark */ = {
@@ -1504,7 +1651,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "if(currentlyAnimated)";
 		rLen = 0;
-		rLoc = 4769;
+		rLoc = 5898;
 		rType = 0;
 		vrLen = 248;
 		vrLoc = 5239;
@@ -1514,7 +1661,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "if(currentlyAnimated)";
 		rLen = 0;
-		rLoc = 4769;
+		rLoc = 5898;
 		rType = 0;
 		vrLen = 248;
 		vrLoc = 5239;
@@ -1524,7 +1671,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "if(currentlyAnimated)";
 		rLen = 0;
-		rLoc = 4769;
+		rLoc = 5898;
 		rType = 0;
 		vrLen = 248;
 		vrLoc = 5239;
@@ -1544,9 +1691,9 @@
 		fRef = 8B7BA8CA09B154B3002D34D8 /* FullscreenWindowController.h */;
 		name = "FullscreenWindowController.h: 28";
 		rLen = 0;
-		rLoc = 649;
+		rLoc = 682;
 		rType = 0;
-		vrLen = 1159;
+		vrLen = 933;
 		vrLoc = 150;
 	};
 	8B022B2F09BE88B300995096 /* PBXTextBookmark */ = {
@@ -1554,7 +1701,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "if(currentlyAnimated)";
 		rLen = 0;
-		rLoc = 4769;
+		rLoc = 5898;
 		rType = 0;
 		vrLen = 248;
 		vrLoc = 5239;
@@ -1564,7 +1711,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "if(currentlyAnimated)";
 		rLen = 0;
-		rLoc = 4769;
+		rLoc = 5898;
 		rType = 0;
 		vrLen = 248;
 		vrLoc = 5239;
@@ -1574,7 +1721,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "if(currentlyAnimated)";
 		rLen = 0;
-		rLoc = 4769;
+		rLoc = 5898;
 		rType = 0;
 		vrLen = 248;
 		vrLoc = 5239;
@@ -1594,9 +1741,9 @@
 		fRef = 8B7BA8CA09B154B3002D34D8 /* FullscreenWindowController.h */;
 		name = "FullscreenWindowController.h: 28";
 		rLen = 0;
-		rLoc = 649;
+		rLoc = 682;
 		rType = 0;
-		vrLen = 1159;
+		vrLen = 933;
 		vrLoc = 150;
 	};
 	8B022B3509BE88C200995096 /* PBXTextBookmark */ = {
@@ -1604,7 +1751,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "if(currentlyAnimated)";
 		rLen = 0;
-		rLoc = 4769;
+		rLoc = 5898;
 		rType = 0;
 		vrLen = 248;
 		vrLoc = 5239;
@@ -1614,7 +1761,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "if(currentlyAnimated)";
 		rLen = 0;
-		rLoc = 4769;
+		rLoc = 5898;
 		rType = 0;
 		vrLen = 248;
 		vrLoc = 5239;
@@ -1634,9 +1781,9 @@
 		fRef = 8B7BA8CA09B154B3002D34D8 /* FullscreenWindowController.h */;
 		name = "FullscreenWindowController.h: 28";
 		rLen = 0;
-		rLoc = 649;
+		rLoc = 682;
 		rType = 0;
-		vrLen = 1159;
+		vrLen = 933;
 		vrLoc = 150;
 	};
 	8B022B3B09BE88F300995096 /* PBXTextBookmark */ = {
@@ -1644,7 +1791,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "if(currentlyAnimated)";
 		rLen = 0;
-		rLoc = 4769;
+		rLoc = 5898;
 		rType = 0;
 		vrLen = 248;
 		vrLoc = 5239;
@@ -1654,7 +1801,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "if(currentlyAnimated)";
 		rLen = 0;
-		rLoc = 4769;
+		rLoc = 5898;
 		rType = 0;
 		vrLen = 248;
 		vrLoc = 5239;
@@ -1664,7 +1811,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "if(currentlyAnimated)";
 		rLen = 0;
-		rLoc = 4769;
+		rLoc = 5898;
 		rType = 0;
 		vrLen = 248;
 		vrLoc = 5239;
@@ -1684,9 +1831,9 @@
 		fRef = 8B7BA8CA09B154B3002D34D8 /* FullscreenWindowController.h */;
 		name = "FullscreenWindowController.h: 28";
 		rLen = 0;
-		rLoc = 649;
+		rLoc = 682;
 		rType = 0;
-		vrLen = 1159;
+		vrLen = 933;
 		vrLoc = 150;
 	};
 	8B022B4309BE891800995096 /* PBXTextBookmark */ = {
@@ -1694,7 +1841,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "if(currentlyAnimated)";
 		rLen = 0;
-		rLoc = 4769;
+		rLoc = 5898;
 		rType = 0;
 		vrLen = 248;
 		vrLoc = 5239;
@@ -1704,7 +1851,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "if(currentlyAnimated)";
 		rLen = 0;
-		rLoc = 4769;
+		rLoc = 5898;
 		rType = 0;
 		vrLen = 248;
 		vrLoc = 5239;
@@ -1714,7 +1861,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "if(currentlyAnimated)";
 		rLen = 0;
-		rLoc = 4769;
+		rLoc = 5898;
 		rType = 0;
 		vrLen = 248;
 		vrLoc = 5239;
@@ -1734,9 +1881,9 @@
 		fRef = 8B7BA8CA09B154B3002D34D8 /* FullscreenWindowController.h */;
 		name = "FullscreenWindowController.h: 28";
 		rLen = 0;
-		rLoc = 649;
+		rLoc = 682;
 		rType = 0;
-		vrLen = 1159;
+		vrLen = 933;
 		vrLoc = 150;
 	};
 	8B022B4909BE892900995096 /* PBXTextBookmark */ = {
@@ -1744,7 +1891,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "if(currentlyAnimated)";
 		rLen = 0;
-		rLoc = 4769;
+		rLoc = 5898;
 		rType = 0;
 		vrLen = 248;
 		vrLoc = 5239;
@@ -1754,7 +1901,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "if(currentlyAnimated)";
 		rLen = 0;
-		rLoc = 4769;
+		rLoc = 5898;
 		rType = 0;
 		vrLen = 248;
 		vrLoc = 5239;
@@ -1764,7 +1911,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "if(currentlyAnimated)";
 		rLen = 0;
-		rLoc = 4769;
+		rLoc = 5898;
 		rType = 0;
 		vrLen = 248;
 		vrLoc = 5239;
@@ -1784,9 +1931,9 @@
 		fRef = 8B7BA8CA09B154B3002D34D8 /* FullscreenWindowController.h */;
 		name = "FullscreenWindowController.h: 28";
 		rLen = 0;
-		rLoc = 649;
+		rLoc = 682;
 		rType = 0;
-		vrLen = 1159;
+		vrLen = 933;
 		vrLoc = 150;
 	};
 	8B022B5109BE894400995096 /* PBXTextBookmark */ = {
@@ -1794,7 +1941,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "if(currentlyAnimated)";
 		rLen = 0;
-		rLoc = 4769;
+		rLoc = 5898;
 		rType = 0;
 		vrLen = 248;
 		vrLoc = 5239;
@@ -1814,9 +1961,9 @@
 		fRef = 8B7BA8CA09B154B3002D34D8 /* FullscreenWindowController.h */;
 		name = "FullscreenWindowController.h: 28";
 		rLen = 0;
-		rLoc = 649;
+		rLoc = 682;
 		rType = 0;
-		vrLen = 1159;
+		vrLen = 933;
 		vrLoc = 150;
 	};
 	8B022B5509BE896100995096 /* PBXTextBookmark */ = {
@@ -1824,7 +1971,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "if(currentlyAnimated)";
 		rLen = 0;
-		rLoc = 4769;
+		rLoc = 5898;
 		rType = 0;
 		vrLen = 248;
 		vrLoc = 5239;
@@ -1834,7 +1981,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "if(currentlyAnimated)";
 		rLen = 0;
-		rLoc = 4769;
+		rLoc = 5898;
 		rType = 0;
 		vrLen = 248;
 		vrLoc = 5239;
@@ -1844,7 +1991,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "if(currentlyAnimated)";
 		rLen = 0;
-		rLoc = 4769;
+		rLoc = 5898;
 		rType = 0;
 		vrLen = 248;
 		vrLoc = 5239;
@@ -1864,9 +2011,9 @@
 		fRef = 8B7BA8CA09B154B3002D34D8 /* FullscreenWindowController.h */;
 		name = "FullscreenWindowController.h: 28";
 		rLen = 0;
-		rLoc = 649;
+		rLoc = 682;
 		rType = 0;
-		vrLen = 1159;
+		vrLen = 933;
 		vrLoc = 150;
 	};
 	8B022B5D09BE898700995096 /* PBXBookmark */ = {
@@ -1878,7 +2025,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "if(currentlyAnimated)";
 		rLen = 0;
-		rLoc = 4769;
+		rLoc = 5898;
 		rType = 0;
 		vrLen = 316;
 		vrLoc = 5222;
@@ -1888,7 +2035,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "if(currentlyAnimated)";
 		rLen = 0;
-		rLoc = 4769;
+		rLoc = 5898;
 		rType = 0;
 		vrLen = 316;
 		vrLoc = 5222;
@@ -1898,7 +2045,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "if(currentlyAnimated)";
 		rLen = 0;
-		rLoc = 4769;
+		rLoc = 5898;
 		rType = 0;
 		vrLen = 316;
 		vrLoc = 5222;
@@ -1908,7 +2055,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 101";
 		rLen = 0;
-		rLoc = 2921;
+		rLoc = 4050;
 		rType = 0;
 		vrLen = 1197;
 		vrLoc = 2004;
@@ -1928,9 +2075,9 @@
 		fRef = 8B7BA8CA09B154B3002D34D8 /* FullscreenWindowController.h */;
 		name = "FullscreenWindowController.h: 28";
 		rLen = 0;
-		rLoc = 649;
+		rLoc = 682;
 		rType = 0;
-		vrLen = 1159;
+		vrLen = 933;
 		vrLoc = 150;
 	};
 	8B022B6D09BE89B800995096 /* PBXTextBookmark */ = {
@@ -1938,9 +2085,9 @@
 		fRef = 8B7BA8CA09B154B3002D34D8 /* FullscreenWindowController.h */;
 		name = "FullscreenWindowController.h: 28";
 		rLen = 0;
-		rLoc = 649;
+		rLoc = 682;
 		rType = 0;
-		vrLen = 1159;
+		vrLen = 933;
 		vrLoc = 150;
 	};
 	8B022B6E09BE89B800995096 /* PBXTextBookmark */ = {
@@ -1950,7 +2097,7 @@
 		rLen = 0;
 		rLoc = 460;
 		rType = 0;
-		vrLen = 1159;
+		vrLen = 933;
 		vrLoc = 150;
 	};
 	8B022B6F09BE89B800995096 /* PBXTextBookmark */ = {
@@ -1958,7 +2105,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 101";
 		rLen = 0;
-		rLoc = 2921;
+		rLoc = 4050;
 		rType = 0;
 		vrLen = 1197;
 		vrLoc = 2004;
@@ -1978,7 +2125,7 @@
 		comments = "error: ‘progressIndicator’ undeclared (first use in this function)";
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		rLen = 0;
-		rLoc = 97;
+		rLoc = 132;
 		rType = 1;
 	};
 	8B022B8709BE8A7D00995096 /* PBXTextBookmark */ = {
@@ -1986,7 +2133,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 100";
 		rLen = 0;
-		rLoc = 2921;
+		rLoc = 4050;
 		rType = 0;
 		vrLen = 340;
 		vrLoc = 2805;
@@ -1996,7 +2143,7 @@
 		fRef = 8B5A828509B2405600F7303C /* FileListWindowController.m */;
 		name = "FileListWindowController.m: 50";
 		rLen = 0;
-		rLoc = 1357;
+		rLoc = 1383;
 		rType = 0;
 		vrLen = 335;
 		vrLoc = 1125;
@@ -2006,7 +2153,7 @@
 		comments = "error: ‘currentlyAnimated’ undeclared (first use in this function)";
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		rLen = 0;
-		rLoc = 40;
+		rLoc = 50;
 		rType = 1;
 	};
 	8B022B9509BE8AB100995096 /* PBXTextBookmark */ = {
@@ -2014,7 +2161,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 100";
 		rLen = 0;
-		rLoc = 2921;
+		rLoc = 4050;
 		rType = 0;
 		vrLen = 340;
 		vrLoc = 2805;
@@ -2024,7 +2171,7 @@
 		fRef = 8B5A828509B2405600F7303C /* FileListWindowController.m */;
 		name = "FileListWindowController.m: 50";
 		rLen = 0;
-		rLoc = 1357;
+		rLoc = 1383;
 		rType = 0;
 		vrLen = 335;
 		vrLoc = 1125;
@@ -2034,7 +2181,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 41";
 		rLen = 0;
-		rLoc = 1217;
+		rLoc = 1598;
 		rType = 0;
 		vrLen = 320;
 		vrLoc = 1016;
@@ -2044,7 +2191,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 41";
 		rLen = 0;
-		rLoc = 1217;
+		rLoc = 1598;
 		rType = 0;
 		vrLen = 320;
 		vrLoc = 1016;
@@ -2054,7 +2201,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 41";
 		rLen = 0;
-		rLoc = 1217;
+		rLoc = 1598;
 		rType = 0;
 		vrLen = 320;
 		vrLoc = 1016;
@@ -2064,7 +2211,7 @@
 		fRef = 8B5A828509B2405600F7303C /* FileListWindowController.m */;
 		name = "FileListWindowController.m: 20";
 		rLen = 0;
-		rLoc = 513;
+		rLoc = 539;
 		rType = 0;
 		vrLen = 996;
 		vrLoc = 0;
@@ -2074,7 +2221,7 @@
 		fRef = 8B5A828509B2405600F7303C /* FileListWindowController.m */;
 		name = "FileListWindowController.m: 8";
 		rLen = 0;
-		rLoc = 145;
+		rLoc = 120;
 		rType = 0;
 		vrLen = 1180;
 		vrLoc = 0;
@@ -2086,7 +2233,7 @@
 		rLen = 0;
 		rLoc = 460;
 		rType = 0;
-		vrLen = 1109;
+		vrLen = 933;
 		vrLoc = 150;
 	};
 	8B022B9F09BE8AB300995096 /* PBXTextBookmark */ = {
@@ -2094,9 +2241,9 @@
 		fRef = 8B7BA8CA09B154B3002D34D8 /* FullscreenWindowController.h */;
 		name = "FullscreenWindowController.h: 24";
 		rLen = 0;
-		rLoc = 647;
+		rLoc = 680;
 		rType = 0;
-		vrLen = 1144;
+		vrLen = 995;
 		vrLoc = 88;
 	};
 	8B022BA009BE8AB300995096 /* PBXTextBookmark */ = {
@@ -2104,7 +2251,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 101";
 		rLen = 0;
-		rLoc = 2921;
+		rLoc = 4050;
 		rType = 0;
 		vrLen = 1197;
 		vrLoc = 2004;
@@ -2114,7 +2261,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 159";
 		rLen = 0;
-		rLoc = 4766;
+		rLoc = 5895;
 		rType = 0;
 		vrLen = 1062;
 		vrLoc = 4077;
@@ -2134,7 +2281,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 41";
 		rLen = 0;
-		rLoc = 1217;
+		rLoc = 1598;
 		rType = 0;
 		vrLen = 320;
 		vrLoc = 1016;
@@ -2144,7 +2291,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 41";
 		rLen = 0;
-		rLoc = 1217;
+		rLoc = 1598;
 		rType = 0;
 		vrLen = 320;
 		vrLoc = 1016;
@@ -2154,7 +2301,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 41";
 		rLen = 0;
-		rLoc = 1217;
+		rLoc = 1598;
 		rType = 0;
 		vrLen = 320;
 		vrLoc = 1016;
@@ -2166,7 +2313,7 @@
 		rLen = 0;
 		rLoc = 516;
 		rType = 0;
-		vrLen = 1144;
+		vrLen = 995;
 		vrLoc = 88;
 	};
 	8B022BAC09BE8AEF00995096 /* PBXTextBookmark */ = {
@@ -2174,7 +2321,7 @@
 		fRef = 8B5A828509B2405600F7303C /* FileListWindowController.m */;
 		name = "FileListWindowController.m: 51";
 		rLen = 0;
-		rLoc = 1382;
+		rLoc = 1408;
 		rType = 0;
 		vrLen = 829;
 		vrLoc = 1180;
@@ -2194,7 +2341,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 41";
 		rLen = 0;
-		rLoc = 1217;
+		rLoc = 1598;
 		rType = 0;
 		vrLen = 320;
 		vrLoc = 1016;
@@ -2204,7 +2351,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 41";
 		rLen = 0;
-		rLoc = 1217;
+		rLoc = 1598;
 		rType = 0;
 		vrLen = 320;
 		vrLoc = 1016;
@@ -2214,7 +2361,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 41";
 		rLen = 0;
-		rLoc = 1217;
+		rLoc = 1598;
 		rType = 0;
 		vrLen = 320;
 		vrLoc = 1016;
@@ -2226,7 +2373,7 @@
 		rLen = 0;
 		rLoc = 516;
 		rType = 0;
-		vrLen = 1144;
+		vrLen = 995;
 		vrLoc = 88;
 	};
 	8B022BB309BE8AFB00995096 /* PBXTextBookmark */ = {
@@ -2234,7 +2381,7 @@
 		fRef = 8B5A828509B2405600F7303C /* FileListWindowController.m */;
 		name = "FileListWindowController.m: 51";
 		rLen = 0;
-		rLoc = 1382;
+		rLoc = 1408;
 		rType = 0;
 		vrLen = 829;
 		vrLoc = 1180;
@@ -2254,7 +2401,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 41";
 		rLen = 0;
-		rLoc = 1217;
+		rLoc = 1598;
 		rType = 0;
 		vrLen = 320;
 		vrLoc = 1016;
@@ -2264,7 +2411,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 41";
 		rLen = 0;
-		rLoc = 1217;
+		rLoc = 1598;
 		rType = 0;
 		vrLen = 320;
 		vrLoc = 1016;
@@ -2274,7 +2421,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 41";
 		rLen = 0;
-		rLoc = 1217;
+		rLoc = 1598;
 		rType = 0;
 		vrLen = 320;
 		vrLoc = 1016;
@@ -2284,7 +2431,7 @@
 		fRef = 8B5A828509B2405600F7303C /* FileListWindowController.m */;
 		name = "FileListWindowController.m: 41";
 		rLen = 0;
-		rLoc = 1068;
+		rLoc = 1094;
 		rType = 0;
 		vrLen = 1102;
 		vrLoc = 586;
@@ -2296,7 +2443,7 @@
 		rLen = 0;
 		rLoc = 516;
 		rType = 0;
-		vrLen = 1144;
+		vrLen = 995;
 		vrLoc = 88;
 	};
 	8B022BBD09BE8B3B00995096 /* PBXTextBookmark */ = {
@@ -2314,7 +2461,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 41";
 		rLen = 0;
-		rLoc = 1217;
+		rLoc = 1598;
 		rType = 0;
 		vrLen = 320;
 		vrLoc = 1016;
@@ -2324,7 +2471,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 41";
 		rLen = 0;
-		rLoc = 1217;
+		rLoc = 1598;
 		rType = 0;
 		vrLen = 320;
 		vrLoc = 1016;
@@ -2334,7 +2481,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 41";
 		rLen = 0;
-		rLoc = 1217;
+		rLoc = 1598;
 		rType = 0;
 		vrLen = 320;
 		vrLoc = 1016;
@@ -2344,7 +2491,7 @@
 		fRef = 8B5A828509B2405600F7303C /* FileListWindowController.m */;
 		name = "FileListWindowController.m: 55";
 		rLen = 0;
-		rLoc = 1382;
+		rLoc = 1408;
 		rType = 0;
 		vrLen = 1127;
 		vrLoc = 586;
@@ -2356,7 +2503,7 @@
 		rLen = 0;
 		rLoc = 516;
 		rType = 0;
-		vrLen = 1144;
+		vrLen = 995;
 		vrLoc = 88;
 	};
 	8B022BC609BE8B7900995096 /* PBXTextBookmark */ = {
@@ -2374,7 +2521,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 41";
 		rLen = 0;
-		rLoc = 1217;
+		rLoc = 1598;
 		rType = 0;
 		vrLen = 320;
 		vrLoc = 1016;
@@ -2384,7 +2531,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 41";
 		rLen = 0;
-		rLoc = 1217;
+		rLoc = 1598;
 		rType = 0;
 		vrLen = 320;
 		vrLoc = 1016;
@@ -2394,7 +2541,7 @@
 		fRef = 8B5A828509B2405600F7303C /* FileListWindowController.m */;
 		name = "FileListWindowController.m: 55";
 		rLen = 0;
-		rLoc = 1382;
+		rLoc = 1408;
 		rType = 0;
 		vrLen = 1127;
 		vrLoc = 586;
@@ -2406,7 +2553,7 @@
 		rLen = 0;
 		rLoc = 516;
 		rType = 0;
-		vrLen = 1144;
+		vrLen = 995;
 		vrLoc = 88;
 	};
 	8B022BCD09BE8BA400995096 /* PBXTextBookmark */ = {
@@ -2424,7 +2571,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 41";
 		rLen = 0;
-		rLoc = 1217;
+		rLoc = 1598;
 		rType = 0;
 		vrLen = 320;
 		vrLoc = 1016;
@@ -2434,7 +2581,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 41";
 		rLen = 0;
-		rLoc = 1217;
+		rLoc = 1598;
 		rType = 0;
 		vrLen = 320;
 		vrLoc = 1016;
@@ -2444,7 +2591,7 @@
 		fRef = 8B5A828509B2405600F7303C /* FileListWindowController.m */;
 		name = "FileListWindowController.m: 55";
 		rLen = 0;
-		rLoc = 1382;
+		rLoc = 1408;
 		rType = 0;
 		vrLen = 1127;
 		vrLoc = 586;
@@ -2456,7 +2603,7 @@
 		rLen = 0;
 		rLoc = 516;
 		rType = 0;
-		vrLen = 1144;
+		vrLen = 995;
 		vrLoc = 88;
 	};
 	8B022BD309BE8BC100995096 /* PBXTextBookmark */ = {
@@ -2474,7 +2621,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 41";
 		rLen = 0;
-		rLoc = 1217;
+		rLoc = 1598;
 		rType = 0;
 		vrLen = 320;
 		vrLoc = 1016;
@@ -2484,7 +2631,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 41";
 		rLen = 0;
-		rLoc = 1217;
+		rLoc = 1598;
 		rType = 0;
 		vrLen = 320;
 		vrLoc = 1016;
@@ -2494,7 +2641,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 41";
 		rLen = 0;
-		rLoc = 1217;
+		rLoc = 1598;
 		rType = 0;
 		vrLen = 320;
 		vrLoc = 1016;
@@ -2504,7 +2651,7 @@
 		fRef = 8B5A828509B2405600F7303C /* FileListWindowController.m */;
 		name = "FileListWindowController.m: 56";
 		rLen = 0;
-		rLoc = 1382;
+		rLoc = 1408;
 		rType = 0;
 		vrLen = 1127;
 		vrLoc = 586;
@@ -2516,7 +2663,7 @@
 		rLen = 0;
 		rLoc = 516;
 		rType = 0;
-		vrLen = 1144;
+		vrLen = 995;
 		vrLoc = 88;
 	};
 	8B022BDA09BE8BFE00995096 /* PBXTextBookmark */ = {
@@ -2534,7 +2681,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 41";
 		rLen = 0;
-		rLoc = 1217;
+		rLoc = 1598;
 		rType = 0;
 		vrLen = 320;
 		vrLoc = 1016;
@@ -2544,7 +2691,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 41";
 		rLen = 0;
-		rLoc = 1217;
+		rLoc = 1598;
 		rType = 0;
 		vrLen = 320;
 		vrLoc = 1016;
@@ -2554,7 +2701,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 41";
 		rLen = 0;
-		rLoc = 1217;
+		rLoc = 1598;
 		rType = 0;
 		vrLen = 320;
 		vrLoc = 1016;
@@ -2564,7 +2711,7 @@
 		fRef = 8B5A828509B2405600F7303C /* FileListWindowController.m */;
 		name = "FileListWindowController.m: 56";
 		rLen = 0;
-		rLoc = 1382;
+		rLoc = 1408;
 		rType = 0;
 		vrLen = 1127;
 		vrLoc = 586;
@@ -2576,7 +2723,7 @@
 		rLen = 0;
 		rLoc = 516;
 		rType = 0;
-		vrLen = 1144;
+		vrLen = 995;
 		vrLoc = 88;
 	};
 	8B022BE109BE8C3A00995096 /* PBXTextBookmark */ = {
@@ -2594,7 +2741,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 41";
 		rLen = 0;
-		rLoc = 1217;
+		rLoc = 1598;
 		rType = 0;
 		vrLen = 320;
 		vrLoc = 1016;
@@ -2604,7 +2751,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 41";
 		rLen = 0;
-		rLoc = 1217;
+		rLoc = 1598;
 		rType = 0;
 		vrLen = 320;
 		vrLoc = 1016;
@@ -2614,7 +2761,7 @@
 		fRef = 8B5A828509B2405600F7303C /* FileListWindowController.m */;
 		name = "FileListWindowController.m: 56";
 		rLen = 0;
-		rLoc = 1382;
+		rLoc = 1408;
 		rType = 0;
 		vrLen = 1127;
 		vrLoc = 586;
@@ -2626,7 +2773,7 @@
 		rLen = 0;
 		rLoc = 516;
 		rType = 0;
-		vrLen = 1144;
+		vrLen = 995;
 		vrLoc = 88;
 	};
 	8B022BE709BE8C5000995096 /* PBXTextBookmark */ = {
@@ -2646,7 +2793,7 @@
 		rLen = 0;
 		rLoc = 516;
 		rType = 0;
-		vrLen = 1144;
+		vrLen = 995;
 		vrLoc = 88;
 	};
 	8B022BEE09BE8C8700995096 /* PBXTextBookmark */ = {
@@ -2664,7 +2811,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 41";
 		rLen = 0;
-		rLoc = 1217;
+		rLoc = 1598;
 		rType = 0;
 		vrLen = 320;
 		vrLoc = 1016;
@@ -2674,7 +2821,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 41";
 		rLen = 0;
-		rLoc = 1217;
+		rLoc = 1598;
 		rType = 0;
 		vrLen = 320;
 		vrLoc = 1016;
@@ -2686,7 +2833,7 @@
 		rLen = 0;
 		rLoc = 516;
 		rType = 0;
-		vrLen = 1144;
+		vrLen = 995;
 		vrLoc = 88;
 	};
 	8B022BF309BE8CA600995096 /* PBXTextBookmark */ = {
@@ -2720,7 +2867,7 @@
 		rLen = 0;
 		rLoc = 516;
 		rType = 0;
-		vrLen = 1144;
+		vrLen = 995;
 		vrLoc = 88;
 	};
 	8B022BFF09BE8E4800995096 /* PBXTextBookmark */ = {
@@ -2728,7 +2875,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 41";
 		rLen = 0;
-		rLoc = 1217;
+		rLoc = 1598;
 		rType = 0;
 		vrLen = 320;
 		vrLoc = 1016;
@@ -2738,7 +2885,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 41";
 		rLen = 0;
-		rLoc = 1217;
+		rLoc = 1598;
 		rType = 0;
 		vrLen = 320;
 		vrLoc = 1016;
@@ -2748,7 +2895,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 41";
 		rLen = 0;
-		rLoc = 1217;
+		rLoc = 1598;
 		rType = 0;
 		vrLen = 320;
 		vrLoc = 1016;
@@ -2760,8 +2907,1447 @@
 		rLen = 0;
 		rLoc = 516;
 		rType = 0;
-		vrLen = 1144;
+		vrLen = 995;
 		vrLoc = 88;
+	};
+	8B022F6609BE8EB200995096 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+	};
+	8B022F6A09BE8F1800995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 41";
+		rLen = 0;
+		rLoc = 1598;
+		rType = 0;
+		vrLen = 320;
+		vrLoc = 1016;
+	};
+	8B022F6B09BE8F1800995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 41";
+		rLen = 0;
+		rLoc = 1598;
+		rType = 0;
+		vrLen = 320;
+		vrLoc = 1016;
+	};
+	8B022F6C09BE8F1800995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 41";
+		rLen = 0;
+		rLoc = 1598;
+		rType = 0;
+		vrLen = 320;
+		vrLoc = 1016;
+	};
+	8B022F6F09BE8F1900995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 62";
+		rLen = 0;
+		rLoc = 2265;
+		rType = 0;
+		vrLen = 1486;
+		vrLoc = 1553;
+	};
+	8B022F7109BE8FAD00995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 41";
+		rLen = 0;
+		rLoc = 1598;
+		rType = 0;
+		vrLen = 320;
+		vrLoc = 1016;
+	};
+	8B022F7209BE8FAD00995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 41";
+		rLen = 0;
+		rLoc = 1598;
+		rType = 0;
+		vrLen = 320;
+		vrLoc = 1016;
+	};
+	8B022F7309BE8FAD00995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 41";
+		rLen = 0;
+		rLoc = 1598;
+		rType = 0;
+		vrLen = 320;
+		vrLoc = 1016;
+	};
+	8B022F7409BE8FAF00995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 118";
+		rLen = 0;
+		rLoc = 4700;
+		rType = 0;
+		vrLen = 1440;
+		vrLoc = 1336;
+	};
+	8B022F7609BE8FC600995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 41";
+		rLen = 0;
+		rLoc = 1598;
+		rType = 0;
+		vrLen = 320;
+		vrLoc = 1016;
+	};
+	8B022F7709BE8FC700995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 41";
+		rLen = 0;
+		rLoc = 1598;
+		rType = 0;
+		vrLen = 320;
+		vrLoc = 1016;
+	};
+	8B022F7809BE8FC700995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 41";
+		rLen = 0;
+		rLoc = 1598;
+		rType = 0;
+		vrLen = 320;
+		vrLoc = 1016;
+	};
+	8B022F7909BE8FC700995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 118";
+		rLen = 0;
+		rLoc = 4700;
+		rType = 0;
+		vrLen = 1440;
+		vrLoc = 1336;
+	};
+	8B022F7B09BE901600995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 41";
+		rLen = 0;
+		rLoc = 1598;
+		rType = 0;
+		vrLen = 320;
+		vrLoc = 1016;
+	};
+	8B022F7C09BE901600995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 41";
+		rLen = 0;
+		rLoc = 1598;
+		rType = 0;
+		vrLen = 320;
+		vrLoc = 1016;
+	};
+	8B022F7D09BE901600995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 41";
+		rLen = 0;
+		rLoc = 1598;
+		rType = 0;
+		vrLen = 320;
+		vrLoc = 1016;
+	};
+	8B022F7E09BE901800995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 62";
+		rLen = 0;
+		rLoc = 2265;
+		rType = 0;
+		vrLen = 1400;
+		vrLoc = 1336;
+	};
+	8B022F8009BE902000995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 41";
+		rLen = 0;
+		rLoc = 1598;
+		rType = 0;
+		vrLen = 320;
+		vrLoc = 1016;
+	};
+	8B022F8109BE902000995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 41";
+		rLen = 0;
+		rLoc = 1598;
+		rType = 0;
+		vrLen = 320;
+		vrLoc = 1016;
+	};
+	8B022F8209BE902100995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 41";
+		rLen = 0;
+		rLoc = 1598;
+		rType = 0;
+		vrLen = 320;
+		vrLoc = 1016;
+	};
+	8B022F8309BE902200995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 62";
+		rLen = 0;
+		rLoc = 2265;
+		rType = 0;
+		vrLen = 1400;
+		vrLoc = 1336;
+	};
+	8B022F8509BE902A00995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 41";
+		rLen = 0;
+		rLoc = 1598;
+		rType = 0;
+		vrLen = 320;
+		vrLoc = 1016;
+	};
+	8B022F8609BE902A00995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 41";
+		rLen = 0;
+		rLoc = 1598;
+		rType = 0;
+		vrLen = 320;
+		vrLoc = 1016;
+	};
+	8B022F8709BE902B00995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 62";
+		rLen = 0;
+		rLoc = 2265;
+		rType = 0;
+		vrLen = 1400;
+		vrLoc = 1336;
+	};
+	8B022F8909BE903300995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 41";
+		rLen = 0;
+		rLoc = 1598;
+		rType = 0;
+		vrLen = 320;
+		vrLoc = 1016;
+	};
+	8B022F8A09BE903300995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 41";
+		rLen = 0;
+		rLoc = 1598;
+		rType = 0;
+		vrLen = 320;
+		vrLoc = 1016;
+	};
+	8B022F8B09BE903400995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 62";
+		rLen = 0;
+		rLoc = 2265;
+		rType = 0;
+		vrLen = 1400;
+		vrLoc = 1336;
+	};
+	8B022F8D09BE903C00995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 41";
+		rLen = 0;
+		rLoc = 1598;
+		rType = 0;
+		vrLen = 320;
+		vrLoc = 1016;
+	};
+	8B022F8E09BE903C00995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 41";
+		rLen = 0;
+		rLoc = 1598;
+		rType = 0;
+		vrLen = 320;
+		vrLoc = 1016;
+	};
+	8B022F8F09BE903C00995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 41";
+		rLen = 0;
+		rLoc = 1598;
+		rType = 0;
+		vrLen = 320;
+		vrLoc = 1016;
+	};
+	8B022F9009BE903D00995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 62";
+		rLen = 0;
+		rLoc = 2265;
+		rType = 0;
+		vrLen = 1400;
+		vrLoc = 1336;
+	};
+	8B022F9209BE906F00995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 41";
+		rLen = 0;
+		rLoc = 1598;
+		rType = 0;
+		vrLen = 320;
+		vrLoc = 1016;
+	};
+	8B022F9309BE906F00995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 41";
+		rLen = 0;
+		rLoc = 1598;
+		rType = 0;
+		vrLen = 320;
+		vrLoc = 1016;
+	};
+	8B022F9409BE906F00995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 41";
+		rLen = 0;
+		rLoc = 1598;
+		rType = 0;
+		vrLen = 320;
+		vrLoc = 1016;
+	};
+	8B022F9509BE907100995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 77";
+		rLen = 0;
+		rLoc = 2478;
+		rType = 0;
+		vrLen = 1400;
+		vrLoc = 1336;
+	};
+	8B022F9909BE908000995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 41";
+		rLen = 0;
+		rLoc = 1598;
+		rType = 0;
+		vrLen = 320;
+		vrLoc = 1016;
+	};
+	8B022F9A09BE908100995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 41";
+		rLen = 0;
+		rLoc = 1598;
+		rType = 0;
+		vrLen = 320;
+		vrLoc = 1016;
+	};
+	8B022F9B09BE908100995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 41";
+		rLen = 0;
+		rLoc = 1598;
+		rType = 0;
+		vrLen = 320;
+		vrLoc = 1016;
+	};
+	8B022F9C09BE908200995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 79";
+		rLen = 0;
+		rLoc = 2478;
+		rType = 0;
+		vrLen = 1273;
+		vrLoc = 1336;
+	};
+	8B022F9E09BE908900995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 41";
+		rLen = 0;
+		rLoc = 1598;
+		rType = 0;
+		vrLen = 320;
+		vrLoc = 1016;
+	};
+	8B022F9F09BE908900995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 41";
+		rLen = 0;
+		rLoc = 1598;
+		rType = 0;
+		vrLen = 320;
+		vrLoc = 1016;
+	};
+	8B022FA009BE908900995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 41";
+		rLen = 0;
+		rLoc = 1598;
+		rType = 0;
+		vrLen = 320;
+		vrLoc = 1016;
+	};
+	8B022FA109BE908B00995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 79";
+		rLen = 0;
+		rLoc = 2478;
+		rType = 0;
+		vrLen = 1273;
+		vrLoc = 1336;
+	};
+	8B022FA309BE909400995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 41";
+		rLen = 0;
+		rLoc = 1598;
+		rType = 0;
+		vrLen = 320;
+		vrLoc = 1016;
+	};
+	8B022FA409BE909500995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 41";
+		rLen = 0;
+		rLoc = 1598;
+		rType = 0;
+		vrLen = 320;
+		vrLoc = 1016;
+	};
+	8B022FA509BE909500995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 41";
+		rLen = 0;
+		rLoc = 1598;
+		rType = 0;
+		vrLen = 320;
+		vrLoc = 1016;
+	};
+	8B022FA609BE909600995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 79";
+		rLen = 0;
+		rLoc = 2478;
+		rType = 0;
+		vrLen = 1273;
+		vrLoc = 1336;
+	};
+	8B022FA809BE945100995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 41";
+		rLen = 0;
+		rLoc = 1598;
+		rType = 0;
+		vrLen = 320;
+		vrLoc = 1016;
+	};
+	8B022FA909BE945100995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 41";
+		rLen = 0;
+		rLoc = 1598;
+		rType = 0;
+		vrLen = 320;
+		vrLoc = 1016;
+	};
+	8B022FAA09BE945100995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 41";
+		rLen = 0;
+		rLoc = 1598;
+		rType = 0;
+		vrLen = 320;
+		vrLoc = 1016;
+	};
+	8B022FAB09BE945300995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 134";
+		rLen = 0;
+		rLoc = 5087;
+		rType = 0;
+		vrLen = 1442;
+		vrLoc = 1553;
+	};
+	8B022FAD09BE945F00995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 41";
+		rLen = 0;
+		rLoc = 1598;
+		rType = 0;
+		vrLen = 320;
+		vrLoc = 1016;
+	};
+	8B022FAE09BE945F00995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 41";
+		rLen = 0;
+		rLoc = 1598;
+		rType = 0;
+		vrLen = 320;
+		vrLoc = 1016;
+	};
+	8B022FAF09BE945F00995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 41";
+		rLen = 0;
+		rLoc = 1598;
+		rType = 0;
+		vrLen = 320;
+		vrLoc = 1016;
+	};
+	8B022FB009BE946000995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 134";
+		rLen = 0;
+		rLoc = 5087;
+		rType = 0;
+		vrLen = 1442;
+		vrLoc = 1553;
+	};
+	8B022FB409BE94AA00995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 41";
+		rLen = 0;
+		rLoc = 1598;
+		rType = 0;
+		vrLen = 320;
+		vrLoc = 1016;
+	};
+	8B022FB509BE94AA00995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 41";
+		rLen = 0;
+		rLoc = 1598;
+		rType = 0;
+		vrLen = 320;
+		vrLoc = 1016;
+	};
+	8B022FB609BE94AB00995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 41";
+		rLen = 0;
+		rLoc = 1598;
+		rType = 0;
+		vrLen = 320;
+		vrLoc = 1016;
+	};
+	8B022FB709BE94AC00995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 61";
+		rLen = 0;
+		rLoc = 2265;
+		rType = 0;
+		vrLen = 1321;
+		vrLoc = 1373;
+	};
+	8B022FBA09BE94B700995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 41";
+		rLen = 0;
+		rLoc = 1598;
+		rType = 0;
+		vrLen = 320;
+		vrLoc = 1016;
+	};
+	8B022FBF09BE94B900995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 41";
+		rLen = 0;
+		rLoc = 1598;
+		rType = 0;
+		vrLen = 320;
+		vrLoc = 1016;
+	};
+	8B022FC009BE94B900995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 41";
+		rLen = 0;
+		rLoc = 1598;
+		rType = 0;
+		vrLen = 320;
+		vrLoc = 1016;
+	};
+	8B022FC109BE94B900995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 41";
+		rLen = 0;
+		rLoc = 1598;
+		rType = 0;
+		vrLen = 320;
+		vrLoc = 1016;
+	};
+	8B022FC209BE94BA00995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 61";
+		rLen = 0;
+		rLoc = 2265;
+		rType = 0;
+		vrLen = 1321;
+		vrLoc = 1373;
+	};
+	8B022FC409BE94C300995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 41";
+		rLen = 0;
+		rLoc = 1598;
+		rType = 0;
+		vrLen = 320;
+		vrLoc = 1016;
+	};
+	8B022FC509BE94C300995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 41";
+		rLen = 0;
+		rLoc = 1598;
+		rType = 0;
+		vrLen = 320;
+		vrLoc = 1016;
+	};
+	8B022FC609BE94C300995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 41";
+		rLen = 0;
+		rLoc = 1598;
+		rType = 0;
+		vrLen = 320;
+		vrLoc = 1016;
+	};
+	8B022FC709BE94C400995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 61";
+		rLen = 0;
+		rLoc = 2265;
+		rType = 0;
+		vrLen = 1321;
+		vrLoc = 1373;
+	};
+	8B022FC809BE975D00995096 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 8B5A828509B2405600F7303C /* FileListWindowController.m */;
+	};
+	8B022FD109BE979600995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 41";
+		rLen = 0;
+		rLoc = 1598;
+		rType = 0;
+		vrLen = 320;
+		vrLoc = 1016;
+	};
+	8B022FD209BE979600995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 41";
+		rLen = 0;
+		rLoc = 1598;
+		rType = 0;
+		vrLen = 320;
+		vrLoc = 1016;
+	};
+	8B022FD309BE979600995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 41";
+		rLen = 0;
+		rLoc = 1598;
+		rType = 0;
+		vrLen = 320;
+		vrLoc = 1016;
+	};
+	8B022FD609BE979800995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B5A828509B2405600F7303C /* FileListWindowController.m */;
+		name = "FileListWindowController.m: 30";
+		rLen = 0;
+		rLoc = 614;
+		rType = 0;
+		vrLen = 1134;
+		vrLoc = 0;
+	};
+	8B022FD709BE979800995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "NSUserDefaults* ud = [NSUserDefaults standardUserDefaults];";
+		rLen = 0;
+		rLoc = 2265;
+		rType = 0;
+		vrLen = 1353;
+		vrLoc = 1238;
+	};
+	8B022FDB09BE97A500995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 41";
+		rLen = 0;
+		rLoc = 1598;
+		rType = 0;
+		vrLen = 320;
+		vrLoc = 1016;
+	};
+	8B022FDC09BE97A500995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 41";
+		rLen = 0;
+		rLoc = 1598;
+		rType = 0;
+		vrLen = 320;
+		vrLoc = 1016;
+	};
+	8B022FDD09BE97A600995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 64";
+		rLen = 0;
+		rLoc = 2265;
+		rType = 0;
+		vrLen = 1357;
+		vrLoc = 1238;
+	};
+	8B022FDE09BE97A700995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B5A828509B2405600F7303C /* FileListWindowController.m */;
+		name = "FileListWindowController.m: 30";
+		rLen = 0;
+		rLoc = 614;
+		rType = 0;
+		vrLen = 1134;
+		vrLoc = 0;
+	};
+	8B022FE109BE97BE00995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 64";
+		rLen = 0;
+		rLoc = 2265;
+		rType = 0;
+		vrLen = 1357;
+		vrLoc = 1238;
+	};
+	8B022FEA09BFD12400995096 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 8B5A828509B2405600F7303C /* FileListWindowController.m */;
+	};
+	8B022FEB09BFD12400995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B5A828509B2405600F7303C /* FileListWindowController.m */;
+		name = "FileListWindowController.m: 28";
+		rLen = 0;
+		rLoc = 225;
+		rType = 0;
+		vrLen = 887;
+		vrLoc = 0;
+	};
+	8B022FEE09BFD12400995096 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 8B24491C08FB55C8004716BC /* ViewIconViewController.m */;
+	};
+	8B022FEF09BFD12400995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B24491C08FB55C8004716BC /* ViewIconViewController.m */;
+		name = "ViewIconViewController.m: 84";
+		rLen = 0;
+		rLoc = 2677;
+		rType = 0;
+		vrLen = 984;
+		vrLoc = 3226;
+	};
+	8B022FF009BFD12400995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 64";
+		rLen = 0;
+		rLoc = 2265;
+		rType = 0;
+		vrLen = 1357;
+		vrLoc = 1238;
+	};
+	8B022FF409BFD13D00995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 41";
+		rLen = 0;
+		rLoc = 1598;
+		rType = 0;
+		vrLen = 320;
+		vrLoc = 1016;
+	};
+	8B022FF509BFD13D00995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 41";
+		rLen = 0;
+		rLoc = 1598;
+		rType = 0;
+		vrLen = 320;
+		vrLoc = 1016;
+	};
+	8B022FF609BFD13D00995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 41";
+		rLen = 0;
+		rLoc = 1598;
+		rType = 0;
+		vrLen = 320;
+		vrLoc = 1016;
+	};
+	8B022FF709BFD13F00995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B5A828509B2405600F7303C /* FileListWindowController.m */;
+		name = "FileListWindowController.m: 30";
+		rLen = 0;
+		rLoc = 225;
+		rType = 0;
+		vrLen = 941;
+		vrLoc = 0;
+	};
+	8B022FF809BFD13F00995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B24491C08FB55C8004716BC /* ViewIconViewController.m */;
+		name = "ViewIconViewController.m: 84";
+		rLen = 0;
+		rLoc = 2677;
+		rType = 0;
+		vrLen = 984;
+		vrLoc = 3226;
+	};
+	8B022FF909BFD13F00995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 64";
+		rLen = 0;
+		rLoc = 2265;
+		rType = 0;
+		vrLen = 1357;
+		vrLoc = 1238;
+	};
+	8B02300B09BFD29A00995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 51";
+		rLen = 0;
+		rLoc = 1598;
+		rType = 0;
+		vrLen = 549;
+		vrLoc = 1016;
+	};
+	8B02300C09BFD29A00995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 51";
+		rLen = 0;
+		rLoc = 1598;
+		rType = 0;
+		vrLen = 549;
+		vrLoc = 1016;
+	};
+	8B02300D09BFD29B00995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 51";
+		rLen = 0;
+		rLoc = 1598;
+		rType = 0;
+		vrLen = 549;
+		vrLoc = 1016;
+	};
+	8B02300E09BFD29D00995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 64";
+		rLen = 0;
+		rLoc = 2265;
+		rType = 0;
+		vrLen = 1357;
+		vrLoc = 1238;
+	};
+	8B02300F09BFD29D00995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 72";
+		rLen = 0;
+		rLoc = 2032;
+		rType = 0;
+		vrLen = 968;
+		vrLoc = 1547;
+	};
+	8B02301209BFD29D00995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CA09B154B3002D34D8 /* FullscreenWindowController.h */;
+		rLen = 0;
+		rLoc = "-2147483616";
+		rType = 0;
+	};
+	8B02301309BFD29D00995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CA09B154B3002D34D8 /* FullscreenWindowController.h */;
+		name = "FullscreenWindowController.h: shouldRecordWindowState";
+		rLen = 0;
+		rLoc = 673;
+		rType = 0;
+		vrLen = 1058;
+		vrLoc = 0;
+	};
+	8B02301509BFD2A600995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 51";
+		rLen = 0;
+		rLoc = 1598;
+		rType = 0;
+		vrLen = 549;
+		vrLoc = 1016;
+	};
+	8B02301609BFD2A700995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 51";
+		rLen = 0;
+		rLoc = 1598;
+		rType = 0;
+		vrLen = 549;
+		vrLoc = 1016;
+	};
+	8B02301709BFD2A700995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 51";
+		rLen = 0;
+		rLoc = 1598;
+		rType = 0;
+		vrLen = 549;
+		vrLoc = 1016;
+	};
+	8B02301809BFD2A800995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 72";
+		rLen = 0;
+		rLoc = 2032;
+		rType = 0;
+		vrLen = 968;
+		vrLoc = 1547;
+	};
+	8B02301909BFD2A800995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CA09B154B3002D34D8 /* FullscreenWindowController.h */;
+		name = "FullscreenWindowController.h: shouldRecordWindowState";
+		rLen = 0;
+		rLoc = 673;
+		rType = 0;
+		vrLen = 1058;
+		vrLoc = 0;
+	};
+	8B02301D09BFD2BD00995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 51";
+		rLen = 0;
+		rLoc = 1598;
+		rType = 0;
+		vrLen = 549;
+		vrLoc = 1016;
+	};
+	8B02301E09BFD2BD00995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 51";
+		rLen = 0;
+		rLoc = 1598;
+		rType = 0;
+		vrLen = 549;
+		vrLoc = 1016;
+	};
+	8B02301F09BFD2BE00995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 73";
+		rLen = 0;
+		rLoc = 2059;
+		rType = 0;
+		vrLen = 1125;
+		vrLoc = 1800;
+	};
+	8B02302009BFD2BE00995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CA09B154B3002D34D8 /* FullscreenWindowController.h */;
+		name = "FullscreenWindowController.h: shouldRecordWindowState";
+		rLen = 0;
+		rLoc = 673;
+		rType = 0;
+		vrLen = 1058;
+		vrLoc = 0;
+	};
+	8B02302209BFD2C300995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 51";
+		rLen = 0;
+		rLoc = 1598;
+		rType = 0;
+		vrLen = 549;
+		vrLoc = 1016;
+	};
+	8B02302309BFD2C300995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 51";
+		rLen = 0;
+		rLoc = 1598;
+		rType = 0;
+		vrLen = 549;
+		vrLoc = 1016;
+	};
+	8B02302409BFD2C400995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 51";
+		rLen = 0;
+		rLoc = 1598;
+		rType = 0;
+		vrLen = 549;
+		vrLoc = 1016;
+	};
+	8B02302509BFD2C500995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 73";
+		rLen = 0;
+		rLoc = 2059;
+		rType = 0;
+		vrLen = 1125;
+		vrLoc = 1800;
+	};
+	8B02302609BFD2C500995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CA09B154B3002D34D8 /* FullscreenWindowController.h */;
+		name = "FullscreenWindowController.h: shouldRecordWindowState";
+		rLen = 0;
+		rLoc = 673;
+		rType = 0;
+		vrLen = 1058;
+		vrLoc = 0;
+	};
+	8B02302A09BFD31200995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 51";
+		rLen = 0;
+		rLoc = 1598;
+		rType = 0;
+		vrLen = 549;
+		vrLoc = 1016;
+	};
+	8B02302B09BFD31200995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 51";
+		rLen = 0;
+		rLoc = 1598;
+		rType = 0;
+		vrLen = 549;
+		vrLoc = 1016;
+	};
+	8B02302C09BFD31200995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 51";
+		rLen = 0;
+		rLoc = 1598;
+		rType = 0;
+		vrLen = 549;
+		vrLoc = 1016;
+	};
+	8B02302D09BFD31400995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 113";
+		rLen = 0;
+		rLoc = 3316;
+		rType = 0;
+		vrLen = 1463;
+		vrLoc = 2545;
+	};
+	8B02302E09BFD31400995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CA09B154B3002D34D8 /* FullscreenWindowController.h */;
+		name = "FullscreenWindowController.h: shouldRecordWindowState";
+		rLen = 0;
+		rLoc = 673;
+		rType = 0;
+		vrLen = 1058;
+		vrLoc = 0;
+	};
+	8B02303009BFD31A00995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 51";
+		rLen = 0;
+		rLoc = 1598;
+		rType = 0;
+		vrLen = 549;
+		vrLoc = 1016;
+	};
+	8B02303109BFD31A00995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 51";
+		rLen = 0;
+		rLoc = 1598;
+		rType = 0;
+		vrLen = 549;
+		vrLoc = 1016;
+	};
+	8B02303209BFD31A00995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 51";
+		rLen = 0;
+		rLoc = 1598;
+		rType = 0;
+		vrLen = 549;
+		vrLoc = 1016;
+	};
+	8B02303309BFD31B00995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 113";
+		rLen = 0;
+		rLoc = 3316;
+		rType = 0;
+		vrLen = 1463;
+		vrLoc = 2545;
+	};
+	8B02303409BFD31B00995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CA09B154B3002D34D8 /* FullscreenWindowController.h */;
+		name = "FullscreenWindowController.h: shouldRecordWindowState";
+		rLen = 0;
+		rLoc = 673;
+		rType = 0;
+		vrLen = 1058;
+		vrLoc = 0;
+	};
+	8B02303609BFD32500995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 51";
+		rLen = 0;
+		rLoc = 1598;
+		rType = 0;
+		vrLen = 549;
+		vrLoc = 1016;
+	};
+	8B02303709BFD32500995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 51";
+		rLen = 0;
+		rLoc = 1598;
+		rType = 0;
+		vrLen = 549;
+		vrLoc = 1016;
+	};
+	8B02303809BFD32600995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 113";
+		rLen = 0;
+		rLoc = 3316;
+		rType = 0;
+		vrLen = 1463;
+		vrLoc = 2545;
+	};
+	8B02303909BFD32600995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CA09B154B3002D34D8 /* FullscreenWindowController.h */;
+		name = "FullscreenWindowController.h: shouldRecordWindowState";
+		rLen = 0;
+		rLoc = 673;
+		rType = 0;
+		vrLen = 1058;
+		vrLoc = 0;
+	};
+	8B02303B09BFD33C00995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 51";
+		rLen = 0;
+		rLoc = 1598;
+		rType = 0;
+		vrLen = 549;
+		vrLoc = 1016;
+	};
+	8B02303C09BFD33C00995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 51";
+		rLen = 0;
+		rLoc = 1598;
+		rType = 0;
+		vrLen = 549;
+		vrLoc = 1016;
+	};
+	8B02303D09BFD33C00995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 51";
+		rLen = 0;
+		rLoc = 1598;
+		rType = 0;
+		vrLen = 549;
+		vrLoc = 1016;
+	};
+	8B02303E09BFD33D00995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 113";
+		rLen = 0;
+		rLoc = 3316;
+		rType = 0;
+		vrLen = 1463;
+		vrLoc = 2545;
+	};
+	8B02303F09BFD33D00995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CA09B154B3002D34D8 /* FullscreenWindowController.h */;
+		name = "FullscreenWindowController.h: shouldRecordWindowState";
+		rLen = 0;
+		rLoc = 673;
+		rType = 0;
+		vrLen = 1058;
+		vrLoc = 0;
+	};
+	8B02304209BFD35F00995096 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 8B5A828509B2405600F7303C /* FileListWindowController.m */;
+	};
+	8B02304509BFD36200995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B5A828509B2405600F7303C /* FileListWindowController.m */;
+		name = "FileListWindowController.m: 16";
+		rLen = 0;
+		rLoc = 226;
+		rType = 0;
+		vrLen = 1070;
+		vrLoc = 0;
+	};
+	8B02304609BFD36200995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "FullscreenWindowController.m: 76";
+		rLen = 0;
+		rLoc = 2119;
+		rType = 0;
+		vrLen = 1271;
+		vrLoc = 4486;
+	};
+	8B02304709BFD36200995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CA09B154B3002D34D8 /* FullscreenWindowController.h */;
+		name = "FullscreenWindowController.h: shouldRecordWindowState";
+		rLen = 0;
+		rLoc = 673;
+		rType = 0;
+		vrLen = 1058;
+		vrLoc = 0;
+	};
+	8B02305209BFD38F00995096 /* FullscreenWindowController.m */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.objc;
+		name = FullscreenWindowController.m;
+		path = /Users/elliot/Projects/VitaminSEE/Components/FullScreenMode/FullscreenWindowController.m;
+		sourceTree = "<absolute>";
+	};
+	8B02305309BFD38F00995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B02305209BFD38F00995096 /* FullscreenWindowController.m */;
+		rLen = 1;
+		rLoc = 187;
+		rType = 1;
+	};
+	8B02307009BFD40B00995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "warning: ‘FileListWindowController’ may not respond to ‘-cancelCountdown’";
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		rLen = 1;
+		rLoc = 183;
+		rType = 1;
+	};
+	8B02307109BFD40B00995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "[fileListViewerController cancelCountdown];";
+		rLen = 45;
+		rLoc = 5679;
+		rType = 0;
+		vrLen = 283;
+		vrLoc = 5531;
+	};
+	8B02307209BFD40B00995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "[fileListViewerController cancelCountdown];";
+		rLen = 45;
+		rLoc = 5679;
+		rType = 0;
+		vrLen = 283;
+		vrLoc = 5531;
+	};
+	8B02307309BFD40B00995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "[fileListViewerController cancelCountdown];";
+		rLen = 45;
+		rLoc = 5679;
+		rType = 0;
+		vrLen = 283;
+		vrLoc = 5531;
+	};
+	8B02307609BFD40D00995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "{";
+		rLen = 2;
+		rLoc = 5757;
+		rType = 0;
+		vrLen = 1062;
+		vrLoc = 5206;
+	};
+	8B02307709BFD40D00995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CA09B154B3002D34D8 /* FullscreenWindowController.h */;
+		name = "FullscreenWindowController.h: shouldRecordWindowState";
+		rLen = 0;
+		rLoc = 673;
+		rType = 0;
+		vrLen = 1058;
+		vrLoc = 0;
+	};
+	8B02308B09BFD44000995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "[fileListViewerController cancelCountdown];";
+		rLen = 45;
+		rLoc = 5679;
+		rType = 0;
+		vrLen = 283;
+		vrLoc = 5531;
+	};
+	8B02308C09BFD44000995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "[fileListViewerController cancelCountdown];";
+		rLen = 45;
+		rLoc = 5679;
+		rType = 0;
+		vrLen = 283;
+		vrLoc = 5531;
+	};
+	8B02308D09BFD44100995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "[fileListViewerController cancelCountdown];";
+		rLen = 45;
+		rLoc = 5679;
+		rType = 0;
+		vrLen = 283;
+		vrLoc = 5531;
+	};
+	8B02308E09BFD44200995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "{";
+		rLen = 2;
+		rLoc = 5757;
+		rType = 0;
+		vrLen = 1062;
+		vrLoc = 5206;
+	};
+	8B02308F09BFD44200995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CA09B154B3002D34D8 /* FullscreenWindowController.h */;
+		name = "FullscreenWindowController.h: shouldRecordWindowState";
+		rLen = 0;
+		rLoc = 673;
+		rType = 0;
+		vrLen = 1058;
+		vrLoc = 0;
+	};
+	8B02309209BFD44500995096 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
+		name = "[fileListViewerController cancelCountdown];";
+		rLen = 45;
+		rLoc = 5679;
+		rType = 0;
+		vrLen = 283;
+		vrLoc = 5531;
 	};
 	8B1137CC09130185008FBD78 /* SSPrefsController */ = {
 		activeExec = 0;
@@ -3218,9 +4804,9 @@
 	8B24491808FB55C8004716BC /* ViewIconsCell.m */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1140, 3344}}";
-			sepNavSelRange = "{6045, 0}";
-			sepNavVisRect = "{{0, 2696}, {746, 648}}";
-			sepNavWindowFrame = "{{522, 212}, {791, 721}}";
+			sepNavSelRange = "{6273, 0}";
+			sepNavVisRect = "{{0, 2696}, {736, 648}}";
+			sepNavWindowFrame = "{{61, 170}, {781, 721}}";
 		};
 	};
 	8B24491908FB55C8004716BC /* ViewIconsFileListFactory.h */ = {
@@ -3249,10 +4835,10 @@
 	};
 	8B24491C08FB55C8004716BC /* ViewIconViewController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {789, 13456}}";
-			sepNavSelRange = "{23155, 0}";
-			sepNavVisRect = "{{0, 3899}, {789, 218}}";
-			sepNavWindowFrame = "{{290, 162}, {791, 721}}";
+			sepNavIntBoundsRect = "{{0, 0}, {746, 13456}}";
+			sepNavSelRange = "{2677, 0}";
+			sepNavVisRect = "{{0, 1604}, {746, 648}}";
+			sepNavWindowFrame = "{{90, 68}, {791, 721}}";
 		};
 	};
 	8B24493C08FB5859004716BC /* ViewIconsFileList-Info.plist */ = {
@@ -3361,16 +4947,16 @@
 	};
 	8B5A828509B2405600F7303C /* FileListWindowController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {629, 1712}}";
-			sepNavSelRange = "{1553, 0}";
-			sepNavVisRect = "{{0, 343}, {603, 644}}";
-			sepNavWindowFrame = "{{663, 138}, {648, 717}}";
+			sepNavIntBoundsRect = "{{0, 0}, {736, 1632}}";
+			sepNavSelRange = "{2447, 5}";
+			sepNavVisRect = "{{0, 984}, {736, 648}}";
+			sepNavWindowFrame = "{{107, 128}, {781, 721}}";
 		};
 	};
 	8B5A828609B2405600F7303C /* FileListWindowController.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {603, 644}}";
-			sepNavSelRange = "{348, 17}";
+			sepNavSelRange = "{554, 0}";
 			sepNavVisRect = "{{0, 0}, {603, 644}}";
 			sepNavWindowFrame = "{{130, 111}, {648, 717}}";
 		};
@@ -3380,7 +4966,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 172";
 		rLen = 0;
-		rLoc = 7734;
+		rLoc = 8863;
 		rType = 0;
 		vrLen = 1318;
 		vrLoc = 1393;
@@ -3449,9 +5035,9 @@
 	};
 	8B64CD6B090EF81C0060CB34 /* EGOpenWithMenuDelegate.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1166, 7040}}";
-			sepNavSelRange = "{5971, 79}";
-			sepNavVisRect = "{{0, 2975}, {1166, 18}}";
+			sepNavIntBoundsRect = "{{0, 0}, {923, 7040}}";
+			sepNavSelRange = "{1844, 0}";
+			sepNavVisRect = "{{0, 324}, {746, 648}}";
 			sepNavWindowFrame = "{{15, 20}, {791, 721}}";
 		};
 	};
@@ -3556,17 +5142,17 @@
 	};
 	8B7BA8CA09B154B3002D34D8 /* FullscreenWindowController.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {603, 736}}";
-			sepNavSelRange = "{516, 0}";
-			sepNavVisRect = "{{0, 92}, {603, 644}}";
-			sepNavWindowFrame = "{{825, 175}, {648, 717}}";
+			sepNavIntBoundsRect = "{{0, 0}, {603, 752}}";
+			sepNavSelRange = "{673, 0}";
+			sepNavVisRect = "{{0, 0}, {603, 644}}";
+			sepNavWindowFrame = "{{164, 60}, {648, 717}}";
 		};
 	};
 	8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {789, 4224}}";
-			sepNavSelRange = "{1217, 0}";
-			sepNavVisRect = "{{0, 555}, {789, 218}}";
+			sepNavIntBoundsRect = "{{0, 0}, {736, 4784}}";
+			sepNavSelRange = "{5757, 2}";
+			sepNavVisRect = "{{0, 2676}, {736, 648}}";
 			sepNavWindowFrame = "{{478, 64}, {781, 721}}";
 		};
 	};
@@ -3773,7 +5359,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 145";
 		rLen = 0;
-		rLoc = 6249;
+		rLoc = 7378;
 		rType = 0;
 		vrLen = 1200;
 		vrLoc = 3073;
@@ -3795,7 +5381,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 76";
 		rLen = 0;
-		rLoc = 3118;
+		rLoc = 4247;
 		rType = 0;
 		vrLen = 280;
 		vrLoc = 764;
@@ -3805,7 +5391,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 76";
 		rLen = 0;
-		rLoc = 3118;
+		rLoc = 4247;
 		rType = 0;
 		vrLen = 280;
 		vrLoc = 764;
@@ -3815,7 +5401,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 76";
 		rLen = 0;
-		rLoc = 3118;
+		rLoc = 4247;
 		rType = 0;
 		vrLen = 280;
 		vrLoc = 764;
@@ -3825,7 +5411,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 76";
 		rLen = 0;
-		rLoc = 3118;
+		rLoc = 4247;
 		rType = 0;
 		vrLen = 280;
 		vrLoc = 764;
@@ -3835,7 +5421,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 76";
 		rLen = 0;
-		rLoc = 3118;
+		rLoc = 4247;
 		rType = 0;
 		vrLen = 280;
 		vrLoc = 764;
@@ -3845,7 +5431,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 76";
 		rLen = 0;
-		rLoc = 3118;
+		rLoc = 4247;
 		rType = 0;
 		vrLen = 280;
 		vrLoc = 764;
@@ -3905,7 +5491,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 76";
 		rLen = 0;
-		rLoc = 3118;
+		rLoc = 4247;
 		rType = 0;
 		vrLen = 280;
 		vrLoc = 764;
@@ -3915,7 +5501,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 76";
 		rLen = 0;
-		rLoc = 3118;
+		rLoc = 4247;
 		rType = 0;
 		vrLen = 280;
 		vrLoc = 764;
@@ -3925,7 +5511,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 76";
 		rLen = 0;
-		rLoc = 3118;
+		rLoc = 4247;
 		rType = 0;
 		vrLen = 280;
 		vrLoc = 764;
@@ -3959,7 +5545,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 71";
 		rLen = 0;
-		rLoc = 3118;
+		rLoc = 4247;
 		rType = 0;
 		vrLen = 309;
 		vrLoc = 655;
@@ -3969,7 +5555,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 71";
 		rLen = 0;
-		rLoc = 3118;
+		rLoc = 4247;
 		rType = 0;
 		vrLen = 309;
 		vrLoc = 655;
@@ -3989,7 +5575,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 24";
 		rLen = 0;
-		rLoc = 1217;
+		rLoc = 1598;
 		rType = 0;
 		vrLen = 893;
 		vrLoc = 260;
@@ -3999,7 +5585,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 71";
 		rLen = 0;
-		rLoc = 3118;
+		rLoc = 4247;
 		rType = 0;
 		vrLen = 309;
 		vrLoc = 655;
@@ -4009,7 +5595,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 24";
 		rLen = 0;
-		rLoc = 1217;
+		rLoc = 1598;
 		rType = 0;
 		vrLen = 893;
 		vrLoc = 260;
@@ -4019,7 +5605,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 72";
 		rLen = 0;
-		rLoc = 3118;
+		rLoc = 4247;
 		rType = 0;
 		vrLen = 309;
 		vrLoc = 656;
@@ -4029,7 +5615,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 72";
 		rLen = 0;
-		rLoc = 3118;
+		rLoc = 4247;
 		rType = 0;
 		vrLen = 309;
 		vrLoc = 656;
@@ -4039,7 +5625,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 72";
 		rLen = 0;
-		rLoc = 3118;
+		rLoc = 4247;
 		rType = 0;
 		vrLen = 309;
 		vrLoc = 656;
@@ -4089,7 +5675,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 25";
 		rLen = 0;
-		rLoc = 1217;
+		rLoc = 1598;
 		rType = 0;
 		vrLen = 872;
 		vrLoc = 260;
@@ -4098,7 +5684,7 @@
 		isa = PBXTextBookmark;
 		fRef = 8B7BA8CA09B154B3002D34D8 /* FullscreenWindowController.h */;
 		rLen = 0;
-		rLoc = 1232;
+		rLoc = 1144;
 		rType = 0;
 	};
 	8BBAE08209B9465A00789AEF /* PBXTextBookmark */ = {
@@ -4106,7 +5692,7 @@
 		fRef = 8B7BA8CA09B154B3002D34D8 /* FullscreenWindowController.h */;
 		name = "FullscreenWindowController.h: 23";
 		rLen = 0;
-		rLoc = 649;
+		rLoc = 682;
 		rType = 0;
 		vrLen = 1083;
 		vrLoc = 0;
@@ -4136,7 +5722,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 25";
 		rLen = 0;
-		rLoc = 1217;
+		rLoc = 1598;
 		rType = 0;
 		vrLen = 872;
 		vrLoc = 260;
@@ -4146,7 +5732,7 @@
 		fRef = 8B7BA8CA09B154B3002D34D8 /* FullscreenWindowController.h */;
 		name = "FullscreenWindowController.h: 23";
 		rLen = 0;
-		rLoc = 649;
+		rLoc = 682;
 		rType = 0;
 		vrLen = 1083;
 		vrLoc = 0;
@@ -4176,7 +5762,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 25";
 		rLen = 0;
-		rLoc = 1217;
+		rLoc = 1598;
 		rType = 0;
 		vrLen = 872;
 		vrLoc = 260;
@@ -4186,7 +5772,7 @@
 		fRef = 8B7BA8CA09B154B3002D34D8 /* FullscreenWindowController.h */;
 		name = "FullscreenWindowController.h: 23";
 		rLen = 0;
-		rLoc = 649;
+		rLoc = 682;
 		rType = 0;
 		vrLen = 1083;
 		vrLoc = 0;
@@ -4216,7 +5802,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 25";
 		rLen = 0;
-		rLoc = 1217;
+		rLoc = 1598;
 		rType = 0;
 		vrLen = 872;
 		vrLoc = 260;
@@ -4226,7 +5812,7 @@
 		fRef = 8B7BA8CA09B154B3002D34D8 /* FullscreenWindowController.h */;
 		name = "FullscreenWindowController.h: 23";
 		rLen = 0;
-		rLoc = 649;
+		rLoc = 682;
 		rType = 0;
 		vrLen = 1083;
 		vrLoc = 0;
@@ -4256,7 +5842,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 25";
 		rLen = 0;
-		rLoc = 1217;
+		rLoc = 1598;
 		rType = 0;
 		vrLen = 872;
 		vrLoc = 260;
@@ -4266,7 +5852,7 @@
 		fRef = 8B7BA8CA09B154B3002D34D8 /* FullscreenWindowController.h */;
 		name = "FullscreenWindowController.h: 23";
 		rLen = 0;
-		rLoc = 649;
+		rLoc = 682;
 		rType = 0;
 		vrLen = 1083;
 		vrLoc = 0;
@@ -4296,7 +5882,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 25";
 		rLen = 0;
-		rLoc = 1217;
+		rLoc = 1598;
 		rType = 0;
 		vrLen = 872;
 		vrLoc = 260;
@@ -4306,7 +5892,7 @@
 		fRef = 8B7BA8CA09B154B3002D34D8 /* FullscreenWindowController.h */;
 		name = "FullscreenWindowController.h: 23";
 		rLen = 0;
-		rLoc = 649;
+		rLoc = 682;
 		rType = 0;
 		vrLen = 1083;
 		vrLoc = 0;
@@ -4316,7 +5902,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 72";
 		rLen = 0;
-		rLoc = 3118;
+		rLoc = 4247;
 		rType = 0;
 		vrLen = 309;
 		vrLoc = 656;
@@ -4326,7 +5912,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 72";
 		rLen = 0;
-		rLoc = 3118;
+		rLoc = 4247;
 		rType = 0;
 		vrLen = 309;
 		vrLoc = 656;
@@ -4336,7 +5922,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 72";
 		rLen = 0;
-		rLoc = 3118;
+		rLoc = 4247;
 		rType = 0;
 		vrLen = 309;
 		vrLoc = 656;
@@ -4386,7 +5972,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 25";
 		rLen = 0;
-		rLoc = 1217;
+		rLoc = 1598;
 		rType = 0;
 		vrLen = 872;
 		vrLoc = 260;
@@ -4396,7 +5982,7 @@
 		fRef = 8B7BA8CA09B154B3002D34D8 /* FullscreenWindowController.h */;
 		name = "FullscreenWindowController.h: 23";
 		rLen = 0;
-		rLoc = 649;
+		rLoc = 682;
 		rType = 0;
 		vrLen = 1083;
 		vrLoc = 0;
@@ -4406,7 +5992,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 72";
 		rLen = 0;
-		rLoc = 3118;
+		rLoc = 4247;
 		rType = 0;
 		vrLen = 309;
 		vrLoc = 656;
@@ -4416,7 +6002,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 72";
 		rLen = 0;
-		rLoc = 3118;
+		rLoc = 4247;
 		rType = 0;
 		vrLen = 309;
 		vrLoc = 656;
@@ -4446,7 +6032,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 25";
 		rLen = 0;
-		rLoc = 1217;
+		rLoc = 1598;
 		rType = 0;
 		vrLen = 872;
 		vrLoc = 260;
@@ -4456,7 +6042,7 @@
 		fRef = 8B7BA8CA09B154B3002D34D8 /* FullscreenWindowController.h */;
 		name = "FullscreenWindowController.h: 23";
 		rLen = 0;
-		rLoc = 649;
+		rLoc = 682;
 		rType = 0;
 		vrLen = 1083;
 		vrLoc = 0;
@@ -4506,7 +6092,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 25";
 		rLen = 0;
-		rLoc = 1217;
+		rLoc = 1598;
 		rType = 0;
 		vrLen = 872;
 		vrLoc = 260;
@@ -4516,7 +6102,7 @@
 		fRef = 8B7BA8CA09B154B3002D34D8 /* FullscreenWindowController.h */;
 		name = "FullscreenWindowController.h: 23";
 		rLen = 0;
-		rLoc = 649;
+		rLoc = 682;
 		rType = 0;
 		vrLen = 1083;
 		vrLoc = 0;
@@ -4526,7 +6112,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 72";
 		rLen = 0;
-		rLoc = 3118;
+		rLoc = 4247;
 		rType = 0;
 		vrLen = 309;
 		vrLoc = 656;
@@ -4536,7 +6122,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 72";
 		rLen = 0;
-		rLoc = 3118;
+		rLoc = 4247;
 		rType = 0;
 		vrLen = 309;
 		vrLoc = 656;
@@ -4546,7 +6132,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 72";
 		rLen = 0;
-		rLoc = 3118;
+		rLoc = 4247;
 		rType = 0;
 		vrLen = 309;
 		vrLoc = 656;
@@ -4576,7 +6162,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 25";
 		rLen = 0;
-		rLoc = 1217;
+		rLoc = 1598;
 		rType = 0;
 		vrLen = 872;
 		vrLoc = 260;
@@ -4586,7 +6172,7 @@
 		fRef = 8B7BA8CA09B154B3002D34D8 /* FullscreenWindowController.h */;
 		name = "FullscreenWindowController.h: 23";
 		rLen = 0;
-		rLoc = 649;
+		rLoc = 682;
 		rType = 0;
 		vrLen = 1083;
 		vrLoc = 0;
@@ -4596,7 +6182,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 72";
 		rLen = 0;
-		rLoc = 3118;
+		rLoc = 4247;
 		rType = 0;
 		vrLen = 309;
 		vrLoc = 656;
@@ -4606,7 +6192,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 72";
 		rLen = 0;
-		rLoc = 3118;
+		rLoc = 4247;
 		rType = 0;
 		vrLen = 309;
 		vrLoc = 656;
@@ -4636,7 +6222,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 25";
 		rLen = 0;
-		rLoc = 1217;
+		rLoc = 1598;
 		rType = 0;
 		vrLen = 872;
 		vrLoc = 260;
@@ -4646,7 +6232,7 @@
 		fRef = 8B7BA8CA09B154B3002D34D8 /* FullscreenWindowController.h */;
 		name = "FullscreenWindowController.h: 23";
 		rLen = 0;
-		rLoc = 649;
+		rLoc = 682;
 		rType = 0;
 		vrLen = 1083;
 		vrLoc = 0;
@@ -4686,7 +6272,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 25";
 		rLen = 0;
-		rLoc = 1217;
+		rLoc = 1598;
 		rType = 0;
 		vrLen = 872;
 		vrLoc = 260;
@@ -4696,7 +6282,7 @@
 		fRef = 8B7BA8CA09B154B3002D34D8 /* FullscreenWindowController.h */;
 		name = "FullscreenWindowController.h: 23";
 		rLen = 0;
-		rLoc = 649;
+		rLoc = 682;
 		rType = 0;
 		vrLen = 1083;
 		vrLoc = 0;
@@ -4750,7 +6336,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 25";
 		rLen = 0;
-		rLoc = 1217;
+		rLoc = 1598;
 		rType = 0;
 		vrLen = 872;
 		vrLoc = 260;
@@ -4760,7 +6346,7 @@
 		fRef = 8B7BA8CA09B154B3002D34D8 /* FullscreenWindowController.h */;
 		name = "FullscreenWindowController.h: 23";
 		rLen = 0;
-		rLoc = 649;
+		rLoc = 682;
 		rType = 0;
 		vrLen = 1083;
 		vrLoc = 0;
@@ -4810,7 +6396,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 25";
 		rLen = 0;
-		rLoc = 1217;
+		rLoc = 1598;
 		rType = 0;
 		vrLen = 872;
 		vrLoc = 260;
@@ -4820,7 +6406,7 @@
 		fRef = 8B7BA8CA09B154B3002D34D8 /* FullscreenWindowController.h */;
 		name = "FullscreenWindowController.h: 23";
 		rLen = 0;
-		rLoc = 649;
+		rLoc = 682;
 		rType = 0;
 		vrLen = 1083;
 		vrLoc = 0;
@@ -4860,7 +6446,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 25";
 		rLen = 0;
-		rLoc = 1217;
+		rLoc = 1598;
 		rType = 0;
 		vrLen = 872;
 		vrLoc = 260;
@@ -4870,7 +6456,7 @@
 		fRef = 8B7BA8CA09B154B3002D34D8 /* FullscreenWindowController.h */;
 		name = "FullscreenWindowController.h: 23";
 		rLen = 0;
-		rLoc = 649;
+		rLoc = 682;
 		rType = 0;
 		vrLen = 1083;
 		vrLoc = 0;
@@ -4910,7 +6496,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 25";
 		rLen = 0;
-		rLoc = 1217;
+		rLoc = 1598;
 		rType = 0;
 		vrLen = 872;
 		vrLoc = 260;
@@ -4920,7 +6506,7 @@
 		fRef = 8B7BA8CA09B154B3002D34D8 /* FullscreenWindowController.h */;
 		name = "FullscreenWindowController.h: 23";
 		rLen = 0;
-		rLoc = 649;
+		rLoc = 682;
 		rType = 0;
 		vrLen = 1083;
 		vrLoc = 0;
@@ -4950,7 +6536,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 25";
 		rLen = 0;
-		rLoc = 1217;
+		rLoc = 1598;
 		rType = 0;
 		vrLen = 872;
 		vrLoc = 260;
@@ -4960,7 +6546,7 @@
 		fRef = 8B7BA8CA09B154B3002D34D8 /* FullscreenWindowController.h */;
 		name = "FullscreenWindowController.h: 23";
 		rLen = 0;
-		rLoc = 649;
+		rLoc = 682;
 		rType = 0;
 		vrLen = 1083;
 		vrLoc = 0;
@@ -4970,7 +6556,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 72";
 		rLen = 0;
-		rLoc = 3118;
+		rLoc = 4247;
 		rType = 0;
 		vrLen = 309;
 		vrLoc = 656;
@@ -4980,7 +6566,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 72";
 		rLen = 0;
-		rLoc = 3118;
+		rLoc = 4247;
 		rType = 0;
 		vrLen = 309;
 		vrLoc = 656;
@@ -4990,7 +6576,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 72";
 		rLen = 0;
-		rLoc = 3118;
+		rLoc = 4247;
 		rType = 0;
 		vrLen = 309;
 		vrLoc = 656;
@@ -5020,7 +6606,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 25";
 		rLen = 0;
-		rLoc = 1217;
+		rLoc = 1598;
 		rType = 0;
 		vrLen = 872;
 		vrLoc = 260;
@@ -5030,7 +6616,7 @@
 		fRef = 8B7BA8CA09B154B3002D34D8 /* FullscreenWindowController.h */;
 		name = "FullscreenWindowController.h: 23";
 		rLen = 0;
-		rLoc = 649;
+		rLoc = 682;
 		rType = 0;
 		vrLen = 1083;
 		vrLoc = 0;
@@ -5060,7 +6646,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 25";
 		rLen = 0;
-		rLoc = 1217;
+		rLoc = 1598;
 		rType = 0;
 		vrLen = 872;
 		vrLoc = 260;
@@ -5070,7 +6656,7 @@
 		fRef = 8B7BA8CA09B154B3002D34D8 /* FullscreenWindowController.h */;
 		name = "FullscreenWindowController.h: 23";
 		rLen = 0;
-		rLoc = 649;
+		rLoc = 682;
 		rType = 0;
 		vrLen = 1083;
 		vrLoc = 0;
@@ -5080,7 +6666,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 72";
 		rLen = 0;
-		rLoc = 3118;
+		rLoc = 4247;
 		rType = 0;
 		vrLen = 309;
 		vrLoc = 656;
@@ -5090,7 +6676,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 72";
 		rLen = 0;
-		rLoc = 3118;
+		rLoc = 4247;
 		rType = 0;
 		vrLen = 309;
 		vrLoc = 656;
@@ -5100,7 +6686,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 72";
 		rLen = 0;
-		rLoc = 3118;
+		rLoc = 4247;
 		rType = 0;
 		vrLen = 309;
 		vrLoc = 656;
@@ -5130,7 +6716,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 25";
 		rLen = 0;
-		rLoc = 1217;
+		rLoc = 1598;
 		rType = 0;
 		vrLen = 872;
 		vrLoc = 260;
@@ -5140,7 +6726,7 @@
 		fRef = 8B7BA8CA09B154B3002D34D8 /* FullscreenWindowController.h */;
 		name = "FullscreenWindowController.h: 23";
 		rLen = 0;
-		rLoc = 649;
+		rLoc = 682;
 		rType = 0;
 		vrLen = 1083;
 		vrLoc = 0;
@@ -5170,7 +6756,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 25";
 		rLen = 0;
-		rLoc = 1217;
+		rLoc = 1598;
 		rType = 0;
 		vrLen = 872;
 		vrLoc = 260;
@@ -5180,7 +6766,7 @@
 		fRef = 8B7BA8CA09B154B3002D34D8 /* FullscreenWindowController.h */;
 		name = "FullscreenWindowController.h: 23";
 		rLen = 0;
-		rLoc = 649;
+		rLoc = 682;
 		rType = 0;
 		vrLen = 1083;
 		vrLoc = 0;
@@ -5190,7 +6776,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 72";
 		rLen = 0;
-		rLoc = 3118;
+		rLoc = 4247;
 		rType = 0;
 		vrLen = 309;
 		vrLoc = 656;
@@ -5200,7 +6786,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 72";
 		rLen = 0;
-		rLoc = 3118;
+		rLoc = 4247;
 		rType = 0;
 		vrLen = 309;
 		vrLoc = 656;
@@ -5230,7 +6816,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 25";
 		rLen = 0;
-		rLoc = 1217;
+		rLoc = 1598;
 		rType = 0;
 		vrLen = 872;
 		vrLoc = 260;
@@ -5240,7 +6826,7 @@
 		fRef = 8B7BA8CA09B154B3002D34D8 /* FullscreenWindowController.h */;
 		name = "FullscreenWindowController.h: 23";
 		rLen = 0;
-		rLoc = 649;
+		rLoc = 682;
 		rType = 0;
 		vrLen = 1083;
 		vrLoc = 0;
@@ -5270,7 +6856,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 25";
 		rLen = 0;
-		rLoc = 1217;
+		rLoc = 1598;
 		rType = 0;
 		vrLen = 872;
 		vrLoc = 260;
@@ -5280,7 +6866,7 @@
 		fRef = 8B7BA8CA09B154B3002D34D8 /* FullscreenWindowController.h */;
 		name = "FullscreenWindowController.h: 23";
 		rLen = 0;
-		rLoc = 649;
+		rLoc = 682;
 		rType = 0;
 		vrLen = 1083;
 		vrLoc = 0;
@@ -5290,7 +6876,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 72";
 		rLen = 0;
-		rLoc = 3118;
+		rLoc = 4247;
 		rType = 0;
 		vrLen = 309;
 		vrLoc = 656;
@@ -5300,7 +6886,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 72";
 		rLen = 0;
-		rLoc = 3118;
+		rLoc = 4247;
 		rType = 0;
 		vrLen = 309;
 		vrLoc = 656;
@@ -5310,7 +6896,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 72";
 		rLen = 0;
-		rLoc = 3118;
+		rLoc = 4247;
 		rType = 0;
 		vrLen = 309;
 		vrLoc = 656;
@@ -5340,7 +6926,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 25";
 		rLen = 0;
-		rLoc = 1217;
+		rLoc = 1598;
 		rType = 0;
 		vrLen = 872;
 		vrLoc = 260;
@@ -5350,7 +6936,7 @@
 		fRef = 8B7BA8CA09B154B3002D34D8 /* FullscreenWindowController.h */;
 		name = "FullscreenWindowController.h: 23";
 		rLen = 0;
-		rLoc = 649;
+		rLoc = 682;
 		rType = 0;
 		vrLen = 1083;
 		vrLoc = 0;
@@ -5380,7 +6966,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 25";
 		rLen = 0;
-		rLoc = 1217;
+		rLoc = 1598;
 		rType = 0;
 		vrLen = 872;
 		vrLoc = 260;
@@ -5390,7 +6976,7 @@
 		fRef = 8B7BA8CA09B154B3002D34D8 /* FullscreenWindowController.h */;
 		name = "FullscreenWindowController.h: 23";
 		rLen = 0;
-		rLoc = 649;
+		rLoc = 682;
 		rType = 0;
 		vrLen = 1083;
 		vrLoc = 0;
@@ -5400,7 +6986,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 72";
 		rLen = 0;
-		rLoc = 3118;
+		rLoc = 4247;
 		rType = 0;
 		vrLen = 309;
 		vrLoc = 656;
@@ -5410,7 +6996,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 72";
 		rLen = 0;
-		rLoc = 3118;
+		rLoc = 4247;
 		rType = 0;
 		vrLen = 309;
 		vrLoc = 656;
@@ -5420,7 +7006,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 72";
 		rLen = 0;
-		rLoc = 3118;
+		rLoc = 4247;
 		rType = 0;
 		vrLen = 309;
 		vrLoc = 656;
@@ -5467,7 +7053,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 25";
 		rLen = 0;
-		rLoc = 1217;
+		rLoc = 1598;
 		rType = 0;
 		vrLen = 872;
 		vrLoc = 260;
@@ -5477,7 +7063,7 @@
 		fRef = 8B7BA8CA09B154B3002D34D8 /* FullscreenWindowController.h */;
 		name = "FullscreenWindowController.h: 23";
 		rLen = 0;
-		rLoc = 649;
+		rLoc = 682;
 		rType = 0;
 		vrLen = 1083;
 		vrLoc = 0;
@@ -5487,7 +7073,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 72";
 		rLen = 0;
-		rLoc = 3118;
+		rLoc = 4247;
 		rType = 0;
 		vrLen = 309;
 		vrLoc = 656;
@@ -5497,7 +7083,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 72";
 		rLen = 0;
-		rLoc = 3118;
+		rLoc = 4247;
 		rType = 0;
 		vrLen = 309;
 		vrLoc = 656;
@@ -5507,7 +7093,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 72";
 		rLen = 0;
-		rLoc = 3118;
+		rLoc = 4247;
 		rType = 0;
 		vrLen = 309;
 		vrLoc = 656;
@@ -5547,7 +7133,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 25";
 		rLen = 0;
-		rLoc = 1217;
+		rLoc = 1598;
 		rType = 0;
 		vrLen = 872;
 		vrLoc = 260;
@@ -5557,7 +7143,7 @@
 		fRef = 8B7BA8CA09B154B3002D34D8 /* FullscreenWindowController.h */;
 		name = "FullscreenWindowController.h: 23";
 		rLen = 0;
-		rLoc = 649;
+		rLoc = 682;
 		rType = 0;
 		vrLen = 1083;
 		vrLoc = 0;
@@ -5597,7 +7183,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 25";
 		rLen = 0;
-		rLoc = 1217;
+		rLoc = 1598;
 		rType = 0;
 		vrLen = 872;
 		vrLoc = 260;
@@ -5607,7 +7193,7 @@
 		fRef = 8B7BA8CA09B154B3002D34D8 /* FullscreenWindowController.h */;
 		name = "FullscreenWindowController.h: 23";
 		rLen = 0;
-		rLoc = 649;
+		rLoc = 682;
 		rType = 0;
 		vrLen = 1083;
 		vrLoc = 0;
@@ -5617,7 +7203,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 72";
 		rLen = 0;
-		rLoc = 3118;
+		rLoc = 4247;
 		rType = 0;
 		vrLen = 309;
 		vrLoc = 656;
@@ -5627,7 +7213,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 72";
 		rLen = 0;
-		rLoc = 3118;
+		rLoc = 4247;
 		rType = 0;
 		vrLen = 309;
 		vrLoc = 656;
@@ -5637,7 +7223,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 72";
 		rLen = 0;
-		rLoc = 3118;
+		rLoc = 4247;
 		rType = 0;
 		vrLen = 309;
 		vrLoc = 656;
@@ -5687,7 +7273,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 25";
 		rLen = 0;
-		rLoc = 1217;
+		rLoc = 1598;
 		rType = 0;
 		vrLen = 872;
 		vrLoc = 260;
@@ -5697,7 +7283,7 @@
 		fRef = 8B7BA8CA09B154B3002D34D8 /* FullscreenWindowController.h */;
 		name = "FullscreenWindowController.h: 23";
 		rLen = 0;
-		rLoc = 649;
+		rLoc = 682;
 		rType = 0;
 		vrLen = 1083;
 		vrLoc = 0;
@@ -5707,7 +7293,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 72";
 		rLen = 0;
-		rLoc = 3118;
+		rLoc = 4247;
 		rType = 0;
 		vrLen = 309;
 		vrLoc = 656;
@@ -5717,7 +7303,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 72";
 		rLen = 0;
-		rLoc = 3118;
+		rLoc = 4247;
 		rType = 0;
 		vrLen = 309;
 		vrLoc = 656;
@@ -5727,7 +7313,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 72";
 		rLen = 0;
-		rLoc = 3118;
+		rLoc = 4247;
 		rType = 0;
 		vrLen = 309;
 		vrLoc = 656;
@@ -5767,7 +7353,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 25";
 		rLen = 0;
-		rLoc = 1217;
+		rLoc = 1598;
 		rType = 0;
 		vrLen = 872;
 		vrLoc = 260;
@@ -5777,7 +7363,7 @@
 		fRef = 8B7BA8CA09B154B3002D34D8 /* FullscreenWindowController.h */;
 		name = "FullscreenWindowController.h: 23";
 		rLen = 0;
-		rLoc = 649;
+		rLoc = 682;
 		rType = 0;
 		vrLen = 1083;
 		vrLoc = 0;
@@ -5817,7 +7403,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 25";
 		rLen = 0;
-		rLoc = 1217;
+		rLoc = 1598;
 		rType = 0;
 		vrLen = 872;
 		vrLoc = 260;
@@ -5827,7 +7413,7 @@
 		fRef = 8B7BA8CA09B154B3002D34D8 /* FullscreenWindowController.h */;
 		name = "FullscreenWindowController.h: 23";
 		rLen = 0;
-		rLoc = 649;
+		rLoc = 682;
 		rType = 0;
 		vrLen = 1083;
 		vrLoc = 0;
@@ -5837,7 +7423,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 72";
 		rLen = 0;
-		rLoc = 3118;
+		rLoc = 4247;
 		rType = 0;
 		vrLen = 309;
 		vrLoc = 656;
@@ -5847,7 +7433,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 72";
 		rLen = 0;
-		rLoc = 3118;
+		rLoc = 4247;
 		rType = 0;
 		vrLen = 309;
 		vrLoc = 656;
@@ -5887,7 +7473,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 25";
 		rLen = 0;
-		rLoc = 1217;
+		rLoc = 1598;
 		rType = 0;
 		vrLen = 872;
 		vrLoc = 260;
@@ -5897,7 +7483,7 @@
 		fRef = 8B7BA8CA09B154B3002D34D8 /* FullscreenWindowController.h */;
 		name = "FullscreenWindowController.h: 23";
 		rLen = 0;
-		rLoc = 649;
+		rLoc = 682;
 		rType = 0;
 		vrLen = 1083;
 		vrLoc = 0;
@@ -5907,7 +7493,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 72";
 		rLen = 0;
-		rLoc = 3118;
+		rLoc = 4247;
 		rType = 0;
 		vrLen = 309;
 		vrLoc = 656;
@@ -5917,7 +7503,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 72";
 		rLen = 0;
-		rLoc = 3118;
+		rLoc = 4247;
 		rType = 0;
 		vrLen = 309;
 		vrLoc = 656;
@@ -5957,7 +7543,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 25";
 		rLen = 0;
-		rLoc = 1217;
+		rLoc = 1598;
 		rType = 0;
 		vrLen = 872;
 		vrLoc = 260;
@@ -5967,7 +7553,7 @@
 		fRef = 8B7BA8CA09B154B3002D34D8 /* FullscreenWindowController.h */;
 		name = "FullscreenWindowController.h: 23";
 		rLen = 0;
-		rLoc = 649;
+		rLoc = 682;
 		rType = 0;
 		vrLen = 1083;
 		vrLoc = 0;
@@ -5977,7 +7563,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 72";
 		rLen = 0;
-		rLoc = 3118;
+		rLoc = 4247;
 		rType = 0;
 		vrLen = 309;
 		vrLoc = 656;
@@ -5987,7 +7573,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 72";
 		rLen = 0;
-		rLoc = 3118;
+		rLoc = 4247;
 		rType = 0;
 		vrLen = 309;
 		vrLoc = 656;
@@ -5997,7 +7583,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 72";
 		rLen = 0;
-		rLoc = 3118;
+		rLoc = 4247;
 		rType = 0;
 		vrLen = 309;
 		vrLoc = 656;
@@ -6037,7 +7623,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 25";
 		rLen = 0;
-		rLoc = 1217;
+		rLoc = 1598;
 		rType = 0;
 		vrLen = 872;
 		vrLoc = 260;
@@ -6047,7 +7633,7 @@
 		fRef = 8B7BA8CA09B154B3002D34D8 /* FullscreenWindowController.h */;
 		name = "FullscreenWindowController.h: 23";
 		rLen = 0;
-		rLoc = 649;
+		rLoc = 682;
 		rType = 0;
 		vrLen = 1083;
 		vrLoc = 0;
@@ -6087,7 +7673,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 25";
 		rLen = 0;
-		rLoc = 1217;
+		rLoc = 1598;
 		rType = 0;
 		vrLen = 872;
 		vrLoc = 260;
@@ -6097,9 +7683,9 @@
 		fRef = 8B7BA8CA09B154B3002D34D8 /* FullscreenWindowController.h */;
 		name = "FullscreenWindowController.h: 47";
 		rLen = 0;
-		rLoc = 1232;
+		rLoc = 1144;
 		rType = 0;
-		vrLen = 1127;
+		vrLen = 1083;
 		vrLoc = 0;
 	};
 	8BBAE1B609BA04F000789AEF /* PBXBookmark */ = {
@@ -6141,7 +7727,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 25";
 		rLen = 0;
-		rLoc = 1217;
+		rLoc = 1598;
 		rType = 0;
 		vrLen = 872;
 		vrLoc = 260;
@@ -6151,9 +7737,9 @@
 		fRef = 8B7BA8CA09B154B3002D34D8 /* FullscreenWindowController.h */;
 		name = "FullscreenWindowController.h: 47";
 		rLen = 0;
-		rLoc = 1232;
+		rLoc = 1144;
 		rType = 0;
-		vrLen = 1127;
+		vrLen = 1083;
 		vrLoc = 0;
 	};
 	8BBAE1BF09BA051B00789AEF /* PBXTextBookmark */ = {
@@ -6161,7 +7747,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 72";
 		rLen = 0;
-		rLoc = 3118;
+		rLoc = 4247;
 		rType = 0;
 		vrLen = 309;
 		vrLoc = 656;
@@ -6171,7 +7757,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 72";
 		rLen = 0;
-		rLoc = 3118;
+		rLoc = 4247;
 		rType = 0;
 		vrLen = 309;
 		vrLoc = 656;
@@ -6181,7 +7767,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 72";
 		rLen = 0;
-		rLoc = 3118;
+		rLoc = 4247;
 		rType = 0;
 		vrLen = 309;
 		vrLoc = 656;
@@ -6221,7 +7807,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 25";
 		rLen = 0;
-		rLoc = 1217;
+		rLoc = 1598;
 		rType = 0;
 		vrLen = 872;
 		vrLoc = 260;
@@ -6231,9 +7817,9 @@
 		fRef = 8B7BA8CA09B154B3002D34D8 /* FullscreenWindowController.h */;
 		name = "FullscreenWindowController.h: 47";
 		rLen = 0;
-		rLoc = 1232;
+		rLoc = 1144;
 		rType = 0;
-		vrLen = 1127;
+		vrLen = 1083;
 		vrLoc = 0;
 	};
 	8BBAE1C809BA052E00789AEF /* PBXTextBookmark */ = {
@@ -6241,7 +7827,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 72";
 		rLen = 0;
-		rLoc = 3118;
+		rLoc = 4247;
 		rType = 0;
 		vrLen = 309;
 		vrLoc = 656;
@@ -6251,7 +7837,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 72";
 		rLen = 0;
-		rLoc = 3118;
+		rLoc = 4247;
 		rType = 0;
 		vrLen = 309;
 		vrLoc = 656;
@@ -6291,7 +7877,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 25";
 		rLen = 0;
-		rLoc = 1217;
+		rLoc = 1598;
 		rType = 0;
 		vrLen = 872;
 		vrLoc = 260;
@@ -6301,9 +7887,9 @@
 		fRef = 8B7BA8CA09B154B3002D34D8 /* FullscreenWindowController.h */;
 		name = "FullscreenWindowController.h: 47";
 		rLen = 0;
-		rLoc = 1232;
+		rLoc = 1144;
 		rType = 0;
-		vrLen = 1127;
+		vrLen = 1083;
 		vrLoc = 0;
 	};
 	8BBAE1D209BA056E00789AEF /* PBXTextBookmark */ = {
@@ -6351,7 +7937,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 25";
 		rLen = 0;
-		rLoc = 1217;
+		rLoc = 1598;
 		rType = 0;
 		vrLen = 872;
 		vrLoc = 260;
@@ -6361,9 +7947,9 @@
 		fRef = 8B7BA8CA09B154B3002D34D8 /* FullscreenWindowController.h */;
 		name = "FullscreenWindowController.h: 47";
 		rLen = 0;
-		rLoc = 1232;
+		rLoc = 1144;
 		rType = 0;
-		vrLen = 1127;
+		vrLen = 1083;
 		vrLoc = 0;
 	};
 	8BBAE1DA09BA085100789AEF /* PBXTextBookmark */ = {
@@ -6401,7 +7987,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 25";
 		rLen = 0;
-		rLoc = 1217;
+		rLoc = 1598;
 		rType = 0;
 		vrLen = 872;
 		vrLoc = 260;
@@ -6411,9 +7997,9 @@
 		fRef = 8B7BA8CA09B154B3002D34D8 /* FullscreenWindowController.h */;
 		name = "FullscreenWindowController.h: 47";
 		rLen = 0;
-		rLoc = 1232;
+		rLoc = 1144;
 		rType = 0;
-		vrLen = 1127;
+		vrLen = 1083;
 		vrLoc = 0;
 	};
 	8BBAE1F109BA0AC200789AEF /* PBXTextBookmark */ = {
@@ -6421,7 +8007,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 72";
 		rLen = 0;
-		rLoc = 3118;
+		rLoc = 4247;
 		rType = 0;
 		vrLen = 309;
 		vrLoc = 656;
@@ -6439,7 +8025,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 72";
 		rLen = 0;
-		rLoc = 3118;
+		rLoc = 4247;
 		rType = 0;
 		vrLen = 309;
 		vrLoc = 656;
@@ -6479,9 +8065,9 @@
 		fRef = 8B7BA8CA09B154B3002D34D8 /* FullscreenWindowController.h */;
 		name = "FullscreenWindowController.h: 47";
 		rLen = 0;
-		rLoc = 1232;
+		rLoc = 1144;
 		rType = 0;
-		vrLen = 1127;
+		vrLen = 1083;
 		vrLoc = 0;
 	};
 	8BBAE1F809BA0AC300789AEF /* PBXTextBookmark */ = {
@@ -6489,9 +8075,9 @@
 		fRef = 8B7BA8CA09B154B3002D34D8 /* FullscreenWindowController.h */;
 		name = fileListControllerVisible;
 		rLen = 0;
-		rLoc = 1227;
+		rLoc = 1139;
 		rType = 0;
-		vrLen = 1096;
+		vrLen = 936;
 		vrLoc = 147;
 	};
 	8BBAE1FB09BA0AC300789AEF /* PBXBookmark */ = {
@@ -6513,7 +8099,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 25";
 		rLen = 0;
-		rLoc = 1217;
+		rLoc = 1598;
 		rType = 0;
 		vrLen = 872;
 		vrLoc = 260;
@@ -6523,7 +8109,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = fileListControllerVisible;
 		rLen = 0;
-		rLoc = 5895;
+		rLoc = 7024;
 		rType = 0;
 		vrLen = 974;
 		vrLoc = 2702;
@@ -7561,7 +9147,7 @@
 		fRef = 8B24491808FB55C8004716BC /* ViewIconsCell.m */;
 		name = "ViewIconsCell.m: 194";
 		rLen = 0;
-		rLoc = 6161;
+		rLoc = 6163;
 		rType = 0;
 		vrLen = 1777;
 		vrLoc = 4642;
@@ -7608,7 +9194,7 @@
 		fRef = 8B24491808FB55C8004716BC /* ViewIconsCell.m */;
 		name = "ViewIconsCell.m: retain";
 		rLen = 0;
-		rLoc = 6161;
+		rLoc = 6163;
 		rType = 0;
 		vrLen = 1777;
 		vrLoc = 4642;
@@ -7628,7 +9214,7 @@
 		fRef = 8B24491808FB55C8004716BC /* ViewIconsCell.m */;
 		name = "ViewIconsCell.m: retain";
 		rLen = 0;
-		rLoc = 6161;
+		rLoc = 6163;
 		rType = 0;
 		vrLen = 1777;
 		vrLoc = 4642;
@@ -7676,7 +9262,7 @@
 		fRef = 8B24491808FB55C8004716BC /* ViewIconsCell.m */;
 		name = "ViewIconsCell.m: retain";
 		rLen = 0;
-		rLoc = 6161;
+		rLoc = 6163;
 		rType = 0;
 		vrLen = 1777;
 		vrLoc = 4642;
@@ -7716,7 +9302,7 @@
 		fRef = 8B24491808FB55C8004716BC /* ViewIconsCell.m */;
 		name = "ViewIconsCell.m: 193";
 		rLen = 0;
-		rLoc = 6099;
+		rLoc = 6101;
 		rType = 0;
 		vrLen = 1338;
 		vrLoc = 5081;
@@ -7780,7 +9366,7 @@
 		fRef = 8B24491808FB55C8004716BC /* ViewIconsCell.m */;
 		name = "ViewIconsCell.m: 193";
 		rLen = 0;
-		rLoc = 6099;
+		rLoc = 6101;
 		rType = 0;
 		vrLen = 1338;
 		vrLoc = 5081;
@@ -7840,7 +9426,7 @@
 		fRef = 8B24491808FB55C8004716BC /* ViewIconsCell.m */;
 		name = "ViewIconsCell.m: 193";
 		rLen = 0;
-		rLoc = 6099;
+		rLoc = 6101;
 		rType = 0;
 		vrLen = 1338;
 		vrLoc = 5081;
@@ -7870,7 +9456,7 @@
 		fRef = 8B24491808FB55C8004716BC /* ViewIconsCell.m */;
 		name = "ViewIconsCell.m: 193";
 		rLen = 0;
-		rLoc = 6099;
+		rLoc = 6101;
 		rType = 0;
 		vrLen = 1338;
 		vrLoc = 5081;
@@ -7920,7 +9506,7 @@
 		fRef = 8B24491808FB55C8004716BC /* ViewIconsCell.m */;
 		name = "ViewIconsCell.m: 193";
 		rLen = 0;
-		rLoc = 6099;
+		rLoc = 6101;
 		rType = 0;
 		vrLen = 1338;
 		vrLoc = 5081;
@@ -7980,7 +9566,7 @@
 		fRef = 8B24491808FB55C8004716BC /* ViewIconsCell.m */;
 		name = "ViewIconsCell.m: 193";
 		rLen = 0;
-		rLoc = 6099;
+		rLoc = 6101;
 		rType = 0;
 		vrLen = 1338;
 		vrLoc = 5081;
@@ -8078,7 +9664,7 @@
 		fRef = 8B24491808FB55C8004716BC /* ViewIconsCell.m */;
 		name = "ViewIconsCell.m: 193";
 		rLen = 0;
-		rLoc = 6099;
+		rLoc = 6101;
 		rType = 0;
 		vrLen = 1338;
 		vrLoc = 5081;
@@ -8138,7 +9724,7 @@
 		fRef = 8B24491808FB55C8004716BC /* ViewIconsCell.m */;
 		name = "ViewIconsCell.m: 193";
 		rLen = 0;
-		rLoc = 6099;
+		rLoc = 6101;
 		rType = 0;
 		vrLen = 1338;
 		vrLoc = 5081;
@@ -8409,7 +9995,7 @@
 		fRef = 8B24491808FB55C8004716BC /* ViewIconsCell.m */;
 		name = "ViewIconsCell.m: 190";
 		rLen = 0;
-		rLoc = 5987;
+		rLoc = 5989;
 		rType = 0;
 		vrLen = 1453;
 		vrLoc = 4966;
@@ -8508,7 +10094,7 @@
 		fRef = 8B24491808FB55C8004716BC /* ViewIconsCell.m */;
 		name = "ViewIconsCell.m: 189";
 		rLen = 0;
-		rLoc = 5984;
+		rLoc = 5986;
 		rType = 0;
 		vrLen = 1453;
 		vrLoc = 4966;
@@ -8737,7 +10323,7 @@
 		isa = PBXTextBookmark;
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 19";
-		rLen = 373;
+		rLen = 754;
 		rLoc = 863;
 		rType = 0;
 		vrLen = 757;
@@ -8767,7 +10353,7 @@
 		isa = PBXTextBookmark;
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 19";
-		rLen = 373;
+		rLen = 754;
 		rLoc = 863;
 		rType = 0;
 		vrLen = 757;
@@ -8847,7 +10433,7 @@
 		isa = PBXTextBookmark;
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 19";
-		rLen = 373;
+		rLen = 754;
 		rLoc = 863;
 		rType = 0;
 		vrLen = 757;
@@ -8867,7 +10453,7 @@
 		isa = PBXTextBookmark;
 		fRef = 8B7BA8CA09B154B3002D34D8 /* FullscreenWindowController.h */;
 		rLen = 0;
-		rLoc = 1232;
+		rLoc = 1144;
 		rType = 0;
 	};
 	8BBAE79609BD33CA00789AEF /* PBXTextBookmark */ = {
@@ -8877,7 +10463,7 @@
 		rLen = 33;
 		rLoc = 577;
 		rType = 0;
-		vrLen = 1174;
+		vrLen = 936;
 		vrLoc = 147;
 	};
 	8BBAE79709BD33CA00789AEF /* PBXTextBookmark */ = {
@@ -8975,7 +10561,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 82";
 		rLen = 0;
-		rLoc = 3739;
+		rLoc = 4868;
 		rType = 0;
 		vrLen = 1189;
 		vrLoc = 1005;
@@ -9007,7 +10593,7 @@
 		rLen = 33;
 		rLoc = 577;
 		rType = 0;
-		vrLen = 1174;
+		vrLen = 936;
 		vrLoc = 147;
 	};
 	8BBAE7AB09BD342000789AEF /* PBXTextBookmark */ = {
@@ -9061,7 +10647,7 @@
 		rLen = 33;
 		rLoc = 577;
 		rType = 0;
-		vrLen = 1174;
+		vrLen = 936;
 		vrLoc = 147;
 	};
 	8BBAE7BB09BD352200789AEF /* PBXTextBookmark */ = {
@@ -9153,7 +10739,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 166";
 		rLen = 0;
-		rLoc = 5996;
+		rLoc = 7125;
 		rType = 0;
 		vrLen = 1224;
 		vrLoc = 4160;
@@ -9263,7 +10849,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 107";
 		rLen = 0;
-		rLoc = 3602;
+		rLoc = 4731;
 		rType = 0;
 		vrLen = 580;
 		vrLoc = 2528;
@@ -9273,7 +10859,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 108";
 		rLen = 0;
-		rLoc = 3670;
+		rLoc = 4799;
 		rType = 0;
 		vrLen = 758;
 		vrLoc = 2837;
@@ -9383,7 +10969,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 109";
 		rLen = 0;
-		rLoc = 3685;
+		rLoc = 4814;
 		rType = 0;
 		vrLen = 784;
 		vrLoc = 3047;
@@ -9493,7 +11079,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 110";
 		rLen = 0;
-		rLoc = 3263;
+		rLoc = 4392;
 		rType = 0;
 		vrLen = 772;
 		vrLoc = 3114;
@@ -9583,7 +11169,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 110";
 		rLen = 0;
-		rLoc = 3263;
+		rLoc = 4392;
 		rType = 0;
 		vrLen = 772;
 		vrLoc = 3114;
@@ -9681,7 +11267,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 110";
 		rLen = 0;
-		rLoc = 3263;
+		rLoc = 4392;
 		rType = 0;
 		vrLen = 772;
 		vrLoc = 3114;
@@ -9859,7 +11445,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 110";
 		rLen = 0;
-		rLoc = 3263;
+		rLoc = 4392;
 		rType = 0;
 		vrLen = 772;
 		vrLoc = 3114;
@@ -9989,7 +11575,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 110";
 		rLen = 0;
-		rLoc = 3263;
+		rLoc = 4392;
 		rType = 0;
 		vrLen = 772;
 		vrLoc = 3114;
@@ -10099,7 +11685,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 110";
 		rLen = 0;
-		rLoc = 3263;
+		rLoc = 4392;
 		rType = 0;
 		vrLen = 772;
 		vrLoc = 3114;
@@ -10229,7 +11815,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 110";
 		rLen = 0;
-		rLoc = 3263;
+		rLoc = 4392;
 		rType = 0;
 		vrLen = 772;
 		vrLoc = 3114;
@@ -10359,7 +11945,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 110";
 		rLen = 0;
-		rLoc = 3263;
+		rLoc = 4392;
 		rType = 0;
 		vrLen = 772;
 		vrLoc = 3114;
@@ -10489,7 +12075,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 222";
 		rLen = 0;
-		rLoc = 7408;
+		rLoc = 8537;
 		rType = 0;
 		vrLen = 580;
 		vrLoc = 6475;
@@ -10609,7 +12195,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 211";
 		rLen = 0;
-		rLoc = 6911;
+		rLoc = 8040;
 		rType = 0;
 		vrLen = 589;
 		vrLoc = 6277;
@@ -10619,7 +12205,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "toggleFullScreenControls:";
 		rLen = 25;
-		rLoc = 7505;
+		rLoc = 8634;
 		rType = 0;
 		vrLen = 514;
 		vrLoc = 6810;
@@ -10739,7 +12325,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 207";
 		rLen = 0;
-		rLoc = 6713;
+		rLoc = 7842;
 		rType = 0;
 		vrLen = 649;
 		vrLoc = 6077;
@@ -10749,7 +12335,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = fullScreenControlWindowController;
 		rLen = 33;
-		rLoc = 7550;
+		rLoc = 8679;
 		rType = 0;
 		vrLen = 514;
 		vrLoc = 6819;
@@ -10869,7 +12455,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 207";
 		rLen = 0;
-		rLoc = 6713;
+		rLoc = 7842;
 		rType = 0;
 		vrLen = 649;
 		vrLoc = 6077;
@@ -10879,7 +12465,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = fullScreenControlWindowController;
 		rLen = 33;
-		rLoc = 7550;
+		rLoc = 8679;
 		rType = 0;
 		vrLen = 514;
 		vrLoc = 6819;
@@ -10999,7 +12585,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 207";
 		rLen = 0;
-		rLoc = 6713;
+		rLoc = 7842;
 		rType = 0;
 		vrLen = 649;
 		vrLoc = 6077;
@@ -11009,7 +12595,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = fullScreenControlWindowController;
 		rLen = 33;
-		rLoc = 7550;
+		rLoc = 8679;
 		rType = 0;
 		vrLen = 514;
 		vrLoc = 6819;
@@ -11089,7 +12675,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 207";
 		rLen = 0;
-		rLoc = 6713;
+		rLoc = 7842;
 		rType = 0;
 		vrLen = 649;
 		vrLoc = 6077;
@@ -11099,7 +12685,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = fullScreenControlWindowController;
 		rLen = 33;
-		rLoc = 7550;
+		rLoc = 8679;
 		rType = 0;
 		vrLen = 514;
 		vrLoc = 6819;
@@ -11199,7 +12785,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 207";
 		rLen = 0;
-		rLoc = 6713;
+		rLoc = 7842;
 		rType = 0;
 		vrLen = 649;
 		vrLoc = 6077;
@@ -11209,7 +12795,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = fullScreenControlWindowController;
 		rLen = 33;
-		rLoc = 7550;
+		rLoc = 8679;
 		rType = 0;
 		vrLen = 514;
 		vrLoc = 6819;
@@ -11309,7 +12895,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 207";
 		rLen = 0;
-		rLoc = 6713;
+		rLoc = 7842;
 		rType = 0;
 		vrLen = 649;
 		vrLoc = 6077;
@@ -11319,7 +12905,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = fullScreenControlWindowController;
 		rLen = 33;
-		rLoc = 7550;
+		rLoc = 8679;
 		rType = 0;
 		vrLen = 514;
 		vrLoc = 6819;
@@ -11399,7 +12985,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 207";
 		rLen = 0;
-		rLoc = 6713;
+		rLoc = 7842;
 		rType = 0;
 		vrLen = 649;
 		vrLoc = 6077;
@@ -11409,7 +12995,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = fullScreenControlWindowController;
 		rLen = 33;
-		rLoc = 7550;
+		rLoc = 8679;
 		rType = 0;
 		vrLen = 514;
 		vrLoc = 6819;
@@ -11509,7 +13095,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = "FullscreenWindowController.m: 207";
 		rLen = 0;
-		rLoc = 6713;
+		rLoc = 7842;
 		rType = 0;
 		vrLen = 649;
 		vrLoc = 6077;
@@ -11519,7 +13105,7 @@
 		fRef = 8B7BA8CB09B154B3002D34D8 /* FullscreenWindowController.m */;
 		name = fullScreenControlWindowController;
 		rLen = 33;
-		rLoc = 7550;
+		rLoc = 8679;
 		rType = 0;
 		vrLen = 514;
 		vrLoc = 6819;

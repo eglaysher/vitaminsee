@@ -21,13 +21,14 @@
 	// We own this because we have no other choice design wise.
 	FileListWindowController* fileListViewerController;
 	FullScreenControlWindowController* fullScreenControlWindowController;
+	
+	BOOL shouldRecordWindowState;
 }
 
 -(void)setFileList:(id<FileList>)newList;
 
+-(void)recordWindowStates;
 
-// These are empty methods because they don't make sense in the current 
-// context. In later versions, we make try to get fancy and use a spinner.
 -(void)beginCountdownToDisplayProgressIndicator;
 -(void)startProgressIndicator;
 -(void)stopProgressIndicator;

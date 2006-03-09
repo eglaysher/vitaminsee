@@ -38,6 +38,16 @@
 		fullScreenControlWindowController = 
 			[[FullScreenControlWindowController alloc] init];
 		[fullScreenControlWindowController window];
+		
+		// Register to receive a notification for when we're about to quit.
+		// We need to do this because we need to note the windows display
+		// status, and save it
+		[[NSNotificationCenter defaultCenter] 
+			addObserver:self
+			   selector:@selector(applicationWillTerminate:)
+				   name:NSApplicationWillTerminateNotification
+				 object:nil];
+		shouldRecordWindowState = YES;
 	}
 	
 	return self;
@@ -49,21 +59,26 @@
 {
 	[fileListViewerController release];
 	[fullScreenControlWindowController release];
+	
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
+
 	[super dealloc];
+}
+
+// ---------------------------------------------------------------------------
+
+- (void)applicationWillTerminate:(NSNotification *)aNotification
+{
+	[self recordWindowStates];
+	shouldRecordWindowState = NO;
 }
 
 // ---------------------------------------------------------------------------
 
 -(void)windowWillClose:(id)huh
 {
-	// Record the current state of the windows.
-	NSUserDefaults* ud = [NSUserDefaults standardUserDefaults];
-	BOOL visible = [[fileListViewerController window] isVisible];
-	[ud setObject:[NSNumber numberWithBool:visible]
-		   forKey:@"FullscreenDisplayFileList"];
-	visible = [[fullScreenControlWindowController window] isVisible];
-	[ud setObject:[NSNumber numberWithBool:visible]
-		   forKey:@"FullscreenDisplayControls"];
+	if(shouldRecordWindowState)
+		[self recordWindowStates];
 	
 	// Now close the windows
 	[fileListViewerController close];
@@ -71,6 +86,26 @@
 	
 	// Restore the menu bar to the way it was before fullscreen mode.
 	SetSystemUIMode(kUIModeNormal, 0); 
+}
+
+// ---------------------------------------------------------------------------
+
+-(void)recordWindowStates
+{
+	// Record the current state of the windows.
+	NSUserDefaults* ud = [NSUserDefaults standardUserDefaults];
+//	NSLog(@"FileListViewerController: %@", [fileListViewerController window]);
+	BOOL visible = [[fileListViewerController window] isVisible];
+//	NSLog(@"FullscreenDisplayFileList @ close: %d", visible);
+	[ud setObject:[NSNumber numberWithBool:visible]
+		   forKey:@"FullscreenDisplayFileList"];
+	
+//	NSLog(@"FullScreenControlWindowController: %@", 
+//		  [fullScreenControlWindowController window]);
+	visible = [[fullScreenControlWindowController window] isVisible];
+//	NSLog(@"FullscreenDisplayControls @ close: %d", visible);
+	[ud setObject:[NSNumber numberWithBool:visible]
+		   forKey:@"FullscreenDisplayControls"];	
 }
 
 // ---------------------------------------------------------------------------

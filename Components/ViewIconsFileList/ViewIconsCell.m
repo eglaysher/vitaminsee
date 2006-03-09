@@ -62,7 +62,7 @@ NSSize IMAGE_SIZE = {128.0f, 128.0f};
 -(void)dealloc
 {
 	[title release];
-	unsigned refcount = [iconImage retainCount];
+//	unsigned refcount = [iconImage retainCount];
 	[iconImage release];
 	[cachedCellTitle release];
 	[thisCellsFullPath release];

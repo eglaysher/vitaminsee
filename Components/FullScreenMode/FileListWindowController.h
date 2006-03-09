@@ -17,9 +17,9 @@
 
 // Methods that deal with the progress indicatator
 -(void)beginCountdownToDisplayProgressIndicator;
+-(void)cancelCountdown;
 -(void)startProgressIndicator;
 -(void)stopProgressIndicator;
--(void)updateWindowTitle;
 
 -(void)setFileList:(id<FileList>)newList;
 -(void)setFileSizeLabelText:(int)fileSize;
