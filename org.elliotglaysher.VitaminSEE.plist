@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>companyAddress</key>
+	<string></string>
+	<key>companyCountry</key>
+	<string>USA</string>
+	<key>companyEmail</key>
+	<string>glaysher@umich.edu</string>
+	<key>companyFax</key>
+	<string></string>
+	<key>companyName</key>
+	<string>Elliot Glaysher</string>
+	<key>companyPhone</key>
+	<string></string>
+	<key>companyWebSite</key>
+	<string>www.umich.edu/~glaysher</string>
+	<key>fileBundleID</key>
+	<string>org.elliotglaysher.VitaminSEE</string>
+	<key>fileCreator</key>
+	<string></string>
+	<key>fileReleaseDateD</key>
+	<string>11</string>
+	<key>fileReleaseDateM</key>
+	<string>03</string>
+	<key>fileReleaseDateY</key>
+	<string>2006</string>
+	<key>fileType</key>
+	<string></string>
+	<key>padVersion</key>
+	<string>1</string>
+	<key>productDescLong</key>
+	<string>VitaminSEE is an image viewer for OSX that focuses on interface responsiveness and speed. By default, it automatically generates thumbnails. It contains both windowed and fullscreen modes.	</string>
+	<key>productDescShort</key>
+	<string>Fast image browser with Fullscreen</string>
+	<key>productDownloadURL</key>
+	<array>
+		<string>http://www-personal.umich.edu/~glaysher/VitaminSEE%200.7.dmg</string>
+		<string>http://www-personal.umich.edu/~glaysher/VitaminSEE%200.7-Panther.dmg</string>
+		<string>http://www-personal.umich.edu/~glaysher/VitaminSEE%200.7%20Source.tar.bz2</string>
+	</array>
+	<key>productFileSize</key>
+	<string></string>
+	<key>productKeywords</key>
+	<array>
+		<string>fast</string>
+		<string>image</string>
+		<string>picture</string>
+		<string>photo</string>
+		<string>browser</string>
+		<string>viewer</string>
+	</array>
+	<key>productLanguages</key>
+	<array>
+		<string>English</string>
+		<string>Japanese</string>
+	</array>
+	<key>productLicense</key>
+	<string>Freeware</string>
+	<key>productName</key>
+	<string>VitaminSEE</string>
+	<key>productOS</key>
+	<array>
+		<string>10.3.9</string>
+		<string>10.4.4</string>
+	</array>
+	<key>productPageURL</key>
+	<string>http://www-personal.umich.edu/~glaysher/VitaminSEE.html</string>
+	<key>productPrice</key>
+	<string></string>
+	<key>productReleaseNotes</key>
+	<string></string>
+	<key>productRequirements</key>
+	<string>Mac OS 10.3.9, Mac OS 10.4.4 or later</string>
+	<key>productVersion</key>
+	<string>0.7.1</string>
+</dict>
+</plist>
