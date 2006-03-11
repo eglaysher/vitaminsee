@@ -41,7 +41,7 @@
 
 /** Array of all image file extensions that we support.
  */
-static NSArray* fileExtensions = 0;
+static NSMutableArray* fileExtensions = 0;
 
 // ----------------------------------------------------------------------------
 
@@ -198,7 +198,15 @@ static NSArray* fileExtensions = 0;
 -(BOOL)isImage
 {
 	if(!fileExtensions)
-		fileExtensions = [[NSImage imageUnfilteredFileTypes] retain];
+	{
+		fileExtensions = [[NSImage imageUnfilteredFileTypes] mutableCopy];
+		// Remove extensions that are technically NSImages, but are really
+		// documents.
+		NSArray* badExtensions = [NSArray arrayWithObjects:@"pdf", @"PDF", 
+			@"'PDF'", @"'PDF '", @"eps", @"EPS", @"epi", @"EPI", @"epsf",
+			@"EPSF", @"epsi", @"EPSI", @"ps", @"PS", @"'EPSF'", nil];
+		[fileExtensions removeObjectsInArray:badExtensions];
+	}
 	
 	return [fileExtensions containsObject:[[self fileName] pathExtension]];
 }
@@ -448,7 +456,7 @@ static NSString* egPathRootDisplayName = 0;
 
 -(NSArray*)pathComponents
 {
-	NSMutableArray* mountedVolumes = [[NSWorkspace sharedWorkspace] mountedLocalVolumePaths];
+	NSArray* mountedVolumes = [[NSWorkspace sharedWorkspace] mountedLocalVolumePaths];
 	NSMutableArray* components = [NSMutableArray array];	
 
 	NSString* currentPath = fileSystemPath;
