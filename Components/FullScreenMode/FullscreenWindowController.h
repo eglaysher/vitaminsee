@@ -43,4 +43,6 @@
 -(double)viewingAreaHeight;
 
 -(void)becomeFullscreen;
+
+-(void)update;
 @end

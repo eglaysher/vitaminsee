@@ -38,6 +38,8 @@
 
 #import "UKKQueue.h"
 
+NSString* EGFileViewDidChange = @"EGFileViewDidChange";
+
 @interface ViewIconViewController (Private)
 -(void)rebuildInternalFileArray;
 -(void)watchPath:(EGPath*)path;
@@ -628,6 +630,10 @@ willDisplayCell:(id)cell
 	// Now let's keep our new list of files. (Note it was allocated earlier)
 	[fileList release];	
 	fileList = myFileList;
+	
+	// Post a notifications that something has changed
+	[[NSNotificationCenter defaultCenter] postNotification:
+		[NSNotification notificationWithName:EGFileViewDidChange object:self]];
 }
 
 -(void)watchPath:(EGPath*)path

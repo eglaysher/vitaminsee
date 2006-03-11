@@ -8,4 +8,6 @@
     IBOutlet NSButton *nextButton;
     IBOutlet NSButton *prevButton;
 }
+-(void)update;
+-(void)validateButton:(NSButton*)button;
 @end

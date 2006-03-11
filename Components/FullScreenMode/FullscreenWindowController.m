@@ -10,6 +10,7 @@
 #import "SBCenteringClipView.h"
 #import "FileListWindowController.h"
 #import "FullScreenControlWindowController.h"
+#import "ViewIconViewController.h"
 
 #import <Carbon/Carbon.h>
 
@@ -19,8 +20,10 @@
 {
 	// Note fullscreen default preferences
 	NSMutableDictionary *defaultPrefs = [NSMutableDictionary dictionary];
-	[defaultPrefs setObject:[NSNumber numberWithBool:YES] forKey:@"FullscreenDisplayFileList"];
-	[defaultPrefs setObject:[NSNumber numberWithBool:YES] forKey:@"FullscreenDisplayControls"];
+	[defaultPrefs setObject:[NSNumber numberWithBool:YES] 
+					 forKey:@"FullscreenDisplayFileList"];
+	[defaultPrefs setObject:[NSNumber numberWithBool:YES] 
+					 forKey:@"FullscreenDisplayControls"];
 
 	[[NSUserDefaults standardUserDefaults] registerDefaults: defaultPrefs];
 }
@@ -48,6 +51,14 @@
 				   name:NSApplicationWillTerminateNotification
 				 object:nil];
 		shouldRecordWindowState = YES;
+		
+		// Register for my notification that happens when the FileList contents
+		// changes. This is really an ugly hack to allow this sort of updating.
+		[[NSNotificationCenter defaultCenter]
+			addObserver:self
+			   selector:@selector(update)
+				   name:EGFileViewDidChange
+				 object:nil];
 	}
 	
 	return self;
@@ -212,6 +223,14 @@
 -(void)setImage:(NSImage*)image
 {
 	[imageViewer setImage:image];
+	[fullScreenControlWindowController update];
+}
+
+// ---------------------------------------------------------------------------
+
+-(void)update
+{
+	[fullScreenControlWindowController update];
 }
 
 // ---------------------------------------------------------------------------

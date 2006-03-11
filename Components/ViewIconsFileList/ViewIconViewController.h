@@ -32,6 +32,9 @@
 
 #import "FileList.h"
 
+// Notifications
+extern NSString* EGFileViewDidChange;
+
 @class PluginLayer;
 @class ThumbnailManager;
 @class UKKQueue;

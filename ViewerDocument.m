@@ -455,6 +455,8 @@
 	// Default behaviour: only enable if we respond to this selector.
     BOOL enable = [self respondsToSelector:action];
 	
+	NSLog(@"Validating %@ (Is %d)", NSStringFromSelector(action), enable);
+	
 	// Disable menu items when they would put the image in the state it's 
 	// already currently in.
 	// File menu

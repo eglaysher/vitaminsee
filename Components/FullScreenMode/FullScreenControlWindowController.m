@@ -21,4 +21,25 @@
 	[self setWindowFrameAutosaveName:@"FullScreenControlls"];
 }
 
+- (void)update
+{
+	[self validateButton:nextButton];
+	[self validateButton:prevButton];
+}
+
+-(void)validateButton:(NSButton*)button 
+{
+	id validator = [NSApp targetForAction:[button action] 
+									   to:[button target] 
+									 from:button];
+
+	if ((validator == nil) || ![validator respondsToSelector:[button action]]) {
+		[button setEnabled:NO];
+	} else if ([validator respondsToSelector:@selector(validateAction:)]) {
+		[button setEnabled:[validator validateAction:[button action]]];
+	} else {
+		[button setEnabled:YES];
+	}	
+}
+
 @end
