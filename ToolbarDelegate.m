@@ -79,6 +79,8 @@ static ToolbarDelegate* toolbarDelegateObject = 0;
 	toolbarDelegateObject = [[ToolbarDelegate alloc] init];
 }
 
+//-----------------------------------------------------------------------------
+
 /** Create a new toolbar object and pass it to the caller.
  */
 +(NSToolbar*)buildToolbar {
@@ -93,7 +95,10 @@ static ToolbarDelegate* toolbarDelegateObject = 0;
 	return toolbar;
 }
 
-// This function hands back NSToolbarItems for various NSString identifiers
+//-----------------------------------------------------------------------------
+
+/** This function hands back NSToolbarItems for various NSString identifiers.
+ */
 - (NSToolbarItem *) toolbar:(NSToolbar *)toolbar
 	  itemForItemIdentifier:(NSString *)itemIdent
   willBeInsertedIntoToolbar:(BOOL) willBeInserted
@@ -236,6 +241,8 @@ static ToolbarDelegate* toolbarDelegateObject = 0;
 	return item;
 }
 
+//-----------------------------------------------------------------------------
+
 - (NSArray *) toolbarDefaultItemIdentifiers: (NSToolbar *) toolbar
 {
 	return [NSArray arrayWithObjects:RevealInFinderToolbarID, 
@@ -247,6 +254,8 @@ static ToolbarDelegate* toolbarDelegateObject = 0;
 		ZoomInToolbarID, ZoomOutToolbarID, ZoomToFitToolbarID, 
 		ActualSizeToolbarID, nil];
 }
+
+//-----------------------------------------------------------------------------
 
 - (NSArray *) toolbarAllowedItemIdentifiers: (NSToolbar *) toolbar
 {

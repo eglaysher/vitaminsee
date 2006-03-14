@@ -111,6 +111,8 @@ static SEL menuActions[14] = {0};
 	menuActions[13] = @selector(runToolbarCustomizationPalette:);
 }
 
+//-----------------------------------------------------------------------------
+
 - (int)numberOfItemsInMenu:(NSMenu *)menu
 {	
 	int count = 0;
@@ -131,6 +133,8 @@ static SEL menuActions[14] = {0};
 	
 	return count;
 }
+
+//-----------------------------------------------------------------------------
 
 /** Generate 
  *

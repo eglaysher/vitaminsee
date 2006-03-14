@@ -57,12 +57,16 @@
 	return self;
 }
 
+//-----------------------------------------------------------------------------
+
 -(void)dealloc
 {
 	[NSObject cancelPreviousPerformRequestsWithTarget:self];
 	[currentFileViewHolder setSubview:0];	
 	[super dealloc];
 }
+
+//-----------------------------------------------------------------------------
 
 -(void)awakeFromNib
 {
@@ -99,6 +103,8 @@
 	
 //	SetSystemUIMode(kUIModeAllHidden, kUIOptionAutoShowMenuBar); // to enter fullscreen
 }
+
+//-----------------------------------------------------------------------------
 
 /// Set the file list 
 -(void)setFileList:(id<FileList>)newList

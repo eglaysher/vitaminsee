@@ -183,18 +183,27 @@
 	[[NSUserDefaults standardUserDefaults] registerDefaults: defaultPrefs];
 }
 
+//-----------------------------------------------------------------------------
+
 static ApplicationController* appControl;
 +(ApplicationController*)controller
 {
 	return appControl;
 }
 
+//-----------------------------------------------------------------------------
+
+/** Each open viewer is given a unique documentID, wich is obtained through
+ * this function.
+ */
 -(NSNumber*)getNextAvailableID
 {
 	NSNumber* docid = [NSNumber numberWithInt:nextDocumentID];
 	nextDocumentID++;
 	return docid;
 }
+
+//-----------------------------------------------------------------------------
 
 -(void)awakeFromNib
 {
@@ -453,6 +462,8 @@ static ApplicationController* appControl;
 	return [document currentFile];
 }
 
+//-----------------------------------------------------------------------------
+
 -(IBAction)showPreferences:(id)sender
 {
 	if (!prefs) {
@@ -585,6 +596,8 @@ static ApplicationController* appControl;
 -(IBAction)fakeFavoritesMenuSelector:(id)sender
 {}
 
+//-----------------------------------------------------------------------------
+
 /** Selector that doesn't do anything. It's detected at runtime through
  * -validateMenuItem:, and a submenu is generated.
  */
@@ -606,9 +619,10 @@ static ApplicationController* appControl;
 		while(obj = [e nextObject]) {
 			[obj currentImageSetTo:[mainDocument currentFile]];
 		}
-//		[[components do] currentImageSetTo:[mainDocument currentFile]];
 	}
 }
+
+//-----------------------------------------------------------------------------
 
 -(void)resignMainDocument:(id)mainDocument
 {
@@ -620,11 +634,10 @@ static ApplicationController* appControl;
 		while(obj = [e nextObject]) {
 			[obj currentImageSetTo:0];
 		}		
-		
-//		[[[ComponentManager getLoadedCurrentFilePlugins] do] 
-//			currentImageSetTo:0];
 	}
 }
+
+//-----------------------------------------------------------------------------
 
 -(void)sendPluginActivationSignal:(id)menuItem
 {
@@ -640,7 +653,7 @@ static ApplicationController* appControl;
 							  context:pluginLine];
 }
 
-// -----------
+//-----------------------------------------------------------------------------
 
 -(IBAction)showGPL:(id)sender
 {

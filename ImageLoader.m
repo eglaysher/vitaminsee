@@ -103,6 +103,8 @@ static BOOL newTaskForSameRequester(NSDictionary* currentTask)
 	return obj != nil;
 }
 
+//-----------------------------------------------------------------------------
+
 /** Callback funcction used by methods that ask for a function pointer of
  * CANCELCHECK. This function checks to see if for the preloading task 
  * represented by currentTask should be canceled. Preloading tasks are canceled

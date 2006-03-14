@@ -79,6 +79,8 @@ static NSMutableArray* loadedCurrentFilePlugins = 0;
 	loadedCurrentFilePlugins = [[NSMutableArray alloc] init];
 }
 
+//-----------------------------------------------------------------------------
+
 /** Scans through the directory path, looking for ".bundle"s that are components
  * of VitaminSEE. We check the Info.plist of each Bundle, checking certain keys
  * so we have information on all the possible plugins that could be loaded at
@@ -164,6 +166,8 @@ static NSMutableArray* loadedCurrentFilePlugins = 0;
 	initialized = 1;
 }
 
+//-----------------------------------------------------------------------------
+
 /** Gets a FileList, loading the bundle that contains it from disk if 
  * neccessary.
  *
@@ -179,6 +183,8 @@ static NSMutableArray* loadedCurrentFilePlugins = 0;
 						  protocol:@protocol(FileListFactory)
 						 firstTime:&firstTime];
 }
+
+//-----------------------------------------------------------------------------
 
 /** Gets a CurrentFilePlugin, loading the bundle that contains it from disk if
  * neccessary.
@@ -205,6 +211,8 @@ static NSMutableArray* loadedCurrentFilePlugins = 0;
 	return component;
 }
 
+//-----------------------------------------------------------------------------
+
 /** Gets a internal component (A piece of code that we cheated and stuck
  * in a plugin without defining some sort of formal interface).
  *
@@ -221,6 +229,8 @@ static NSMutableArray* loadedCurrentFilePlugins = 0;
 						 firstTime:&firstTime];	
 }
 
+//-----------------------------------------------------------------------------
+
 /** Returns the array of all FileLists loaded and unloaded for display in the
  * view menu.
  */
@@ -229,6 +239,8 @@ static NSMutableArray* loadedCurrentFilePlugins = 0;
 	return viewMenuNamesToBundleName;
 }
 
+//-----------------------------------------------------------------------------
+
 /** Returns the array of all CurrentFilePlugins that should be displayed in the
  * view menu.
  */
@@ -236,6 +248,8 @@ static NSMutableArray* loadedCurrentFilePlugins = 0;
 {
 	return viewMenuCurrentFilePluginsToBundleName;
 }
+
+//-----------------------------------------------------------------------------
 
 +(NSArray *)getLoadedCurrentFilePlugins
 {

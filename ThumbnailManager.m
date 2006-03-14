@@ -171,6 +171,8 @@ static BOOL generateThumbnails;
 	pthread_mutex_unlock(&thumbnailConfLock);
 }
 
+//-----------------------------------------------------------------------------
+
 /** Move this to private */
 +(BOOL)getGenerateThumbnails
 {
