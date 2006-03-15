@@ -382,9 +382,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>8BFB548E09C6800D008DBE14</string>
+				<string>8B8B6CC509C798A100E36801</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>8BFB548F09C6800D008DBE14</string>
+				<string>8B8B6CC609C798A100E36801</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -510,7 +510,7 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>8BFB549009C6800D008DBE14</string>
+				<string>8B8B6CC709C798A100E36801</string>
 				<string>11E0B1FE06471DED0097A5F4</string>
 			</array>
 			<key>ToolbarConfiguration</key>
@@ -526,7 +526,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>164003853.91866001</real>
+	<real>164075665.23124799</real>
 	<key>ToolbarDisplayMode</key>
 	<integer>2</integer>
 	<key>ToolbarIsVisible</key>
@@ -541,7 +541,6 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>8BD128CD09A2B4C0009E0275</string>
 		<string>1C0AD2B3069F1EA900FABCE6</string>
 		<string>/Users/elliot/Projects/VitaminSEE/VitaminSEE.xcodeproj</string>
 	</array>
@@ -937,8 +936,8 @@
 										<string>yes</string>
 										<key>sizes</key>
 										<array>
-											<string>{{0, 0}, {366, 168}}</string>
-											<string>{{0, 173}, {366, 270}}</string>
+											<string>{{0, 0}, {491, 168}}</string>
+											<string>{{0, 173}, {491, 270}}</string>
 										</array>
 									</dict>
 									<key>VerticalSplitView</key>
@@ -987,9 +986,9 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C0AD2B3069F1EA900FABCE6</string>
-				<string>8BFB549109C6800D008DBE14</string>
+				<string>8B8B6CC809C798A100E36801</string>
 				<string>1CD0528B0623707200166675</string>
-				<string>8BFB549209C6800D008DBE14</string>
+				<string>8B8B6CC909C798A100E36801</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.run</string>

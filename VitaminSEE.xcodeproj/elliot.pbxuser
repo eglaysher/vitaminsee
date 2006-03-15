@@ -14,6 +14,7 @@
 		activeExecutable = 8B24487D08FADC49004716BC /* VitaminSEE */;
 		activeTarget = 8D1107260486CEB800E47090 /* VitaminSEE */;
 		addToTargets = (
+			8D1107260486CEB800E47090 /* VitaminSEE */,
 		);
 		breakpoints = (
 			8BC5D7B00902DCCE00C2FA0C /* -[NSException raise] */,
@@ -164,8 +165,8 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 163989617;
-			PBXWorkspaceStateSaveDate = 163989617;
+			PBXPerProjectTemplateStateSaveDate = 164075665;
+			PBXWorkspaceStateSaveDate = 164075665;
 		};
 		sourceControlManager = 8B24488B08FADC51004716BC /* Source Control */;
 		userBuildSettings = {

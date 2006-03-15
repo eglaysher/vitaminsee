@@ -31,6 +31,7 @@
 #include <sys/stat.h>
 
 
+#import "UKCrashReporter.h"
 //#import "FSNodeInfo.h"
 //#import "FSBrowserCell.h"
 
@@ -254,6 +255,11 @@ static ApplicationController* appControl;
 }
 
 ////////////////////////////////////////////////////////// APPLICATION DELEGATE
+
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
+{
+	UKCrashReporterCheckForCrash();
+}
 
 /** Handle the opening of files by double-clicks from the Finder and drags to
  * the dock icon.

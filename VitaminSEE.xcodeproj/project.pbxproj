@@ -97,6 +97,9 @@
 		8B7BA91D09B15721002D34D8 /* ImageViewing.nib in Resources */ = {isa = PBXBuildFile; fileRef = 8B7BA8D009B1553B002D34D8 /* ImageViewing.nib */; };
 		8B7BA91E09B1572F002D34D8 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B7F0DA10964A94E00B7A46D /* Carbon.framework */; };
 		8B7F0DA20964A94E00B7A46D /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B7F0DA10964A94E00B7A46D /* Carbon.framework */; };
+		8B8B6CD109C79EF300E36801 /* UKCrashReporter.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B8B6CCF09C79EF300E36801 /* UKCrashReporter.h */; };
+		8B8B6CD209C79EF300E36801 /* UKCrashReporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8B6CD009C79EF300E36801 /* UKCrashReporter.m */; };
+		8B8B6CD509C79F1F00E36801 /* UKCrashReporter.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8B8B6CD309C79F1E00E36801 /* UKCrashReporter.strings */; };
 		8B91ED020978AD06001B95BE /* SortManagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B91ECFC0978AD06001B95BE /* SortManagerController.m */; };
 		8B91ED070978AD1B001B95BE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8B91ED030978AD1B001B95BE /* Localizable.strings */; };
 		8B91ED080978AD1B001B95BE /* SortManager.nib in Resources */ = {isa = PBXBuildFile; fileRef = 8B91ED050978AD1B001B95BE /* SortManager.nib */; };
@@ -522,6 +525,9 @@
 		8B7BA8DD09B15588002D34D8 /* FullScreenMode.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FullScreenMode.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B7BA8E609B155BC002D34D8 /* FullScreenMode-Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xml; name = "FullScreenMode-Info.plist"; path = "Components/FullScreenMode/FullScreenMode-Info.plist"; sourceTree = "<group>"; };
 		8B7F0DA10964A94E00B7A46D /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
+		8B8B6CCF09C79EF300E36801 /* UKCrashReporter.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = UKCrashReporter.h; path = Widgets/UKCrashReporter.h; sourceTree = "<group>"; };
+		8B8B6CD009C79EF300E36801 /* UKCrashReporter.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = UKCrashReporter.m; path = Widgets/UKCrashReporter.m; sourceTree = "<group>"; };
+		8B8B6CD409C79F1E00E36801 /* English */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/UKCrashReporter.strings; sourceTree = "<group>"; };
 		8B8B7229090C1323006DDF10 /* GotoFolderWindow-Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xml; name = "GotoFolderWindow-Info.plist"; path = "Components/GotoFolderWindow/GotoFolderWindow-Info.plist"; sourceTree = "<group>"; };
 		8B91ECED0978ACE3001B95BE /* SortManager.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SortManager.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B91ECFA0978AD06001B95BE /* SortManager-Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xml; name = "SortManager-Info.plist"; path = "Components/SortManager/SortManager-Info.plist"; sourceTree = "<group>"; };
@@ -870,6 +876,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8B8B6CD309C79F1E00E36801 /* UKCrashReporter.strings */,
 				8BB695FE099E4329001AE27B /* Changelog */,
 				8BB695B6099E3309001AE27B /* goto.png */,
 				8BB691CE099DBA3E001AE27B /* VitaminSEE Help */,
@@ -934,6 +941,8 @@
 		8B2448A108FB2018004716BC /* Widgets */ = {
 			isa = PBXGroup;
 			children = (
+				8B8B6CCF09C79EF300E36801 /* UKCrashReporter.h */,
+				8B8B6CD009C79EF300E36801 /* UKCrashReporter.m */,
 				8B20650A094CDB670062D0CC /* NSString+CarbonFSSpecCreation.h */,
 				8B20650B094CDB670062D0CC /* NSString+CarbonFSSpecCreation.m */,
 				8B2064F2094CD90D0062D0CC /* IconFamily.h */,
@@ -1302,6 +1311,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B9C7375096884C6009ED6CC /* CurrentFilePlugin.h in Headers */,
+				8B8B6CD109C79EF300E36801 /* UKCrashReporter.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2635,6 +2645,7 @@
 				8BF1038D09A2AFBE00FE21A7 /* Panther.xcconfig in Resources */,
 				8BD128C609A2B470009E0275 /* Deployment.xcconfig in Resources */,
 				8BD128D409A2B4EB009E0275 /* Development.xcconfig in Resources */,
+				8B8B6CD509C79F1F00E36801 /* UKCrashReporter.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2831,6 +2842,7 @@
 				8B20650D094CDB670062D0CC /* NSString+CarbonFSSpecCreation.m in Sources */,
 				8BAE04EF095F6C5D007C387D /* NSObject+Invocations.m in Sources */,
 				8BAE07A909622634007C387D /* ViewMenuDelegate.m in Sources */,
+				8B8B6CD209C79EF300E36801 /* UKCrashReporter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3038,6 +3050,14 @@
 				8B7BA8D109B1553B002D34D8 /* English */,
 			);
 			name = ImageViewing.nib;
+			sourceTree = "<group>";
+		};
+		8B8B6CD309C79F1E00E36801 /* UKCrashReporter.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8B8B6CD409C79F1E00E36801 /* English */,
+			);
+			name = UKCrashReporter.strings;
 			sourceTree = "<group>";
 		};
 		8B91ED030978AD1B001B95BE /* Localizable.strings */ = {
