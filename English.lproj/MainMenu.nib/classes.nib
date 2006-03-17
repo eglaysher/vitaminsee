@@ -11,8 +11,10 @@
             CLASS = ApplicationController; 
             LANGUAGE = ObjC; 
             OUTLETS = {
+                checker = UKUpdateChecker; 
                 computerFolderMenuItem = NSMenuItem; 
                 favoritesMenuItem = NSMenuItem; 
+                feedbackProvider = UKFeedbackProvider; 
                 homeFolderMenuItem = NSMenuItem; 
                 mainVitaminSeeWindow = NSWindow; 
                 openWithMenuItem = NSMenuItem; 
@@ -63,6 +65,30 @@
             LANGUAGE = ObjC; 
             OUTLETS = {mainController = CQViewController; }; 
             SUPERCLASS = NSWindowController; 
+        }, 
+        {
+            ACTIONS = {
+                closeFeedbackWindow = id; 
+                openURL = id; 
+                orderFrontFeedbackWindow = id; 
+                sendFeedback = id; 
+                sendFeedbackButtonAction = id; 
+            }; 
+            CLASS = UKFeedbackProvider; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {
+                feedbackWindow = NSWindow; 
+                messageText = NSTextView; 
+                subjectField = NSComboBox; 
+            }; 
+            SUPERCLASS = NSObject; 
+        }, 
+        {
+            ACTIONS = {checkForUpdates = id; takeBoolFromObject = id; }; 
+            CLASS = UKUpdateChecker; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {prefsButton = NSButton; }; 
+            SUPERCLASS = NSObject; 
         }, 
         {CLASS = ViewMenuDelegate; LANGUAGE = ObjC; SUPERCLASS = NSObject; }
     ); 

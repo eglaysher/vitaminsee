@@ -259,6 +259,7 @@ static ApplicationController* appControl;
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
 	UKCrashReporterCheckForCrash();
+	[checker startup];
 }
 
 /** Handle the opening of files by double-clicks from the Finder and drags to
