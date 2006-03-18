@@ -1,7 +1,7 @@
 // IconFamily.h
 // IconFamily class interface
 // by Troy Stephens, Thomas Schnitzer, David Remahl, Nathan Day and Ben Haller
-// version 0.5.1
+// version 0.9.1
 //
 // Project Home Page:
 //   http://homepage.mac.com/troy_stephens/software/objects/IconFamily/
@@ -9,21 +9,21 @@
 // Problems, shortcomings, and uncertainties that I'm aware of are flagged
 // with "NOTE:".  Please address bug reports, bug fixes, suggestions, etc.
 // to me at troy_stephens@mac.com
-//
-// This code is provided as-is, with no warranty, in the hope that it will be
-// useful.  However, it appears to work fine on Mac OS X 10.1.4. :-)
+
+/*
+    Copyright (c) 2001-2006 Troy N. Stephens
+
+    Use and distribution of this source code is governed by the MIT License, whose terms are as follows.
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+*/
 
 #import <Cocoa/Cocoa.h>
 #import <Carbon/Carbon.h>
-
-// This modification is to create a struct that we can pass back to the main
-// thread
-//struct MainThreadCommunication
-//{
-//	IconFamilyHandle iconFamily;
-//	OSType iconType;
-//	Handle h;
-//};
 
 // This class is a Cocoa/Objective-C wrapper for the Mac OS X Carbon API's
 // "icon family" data type.  Its main purpose is to enable Cocoa applications
@@ -44,10 +44,8 @@
     IconFamilyHandle hIconFamily;
 }
 
-// Convenience methods.  These use the corresponding -init methods to return
+// Convenience methods.  These use the corresponding -init... methods to return
 // an autoreleased IconFamily instance.
-//
-// NOTE: +iconFamily relies on -init, which is currently broken (see -init).
 
 + (IconFamily*) iconFamily;
 + (IconFamily*) iconFamilyWithContentsOfFile:(NSString*)path;
@@ -57,17 +55,8 @@
 + (IconFamily*) iconFamilyWithThumbnailsOfImage:(NSImage*)image;
 + (IconFamily*) iconFamilyWithThumbnailsOfImage:(NSImage*)image usingImageInterpolation:(NSImageInterpolation)imageInterpolation;
 
-// Checks if a file has a custom icon
-+ (BOOL) fileHasCustomIcon:(NSString*)path;
-
 // Initializes as a new, empty IconFamily.  This is IconFamily's designated
 // initializer method.
-//
-// NOTE: This method is broken until we figure out how to create a valid new
-//       IconFamilyHandle!  In the meantime, use -initWithContentsOfFile: to
-//       load an existing .icns file that you can use as a starting point, and
-//       use -setIconFamilyElement:fromBitmapImageRep: to replace its
-//	 elements.  This is what the "MakeThumbnail" demo app does.
 
 - init;
 
@@ -166,6 +155,9 @@
 
 // - (NSBitmapImageRep*) bitmapImageRepForIconFamilyElement:(OSType)elementType;
 
+-(void)setIconFamilyData:(IconFamilyHandle)iconFamily osType:(OSType)iconType
+				  handle:(Handle)h;
+
 // Writes the icon family to the resource fork of the specified file as its
 // kCustomIconResource, and sets the necessary Finder bits so the icon will
 // be displayed for the file in Finder views.
@@ -184,8 +176,7 @@
 
 + (BOOL) removeCustomIconFromFile:(NSString*)path;
 
--(void)setIconFamilyData:(IconFamilyHandle)iconFamily osType:(OSType)iconType
-				   handle:(Handle)h;
++ (BOOL) fileHasCustomIcon:(NSString*)path;
 
 @end
 

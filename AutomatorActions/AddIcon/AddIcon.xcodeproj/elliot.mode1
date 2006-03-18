@@ -232,8 +232,6 @@
 			<key>Layout</key>
 			<array>
 				<dict>
-					<key>BecomeActive</key>
-					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -271,11 +269,19 @@
 							<array>
 								<string>089C166AFE841209C02AAC07</string>
 								<string>8BD1298D09A2B84B009E0275</string>
+								<string>08FB77AFFE84173DC02AAC07</string>
 								<string>1C37FABC05509CD000000102</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
+									<integer>6</integer>
+									<integer>5</integer>
+									<integer>0</integer>
+								</array>
+								<array>
+									<integer>7</integer>
+									<integer>5</integer>
 									<integer>0</integer>
 								</array>
 							</array>
@@ -344,6 +350,8 @@
 							<string>0pt</string>
 						</dict>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -380,9 +388,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>8BEE74CA09A3AD4200FEAF29</string>
+				<string>8B8B6E8C09CC62F700E36801</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>8BEE74CB09A3AD4200FEAF29</string>
+				<string>8B8B6E8D09CC62F700E36801</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -501,7 +509,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>161721637.574092</real>
+	<real>164389623.21203899</real>
 	<key>ToolbarDisplayMode</key>
 	<integer>2</integer>
 	<key>ToolbarIsVisible</key>
@@ -516,6 +524,7 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>8B4DC3E80996D72900B58051</string>
 		<string>/Users/elliot/Projects/VitaminSEE/AutomatorActions/AddIcon/AddIcon.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
@@ -540,7 +549,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>IconFamily.m</string>
+								<string></string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -598,7 +607,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>8B4DC3E80996D72900B58051</string>
-				<string>8B4DC3E90996D72900B58051</string>
+				<string>8B8B6E8909CC62ED00E36801</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>

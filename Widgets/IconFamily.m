@@ -1,7 +1,7 @@
 // IconFamily.m
 // IconFamily class implementation
 // by Troy Stephens, Thomas Schnitzer, David Remahl, Nathan Day and Ben Haller
-// version 0.5.1
+// version 0.9.1
 //
 // Project Home Page:
 //   http://homepage.mac.com/troy_stephens/software/objects/IconFamily/
@@ -9,17 +9,34 @@
 // Problems, shortcomings, and uncertainties that I'm aware of are flagged
 // with "NOTE:".  Please address bug reports, bug fixes, suggestions, etc.
 // to me at troy_stephens@mac.com
-//
-// This code is provided as-is, with no warranty, in the hope that it will be
-// useful.  However, it appears to work fine on Mac OS X 10.1.5 and 10.2. :-)
+
+
+// For reference, ERG has made the following changes to IconFamily:
+// * Make things more efficient by not autoreleasing internally. Before, images
+//   were held on until the next pool call, instead of being released immediatly
+//   after we're done with them. Generally, autoreleasing NSImages and 
+//   NSImageReps isn't a good idea, efficiency wise because of the size of these
+//   objects.
+//   
+
+/*
+    Copyright (c) 2001-2006 Troy N. Stephens
+
+    Use and distribution of this source code is governed by the MIT License, whose terms are as follows.
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+*/
 
 #import "IconFamily.h"
-#import "NSString+CarbonFSSpecCreation.h"
-#import "NSObject+Invocations.h"
+#import "NSString+CarbonFSRefCreation.h"
 
 @interface IconFamily (Internals)
 
-+ (NSImage*) resampleImage:(NSImage*)image toIconWidth:(int)width usingImageInterpolation:(NSImageInterpolation)imageInterpolation imageRect:(NSRect*)imageRect;
++ (NSImage*) resampleImage:(NSImage*)image toIconWidth:(int)width usingImageInterpolation:(NSImageInterpolation)imageInterpolation;
 
 + (Handle) get32BitDataFromBitmapImageRep:(NSBitmapImageRep*)bitmapImageRep requiredPixelSize:(int)requiredPixelSize;
 
@@ -70,37 +87,6 @@
     return [[[IconFamily alloc] initWithThumbnailsOfImage:image usingImageInterpolation:imageInterpolation] autorelease];
 }
 
-// Checks if a file has a custom icon
-+ (BOOL) fileHasCustomIcon:(NSString*)path
-{
-	BOOL hasIcon = NO;
-	FSRef parentDirectoryFSRef;
-	FSSpec targetFileFSSpec;
-	FSRef targetFileFSRef;
-	SInt16 file;
-    Handle hExistingCustomIcon;
-//	if(![path getFSRef:&targetFileFSRef createFileIfNecessary:NO])
-//		return NO;
-
-	if(FSPathMakeRef((UInt8 *)[path fileSystemRepresentation], &targetFileFSRef, NULL) != noErr)
-		return NO;
-
-	if(FSGetCatalogInfo(&targetFileFSRef, kFSCatInfoNone, NULL, NULL, 
-						&targetFileFSSpec, &parentDirectoryFSRef) != noErr)
-		return NO;
-
-	if((file = FSpOpenResFile(&targetFileFSSpec, fsRdWrPerm)) == -1)
-		return NO;
-	
-	hExistingCustomIcon = GetResource(kIconFamilyType, kCustomIconResource);
-	if(hExistingCustomIcon)
-		hasIcon = YES;
-	
-	CloseResFile(file);
-	
-	return hasIcon;
-}
-
 // This is IconFamily's designated initializer.  It creates a new IconFamily that initially has no elements.
 //
 // The proper way to do this is to simply allocate a zero-sized handle (not to be confused with an empty handle) and assign it to hIconFamily.  This technique works on Mac OS X 10.2 as well as on 10.0.x and 10.1.x.  Our previous technique of allocating an IconFamily struct with a resourceSize of 0 no longer works as of Mac OS X 10.2.
@@ -119,8 +105,8 @@
 
 - initWithContentsOfFile:(NSString*)path
 {
-    FSSpec fsSpec;
-    OSErr result;
+    FSRef ref;
+    OSStatus result;
     
     self = [self init];
     if (self) {
@@ -128,11 +114,11 @@
             DisposeHandle( (Handle)hIconFamily );
             hIconFamily = NULL;
         }
-		if (![path getFSSpec:&fsSpec createFileIfNecessary:NO]) {
+		if (![path getFSRef:&ref createFileIfNecessary:NO]) {
 			[self autorelease];
 			return nil;
 		}
-		result = ReadIconFile( &fsSpec, &hIconFamily );
+		result = ReadIconFromFSRef( &ref, &hIconFamily );
 		if (result != noErr) {
 			[self autorelease];
 			return nil;
@@ -159,9 +145,9 @@
 - initWithIconOfFile:(NSString*)path
 {
     IconRef	iconRef;
-    OSErr	result;
+    OSStatus	result;
     SInt16	label;
-    FSSpec	fileSpec;
+    FSRef	ref;
 
     self = [self init];
     if (self)
@@ -172,16 +158,21 @@
             hIconFamily = NULL;
         }
 
-        if( ![path getFSSpec:&fileSpec createFileIfNecessary:NO] )
+        if( ![path getFSRef:&ref createFileIfNecessary:NO] )
         {
             [self autorelease];
             return nil;
         }
 
-        result = GetIconRefFromFile(
-                                    &fileSpec,
-                                    &iconRef,
-                                    &label );
+        result = GetIconRefFromFileInfo(
+                                        &ref,
+                                        /*inFileNameLength*/ 0,
+                                        /*inFileName*/ NULL,
+                                        kFSCatInfoNone,
+                                        /*inCatalogInfo*/ NULL,
+                                        kIconServicesNormalUsageFlag,
+                                        &iconRef,
+                                        &label );
 
         if (result != noErr)
         {
@@ -194,13 +185,13 @@
                                      kSelectorAllAvailableData,
                                      &hIconFamily );
 
+        ReleaseIconRef( iconRef );
+
         if (result != noErr || !hIconFamily)
         {
             [self autorelease];
             return nil;
         }
-
-        ReleaseIconRef( iconRef );
     }
     return self;
 }
@@ -258,11 +249,6 @@
     NSBitmapImageRep* iconBitmap32x32;
     NSBitmapImageRep* iconBitmap16x16;
     NSImage* bitmappedIconImage128x128;
-	NSRect imageRect;
-	
-	// We need to be really sure that we have a good image.
-	if(image == nil)
-		return nil;
     
     // Start with a new, empty IconFamily.
     self = [self init];
@@ -276,10 +262,15 @@
     // returns an NSImage that contains an NSCacheImageRep, rather than
     // an NSBitmapImageRep.  We convert to an NSBitmapImageRep, so that
 	// our methods can scan the image data, using initWithFocusedViewRect:.
-    iconImage128x128 = [IconFamily resampleImage:image toIconWidth:128 usingImageInterpolation:imageInterpolation imageRect:&imageRect];
+    iconImage128x128 = [IconFamily resampleImage:image toIconWidth:128 usingImageInterpolation:imageInterpolation];
 	[iconImage128x128 lockFocus];
 	iconBitmap128x128 = [[NSBitmapImageRep alloc] initWithFocusedViewRect:NSMakeRect(0, 0, 128, 128)];
 	[iconImage128x128 unlockFocus];
+    if (iconBitmap128x128) {
+        [self setIconFamilyElement:kThumbnail32BitData fromBitmapImageRep:iconBitmap128x128];
+        [self setIconFamilyElement:kThumbnail8BitMask  fromBitmapImageRep:iconBitmap128x128];
+    }
+	[iconImage128x128 release];
 
     // Create an NSImage with the iconBitmap128x128 NSBitmapImageRep, that we
     // can resample to create the smaller icon family elements.  (This is
@@ -291,70 +282,37 @@
    
     // Resample the 128x128 image to create a 32x32 pixel, 32-bit RGBA version,
     // and use that as our "large" (32x32) icon and 8-bit mask.
-    iconImage32x32 = [IconFamily resampleImage:bitmappedIconImage128x128 toIconWidth:32 usingImageInterpolation:imageInterpolation imageRect:nil];
-	if(iconImage32x32) {
-		[iconImage32x32 lockFocus];
-		iconBitmap32x32 = [[NSBitmapImageRep alloc] initWithFocusedViewRect:NSMakeRect(0, 0, 32, 32)];
-		[iconImage32x32 unlockFocus];
-		[iconImage32x32 release];
-		if (iconBitmap32x32) {
-			[self setIconFamilyElement:kLarge32BitData fromBitmapImageRep:iconBitmap32x32];
-			[self setIconFamilyElement:kLarge8BitData fromBitmapImageRep:iconBitmap32x32];
-			[self setIconFamilyElement:kLarge8BitMask fromBitmapImageRep:iconBitmap32x32];
-			[self setIconFamilyElement:kLarge1BitMask fromBitmapImageRep:iconBitmap32x32];
-		}
-	}
-
+    iconImage32x32 = [IconFamily resampleImage:bitmappedIconImage128x128 toIconWidth:32 usingImageInterpolation:imageInterpolation];
+	[iconImage32x32 lockFocus];
+	iconBitmap32x32 = [[NSBitmapImageRep alloc] initWithFocusedViewRect:NSMakeRect(0, 0, 32, 32)];
+	[iconImage32x32 unlockFocus];
+    if (iconBitmap32x32) {
+        [self setIconFamilyElement:kLarge32BitData fromBitmapImageRep:iconBitmap32x32];
+        [self setIconFamilyElement:kLarge8BitData fromBitmapImageRep:iconBitmap32x32];
+        [self setIconFamilyElement:kLarge8BitMask fromBitmapImageRep:iconBitmap32x32];
+        [self setIconFamilyElement:kLarge1BitMask fromBitmapImageRep:iconBitmap32x32];
+    }
+	[iconImage32x32 release];
+    [iconBitmap32x32 release];
+	
     // Resample the 128x128 image to create a 16x16 pixel, 32-bit RGBA version,
     // and use that as our "small" (16x16) icon and 8-bit mask.
-    iconImage16x16 = [IconFamily resampleImage:bitmappedIconImage128x128 toIconWidth:16 usingImageInterpolation:imageInterpolation imageRect:nil];
-	if(iconImage16x16) {
-		[iconImage16x16 lockFocus];
-		iconBitmap16x16 = [[NSBitmapImageRep alloc] initWithFocusedViewRect:NSMakeRect(0, 0, 16, 16)];
-		[iconImage16x16 unlockFocus];
-		[iconImage16x16 release];
-		if (iconBitmap16x16) {
-			[self setIconFamilyElement:kSmall32BitData fromBitmapImageRep:iconBitmap16x16];
-			[self setIconFamilyElement:kSmall8BitData fromBitmapImageRep:iconBitmap16x16];
-			[self setIconFamilyElement:kSmall8BitMask fromBitmapImageRep:iconBitmap16x16];
-			[self setIconFamilyElement:kSmall1BitMask fromBitmapImageRep:iconBitmap16x16];
-		}
-	}
+    iconImage16x16 = [IconFamily resampleImage:bitmappedIconImage128x128 toIconWidth:16 usingImageInterpolation:imageInterpolation];
+	[iconImage16x16 lockFocus];
+	iconBitmap16x16 = [[NSBitmapImageRep alloc] initWithFocusedViewRect:NSMakeRect(0, 0, 16, 16)];
+	[iconImage16x16 unlockFocus];
+    if (iconBitmap16x16) {
+        [self setIconFamilyElement:kSmall32BitData fromBitmapImageRep:iconBitmap16x16];
+        [self setIconFamilyElement:kSmall8BitData fromBitmapImageRep:iconBitmap16x16];
+        [self setIconFamilyElement:kSmall8BitMask fromBitmapImageRep:iconBitmap16x16];
+        [self setIconFamilyElement:kSmall1BitMask fromBitmapImageRep:iconBitmap16x16];
+    }
+	[iconImage16x16 release];
+    [iconBitmap16x16 release];
 	
-	// Finally, since we aren't going to need the original image anymore, draw a 
-	// black border around the image and set it as the 128x128 image
-	if (iconBitmap128x128) {
-		NSBitmapImageRep* borderedBitmap128;
-		[iconImage128x128 lockFocus];
-		
-		// Set our border color to BLACK.
-		[[NSColor blackColor] set];
-		NSFrameRect(imageRect);
-		
-		// Now that we have drawn our border, copy this image...
-		borderedBitmap128 = [[NSBitmapImageRep alloc] initWithFocusedViewRect:NSMakeRect(0, 0, 128, 128)];
-		[iconImage128x128 unlockFocus];
-        
-		if(borderedBitmap128)
-		{
-			[self setIconFamilyElement:kThumbnail32BitData fromBitmapImageRep:borderedBitmap128];
-			[self setIconFamilyElement:kThumbnail8BitMask  fromBitmapImageRep:borderedBitmap128];
-			[borderedBitmap128 release];
-		}
-		else
-		{
-			// Something went wrong. Use the unbordered so at least there's some image...
-			[self setIconFamilyElement:kThumbnail32BitData fromBitmapImageRep:iconBitmap128x128];
-			[self setIconFamilyElement:kThumbnail8BitMask  fromBitmapImageRep:iconBitmap128x128];			
-		}
-    }	
-
     // Release all of the images that we created and no longer need.
-	[iconImage128x128 release];
     [bitmappedIconImage128x128 release];
     [iconBitmap128x128 release];
-    [iconBitmap32x32 release];
-    [iconBitmap16x16 release];	
 
     // Return the new icon family!
     return self;
@@ -420,24 +378,21 @@
         hRawMaskData = NULL;
     }
     
-    // The retrieved raw bitmap data is stored at 32 bits per pixel: 3 bytes
-    // for the RGB color of each pixel, plus an extra unused byte.  We can
-    // therefore fold the mask data into the color data in-place (though
-    // getting the proper byte ordering requires some bit-shifting).
+    // The retrieved raw bitmap data is stored in memory as 32 bit per pixel, 8 bit per sample xRGB data.  (The sample order provided by IconServices is the same, regardless of whether we're running on a big-endian (PPC) or little-endian (Intel) architecture.)  With proper attention to byte order, we can fold the mask data into the color data in-place, producing RGBA data suitable for handing off to NSBitmapImageRep.
     HLock( hRawBitmapData );
     pRawBitmapData = (unsigned long*) *hRawBitmapData;
     pRawBitmapDataEnd = pRawBitmapData + pixelsWide * pixelsWide;
     if (hRawMaskData) {
         HLock( hRawMaskData );
-        pRawMaskData = *hRawMaskData;
+        pRawMaskData = (unsigned char*) *hRawMaskData;
         while (pRawBitmapData < pRawBitmapDataEnd) {
-            *pRawBitmapData = (*pRawBitmapData << 8) | *pRawMaskData++;
+			*pRawBitmapData = NSSwapBigLongToHost((NSSwapHostLongToBig(*pRawBitmapData) << 8) | *pRawMaskData++);
             ++pRawBitmapData;
         }
         HUnlock( hRawMaskData );
     } else {
         while (pRawBitmapData < pRawBitmapDataEnd) {
-            *pRawBitmapData = (*pRawBitmapData << 8) | 0xff;
+            *pRawBitmapData = NSSwapBigLongToHost((NSSwapHostLongToBig(*pRawBitmapData) << 8) | 0xff);
             ++pRawBitmapData;
         }
     }
@@ -507,7 +462,7 @@
 - (BOOL) setIconFamilyElement:(OSType)elementType fromBitmapImageRep:(NSBitmapImageRep*)bitmapImageRep
 {
     Handle hRawData = NULL;
-//    OSErr result;
+    OSErr result;
 
     switch (elementType) {
 	// 'it32' 128x128 32-bit RGB image
@@ -583,11 +538,20 @@
 															handle:hRawData];
     DisposeHandle( hRawData );	
 	
+//    result = SetIconFamilyData( hIconFamily, elementType, hRawData );
+//    DisposeHandle( hRawData );
+//	
+//    if (result != noErr)
+//	{
+//		NSLog(@"SetIconFamilyData() returned error %d", result);
+//		return NO;
+//	}
+	
     return YES;
 }
 
 -(void)setIconFamilyData:(IconFamilyHandle)iconFamily osType:(OSType)iconType
-				   handle:(Handle)h
+				  handle:(Handle)h
 {
 	OSErr result = SetIconFamilyData(iconFamily, iconType, h);
 	
@@ -607,50 +571,57 @@
 
 - (BOOL) setAsCustomIconForFile:(NSString*)path withCompatibility:(BOOL)compat
 {
-    FSSpec targetFileFSSpec;
     FSRef targetFileFSRef;
     FSRef parentDirectoryFSRef;
     SInt16 file;
-    OSErr result;
-    FInfo finderInfo;
+    OSStatus result;
+    struct FSCatalogInfo catInfo;
+    struct FileInfo *finderInfo = (struct FileInfo *)&catInfo.finderInfo;
     Handle hExistingCustomIcon;
     Handle hIconFamilyCopy;
-	NSDictionary *fileAttributes;
-	OSType existingType = kUnknownType, existingCreator = kUnknownType;
-    
-	// Before we  do ANYTHING, we make note of the file's modification time.
-	NSDate* modificationDate = [[[NSFileManager defaultManager] fileAttributesAtPath:path traverseLink:NO] objectForKey:NSFileModificationDate];
-//	NSLog(@"Now is %@", [NSDate date]);
-//	NSLog(@"Modification date: %@", modificationDate);
-    
-    // Get an FSRef and an FSSpec for the target file, and an FSRef for its parent directory that we can use in the FNNotify() call below.
-    if (![path getFSRef:&targetFileFSRef createFileIfNecessary:NO])
+	NSString *parentDirectory;
+	
+	if ([path isAbsolutePath])
+		parentDirectory = [path stringByDeletingLastPathComponent];
+	else
+		parentDirectory = [[NSFileManager defaultManager] currentDirectoryPath];
+	
+    // Get an FSRef for the target file's parent directory that we can use in
+    // the FSCreateResFile() and FNNotify() calls below.
+    if (![parentDirectory getFSRef:&parentDirectoryFSRef createFileIfNecessary:NO])
 		return NO;
-    result = FSGetCatalogInfo( &targetFileFSRef, kFSCatInfoNone, NULL, NULL, &targetFileFSSpec, &parentDirectoryFSRef );
-    if (result != noErr)
-        return NO;
 	
-    // Get the file's type and creator codes.
-	fileAttributes = [[NSFileManager defaultManager] fileAttributesAtPath:path traverseLink:NO];
-	if (fileAttributes)
-	{
-		existingType = [fileAttributes fileHFSTypeCode];
-		existingCreator = [fileAttributes fileHFSCreatorCode];
-    }
-	
+	// Get the name of the file, for FSCreateResFile.
+	struct HFSUniStr255 filename;
+	NSString *filenameString = [path lastPathComponent];
+	filename.length = [filenameString length];
+	[filenameString getCharacters:filename.unicode];
+
     // Make sure the file has a resource fork that we can open.  (Although
     // this sounds like it would clobber an existing resource fork, the Carbon
     // Resource Manager docs for this function say that's not the case.  If
     // the file already has a resource fork, we receive a result code of
     // dupFNErr, which is not really an error per se, but just a notification
     // to us that creating a new resource fork for the file was not necessary.)
-    FSpCreateResFile( &targetFileFSSpec, existingCreator, existingType, smRoman );
-    result = ResError();
-    if (!(result == noErr || result == dupFNErr))
+	FSCreateResFile(
+	                &parentDirectoryFSRef,
+	                filename.length,
+	                filename.unicode,
+	                kFSCatInfoNone,
+	                /*catalogInfo/*/ NULL,
+	                &targetFileFSRef,
+	                /*newSpec*/ NULL);
+	result = ResError();
+	if (result == dupFNErr) {
+        // If the call to FSCreateResFile() returned dupFNErr, targetFileFSRef will not have been set, so create it from the path.
+        if (![path getFSRef:&targetFileFSRef createFileIfNecessary:NO])
+            return NO;
+    } else if (result != noErr) {
 		return NO;
+    }
     
     // Open the file's resource fork.
-    file = FSpOpenResFile( &targetFileFSSpec, fsRdWrPerm );
+    file = FSOpenResFile( &targetFileFSRef, fsRdWrPerm );
     if (file == -1)
 		return NO;
         
@@ -694,9 +665,17 @@
     if (ResError() != noErr)
 		return NO;
 	
+    // Prepare to get the Finder info.
+	
     // Now we need to set the file's Finder info so the Finder will know that
     // it has a custom icon.  Start by getting the file's current finder info:
-    result = FSpGetFInfo( &targetFileFSSpec, &finderInfo );
+    result = FSGetCatalogInfo(
+	                          &targetFileFSRef,
+	                          kFSCatInfoFinderInfo,
+	                          &catInfo,
+	                          /*outName*/ NULL,
+	                          /*fsSpec*/ NULL,
+	                          /*parentRef*/ NULL);
     if (result != noErr)
 		return NO;
     
@@ -706,51 +685,38 @@
     //     "set bit 10 (has custom icon) and unset the inited flag
     //      kHasBeenInited is 0x0100 so the mask will be 0xFEFF:"
     //    finderInfo.fdFlags = 0xFEFF & (finderInfo.fdFlags | kHasCustomIcon ) ;
-    finderInfo.fdFlags = (finderInfo.fdFlags | kHasCustomIcon ) & ~kHasBeenInited;
+    finderInfo->finderFlags = (finderInfo->finderFlags | kHasCustomIcon ) & ~kHasBeenInited;
 	
     // Now write the Finder info back.
-    result = FSpSetFInfo( &targetFileFSSpec, &finderInfo );
+    result = FSSetCatalogInfo( &targetFileFSRef, kFSCatInfoFinderInfo, &catInfo );
     if (result != noErr)
 		return NO;
-    
-	// Now set the modification time back to when the file was actually last
-	// modified
-	NSDictionary* attributes = [NSDictionary dictionaryWithObjectsAndKeys:modificationDate, NSFileModificationDate, nil];
-	BOOL work = [[NSFileManager defaultManager] changeFileAttributes:attributes atPath:path];
-//	NSLog(@"Work: %d", work);
-    
-    // Notify the system that the directory containing the file has changed, to give Finder the chance to find out about the file's new custom icon.
+	
+    // Notify the system that the directory containing the file has changed, to
+    // give Finder the chance to find out about the file's new custom icon.
     result = FNNotify( &parentDirectoryFSRef, kFNDirectoryModifiedMessage, kNilOptions );
     if (result != noErr)
         return NO;
-	
-//	modificationDate = [[[NSFileManager defaultManager] fileAttributesAtPath:path traverseLink:NO] objectForKey:NSFileModificationDate];
-//	NSLog(@"Modification date: %@", modificationDate);
 	
     return YES;
 }
 
 + (BOOL) removeCustomIconFromFile:(NSString*)path
 {
-    FSSpec targetFileFSSpec;
     FSRef targetFileFSRef;
     FSRef parentDirectoryFSRef;
     SInt16 file;
-    OSErr result;
-    FInfo finderInfo;
+    OSStatus result;
+    struct FSCatalogInfo catInfo;
+    struct FileInfo *finderInfo = (struct FileInfo *)&catInfo.finderInfo;
     Handle hExistingCustomIcon;
 
-	NSDate* modificationDate = [[[NSFileManager defaultManager] fileAttributesAtPath:path traverseLink:NO] objectForKey:NSFileModificationDate];
-	
-    // Get an FSRef and an FSSpec for the target file, and an FSRef for its parent directory that we can use in the FNNotify() call below.
+    // Get an FSRef for the target file.
     if (![path getFSRef:&targetFileFSRef createFileIfNecessary:NO])
-		return NO;
-    result = FSGetCatalogInfo( &targetFileFSRef, kFSCatInfoNone, NULL, NULL, &targetFileFSSpec, &parentDirectoryFSRef );
-    if (result != noErr)
         return NO;
 	
     // Open the file's resource fork, if it has one.
-    file = FSpOpenResFile( &targetFileFSSpec, fsRdWrPerm );
+    file = FSOpenResFile( &targetFileFSRef, fsRdWrPerm );
     if (file == -1)
         return NO;
 
@@ -766,29 +732,32 @@
         return NO;
 
     // Now we need to set the file's Finder info so the Finder will know that
-    // it has no custom icon.  Start by getting the file's current finder info:
-    result = FSpGetFInfo( &targetFileFSSpec, &finderInfo );
+    // it has no custom icon. Start by getting the file's current Finder info.
+    // Also get an FSRef for its parent directory, that we can use in the
+    // FNNotify() call below.
+    result = FSGetCatalogInfo(
+                              &targetFileFSRef,
+                              kFSCatInfoFinderInfo,
+                              &catInfo,
+                              /*outName*/ NULL,
+                              /*fsSpec*/ NULL,
+                              &parentDirectoryFSRef );
     if (result != noErr)
         return NO;
 
     // Clear the kHasCustomIcon flag and the kHasBeenInited flag.
-    finderInfo.fdFlags = finderInfo.fdFlags & ~(kHasCustomIcon | kHasBeenInited);
+    finderInfo->finderFlags = finderInfo->finderFlags & ~(kHasCustomIcon | kHasBeenInited);
 
     // Now write the Finder info back.
-    result = FSpSetFInfo( &targetFileFSSpec, &finderInfo );
+    result = FSSetCatalogInfo( &targetFileFSRef, kFSCatInfoFinderInfo, &catInfo );
     if (result != noErr)
         return NO;
 
-	// Now set the modification time back to when the file was actually last
-	// modified
-	NSDictionary* attributes = [NSDictionary dictionaryWithObjectsAndKeys:modificationDate, NSFileModificationDate, nil];
-	BOOL work = [[NSFileManager defaultManager] changeFileAttributes:attributes atPath:path];	
-	
     // Notify the system that the directory containing the file has changed, to give Finder the chance to find out about the file's new custom icon.
     result = FNNotify( &parentDirectoryFSRef, kFNDirectoryModifiedMessage, kNilOptions );
     if (result != noErr)
         return NO;
-
+	
     return YES;
 }
 
@@ -803,12 +772,11 @@
     BOOL isDir;
     BOOL exists;
     NSString *iconrPath = [path stringByAppendingPathComponent:@"Icon\r"];
-    FSSpec targetFileFSSpec, targetFolderFSSpec;
-    FSRef targetFolderFSRef;
+    FSRef targetFolderFSRef, iconrFSRef;
     SInt16 file;
     OSErr result;
-    FInfo finderInfo;
-    FSCatalogInfo catInfo;
+    struct HFSUniStr255 filename;
+    struct FSCatalogInfo catInfo;
     Handle hExistingCustomIcon;
     Handle hIconFamilyCopy;
 
@@ -823,24 +791,65 @@
             return NO;
     }
 
-    if (![iconrPath getFSSpec:&targetFileFSSpec createFileIfNecessary:YES])
-        return NO;
-
-    if( ![path getFSSpec:&targetFolderFSSpec createFileIfNecessary:YES] )
-        return NO;
-
     if( ![path getFSRef:&targetFolderFSRef createFileIfNecessary:NO] )
         return NO;
+
+    // Get type and creator information for the Icon file.
+    result = FSGetCatalogInfo(
+                              &iconrFSRef,
+                              kFSCatInfoFinderInfo,
+                              &catInfo,
+                              /*outName*/ NULL,
+                              /*fsSpec*/ NULL,
+                              /*parentRef*/ NULL );
+    if( result == fnfErr ) {
+        // The file doesn't exist. Prepare to create it.
+
+        struct FileInfo *finderInfo = (struct FileInfo *)catInfo.finderInfo;
+
+        // These are the file type and creator given to Icon files created by
+        // the Finder.
+        finderInfo->fileType = 'icon';
+        finderInfo->fileCreator = 'MACS';
+
+        // Icon files should be invisible.
+        finderInfo->finderFlags = kIsInvisible;
+
+        // Because the inited flag is not set in finderFlags above, the Finder
+        // will ignore the location, unless it's in the 'magic rectangle' of
+        // { -24,000, -24,000, -16,000, -16,000 } (technote TB42).
+        // So we need to make sure to set this to zero anyway, so that the
+        // Finder will position it automatically. If the user makes the Icon
+        // file visible for any reason, we don't want it to be positioned in an
+        // exotic corner of the window.
+        finderInfo->location.h = finderInfo->location.v = 0;
+
+        // Standard reserved-field practice.
+        finderInfo->reservedField = 0;
+    } else if( result != noErr )
+        return NO;
+    
+    // Get the filename, to be applied to the Icon file.
+    filename.length = [@"Icon\r" length];
+    [@"Icon\r" getCharacters:filename.unicode];
 
     // Make sure the file has a resource fork that we can open.  (Although
     // this sounds like it would clobber an existing resource fork, the Carbon
     // Resource Manager docs for this function say that's not the case.)
-    FSpCreateResFile( &targetFileFSSpec, kUnknownType, kUnknownType, smRoman );
-    if (ResError() != noErr)
+    FSCreateResFile(
+                    &targetFolderFSRef,
+                    filename.length,
+                    filename.unicode,
+                    kFSCatInfoFinderInfo,
+                    &catInfo,
+                    &iconrFSRef,
+                    /*newSpec*/ NULL);
+    result = ResError();
+    if (!(result == noErr || result == dupFNErr))
         return NO;
 
     // Open the file's resource fork.
-    file = FSpOpenResFile( &targetFileFSSpec, fsRdWrPerm );
+    file = FSOpenResFile( &iconrFSRef, fsRdWrPerm );
     if (file == -1)
         return NO;
 
@@ -885,31 +894,26 @@
     if (ResError() != noErr)
         return NO;
 
-    // Make folder icon file invisible
-    result = FSpGetFInfo( &targetFileFSSpec, &finderInfo );
-    if (result != noErr)
-        return NO;
-    finderInfo.fdFlags = (finderInfo.fdFlags | kIsInvisible ) & ~kHasBeenInited;
-    // And write info back
-    result = FSpSetFInfo( &targetFileFSSpec, &finderInfo );
-    if (result != noErr)
-        return NO;
-
     result = FSGetCatalogInfo( &targetFolderFSRef,
                                kFSCatInfoFinderInfo,
-                               &catInfo, nil, nil, nil);
+                               &catInfo,
+                               /*outName*/ NULL,
+                               /*fsSpec*/ NULL,
+                               /*parentRef*/ NULL);
     if( result != noErr )
         return NO;
 
-    ((DInfo*)catInfo.finderInfo)->frFlags = ( ((DInfo*)catInfo.finderInfo)->frFlags | kHasCustomIcon ) & ~kHasBeenInited;
+    // Tell the Finder that the folder now has a custom icon.
+    ((struct FolderInfo *)catInfo.finderInfo)->finderFlags = ( ((struct FolderInfo *)catInfo.finderInfo)->finderFlags | kHasCustomIcon ) & ~kHasBeenInited;
 
-    FSSetCatalogInfo( &targetFolderFSRef,
+    result = FSSetCatalogInfo( &targetFolderFSRef,
                       kFSCatInfoFinderInfo,
                       &catInfo);
     if( result != noErr )
         return NO;
 
-    // Notify the system that the target directory has changed, to give Finder the chance to find out about its new custom icon.
+    // Notify the system that the target directory has changed, to give Finder
+    // the chance to find out about its new custom icon.
     result = FNNotify( &targetFolderFSRef, kFNDirectoryModifiedMessage, kNilOptions );
     if (result != noErr)
         return NO;
@@ -917,56 +921,67 @@
     return YES;
 }
 
-/*- (BOOL) writeToFile:(NSString*)path
-{
-    FSSpec fsSpec;
-    OSErr result;
-    
-    if (![path getFSSpec:&fsSpec createFileIfNecessary:YES])
-	return NO;
-    result = WriteIconFile( hIconFamily, &fsSpec );
-    if (result != noErr)
-	return NO;
-	
-    return YES;
-} This method has a problem with files not representable as an FSSpec.*/
-
 - (BOOL) writeToFile:(NSString*)path
 {
-    NSData* iconData = NULL;
+    NSData* iconData = nil;
 
     HLock((Handle)hIconFamily);
     
     iconData = [NSData dataWithBytes:*hIconFamily length:GetHandleSize((Handle)hIconFamily)];
-    [iconData writeToFile:path atomically:NO];
+    BOOL success = [iconData writeToFile:path atomically:NO];
 
     HUnlock((Handle)hIconFamily);
 
-    return YES;
+    return success;
+}
+
+// Checks if a file has a custom icon
++ (BOOL) fileHasCustomIcon:(NSString*)path
+{
+	BOOL hasIcon = NO;
+	FSRef parentDirectoryFSRef;
+	FSSpec targetFileFSSpec;
+	FSRef targetFileFSRef;
+	SInt16 file;
+    Handle hExistingCustomIcon;
+	//	if(![path getFSRef:&targetFileFSRef createFileIfNecessary:NO])
+	//		return NO;
+	
+	if(FSPathMakeRef((UInt8 *)[path fileSystemRepresentation], &targetFileFSRef, NULL) != noErr)
+		return NO;
+	
+	if(FSGetCatalogInfo(&targetFileFSRef, kFSCatInfoNone, NULL, NULL, 
+						&targetFileFSSpec, &parentDirectoryFSRef) != noErr)
+		return NO;
+	
+	if((file = FSpOpenResFile(&targetFileFSSpec, fsRdWrPerm)) == -1)
+		return NO;
+	
+	hExistingCustomIcon = GetResource(kIconFamilyType, kCustomIconResource);
+	if(hExistingCustomIcon)
+		hasIcon = YES;
+	
+	CloseResFile(file);
+	
+	return hasIcon;
 }
 
 @end
 
 @implementation IconFamily (Internals)
 
-+ (NSImage*) resampleImage:(NSImage*)image toIconWidth:(int)iconWidth usingImageInterpolation:(NSImageInterpolation)imageInterpolation imageRect:(NSRect*)imageRect
++ (NSImage*) resampleImage:(NSImage*)image toIconWidth:(int)iconWidth usingImageInterpolation:(NSImageInterpolation)imageInterpolation
 {
     NSGraphicsContext* graphicsContext;
     BOOL wasAntialiasing;
     NSImageInterpolation previousImageInterpolation;
     NSImage* newImage;
-//    NSBitmapImageRep* newBitmapImageRep;
-//    unsigned char* bitmapData;
-//    NSImageRep* originalImageRep;
     NSImage* workingImage;
     NSImageRep* workingImageRep;
     NSSize size, pixelSize, newSize;
     NSRect iconRect;
     NSRect targetRect;
 
-	// ELLIOT FIXME: This is a major memory bottleneck! We're making a copy
-	// of every image that comes through here!?
-	//
     // Create a working copy of the image and scale its size down to fit in
     // the square area of the icon.
     //
@@ -975,14 +990,8 @@
     // is.  We need to change some properties ("size" and "scalesWhenResized")
     // of the original image, but we shouldn't change the original, so a copy
     // is necessary.
-//    workingImage = [image copyWithZone:[image zone]];
-
-	// Okay, I'm 99% sure that this works and let's us do everything as above
-	// without the copy...
-	workingImage = [[NSImage alloc] init];
-	[workingImage addRepresentations:[image representations]];
-    
-	[workingImage setScalesWhenResized:YES];
+    workingImage = [image copyWithZone:[image zone]];
+    [workingImage setScalesWhenResized:YES];
     size = [workingImage size];
     workingImageRep = [workingImage bestRepresentationForDevice:nil];
     if ([workingImageRep isKindOfClass:[NSBitmapImageRep class]]) {
@@ -1002,8 +1011,6 @@
         newSize.width  = floor( (float) iconWidth * size.width / size.height + 0.5 );
     }
     [workingImage setSize:newSize];
-	
-#if 1   // This is the way that works.  It gives the newImage an NSCachedImageRep.
 
     // Create a new image the size of the icon, and clear it to transparent.
     newImage = [[NSImage alloc] initWithSize:NSMakeSize(iconWidth,iconWidth)];
@@ -1022,15 +1029,12 @@
     [graphicsContext setImageInterpolation:imageInterpolation];
     
     // Composite the working image into the icon bitmap, centered.
-    targetRect.origin.x = (int)(((float)iconWidth - newSize.width ) / 2.0);
-    targetRect.origin.y = (int)(((float)iconWidth - newSize.height) / 2.0);
-    targetRect.size.width = (int)(newSize.width);
-    targetRect.size.height = (int)(newSize.height);
+    targetRect.origin.x = ((float)iconWidth - newSize.width ) / 2.0;
+    targetRect.origin.y = ((float)iconWidth - newSize.height) / 2.0;
+    targetRect.size.width = newSize.width;
+    targetRect.size.height = newSize.height;
     [workingImageRep drawInRect:targetRect];
-	
-	if(imageRect)
-		*imageRect = targetRect;
-	
+
     // Restore previous graphics context settings.
     [graphicsContext setShouldAntialias:wasAntialiasing];
     [graphicsContext setImageInterpolation:previousImageInterpolation];
@@ -1039,50 +1043,8 @@
 	
     [workingImage release];
 
-#else   // This was an attempt at explicitly giving the NSImage an NSBitmapImageRep
-        // and drawing to that NSBitmapImageRep.  It doesn't work.  (See comments
-        // in -initWithThumbnailsOfImage:)
-        
-//    // Create a new 32-bit RGBA bitmap that is width x width pixels.
-    originalImageRep = [image bestRepresentationForDevice:nil];
-    newImage = [[NSImage alloc] initWithSize:NSMakeSize(iconWidth,iconWidth)];
-    [newImage setDataRetained:YES];
-//    [newImage setCachedSeparately:YES];
-    newBitmapImageRep = [[NSBitmapImageRep alloc] initWithBitmapDataPlanes:NULL
-	pixelsWide:iconWidth
-	pixelsHigh:iconWidth
-//	bitsPerSample:8
-//	samplesPerPixel:4
-	bitsPerSample:[originalImageRep bitsPerSample]
-	samplesPerPixel:[(NSBitmapImageRep*)originalImageRep samplesPerPixel]
-	hasAlpha:[originalImageRep hasAlpha]
-	isPlanar:NO
-	colorSpaceName:[originalImageRep colorSpaceName]
-	bytesPerRow:0
-	bitsPerPixel:0];
-    [newImage addRepresentation:newBitmapImageRep];
-    [newImage setScalesWhenResized:YES];
-    [newBitmapImageRep release];
-//    bitmapData = [newBitmapImageRep bitmapData];
-//    if (bitmapData)
-//        memset( bitmapData, 128, iconWidth * iconWidth * 4 );
-    // Copy the original image into the new bitmap, rescaling it to fit.
-//    [newImage lockFocus];
-    [newImage lockFocusOnRepresentation:newBitmapImageRep];
-//    [image compositeToPoint:NSZeroPoint operation:NSCompositeSourceOver];
-//    iconRect.origin.x = iconRect.origin.y = 0;
-//    iconRect.size.width = iconRect.size.height = iconWidth;
-//    [[NSColor clearColor] set];
-//    NSRectFill( iconRect );
-    [workingImage compositeToPoint:NSZeroPoint operation:NSCompositeSourceOver];
-    [newImage unlockFocus];
-    
-    [workingImage release];
-#endif
-
     // Return the new image!
-//    return [newImage autorelease];
-	return newImage;
+    return newImage;
 }
 
 + (Handle) get32BitDataFromBitmapImageRep:(NSBitmapImageRep*)bitmapImageRep requiredPixelSize:(int)requiredPixelSize
@@ -1102,11 +1064,8 @@
     int bitsPerSample   = [bitmapImageRep bitsPerSample];
     int samplesPerPixel = [bitmapImageRep samplesPerPixel];
     int bitsPerPixel    = [bitmapImageRep bitsPerPixel];
-//    BOOL hasAlpha       = [bitmapImageRep hasAlpha];
     BOOL isPlanar       = [bitmapImageRep isPlanar];
-//    int numberOfPlanes  = [bitmapImageRep numberOfPlanes];
     int bytesPerRow     = [bitmapImageRep bytesPerRow];
-//    int bytesPerPlane   = [bitmapImageRep bytesPerPlane];
     unsigned char* bitmapData = [bitmapImageRep bitmapData];
 
     // Make sure bitmap has the required dimensions.
@@ -1133,7 +1092,7 @@
 		hRawData = NewHandle( rawDataSize );
 		if (hRawData == NULL)
 			return NULL;
-		pRawData = *hRawData;
+		pRawData = (unsigned char*) *hRawData;
 	
 		pSrc = bitmapData;
 		pDest = pRawData;
@@ -1227,7 +1186,7 @@
 		hRawData = NewHandle( rawDataSize );
 		if (hRawData == NULL)
 			return NULL;
-		pRawData = *hRawData;
+		pRawData = (unsigned char*) *hRawData;
 		
 		cgPal = CGPaletteCreateDefaultColorPalette();
 		
@@ -1287,11 +1246,8 @@
     int bitsPerSample   = [bitmapImageRep bitsPerSample];
     int samplesPerPixel = [bitmapImageRep samplesPerPixel];
     int bitsPerPixel    = [bitmapImageRep bitsPerPixel];
-//    BOOL hasAlpha       = [bitmapImageRep hasAlpha];
     BOOL isPlanar       = [bitmapImageRep isPlanar];
-//    int numberOfPlanes  = [bitmapImageRep numberOfPlanes];
     int bytesPerRow     = [bitmapImageRep bytesPerRow];
-//    int bytesPerPlane   = [bitmapImageRep bytesPerPlane];
     unsigned char* bitmapData = [bitmapImageRep bitmapData];
 
     // Make sure bitmap has the required dimensions.
@@ -1317,7 +1273,7 @@
 		hRawData = NewHandle( rawDataSize );
 		if (hRawData == NULL)
 			return NULL;
-		pRawData = *hRawData;
+		pRawData = (unsigned char*) *hRawData;
 	
 		pSrc = bitmapData;
 		pDest = pRawData;
@@ -1368,11 +1324,8 @@
     int bitsPerSample   = [bitmapImageRep bitsPerSample];
     int samplesPerPixel = [bitmapImageRep samplesPerPixel];
     int bitsPerPixel    = [bitmapImageRep bitsPerPixel];
-//    BOOL hasAlpha       = [bitmapImageRep hasAlpha];
     BOOL isPlanar       = [bitmapImageRep isPlanar];
-//    int numberOfPlanes  = [bitmapImageRep numberOfPlanes];
     int bytesPerRow     = [bitmapImageRep bytesPerRow];
-//    int bytesPerPlane   = [bitmapImageRep bytesPerPlane];
     unsigned char* bitmapData = [bitmapImageRep bitmapData];
 	
     // Make sure bitmap has the required dimensions.
@@ -1394,7 +1347,7 @@
 		hRawData = NewHandle( rawDataSize );
 		if (hRawData == NULL)
 			return NULL;
-		pRawData = *hRawData;
+		pRawData = (unsigned char*) *hRawData;
 	
 		pSrc = bitmapData;
 		pDest = pRawData;

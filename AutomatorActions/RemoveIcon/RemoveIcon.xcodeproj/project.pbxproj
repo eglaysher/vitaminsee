@@ -11,8 +11,8 @@
 		65181752067A8D39005BD953 /* RemoveIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = 65181750067A8D39005BD953 /* RemoveIcon.m */; };
 		8B4DC4250996D81600B58051 /* NSObject+Invocations.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B4DC4240996D81600B58051 /* NSObject+Invocations.m */; };
 		8B4DC42C0996D82700B58051 /* IconFamily.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B4DC4270996D82700B58051 /* IconFamily.m */; };
-		8B4DC42D0996D82700B58051 /* NSString+CarbonFSSpecCreation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B4DC4290996D82700B58051 /* NSString+CarbonFSSpecCreation.m */; };
 		8B4DC42E0996D82700B58051 /* NSString+FileTasks.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B4DC42B0996D82700B58051 /* NSString+FileTasks.m */; };
+		8B8B6E7409CC62A800E36801 /* NSString+CarbonFSRefCreation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8B6E7309CC62A800E36801 /* NSString+CarbonFSRefCreation.m */; };
 		8BD1298209A2B7B6009E0275 /* Panther.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 8BD1297F09A2B7B6009E0275 /* Panther.xcconfig */; };
 		8BD1298309A2B7B6009E0275 /* Deployment.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 8BD1298009A2B7B6009E0275 /* Deployment.xcconfig */; };
 		8BD1298409A2B7B6009E0275 /* Development.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 8BD1298109A2B7B6009E0275 /* Development.xcconfig */; };
@@ -60,10 +60,10 @@
 		8B4DC4240996D81600B58051 /* NSObject+Invocations.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = "NSObject+Invocations.m"; path = "../../NSObject+Invocations.m"; sourceTree = SOURCE_ROOT; };
 		8B4DC4260996D82700B58051 /* IconFamily.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = IconFamily.h; path = ../../Widgets/IconFamily.h; sourceTree = SOURCE_ROOT; };
 		8B4DC4270996D82700B58051 /* IconFamily.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = IconFamily.m; path = ../../Widgets/IconFamily.m; sourceTree = SOURCE_ROOT; };
-		8B4DC4280996D82700B58051 /* NSString+CarbonFSSpecCreation.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = "NSString+CarbonFSSpecCreation.h"; path = "../../Widgets/NSString+CarbonFSSpecCreation.h"; sourceTree = SOURCE_ROOT; };
-		8B4DC4290996D82700B58051 /* NSString+CarbonFSSpecCreation.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = "NSString+CarbonFSSpecCreation.m"; path = "../../Widgets/NSString+CarbonFSSpecCreation.m"; sourceTree = SOURCE_ROOT; };
 		8B4DC42A0996D82700B58051 /* NSString+FileTasks.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = "NSString+FileTasks.h"; path = "../../Widgets/NSString+FileTasks.h"; sourceTree = SOURCE_ROOT; };
 		8B4DC42B0996D82700B58051 /* NSString+FileTasks.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = "NSString+FileTasks.m"; path = "../../Widgets/NSString+FileTasks.m"; sourceTree = SOURCE_ROOT; };
+		8B8B6E7209CC62A800E36801 /* NSString+CarbonFSRefCreation.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = "NSString+CarbonFSRefCreation.h"; path = "../../Widgets/NSString+CarbonFSRefCreation.h"; sourceTree = SOURCE_ROOT; };
+		8B8B6E7309CC62A800E36801 /* NSString+CarbonFSRefCreation.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = "NSString+CarbonFSRefCreation.m"; path = "../../Widgets/NSString+CarbonFSRefCreation.m"; sourceTree = SOURCE_ROOT; };
 		8BD1297F09A2B7B6009E0275 /* Panther.xcconfig */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xcconfig; name = Panther.xcconfig; path = ../../config/Panther.xcconfig; sourceTree = SOURCE_ROOT; };
 		8BD1298009A2B7B6009E0275 /* Deployment.xcconfig */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xcconfig; name = Deployment.xcconfig; path = ../../config/Deployment.xcconfig; sourceTree = SOURCE_ROOT; };
 		8BD1298109A2B7B6009E0275 /* Development.xcconfig */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xcconfig; name = Development.xcconfig; path = ../../config/Development.xcconfig; sourceTree = SOURCE_ROOT; };
@@ -121,10 +121,10 @@
 		08FB77AFFE84173DC02AAC07 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				8B8B6E7209CC62A800E36801 /* NSString+CarbonFSRefCreation.h */,
+				8B8B6E7309CC62A800E36801 /* NSString+CarbonFSRefCreation.m */,
 				8B4DC4260996D82700B58051 /* IconFamily.h */,
 				8B4DC4270996D82700B58051 /* IconFamily.m */,
-				8B4DC4280996D82700B58051 /* NSString+CarbonFSSpecCreation.h */,
-				8B4DC4290996D82700B58051 /* NSString+CarbonFSSpecCreation.m */,
 				8B4DC42A0996D82700B58051 /* NSString+FileTasks.h */,
 				8B4DC42B0996D82700B58051 /* NSString+FileTasks.m */,
 				8B4DC4230996D81600B58051 /* NSObject+Invocations.h */,
@@ -258,8 +258,8 @@
 				65181752067A8D39005BD953 /* RemoveIcon.m in Sources */,
 				8B4DC4250996D81600B58051 /* NSObject+Invocations.m in Sources */,
 				8B4DC42C0996D82700B58051 /* IconFamily.m in Sources */,
-				8B4DC42D0996D82700B58051 /* NSString+CarbonFSSpecCreation.m in Sources */,
 				8B4DC42E0996D82700B58051 /* NSString+FileTasks.m in Sources */,
+				8B8B6E7409CC62A800E36801 /* NSString+CarbonFSRefCreation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

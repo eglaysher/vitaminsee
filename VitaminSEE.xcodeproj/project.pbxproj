@@ -14,7 +14,6 @@
 		8B1138B909130546008FBD78 /* GeneralPreferences.nib in Resources */ = {isa = PBXBuildFile; fileRef = 8B1138B509130546008FBD78 /* GeneralPreferences.nib */; };
 		8B1138BA09130546008FBD78 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8B1138B709130546008FBD78 /* Localizable.strings */; };
 		8B2064F5094CD90D0062D0CC /* IconFamily.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B2064F3094CD90D0062D0CC /* IconFamily.m */; };
-		8B20650D094CDB670062D0CC /* NSString+CarbonFSSpecCreation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B20650B094CDB670062D0CC /* NSString+CarbonFSSpecCreation.m */; };
 		8B2448B708FB2033004716BC /* AppKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B2448A308FB2033004716BC /* AppKitAdditions.m */; };
 		8B2448B808FB2033004716BC /* EGPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B2448A508FB2033004716BC /* EGPath.m */; };
 		8B2448B908FB2033004716BC /* EGScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B2448A708FB2033004716BC /* EGScrollView.m */; };
@@ -107,6 +106,8 @@
 		8B8B6D0609C7ACF300E36801 /* UKFeedbackProvider.nib in Resources */ = {isa = PBXBuildFile; fileRef = 8B8B6CFE09C7ACF300E36801 /* UKFeedbackProvider.nib */; };
 		8B8B6D0709C7ACF300E36801 /* UKUpdateChecker.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8B8B6D0009C7ACF300E36801 /* UKUpdateChecker.strings */; };
 		8B8B6D5A09C8DC2500E36801 /* MacPAD.url in Resources */ = {isa = PBXBuildFile; fileRef = 8B8B6D5909C8DC2500E36801 /* MacPAD.url */; };
+		8B8B6E5809CC624700E36801 /* NSString+CarbonFSRefCreation.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B8B6E5609CC624700E36801 /* NSString+CarbonFSRefCreation.h */; };
+		8B8B6E5909CC624700E36801 /* NSString+CarbonFSRefCreation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8B6E5709CC624700E36801 /* NSString+CarbonFSRefCreation.m */; };
 		8B91ED020978AD06001B95BE /* SortManagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B91ECFC0978AD06001B95BE /* SortManagerController.m */; };
 		8B91ED070978AD1B001B95BE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8B91ED030978AD1B001B95BE /* Localizable.strings */; };
 		8B91ED080978AD1B001B95BE /* SortManager.nib in Resources */ = {isa = PBXBuildFile; fileRef = 8B91ED050978AD1B001B95BE /* SortManager.nib */; };
@@ -414,8 +415,6 @@
 		8B1138B809130546008FBD78 /* English */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist.strings; name = English; path = Components/GeneralPreferences/English.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8B2064F2094CD90D0062D0CC /* IconFamily.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = IconFamily.h; path = Widgets/IconFamily.h; sourceTree = "<group>"; };
 		8B2064F3094CD90D0062D0CC /* IconFamily.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = IconFamily.m; path = Widgets/IconFamily.m; sourceTree = "<group>"; };
-		8B20650A094CDB670062D0CC /* NSString+CarbonFSSpecCreation.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = "NSString+CarbonFSSpecCreation.h"; path = "Widgets/NSString+CarbonFSSpecCreation.h"; sourceTree = "<group>"; };
-		8B20650B094CDB670062D0CC /* NSString+CarbonFSSpecCreation.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = "NSString+CarbonFSSpecCreation.m"; path = "Widgets/NSString+CarbonFSSpecCreation.m"; sourceTree = "<group>"; };
 		8B2448A208FB2033004716BC /* AppKitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = AppKitAdditions.h; path = Widgets/AppKitAdditions.h; sourceTree = "<group>"; };
 		8B2448A308FB2033004716BC /* AppKitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = AppKitAdditions.m; path = Widgets/AppKitAdditions.m; sourceTree = "<group>"; };
 		8B2448A408FB2033004716BC /* EGPath.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = EGPath.h; path = Widgets/EGPath.h; sourceTree = "<group>"; };
@@ -542,6 +541,8 @@
 		8B8B6CFF09C7ACF300E36801 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/UKFeedbackProvider.nib; sourceTree = "<group>"; };
 		8B8B6D0109C7ACF300E36801 /* English */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/UKUpdateChecker.strings; sourceTree = "<group>"; };
 		8B8B6D5909C8DC2500E36801 /* MacPAD.url */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = MacPAD.url; path = Resources/MacPAD.url; sourceTree = "<group>"; };
+		8B8B6E5609CC624700E36801 /* NSString+CarbonFSRefCreation.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = "NSString+CarbonFSRefCreation.h"; path = "Widgets/NSString+CarbonFSRefCreation.h"; sourceTree = "<group>"; };
+		8B8B6E5709CC624700E36801 /* NSString+CarbonFSRefCreation.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = "NSString+CarbonFSRefCreation.m"; path = "Widgets/NSString+CarbonFSRefCreation.m"; sourceTree = "<group>"; };
 		8B8B7229090C1323006DDF10 /* GotoFolderWindow-Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xml; name = "GotoFolderWindow-Info.plist"; path = "Components/GotoFolderWindow/GotoFolderWindow-Info.plist"; sourceTree = "<group>"; };
 		8B91ECED0978ACE3001B95BE /* SortManager.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SortManager.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B91ECFA0978AD06001B95BE /* SortManager-Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xml; name = "SortManager-Info.plist"; path = "Components/SortManager/SortManager-Info.plist"; sourceTree = "<group>"; };
@@ -958,14 +959,14 @@
 		8B2448A108FB2018004716BC /* Widgets */ = {
 			isa = PBXGroup;
 			children = (
+				8B8B6E5609CC624700E36801 /* NSString+CarbonFSRefCreation.h */,
+				8B8B6E5709CC624700E36801 /* NSString+CarbonFSRefCreation.m */,
 				8B8B6CF609C7AC8400E36801 /* UKFeedbackProvider.h */,
 				8B8B6CF709C7AC8400E36801 /* UKFeedbackProvider.m */,
 				8B8B6CF809C7AC8400E36801 /* UKUpdateChecker.h */,
 				8B8B6CF909C7AC8400E36801 /* UKUpdateChecker.m */,
 				8B8B6CCF09C79EF300E36801 /* UKCrashReporter.h */,
 				8B8B6CD009C79EF300E36801 /* UKCrashReporter.m */,
-				8B20650A094CDB670062D0CC /* NSString+CarbonFSSpecCreation.h */,
-				8B20650B094CDB670062D0CC /* NSString+CarbonFSSpecCreation.m */,
 				8B2064F2094CD90D0062D0CC /* IconFamily.h */,
 				8B2064F3094CD90D0062D0CC /* IconFamily.m */,
 				8B2448A208FB2033004716BC /* AppKitAdditions.h */,
@@ -1335,6 +1336,7 @@
 				8B8B6CD109C79EF300E36801 /* UKCrashReporter.h in Headers */,
 				8B8B6CFA09C7AC8400E36801 /* UKFeedbackProvider.h in Headers */,
 				8B8B6CFC09C7AC8400E36801 /* UKUpdateChecker.h in Headers */,
+				8B8B6E5809CC624700E36801 /* NSString+CarbonFSRefCreation.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2865,12 +2867,12 @@
 				8B244B3F08FC886A004716BC /* ToolbarDelegate.m in Sources */,
 				8B98BF310939515D00CBBF00 /* ThumbnailManager.m in Sources */,
 				8B2064F5094CD90D0062D0CC /* IconFamily.m in Sources */,
-				8B20650D094CDB670062D0CC /* NSString+CarbonFSSpecCreation.m in Sources */,
 				8BAE04EF095F6C5D007C387D /* NSObject+Invocations.m in Sources */,
 				8BAE07A909622634007C387D /* ViewMenuDelegate.m in Sources */,
 				8B8B6CD209C79EF300E36801 /* UKCrashReporter.m in Sources */,
 				8B8B6CFB09C7AC8400E36801 /* UKFeedbackProvider.m in Sources */,
 				8B8B6CFD09C7AC8400E36801 /* UKUpdateChecker.m in Sources */,
+				8B8B6E5909CC624700E36801 /* NSString+CarbonFSRefCreation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

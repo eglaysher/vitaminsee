@@ -1,3 +1,11 @@
+(Unreleased)
+------------------------------
+* Upgrade IconFamily to 0.9.1.
+* Make rename sheet handle extensions like the Save... dialogs do
+* Add a fullscreen mode
+* Don't display document types that OSX treats as images, such as postscript 
+  files, and PDFs.
+
 0.7 Final Release (February 20th, 2006)
 -------------------------
 * Add "Enclosing Folder" and "Go to Folder..." toolbar items.
