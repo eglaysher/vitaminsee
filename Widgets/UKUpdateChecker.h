@@ -68,12 +68,12 @@
 
 
 // Use this as the action of any "Preferences" button for setting checkAtStartup you may have:
--(IBAction)		takeBoolFromObject: (id)sender;
-
-
+//-(IBAction)		takeBoolFromObject: (id)sender;
+//
+//
 // This object handles it all for you, but if you need to, use this to turn on/off checking at startup:
--(void)			setCheckAtStartup: (BOOL)shouldCheck;
--(BOOL)			checkAtStartup;
+//-(void)			setCheckAtStartup: (BOOL)shouldCheck;
+//-(BOOL)			checkAtStartup;
 
 
 // Private:

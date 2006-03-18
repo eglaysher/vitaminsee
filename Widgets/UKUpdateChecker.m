@@ -194,6 +194,8 @@
 //
 //	REVISIONS:
 //		2004-10-19	witness	Documented, extracted from checkForUpdatesAndNotify:.
+//      2006-03-18  ERG     Added boolValue call to isError so it isn't hardcoded
+//                          true, even though this doesn't appear to hurt...
 // -----------------------------------------------------------------------------
 
 -(void)	notifyAboutUpdateToNewVersion: (NSDictionary*)info
@@ -201,7 +203,7 @@
 	NSString*	appName = [[NSFileManager defaultManager] displayNameAtPath: [[NSBundle mainBundle] bundlePath]];
 	NSString*	newVersion = [info objectForKey: UKUpdateCheckerVersionPlistKey];
 	NSString*	newUrl = [info objectForKey: UKUpdateCheckerURLPlistKey];
-	BOOL		isError = [info objectForKey: @"isError"];
+	BOOL		isError = [[info objectForKey: @"isError"] boolValue];
 	
 	if( newVersion == nil && !isError )
 		NSRunAlertPanel(NSLocalizedStringFromTable(@"UP_TO_DATE_TITLE", @"UKUpdateChecker", @"When soft is up-to-date - dialog title"),
@@ -224,60 +226,5 @@
 						 @"OK", nil, nil, appName );
 	}
 }
-
-
-// -----------------------------------------------------------------------------
-//	takeBoolFromObject:
-//		Action for the "check at startup" checkbox in your preferences.
-//
-//	REVISIONS:
-//		2004-10-19	witness	Documented.
-// -----------------------------------------------------------------------------
-
--(IBAction)		takeBoolFromObject: (id)sender
-{
-	if( [sender respondsToSelector: @selector(boolValue)] )
-		[self setCheckAtStartup: [sender boolValue]];
-	else
-		[self setCheckAtStartup: [sender state]];
-}
-
-
-// -----------------------------------------------------------------------------
-//	setCheckAtStartup:
-//		Mutator for startup check (de)activation.
-//
-//	REVISIONS:
-//		2004-10-19	witness	Documented.
-// -----------------------------------------------------------------------------
-
--(void)			setCheckAtStartup: (BOOL)shouldCheck
-{
-	NSNumber*		doCheck = [NSNumber numberWithBool: shouldCheck];
-	[[NSUserDefaults standardUserDefaults] setObject: doCheck forKey: @"UKUpdateChecker:CheckAtStartup"];
-	
-//	[prefsButton setState: shouldCheck];
-	[[NSUserDefaults standardUserDefaults] setObject: [NSNumber numberWithDouble: 0] forKey: @"UKUpdateChecker:LastCheckDate"];
-}
-
-
-// -----------------------------------------------------------------------------
-//	checkAtStartup:
-//		Accessor for finding out whether this will check at startup.
-//
-//	REVISIONS:
-//		2004-10-19	witness	Documented.
-// -----------------------------------------------------------------------------
-
--(BOOL)			checkAtStartup
-{
-	NSNumber	*   doCheck = [[NSUserDefaults standardUserDefaults] objectForKey: @"UKUpdateChecker:CheckAtStartup"];
-	
-	if( doCheck )
-		return [doCheck boolValue];
-	else
-		return YES;
-}
-
 
 @end
