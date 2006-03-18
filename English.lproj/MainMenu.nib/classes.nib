@@ -45,6 +45,7 @@
                 revealInFinder = id; 
                 setAsDesktopImage = id; 
                 toggleFileList = id; 
+                toggleFullScreenControls = id; 
                 zoomIn = id; 
                 zoomOut = id; 
                 zoomToFit = id; 

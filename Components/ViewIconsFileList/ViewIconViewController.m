@@ -244,7 +244,7 @@ static BOOL shouldPreloadImages;
 	if(index != NSNotFound)
 	{
 		//[[ourBrowser loadedCellAtRow:index column:0] setNeedsDisplay];
-		NSLog(@"Need display!");
+//		NSLog(@"Need display!");
 		[ourBrowser setNeedsDisplay];
 		[ourBrowser selectRow:index inColumn:0];
 

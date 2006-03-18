@@ -117,7 +117,6 @@
 		8B9B2F23090DAEC2009C69B7 /* DesktopBackground-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8B9B2F22090DAEC2009C69B7 /* DesktopBackground-Info.plist */; };
 		8B9C7375096884C6009ED6CC /* CurrentFilePlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B9C7374096884C6009ED6CC /* CurrentFilePlugin.h */; };
 		8BAE04EF095F6C5D007C387D /* NSObject+Invocations.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BAE04ED095F6C5D007C387D /* NSObject+Invocations.m */; };
-		8BAE07A909622634007C387D /* ViewMenuDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BAE07A709622634007C387D /* ViewMenuDelegate.m */; };
 		8BB68FCB099D9E21001AE27B /* UpArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BB68FCA099D9E21001AE27B /* UpArrow.png */; };
 		8BB691FE099DBA3E001AE27B /* VitaminSEE Help in Resources */ = {isa = PBXBuildFile; fileRef = 8BB691CE099DBA3E001AE27B /* VitaminSEE Help */; };
 		8BB695B7099E3309001AE27B /* goto.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BB695B6099E3309001AE27B /* goto.png */; };
@@ -563,8 +562,6 @@
 		8B9C7374096884C6009ED6CC /* CurrentFilePlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CurrentFilePlugin.h; path = Protocols/CurrentFilePlugin.h; sourceTree = "<group>"; };
 		8BAE04EC095F6C5C007C387D /* NSObject+Invocations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Invocations.h"; sourceTree = "<group>"; };
 		8BAE04ED095F6C5D007C387D /* NSObject+Invocations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Invocations.m"; sourceTree = "<group>"; };
-		8BAE07A609622634007C387D /* ViewMenuDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewMenuDelegate.h; sourceTree = "<group>"; };
-		8BAE07A709622634007C387D /* ViewMenuDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewMenuDelegate.m; sourceTree = "<group>"; };
 		8BB68FCA099D9E21001AE27B /* UpArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = UpArrow.png; path = Resources/UpArrow.png; sourceTree = "<group>"; };
 		8BB690A9099DA961001AE27B /* English */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8BB691CF099DBA3E001AE27B /* English */ = {isa = PBXFileReference; lastKnownFileType = folder; name = English; path = "English.lproj/VitaminSEE Help"; sourceTree = "<group>"; };
@@ -811,8 +808,6 @@
 				8B2448D108FB2080004716BC /* VitaminSEEWindowController.m */,
 				8B98BF2E0939515D00CBBF00 /* ThumbnailManager.h */,
 				8B98BF2F0939515D00CBBF00 /* ThumbnailManager.m */,
-				8BAE07A609622634007C387D /* ViewMenuDelegate.h */,
-				8BAE07A709622634007C387D /* ViewMenuDelegate.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -2868,7 +2863,6 @@
 				8B98BF310939515D00CBBF00 /* ThumbnailManager.m in Sources */,
 				8B2064F5094CD90D0062D0CC /* IconFamily.m in Sources */,
 				8BAE04EF095F6C5D007C387D /* NSObject+Invocations.m in Sources */,
-				8BAE07A909622634007C387D /* ViewMenuDelegate.m in Sources */,
 				8B8B6CD209C79EF300E36801 /* UKCrashReporter.m in Sources */,
 				8B8B6CFB09C7AC8400E36801 /* UKFeedbackProvider.m in Sources */,
 				8B8B6CFD09C7AC8400E36801 /* UKUpdateChecker.m in Sources */,

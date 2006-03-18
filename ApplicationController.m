@@ -226,7 +226,7 @@ static ApplicationController* appControl;
 	NSMenu* viewMenu = [[mainMenu itemAtIndex:3] submenu];
 //	NSMenu* toolMenu = [[mainMenu itemAtIndex:4] submenu];
 	NSMenu* windowMenu = [[mainMenu itemAtIndex:5] submenu];
-	[viewMenu setDelegate:[[ViewMenuDelegate alloc] init]];
+//	[viewMenu setDelegate:[[ViewMenuDelegate alloc] init]];
 //	[toolMenu setDelegate:[[ToolMenuDelegate alloc] init]];
 	
 	// Add all the currentfileplugins to the Windows menu. Do it like this 
