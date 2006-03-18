@@ -1,5 +1,5 @@
 /////////////////////////////////////////////////////////////////////////
-// File:          $Name$
+// File:          $URL$
 // Module:        Format a filesize for display
 // Part of:       VitaminSEE
 //

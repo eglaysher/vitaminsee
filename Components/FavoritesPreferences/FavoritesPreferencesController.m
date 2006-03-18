@@ -1,5 +1,5 @@
 /////////////////////////////////////////////////////////////////////////
-// File:          $Name$
+// File:          $URL$
 // Module:        Implements the Favorites preference panel
 // Part of:       VitaminSEE
 //
@@ -71,6 +71,8 @@
 	}
 }
 
+// ---------------------------------------------------------------------------
+
 -(IBAction)showHelp:(id)sender
 {
 	NSString* helpBookName = [[[NSBundle mainBundle] localizedInfoDictionary] objectForKey:@"CFBundleHelpBookName"];
@@ -88,6 +90,8 @@
 		init] autorelease], nil];
 }
 
+// ---------------------------------------------------------------------------
+
 - (NSView *)paneView
 {
     BOOL loaded = YES;
@@ -101,10 +105,14 @@
     return nil;
 }
 
+// ---------------------------------------------------------------------------
+
 - (NSString *)paneName
 {
     return NSLocalizedString(@"Favorites", @"Localized name of preference pane in toolbar");
 }
+
+// ---------------------------------------------------------------------------
 
 - (NSImage *)paneIcon
 {
@@ -112,15 +120,21 @@
 		[[NSBundle mainBundle] pathForImageResource:@"ToolbarFavoritesIcon"]];
 }
 
+// ---------------------------------------------------------------------------
+
 - (NSString *)paneToolTip
 {
     return NSLocalizedString(@"Favorites", @"Localized tooltip");
 }
 
+// ---------------------------------------------------------------------------
+
 - (BOOL)allowsHorizontalResizing
 {
     return NO;
 }
+
+// ---------------------------------------------------------------------------
 
 - (BOOL)allowsVerticalResizing
 {

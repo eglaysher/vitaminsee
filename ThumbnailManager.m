@@ -1,12 +1,12 @@
 /////////////////////////////////////////////////////////////////////////
-// File:          $Name$
+// File:          $URL$
 // Module:        Window object for a viewer window.
 // Part of:       VitaminSEE
 //
 // ID:            $Id: ApplicationController.m 123 2005-04-18 00:21:02Z elliot $
-// Revision:      $Revision: 248 $
-// Last edited:   $Date: 2005-07-13 20:26:59 -0500 (Wed, 13 Jul 2005) $
-// Author:        $Author: elliot $
+// Revision:      $Revision$
+// Last edited:   $Date$
+// Author:        $Author$
 // Copyright:     (c) 2005 Elliot Glaysher
 // Created:       11/26/05
 //

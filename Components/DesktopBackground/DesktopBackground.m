@@ -1,11 +1,11 @@
 /////////////////////////////////////////////////////////////////////////
-// File:          $Name$
+// File:          $URL$
 // Module:        Code that actually sets the desktop background
 // Part of:       VitaminSEE
 //
-// Revision:      $Revision: 155 $
-// Last edited:   $Date: 2005-05-04 11:37:41 -0400 (Wed, 04 May 2005) $
-// Author:        $Author: glaysher $
+// Revision:      $Revision$
+// Last edited:   $Date$
+// Author:        $Author$
 // Copyright:     (c) 2005 Elliot Glaysher
 // Created:       1/14/05
 //
@@ -39,6 +39,8 @@ static NSDictionary* buildScreenList();
 {
 	[self setDesktopBackgroundToFile:path withOptions:[NSDictionary dictionary]];
 }
+
+// ---------------------------------------------------------------------------
 
 -(void)setDesktopBackgroundToFile:(NSString*)path withOptions:(NSDictionary*)options
 {
@@ -87,10 +89,14 @@ static NSDictionary* buildScreenList();
 	setProperties(display);	
 }
 
+// ---------------------------------------------------------------------------
+
 -(void)setDesktopBackgroundToFolder:(NSString*)pathToFolder
 {
 	[self setDesktopBackgroundToFolder:pathToFolder withOptions:[NSDictionary dictionary]];
 }
+
+// ---------------------------------------------------------------------------
 
 -(void)setDesktopBackgroundToFolder:(NSString*)pathToFolder withOptions:(NSDictionary*)options
 {
@@ -145,6 +151,8 @@ static NSDictionary* buildScreenList();
 
 @end
 
+// ---------------------------------------------------------------------------
+
 static void setProperties(NSDictionary* dict)
 {
 	NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
@@ -195,6 +203,8 @@ static void setProperties(NSDictionary* dict)
 					  object:@"BackgroundChanged"];
 }
 
+// ---------------------------------------------------------------------------
+
 static void setupFirstTime(NSMutableDictionary* display)
 {
 	[display setObject:@"TimeInterval" forKey:@"Change"];
@@ -204,6 +214,9 @@ static void setupFirstTime(NSMutableDictionary* display)
 	[display setObject:[NSNumber numberWithInt:1] forKey:@"PlacementKeyTag"];
 	[display setObject:[NSNumber numberWithBool:YES] forKey:@"Random"];
 }
+
+
+// ---------------------------------------------------------------------------
 
 // Build a dictionary with 1+number of screen entries. Each will consist of an
 // NSMutableDictionary.

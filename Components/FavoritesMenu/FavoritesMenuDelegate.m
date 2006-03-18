@@ -1,5 +1,5 @@
 /////////////////////////////////////////////////////////////////////////
-// File:          $Name$
+// File:          $URL$
 // Module:        Menu Delegate object that reads the list of favorite locations
 //                and displays them in a menu.
 // Part of:       VitaminSEE

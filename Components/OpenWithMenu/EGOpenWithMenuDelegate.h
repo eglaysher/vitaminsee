@@ -1,12 +1,12 @@
 /////////////////////////////////////////////////////////////////////////
-// File:          $Name$
+// File:          $URL$
 // Module:        Menu Delegate object that reads the list of favorite locations
 //                and displays them in a menu.
 // Part of:       VitaminSEE
 //
-// Revision:      $Revision: 149 $
-// Last edited:   $Date: 2005-04-29 14:32:49 -0400 (Fri, 29 Apr 2005) $
-// Author:        $Author: elliot $
+// Revision:      $Revision$
+// Last edited:   $Date$
+// Author:        $Author$
 // Copyright:     (c) 2005 Elliot Glaysher
 // Created:       5/14/2005
 //

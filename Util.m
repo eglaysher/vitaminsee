@@ -1,5 +1,5 @@
 /////////////////////////////////////////////////////////////////////////
-// File:          $Name$
+// File:          $URL$
 // Module:        Utility functions
 // Part of:       VitaminSEE
 //

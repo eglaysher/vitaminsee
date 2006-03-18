@@ -1,5 +1,5 @@
 /////////////////////////////////////////////////////////////////////////
-// File:          $Name$
+// File:          $URL$
 // Module:        Apple's NSArrayController subclass that allows draging
 //                entries around in an NSTableView
 // Part of:       VitaminSEE
@@ -59,6 +59,8 @@ NSString *MovedRowsType = @"MOVED_SORT_CONTROLLER_ROWS_TYPE";
     [tableView setAllowsMultipleSelection:YES];
 }
 
+// ---------------------------------------------------------------------------
+
 - (BOOL)tableView:(NSTableView *)tv
 		writeRows:(NSArray*)rows
 	 toPasteboard:(NSPasteboard*)pboard
@@ -91,6 +93,7 @@ NSString *MovedRowsType = @"MOVED_SORT_CONTROLLER_ROWS_TYPE";
     return YES;
 }
 
+// ---------------------------------------------------------------------------
 
 - (NSDragOperation)tableView:(NSTableView*)tv
 				validateDrop:(id <NSDraggingInfo>)info
@@ -110,6 +113,8 @@ NSString *MovedRowsType = @"MOVED_SORT_CONTROLLER_ROWS_TYPE";
 	
     return dragOp;
 }
+
+// ---------------------------------------------------------------------------
 
 - (BOOL)tableView:(NSTableView*)tv
 	   acceptDrop:(id <NSDraggingInfo>)info
@@ -158,6 +163,8 @@ NSString *MovedRowsType = @"MOVED_SORT_CONTROLLER_ROWS_TYPE";
     return NO;
 }
 
+// ---------------------------------------------------------------------------
+
 -(void) moveObjectsInArrangedObjectsFromIndexes:(NSIndexSet*)indexSet
 										toIndex:(unsigned int)insertIndex
 {	
@@ -187,6 +194,7 @@ NSString *MovedRowsType = @"MOVED_SORT_CONTROLLER_ROWS_TYPE";
     }
 }
 
+// ---------------------------------------------------------------------------
 
 - (NSIndexSet *)indexSetFromRows:(NSArray *)rows
 {
@@ -200,6 +208,7 @@ NSString *MovedRowsType = @"MOVED_SORT_CONTROLLER_ROWS_TYPE";
     return indexSet;
 }
 
+// ---------------------------------------------------------------------------
 
 - (int)rowsAboveRow:(int)row inIndexSet:(NSIndexSet *)indexSet
 {

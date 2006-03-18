@@ -1,5 +1,5 @@
 /////////////////////////////////////////////////////////////////////////
-// File:          $Name$
+// File:          $URL$
 // Module:        Node in which keywords for the Keyword Manager are stored in.
 // Part of:       VitaminSEE
 //
@@ -32,7 +32,6 @@
 
 @implementation KeywordNode
 
-
 -(id)initWithParent:(KeywordNode*)inParent
 {
 	if(self = [super init])
@@ -44,6 +43,8 @@
 	
 	return self;
 }
+
+// ---------------------------------------------------------------------------
 
 -(id)initWithParent:(KeywordNode*)inParent 
 			keyword:(NSString*)inKeyword
@@ -58,12 +59,16 @@
 	return self;	
 }
 
+// ---------------------------------------------------------------------------
+
 -(void)dealloc
 {
 	[keyword release];
 	[children release];
 	[super dealloc];
 }
+
+// ---------------------------------------------------------------------------
 
 ///// Encoding...
 - (id)initWithCoder:(NSCoder *)decoder
@@ -87,6 +92,8 @@
     return self;
 }
 
+// ---------------------------------------------------------------------------
+
 - (void)encodeWithCoder:(NSCoder *)encoder
 {
 //	[super encodeWithCoder:encoder];
@@ -105,6 +112,8 @@
     }
 }
 
+// ---------------------------------------------------------------------------
+
 // Accessors...
 -(void)setKeyword:(NSString*)inKeyword
 {
@@ -113,30 +122,42 @@
 	keyword = inKeyword;
 }
 
+// ---------------------------------------------------------------------------
+
 -(NSString*)keyword
 {
 	return keyword;
 }
+
+// ---------------------------------------------------------------------------
 
 -(int)numberOfChildren
 {
 	return [children count];
 }
 
+// ---------------------------------------------------------------------------
+
 -(KeywordNode*)parent
 {
 	return parent;
 }
+
+// ---------------------------------------------------------------------------
 
 -(void)addChild:(id)child
 {
 	[children addObject:child];
 }
 
+// ---------------------------------------------------------------------------
+
 -(void)removeChild:(id)child
 {
 	[children removeObject:child];
 }
+
+// ---------------------------------------------------------------------------
 
 -(NSArray*)children
 {

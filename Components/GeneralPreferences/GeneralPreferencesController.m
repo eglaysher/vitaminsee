@@ -1,5 +1,5 @@
 /////////////////////////////////////////////////////////////////////////
-// File:          $Name$
+// File:          $URL$
 // Module:        Implements the General preferences panel
 // Part of:       VitaminSEE
 //
@@ -66,6 +66,8 @@
     }
 }
 
+// ---------------------------------------------------------------------------
+
 // GENERAL_PREFERENCES_ANCHOR
 -(IBAction)showHelp:(id)sender
 {
@@ -83,6 +85,8 @@
 		init] autorelease], nil];
 }
 
+// ---------------------------------------------------------------------------
+
 - (NSView *)paneView
 {
     BOOL loaded = YES;
@@ -96,10 +100,14 @@
     return nil;
 }
 
+// ---------------------------------------------------------------------------
+
 - (NSString *)paneName
 {
     return NSLocalizedString(@"General", @"Localized name of preference pane in toolbar");
 }
+
+// ---------------------------------------------------------------------------
 
 - (NSImage *)paneIcon
 {
@@ -109,6 +117,8 @@
         ] autorelease];
 }
 
+// ---------------------------------------------------------------------------
+
 - (NSString *)paneToolTip
 {
 	NSString* tooltip = NSLocalizedStringFromTableInBundle(
@@ -117,10 +127,14 @@
 	return tooltip;
 }
 
+// ---------------------------------------------------------------------------
+
 - (BOOL)allowsHorizontalResizing
 {
     return NO;
 }
+
+// ---------------------------------------------------------------------------
 
 - (BOOL)allowsVerticalResizing
 {

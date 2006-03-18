@@ -1,11 +1,11 @@
 /////////////////////////////////////////////////////////////////////////
-// File:          $Name$
+// File:          $URL$
 // Module:        Implements the Favorites preference panel
 // Part of:       VitaminSEE
 //
-// Revision:      $Revision: 155 $
-// Last edited:   $Date: 2005-05-04 11:37:41 -0400 (Wed, 04 May 2005) $
-// Author:        $Author: glaysher $
+// Revision:      $Revision$
+// Last edited:   $Date$
+// Author:        $Author$
 // Copyright:     (c) 2005 Elliot Glaysher
 // Created:       2/22/05
 //
@@ -49,6 +49,8 @@
 		init] autorelease], nil];
 }
 
+// ---------------------------------------------------------------------------
+
 -(NSView*)paneView
 {
     BOOL loaded = YES;
@@ -62,10 +64,14 @@
     return nil;
 }
 
+// ---------------------------------------------------------------------------
+
 - (NSString *)paneName
 {
     return NSLocalizedString(@"Advanced", @"Localized name of preference pane in toolbar");
 }
+
+// ---------------------------------------------------------------------------
 
 - (NSImage *)paneIcon
 {
@@ -73,15 +79,21 @@
 		[[NSBundle bundleForClass:[self class]] pathForImageResource:@"AdvancedPreferences"]];
 }
 
+// ---------------------------------------------------------------------------
+
 - (NSString *)paneToolTip
 {
     return NSLocalizedString(@"Advanced", @"Localized tooltip");
 }
 
+// ---------------------------------------------------------------------------
+
 - (BOOL)allowsHorizontalResizing
 {
     return NO;
 }
+
+// ---------------------------------------------------------------------------
 
 - (BOOL)allowsVerticalResizing
 {

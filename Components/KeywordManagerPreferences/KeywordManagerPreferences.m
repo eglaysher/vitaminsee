@@ -1,5 +1,5 @@
 /////////////////////////////////////////////////////////////////////////
-// File:          $Name$
+// File:          $URL$
 // Module:        Implements the preferences pane for Keywords
 // Part of:       VitaminSEE
 //
@@ -37,6 +37,8 @@
 	[ComponentManager getCurrentFilePluginNamed:@"KeywordManager"];
 }
 
+// ---------------------------------------------------------------------------
+
 -(void)awakeFromNib
 {
 	// Unarchive the keyword data from the user defaults...
@@ -45,11 +47,15 @@
 	[outlineView reloadData];
 }
 
+// ---------------------------------------------------------------------------
+
 -(void)dealloc
 {
 	[keywordRoot release];
 	[super dealloc];
 }
+
+// ---------------------------------------------------------------------------
 
 // Forum actions
 -(IBAction)showHelp:(id)sender
@@ -59,6 +65,8 @@
 	[[NSHelpManager sharedHelpManager] openHelpAnchor:@"KEYWORD_MANAGER_PREFERENCES_ANCHOR"
 											   inBook:helpBookName];
 }
+
+// ---------------------------------------------------------------------------
 
 -(IBAction)addKeyword:(id)sender
 {
@@ -75,6 +83,8 @@
 	//	[outlineView select
 }
 
+// ---------------------------------------------------------------------------
+
 -(IBAction)remove:(id)sender
 {
 	// Get the currently selected item.
@@ -87,6 +97,8 @@
 	// parent node results in ghost items
 	[outlineView reloadItem:keywordRoot reloadChildren:YES];
 }
+
+// ---------------------------------------------------------------------------
 
 -(void)saveKeywordsToUserDefaults
 {
@@ -103,6 +115,8 @@
 		init] autorelease], nil];
 }
 
+// ---------------------------------------------------------------------------
+
 - (NSView *)paneView
 {
     BOOL loaded = YES;
@@ -116,10 +130,14 @@
     return nil;
 }
 
+// ---------------------------------------------------------------------------
+
 - (NSString *)paneName
 {
     return NSLocalizedString(@"Keywords", @"Localized name of preference pane in toolbar");
 }
+
+// ---------------------------------------------------------------------------
 
 - (NSImage *)paneIcon
 {
@@ -129,15 +147,21 @@
         ] autorelease];
 }
 
+// ---------------------------------------------------------------------------
+
 - (NSString *)paneToolTip
 {
     return NSLocalizedString(@"Keyword Preferences", @"Localized name of preference pane in toolbar");
 }
 
+// ---------------------------------------------------------------------------
+
 - (BOOL)allowsHorizontalResizing
 {
     return NO;
 }
+
+// ---------------------------------------------------------------------------
 
 - (BOOL)allowsVerticalResizing
 {
@@ -150,14 +174,20 @@
     return (item == nil) ? 1 : [item numberOfChildren];
 }
 
+// ---------------------------------------------------------------------------
+
 - (BOOL)outlineView:(NSOutlineView *)outlineView isItemExpandable:(id)item {
     return (item == nil) ? YES : [item numberOfChildren];
 }
+
+// ---------------------------------------------------------------------------
 
 - (id)outlineView:(NSOutlineView *)outlineView child:(int)index ofItem:(id)item {
 	return (item == nil) ? keywordRoot :
 		[[item children] objectAtIndex:index];
 }
+
+// ---------------------------------------------------------------------------
 
 - (id)outlineView:(NSOutlineView *)outlineView 
 objectValueForTableColumn:(NSTableColumn *)tableColumn 
@@ -165,6 +195,8 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
 	// Think about localizing the root of the keyword tree?
     return (item == nil) ? 	@"Keywords" : (id)[item keyword];
 }
+
+// ---------------------------------------------------------------------------
 
 - (void)outlineView:(NSOutlineView*)thisOutlineView
 	 setObjectValue:(id)object
@@ -181,6 +213,8 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
 	
 	[currentKeyword release];
 }
+
+// ---------------------------------------------------------------------------
 
 -(BOOL)outlineView:(NSOutlineView*)outlineView
 shouldEditTableColumn:(NSTableColumn*)tableColumn

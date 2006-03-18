@@ -1,5 +1,5 @@
 /////////////////////////////////////////////////////////////////////////
-// File:          $Name$
+// File:          $URL$
 // Module:        Apple's NSArrayController subclass that allows draging
 //                entries around in an NSTableView
 // Part of:       VitaminSEE

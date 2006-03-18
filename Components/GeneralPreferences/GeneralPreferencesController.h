@@ -1,5 +1,5 @@
 /////////////////////////////////////////////////////////////////////////
-// File:          $Name$
+// File:          $URL$
 // Module:        Implements the General preferences panel
 // Part of:       VitaminSEE
 //

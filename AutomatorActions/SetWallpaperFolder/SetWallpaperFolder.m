@@ -4,9 +4,9 @@
 // Part of:       VitaminSEE
 //
 // ID:            $Id: VitaminSEEController.m 123 2005-04-18 00:21:02Z elliot $
-// Revision:      $Revision: 233 $
-// Last edited:   $Date: 2005-06-04 21:33:37 -0400 (Sat, 04 Jun 2005) $
-// Author:        $Author: glaysher $
+// Revision:      $Revision$
+// Last edited:   $Date$
+// Author:        $Author$
 // Copyright:     (c) 2005 Elliot Glaysher
 // Created:       6/02/05
 //

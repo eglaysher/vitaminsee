@@ -1,11 +1,11 @@
 /////////////////////////////////////////////////////////////////////////
-// File:          $Name$
+// File:          $URL$
 // Module:        Main Controller Class
 // Part of:       VitaminSEE
 //
-// Revision:      $Revision: 230 $
-// Last edited:   $Date: 2005-06-02 16:03:06 -0500 (Thu, 02 Jun 2005) $
-// Author:        $Author: glaysher $
+// Revision:      $Revision$
+// Last edited:   $Date$
+// Author:        $Author$
 // Copyright:     (c) 2005 Elliot Glaysher
 // Created:       1/30/05
 //

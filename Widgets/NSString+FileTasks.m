@@ -1,5 +1,5 @@
 /////////////////////////////////////////////////////////////////////////
-// File:          $Name$
+// File:          $URL$
 // Module:        NSString additions. Most of these are from Apple, but some are
 //                mine.
 // Part of:       VitaminSEE

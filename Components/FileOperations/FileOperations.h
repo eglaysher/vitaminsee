@@ -1,11 +1,11 @@
 /////////////////////////////////////////////////////////////////////////
-// File:          $Name$
+// File:          $URL$
 // Module:        Implements copy/move/delete/reanmeing of files.
 // Part of:       VitaminSEE
 //
-// Revision:      $Revision: 331 $
-// Last edited:   $Date: 2006-01-24 21:36:22 -0600 (Tue, 24 Jan 2006) $
-// Author:        $Author: elliot $
+// Revision:      $Revision$
+// Last edited:   $Date$
+// Author:        $Author$
 // Copyright:     (c) 2005 Elliot Glaysher
 // Created:       1/16/06
 //

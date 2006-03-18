@@ -1,5 +1,5 @@
 /////////////////////////////////////////////////////////////////////////
-// File:          $Name$
+// File:          $URL$
 // Module:        Generalized access to an image's metadata
 // Part of:       VitaminSEE
 //
@@ -70,6 +70,8 @@ using namespace std;
 
 	return [keywords autorelease];
 }
+
+// ---------------------------------------------------------------------------
 
 -(void)setKeywords:(NSArray*)keywords forJPEGFile:(NSString*)file
 {

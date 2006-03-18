@@ -1,11 +1,11 @@
 /////////////////////////////////////////////////////////////////////////
-// File:          $Name$
+// File:          $URL$
 // Module:        Implements the cell used in the ViewAsIconView browser.
 // Part of:       VitaminSEE
 //
-// Revision:      $Revision: 238 $
-// Last edited:   $Date: 2005-06-11 16:16:07 -0500 (Sat, 11 Jun 2005) $
-// Author:        $Author: glaysher $
+// Revision:      $Revision$
+// Last edited:   $Date$
+// Author:        $Author$
 // Copyright:     (c) 2005 Elliot Glaysher
 // Created:       2/9/05
 //

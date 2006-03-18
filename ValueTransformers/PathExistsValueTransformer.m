@@ -1,5 +1,5 @@
 /////////////////////////////////////////////////////////////////////////
-// File:          $Name$
+// File:          $URL$
 // Module:        ValueTransformer that returns true or false on whether a 
 //                directory exists or not.
 // Part of:       VitaminSEE

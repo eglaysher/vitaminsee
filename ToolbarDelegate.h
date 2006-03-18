@@ -1,5 +1,5 @@
 /////////////////////////////////////////////////////////////////////////
-// File:          $Name$
+// File:          $URL$
 // Module:        Category responsible for managing the toolbar
 // Part of:       VitaminSEE
 //

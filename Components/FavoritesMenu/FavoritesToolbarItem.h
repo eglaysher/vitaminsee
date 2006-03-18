@@ -1,5 +1,5 @@
 /////////////////////////////////////////////////////////////////////////
-// File:          $Name$
+// File:          $URL$
 // Module:        Build the toolbar item for the favorites menu
 // Part of:       VitaminSEE
 //

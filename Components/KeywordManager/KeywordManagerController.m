@@ -1,5 +1,5 @@
 /////////////////////////////////////////////////////////////////////////
-// File:          $Name$
+// File:          $URL$
 // Module:        Implements the Keyword editing panel
 // Part of:       VitaminSEE
 //
@@ -48,6 +48,8 @@
 	[[NSUserDefaults standardUserDefaults] registerDefaults: defaultPrefs];
 }
 
+// ---------------------------------------------------------------------------
+
 -(id)init
 {
 	// Load the nib file
@@ -78,6 +80,8 @@
 	return self;
 }
 
+// ---------------------------------------------------------------------------
+
 -(void)dealloc
 {
 	if(keywordsDirty)
@@ -86,6 +90,8 @@
 	[keywords release];
 	[super dealloc];
 }
+
+// ---------------------------------------------------------------------------
 
 -(void)windowDidLoad
 {
@@ -112,29 +118,21 @@
 	keywordsDirty = YES;
 }
 
+// ---------------------------------------------------------------------------
+
 -(IBAction)keywordTextViewChanged:(id)sender
 {
 	[self loadKeywordsIntoListFromTextView]; 
 }
 
-//-(IBAction)fileChanged:(id)sender
-//{
-//	NSLog(@"File changed!");
-////	if(![[sender stringValue] isEqual:[currentPath lastPathComponent]])
-////	{
-////		BOOL worked = [pluginLayer renameFile:[EGPath pathWithPath:[pluginLayer currentFile]]
-////										   to:[EGPath pathWithPath:[sender stringValue]]];
-////
-////		// If the operation didn't work, then revert to the name before.
-////		if(!worked)
-////			[sender setStringValue:[currentFile lastPathComponent]];
-////	}
-//}
+// ---------------------------------------------------------------------------
 
 -(void)loadKeywordsIntoTextViewFromList
 {
 	[currentKeywordsTextView setString:[keywords componentsJoinedByString:@"\n"]];
 }
+
+// ---------------------------------------------------------------------------
 
 -(void)loadKeywordsIntoListFromTextView
 {
@@ -158,6 +156,8 @@
 	[outlineView setNeedsDisplay:YES];
 }
 
+// ---------------------------------------------------------------------------
+
 -(void)loadKeywordTree
 {
 	[keywordRoot release];
@@ -168,6 +168,8 @@
 	[outlineView reloadData];
 }
 
+// ---------------------------------------------------------------------------
+
 -(void)saveKeywords
 {
 	// Save the keywords to disk
@@ -175,6 +177,8 @@
 		setKeywords:keywords forJPEGFile:currentPath];	
 	keywordsDirty = NO;
 }
+
+// ---------------------------------------------------------------------------
 
 -(void)loadKeywords
 {
@@ -214,14 +218,20 @@
     return (item == nil) ? [keywordRoot numberOfChildren] : [item numberOfChildren];
 }
 
+// ---------------------------------------------------------------------------
+
 - (BOOL)outlineView:(NSOutlineView *)outlineView isItemExpandable:(id)item {
     return (item == nil) ? [keywordRoot numberOfChildren] : [item numberOfChildren];
 }
+
+// ---------------------------------------------------------------------------
 
 - (id)outlineView:(NSOutlineView *)outlineView child:(int)index ofItem:(id)item {
     return (item == nil) ? [[keywordRoot children] objectAtIndex:index] :
 	[[item children] objectAtIndex:index];
 }
+
+// ---------------------------------------------------------------------------
 
 - (id)outlineView:(NSOutlineView *)outlineView 
 objectValueForTableColumn:(NSTableColumn *)tableColumn 
@@ -235,6 +245,8 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
     return NO;
 }
 
+// ---------------------------------------------------------------------------
+
 - (void)outlineView:(NSOutlineView *)outlineView willDisplayCell:(id)cell 
 	 forTableColumn:(NSTableColumn *)tableColumn item:(id)item
 {
@@ -246,6 +258,8 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
 	else
 		[cell setState:NSOffState];
 }
+
+// ---------------------------------------------------------------------------
 
 -(void)enableAllCells
 {
@@ -260,6 +274,8 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
 	
 	[outlineView setNeedsDisplay];
 }
+
+// ---------------------------------------------------------------------------
 
 -(void)disableAllCells
 {
@@ -283,6 +299,8 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
 	[self currentImageSetTo:path];
 }
 
+// ---------------------------------------------------------------------------
+
 -(void)currentImageSetTo:(EGPath*)path;
 {
 	NSString* newPath;
@@ -302,10 +320,6 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
 		[currentPath release];
 		currentPath = newPath;
 
-//		[fileNameTextFieldLabel setEnabled:YES];
-//		[fileNameTextField setEnabled:YES];
-//		[fileNameTextField setStringValue:[currentPath lastPathComponent]];
-//
 		// Let's check if we can set keywords
 		if([self supportsKeywords:newPath])
 		{
@@ -352,6 +366,8 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
 	}
 }
 
+// ---------------------------------------------------------------------------
+
 -(BOOL)supportsKeywords:(NSString*)file
 {
 	NSString* type = [[file pathExtension] uppercaseString];
@@ -361,6 +377,8 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
 	
 	return canKeyword;
 }
+
+// ---------------------------------------------------------------------------
 
 -(NSUndoManager*)undoManager
 {

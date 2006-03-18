@@ -1,5 +1,5 @@
 /////////////////////////////////////////////////////////////////////////
-// File:          $Name$
+// File:          $URL$
 // Module:        Popup buttons in NSToolbarItems. Copied from Adium who adapted
 //                it from Colloquy. Isn't the GPL great?
 // Part of:       VitaminSEE

@@ -1,5 +1,5 @@
 /////////////////////////////////////////////////////////////////////////
-// File:          $Name$
+// File:          $URL$
 // Module:        Node in which keywords for the Keyword Manager are stored in.
 // Part of:       VitaminSEE
 //

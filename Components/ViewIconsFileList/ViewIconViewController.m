@@ -1,5 +1,5 @@
 /////////////////////////////////////////////////////////////////////////
-// File:          $Name$
+// File:          $URL$
 // Module:        Implements the View as icons file browser
 // Part of:       VitaminSEE
 //
@@ -844,3 +844,4 @@ willDisplayCell:(id)cell
 }
 
 @end
+		

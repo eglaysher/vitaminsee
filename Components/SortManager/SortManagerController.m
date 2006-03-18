@@ -1,5 +1,5 @@
 /////////////////////////////////////////////////////////////////////////
-// File:          $Name$
+// File:          $URL$
 // Module:        Implements the Sort Manager panel
 // Part of:       VitaminSEE
 //
@@ -48,11 +48,15 @@
 	return self;
 }
 
+// ---------------------------------------------------------------------------
+
 -(void)dealloc
 {
 	[keyValues release];
 	[super dealloc];
 }
+
+// ---------------------------------------------------------------------------
 
 -(void)windowDidLoad
 {
@@ -62,6 +66,8 @@
 	[self setShouldCascadeWindows:NO];
 	[self setWindowFrameAutosaveName:@"sortManagerWindowPosition"];
 }
+
+// ---------------------------------------------------------------------------
 
 -(IBAction)moveButtonPushed:(id)sender
 {
@@ -73,11 +79,9 @@
 	[[ComponentManager getInteranlComponentNamed:@"FileOperations"]
 		moveFile:currentFile
 			  to:[EGPath pathWithPath:destination]];	
-	
-//	id currentFile = [pluginLayer currentFile];
-//	[pluginLayer moveFile:currentFile
-//					   to:destination];
 }
+
+// ---------------------------------------------------------------------------
 
 -(IBAction)copyButtonPushed:(id)sender
 {
@@ -89,10 +93,9 @@
 	[[ComponentManager getInteranlComponentNamed:@"FileOperations"]
 		copyFile:currentFile
 			  to:[EGPath pathWithPath:destination]];
-	
-//	[pluginLayer copyFile:[pluginLayer currentFile]
-//					   to:destination];
 }
+
+// ---------------------------------------------------------------------------
 
 -(void)fileSetTo:(EGPath*)newPath
 {
@@ -129,6 +132,8 @@
 	[self showWindow:self];	
 	[self fileSetTo:path];
 }
+
+// ---------------------------------------------------------------------------
 
 -(void)currentImageSetTo:(EGPath*)path
 {

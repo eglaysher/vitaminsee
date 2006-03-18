@@ -1,5 +1,5 @@
 /////////////////////////////////////////////////////////////////////////
-// File:          $Name$
+// File:          $URL$
 // Module:        Implements the drop down sheet asking for a folder name that's
 //                accessable from Go > Goto Folder...
 // Part of:       VitaminSEE

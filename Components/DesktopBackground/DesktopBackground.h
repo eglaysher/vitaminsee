@@ -1,11 +1,11 @@
 /////////////////////////////////////////////////////////////////////////
-// File:          $Name$
+// File:          $URL$
 // Module:        Code that actually sets the desktop background
 // Part of:       VitaminSEE
 //
-// Revision:      $Revision: 155 $
-// Last edited:   $Date: 2005-05-04 11:37:41 -0400 (Wed, 04 May 2005) $
-// Author:        $Author: glaysher $
+// Revision:      $Revision$
+// Last edited:   $Date$
+// Author:        $Author$
 // Copyright:     (c) 2005 Elliot Glaysher
 // Created:       1/14/05
 //

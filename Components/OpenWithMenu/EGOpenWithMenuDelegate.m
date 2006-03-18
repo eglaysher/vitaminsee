@@ -1,12 +1,12 @@
 /////////////////////////////////////////////////////////////////////////
-// File:          $Name$
+// File:          $URL$
 // Module:        Menu Delegate object that reads a list of applications that
 //                can handle a certain file
 // Part of:       VitaminSEE
 //
-// Revision:      $Revision: 149 $
-// Last edited:   $Date: 2005-04-29 14:32:49 -0400 (Fri, 29 Apr 2005) $
-// Author:        $Author: elliot $
+// Revision:      $Revision$
+// Last edited:   $Date$
+// Author:        $Author$
 // Copyright:     (c) 2005 Elliot Glaysher
 // Created:       5/14/2005
 //
@@ -65,20 +65,28 @@ extern void _LSCopyAllApplicationURLs(NSArray**);
 	return self;
 }
 
+// ---------------------------------------------------------------------------
+
 -(void)dealloc
 {
 	[super dealloc];
 }
-	
+
+// ---------------------------------------------------------------------------
+
 -(id)delegate
 {
 	return delegate;
 }
 
+// ---------------------------------------------------------------------------
+
 -(void)setDelegate:(id)inDelegate
 {
 	delegate = inDelegate;
 }
+
+// ---------------------------------------------------------------------------
 
 -(int)numberOfItemsInMenu:(NSMenu *)menu
 {	
@@ -114,6 +122,8 @@ extern void _LSCopyAllApplicationURLs(NSArray**);
 	}
 }
 
+// ---------------------------------------------------------------------------
+
 -(BOOL)menu:(NSMenu *)menu updateItem:(NSMenuItem *)item atIndex:(int)index shouldCancel:(BOOL)shouldCancel
 {
 	NSString* currentFile = [self getCurrentFile];
@@ -138,17 +148,7 @@ extern void _LSCopyAllApplicationURLs(NSArray**);
 	return YES;
 }
 
-//-(BOOL)validateMenuItem:(NSMenuItem *)theMenuItem
-//{
-//	if(![theMenuItem image])
-//	{
-//		NSLog(@"PathString: %@", pathString);
-//		
-//
-//	}
-//	
-//	return YES;
-//}
+// ---------------------------------------------------------------------------
 
 -(void)menuItemSelected:(id)sender
 {
@@ -163,6 +163,8 @@ extern void _LSCopyAllApplicationURLs(NSArray**);
 }
 	
 @end
+
+// ---------------------------------------------------------------------------
 
 @implementation EGOpenWithMenuDelegate (Private)
 
@@ -180,6 +182,8 @@ extern void _LSCopyAllApplicationURLs(NSArray**);
 
 	return currentFile;
 }
+
+// ---------------------------------------------------------------------------
 
 -(NSArray*)getOpenWithMenuFor:(NSString*)file urls:(NSArray*) applicationURLs
 {
@@ -261,6 +265,8 @@ NSArray* getListOfApplicationsThatCanOpenExtension(NSString* file, NSArray* arra
 	return listOfApplications;
 }
 
+// ---------------------------------------------------------------------------
+
 BOOL applicationCanHandleFileType(NSURL* applicationURL, NSString* fileExtension)
 {
 	// Okay, get
@@ -286,6 +292,8 @@ BOOL applicationCanHandleFileType(NSURL* applicationURL, NSString* fileExtension
 	
 	return NO;
 }
+
+// ---------------------------------------------------------------------------
 
 NSMutableArray* buildApplicationArray(NSArray* arrayOfURLs)
 {
@@ -325,6 +333,8 @@ NSMutableArray* buildApplicationArray(NSArray* arrayOfURLs)
 	return processedURLs;
 }
 
+// ---------------------------------------------------------------------------
+
 void removeTrashedPathsFromArray(NSMutableArray* applicationArray)
 {
 	NSEnumerator* e = [applicationArray objectEnumerator];
@@ -339,6 +349,8 @@ void removeTrashedPathsFromArray(NSMutableArray* applicationArray)
 	
 	[applicationArray removeObjectsInArray:objectsToRemove];
 }
+
+// ---------------------------------------------------------------------------
 
 void removeDuplicateEntries(NSMutableArray* appilcationArray)
 {
@@ -383,6 +395,8 @@ void removeDuplicateEntries(NSMutableArray* appilcationArray)
 	[appilcationArray removeObjectsInArray:entriesToRemove];
 }
 
+// ---------------------------------------------------------------------------
+
 void checkForDuplicateEntries(NSMutableArray* entriesToDoubleCheck, 
 							  NSMutableArray* entriesToRemove)
 {
@@ -398,6 +412,8 @@ void checkForDuplicateEntries(NSMutableArray* entriesToDoubleCheck,
 		[entriesToRemove addObjectsFromArray:entriesToDoubleCheck];
 	}	
 }
+
+// ---------------------------------------------------------------------------
 
 void buildDisplayName(NSMutableArray* appilcationArray)
 {

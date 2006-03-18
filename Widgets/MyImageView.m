@@ -1,5 +1,5 @@
 /////////////////////////////////////////////////////////////////////////
-// File:          $Name$
+// File:          $URL$
 // Module:        MyImageView: Implements hand grab scrolling
 // Part of:       VitaminSEE
 //

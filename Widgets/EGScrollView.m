@@ -1,12 +1,12 @@
 /////////////////////////////////////////////////////////////////////////
-// File:          $Name$
+// File:          $URL$
 // Module:        Scroll View that can become key, processes key input as
 //                scrolling, and draws a focus ring.
 // Part of:       VitaminSEE
 //
-// Revision:      $Revision: 192 $
-// Last edited:   $Date: 2005-05-18 01:07:24 -0400 (Wed, 18 May 2005) $
-// Author:        $Author: glaysher $
+// Revision:      $Revision$
+// Last edited:   $Date$
+// Author:        $Author$
 // Copyright:     (c) 2005 Elliot Glaysher
 // Created:       5/11/05
 //

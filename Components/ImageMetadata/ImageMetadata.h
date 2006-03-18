@@ -1,5 +1,5 @@
 /////////////////////////////////////////////////////////////////////////
-// File:          $Name$
+// File:          $URL$
 // Module:        Generalized access to an image's metadata
 // Part of:       VitaminSEE
 //

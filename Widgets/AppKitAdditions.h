@@ -1,5 +1,5 @@
 /////////////////////////////////////////////////////////////////////////
-// File:          $Name$
+// File:          $URL$
 // Module:        All categories I've written or ripped off. Copyright in 
 //                implementation file.
 // Part of:       VitaminSEE

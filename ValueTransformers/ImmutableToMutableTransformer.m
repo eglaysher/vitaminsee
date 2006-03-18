@@ -1,5 +1,5 @@
 /////////////////////////////////////////////////////////////////////////
-// File:          $Name$
+// File:          $URL$
 // Module:        ValueTransformer that turns an immutable value into a mutable one
 // Part of:       VitaminSEE
 //

@@ -1,12 +1,12 @@
 /////////////////////////////////////////////////////////////////////////
-// File:          $Name$
+// File:          $URL$
 // Module:        Implements the drop down sheet asking for a folder name that's
 //                accessable from Go > Goto Folder...
 // Part of:       VitaminSEE
 //
-// Revision:      $Revision: 284 $
-// Last edited:   $Date: 2005-10-23 11:29:01 -0500 (Sun, 23 Oct 2005) $
-// Author:        $Author: elliot $
+// Revision:      $Revision$
+// Last edited:   $Date$
+// Author:        $Author$
 // Copyright:     (c) 2005 Elliot Glaysher
 // Created:       10/23/05
 //

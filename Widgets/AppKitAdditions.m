@@ -1,5 +1,5 @@
 /////////////////////////////////////////////////////////////////////////
-// File:          $Name$
+// File:          $URL$
 // Module:        All the categories I've written or ripped off. Each block
 //                starts with it's respective copyright notice.
 // Part of:       VitaminSEE
