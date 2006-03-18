@@ -150,7 +150,15 @@
  * ViewerDocument/VitaminSEEWindowController classes.
  */
 -(BOOL)focusOnFile:(EGPath*)path
-{
+{	
+	// First, we need to make sure we're in the current directory, and move 
+	// there if we aren't.
+	if([fileList canSetDirectory] &&
+	   ![[fileList directory] isEqual:[path pathByDeletingLastPathComponent]])
+	{
+		[fileList setDirectory:[path pathByDeletingLastPathComponent]];
+	}
+	
 	BOOL ret = [fileList focusOnFile:path];
 	[self setDisplayedFileTo:path];
 	return ret;

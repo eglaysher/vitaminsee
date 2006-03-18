@@ -530,18 +530,6 @@ static NSString* egPathRootDisplayName = 0;
 	return [fileSystemPath hash];
 }
 
-//-(BOOL)isEqual:(id)rhs
-//{
-//	BOOL equal = self == rhs || [self compare:rhs] == NSOrderedSame;
-//	
-//	if(equal)
-//		NSLog(@"%@ == %@", self, rhs);
-//	else
-//		NSLog(@"%@ != %@", self, rhs);
-//	
-//	return equal;
-//}
-	
 -(id)retain
 {
 	[super retain];

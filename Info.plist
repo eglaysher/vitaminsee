@@ -607,7 +607,7 @@
 	<key>CFBundleVersion</key>
 	<string>$Rev$</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.7</string>
+	<string>0.7.1-BETA</string>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
