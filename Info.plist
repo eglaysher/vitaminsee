@@ -605,7 +605,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>0.7</string>
+	<string>$Rev$</string>
 	<key>CFBundleShortVersionString</key>
 	<string>0.7</string>
 	<key>NSMainNibFile</key>
