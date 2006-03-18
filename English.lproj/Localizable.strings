@@ -134,4 +134,8 @@
 /* View menu */
 "Customize Toolbar..." = "Customize Toolbar...";
 
+/* URL of feedback submission script */
+"FEEDBACK_REPORT_CGI_URL" = "http://svn.elliotglaysher.org/cgi-bin/FeedbackReporter.pl";
 
+/* URL where the user can mail feedback. */
+"FEEDBACK_URL" = "mailto:eglaysher@gmail.com?subject=Feedback%20about%20VitaminSEE";

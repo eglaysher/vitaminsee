@@ -12,3 +12,4 @@
 
 /* URL of CGI script which we'll send the log to: */
 "CRASH_REPORT_CGI_URL" = "http://svn.elliotglaysher.org/cgi-bin/CrashReporter.pl";
+

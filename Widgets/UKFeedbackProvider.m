@@ -9,6 +9,8 @@
 #import "UKFeedbackProvider.h"
 #import <Message/NSMailDelivery.h>
 
+#import <Foundation/Foundation.h>
+
 
 @implementation UKFeedbackProvider
 
@@ -17,6 +19,7 @@
 {
 	// Release all top-level objects from our NIB:
 	[feedbackWindow release];
+	[super dealloc];
 }
 
 -(IBAction) sendFeedback: (id)sender
@@ -32,22 +35,53 @@
 }
 
 
+// WARNING: BIG CHANGE!!!! (by ERG)
+// In the original code, UK used NSMailDelivery, which does nothing but
+// throw exceptions for me. I've thus replaced it with an expansion of the
+// code in UKCrashReporter, which submits data to a webform using an
+// HTTP POST command instead of using email. The script on the web server
+// will then act as a remailer and send it to me, or later on, add it to 
+// a bug tracking database.
 -(IBAction) sendFeedbackButtonAction: (id)sender
 {
-	NSString*		msgText = [messageText string];
-	NSString*		msgSubjPre = NSLocalizedString(@"FEEDBACK_SUBJECT_PREFIX", @"Prefix to use in front of subject so you can filter by it.");
-	NSString*		msgSubj = [msgSubjPre stringByAppendingString: [subjectField stringValue]];
-	NSString*		msgDest = NSLocalizedString(@"FEEDBACK_EMAIL", @"E-Mail address user's feedack should be sent to.");
+	Class			NSMutableURLRequestClass = NSClassFromString( @"NSMutableURLRequest" );
+	Class			NSURLConnectionClass = NSClassFromString( @"NSURLConnection" );
+	if( NSMutableURLRequestClass == Nil || NSURLConnectionClass == Nil )
+		return;
 	
-	if( ![NSMailDelivery deliverMessage: msgText subject: msgSubj to: msgDest] )
-	{
-		NSBeginAlertSheet( NSLocalizedString(@"Couldn't send message", @"FEEDBACK_ERROR_TITLE"),
-							NSLocalizedString(@"OK",@"FEEDBACK_ERRORR_BUTTON"), nil, nil,
-							feedbackWindow, self, @selector(errorSheetDidEnd:returnCode:contextInfo:), 0, nil,
-							NSLocalizedString(@"An error occurred while trying to send off your bug report, try using your e-mail client instead.", @"FEEDBACK_ERROR_MESSAGE"));
-	}
-	else
-		[self closeFeedbackWindow: sender];
+	NSData*		msgText = [[messageText string] dataUsingEncoding: NSUTF8StringEncoding];
+	NSData*     msgSubj = [[subjectField stringValue] dataUsingEncoding: NSUTF8StringEncoding];
+	
+	// Prepare a request:
+	NSMutableURLRequest *postRequest = [NSMutableURLRequestClass requestWithURL: [NSURL URLWithString: NSLocalizedString( @"FEEDBACK_REPORT_CGI_URL", @"" )]];
+	NSString            *boundary = @"0xKhTmLbOuNdArY";
+	NSURLResponse       *response = nil;
+	NSError             *error = nil;
+	NSString            *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@",boundary];
+	NSString			*agent = @"UKCrashReporter";
+	
+	// Add form trappings to crashReport:
+	NSData*			header = [[NSString stringWithFormat:@"--%@\r\nContent-Disposition: form-data; name=\"feedback\"\r\n\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding];
+	NSMutableData*	formData = [[header mutableCopy] autorelease];
+	[formData appendData:msgText];
+	[formData appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+
+	// Add subject line:
+	[formData appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"subject\"\r\n\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+	[formData appendData:msgSubj];
+	[formData appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+	
+	// setting the headers:
+	[postRequest setHTTPMethod: @"POST"];
+	[postRequest setValue: contentType forHTTPHeaderField: @"Content-Type"];
+	[postRequest setValue: agent forHTTPHeaderField: @"User-Agent"];
+	[postRequest setHTTPBody: formData];
+	
+	(NSData*) [NSURLConnectionClass sendSynchronousRequest: postRequest returningResponse: &response error: &error];
+
+	// I'd love to do some sort of error checking on the above, but I can't.
+	// How do you get an HTTP return code from a generalized URL abstraction?
+	[self closeFeedbackWindow: sender];
 }
 
 
