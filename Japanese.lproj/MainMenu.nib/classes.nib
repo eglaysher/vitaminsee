@@ -26,6 +26,7 @@
             ACTIONS = {
                 actualSize = id; 
                 addToFavorites = id; 
+                becomeFullScreen = id; 
                 goBack = id; 
                 goEnclosingFolder = id; 
                 goForward = id; 
@@ -42,6 +43,7 @@
                 revealInFinder = id; 
                 setAsDesktopImage = id; 
                 toggleFileList = id; 
+                toggleFullScreenControls = id; 
                 zoomIn = id; 
                 zoomOut = id; 
                 zoomToFit = id; 

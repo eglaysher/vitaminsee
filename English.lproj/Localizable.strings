@@ -48,6 +48,9 @@
 "Hide File List" = "Hide File List";
 
 /* Text in View menu */
+"Hide Fullscreen Controls" = "Hide Fullscreen Controls";
+
+/* Text in View menu */
 "Hide Toolbar" = "Hide Toolbar";
 
 /* Toolbar Item */
@@ -94,6 +97,9 @@
 
 /* Text in View menu */
 "Show File List" = "Show File List";
+
+/* Text in View menu */
+"Show Fullscreen Controls" = "Show Fullscreen Controls";
 
 /* Text in View menu */
 "Show Toolbar" = "Show Toolbar";

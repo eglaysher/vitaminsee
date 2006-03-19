@@ -381,9 +381,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>8B4D064D09CC78CB00665482</string>
+				<string>8B2FA41E09CCB8250013EC99</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>8B4D064E09CC78CB00665482</string>
+				<string>8B2FA41F09CCB8250013EC99</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -456,18 +456,21 @@
 								<string>8B24490F08FB546C004716BC</string>
 								<string>8B2448C308FB2048004716BC</string>
 								<string>8B2448A108FB2018004716BC</string>
+								<string>080E96DDFE201D6D7F000001</string>
+								<string>29B97317FDCFA39411CA2CEA</string>
+								<string>29B97318FDCFA39411CA2CEA</string>
 								<string>1C37FABC05509CD000000102</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>40</integer>
-									<integer>26</integer>
+									<integer>68</integer>
+									<integer>56</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 460}, {320, 836}}</string>
+							<string>{{0, 624}, {320, 836}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -507,7 +510,7 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>8B4D064F09CC78CB00665482</string>
+				<string>8B2FA42009CCB8250013EC99</string>
 				<string>11E0B1FE06471DED0097A5F4</string>
 			</array>
 			<key>ToolbarConfiguration</key>
@@ -523,7 +526,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>164410195.14210501</real>
+	<real>164419471.334571</real>
 	<key>ToolbarDisplayMode</key>
 	<integer>2</integer>
 	<key>ToolbarIsVisible</key>
@@ -538,7 +541,6 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>1C530D57069F1CE1000CFCEE</string>
 		<string>8BD128CD09A2B4C0009E0275</string>
 		<string>1C0AD2B3069F1EA900FABCE6</string>
 		<string>/Users/elliot/Projects/VitaminSEE/VitaminSEE.xcodeproj</string>
@@ -565,7 +567,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>ApplicationController.m</string>
+								<string></string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -623,7 +625,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>8BD128CD09A2B4C0009E0275</string>
-				<string>8B4D0A3809CC949500665482</string>
+				<string>8B2FA42609CCB9420013EC99</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -962,7 +964,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {773, 201}}</string>
 								<key>RubberWindowFrame</key>
-								<string>316 34 773 242 0 0 1440 938 </string>
+								<string>316 38 773 242 0 0 1440 938 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXRunSessionModule</string>
@@ -985,14 +987,14 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C0AD2B3069F1EA900FABCE6</string>
-				<string>8B4D065109CC78CB00665482</string>
+				<string>8B2FA42109CCB8250013EC99</string>
 				<string>1CD0528B0623707200166675</string>
-				<string>8B4D065209CC78CB00665482</string>
+				<string>8B2FA42209CCB8250013EC99</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.run</string>
 			<key>WindowString</key>
-			<string>316 34 773 242 0 0 1440 938 </string>
+			<string>316 38 773 242 0 0 1440 938 </string>
 			<key>WindowToolGUID</key>
 			<string>1C0AD2B3069F1EA900FABCE6</string>
 			<key>WindowToolIsVisible</key>
