@@ -2,10 +2,14 @@
     IBClasses = (
         {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
         {
-            ACTIONS = {clickCancel = id; clickOK = id; }; 
+            ACTIONS = {clickCancel = id; clickHideExtensions = id; clickOK = id; }; 
             CLASS = RenameFileSheetController; 
             LANGUAGE = ObjC; 
-            OUTLETS = {folderName = NSTextField; labelName = NSTextField; }; 
+            OUTLETS = {
+                folderName = NSTextField; 
+                hideExtensionButton = NSButton; 
+                labelName = NSTextField; 
+            }; 
             SUPERCLASS = NSWindowController; 
         }
     ); 

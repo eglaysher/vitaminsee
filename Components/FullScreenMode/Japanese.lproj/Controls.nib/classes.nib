@@ -1,0 +1,26 @@
+{
+    IBClasses = (
+        {
+            ACTIONS = {becomeFullScreen = id; goNextFile = id; goPreviousFile = id; }; 
+            CLASS = FirstResponder; 
+            LANGUAGE = ObjC; 
+            SUPERCLASS = NSObject; 
+        }, 
+        {
+            ACTIONS = {
+                leaveFullscreenButtonPushed = id; 
+                nextButtonPushed = id; 
+                prevButtonPushed = id; 
+            }; 
+            CLASS = FullScreenControlWindowController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {
+                leaveFullscreenButton = NSButton; 
+                nextButton = NSButton; 
+                prevButton = NSButton; 
+            }; 
+            SUPERCLASS = NSWindowController; 
+        }
+    ); 
+    IBVersion = 1; 
+}

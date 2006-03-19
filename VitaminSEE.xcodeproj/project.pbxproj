@@ -411,7 +411,7 @@
 		8B1138A209130531008FBD78 /* GeneralPreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = GeneralPreferencesController.h; path = Components/GeneralPreferences/GeneralPreferencesController.h; sourceTree = "<group>"; };
 		8B1138A309130531008FBD78 /* GeneralPreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = GeneralPreferencesController.m; path = Components/GeneralPreferences/GeneralPreferencesController.m; sourceTree = "<group>"; };
 		8B1138B609130546008FBD78 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = Components/GeneralPreferences/English.lproj/GeneralPreferences.nib; sourceTree = "<group>"; };
-		8B1138B809130546008FBD78 /* English */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist.strings; name = English; path = Components/GeneralPreferences/English.lproj/Localizable.strings; sourceTree = "<group>"; };
+		8B1138B809130546008FBD78 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = Components/GeneralPreferences/English.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8B2064F2094CD90D0062D0CC /* IconFamily.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = IconFamily.h; path = Widgets/IconFamily.h; sourceTree = "<group>"; };
 		8B2064F3094CD90D0062D0CC /* IconFamily.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = IconFamily.m; path = Widgets/IconFamily.m; sourceTree = "<group>"; };
 		8B2448A208FB2033004716BC /* AppKitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = AppKitAdditions.h; path = Widgets/AppKitAdditions.h; sourceTree = "<group>"; };
@@ -484,6 +484,13 @@
 		8B2B8D1F0916C12500691A7B /* AdvancedPreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = AdvancedPreferencesController.h; path = Components/AdvancedPreferences/AdvancedPreferencesController.h; sourceTree = "<group>"; };
 		8B2B8D200916C12500691A7B /* AdvancedPreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = AdvancedPreferencesController.m; path = Components/AdvancedPreferences/AdvancedPreferencesController.m; sourceTree = "<group>"; };
 		8B2B8D350916C13700691A7B /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = Components/AdvancedPreferences/English.lproj/AdvancedPreferences.nib; sourceTree = "<group>"; };
+		8B2FA44009CDCF090013EC99 /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Japanese; path = Japanese.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		8B2FA44109CDCF090013EC99 /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Japanese; path = Japanese.lproj/UKCrashReporter.strings; sourceTree = "<group>"; };
+		8B2FA44209CDCF090013EC99 /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Japanese; path = Japanese.lproj/UKFeedbackProvider.nib; sourceTree = "<group>"; };
+		8B2FA44309CDCF090013EC99 /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Japanese; path = Japanese.lproj/UKUpdateChecker.strings; sourceTree = "<group>"; };
+		8B2FA47409CDD0AB0013EC99 /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Japanese; path = Components/FullScreenMode/Japanese.lproj/Controls.nib; sourceTree = "<group>"; };
+		8B2FA47509CDD0AB0013EC99 /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Japanese; path = Components/FullScreenMode/Japanese.lproj/FileList.nib; sourceTree = "<group>"; };
+		8B2FA47609CDD0AB0013EC99 /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Japanese; path = Components/FullScreenMode/Japanese.lproj/ImageViewing.nib; sourceTree = "<group>"; };
 		8B4DC4100996D7BC00B58051 /* AddIcon.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = AddIcon.xcodeproj; path = AutomatorActions/AddIcon/AddIcon.xcodeproj; sourceTree = "<group>"; };
 		8B4DC4390996D84900B58051 /* RemoveIcon.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RemoveIcon.xcodeproj; path = AutomatorActions/RemoveIcon/RemoveIcon.xcodeproj; sourceTree = "<group>"; };
 		8B4DC45E0996D8A900B58051 /* SetWallpaperFolder.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SetWallpaperFolder.xcodeproj; path = AutomatorActions/SetWallpaperFolder/SetWallpaperFolder.xcodeproj; sourceTree = "<group>"; };
@@ -503,7 +510,7 @@
 		8B5EDA500916E65E00EE5414 /* FavoritesPreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = FavoritesPreferencesController.h; path = Components/FavoritesPreferences/FavoritesPreferencesController.h; sourceTree = "<group>"; };
 		8B5EDA510916E65E00EE5414 /* FavoritesPreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = FavoritesPreferencesController.m; path = Components/FavoritesPreferences/FavoritesPreferencesController.m; sourceTree = "<group>"; };
 		8B5EDA760916E6FF00EE5414 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = Components/FavoritesPreferences/English.lproj/FavoritesPreferences.nib; sourceTree = "<group>"; };
-		8B5EDA780916E6FF00EE5414 /* English */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist.strings; name = English; path = Components/FavoritesPreferences/English.lproj/Localizable.strings; sourceTree = "<group>"; };
+		8B5EDA780916E6FF00EE5414 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = Components/FavoritesPreferences/English.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8B6380DA09953D010010DFEF /* ImageMetadata.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ImageMetadata.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B6380DB09953D010010DFEF /* SSPrefsController.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SSPrefsController.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B64CD5E090EF8030060CB34 /* OpenWithMenu.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OpenWithMenu.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -532,13 +539,13 @@
 		8B7F0DA10964A94E00B7A46D /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
 		8B8B6CCF09C79EF300E36801 /* UKCrashReporter.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = UKCrashReporter.h; path = Widgets/UKCrashReporter.h; sourceTree = "<group>"; };
 		8B8B6CD009C79EF300E36801 /* UKCrashReporter.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = UKCrashReporter.m; path = Widgets/UKCrashReporter.m; sourceTree = "<group>"; };
-		8B8B6CD409C79F1E00E36801 /* English */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/UKCrashReporter.strings; sourceTree = "<group>"; };
+		8B8B6CD409C79F1E00E36801 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/UKCrashReporter.strings; sourceTree = "<group>"; };
 		8B8B6CF609C7AC8400E36801 /* UKFeedbackProvider.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = UKFeedbackProvider.h; path = Widgets/UKFeedbackProvider.h; sourceTree = "<group>"; };
 		8B8B6CF709C7AC8400E36801 /* UKFeedbackProvider.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = UKFeedbackProvider.m; path = Widgets/UKFeedbackProvider.m; sourceTree = "<group>"; };
 		8B8B6CF809C7AC8400E36801 /* UKUpdateChecker.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = UKUpdateChecker.h; path = Widgets/UKUpdateChecker.h; sourceTree = "<group>"; };
 		8B8B6CF909C7AC8400E36801 /* UKUpdateChecker.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = UKUpdateChecker.m; path = Widgets/UKUpdateChecker.m; sourceTree = "<group>"; };
 		8B8B6CFF09C7ACF300E36801 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/UKFeedbackProvider.nib; sourceTree = "<group>"; };
-		8B8B6D0109C7ACF300E36801 /* English */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/UKUpdateChecker.strings; sourceTree = "<group>"; };
+		8B8B6D0109C7ACF300E36801 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/UKUpdateChecker.strings; sourceTree = "<group>"; };
 		8B8B6D5909C8DC2500E36801 /* MacPAD.url */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = MacPAD.url; path = Resources/MacPAD.url; sourceTree = "<group>"; };
 		8B8B6E5609CC624700E36801 /* NSString+CarbonFSRefCreation.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = "NSString+CarbonFSRefCreation.h"; path = "Widgets/NSString+CarbonFSRefCreation.h"; sourceTree = "<group>"; };
 		8B8B6E5709CC624700E36801 /* NSString+CarbonFSRefCreation.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = "NSString+CarbonFSRefCreation.m"; path = "Widgets/NSString+CarbonFSRefCreation.m"; sourceTree = "<group>"; };
@@ -563,7 +570,7 @@
 		8BAE04EC095F6C5C007C387D /* NSObject+Invocations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Invocations.h"; sourceTree = "<group>"; };
 		8BAE04ED095F6C5D007C387D /* NSObject+Invocations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Invocations.m"; sourceTree = "<group>"; };
 		8BB68FCA099D9E21001AE27B /* UpArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = UpArrow.png; path = Resources/UpArrow.png; sourceTree = "<group>"; };
-		8BB690A9099DA961001AE27B /* English */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/Localizable.strings; sourceTree = "<group>"; };
+		8BB690A9099DA961001AE27B /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8BB691CF099DBA3E001AE27B /* English */ = {isa = PBXFileReference; lastKnownFileType = folder; name = English; path = "English.lproj/VitaminSEE Help"; sourceTree = "<group>"; };
 		8BB69201099DBA57001AE27B /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Japanese; path = "Japanese.lproj/VitaminSEE Help"; sourceTree = "<group>"; };
 		8BB695B6099E3309001AE27B /* goto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = goto.png; path = Resources/goto.png; sourceTree = "<group>"; };
@@ -580,8 +587,8 @@
 		8BC078710938024B0098E29B /* UKMainThreadProxy.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = UKMainThreadProxy.m; path = Components/ViewIconsFileList/UKMainThreadProxy.m; sourceTree = "<group>"; };
 		8BC2CDCD09985A05009676CB /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Japanese; path = Japanese.lproj/MainMenu.nib; sourceTree = "<group>"; };
 		8BC2CDCE09985A19009676CB /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Japanese; path = Japanese.lproj/VitaminSEEWindow.nib; sourceTree = "<group>"; };
-		8BC2CF1109998E37009676CB /* Japanese */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist.strings; name = Japanese; path = Components/SortManager/Japanese.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		8BC2CF1D09998EE9009676CB /* Japanese */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist.strings; name = Japanese; path = Components/KeywordManager/Japanese.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		8BC2CF1109998E37009676CB /* Japanese */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = Japanese; path = Components/SortManager/Japanese.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		8BC2CF1D09998EE9009676CB /* Japanese */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = Japanese; path = Components/KeywordManager/Japanese.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8BC3626B09A16FEB0044BC57 /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Japanese; path = Components/FileOperations/Japanese.lproj/RenameFileSheet.nib; sourceTree = "<group>"; };
 		8BC3626C09A170170044BC57 /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Japanese; path = Components/ViewIconsFileList/Japanese.lproj/ViewIconsFileView.nib; sourceTree = "<group>"; };
 		8BC9D2D209846A16006F6B16 /* ImageMetadata-Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xml; name = "ImageMetadata-Info.plist"; path = "Components/ImageMetadata/ImageMetadata-Info.plist"; sourceTree = "<group>"; };
@@ -634,7 +641,7 @@
 		8BC9D5BB098707DE006F6B16 /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Japanese; path = Components/GeneralPreferences/Japanese.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8BC9D5BC09870800006F6B16 /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Japanese; path = Components/GotoFolderSheet/Japanese.lproj/GotoFolderSheet.nib; sourceTree = "<group>"; };
 		8BC9D5BD0987094A006F6B16 /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Japanese; path = Components/GotoFolderWindow/Japanese.lproj/GotoFolderWindow.nib; sourceTree = "<group>"; };
-		8BC9D5D609870A4D006F6B16 /* Japanese */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist.strings; name = Japanese; path = Japanese.lproj/Localizable.strings; sourceTree = "<group>"; };
+		8BC9D5D609870A4D006F6B16 /* Japanese */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = Japanese; path = Japanese.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8BC9D625098727F6006F6B16 /* KeywordManagerPreferences.VSPref */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeywordManagerPreferences.VSPref; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BC9D6270987280D006F6B16 /* KeywordManager.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = KeywordManager.png; path = Components/KeywordManagerPreferences/KeywordManager.png; sourceTree = "<group>"; };
 		8BC9D6280987280D006F6B16 /* KeywordManagerPreferences-Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xml; name = "KeywordManagerPreferences-Info.plist"; path = "Components/KeywordManagerPreferences/KeywordManagerPreferences-Info.plist"; sourceTree = "<group>"; };
@@ -2975,6 +2982,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				089C165DFE840E0CC02AAC07 /* English */,
+				8B2FA44009CDCF090013EC99 /* Japanese */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -3046,6 +3054,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				8B5A827A09B2401000F7303C /* English */,
+				8B2FA47509CDD0AB0013EC99 /* Japanese */,
 			);
 			name = FileList.nib;
 			sourceTree = "<group>";
@@ -3072,6 +3081,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				8B7BA8D109B1553B002D34D8 /* English */,
+				8B2FA47609CDD0AB0013EC99 /* Japanese */,
 			);
 			name = ImageViewing.nib;
 			sourceTree = "<group>";
@@ -3080,6 +3090,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				8B8B6CD409C79F1E00E36801 /* English */,
+				8B2FA44109CDCF090013EC99 /* Japanese */,
 			);
 			name = UKCrashReporter.strings;
 			sourceTree = "<group>";
@@ -3088,6 +3099,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				8B8B6CFF09C7ACF300E36801 /* English */,
+				8B2FA44209CDCF090013EC99 /* Japanese */,
 			);
 			name = UKFeedbackProvider.nib;
 			sourceTree = "<group>";
@@ -3096,6 +3108,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				8B8B6D0109C7ACF300E36801 /* English */,
+				8B2FA44309CDCF090013EC99 /* Japanese */,
 			);
 			name = UKUpdateChecker.strings;
 			sourceTree = "<group>";
@@ -3131,6 +3144,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				8BBAE75F09BD300F00789AEF /* English */,
+				8B2FA47409CDD0AB0013EC99 /* Japanese */,
 			);
 			name = Controls.nib;
 			sourceTree = "<group>";
