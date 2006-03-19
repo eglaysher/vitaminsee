@@ -158,7 +158,7 @@
 		}
 		
 		// Is it current? Then tell the user, or just quietly go on, depending on doNotify:
-        if( [newVersion isEqualToString: [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"]] )
+        if( [newVersion isEqualToString: [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]] )
 		{
             if( doNotify )
 				[self performSelectorOnMainThread: @selector(notifyAboutUpdateToNewVersion:)
