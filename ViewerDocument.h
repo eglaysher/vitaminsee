@@ -67,6 +67,9 @@
 	
 	// Image data
 	float pixelWidth, pixelHeight;
+	
+	// Our undo manager
+	NSUndoManager* undoManager;
 }
 
 -(id)init;

@@ -69,6 +69,8 @@
 	[fileList release];
 
 	[viewerNotifications release];
+	
+	[undoManager release];
 	[super dealloc];	
 }
 
@@ -86,6 +88,10 @@
 		// Obtain a unique document ID from the Application controller
 		documentID = [[ApplicationController controller] getNextAvailableID];
 		[documentID retain];
+		
+		// If we say that we have an undo manager, then we 
+		[self setHasUndoManager:NO];
+		undoManager = [[NSUndoManager alloc] init];
 		
 		// We need a file list
 		fileListName = @"ViewAsIcons";
@@ -530,6 +536,21 @@
 	// FIXME HERE! Detect 
 	
 	return ok;
+}
+
+//-----------------------------------------------------------------------------
+
+/** Redefine undoManager. The NSDocument object also has support to own an
+ * NSUndoManager object, but it then observes that object to set the NSDocument
+ * dirty bit, which marks the proxy icon and the close button. On Panther, this
+ * also has the undesierable effect of forcing a Don't Save/Cancel/Save dialog
+ * when the window is closed. So instead, mark -setHasUndoManager:NO in the
+ * constructor, and override this method so that it returns the ViewerDocument
+ * owned NSUndoManager.
+ */
+-(NSUndoManager*)undoManager
+{
+	return undoManager;
 }
 
 //-----------------------------------------------------------------------------
