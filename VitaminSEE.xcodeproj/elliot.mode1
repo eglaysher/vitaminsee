@@ -223,7 +223,7 @@
 						<key>_historyCapacity</key>
 						<integer>0</integer>
 						<key>bookmark</key>
-						<string>8B587AEA09CF83AE00353BE3</string>
+						<string>8B587AFB09CF8ADC00353BE3</string>
 						<key>history</key>
 						<array>
 							<string>8B587A2009CF767700353BE3</string>
@@ -263,7 +263,7 @@
 						<key>_historyCapacity</key>
 						<integer>0</integer>
 						<key>bookmark</key>
-						<string>8B587AEB09CF83AE00353BE3</string>
+						<string>8B587AFC09CF8ADC00353BE3</string>
 						<key>history</key>
 						<array>
 							<string>8B587A3009CF76BF00353BE3</string>
@@ -303,7 +303,7 @@
 						<key>_historyCapacity</key>
 						<integer>0</integer>
 						<key>bookmark</key>
-						<string>8B587AEC09CF83AE00353BE3</string>
+						<string>8B587AFE09CF8ADC00353BE3</string>
 						<key>history</key>
 						<array>
 							<string>8B587A3609CF76BF00353BE3</string>
@@ -575,16 +575,13 @@
 							<array>
 								<string>29B97314FDCFA39411CA2CEA</string>
 								<string>8B24490F08FB546C004716BC</string>
-								<string>8B91EF58097C93CF001B95BE</string>
 								<string>080E96DDFE201D6D7F000001</string>
 								<string>1C37FABC05509CD000000102</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>12</integer>
-									<integer>8</integer>
-									<integer>3</integer>
+									<integer>1</integer>
 									<integer>0</integer>
 								</array>
 							</array>
@@ -645,7 +642,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>164594606.29014099</real>
+	<real>164596444.25924399</real>
 	<key>ToolbarDisplayMode</key>
 	<integer>2</integer>
 	<key>ToolbarIsVisible</key>
@@ -664,8 +661,8 @@
 		<string>8B587A3409CF76BF00353BE3</string>
 		<string>8B587A2E09CF76BF00353BE3</string>
 		<string>8B587A2B09CF76BF00353BE3</string>
-		<string>/Users/elliot/Projects/VitaminSEE/VitaminSEE.xcodeproj</string>
 		<string>1C0AD2B3069F1EA900FABCE6</string>
+		<string>/Users/elliot/Projects/VitaminSEE/VitaminSEE.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
 	<string>3 43 337 895 0 0 1440 938 </string>
