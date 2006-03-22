@@ -311,9 +311,9 @@
 	};
 	8B2064F3094CD90D0062D0CC /* IconFamily.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {3268, 24048}}";
-			sepNavSelRange = "{51559, 11}";
-			sepNavVisRect = "{{1, 22938}, {777, 861}}";
+			sepNavIntBoundsRect = "{{0, 0}, {3268, 24192}}";
+			sepNavSelRange = "{26135, 0}";
+			sepNavVisRect = "{{0, 10634}, {777, 861}}";
 			sepNavWindowFrame = "{{15, -1}, {822, 934}}";
 		};
 	};
@@ -555,8 +555,8 @@
 	8B2448CF08FB2080004716BC /* ViewerDocument.m */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {746, 12528}}";
-			sepNavSelRange = "{2293, 0}";
-			sepNavVisRect = "{{0, 716}, {746, 861}}";
+			sepNavSelRange = "{12482, 0}";
+			sepNavVisRect = "{{0, 6554}, {746, 861}}";
 			sepNavWindowFrame = "{{336, 4}, {791, 934}}";
 		};
 	};
@@ -701,9 +701,9 @@
 	};
 	8B24491C08FB55C8004716BC /* ViewIconViewController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {734, 13552}}";
-			sepNavSelRange = "{23403, 0}";
-			sepNavVisRect = "{{0, 13368}, {734, 184}}";
+			sepNavIntBoundsRect = "{{0, 0}, {902, 13552}}";
+			sepNavSelRange = "{5463, 0}";
+			sepNavVisRect = "{{0, 2612}, {746, 648}}";
 			sepNavWindowFrame = "{{90, 68}, {791, 721}}";
 		};
 	};
@@ -876,6 +876,11 @@
 		name = similar.c;
 		path = "/Users/elliot/Desktop/gqview-2.0.1/src/similar.c";
 		sourceTree = "<absolute>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {776, 6272}}";
+			sepNavSelRange = "{6919, 17}";
+			sepNavVisRect = "{{0, 5216}, {686, 850}}";
+		};
 	};
 	8B587AFE09CF8ADC00353BE3 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -893,6 +898,11 @@
 		name = similar.h;
 		path = "/Users/elliot/Desktop/gqview-2.0.1/src/similar.h";
 		sourceTree = "<absolute>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {686, 850}}";
+			sepNavSelRange = "{494, 0}";
+			sepNavVisRect = "{{0, 0}, {686, 850}}";
+		};
 	};
 	8B5A7D2F09B20FD100F7303C /* ViewerDocument.m:63 */ = {
 		isa = PBXFileBreakpoint;

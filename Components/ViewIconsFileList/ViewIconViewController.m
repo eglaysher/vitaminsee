@@ -176,17 +176,19 @@ static BOOL shouldPreloadImages;
 {		
 //	[pluginLayer flushImageCache];
 	
+//	NSLog(@"Setting directory to %@", newCurrentDirectory);
+	
 	// First subscribe to the new directory.
 	[ThumbnailManager subscribe:self toDirectory:newCurrentDirectory];
 
 	if(currentDirectory) 
 	{
-		[pathManager registerUndoWithTarget:self
-								   selector:@selector(setDirectory:)
-									 object:currentDirectory];
 		[pathManager registerUndoWithTarget:self 
 								   selector:@selector(focusOnFile:) 
 									 object:[delegate currentFile]];		
+		[pathManager registerUndoWithTarget:self
+								   selector:@selector(setDirectory:)
+									 object:currentDirectory];
 		
 		// Stop watching this directory if it's something kqueue will alert us
 		// about.
@@ -238,6 +240,8 @@ static BOOL shouldPreloadImages;
 
 -(BOOL)focusOnFile:(EGPath*)file
 {
+//	NSLog(@"File: %@ in %@", file, fileList);
+	
 	unsigned index = [fileList binarySearchFor:[file fileSystemPath]
 							  withSortSelector:@selector(caseInsensitiveCompare:)];
 	
