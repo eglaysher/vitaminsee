@@ -166,13 +166,13 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 164486792;
-			PBXWorkspaceStateSaveDate = 164486792;
+			PBXPerProjectTemplateStateSaveDate = 164660229;
+			PBXWorkspaceStateSaveDate = 164660229;
 		};
 		perUserProjectItems = {
-			8B587A2009CF767700353BE3 /* PBXBookmark */ = 8B587A2009CF767700353BE3 /* PBXBookmark */;
-			8B587A3009CF76BF00353BE3 /* PBXTextBookmark */ = 8B587A3009CF76BF00353BE3 /* PBXTextBookmark */;
-			8B587A3609CF76BF00353BE3 /* PBXTextBookmark */ = 8B587A3609CF76BF00353BE3 /* PBXTextBookmark */;
+			8B41FD6209D0CEB600FBE050 /* PBXTextBookmark */ = 8B41FD6209D0CEB600FBE050 /* PBXTextBookmark */;
+			8B41FD6309D0CEB600FBE050 /* PBXTextBookmark */ = 8B41FD6309D0CEB600FBE050 /* PBXTextBookmark */;
+			8B41FD6509D0CEB600FBE050 /* PBXTextBookmark */ = 8B41FD6509D0CEB600FBE050 /* PBXTextBookmark */;
 			8B587AFB09CF8ADC00353BE3 /* PBXTextBookmark */ = 8B587AFB09CF8ADC00353BE3 /* PBXTextBookmark */;
 			8B587AFC09CF8ADC00353BE3 /* PBXTextBookmark */ = 8B587AFC09CF8ADC00353BE3 /* PBXTextBookmark */;
 			8B587AFE09CF8ADC00353BE3 /* PBXTextBookmark */ = 8B587AFE09CF8ADC00353BE3 /* PBXTextBookmark */;
@@ -782,6 +782,48 @@
 			sepNavWindowFrame = "{{15, 10}, {731, 923}}";
 		};
 	};
+	8B41FD6209D0CEB600FBE050 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B2448D108FB2080004716BC /* VitaminSEEWindowController.m */;
+		name = "VitaminSEEWindowController.m: 414";
+		rLen = 0;
+		rLoc = 12655;
+		rType = 0;
+		vrLen = 1269;
+		vrLoc = 12104;
+	};
+	8B41FD6309D0CEB600FBE050 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B41FD6409D0CEB600FBE050 /* similar.c */;
+		name = image_sim_compare;
+		rLen = 17;
+		rLoc = 6919;
+		rType = 0;
+		vrLen = 1212;
+		vrLoc = 6620;
+	};
+	8B41FD6409D0CEB600FBE050 /* similar.c */ = {
+		isa = PBXFileReference;
+		name = similar.c;
+		path = "/Users/elliot/Desktop/gqview-2.0.1/src/similar.c";
+		sourceTree = "<absolute>";
+	};
+	8B41FD6509D0CEB600FBE050 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B41FD6609D0CEB600FBE050 /* similar.h */;
+		name = "(null): 23";
+		rLen = 0;
+		rLoc = 494;
+		rType = 0;
+		vrLen = 1073;
+		vrLoc = 0;
+	};
+	8B41FD6609D0CEB600FBE050 /* similar.h */ = {
+		isa = PBXFileReference;
+		name = similar.h;
+		path = "/Users/elliot/Desktop/gqview-2.0.1/src/similar.h";
+		sourceTree = "<absolute>";
+	};
 	8B4FEFD80996780300922127 /* ImageMetaData.pch */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {746, 1008}}";
@@ -806,50 +848,6 @@
 			sepNavWindowFrame = "{{618, 4}, {791, 934}}";
 		};
 	};
-	8B587A2009CF767700353BE3 /* PBXBookmark */ = {
-		isa = PBXBookmark;
-		fRef = 8B2448D108FB2080004716BC /* VitaminSEEWindowController.m */;
-	};
-	8B587A3009CF76BF00353BE3 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 8B587A3109CF76BF00353BE3 /* similar.c */;
-		rLen = 0;
-		rLoc = 2147483647;
-		rType = 0;
-	};
-	8B587A3109CF76BF00353BE3 /* similar.c */ = {
-		isa = PBXFileReference;
-		lastKnownFileType = sourcecode.c.c;
-		name = similar.c;
-		path = "/Users/elliot/Desktop/gqview-2.0.1/src/similar.c";
-		sourceTree = "<absolute>";
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {776, 6272}}";
-			sepNavSelRange = "{6919, 17}";
-			sepNavVisRect = "{{0, 5217}, {686, 850}}";
-			sepNavWindowFrame = "{{678, -18}, {731, 923}}";
-		};
-	};
-	8B587A3609CF76BF00353BE3 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 8B587A3709CF76BF00353BE3 /* similar.h */;
-		rLen = 0;
-		rLoc = 2147483647;
-		rType = 0;
-	};
-	8B587A3709CF76BF00353BE3 /* similar.h */ = {
-		isa = PBXFileReference;
-		lastKnownFileType = sourcecode.c.h;
-		name = similar.h;
-		path = "/Users/elliot/Desktop/gqview-2.0.1/src/similar.h";
-		sourceTree = "<absolute>";
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {686, 850}}";
-			sepNavSelRange = "{494, 0}";
-			sepNavVisRect = "{{0, 0}, {686, 850}}";
-			sepNavWindowFrame = "{{677, 7}, {731, 923}}";
-		};
-	};
 	8B587AFB09CF8ADC00353BE3 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 8B2448D108FB2080004716BC /* VitaminSEEWindowController.m */;
@@ -872,9 +870,16 @@
 	};
 	8B587AFD09CF8ADC00353BE3 /* similar.c */ = {
 		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.c;
 		name = similar.c;
 		path = "/Users/elliot/Desktop/gqview-2.0.1/src/similar.c";
 		sourceTree = "<absolute>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {776, 6272}}";
+			sepNavSelRange = "{6919, 17}";
+			sepNavVisRect = "{{0, 5216}, {686, 850}}";
+			sepNavWindowFrame = "{{678, -14}, {731, 923}}";
+		};
 	};
 	8B587AFE09CF8ADC00353BE3 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -888,9 +893,16 @@
 	};
 	8B587AFF09CF8ADC00353BE3 /* similar.h */ = {
 		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
 		name = similar.h;
 		path = "/Users/elliot/Desktop/gqview-2.0.1/src/similar.h";
 		sourceTree = "<absolute>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {686, 850}}";
+			sepNavSelRange = "{494, 0}";
+			sepNavVisRect = "{{0, 0}, {686, 850}}";
+			sepNavWindowFrame = "{{677, 7}, {731, 923}}";
+		};
 	};
 	8B5A7D2F09B20FD100F7303C /* ViewerDocument.m:63 */ = {
 		isa = PBXFileBreakpoint;
@@ -1384,9 +1396,9 @@
 	8BB695FE099E4329001AE27B /* Changelog */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1058, 2784}}";
-			sepNavSelRange = "{12, 0}";
+			sepNavSelRange = "{66, 217}";
 			sepNavVisRect = "{{0, 0}, {1058, 851}}";
-			sepNavWindowFrame = "{{15, 9}, {1103, 924}}";
+			sepNavWindowFrame = "{{193, 14}, {1103, 924}}";
 		};
 	};
 	8BBAE6E609BB6F4C00789AEF /* RenameFileSheetController.m:260 */ = {
@@ -1789,8 +1801,8 @@
 	8D1107310486CEB800E47090 /* Info.plist */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {797, 9872}}";
-			sepNavSelRange = "{14863, 0}";
-			sepNavVisRect = "{{0, 9075}, {746, 797}}";
+			sepNavSelRange = "{14858, 0}";
+			sepNavVisRect = "{{0, 0}, {746, 797}}";
 			sepNavWindowFrame = "{{15, 68}, {791, 870}}";
 		};
 	};

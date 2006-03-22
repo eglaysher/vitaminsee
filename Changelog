@@ -1,5 +1,5 @@
-(Unreleased)
-------------------------------
+0.7.1 Release (March 21st, 2006)
+--------------------------------
 * Upgrade IconFamily to 0.9.1.
 * Make rename sheet handle extensions like the Save... dialogs do
 * Add a fullscreen mode
@@ -7,7 +7,7 @@
   files, and PDFs.
 
 0.7 Final Release (February 20th, 2006)
--------------------------
+---------------------------------------
 * Add "Enclosing Folder" and "Go to Folder..." toolbar items.
 * Fix Delete toolbar item
 * Fix the Help menu

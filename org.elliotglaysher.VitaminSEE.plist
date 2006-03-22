@@ -21,7 +21,7 @@
 	<key>fileCreator</key>
 	<string></string>
 	<key>fileReleaseDateD</key>
-	<string>11</string>
+	<string>21</string>
 	<key>fileReleaseDateM</key>
 	<string>03</string>
 	<key>fileReleaseDateY</key>
@@ -70,10 +70,13 @@
 	<key>productPrice</key>
 	<string></string>
 	<key>productReleaseNotes</key>
-	<string></string>
+	<string>* Upgrade IconFamily to 0.9.1
+* Make rename sheet handle extensions like the Save... dialogs do
+* Add a fullscreen mode
+* Don't display/generate thumbnails for document types that OSX treats as images but aren't, such as postscript files and PDFs.</string>
 	<key>productRequirements</key>
 	<string>Mac OS 10.3.9, Mac OS 10.4.4 or later</string>
 	<key>productVersion</key>
-	<string>0.7.0</string>
+	<string>0.7.1</string>
 </dict>
 </plist>
