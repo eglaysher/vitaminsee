@@ -36,9 +36,9 @@
 	<string>Fast image browser with Fullscreen</string>
 	<key>productDownloadURL</key>
 	<array>
-		<string>http://www-personal.umich.edu/~glaysher/VitaminSEE%200.7.dmg</string>
-		<string>http://www-personal.umich.edu/~glaysher/VitaminSEE%200.7-Panther.dmg</string>
-		<string>http://www-personal.umich.edu/~glaysher/VitaminSEE%200.7%20Source.tar.bz2</string>
+		<string>http://www.elliotglaysher.org/Releases/VitaminSEE%200.7.1.dmg</string>
+		<string>http://www.elliotglaysher.org/Releases/VitaminSEE%200.7.1-Panther.dmg</string>
+		<string>http://www.elliotglaysher.org/Releases/VitaminSEE%200.7.1%20Source.tar.bz2</string>
 	</array>
 	<key>productFileSize</key>
 	<string></string>

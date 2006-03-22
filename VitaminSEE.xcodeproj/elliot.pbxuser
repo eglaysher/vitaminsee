@@ -166,16 +166,16 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 164660229;
-			PBXWorkspaceStateSaveDate = 164660229;
+			PBXPerProjectTemplateStateSaveDate = 164696210;
+			PBXWorkspaceStateSaveDate = 164696210;
 		};
 		perUserProjectItems = {
-			8B41FD6209D0CEB600FBE050 /* PBXTextBookmark */ = 8B41FD6209D0CEB600FBE050 /* PBXTextBookmark */;
-			8B41FD6309D0CEB600FBE050 /* PBXTextBookmark */ = 8B41FD6309D0CEB600FBE050 /* PBXTextBookmark */;
-			8B41FD6509D0CEB600FBE050 /* PBXTextBookmark */ = 8B41FD6509D0CEB600FBE050 /* PBXTextBookmark */;
-			8B587AFB09CF8ADC00353BE3 /* PBXTextBookmark */ = 8B587AFB09CF8ADC00353BE3 /* PBXTextBookmark */;
-			8B587AFC09CF8ADC00353BE3 /* PBXTextBookmark */ = 8B587AFC09CF8ADC00353BE3 /* PBXTextBookmark */;
-			8B587AFE09CF8ADC00353BE3 /* PBXTextBookmark */ = 8B587AFE09CF8ADC00353BE3 /* PBXTextBookmark */;
+			8B41FD6209D0CEB600FBE050 = 8B41FD6209D0CEB600FBE050 /* PBXTextBookmark */;
+			8B41FD6309D0CEB600FBE050 = 8B41FD6309D0CEB600FBE050 /* PBXTextBookmark */;
+			8B41FD6509D0CEB600FBE050 = 8B41FD6509D0CEB600FBE050 /* PBXTextBookmark */;
+			8B587AFB09CF8ADC00353BE3 = 8B587AFB09CF8ADC00353BE3 /* PBXTextBookmark */;
+			8B587AFC09CF8ADC00353BE3 = 8B587AFC09CF8ADC00353BE3 /* PBXTextBookmark */;
+			8B587AFE09CF8ADC00353BE3 = 8B587AFE09CF8ADC00353BE3 /* PBXTextBookmark */;
 		};
 		sourceControlManager = 8B24488B08FADC51004716BC /* Source Control */;
 		userBuildSettings = {
@@ -804,6 +804,7 @@
 	};
 	8B41FD6409D0CEB600FBE050 /* similar.c */ = {
 		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.c;
 		name = similar.c;
 		path = "/Users/elliot/Desktop/gqview-2.0.1/src/similar.c";
 		sourceTree = "<absolute>";
@@ -820,6 +821,7 @@
 	};
 	8B41FD6609D0CEB600FBE050 /* similar.h */ = {
 		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
 		name = similar.h;
 		path = "/Users/elliot/Desktop/gqview-2.0.1/src/similar.h";
 		sourceTree = "<absolute>";
@@ -874,12 +876,6 @@
 		name = similar.c;
 		path = "/Users/elliot/Desktop/gqview-2.0.1/src/similar.c";
 		sourceTree = "<absolute>";
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {776, 6272}}";
-			sepNavSelRange = "{6919, 17}";
-			sepNavVisRect = "{{0, 5216}, {686, 850}}";
-			sepNavWindowFrame = "{{678, -14}, {731, 923}}";
-		};
 	};
 	8B587AFE09CF8ADC00353BE3 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -897,12 +893,6 @@
 		name = similar.h;
 		path = "/Users/elliot/Desktop/gqview-2.0.1/src/similar.h";
 		sourceTree = "<absolute>";
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {686, 850}}";
-			sepNavSelRange = "{494, 0}";
-			sepNavVisRect = "{{0, 0}, {686, 850}}";
-			sepNavWindowFrame = "{{677, 7}, {731, 923}}";
-		};
 	};
 	8B5A7D2F09B20FD100F7303C /* ViewerDocument.m:63 */ = {
 		isa = PBXFileBreakpoint;

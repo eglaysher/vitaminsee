@@ -581,6 +581,10 @@
     Handle hIconFamilyCopy;
 	NSString *parentDirectory;
 	
+	// Before we do anything, get the original modification time for 
+	NSDate* modificationDate = [[[NSFileManager defaultManager]
+		fileAttributesAtPath:path traverseLink:NO] objectForKey:NSFileModificationDate];
+	
 	if ([path isAbsolutePath])
 		parentDirectory = [path stringByDeletingLastPathComponent];
 	else
@@ -691,6 +695,11 @@
     result = FSSetCatalogInfo( &targetFileFSRef, kFSCatInfoFinderInfo, &catInfo );
     if (result != noErr)
 		return NO;
+					 
+	 // Now set the modification time back to when the file was actually last
+	 // modified
+	 NSDictionary* attributes = [NSDictionary dictionaryWithObjectsAndKeys:modificationDate, NSFileModificationDate, nil];
+	 [[NSFileManager defaultManager] changeFileAttributes:attributes atPath:path];
 	
     // Notify the system that the directory containing the file has changed, to
     // give Finder the chance to find out about the file's new custom icon.
