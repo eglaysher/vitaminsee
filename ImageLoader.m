@@ -281,7 +281,7 @@ static BOOL newTaskThatPreemptsPreload(NSDictionary* currentTask)
 			taskQueueCount = CFDictionaryGetCount((CFDictionaryRef)taskQueue);
 			preloadQueueCount = CFArrayGetCount((CFArrayRef)preloadQueue);
 		}
-		
+
 		// Okay, taskQueueLock is locked. Let's try individual tasks.
 		if(taskQueueCount)
 		{
@@ -292,9 +292,11 @@ static BOOL newTaskThatPreemptsPreload(NSDictionary* currentTask)
 				(CFDictionaryRef)taskQueue, firstRequester);
 			[currentTask retain];
 			[taskQueue removeObjectForKey:firstRequester];
+		
 			pthread_mutex_unlock(&taskQueueLock);
-			
-			[self doDisplayImage:currentTask];
+
+			if(currentTask)
+				[self doDisplayImage:currentTask];
 		}
 		else if(preloadQueueCount)
 		{
@@ -305,7 +307,8 @@ static BOOL newTaskThatPreemptsPreload(NSDictionary* currentTask)
 			[preloadQueue removeObjectAtIndex:0];
 			pthread_mutex_unlock(&taskQueueLock);
 			
-			[self doPreloadImage:path];
+			if(path)
+				[self doPreloadImage:path];
 			[path release];
 		}
 		else
@@ -636,6 +639,9 @@ static BOOL newTaskThatPreemptsPreload(NSDictionary* currentTask)
 	NSData* imageData;
 	EGPath* path = [task objectForKey:@"Path"];
 	
+	if(!task) return nil;
+	if(!path) return nil;
+	
 	// First we check to see if the data is already loaded and resident in the
 	// cache.	
 	NSEnumerator* e = [imageCache objectEnumerator];
@@ -643,7 +649,10 @@ static BOOL newTaskThatPreemptsPreload(NSDictionary* currentTask)
 	while(obj = [e nextObject])
 	{
 		if([[obj objectForKey:@"Path"] isEqual:path]) {
-			[task setObject:[obj objectForKey:@"Data Size"] forKey:@"Data Size"];
+			id dataSize = [obj objectForKey:@"Data Size"];
+			if(dataSize)
+				[task setObject:dataSize forKey:@"Data Size"];
+			
 			return [[obj objectForKey:@"Image Rep"] retain];
 		}
 	}
