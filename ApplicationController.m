@@ -61,6 +61,8 @@
 //#import "HigherOrderMessaging.h"
 #import "CurrentFilePlugin.h"
 
+#import "ImageLoader.h"
+
 @implementation ApplicationController
 
 ///////// TEST PLAN
@@ -635,12 +637,16 @@ static ApplicationController* appControl;
 {
 	if([[NSApp orderedDocuments] count] == 0)
 	{
+		// Tell all the loaded plugins to be blank
 		id components = [ComponentManager getLoadedCurrentFilePlugins];
 		NSEnumerator* e = [components objectEnumerator];
 		id obj;
 		while(obj = [e nextObject]) {
 			[obj currentImageSetTo:0];
 		}		
+		
+		// Clear the image cache in the ImageLoader.
+		[ImageLoader clearAllCaches];
 	}
 }
 

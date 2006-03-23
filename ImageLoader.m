@@ -224,7 +224,6 @@ static BOOL newTaskThatPreemptsPreload(NSDictionary* currentTask)
 	pthread_mutex_unlock(&taskQueueLock);
 }
 
-
 //-----------------------------------------------------------------------------
 
 /** Remove a possible pending load operation.
@@ -239,6 +238,20 @@ static BOOL newTaskThatPreemptsPreload(NSDictionary* currentTask)
 		
 		// Remove any pending calls to this object
 		[NSObject cancelPreviousPerformRequestsWithTarget:requester];
+	}
+	pthread_mutex_unlock(&taskQueueLock);
+}
+
+//-----------------------------------------------------------------------------
+
+/** Clears all the caches. Used when all windows are closed to reclaim memory.
+ */
++(void)clearAllCaches
+{
+	pthread_mutex_lock(&taskQueueLock);
+	{
+		[preloadQueue removeAllObjects];
+		[imageCache removeAllObjects];
 	}
 	pthread_mutex_unlock(&taskQueueLock);
 }

@@ -48,4 +48,5 @@ extern NSString* HIGH_SMOOTHING;
 +(void)loadTask:(NSMutableDictionary*)task;
 +(void)preloadImage:(EGPath*)file;
 +(void)unregisterRequester:(id)requester;
++(void)clearAllCaches;
 @end
