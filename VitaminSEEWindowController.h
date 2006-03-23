@@ -55,9 +55,6 @@
 	
 	IBOutlet NSTextField * progressCurrentTask;
 	
-	NSCursor *handCursor;
-	NSUndoManager* pathManager;	
-	
 	float oldFileListSize;
 }
 -(id)initWithFileList:(id<FileList>)inFileList;
