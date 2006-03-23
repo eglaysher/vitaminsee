@@ -326,11 +326,14 @@ static BOOL generateThumbnails;
 					[thumbnailCache removeObjectForKey:directory];
 				}
 				pthread_rwlock_unlock(&thumbnailCacheLock);
-				
+
 				pthread_mutex_lock(&thumbnailBuildQueueLock);
 				{	
 					[thumbnailBuildQueue removeObjectForKey:directory];
 					[self resetBuildQueueEnumerator];
+					
+					[thumbnailPriorityBuildStack removeObjectForKey:directory];
+					[self resetPriorityQueueEnumerator];
 				}
 				pthread_mutex_unlock(&thumbnailBuildQueueLock);
 			}
