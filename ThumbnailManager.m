@@ -214,6 +214,8 @@ static BOOL generateThumbnails;
 		{
 			EGPath* nextToBuild = [[self getNextPriorityBuild] retain];
 			
+			NSLog(@"Priority Building: %@", nextToBuild);
+			
 			// Unlock the mutex
 			pthread_mutex_unlock(&thumbnailBuildQueueLock);
 		
@@ -225,6 +227,8 @@ static BOOL generateThumbnails;
 			// Object retained because it gets released during
 			// -addThumbnailToCache:file:
 			EGPath* nextToBuild = [[self getNextThumbnailToBuild] retain];
+
+			NSLog(@"Building: %@", nextToBuild);
 
 			// Unlock the mutex
 			pthread_mutex_unlock(&thumbnailBuildQueueLock);
@@ -298,7 +302,7 @@ static BOOL generateThumbnails;
 
 +(void)unsubscribe:(id)object fromDirectory:(EGPath*)directory
 {
-//	NSLog(@"%@ is unsubscribed to %@", object, directory);
+	NSLog(@"%@ is unsubscribed to %@", object, directory);
 	pthread_mutex_lock(&subscriberListLock);
 	{
 		// Make sure that we are unsubscribing from a directory that somebody
@@ -312,7 +316,7 @@ static BOOL generateThumbnails;
 			[subscribers removeObject:object];
 			if([subscribers count] == 0)
 			{
-//				NSLog(@"Removing all data structures for %@", directory);
+				NSLog(@"Removing all data structures for %@", directory);
 				// Subscribers is now invalid.
 				[subscriberList removeObjectForKey:directory];
 				subscribers = 0;

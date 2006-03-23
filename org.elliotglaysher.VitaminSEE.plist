@@ -15,13 +15,13 @@
 	<key>companyPhone</key>
 	<string></string>
 	<key>companyWebSite</key>
-	<string>www.umich.edu/~glaysher</string>
+	<string>www.elliotglaysher.org</string>
 	<key>fileBundleID</key>
 	<string>org.elliotglaysher.VitaminSEE</string>
 	<key>fileCreator</key>
 	<string></string>
 	<key>fileReleaseDateD</key>
-	<string>21</string>
+	<string>22</string>
 	<key>fileReleaseDateM</key>
 	<string>03</string>
 	<key>fileReleaseDateY</key>
@@ -36,9 +36,9 @@
 	<string>Fast image browser with Fullscreen</string>
 	<key>productDownloadURL</key>
 	<array>
-		<string>http://www.elliotglaysher.org/Releases/VitaminSEE%200.7.1.dmg</string>
-		<string>http://www.elliotglaysher.org/Releases/VitaminSEE%200.7.1-Panther.dmg</string>
-		<string>http://www.elliotglaysher.org/Releases/VitaminSEE%200.7.1%20Source.tar.bz2</string>
+		<string>http://www.elliotglaysher.org/Releases/VitaminSEE%200.7.1.1.dmg</string>
+		<string>http://www.elliotglaysher.org/Releases/VitaminSEE%200.7.1.1-Panther.dmg</string>
+		<string>http://www.elliotglaysher.org/Releases/VitaminSEE%200.7.1.1%20Source.tar.bz2</string>
 	</array>
 	<key>productFileSize</key>
 	<string></string>
@@ -66,17 +66,16 @@
 		<string>10.4.4</string>
 	</array>
 	<key>productPageURL</key>
-	<string>http://www-personal.umich.edu/~glaysher/VitaminSEE.html</string>
+	<string>http://www.elliotglaysher.org/vitaminsee</string>
 	<key>productPrice</key>
 	<string></string>
 	<key>productReleaseNotes</key>
-	<string>* Upgrade IconFamily to 0.9.1
-* Make rename sheet handle extensions like the Save... dialogs do
-* Add a fullscreen mode
-* Don't display/generate thumbnails for document types that OSX treats as images but aren't, such as postscript files and PDFs.</string>
+	<string>* When I upgraded to IconFamily 0.9.1, I forgot to port my changes that would restore a file's modification date. Fix this so building a thumbnail of a file does set the modification date.
+* Back/Forward will now focus on the file/folder you were on previously, instead of always starting at the beginning of the list.
+</string>
 	<key>productRequirements</key>
 	<string>Mac OS 10.3.9, Mac OS 10.4.4 or later</string>
 	<key>productVersion</key>
-	<string>0.7.1</string>
+	<string>0.7.1.1</string>
 </dict>
 </plist>

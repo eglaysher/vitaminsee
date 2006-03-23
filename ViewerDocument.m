@@ -61,17 +61,34 @@
 -(void)dealloc
 {
 	NSLog(@"Destroyed!");
-	[window release];		
+	[window release];
+	[super dealloc];	
+}
+
+-(void)close
+{
+	NSLog(@"Closing document!");
 		
 	[currentFile release];
 	
 	[fileList cleanup];
 	[fileList release];
-
+	
 	[viewerNotifications release];
 	
 	[undoManager release];
-	[super dealloc];	
+	
+	[ImageLoader unregisterRequester:self];
+	
+	// Cancel future acts.
+	id appController = [ApplicationController controller];
+	[NSObject cancelPreviousPerformRequestsWithTarget:appController
+											 selector:@selector(becomeMainDocument:)
+											   object:self];
+	[super close];
+	
+	// Release ourselves; we aren't owned by any other object
+	[self release];	
 }
 
 //-----------------------------------------------------------------------------
@@ -100,6 +117,7 @@
 
 		window = [[VitaminSEEWindowController alloc] initWithFileList:fileList];
 		[self addWindowController:window];
+		[window setShouldCloseDocument:YES];
 		viewerNotifications = [[NSNotificationCenter alloc] init];
 		
 		[window showWindow:window];
@@ -259,7 +277,8 @@
  * ImageLoader is given tasks by the method setDisplayedFileTo:.
  */
 -(void)receiveImage:(NSDictionary*)task
-{
+{	
+	NSLog(@"Receiving image!");
 	// If this is still the current file (i.e., not stale...)
 	if([[task objectForKey:@"Path"]  isEqual:currentFile]) {
 		NSImage* image = [task objectForKey:@"Image"];
@@ -694,6 +713,8 @@
 {
 	if([[window class] isEqual:[VitaminSEEWindowController class]])
 	{
+		[window setShouldCloseDocument:NO];
+		
 		// Become fullscreen
 		NSWindow* old = window;
 		window = [[ComponentManager getInteranlComponentNamed:@"FullScreenMode"]
@@ -727,6 +748,7 @@
 		[self redraw];
 		[old close];
 		[old release];
+		[window setShouldCloseDocument:YES];
 	}
 }
 

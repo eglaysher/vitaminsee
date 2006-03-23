@@ -271,15 +271,6 @@
 									  borderType:[scrollView borderType]].height;
 }
 
-// We only hack around the document architecture to get some of its features.
-// Therefore we need to deallocate our ViewerDocument object.
--(void)windowWillClose:(NSNotification *)aNotification
-{
-//	NSLog(@"Window closed!");
-	id document = [self document];
-	[self setDocument:nil];
-	[document release];
-}
 
 - (void)windowDidResize:(NSNotification *)aNotification
 {

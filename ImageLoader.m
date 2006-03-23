@@ -224,6 +224,25 @@ static BOOL newTaskThatPreemptsPreload(NSDictionary* currentTask)
 	pthread_mutex_unlock(&taskQueueLock);
 }
 
+
+//-----------------------------------------------------------------------------
+
+/** Remove a possible pending load operation.
+ */
++(void)unregisterRequester:(id)requester
+{
+	NSNumber* num = [requester documentID];
+	pthread_mutex_lock(&taskQueueLock);
+	{
+		// Remove any pending loads for this object
+		[taskQueue removeObjectForKey:num];
+		
+		// Remove any pending calls to this object
+		[NSObject cancelPreviousPerformRequestsWithTarget:requester];
+	}
+	pthread_mutex_unlock(&taskQueueLock);
+}
+
 @end
 
 // ----------------------------------------------------------------------------
@@ -554,14 +573,21 @@ static BOOL newTaskThatPreemptsPreload(NSDictionary* currentTask)
 	int fileSizeRemaining = fileSize;
 	void* curPtr = rawdata;
 	int count = 0;
+	const int BLOCKSIZE = 1024 * 4;
 	while(fileSizeRemaining > 0)
 	{
-		if(fileSizeRemaining > (1024 * 4))
+		if(fileSizeRemaining > (BLOCKSIZE))
 		{
 			// Load data
-			fread(curPtr, 1, 1024 * 4, inFile);
-			curPtr += 1024 * 4;
-			fileSizeRemaining -= 1024 * 4;
+			if(fread(curPtr, 1, BLOCKSIZE, inFile) != BLOCKSIZE) {
+				// Read error. Bail.
+				free(rawdata);
+				fclose(inFile);
+				return nil;
+			}
+			
+			curPtr += BLOCKSIZE;
+			fileSizeRemaining -= BLOCKSIZE;
 			
 			// It takes time to load data. Should we cancel?
 			if(count > iterations) {
@@ -578,7 +604,12 @@ static BOOL newTaskThatPreemptsPreload(NSDictionary* currentTask)
 		else
 		{
 			// Load the remaining chunk into memory.
-			fread(curPtr, 1, fileSizeRemaining, inFile);
+			if(fread(curPtr, 1, fileSizeRemaining, inFile) != fileSizeRemaining) {
+				// Read error. Bail.
+				free(rawdata);
+				fclose(inFile);
+				return nil;				
+			}
 			fileSizeRemaining -= fileSizeRemaining;
 		}
 	}
