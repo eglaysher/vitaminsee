@@ -463,23 +463,38 @@ static BOOL newTaskThatPreemptsPreload(NSDictionary* currentTask)
 		// Draw the image onto a new NSImage using smooth scaling. This is done
 		// whenever the image isn't animated so that the picture will have 
 		// some antialiasin lovin' applied to it.
-		imageToRet = [[NSImage alloc] initWithSize:displaySize];
-		[imageToRet lockFocus];
+		@try
 		{
-			if([[taskCopy objectForKey:@"Smoothing"] isEqual:LOW_SMOOTHING])
+			imageToRet = [[NSImage alloc] initWithSize:displaySize];
+			[imageToRet lockFocus];
 			{
-				[[NSGraphicsContext currentContext] 
-					setImageInterpolation:NSImageInterpolationLow];
+				if([[taskCopy objectForKey:@"Smoothing"] isEqual:LOW_SMOOTHING])
+				{
+					[[NSGraphicsContext currentContext] 
+						setImageInterpolation:NSImageInterpolationLow];
+				}
+				else
+				{
+					[[NSGraphicsContext currentContext] 
+						setImageInterpolation:NSImageInterpolationHigh];
+				}
+				
+				[imageRep drawInRect:NSMakeRect(0,0,displaySize.width,displaySize.													height)];
 			}
-			else
-			{
-				[[NSGraphicsContext currentContext] 
-					setImageInterpolation:NSImageInterpolationHigh];
-			}
-			
-			[imageRep drawInRect:NSMakeRect(0,0,displaySize.width,displaySize.													height)];
+			[imageToRet unlockFocus];
 		}
-		[imageToRet unlockFocus];
+		@catch(NSException* e)
+		{
+			// The image will still be locked, even if -lock fails.
+			[imageToRet unlockFocus];
+			[imageToRet release];
+			
+			NSLog(@"Exception: %@:%@", [e name] , [e reason]);
+			
+			// In this case, don't update the display; it just won't be as 
+			// pretty on screen.
+			return;
+		}
 		
 		// Now give us a chance to BAIL if we've already been given another 
 		// display command
