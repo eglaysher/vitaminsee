@@ -214,7 +214,7 @@ static BOOL generateThumbnails;
 		{
 			EGPath* nextToBuild = [[self getNextPriorityBuild] retain];
 			
-			NSLog(@"Priority Building: %@", nextToBuild);
+//			NSLog(@"Priority Building: %@", nextToBuild);
 			
 			// Unlock the mutex
 			pthread_mutex_unlock(&thumbnailBuildQueueLock);
@@ -228,7 +228,7 @@ static BOOL generateThumbnails;
 			// -addThumbnailToCache:file:
 			EGPath* nextToBuild = [[self getNextThumbnailToBuild] retain];
 
-			NSLog(@"Building: %@", nextToBuild);
+//			NSLog(@"Building: %@", nextToBuild);
 
 			// Unlock the mutex
 			pthread_mutex_unlock(&thumbnailBuildQueueLock);

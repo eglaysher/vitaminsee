@@ -61,7 +61,8 @@
 -(void)dealloc
 {
 	NSLog(@"Destroyed!");
-	[window release];
+//	[window release];
+	[documentID release];
 	[super dealloc];	
 }
 
@@ -115,7 +116,7 @@
 		fileList = [[ComponentManager getFileListPluginNamed:fileListName] build];
 		[fileList setDelegate:self];
 
-		window = [[VitaminSEEWindowController alloc] initWithFileList:fileList];
+		window = [[[VitaminSEEWindowController alloc] initWithFileList:fileList] autorelease];
 		[self addWindowController:window];
 		[window setShouldCloseDocument:YES];
 		viewerNotifications = [[NSNotificationCenter alloc] init];
@@ -278,7 +279,7 @@
  */
 -(void)receiveImage:(NSDictionary*)task
 {	
-	NSLog(@"Receiving image!");
+//	NSLog(@"Receiving image!");
 	// If this is still the current file (i.e., not stale...)
 	if([[task objectForKey:@"Path"]  isEqual:currentFile]) {
 		NSImage* image = [task objectForKey:@"Image"];
@@ -717,16 +718,13 @@
 		
 		// Become fullscreen
 		NSWindow* old = window;
-		window = [[ComponentManager getInteranlComponentNamed:@"FullScreenMode"]
-			build];
+		window = [[[ComponentManager getInteranlComponentNamed:@"FullScreenMode"]
+			build] autorelease];
 		[self addWindowController:window];
 		[window setFileList:fileList];
-//		if(![old fileListHidden])
-//			[window toggleFileList:self];
 		[window becomeFullscreen];
 		[self redraw];
 		[old close];
-		[old release];
 	}
 	else
 	{
@@ -734,20 +732,14 @@
 		NSWindowController* old = window;
 		
 		// Recreate the real VitaminSEE window.
-		window = [[VitaminSEEWindowController alloc] initWithFileList:fileList];
+		window = [[[VitaminSEEWindowController alloc] initWithFileList:fileList] autorelease];
 		[self addWindowController:window];		
 		[window setFileList:fileList];
 		[window updateWindowTitle];
 		
-		// Right here, we need to get the state of the file list from the
-		// Fullscreen window controller and set it back to whatever it is
-		// right here be collapsing or expanding the system.
-//		[window setFileListVisible:[old fileListControllerVisible]];
-		
 		[[window window] makeKeyAndOrderFront:self];
 		[self redraw];
 		[old close];
-		[old release];
 		[window setShouldCloseDocument:YES];
 	}
 }

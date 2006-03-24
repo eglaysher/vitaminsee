@@ -90,6 +90,8 @@
 
 -(void)dealloc
 {
+	NSLog(@"Deallocing FullScreenWindowController!");
+	
 	[fileListViewerController release];
 	[fullScreenControlWindowController release];
 	

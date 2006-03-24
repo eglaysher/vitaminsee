@@ -61,6 +61,8 @@
 
 -(void)dealloc
 {
+	NSLog(@"Deallocating window!");
+	
 	[NSObject cancelPreviousPerformRequestsWithTarget:self];
 	[currentFileViewHolder setSubview:0];	
 	[super dealloc];
