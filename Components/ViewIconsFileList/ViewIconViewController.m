@@ -132,6 +132,11 @@ static BOOL shouldPreloadImages;
 	[fileWatcher release];	
 	[pathManager release];
 	[currentDirectory release];
+	
+	// Since we're the file's owner, we are responsible for releasing top level
+	// nib objects. Usually this gets taken care of with 
+	[ourView release];
+	
 	[super dealloc];
 }
 

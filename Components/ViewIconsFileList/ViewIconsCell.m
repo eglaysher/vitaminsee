@@ -63,6 +63,7 @@ NSSize IMAGE_SIZE = {128.0f, 128.0f};
 {
 	[title release];
 //	unsigned refcount = [iconImage retainCount];
+//	NSLog(@"Thumbnail %@ has refcount %d", iconImage, refcount);
 	[iconImage release];
 	[cachedCellTitle release];
 	[thisCellsFullPath release];
