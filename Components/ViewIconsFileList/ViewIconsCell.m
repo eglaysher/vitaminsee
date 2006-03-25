@@ -66,38 +66,32 @@ NSSize IMAGE_SIZE = {128.0f, 128.0f};
 //	NSLog(@"Thumbnail %@ has refcount %d", iconImage, refcount);
 	[iconImage release];
 	[cachedCellTitle release];
-	[thisCellsFullPath release];
 	[thisCellsEGPath release];
 	[super dealloc];
 }
 
--(NSString*)cellPath
+-(EGPath*)cellPath
 {
-	return thisCellsFullPath;
+	return thisCellsEGPath;
 }
 
--(void)setTitle:(NSString*)newTitle
-{
-	[newTitle retain];
-	[title release];
-	title = newTitle;
-	[self resetTitleCache];
-}
+//-(void)setTitle:(NSString*)newTitle
+//{
+//	NSLog(@"Insert title: %@", newTitle);
+//	[newTitle retain];
+//	[title release];
+//	title = newTitle;
+//	[self resetTitleCache];
+//}
 
 -(void)resetTitleCache
 {
 	cachedTitleWidth = FLT_MAX;
 }
 
--(void)setCellPropertiesFromPath:(NSString*)path andEGPath:(EGPath*)egpath
+-(void)setCellPropertiesFromEGPath:(EGPath*)egpath
 {
-//	NSLog(@"-[ViewIconsCell setCellPropertiesFromPath:%@ andEGPath:%@", path, egpath);
-	
-	// Keep this path...
-	[path retain];
-//	NSString* tmp = [[NSString alloc] initWithString:path];
-	[thisCellsFullPath release];
-	thisCellsFullPath = path;
+	NSString* thisCellsFullPath = [egpath fileSystemPath];
 	
 	[title release];
 	title = [[thisCellsFullPath lastPathComponent] retain]; 

@@ -331,7 +331,7 @@ willDisplayCell:(id)cell
 {
 	EGPath* path = [fileList objectAtIndex:row];
 	// FIXME
-	[cell setCellPropertiesFromPath:[path fileSystemPath] andEGPath:path];
+	[cell setCellPropertiesFromEGPath:path];
 	
 	// If the cell image hasn't been loaded
 	if(![cell iconImage])
@@ -397,10 +397,9 @@ willDisplayCell:(id)cell
 		
 		if(preloadRow > -1)
 		{
-			id node = [[ourBrowser loadedCellAtRow:preloadRow column:0] cellPath];
-			// FIXME
+			EGPath* node = [[ourBrowser loadedCellAtRow:preloadRow column:0] cellPath];
 			if(node && [node isImage])
-				[ImageLoader preloadImage:[EGPath pathWithPath:node]];
+				[ImageLoader preloadImage:node];
 		}		
 	}
 

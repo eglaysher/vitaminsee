@@ -75,6 +75,6 @@ extern NSString* EGFileViewDidChange;
 -(void)removeUnneededImageReps:(NSImage*)image;
 
 -(void)setThumbnail:(NSImage*)image 
-			forFile:(NSString*)path;
+			forFile:(EGPath*)path;
 
 @end

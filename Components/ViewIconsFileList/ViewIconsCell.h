@@ -37,21 +37,20 @@
 	BOOL selected;
 
 	NSImage* iconImage;
-	NSString* thisCellsFullPath;	
 	EGPath* thisCellsEGPath;
 
 	float cachedTitleWidth;
 	NSString* cachedCellTitle;
 }
 
--(void)setCellPropertiesFromPath:(NSString*)path andEGPath:(EGPath*)egpath;
+-(void)setCellPropertiesFromEGPath:(EGPath*)egpath;
 
 - (NSImage*)iconImage;
 -(void)setIconImage:(NSImage*)image;
 
--(NSString*)cellPath;
+-(EGPath*)cellPath;
 
--(void)setTitle:(NSString*)newTitle;
+//-(void)setTitle:(NSString*)newTitle;
 
 -(void)resetTitleCache;
 @end
