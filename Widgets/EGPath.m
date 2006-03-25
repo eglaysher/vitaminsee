@@ -496,9 +496,30 @@ static NSString* egPathRootDisplayName = 0;
 	return [EGPath pathWithPath:[fileSystemPath stringByDeletingLastPathComponent]];
 }
 
--(NSComparisonResult)caseInsensitiveCompare:(id)rhs
+-(NSComparisonResult)caseInsensitiveCompare:(id)object
 {
-	return [fileSystemPath caseInsensitiveCompare:rhs];
+	NSComparisonResult result;
+	
+	// TODO: This will have to be more robust.
+	if([self isMemberOfClass:[object class]])
+	{
+		if([self isKindOfClass:[EGPathRoot class]])
+			result = NSOrderedSame;
+		else if([self isKindOfClass:[EGPathFilesystemPath class]])
+			result = [[self fileSystemPath] caseInsensitiveCompare:
+				[object fileSystemPath]];
+	}
+	else
+	{
+		// Sort order:
+		if([object isKindOfClass:[EGPathRoot class]] &&
+		   [self isKindOfClass:[EGPathFilesystemPath class]])
+			result = NSOrderedDescending;
+		else
+			result = NSOrderedAscending;
+	}
+	
+	return result;
 }
 
 -(NSImage*)iconImageOfSize:(NSSize)size
