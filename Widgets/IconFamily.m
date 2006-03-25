@@ -442,21 +442,17 @@
 - (NSImage*) imageWithAllReps
 {
     NSImage* image = NULL;
-    image = [[[NSImage alloc] initWithData:[NSData dataWithBytes:*hIconFamily length:GetHandleSize((Handle)hIconFamily)]] autorelease];
+    image = [[[NSImage alloc] initWithData:[NSData dataWithBytesNoCopy:*hIconFamily length:GetHandleSize((Handle)hIconFamily) freeWhenDone:NO]] autorelease];
 
     return image;
-
-    //investigate optimisations (dataWithBytesNoCopy:length: for example...)
 }
 
 - (NSImage*) imageWithAllRepsNoAutorelease
 {
     NSImage* image = NULL;
-    image = [[NSImage alloc] initWithData:[NSData dataWithBytes:*hIconFamily length:GetHandleSize((Handle)hIconFamily)]];
+    image = [[NSImage alloc] initWithData:[NSData dataWithBytesNoCopy:*hIconFamily length:GetHandleSize((Handle)hIconFamily) freeWhenDone:NO]];
 	
     return image;
-	
-    //investigate optimisations (dataWithBytesNoCopy:length: for example...)
 }
 
 - (BOOL) setIconFamilyElement:(OSType)elementType fromBitmapImageRep:(NSBitmapImageRep*)bitmapImageRep
@@ -936,7 +932,7 @@
 
     HLock((Handle)hIconFamily);
     
-    iconData = [NSData dataWithBytes:*hIconFamily length:GetHandleSize((Handle)hIconFamily)];
+    iconData = [NSData dataWithBytesNoCopy:*hIconFamily length:GetHandleSize((Handle)hIconFamily) freeWhenDone:NO];
     BOOL success = [iconData writeToFile:path atomically:NO];
 
     HUnlock((Handle)hIconFamily);
