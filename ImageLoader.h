@@ -49,4 +49,8 @@ extern NSString* HIGH_SMOOTHING;
 +(void)preloadImage:(EGPath*)file;
 +(void)unregisterRequester:(id)requester;
 +(void)clearAllCaches;
+
+// Functions used in unit testing.
++(NSArray*)imagesInCache;
+
 @end

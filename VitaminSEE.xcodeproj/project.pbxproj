@@ -157,6 +157,7 @@
 		8BE1487A09D5D9A80070E809 /* EGPathTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE1487509D5D9680070E809 /* EGPathTests.m */; };
 		8BE1492609D5E0050070E809 /* UnitTests-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8BE1492509D5E0050070E809 /* UnitTests-Info.plist */; };
 		8BE14BA409D5E3740070E809 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BE14B8F09D5E3740070E809 /* SenTestingKit.framework */; };
+		8BE14BE309D5E8670070E809 /* ImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE14BE209D5E8670070E809 /* ImageLoader.m */; };
 		8BEA54AF090BE18C00F83026 /* GotoFolderSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BEA5470090BDFA000F83026 /* GotoFolderSheetController.m */; };
 		8BEA54C1090BE22D00F83026 /* GotoFolderSheet.nib in Resources */ = {isa = PBXBuildFile; fileRef = 8BEA54BF090BE22D00F83026 /* GotoFolderSheet.nib */; };
 		8BEA5552090BE82800F83026 /* GotoFolderSheetFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BEA5551090BE82800F83026 /* GotoFolderSheetFactory.m */; };
@@ -667,6 +668,8 @@
 		8BE1487509D5D9680070E809 /* EGPathTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EGPathTests.m; path = UnitTests/EGPathTests.m; sourceTree = "<group>"; };
 		8BE1492509D5E0050070E809 /* UnitTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xml; name = "UnitTests-Info.plist"; path = "UnitTests/UnitTests-Info.plist"; sourceTree = "<group>"; };
 		8BE14B8F09D5E3740070E809 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = /System/Library/Frameworks/SenTestingKit.framework; sourceTree = "<absolute>"; };
+		8BE14BE109D5E8670070E809 /* ImageLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImageLoader.h; path = UnitTests/ImageLoader.h; sourceTree = "<group>"; };
+		8BE14BE209D5E8670070E809 /* ImageLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImageLoader.m; path = UnitTests/ImageLoader.m; sourceTree = "<group>"; };
 		8BEA546E090BDFA000F83026 /* GotoFolderSheet-Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xml; name = "GotoFolderSheet-Info.plist"; path = "Components/GotoFolderSheet/GotoFolderSheet-Info.plist"; sourceTree = "<group>"; };
 		8BEA546F090BDFA000F83026 /* GotoFolderSheetController.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = GotoFolderSheetController.h; path = Components/GotoFolderSheet/GotoFolderSheetController.h; sourceTree = "<group>"; };
 		8BEA5470090BDFA000F83026 /* GotoFolderSheetController.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = GotoFolderSheetController.m; path = Components/GotoFolderSheet/GotoFolderSheetController.m; sourceTree = "<group>"; };
@@ -1337,6 +1340,8 @@
 				8BE1492509D5E0050070E809 /* UnitTests-Info.plist */,
 				8BE1487409D5D9680070E809 /* EGPathTests.h */,
 				8BE1487509D5D9680070E809 /* EGPathTests.m */,
+				8BE14BE109D5E8670070E809 /* ImageLoader.h */,
+				8BE14BE209D5E8670070E809 /* ImageLoader.m */,
 			);
 			name = "Unit Tests";
 			sourceTree = "<group>";
@@ -2952,6 +2957,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8BE1487A09D5D9A80070E809 /* EGPathTests.m in Sources */,
+				8BE14BE309D5E8670070E809 /* ImageLoader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

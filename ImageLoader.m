@@ -66,7 +66,7 @@ static NSMutableDictionary* taskQueue;
 // Array of the next images to preload... [EGPath, EGPath...]
 static NSMutableArray* preloadQueue = 0;
 
-
+static pthread_mutex_t imageCacheLock;
 static NSMutableDictionary* imageCache = 0;
 
 /** Describes a set of functions used to check if a certain task should be 
@@ -169,6 +169,7 @@ static BOOL newTaskThatPreemptsPreload(NSDictionary* currentTask)
 	// Create the main data structures
 	pthread_mutex_init(&taskQueueLock, NULL);
 	pthread_cond_init(&conditionLock, NULL);
+	pthread_mutex_init(&imageCacheLock, NULL);
 	taskQueue = [[NSMutableDictionary alloc] init];
 	preloadQueue = [[NSMutableArray alloc] init];
 	imageCache = [[NSMutableDictionary alloc] init];
@@ -252,9 +253,34 @@ static BOOL newTaskThatPreemptsPreload(NSDictionary* currentTask)
 	pthread_mutex_lock(&taskQueueLock);
 	{
 		[preloadQueue removeAllObjects];
-//		[imageCache removeAllObjects];
 	}
 	pthread_mutex_unlock(&taskQueueLock);
+	
+	pthread_mutex_lock(&imageCacheLock);
+	{
+		[imageCache removeAllObjects];		
+	}
+	pthread_mutex_unlock(&imageCacheLock);
+}
+
+//-----------------------------------------------------------------------------
+
+/** Get a list of files in the image cache.
+ *
+ * @return An NSArray containing the file names in the image cache
+ * @note This method is used primarily in unit testing; it is not relied on in
+ *       normal code.
+ */
++(NSArray*)imagesInCache
+{
+	NSArray* toReturn;
+	pthread_mutex_lock(&imageCacheLock);
+	{
+		toReturn = [[[imageCache allKeys] copy] autorelease];
+	}
+	pthread_mutex_unlock(&imageCacheLock);
+	
+	return toReturn;
 }
 
 @end
@@ -658,20 +684,27 @@ static BOOL newTaskThatPreemptsPreload(NSDictionary* currentTask)
 	
 	// First we check to see if the data is already loaded and resident in the
 	// cache.	
-	NSEnumerator* e = [imageCache objectEnumerator];
-	id obj;
-	while(obj = [e nextObject])
+	pthread_mutex_lock(&imageCacheLock);
 	{
-		if([[obj objectForKey:@"Path"] isEqual:path]) {
-			id dataSize = [obj objectForKey:@"Data Size"];
-			if(dataSize)
-				[task setObject:dataSize forKey:@"Data Size"];
-			else
-				[task setObject:[NSNumber numberWithInt:0] forKey:@"Data Size"];
-			
-			return [[obj objectForKey:@"Image Rep"] retain];
-		}
+		NSEnumerator* e = [imageCache objectEnumerator];
+		id obj;
+		while(obj = [e nextObject])
+		{
+			if([[obj objectForKey:@"Path"] isEqual:path]) {
+				id dataSize = [obj objectForKey:@"Data Size"];
+				if(dataSize)
+					[task setObject:dataSize forKey:@"Data Size"];
+				else
+					[task setObject:[NSNumber numberWithInt:0] 
+							 forKey:@"Data Size"];
+
+				// Unlock the mutex since we're leaving the function
+				pthread_mutex_unlock(&imageCacheLock);
+				return [[obj objectForKey:@"Image Rep"] retain];
+			}
+		}		
 	}
+	pthread_mutex_unlock(&imageCacheLock);
 
 	// If the file wasn't in the cache, then we need to load it.
 	imageData = [self loadFile:path cancelFunction:cancelFunction taskToCancel:task];
@@ -710,8 +743,11 @@ static BOOL newTaskThatPreemptsPreload(NSDictionary* currentTask)
 		imageRep, @"Image Rep",
 		filesize, @"Data Size",
 		nil];
-	[imageCache setObject:dict forKey:path];
-//	NSLog(@"Loading image '%@' from disk...", path);
+	pthread_mutex_lock(&imageCacheLock);
+	{
+		[imageCache setObject:dict forKey:path];		
+	}
+	pthread_mutex_unlock(&imageCacheLock);
 
 	return imageRep;
 }
@@ -801,7 +837,14 @@ static BOOL newTaskThatPreemptsPreload(NSDictionary* currentTask)
  */
 +(void)doPreloadImage:(EGPath*)path
 {
-	if(![imageCache objectForKey:path]) 
+	BOOL objectNotLoaded;
+	pthread_mutex_lock(&imageCacheLock);
+	{
+		objectNotLoaded = ![imageCache objectForKey:path];
+	}
+	pthread_mutex_unlock(&imageCacheLock);
+	
+	if(objectNotLoaded) 
 	{		
 		NSMutableDictionary* dictionary = [NSMutableDictionary 
 			dictionaryWithObject:path forKey:@"Path"];
@@ -816,29 +859,33 @@ static BOOL newTaskThatPreemptsPreload(NSDictionary* currentTask)
  */
 +(void)evictImages
 {
-	if([imageCache count] > CACHE_SIZE)
+	pthread_mutex_lock(&imageCacheLock);
 	{
-		NSString* oldestPath = nil;
-		NSDate* oldestDate = [NSDate date];
-		
-		NSArray* currentImages = [imageCache allKeys];
-		int i = 0, count = [currentImages count];
-		for(; i < count; ++i)
+		if([imageCache count] > CACHE_SIZE)
 		{
-			NSString* cur = (NSString*)CFArrayGetValueAtIndex((CFArrayRef)
-															currentImages, i);
-			NSDictionary* cacheEntry = [imageCache objectForKey:cur];
-			if([oldestDate compare:[cacheEntry objectForKey:@"Date"]] ==
-			   NSOrderedDescending)
+			NSString* oldestPath = nil;
+			NSDate* oldestDate = [NSDate date];
+			
+			NSArray* currentImages = [imageCache allKeys];
+			int i = 0, count = [currentImages count];
+			for(; i < count; ++i)
 			{
-				// this is older!
-				oldestDate = [cacheEntry objectForKey:@"Date"];
-				oldestPath = cur;
+				NSString* cur = (NSString*)CFArrayGetValueAtIndex((CFArrayRef)
+																currentImages, i);
+				NSDictionary* cacheEntry = [imageCache objectForKey:cur];
+				if([oldestDate compare:[cacheEntry objectForKey:@"Date"]] ==
+				   NSOrderedDescending)
+				{
+					// this is older!
+					oldestDate = [cacheEntry objectForKey:@"Date"];
+					oldestPath = cur;
+				}
 			}
+			
+			[imageCache removeObjectForKey:oldestPath];
 		}
-		
-		[imageCache removeObjectForKey:oldestPath];
 	}
+	pthread_mutex_unlock(&imageCacheLock);
 }
 
 @end
