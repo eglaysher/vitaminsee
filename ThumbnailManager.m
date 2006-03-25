@@ -472,22 +472,22 @@ static BOOL generateThumbnails;
 {
 	// I don't think there IS an autorelease...
 	NSData* data = [path dataRepresentationOfPath];
-	//[[NSData alloc] initWithContentsOfFile:path];
-	if(!data) 
+	if(!data)
 	{
 		NSLog(@"WARNING! Couldn't load file %@ so we could make a thumbnail...", path);
-		return 0;
+		return [[path iconImageOfSize:NSMakeSize(128,128)] retain];
 	}
 	NSImage* image = [[NSImage alloc] initWithData:data];
 	[data release];
 	if(!image) 
 	{
 		NSLog(@"WARNING! Couldn't make an image from the data in %@ so we could make a thumbnail...", path);
-		return 0;
+		return [[path iconImageOfSize:NSMakeSize(128,128)] retain];
 	}
 	
 	// Set icon
 	IconFamily* iconFamily = [[IconFamily alloc] initWithThumbnailsOfImage:image];
+	[image release];
 	NSImage* thumbnail;
 	if(iconFamily)
 	{
@@ -499,18 +499,16 @@ static BOOL generateThumbnails;
 		
 		if([path isNaturalFile] && shouldSaveIconToDisk)
 		{
-//			NSLog(@"Setting the thumbnail for %@", path);
 			[iconFamily setAsCustomIconForFile:[path fileSystemPath]];
 		}
 		
 		thumbnail = [iconFamily imageWithAllRepsNoAutorelease];
-		//		NSLog(@"Found thumbnail: %@", thumbnail);
+
 		[iconFamily release];
 	}
 	else
-		NSLog(@"Couldn't build iconFamily for %@!", path);
-	
-	[image release];
+		NSLog(@"Couldn't build iconFamily for %@!", path);	
+
 	return thumbnail;
 }
 
