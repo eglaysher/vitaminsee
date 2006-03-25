@@ -228,7 +228,7 @@ static BOOL generateThumbnails;
 			// -addThumbnailToCache:file:
 			EGPath* nextToBuild = [[self getNextThumbnailToBuild] retain];
 
-//			NSLog(@"Building: %@", nextToBuild);
+			NSLog(@"Building: %@", nextToBuild);
 
 			// Unlock the mutex
 			pthread_mutex_unlock(&thumbnailBuildQueueLock);

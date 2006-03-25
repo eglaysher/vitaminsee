@@ -75,14 +75,13 @@ NSSize IMAGE_SIZE = {128.0f, 128.0f};
 	return thisCellsEGPath;
 }
 
-//-(void)setTitle:(NSString*)newTitle
-//{
-//	NSLog(@"Insert title: %@", newTitle);
-//	[newTitle retain];
-//	[title release];
-//	title = newTitle;
-//	[self resetTitleCache];
-//}
+-(void)setTitle:(NSString*)newTitle
+{
+	[newTitle retain];
+	[title release];
+	title = newTitle;
+	[self resetTitleCache];
+}
 
 -(void)resetTitleCache
 {

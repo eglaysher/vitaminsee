@@ -80,7 +80,9 @@ static NSMutableArray* fileExtensions = 0;
 	if([self isMemberOfClass:[object class]])
 	{
 		if([self isKindOfClass:[EGPathRoot class]])
+		{
 			result = NSOrderedSame;
+		}
 		else if([self isKindOfClass:[EGPathFilesystemPath class]])
 			result = [[self fileSystemPath] caseInsensitiveCompare:
 				[object fileSystemPath]];
@@ -94,7 +96,7 @@ static NSMutableArray* fileExtensions = 0;
 		else
 			result = NSOrderedAscending;
 	}
-	
+
 	return result;
 }
 
@@ -326,6 +328,14 @@ static NSString* egPathRootDisplayName = 0;
 	return [NSArray arrayWithObject:[EGPathRoot root]];
 }
 
+/** We need an arbitrary hash value that's always equal since all EGPathRoot
+ * objects are equal to each other.
+ */
+-(unsigned int)hash
+{
+	return 25;
+}
+
 @end
 
 @implementation EGPathFilesystemPath
@@ -403,6 +413,11 @@ static NSString* egPathRootDisplayName = 0;
 		[fullChildPaths addObject:fullPath];		
 	}
 	
+	// This is a special case; The /Network directory always needs to be part
+	// of the Root, not /.
+	if([fileSystemPath isEqualToString:@"/"])
+		[fullChildPaths removeObject:@"/Network"];
+	
 	return [self buildEGPathArrayFromArrayOfNSStrings:fullChildPaths];
 }
 
@@ -443,7 +458,7 @@ static NSString* egPathRootDisplayName = 0;
 -(NSArray*)pathDisplayComponents
 {
 	NSArray* pathComponents = [self pathComponents];
-	NSMutableArray* displayComponents = [NSMutableArray array];
+	NSMutableArray* displayComponents = [NSMutableArray arrayWithCapacity:[pathComponents count]];
 	int i = 0, count = [pathComponents count];
 	for(; i < count; ++i)
 	{
@@ -488,12 +503,15 @@ static NSString* egPathRootDisplayName = 0;
 
 -(EGPath*)pathByDeletingLastPathComponent
 {
-//	NSArray* components = [self pathComponents];
-//	unsigned count = [components count];
-//	if(count > 0)
-//		count--;
-//	return [components objectAtIndex:count];
-	return [EGPath pathWithPath:[fileSystemPath stringByDeletingLastPathComponent]];
+	NSArray* components = [self pathComponents];
+	unsigned count = [components count];
+	if(count > 1)
+		count -= 2;
+	else if(count > 0)
+		return [EGPath root];
+	
+	return [components objectAtIndex:count];
+//	return [EGPath pathWithPath:[fileSystemPath stringByDeletingLastPathComponent]];
 }
 
 -(NSComparisonResult)caseInsensitiveCompare:(id)object

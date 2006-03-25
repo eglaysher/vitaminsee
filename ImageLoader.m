@@ -66,6 +66,7 @@ static NSMutableDictionary* taskQueue;
 // Array of the next images to preload... [EGPath, EGPath...]
 static NSMutableArray* preloadQueue = 0;
 
+
 static NSMutableDictionary* imageCache = 0;
 
 /** Describes a set of functions used to check if a certain task should be 
@@ -251,7 +252,7 @@ static BOOL newTaskThatPreemptsPreload(NSDictionary* currentTask)
 	pthread_mutex_lock(&taskQueueLock);
 	{
 		[preloadQueue removeAllObjects];
-		[imageCache removeAllObjects];
+//		[imageCache removeAllObjects];
 	}
 	pthread_mutex_unlock(&taskQueueLock);
 }
@@ -665,6 +666,8 @@ static BOOL newTaskThatPreemptsPreload(NSDictionary* currentTask)
 			id dataSize = [obj objectForKey:@"Data Size"];
 			if(dataSize)
 				[task setObject:dataSize forKey:@"Data Size"];
+			else
+				[task setObject:[NSNumber numberWithInt:0] forKey:@"Data Size"];
 			
 			return [[obj objectForKey:@"Image Rep"] retain];
 		}
