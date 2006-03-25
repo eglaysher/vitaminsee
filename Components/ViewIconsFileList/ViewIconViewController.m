@@ -123,7 +123,6 @@ static BOOL shouldPreloadImages;
 	// Unregister for our path notifications
 	if([currentDirectory isNaturalFile])
 		[self unwatchPath:currentDirectory];
-//		[fileWatcher removePath:[currentDirectory fileSystemPath]];	
 }
 
 -(void)dealloc
@@ -200,7 +199,6 @@ static BOOL shouldPreloadImages;
 		if([currentDirectory isNaturalFile]) 
 		{
 			[self unwatchPath:currentDirectory];
-//			[fileWatcher removePath:[currentDirectory fileSystemPath]];
 		}
 		
 		// Note that we unsubscribe from the old directory after 
@@ -208,8 +206,6 @@ static BOOL shouldPreloadImages;
 	}
 	
 	if([newCurrentDirectory isNaturalFile]) {
-		// TODO: Watch every path all the way down.
-//		[fileWatcher addPath:[newCurrentDirectory fileSystemPath]];		
 		[self watchPath:newCurrentDirectory];
 	}
 	
@@ -247,19 +243,17 @@ static BOOL shouldPreloadImages;
 {
 //	NSLog(@"File: %@ in %@", file, fileList);
 	
-	unsigned index = [fileList binarySearchFor:[file fileSystemPath]
+	unsigned index = [fileList binarySearchFor:file
 							  withSortSelector:@selector(caseInsensitiveCompare:)];
 	
 	if(index != NSNotFound)
 	{
 		//[[ourBrowser loadedCellAtRow:index column:0] setNeedsDisplay];
-//		NSLog(@"Need display!");
 		[ourBrowser setNeedsDisplay];
 		[ourBrowser selectRow:index inColumn:0];
 
 		// Now notify the delegate like it's a normal file selection operation.
-		[delegate setDisplayedFileTo:
-			[EGPath pathWithPath:[fileList objectAtIndex:index]]];
+		[delegate setDisplayedFileTo:[fileList objectAtIndex:index]];
 		
 		return YES;
 	}
@@ -335,17 +329,15 @@ willDisplayCell:(id)cell
 		  atRow:(int)row 
 		 column:(int)column
 {
-	NSString* path = [fileList objectAtIndex:row];
+	EGPath* path = [fileList objectAtIndex:row];
 	// FIXME
-	[cell setCellPropertiesFromPath:path andEGPath:
-		[NSClassFromString(@"EGPath") pathWithPath:path]];
+	[cell setCellPropertiesFromPath:[path fileSystemPath] andEGPath:path];
 	
 	// If the cell image hasn't been loaded
 	if(![cell iconImage])
 	{
 		// If there's an entry in the thumbnail cache, use it
-		NSImage* icon = [ThumbnailManager getThumbnailFor:
-			[NSClassFromString(@"EGPath") pathWithPath:path]];
+		NSImage* icon = [ThumbnailManager getThumbnailFor:path];
 		
 		// If there isn't, use the file icon...
 		if(!icon)
@@ -367,9 +359,9 @@ willDisplayCell:(id)cell
 	if(index == -1)
 		return;
 	
-	NSString* absolutePath = [fileList objectAtIndex:index];
+	EGPath* absolutePath = [fileList objectAtIndex:index];
 
-	[delegate setDisplayedFileTo:[EGPath pathWithPath:absolutePath]];
+	[delegate setDisplayedFileTo:absolutePath];
 
 	if(NSAppKitVersionNumber < 824.00f)
 	{
@@ -422,12 +414,12 @@ willDisplayCell:(id)cell
 -(void)doubleClick:(id)sender
 {
 	// Double clicking sets the directory...if it's a directory
-	NSString* absolutePath = [fileList objectAtIndex:[[ourBrowser matrixInColumn:0] selectedRow]];
+	EGPath* absolutePath = [fileList objectAtIndex:[[ourBrowser matrixInColumn:0] selectedRow]];
 
 	// If this path is a directory, then set it to the current 
-	if([absolutePath isDir])
+	if([absolutePath isDirectory])
 	{
-		[self setDirectory:[EGPath pathWithPath:absolutePath]];
+		[self setDirectory:absolutePath];
 	}
 }
 
@@ -447,11 +439,6 @@ willDisplayCell:(id)cell
 }
 
 -(void)receiveThumbnail:(NSImage*)image forFile:(EGPath*)path
-{
-	[self setThumbnail:image forFile:[path fileSystemPath]];
-}
-
--(void)setThumbnail:(NSImage*)image forFile:(NSString*)path
 {
 	unsigned index = [fileList binarySearchFor:path
 							  withSortSelector:@selector(caseInsensitiveCompare:)];
@@ -509,7 +496,7 @@ willDisplayCell:(id)cell
 
 -(BOOL)canGoNextFile 
 {
-	int index = [fileList binarySearchFor:[[delegate currentFile] fileSystemPath]
+	int index = [fileList binarySearchFor:[delegate currentFile]
 						 withSortSelector:@selector(caseInsensitiveCompare:)];
 	
 	int count = [fileList count];
@@ -523,7 +510,7 @@ willDisplayCell:(id)cell
 
 -(void)goNextFile
 {
-	int index = [fileList binarySearchFor:[[delegate currentFile] fileSystemPath]
+	int index = [fileList binarySearchFor:[delegate currentFile]
 						 withSortSelector:@selector(caseInsensitiveCompare:)];
 	index++;
 	
@@ -536,7 +523,7 @@ willDisplayCell:(id)cell
 
 -(BOOL)canGoPreviousFile
 {
-	int index = [fileList binarySearchFor:[[delegate currentFile] fileSystemPath]
+	int index = [fileList binarySearchFor:[delegate currentFile]
 						 withSortSelector:@selector(caseInsensitiveCompare:)];
 
 	if(index > 0)
@@ -549,7 +536,7 @@ willDisplayCell:(id)cell
 
 -(void)goPreviousFile
 {
-	int index = [fileList binarySearchFor:[[delegate currentFile] fileSystemPath]
+	int index = [fileList binarySearchFor:[delegate currentFile]
 						 withSortSelector:@selector(caseInsensitiveCompare:)];
 	index--;
 	
@@ -627,7 +614,7 @@ willDisplayCell:(id)cell
 		   [currentFileWithPath isVisible])
 		{
 			// Before we  do ANYTHING, we make note of the file's modification time.
-			[myFileList addObject:currentFileWithPath];
+			[myFileList addObject:curPath];
 		}
 	}	
 	
@@ -768,12 +755,11 @@ willDisplayCell:(id)cell
 				// we got rid of the file we're currently viewing; and we need to
 				// find the closest file to the one we were on.
 				unsigned closestPosition = [fileList 
-				lowerBoundToInsert:[curFile fileSystemPath] 
-				  withSortSelector:@selector(caseInsensitiveCompare:)];
+					lowerBoundToInsert:curFile
+					  withSortSelector:@selector(caseInsensitiveCompare:)];
 				[ourBrowser selectRow:closestPosition inColumn:0];
 				// Now notify the delegate like it's a normal file selection operation.
-				[delegate setDisplayedFileTo:
-					[EGPath pathWithPath:[fileList objectAtIndex:closestPosition]]];
+				[delegate setDisplayedFileTo:[fileList objectAtIndex:closestPosition]];
 				
 			}
 			
