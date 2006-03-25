@@ -1,3 +1,18 @@
+????? Unreleased
+------------------
+* Fix memory leaks caused by thumbnails, windows, documents and a bunch of other
+  objects never being deallocated.
+* Modify IconFamily so it makes less extranious copies.
+* Eliminate redundant objects
+
+0.7.1.1 Bugfix Release (March 22nd, 2006)
+-----------------------------------------
+* When I upgraded to IconFamily 0.9.1, I forgot to port my changes that would
+  restore a file’s modification date. Fix this so building a thumbnail of a 
+  file does set the modification date.
+* Back/Forward will now focus on the file/folder you were on previously, 
+  instead of always starting at the beginning of the list.
+
 0.7.1 Release (March 21st, 2006)
 --------------------------------
 * Upgrade IconFamily to 0.9.1.
