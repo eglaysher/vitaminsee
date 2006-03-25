@@ -153,6 +153,9 @@
 		8BC9D6300987281C006F6B16 /* KeywordManagerPreferences.nib in Resources */ = {isa = PBXBuildFile; fileRef = 8BC9D62E0987281C006F6B16 /* KeywordManagerPreferences.nib */; };
 		8BD128C609A2B470009E0275 /* Deployment.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 8BD128C509A2B470009E0275 /* Deployment.xcconfig */; };
 		8BD128D409A2B4EB009E0275 /* Development.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 8BD128D309A2B4EB009E0275 /* Development.xcconfig */; };
+		8BE1487609D5D9680070E809 /* EGPathTests.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BE1487409D5D9680070E809 /* EGPathTests.h */; };
+		8BE1487A09D5D9A80070E809 /* EGPathTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE1487509D5D9680070E809 /* EGPathTests.m */; };
+		8BE1492609D5E0050070E809 /* UnitTests-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8BE1492509D5E0050070E809 /* UnitTests-Info.plist */; };
 		8BEA54AF090BE18C00F83026 /* GotoFolderSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BEA5470090BDFA000F83026 /* GotoFolderSheetController.m */; };
 		8BEA54C1090BE22D00F83026 /* GotoFolderSheet.nib in Resources */ = {isa = PBXBuildFile; fileRef = 8BEA54BF090BE22D00F83026 /* GotoFolderSheet.nib */; };
 		8BEA5552090BE82800F83026 /* GotoFolderSheetFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BEA5551090BE82800F83026 /* GotoFolderSheetFactory.m */; };
@@ -340,6 +343,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 8BC9D624098727F6006F6B16;
 			remoteInfo = KeywordManagerPreferences;
+		};
+		8BE148C609D5DC220070E809 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8D1107260486CEB800E47090 /* VitaminSEE */;
+			remoteInfo = VitaminSEE;
 		};
 		8BEA54B5090BE19900F83026 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -651,6 +661,10 @@
 		8BC9D63109872826006F6B16 /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Japanese; path = Components/KeywordManagerPreferences/Japanese.lproj/KeywordManagerPreferences.nib; sourceTree = "<group>"; };
 		8BD128C509A2B470009E0275 /* Deployment.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Deployment.xcconfig; path = config/Deployment.xcconfig; sourceTree = "<group>"; };
 		8BD128D309A2B4EB009E0275 /* Development.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Development.xcconfig; path = config/Development.xcconfig; sourceTree = "<group>"; };
+		8BE1486109D5D6120070E809 /* UnitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8BE1487409D5D9680070E809 /* EGPathTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EGPathTests.h; path = UnitTests/EGPathTests.h; sourceTree = "<group>"; };
+		8BE1487509D5D9680070E809 /* EGPathTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EGPathTests.m; path = UnitTests/EGPathTests.m; sourceTree = "<group>"; };
+		8BE1492509D5E0050070E809 /* UnitTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xml; name = "UnitTests-Info.plist"; path = "UnitTests/UnitTests-Info.plist"; sourceTree = "<group>"; };
 		8BEA546E090BDFA000F83026 /* GotoFolderSheet-Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xml; name = "GotoFolderSheet-Info.plist"; path = "Components/GotoFolderSheet/GotoFolderSheet-Info.plist"; sourceTree = "<group>"; };
 		8BEA546F090BDFA000F83026 /* GotoFolderSheetController.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = GotoFolderSheetController.h; path = Components/GotoFolderSheet/GotoFolderSheetController.h; sourceTree = "<group>"; };
 		8BEA5470090BDFA000F83026 /* GotoFolderSheetController.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = GotoFolderSheetController.m; path = Components/GotoFolderSheet/GotoFolderSheetController.m; sourceTree = "<group>"; };
@@ -770,6 +784,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8BE1485E09D5D6120070E809 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8BEA54A8090BE15B00F83026 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -858,6 +879,7 @@
 				8B6380DA09953D010010DFEF /* ImageMetadata.bundle */,
 				8B6380DB09953D010010DFEF /* SSPrefsController.bundle */,
 				8B7BA8DD09B15588002D34D8 /* FullScreenMode.bundle */,
+				8BE1486109D5D6120070E809 /* UnitTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -865,6 +887,7 @@
 		29B97314FDCFA39411CA2CEA /* VitaminSEE */ = {
 			isa = PBXGroup;
 			children = (
+				8BE1487109D5D87B0070E809 /* Unit Tests */,
 				8BF1038B09A2AFA100FE21A7 /* Config */,
 				8B4DC3990996D6E500B58051 /* Automator Actions */,
 				8B24490F08FB546C004716BC /* Components */,
@@ -1304,6 +1327,16 @@
 			name = FavoritesMenu;
 			sourceTree = "<group>";
 		};
+		8BE1487109D5D87B0070E809 /* Unit Tests */ = {
+			isa = PBXGroup;
+			children = (
+				8BE1492509D5E0050070E809 /* UnitTests-Info.plist */,
+				8BE1487409D5D9680070E809 /* EGPathTests.h */,
+				8BE1487509D5D9680070E809 /* EGPathTests.m */,
+			);
+			name = "Unit Tests";
+			sourceTree = "<group>";
+		};
 		8BEA55C2090C0AFE00F83026 /* GotoFolderWindow */ = {
 			isa = PBXGroup;
 			children = (
@@ -1339,6 +1372,7 @@
 				8B8B6CFA09C7AC8400E36801 /* UKFeedbackProvider.h in Headers */,
 				8B8B6CFC09C7AC8400E36801 /* UKUpdateChecker.h in Headers */,
 				8B8B6E5809CC624700E36801 /* NSString+CarbonFSRefCreation.h in Headers */,
+				8BE1487609D5D9680070E809 /* EGPathTests.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2248,6 +2282,65 @@
 ";
 			productType = "com.apple.product-type.bundle";
 		};
+		8BE1486009D5D6120070E809 /* UnitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8BE1486309D5D6140070E809 /* Build configuration list for PBXNativeTarget "UnitTests" */;
+			buildPhases = (
+				8BE1485C09D5D6120070E809 /* Resources */,
+				8BE1485D09D5D6120070E809 /* Sources */,
+				8BE1485E09D5D6120070E809 /* Frameworks */,
+				8BE1485F09D5D6120070E809 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			buildSettings = {
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
+				INFOPLIST_FILE = "UnitTests-Info.plist";
+				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Cocoa,
+					"-framework",
+					SenTestingKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = UnitTests;
+				WRAPPER_EXTENSION = octest;
+				ZERO_LINK = NO;
+			};
+			dependencies = (
+				8BE148C709D5DC220070E809 /* PBXTargetDependency */,
+			);
+			name = UnitTests;
+			productName = UnitTests;
+			productReference = 8BE1486109D5D6120070E809 /* UnitTests.octest */;
+			productSettingsXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
+<!DOCTYPE plist PUBLIC \"-//Apple Computer//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">
+<plist version=\"1.0\">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>English</string>
+	<key>CFBundleExecutable</key>
+	<string>${EXECUTABLE_NAME}</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.yourcompany.UnitTests</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundlePackageType</key>
+	<string>BNDL</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
+	<key>CFBundleVersion</key>
+	<string>1.0</string>
+</dict>
+</plist>
+";
+			productType = "com.apple.product-type.bundle";
+		};
 		8BEA54A9090BE15B00F83026 /* GotoFolderSheet */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8B63807609953AA60010DFEF /* Build configuration list for PBXNativeTarget "GotoFolderSheet" */;
@@ -2478,6 +2571,7 @@
 				8BC9D33F09848799006F6B16 /* KeywordManager */,
 				8BC9D624098727F6006F6B16 /* KeywordManagerPreferences */,
 				8B7BA8DC09B15588002D34D8 /* FullScreenMode */,
+				8BE1486009D5D6120070E809 /* UnitTests */,
 			);
 		};
 /* End PBXProject section */
@@ -2627,6 +2721,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8BE1485C09D5D6120070E809 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8BE1492609D5E0050070E809 /* UnitTests-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8BEA54A6090BE15B00F83026 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2680,6 +2782,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8BE1485F09D5D6120070E809 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8B1137CA09130185008FBD78 /* Sources */ = {
@@ -2822,6 +2940,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				8BC9D62D0987280D006F6B16 /* KeywordManagerPreferences.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8BE1485D09D5D6120070E809 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8BE1487A09D5D9A80070E809 /* EGPathTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2969,6 +3095,11 @@
 			isa = PBXTargetDependency;
 			target = 8BC9D624098727F6006F6B16 /* KeywordManagerPreferences */;
 			targetProxy = 8BC9D6370987285D006F6B16 /* PBXContainerItemProxy */;
+		};
+		8BE148C709D5DC220070E809 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8D1107260486CEB800E47090 /* VitaminSEE */;
+			targetProxy = 8BE148C609D5DC220070E809 /* PBXContainerItemProxy */;
 		};
 		8BEA54B6090BE19900F83026 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -5293,6 +5424,7 @@
 		};
 		8B63809B09953AA60010DFEF /* Development */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8BD128D309A2B4EB009E0275 /* Development.xcconfig */;
 			buildSettings = {
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -5309,7 +5441,7 @@
 				PREBINDING = NO;
 				PRODUCT_NAME = VitaminSEE;
 				WRAPPER_EXTENSION = app;
-				ZERO_LINK = YES;
+				ZERO_LINK = NO;
 			};
 			name = Development;
 		};
@@ -5494,6 +5626,106 @@
 				PRODUCT_NAME = FullScreenMode;
 				WRAPPER_EXTENSION = bundle;
 				ZERO_LINK = YES;
+			};
+			name = Default;
+		};
+		8BE1486409D5D6140070E809 /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/VitaminSEE.app/Contents/MacOS/VitaminSEE";
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
+				INFOPLIST_FILE = "UnitTests/UnitTests-Info.plist";
+				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Cocoa,
+					"-framework",
+					SenTestingKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = UnitTests;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VitaminSEE.app/Contents/MacOS/VitaminSEE";
+				WRAPPER_EXTENSION = octest;
+				ZERO_LINK = NO;
+			};
+			name = Development;
+		};
+		8BE1486509D5D6140070E809 /* Deployment */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
+				INFOPLIST_FILE = "UnitTests-Info.plist";
+				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Cocoa,
+					"-framework",
+					SenTestingKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = UnitTests;
+				WRAPPER_EXTENSION = octest;
+				ZERO_LINK = NO;
+			};
+			name = Deployment;
+		};
+		8BE1486609D5D6140070E809 /* Panther */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
+				INFOPLIST_FILE = "UnitTests-Info.plist";
+				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Cocoa,
+					"-framework",
+					SenTestingKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = UnitTests;
+				WRAPPER_EXTENSION = octest;
+				ZERO_LINK = NO;
+			};
+			name = Panther;
+		};
+		8BE1486709D5D6140070E809 /* Default */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
+				INFOPLIST_FILE = "UnitTests-Info.plist";
+				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Cocoa,
+					"-framework",
+					SenTestingKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = UnitTests;
+				WRAPPER_EXTENSION = octest;
+				ZERO_LINK = NO;
 			};
 			name = Default;
 		};
@@ -5694,6 +5926,17 @@
 				8B7BA8E109B15589002D34D8 /* Deployment */,
 				8B7BA8E209B15589002D34D8 /* Panther */,
 				8B7BA8E309B15589002D34D8 /* Default */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Default;
+		};
+		8BE1486309D5D6140070E809 /* Build configuration list for PBXNativeTarget "UnitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8BE1486409D5D6140070E809 /* Development */,
+				8BE1486509D5D6140070E809 /* Deployment */,
+				8BE1486609D5D6140070E809 /* Panther */,
+				8BE1486709D5D6140070E809 /* Default */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Default;
