@@ -1,10 +1,31 @@
+/////////////////////////////////////////////////////////////////////////
+// File:          $URL: http://svn.elliotglaysher.org/VitaminSEE/trunk/Formatters/FileSizeFormatter.m $
+// Module:        Unit tests for EGPath
+// Part of:       VitaminSEE
 //
-//  EGPathTests.m
-//  VitaminSEE
+// Revision:      $Revision: 404 $
+// Last edited:   $Date: 2006-03-18 14:18:26 -0600 (Sat, 18 Mar 2006) $
+// Author:        $Author: eglaysher $
+// Copyright:     (c) 2005 Elliot Glaysher
+// Created:       3/25/06
 //
-//  Created by Elliot on 3/25/06.
-//  Copyright 2006 __MyCompanyName__. All rights reserved.
+/////////////////////////////////////////////////////////////////////////
 //
+// This program is free software; you can redistribute it and/or
+// modify it under the terms of the GNU General Public License
+// as published by the Free Software Foundation; either version 2
+// of the License, or (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program; if not, write to the Free Software
+// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+//
+////////////////////////////////////////////////////////////////////////
 
 #import "EGPath.h"
 #import "EGPathTests.h"
@@ -12,6 +33,8 @@
 
 @implementation EGPathTests
 
+/** Tests the unique equal properties of the root object.
+ */
 -(void)testEGPathRoot
 {
 	// Test creation
@@ -40,6 +63,39 @@
 	STAssertEquals([root1 isRoot], YES, @"Root is not root!");
 	STAssertEquals([root1 isNaturalFile], NO, @"Root is a natrual file location.");
 	STAssertEquals([root1 isDirectory], YES, @"Root is not a directory (!?)");
+}
+
+/** Tests a normal EGPath object
+ *
+ */
+-(void)testEGPath
+{
+	EGPath* home1 = [EGPath pathWithPath:[@"~" stringByExpandingTildeInPath]];
+	EGPath* home2 = [EGPath pathWithPath:[@"~" stringByExpandingTildeInPath]]; 
+	
+	// Two EGPath objects that point to the same directory have the same 
+	// properties
+	STAssertEqualObjects(home1, home2, @"Two equal EGPath objects aren't.");
+	STAssertEquals([home1 hash], [home2 hash],
+				   @"Hashes for two equal EGPath objects are not equal");
+	STAssertEquals([[home1 pathComponents] isEqualToArray:[home2 pathComponents]], YES,
+				   @"The components of two homes differ!");
+	STAssertEquals([[home1 directoryContents] isEqualToArray:[home2 directoryContents]], YES,
+				   @"The contents of two homes differ!");
+	STAssertEquals([[home1 displayName] isEqualToString:[home2 displayName]], YES,
+				   @"The display names of two homes differ!");
+	
+	// The properties  
+	STAssertEquals([home1 exists], YES, @"Root does not exist! (!?!?!?)");
+	STAssertEquals([home1 isRoot], NO, @"Normal object is root!");
+	STAssertEquals([home1 isNaturalFile], YES, @"Root is a natrual file location.");
+	STAssertEquals([home1 isDirectory], YES, @"Root is not a directory (!?)");	
+	
+	// The parent of "/" should be root
+	EGPath* rootHDDir = [EGPath pathWithPath:@"/"];
+	EGPath* rootVFSDir = [EGPath root];
+	STAssertEqualObjects([rootHDDir pathByDeletingLastPathComponent], rootVFSDir,
+						 @"The parent of \"/\" isn't EGPathRoot!");
 }
 
 @end
