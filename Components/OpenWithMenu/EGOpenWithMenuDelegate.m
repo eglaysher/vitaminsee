@@ -124,7 +124,8 @@ extern void _LSCopyAllApplicationURLs(NSArray**);
 
 // ---------------------------------------------------------------------------
 
--(BOOL)menu:(NSMenu *)menu updateItem:(NSMenuItem *)item atIndex:(int)index shouldCancel:(BOOL)shouldCancel
+-(BOOL)menu:(NSMenu *)menu updateItem:(NSMenuItem *)item 
+	atIndex:(int)index shouldCancel:(BOOL)shouldCancel
 {
 	NSString* currentFile = [self getCurrentFile];
 	NSArray* currentFileType = [fileTypeToArrayOfApplicationURLS objectForKey:[currentFile pathExtension]];
@@ -146,6 +147,16 @@ extern void _LSCopyAllApplicationURLs(NSArray**);
 //	NSLog(@"item ref count: %d", [item retainCount]);
 	
 	return YES;
+}
+
+// ---------------------------------------------------------------------------
+
+/** No Open with items have key equivalents, let's keep it that way.
+ */
+- (BOOL)menuHasKeyEquivalent:(NSMenu *)menu forEvent:(NSEvent *)event 
+					  target:(id *)target action:(SEL *)action
+{
+	return NO;
 }
 
 // ---------------------------------------------------------------------------
