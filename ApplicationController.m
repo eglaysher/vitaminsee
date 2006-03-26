@@ -63,6 +63,8 @@
 
 #import "ImageLoader.h"
 
+#import "main.h"
+
 @implementation ApplicationController
 
 ///////// TEST PLAN
@@ -293,7 +295,10 @@ static ApplicationController* appControl;
  */
 - (BOOL)applicationOpenUntitledFile:(NSApplication *)theApplication
 {
-	[self newWindow:self];
+	// This detects if we're running in unit testing mode. If we are, we don't
+	// want to open up a default window.
+	if(!g_inSenTest)
+		[self newWindow:self];
 	return YES;
 }
 

@@ -69,7 +69,7 @@
 -(void)close
 {
 	NSLog(@"Closing document!");
-		
+	documentClosed = YES;
 	[currentFile release];
 	
 	[fileList cleanup];
@@ -106,6 +106,7 @@
 		// Obtain a unique document ID from the Application controller
 		documentID = [[ApplicationController controller] getNextAvailableID];
 		[documentID retain];
+		documentClosed = NO;
 		
 		// If we say that we have an undo manager, then we 
 		[self setHasUndoManager:NO];
@@ -127,6 +128,8 @@
 		scaleMode = SCALE_IMAGE_TO_FIT;
 
 		[fileList setDirectory:path];
+		
+
 	}
 
 	return self;
@@ -284,7 +287,7 @@
 	if([[task objectForKey:@"Path"]  isEqual:currentFile]) {
 		NSImage* image = [task objectForKey:@"Image"];
 		
-		if(image) {			
+		if(image && !documentClosed) {			
 			// Set the image
 			[window setImage:image];
 			
@@ -374,21 +377,24 @@
 -(void)startProgressIndicator
 {
 	// Pass this message on to the Window
-	[window startProgressIndicator];
+	if(!documentClosed)
+		[window startProgressIndicator];
 }
 
 //-----------------------------------------------------------------------------
  
 -(void)stopProgressIndicator
 {
-	[window stopProgressIndicator];
+	if(!documentClosed)
+		[window stopProgressIndicator];
 }
 
 //-----------------------------------------------------------------------------
 
 -(void)updateWindowTitle
 {
-	[window updateWindowTitle];
+	if(!documentClosed)
+		[window updateWindowTitle];
 }
 
 //-----------------------------------------------------------------------------

@@ -150,7 +150,8 @@ static BOOL newTaskThatPreemptsPreload(NSDictionary* currentTask)
 }
 
 @interface ImageLoader (Private)
-+(void)doDisplayImage:(NSMutableDictionary*)task;
++(void)doDisplayImage:(NSMutableDictionary*)task 
+			debugMode:(BOOL)debugMode;
 +(NSImageRep*)loadImageForTask:(NSMutableDictionary*)task 
 				cancelFunction:(CANCELCHECK)cancelFunction;
 +(NSSize)calculateTargetImageSize:(NSMutableDictionary*)task 
@@ -336,7 +337,7 @@ static BOOL newTaskThatPreemptsPreload(NSDictionary* currentTask)
 			pthread_mutex_unlock(&taskQueueLock);
 
 			if(currentTask)
-				[self doDisplayImage:currentTask];
+				[self doDisplayImage:currentTask debugMode:NO];
 		}
 		else if(preloadQueueCount)
 		{
@@ -370,11 +371,17 @@ static BOOL newTaskThatPreemptsPreload(NSDictionary* currentTask)
  * the requester asks for, and then pass the image back to the main thread.
  *
  * @param task Task Dictionary representing the current task
+ * @param debugMode Used during unit testing. Passed to the waitUntilDone
+ *                  parameter on -performSelectorOnMainThread:, so that when
+ *                  debugMode is NO in production code, things work asynchronously,
+ *                  while they'll work synchronously in unit testing, since OCUnit
+ *                  has to run everything from one thread.
  *
  * @note This function is way too long; it is a textbook example of a function
  *       that is too long, takes on too many responsibilities and is confusing.
  */
-+(void)doDisplayImage:(NSMutableDictionary*)task
++(void)doDisplayImage:(NSMutableDictionary*)task 
+	 debugMode:(BOOL)debugMode
 {	
 	id requester = [task objectForKey:@"Requester"];
 	NSNumber* size;
@@ -386,9 +393,10 @@ static BOOL newTaskThatPreemptsPreload(NSDictionary* currentTask)
 		return;	
 	}
 	
+	// Now start spinning.
 	[requester performSelectorOnMainThread:@selector(beginCountdownToDisplayProgressIndicator)
 								withObject:nil
-							 waitUntilDone:NO];		
+							 waitUntilDone:debugMode];		
 
 	// Get an imageRep for the current image requested in task
 	NSImageRep* imageRep = [self loadImageForTask:task 
@@ -459,7 +467,7 @@ static BOOL newTaskThatPreemptsPreload(NSDictionary* currentTask)
 		// Bundle imageToRet up for transport across thread boundaries.
 		[requester performSelectorOnMainThread:@selector(receiveImage:)
 									withObject:task
-								 waitUntilDone:NO];
+								 waitUntilDone:debugMode];
 	}
 	else
 	{
@@ -520,7 +528,7 @@ static BOOL newTaskThatPreemptsPreload(NSDictionary* currentTask)
 		[imageToRet release];
 		[requester performSelectorOnMainThread:@selector(receiveImage:)
 									withObject:task
-								 waitUntilDone:NO];
+								 waitUntilDone:debugMode];
 		
 		// Draw the image onto a new NSImage using smooth scaling. This is done
 		// whenever the image isn't animated so that the picture will have 
@@ -574,7 +582,7 @@ static BOOL newTaskThatPreemptsPreload(NSDictionary* currentTask)
 		[taskCopy setObject:imageToRet forKey:@"Image"];
 		[requester performSelectorOnMainThread:@selector(receiveImage:)
 									withObject:taskCopy
-								 waitUntilDone:NO];
+								 waitUntilDone:debugMode];
 	}		
 
 	[imageToRet release];	

@@ -138,7 +138,7 @@ extern void _LSCopyAllApplicationURLs(NSArray**);
 	
 	// Set the image
 	NSString* pathString = [currentApplication objectForKey:@"Path"];
-	NSImage* image = [[NSWorkspace sharedWorkspace] iconForFile:pathString];
+	NSImage* image = [[[[NSWorkspace sharedWorkspace] iconForFile:pathString] copy] autorelease];
 	[image setScalesWhenResized:YES];
 	[image setSize:NSMakeSize(16,16)];
 	[item setImage:image];

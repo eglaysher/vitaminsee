@@ -70,6 +70,10 @@
 	
 	// Our undo manager
 	NSUndoManager* undoManager;
+	
+	// Tracks whether the document and window have been closed and that we're
+	// only alive because we're owned by a task object on the ImageLoader thread
+	BOOL documentClosed;
 }
 
 -(id)init;

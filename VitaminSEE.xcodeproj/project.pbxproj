@@ -61,6 +61,8 @@
 		8B51670C0992E494005C38C7 /* RenameFileSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B51670B0992E494005C38C7 /* RenameFileSheetController.m */; };
 		8B51671B0992E8E5005C38C7 /* RenameFileSheet.nib in Resources */ = {isa = PBXBuildFile; fileRef = 8B51671A0992E8E5005C38C7 /* RenameFileSheet.nib */; };
 		8B5168EC09930C08005C38C7 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B7F0DA10964A94E00B7A46D /* Carbon.framework */; };
+		8B56B44809D5F3AA006C68BE /* ImageLoaderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE14BE209D5E8670070E809 /* ImageLoaderTests.m */; };
+		8B56B53909D616B3006C68BE /* main.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B56B53809D616B3006C68BE /* main.h */; };
 		8B5A812F09B21C5200F7303C /* FullscreenWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5A812E09B21C5200F7303C /* FullscreenWindow.m */; };
 		8B5A827B09B2401000F7303C /* FileList.nib in Resources */ = {isa = PBXBuildFile; fileRef = 8B5A827909B2401000F7303C /* FileList.nib */; };
 		8B5A828709B2405600F7303C /* FileListWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5A828509B2405600F7303C /* FileListWindowController.m */; };
@@ -157,7 +159,6 @@
 		8BE1487A09D5D9A80070E809 /* EGPathTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE1487509D5D9680070E809 /* EGPathTests.m */; };
 		8BE1492609D5E0050070E809 /* UnitTests-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8BE1492509D5E0050070E809 /* UnitTests-Info.plist */; };
 		8BE14BA409D5E3740070E809 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BE14B8F09D5E3740070E809 /* SenTestingKit.framework */; };
-		8BE14BE309D5E8670070E809 /* ImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE14BE209D5E8670070E809 /* ImageLoader.m */; };
 		8BEA54AF090BE18C00F83026 /* GotoFolderSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BEA5470090BDFA000F83026 /* GotoFolderSheetController.m */; };
 		8BEA54C1090BE22D00F83026 /* GotoFolderSheet.nib in Resources */ = {isa = PBXBuildFile; fileRef = 8BEA54BF090BE22D00F83026 /* GotoFolderSheet.nib */; };
 		8BEA5552090BE82800F83026 /* GotoFolderSheetFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BEA5551090BE82800F83026 /* GotoFolderSheetFactory.m */; };
@@ -350,7 +351,7 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 8D1107260486CEB800E47090 /* VitaminSEE */;
+			remoteGlobalIDString = 8D1107260486CEB800E47090;
 			remoteInfo = VitaminSEE;
 		};
 		8BEA54B5090BE19900F83026 /* PBXContainerItemProxy */ = {
@@ -510,6 +511,7 @@
 		8B51670A0992E494005C38C7 /* RenameFileSheetController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RenameFileSheetController.h; sourceTree = "<group>"; };
 		8B51670B0992E494005C38C7 /* RenameFileSheetController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RenameFileSheetController.m; sourceTree = "<group>"; };
 		8B5167180992E8CD005C38C7 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = Components/FileOperations/English.lproj/RenameFileSheet.nib; sourceTree = "<group>"; };
+		8B56B53809D616B3006C68BE /* main.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = main.h; sourceTree = "<group>"; };
 		8B5A812D09B21C5200F7303C /* FullscreenWindow.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = FullscreenWindow.h; path = Components/FullScreenMode/FullscreenWindow.h; sourceTree = "<group>"; };
 		8B5A812E09B21C5200F7303C /* FullscreenWindow.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = FullscreenWindow.m; path = Components/FullScreenMode/FullscreenWindow.m; sourceTree = "<group>"; };
 		8B5A827A09B2401000F7303C /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = Components/FullScreenMode/English.lproj/FileList.nib; sourceTree = "<group>"; };
@@ -668,8 +670,8 @@
 		8BE1487509D5D9680070E809 /* EGPathTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EGPathTests.m; path = UnitTests/EGPathTests.m; sourceTree = "<group>"; };
 		8BE1492509D5E0050070E809 /* UnitTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xml; name = "UnitTests-Info.plist"; path = "UnitTests/UnitTests-Info.plist"; sourceTree = "<group>"; };
 		8BE14B8F09D5E3740070E809 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = /System/Library/Frameworks/SenTestingKit.framework; sourceTree = "<absolute>"; };
-		8BE14BE109D5E8670070E809 /* ImageLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImageLoader.h; path = UnitTests/ImageLoader.h; sourceTree = "<group>"; };
-		8BE14BE209D5E8670070E809 /* ImageLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImageLoader.m; path = UnitTests/ImageLoader.m; sourceTree = "<group>"; };
+		8BE14BE109D5E8670070E809 /* ImageLoaderTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImageLoaderTests.h; path = UnitTests/ImageLoaderTests.h; sourceTree = "<group>"; };
+		8BE14BE209D5E8670070E809 /* ImageLoaderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; languageSpecificationIdentifier = c.objc; lastKnownFileType = sourcecode.c.objc; name = ImageLoaderTests.m; path = UnitTests/ImageLoaderTests.m; sourceTree = "<group>"; };
 		8BEA546E090BDFA000F83026 /* GotoFolderSheet-Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xml; name = "GotoFolderSheet-Info.plist"; path = "Components/GotoFolderSheet/GotoFolderSheet-Info.plist"; sourceTree = "<group>"; };
 		8BEA546F090BDFA000F83026 /* GotoFolderSheetController.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = GotoFolderSheetController.h; path = Components/GotoFolderSheet/GotoFolderSheetController.h; sourceTree = "<group>"; };
 		8BEA5470090BDFA000F83026 /* GotoFolderSheetController.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = GotoFolderSheetController.m; path = Components/GotoFolderSheet/GotoFolderSheetController.m; sourceTree = "<group>"; };
@@ -916,6 +918,7 @@
 			children = (
 				32CA4F630368D1EE00C91783 /* VitaminSEE_Prefix.pch */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
+				8B56B53809D616B3006C68BE /* main.h */,
 			);
 			name = "Other Sources";
 			sourceTree = "<group>";
@@ -1340,8 +1343,8 @@
 				8BE1492509D5E0050070E809 /* UnitTests-Info.plist */,
 				8BE1487409D5D9680070E809 /* EGPathTests.h */,
 				8BE1487509D5D9680070E809 /* EGPathTests.m */,
-				8BE14BE109D5E8670070E809 /* ImageLoader.h */,
-				8BE14BE209D5E8670070E809 /* ImageLoader.m */,
+				8BE14BE109D5E8670070E809 /* ImageLoaderTests.h */,
+				8BE14BE209D5E8670070E809 /* ImageLoaderTests.m */,
 			);
 			name = "Unit Tests";
 			sourceTree = "<group>";
@@ -1382,6 +1385,7 @@
 				8B8B6CFC09C7AC8400E36801 /* UKUpdateChecker.h in Headers */,
 				8B8B6E5809CC624700E36801 /* NSString+CarbonFSRefCreation.h in Headers */,
 				8BE1487609D5D9680070E809 /* EGPathTests.h in Headers */,
+				8B56B53909D616B3006C68BE /* main.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2956,8 +2960,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B56B44809D5F3AA006C68BE /* ImageLoaderTests.m in Sources */,
 				8BE1487A09D5D9A80070E809 /* EGPathTests.m in Sources */,
-				8BE14BE309D5E8670070E809 /* ImageLoader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5659,6 +5663,8 @@
 					Cocoa,
 					"-framework",
 					SenTestingKit,
+					"-undefined",
+					dynamic_lookup,
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = UnitTests;
