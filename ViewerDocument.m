@@ -549,7 +549,7 @@
 -(BOOL)validateMoveToTrash
 {
 	BOOL ok = YES;
-	NSFileManager* fm = [NSFileManager defaultManager];
+//	NSFileManager* fm = [NSFileManager defaultManager];
 	
 	// If our user doesn't have +w on the current folder, set ok to NO.
 //	unsigned long folderPermissions = [fm fileAttributesAtPath:<#(NSString *)path#>

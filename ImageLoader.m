@@ -193,11 +193,12 @@ static BOOL newTaskThatPreemptsPreload(NSDictionary* currentTask)
 {	
 	id requester = [task objectForKey:@"Requester"];
 	NSNumber* num = [requester documentID];
+	
+	// Record the document id in the task dictionary
+	[task setObject:num forKey:@"Requester ID"];
+	
 	pthread_mutex_lock(&taskQueueLock);
 	{	
-		// Record the document id in the task dictionary
-		[task setObject:num forKey:@"Requester ID"];
-		
 		// set this as the current request for the requesting object.
 		[taskQueue setObject:task forKey:num];
 			

@@ -450,6 +450,7 @@
 - (NSImage*) imageWithAllRepsNoAutorelease
 {
     NSImage* image = NULL;
+	// See if the dataWithBytesNoCopy/free is what causes this to leak
     image = [[NSImage alloc] initWithData:[NSData dataWithBytesNoCopy:*hIconFamily length:GetHandleSize((Handle)hIconFamily) freeWhenDone:NO]];
 	
     return image;

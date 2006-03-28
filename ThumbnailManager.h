@@ -55,4 +55,10 @@
  */
 +(NSImage*)getThumbnailFor:(EGPath*)path;
 
+
++(NSDictionary*)__getSubscriberList;
++(NSDictionary*)__getThumbnailCache;
++(NSDictionary*)__getThumbnailBuildQueue;
++(NSDictionary*)__getThumbnailPriorityQueue;
+
 @end

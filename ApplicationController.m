@@ -60,8 +60,10 @@
 #import "EGPath.h"
 //#import "HigherOrderMessaging.h"
 #import "CurrentFilePlugin.h"
-
+#import "UKUpdateChecker.h"
 #import "ImageLoader.h"
+
+#import "ThumbnailManager.h"
 
 #import "main.h"
 
@@ -227,7 +229,7 @@ static ApplicationController* appControl;
 	
 	// Set up our view menu delegate. This is important so plugins work.
 	NSMenu* mainMenu = [NSApp mainMenu];
-	NSMenu* viewMenu = [[mainMenu itemAtIndex:3] submenu];
+//	NSMenu* viewMenu = [[mainMenu itemAtIndex:3] submenu];
 //	NSMenu* toolMenu = [[mainMenu itemAtIndex:4] submenu];
 	NSMenu* windowMenu = [[mainMenu itemAtIndex:5] submenu];
 //	[viewMenu setDelegate:[[ViewMenuDelegate alloc] init]];
@@ -678,6 +680,17 @@ static ApplicationController* appControl;
 	[[NSWorkspace sharedWorkspace] openFile:[[NSBundle mainBundle] 
 		pathForResource:@"GPL"
 				 ofType:@"txt"]];
+}
+
+//-----------------------------------------------------------------------------
+
+-(IBAction)dumpDebugInfo:(id)sender
+{
+	NSLog(@"Current state:");
+	NSLog(@"-----------------------------------------------------------------");
+	NSLog(@"Thumbnails: %@", [ThumbnailManager __getThumbnailCache]);
+	NSLog(@"");
+//	NSLog(@"Pictures: %@");
 }
 
 

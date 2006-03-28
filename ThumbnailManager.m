@@ -210,6 +210,9 @@ static BOOL generateThumbnails;
 				NSLog(@"Invalid wait!?");
 		}
 		
+		[pool release];
+		pool = [[NSAutoreleasePool alloc] init];
+		
 		if([thumbnailPriorityBuildStack count])
 		{
 			EGPath* nextToBuild = [[self getNextPriorityBuild] retain];
@@ -228,7 +231,7 @@ static BOOL generateThumbnails;
 			// -addThumbnailToCache:file:
 			EGPath* nextToBuild = [[self getNextThumbnailToBuild] retain];
 
-			NSLog(@"Building: %@", nextToBuild);
+//			NSLog(@"Building: %@", nextToBuild);
 
 			// Unlock the mutex
 			pthread_mutex_unlock(&thumbnailBuildQueueLock);
@@ -302,7 +305,7 @@ static BOOL generateThumbnails;
 
 +(void)unsubscribe:(id)object fromDirectory:(EGPath*)directory
 {
-	NSLog(@"%@ is unsubscribed to %@", object, directory);
+//	NSLog(@"%@ is unsubscribed to %@", object, directory);
 	pthread_mutex_lock(&subscriberListLock);
 	{
 		// Make sure that we are unsubscribing from a directory that somebody
@@ -316,7 +319,7 @@ static BOOL generateThumbnails;
 			[subscribers removeObject:object];
 			if([subscribers count] == 0)
 			{
-				NSLog(@"Removing all data structures for %@", directory);
+//				NSLog(@"Removing all data structures for %@", directory);
 				// Subscribers is now invalid.
 				[subscriberList removeObjectForKey:directory];
 				subscribers = 0;
@@ -408,6 +411,26 @@ static BOOL generateThumbnails;
 }
 
 //-----------------------------------------------------------------------------
+
++(NSDictionary*)__getSubscriberList;
+{
+	return subscriberList;
+}
+
++(NSDictionary*)__getThumbnailCache
+{
+	return thumbnailCache;
+}
+
++(NSDictionary*)__getThumbnailBuildQueue
+{
+	return thumbnailBuildQueue;
+}
+
++(NSDictionary*)__getThumbnailPriorityQueue
+{
+	return thumbnailPriorityBuildStack;
+}
 
 @end
 
@@ -502,8 +525,9 @@ static BOOL generateThumbnails;
 			[iconFamily setAsCustomIconForFile:[path fileSystemPath]];
 		}
 		
-		thumbnail = [iconFamily imageWithAllRepsNoAutorelease];
-
+//		thumbnail = [iconFamily imageWithAllRepsNoAutorelease];
+		thumbnail = [[path iconImageOfSize:NSMakeSize(128,128)] retain];
+		
 		[iconFamily release];
 	}
 	else
@@ -611,38 +635,53 @@ static BOOL generateThumbnails;
 
 +(void)doBuildThumbnailIconFor:(EGPath*)nextToBuild
 {
-	if([nextToBuild isImage]) 
+	NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
+	
+	@try 
 	{
-		NSImage* image;
-		
-		// Check to see if this file has an icon. (Make sure to do
-		// it on the main thread; the Carbon Resource Manager isn't
-		// thread safe!)
-		if([[nextToBuild performOnMainThreadWaitUntilDone:YES] 
-			hasThumbnailIcon] || ![self getGenerateThumbnails])
+		if([nextToBuild isImage]) 
 		{
-			// If there's already an thumbnail, load it and put it in 
-			// the cache
-			image = [nextToBuild iconImageOfSize:ICON_SIZE];
-			[self addThumbnailToCache:image file:nextToBuild];
+			NSImage* image;
+			
+			// Check to see if this file has an icon. (Make sure to do
+			// it on the main thread; the Carbon Resource Manager isn't
+			// thread safe!)
+			if([[nextToBuild performOnMainThreadWaitUntilDone:YES] 
+				hasThumbnailIcon] || ![self getGenerateThumbnails])
+			{
+				// If there's already an thumbnail, load it and put it in 
+				// the cache
+				image = [nextToBuild iconImageOfSize:ICON_SIZE];
+				[self addThumbnailToCache:image file:nextToBuild];
+			}
+			else 
+			{
+				// Build the new image for the file and stick it in the 
+				// cache
+				image = [self buildThumbnail:nextToBuild];
+				[self addThumbnailToCache:image file:nextToBuild];
+				[image release];
+			}
+			
+			// Notify all people in the subscribers list
+			[self notifySubscribersThat:nextToBuild hasImage:image];
 		}
-		else 
+		else
 		{
-			// Build the new image for the file and stick it in the 
-			// cache
-			image = [self buildThumbnail:nextToBuild];
-			[self addThumbnailToCache:image file:nextToBuild];
-			[image release];
-		}
-		
-		// Notify all people in the subscribers list
-		[self notifySubscribersThat:nextToBuild hasImage:image];
+			// Remove the entry from the build queue. 
+			[self removePathFromBuildQueue:nextToBuild];
+		}	
 	}
-	else
-	{
-		// Remove the entry from the build queue. 
-		[self removePathFromBuildQueue:nextToBuild];
-	}	
+	@catch(NSException* e) {
+		NSLog(@"Exception: %@:%@", [e name] , [e reason]);
+		
+		// Just for good measure; hopefully, this will take care of error 
+		// conditions
+		[self resetBuildQueueEnumerator];
+		[self resetPriorityQueueEnumerator];
+	}
+	
+	[pool release];
 }
 
 @end
