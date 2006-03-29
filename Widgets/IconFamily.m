@@ -33,6 +33,7 @@
 
 #import "IconFamily.h"
 #import "NSString+CarbonFSRefCreation.h"
+#import "NSObject+Invocations.h"
 
 @interface IconFamily (Internals)
 

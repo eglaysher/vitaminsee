@@ -165,6 +165,7 @@
 		8BEA55DD090C0EDF00F83026 /* GotoFolderWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BEA55DA090C0EDF00F83026 /* GotoFolderWindowController.m */; };
 		8BEA55DE090C0EDF00F83026 /* GotoFolderWindowFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BEA55DC090C0EDF00F83026 /* GotoFolderWindowFactory.m */; };
 		8BEA55E1090C0EFB00F83026 /* GotoFolderWindow.nib in Resources */ = {isa = PBXBuildFile; fileRef = 8BEA55DF090C0EFB00F83026 /* GotoFolderWindow.nib */; };
+		8BEF403E09DB4D3C00E86186 /* IconFamilyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BEF403D09DB4D3C00E86186 /* IconFamilyTests.m */; };
 		8BF1038D09A2AFBE00FE21A7 /* Panther.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 8BF1038C09A2AFBE00FE21A7 /* Panther.xcconfig */; };
 		8D11072A0486CEB800E47090 /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 29B97318FDCFA39411CA2CEA /* MainMenu.nib */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
@@ -685,6 +686,8 @@
 		8BEA55DB090C0EDF00F83026 /* GotoFolderWindowFactory.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = GotoFolderWindowFactory.h; path = Components/GotoFolderWindow/GotoFolderWindowFactory.h; sourceTree = "<group>"; };
 		8BEA55DC090C0EDF00F83026 /* GotoFolderWindowFactory.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = GotoFolderWindowFactory.m; path = Components/GotoFolderWindow/GotoFolderWindowFactory.m; sourceTree = "<group>"; };
 		8BEA55E0090C0EFB00F83026 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = Components/GotoFolderWindow/English.lproj/GotoFolderWindow.nib; sourceTree = "<group>"; };
+		8BEF403C09DB4D3C00E86186 /* IconFamilyTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IconFamilyTests.h; path = UnitTests/IconFamilyTests.h; sourceTree = "<group>"; };
+		8BEF403D09DB4D3C00E86186 /* IconFamilyTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IconFamilyTests.m; path = UnitTests/IconFamilyTests.m; sourceTree = "<group>"; };
 		8BF1038C09A2AFBE00FE21A7 /* Panther.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Panther.xcconfig; path = config/Panther.xcconfig; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* VitaminSEE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VitaminSEE.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1345,6 +1348,8 @@
 				8BE1487509D5D9680070E809 /* EGPathTests.m */,
 				8BE14BE109D5E8670070E809 /* ImageLoaderTests.h */,
 				8BE14BE209D5E8670070E809 /* ImageLoaderTests.m */,
+				8BEF403C09DB4D3C00E86186 /* IconFamilyTests.h */,
+				8BEF403D09DB4D3C00E86186 /* IconFamilyTests.m */,
 			);
 			name = "Unit Tests";
 			sourceTree = "<group>";
@@ -2962,6 +2967,7 @@
 			files = (
 				8B56B44809D5F3AA006C68BE /* ImageLoaderTests.m in Sources */,
 				8BE1487A09D5D9A80070E809 /* EGPathTests.m in Sources */,
+				8BEF403E09DB4D3C00E86186 /* IconFamilyTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
