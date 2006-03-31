@@ -1,9 +1,6 @@
-0.7.1.2 Bugfix Release (March 28th, 2006)
+0.7.1.2 Bugfix Release (March 30th, 2006)
 -----------------------------------------
-* Fix memory leaks caused by thumbnails, windows, documents and a bunch of other
-  objects never being deallocated.
-* Modify IconFamily so it makes less extranious copies.
-* Eliminate redundant objects
+* Fix memory leaks everywhere.
 
 0.7.1.1 Bugfix Release (March 22nd, 2006)
 -----------------------------------------
