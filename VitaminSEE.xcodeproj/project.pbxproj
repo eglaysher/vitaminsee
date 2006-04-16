@@ -582,6 +582,7 @@
 		8B9B2F20090DAE82009C69B7 /* DesktopBackground.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = DesktopBackground.m; path = Components/DesktopBackground/DesktopBackground.m; sourceTree = "<group>"; };
 		8B9B2F22090DAEC2009C69B7 /* DesktopBackground-Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xml; name = "DesktopBackground-Info.plist"; path = "Components/DesktopBackground/DesktopBackground-Info.plist"; sourceTree = "<group>"; };
 		8B9C7374096884C6009ED6CC /* CurrentFilePlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CurrentFilePlugin.h; path = Protocols/CurrentFilePlugin.h; sourceTree = "<group>"; };
+		8B9F7B4009F1FCB7000874B5 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = Components/KeyPreferences/English.lproj/KeyPreferences.nib; sourceTree = "<group>"; };
 		8BAE04EC095F6C5C007C387D /* NSObject+Invocations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Invocations.h"; sourceTree = "<group>"; };
 		8BAE04ED095F6C5D007C387D /* NSObject+Invocations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Invocations.m"; sourceTree = "<group>"; };
 		8BB68FCA099D9E21001AE27B /* UpArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = UpArrow.png; path = Resources/UpArrow.png; sourceTree = "<group>"; };
@@ -1065,6 +1066,7 @@
 		8B24490F08FB546C004716BC /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				8B9F7B2F09F1FB5C000874B5 /* KeyPreferences */,
 				8B7BA8B809B15468002D34D8 /* FullScreenMode */,
 				8BC9D620098727DC006F6B16 /* KeywordManagerPreferences */,
 				8BC9D342098487A4006F6B16 /* KeywordManager */,
@@ -1247,6 +1249,14 @@
 				8B9B2F20090DAE82009C69B7 /* DesktopBackground.m */,
 			);
 			name = DesktopBackground;
+			sourceTree = "<group>";
+		};
+		8B9F7B2F09F1FB5C000874B5 /* KeyPreferences */ = {
+			isa = PBXGroup;
+			children = (
+				8B9F7B3F09F1FCB7000874B5 /* KeyPreferences.nib */,
+			);
+			name = KeyPreferences;
 			sourceTree = "<group>";
 		};
 		8BC9D2CA098432A2006F6B16 /* ImageMetadata */ = {
@@ -3280,6 +3290,14 @@
 				8BC9D5B509870757006F6B16 /* Japanese */,
 			);
 			name = SortManager.nib;
+			sourceTree = "<group>";
+		};
+		8B9F7B3F09F1FCB7000874B5 /* KeyPreferences.nib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8B9F7B4009F1FCB7000874B5 /* English */,
+			);
+			name = KeyPreferences.nib;
 			sourceTree = "<group>";
 		};
 		8BB691CE099DBA3E001AE27B /* VitaminSEE Help */ = {

@@ -65,15 +65,37 @@
 	return YES;
 }
 
--(void)keyDown:(NSEvent*)theEvent {
+-(void)keyDown:(NSEvent*)theEvent 
+{
+	NSRect clipRect = [[self contentView] bounds];
+	NSSize documentSize = [[self documentView] frame].size;
+	
 	if([theEvent keyCode] == ARROW_LEFT_KEY)
-		[self scrollTheViewByX:-([self horizontalLineScroll]) y:0];
+	{
+		[self scrollTheViewByX:-([self horizontalLineScroll]) y:0];		
+	}
 	else if([theEvent keyCode] == ARROW_RIGHT_KEY)
-		[self scrollTheViewByX:[self horizontalLineScroll] y:0];
+	{
+		[self scrollTheViewByX:[self horizontalLineScroll] y:0];		
+	}
 	else if([theEvent keyCode] == ARROW_UP_KEY)
-		[self scrollTheViewByX:0 y:[self verticalLineScroll]];
+	{
+		// If we are at the very top of the document, then 
+		if(clipRect.origin.y + clipRect.size.height + 0.5 >= documentSize.height)
+			NSLog(@"Flipping!");
+		else
+		{
+			// Otherwise, scroll the picture up			
+			[self scrollTheViewByX:0 y:[self verticalLineScroll]];					
+		}
+	}
 	else if([theEvent keyCode] == ARROW_DOWN_KEY)
-		[self scrollTheViewByX:0 y:-([self verticalLineScroll])];
+	{
+		if(clipRect.origin.y <= 0.9)
+			NSLog(@"Flipping down!");
+		else
+			[self scrollTheViewByX:0 y:-([self verticalLineScroll])];		
+	}
 	else
 		[super keyDown:theEvent];
 }
