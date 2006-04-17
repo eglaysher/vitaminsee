@@ -30,6 +30,7 @@
 
 
 #import "EGScrollView.h"
+#import "MyImageView.h"
 
 #define   ARROW_UP_KEY        0x7E
 #define   ARROW_DOWN_KEY      0x7D
@@ -82,7 +83,11 @@
 	{
 		// If we are at the very top of the document, then 
 		if(clipRect.origin.y + clipRect.size.height + 0.5 >= documentSize.height)
-			NSLog(@"Flipping!");
+		{
+			[NSApp sendAction:@selector(goPreviousFile:) to:nil from:self];
+			// Now set view at the bottom of the previous picture
+			[[self documentView] setNextImageStartingLocation:EGSV_CENTER_BOTTOM];
+		}		
 		else
 		{
 			// Otherwise, scroll the picture up			
@@ -92,7 +97,12 @@
 	else if([theEvent keyCode] == ARROW_DOWN_KEY)
 	{
 		if(clipRect.origin.y <= 0.9)
-			NSLog(@"Flipping down!");
+		{
+			[NSApp sendAction:@selector(goNextFile:) to:nil from:self];
+			// Now set view at the top of the next picture. HOW DO I DO THAT
+			// IN THIS ARCHITECTURE!?!?!?
+			[[self documentView] setNextImageStartingLocation:EGSV_CENTER_TOP];
+		}
 		else
 			[self scrollTheViewByX:0 y:-([self verticalLineScroll])];		
 	}

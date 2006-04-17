@@ -15,13 +15,25 @@
 
 @class EGScrollView;
 
+enum EGScrollViewLocation {
+	// x, y
+	EGSV_NONE,
+	EGSV_LEFT_CENTER,
+	EGSV_RIGHT_CENTER,
+	EGSV_CENTER_TOP,
+	EGSV_CENTER_BOTTOM
+};
+
 @interface MyImageView : NSImageView
 {
     NSPoint startPt;
     NSPoint startOrigin;
+	enum EGScrollViewLocation nextImageStartingLocation;
 
-	IBOutlet EGScrollView* scrollView;
+	IBOutlet EGScrollView* scrollView;	
 }
+
+-(void)setNextImageStartingLocation:(enum EGScrollViewLocation)location;
 
 @end
 

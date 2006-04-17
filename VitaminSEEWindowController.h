@@ -36,6 +36,9 @@
 @class VitaminSEEPicture;
 @class RBSplitView;
 @class ViewerDocument;
+@class XeeStatusBar;
+@class XeeStatusCell;
+@class FileSizeFormatter;
 
 @interface VitaminSEEWindowController : NSWindowController {
 //	VitaminSEEPicture* pictureState;
@@ -53,9 +56,18 @@
 	IBOutlet NSProgressIndicator* progressIndicator;
 	bool currentlyAnimated;
 	
+	IBOutlet XeeStatusBar* statusbar;
+	
 	IBOutlet NSTextField * progressCurrentTask;
 	
 	float oldFileListSize;
+	
+	XeeStatusCell* zoomCell;
+
+	XeeStatusCell* filesizeCell;
+	FileSizeFormatter* formater;
+
+	XeeStatusCell* imagesizeCell;
 }
 -(id)initWithFileList:(id<FileList>)inFileList;
 
@@ -76,7 +88,7 @@
 -(void)updateWindowTitle;
 
 -(void)setImage:(NSImage*)image;
--(void)setFileSizeLabelText:(int)fileSize;
+-(void)setFileSizeLabelText:(int)fileSize forPath:(EGPath*)path;
 -(void)setImageSizeLabelText:(NSSize)size;
 
 //-(IBAction)setImageAsDesktop:(id)sender;

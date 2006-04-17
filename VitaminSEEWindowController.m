@@ -37,6 +37,9 @@
 #import "AppKitAdditions.h"
 #import "ImageLoader.h"
 #import "ApplicationController.h"
+#import "ThumbnailManager.h"
+
+#import "XeeStatusBar.h"
 
 #import <Carbon/Carbon.h>
 
@@ -63,6 +66,7 @@
 {
 	NSLog(@"Deallocating window!");
 	
+	[formater release];
 	[NSObject cancelPreviousPerformRequestsWithTarget:self];
 	[currentFileViewHolder setSubview:0];	
 	[super dealloc];
@@ -71,7 +75,18 @@
 //-----------------------------------------------------------------------------
 
 -(void)awakeFromNib
-{
+{	
+	// Now set up the status bar (This goes first because any other action 
+	// forcers a window redraw and causes an exception within XeeStatusBar, 
+	// since it hasn't been set up yet.)
+	zoomCell = [XeeStatusCell statusWithImageNamed:@"" title:@""];
+	filesizeCell = [XeeStatusCell statusWithImageNamed:@"" title:@""];
+	imagesizeCell = [XeeStatusCell statusWithImageNamed:@"status_rulers" title:@""];
+	[statusbar addCell:zoomCell priority:3];
+	[statusbar addCell:filesizeCell priority:2];
+	[statusbar addCell:imagesizeCell priority:1];
+	[statusbar setHiddenFrom:0 to:2 values:NO,NO,NO];		
+	
 	// Build the toolbar
 	[[self window] setToolbar:[ToolbarDelegate buildToolbar]];
 	
@@ -102,8 +117,6 @@
 	RBSplitSubview* rightView = [splitView subviewAtPosition:1];
 	[rightView setCanCollapse:NO];
 	[rightView setMinDimension:0 andMaxDimension:0];	
-	
-//	SetSystemUIMode(kUIModeAllHidden, kUIOptionAutoShowMenuBar); // to enter fullscreen
 }
 
 //-----------------------------------------------------------------------------
@@ -221,12 +234,26 @@
 
 //-----------------------------------------------------------------------------
 
--(void)setFileSizeLabelText:(int)fileSize
+-(void)setFileSizeLabelText:(int)fileSize forPath:(EGPath*)path
 {
 	if(fileSize == -1)
-		[fileSizeLabel setObjectValue:@"---"];
+		[statusbar setHidden:YES forCell:filesizeCell];
 	else
-		[fileSizeLabel setObjectValue:[NSNumber numberWithInt:fileSize]];
+	{
+		if(!formater)
+			formater = [[FileSizeFormatter alloc] init];
+
+		[statusbar setHidden:NO forCell:filesizeCell];
+
+		// Get the file type icon:
+		NSImage* image = [[NSWorkspace sharedWorkspace] iconForFileType:[[path fileSystemPath] pathExtension]];
+		[image setSize:NSMakeSize(16,16)];
+		[filesizeCell setImage:image];
+		
+		[filesizeCell setTitle:[formater stringForObjectValue:[NSNumber numberWithInt:fileSize]]];
+	}
+
+	[statusbar setNeedsDisplay:YES];
 }
 
 //-----------------------------------------------------------------------------
@@ -238,10 +265,15 @@
 	int height = size.height;
 	
 	if(width == 0 && height == 0)
-		[imageSizeLabel setStringValue:@"---"];
+		[statusbar setHidden:YES forCell:imagesizeCell];
 	else
-		[imageSizeLabel setStringValue:[NSString stringWithFormat:@"%i x %i", 
+	{
+		[statusbar setHidden:NO forCell:imagesizeCell];
+		[imagesizeCell setTitle:[NSString stringWithFormat:@"%i x %i", 
 			width, height]];
+	}
+	
+	[statusbar setNeedsDisplay:YES];
 }
 
 //-----------------------------------------------------------------------------

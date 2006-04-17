@@ -31,9 +31,12 @@
                 progressIndicator = NSProgressIndicator; 
                 scrollView = NSScrollView; 
                 splitView = RBSplitView; 
+                statusbar = XeeStatusBar; 
             }; 
             SUPERCLASS = NSWindowController; 
-        }
+        }, 
+        {CLASS = XeeStatusBar; LANGUAGE = ObjC; SUPERCLASS = NSView; }, 
+        {CLASS = XeeStatusCell; LANGUAGE = ObjC; SUPERCLASS = NSCell; }
     ); 
     IBVersion = 1; 
 }

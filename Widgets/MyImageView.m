@@ -17,6 +17,8 @@
 // cursor and allow dragging.
 //
 // 5/10/05: Adding code to make the image viewer accept key
+// 4/16/06: If people are scrolling across multiple images, make sure that we
+//          have the view positioned correctly. 
 //
 
 #import "MyImageView.h"
@@ -24,6 +26,11 @@
 #import "ImageLoader.h"
 
 @implementation MyImageView
+
+-(void)setNextImageStartingLocation:(enum EGScrollViewLocation)location
+{
+	nextImageStartingLocation = location;
+}
 
 /** This is the image setting code. Note that we try to animate if neccessary,
 * that we do management related to getting the currsor correct, and that we
@@ -45,6 +52,38 @@
 		// This is the first time an image is being displayed; we need to
 		// update the display NOW.
 		[self setNeedsDisplay];
+	}
+	
+	// Now, we move the rect to the location we want to display
+	if(nextImageStartingLocation != EGSV_NONE)
+	{
+		NSRect rect = [[self enclosingScrollView] documentVisibleRect];
+		NSRect imageViewerFrame = [self frame];
+		
+		// We need to place this item some place specific:
+		switch(nextImageStartingLocation)
+		{
+			case EGSV_CENTER_TOP:
+				// Position the image at the top
+				rect.origin.y = imageViewerFrame.size.height - rect.size.height;
+//				NSLog(@"Center top: %@", NSStringFromRect(rect));
+				[self scrollRectToVisible:rect];
+				break;
+			case EGSV_CENTER_BOTTOM:
+				rect.origin.y = 0;
+//				NSLog(@"Center bottom!");
+				[self scrollRectToVisible:rect];				
+				break;
+			case EGSV_LEFT_CENTER:
+			case EGSV_RIGHT_CENTER:
+			case EGSV_NONE:
+			default:
+				break;
+		}
+		
+		// Reset the next location; if it needs to be moved, some other object
+		// will tell us to.
+		nextImageStartingLocation = EGSV_NONE;
 	}
 }
 

@@ -118,6 +118,10 @@
 		8B9B2F21090DAE82009C69B7 /* DesktopBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B9B2F20090DAE82009C69B7 /* DesktopBackground.m */; };
 		8B9B2F23090DAEC2009C69B7 /* DesktopBackground-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8B9B2F22090DAEC2009C69B7 /* DesktopBackground-Info.plist */; };
 		8B9C7375096884C6009ED6CC /* CurrentFilePlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B9C7374096884C6009ED6CC /* CurrentFilePlugin.h */; };
+		8B9F800009F29C26000874B5 /* XeeStatusBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B9F7FFE09F29C26000874B5 /* XeeStatusBar.h */; };
+		8B9F800109F29C26000874B5 /* XeeStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B9F7FFF09F29C26000874B5 /* XeeStatusBar.m */; };
+		8B9F802309F2ABC9000874B5 /* status_rulers.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B9F802109F2ABC9000874B5 /* status_rulers.png */; };
+		8B9F802409F2ABC9000874B5 /* status_viewmag.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B9F802209F2ABC9000874B5 /* status_viewmag.png */; };
 		8BAE04EF095F6C5D007C387D /* NSObject+Invocations.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BAE04ED095F6C5D007C387D /* NSObject+Invocations.m */; };
 		8BB68FCB099D9E21001AE27B /* UpArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BB68FCA099D9E21001AE27B /* UpArrow.png */; };
 		8BB691FE099DBA3E001AE27B /* VitaminSEE Help in Resources */ = {isa = PBXBuildFile; fileRef = 8BB691CE099DBA3E001AE27B /* VitaminSEE Help */; };
@@ -583,6 +587,10 @@
 		8B9B2F22090DAEC2009C69B7 /* DesktopBackground-Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xml; name = "DesktopBackground-Info.plist"; path = "Components/DesktopBackground/DesktopBackground-Info.plist"; sourceTree = "<group>"; };
 		8B9C7374096884C6009ED6CC /* CurrentFilePlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CurrentFilePlugin.h; path = Protocols/CurrentFilePlugin.h; sourceTree = "<group>"; };
 		8B9F7B4009F1FCB7000874B5 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = Components/KeyPreferences/English.lproj/KeyPreferences.nib; sourceTree = "<group>"; };
+		8B9F7FFE09F29C26000874B5 /* XeeStatusBar.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = XeeStatusBar.h; path = Widgets/XeeStatusBar.h; sourceTree = "<group>"; };
+		8B9F7FFF09F29C26000874B5 /* XeeStatusBar.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = XeeStatusBar.m; path = Widgets/XeeStatusBar.m; sourceTree = "<group>"; };
+		8B9F802109F2ABC9000874B5 /* status_rulers.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = status_rulers.png; path = Resources/status_rulers.png; sourceTree = "<group>"; };
+		8B9F802209F2ABC9000874B5 /* status_viewmag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = status_viewmag.png; path = Resources/status_viewmag.png; sourceTree = "<group>"; };
 		8BAE04EC095F6C5C007C387D /* NSObject+Invocations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Invocations.h"; sourceTree = "<group>"; };
 		8BAE04ED095F6C5D007C387D /* NSObject+Invocations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Invocations.m"; sourceTree = "<group>"; };
 		8BB68FCA099D9E21001AE27B /* UpArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = UpArrow.png; path = Resources/UpArrow.png; sourceTree = "<group>"; };
@@ -930,6 +938,8 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8B9F802109F2ABC9000874B5 /* status_rulers.png */,
+				8B9F802209F2ABC9000874B5 /* status_viewmag.png */,
 				8B8B6D5909C8DC2500E36801 /* MacPAD.url */,
 				8B8B6CFE09C7ACF300E36801 /* UKFeedbackProvider.nib */,
 				8B8B6D0009C7ACF300E36801 /* UKUpdateChecker.strings */,
@@ -998,6 +1008,8 @@
 		8B2448A108FB2018004716BC /* Widgets */ = {
 			isa = PBXGroup;
 			children = (
+				8B9F7FFE09F29C26000874B5 /* XeeStatusBar.h */,
+				8B9F7FFF09F29C26000874B5 /* XeeStatusBar.m */,
 				8B8B6E5609CC624700E36801 /* NSString+CarbonFSRefCreation.h */,
 				8B8B6E5709CC624700E36801 /* NSString+CarbonFSRefCreation.m */,
 				8B8B6CF609C7AC8400E36801 /* UKFeedbackProvider.h */,
@@ -1401,6 +1413,7 @@
 				8B8B6E5809CC624700E36801 /* NSString+CarbonFSRefCreation.h in Headers */,
 				8BE1487609D5D9680070E809 /* EGPathTests.h in Headers */,
 				8B56B53909D616B3006C68BE /* main.h in Headers */,
+				8B9F800009F29C26000874B5 /* XeeStatusBar.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2806,6 +2819,8 @@
 				8B8B6D0609C7ACF300E36801 /* UKFeedbackProvider.nib in Resources */,
 				8B8B6D0709C7ACF300E36801 /* UKUpdateChecker.strings in Resources */,
 				8B8B6D5A09C8DC2500E36801 /* MacPAD.url in Resources */,
+				8B9F802309F2ABC9000874B5 /* status_rulers.png in Resources */,
+				8B9F802409F2ABC9000874B5 /* status_viewmag.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3030,6 +3045,7 @@
 				8B8B6CFB09C7AC8400E36801 /* UKFeedbackProvider.m in Sources */,
 				8B8B6CFD09C7AC8400E36801 /* UKUpdateChecker.m in Sources */,
 				8B8B6E5909CC624700E36801 /* NSString+CarbonFSRefCreation.m in Sources */,
+				8B9F800109F29C26000874B5 /* XeeStatusBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

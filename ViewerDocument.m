@@ -262,7 +262,7 @@
 		// We want to display the folder icon (or whatever it is), since it
 		// isn't an image and we want to reflect that.		
 		[window setImageSizeLabelText:NSMakeSize(0,0)];
-		[window setFileSizeLabelText:-1];
+		[window setFileSizeLabelText:-1 forPath:nil];
 		
 		// Display the icon.
 		NSImage* image = [file iconImageOfSize:NSMakeSize(128,128)];
@@ -311,8 +311,8 @@
 				[[task objectForKey:@"Pixel Height"] floatValue])];
 			
 			// Set the size of the image in bytes
-			[window setFileSizeLabelText:[[task objectForKey:@"Data Size"] 
-				intValue]];
+			[window setFileSizeLabelText:[[task objectForKey:@"Data Size"] intValue]
+								 forPath:[task objectForKey:@"Path"]];
 		}
 	}
 
