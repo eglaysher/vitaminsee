@@ -82,11 +82,13 @@
 	else if([theEvent keyCode] == ARROW_UP_KEY)
 	{
 		// If we are at the very top of the document, then 
-		if(clipRect.origin.y + clipRect.size.height + 0.5 >= documentSize.height)
+		if(clipRect.origin.y + clipRect.size.height + 0.5 >= documentSize.height && 
+		   ![[self documentView] waitingForImage])
 		{
 			[NSApp sendAction:@selector(goPreviousFile:) to:nil from:self];
 			// Now set view at the bottom of the previous picture
 			[[self documentView] setNextImageStartingLocation:EGSV_CENTER_BOTTOM];
+			[[self documentView] setWaitingForImage:YES];
 		}		
 		else
 		{
@@ -96,12 +98,14 @@
 	}
 	else if([theEvent keyCode] == ARROW_DOWN_KEY)
 	{
-		if(clipRect.origin.y <= 0.9)
+		if(clipRect.origin.y <= 0.9 && 
+		   ![[self documentView] waitingForImage])
 		{
 			[NSApp sendAction:@selector(goNextFile:) to:nil from:self];
 			// Now set view at the top of the next picture. HOW DO I DO THAT
 			// IN THIS ARCHITECTURE!?!?!?
 			[[self documentView] setNextImageStartingLocation:EGSV_CENTER_TOP];
+			[[self documentView] setWaitingForImage:YES];
 		}
 		else
 			[self scrollTheViewByX:0 y:-([self verticalLineScroll])];		

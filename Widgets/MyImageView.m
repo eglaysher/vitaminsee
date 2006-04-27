@@ -84,6 +84,7 @@
 		// Reset the next location; if it needs to be moved, some other object
 		// will tell us to.
 		nextImageStartingLocation = EGSV_NONE;
+		waiting = NO;
 	}
 }
 
@@ -143,5 +144,20 @@
 	else
 		[(NSScrollView*)[self superview] setDocumentCursor:nil];
 }
+
+// ---------------------------------------------------------------------------
+
+-(BOOL)waitingForImage
+{
+	return waiting;
+}
+
+// ---------------------------------------------------------------------------
+
+-(void)setWaitingForImage:(BOOL)inWaiting
+{
+	waiting = inWaiting;
+}
+
 
 @end

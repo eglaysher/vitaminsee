@@ -29,11 +29,16 @@ enum EGScrollViewLocation {
     NSPoint startPt;
     NSPoint startOrigin;
 	enum EGScrollViewLocation nextImageStartingLocation;
+	
+	BOOL waiting;
 
 	IBOutlet EGScrollView* scrollView;	
 }
 
 -(void)setNextImageStartingLocation:(enum EGScrollViewLocation)location;
+
+-(BOOL)waitingForImage;
+-(void)setWaitingForImage:(BOOL)waiting;
 
 @end
 
