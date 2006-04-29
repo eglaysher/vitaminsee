@@ -237,7 +237,7 @@
 
 //-----------------------------------------------------------------------------
 
--(void)setFileSizeLabelText:(int)fileSize 
+-(void)setFileSizeLabelText:(int)fileSize forPath:(EGPath*)path
 {
 	[fileListViewerController setFileSizeLabelText:fileSize];
 }
