@@ -31,6 +31,7 @@
                 progressIndicator = NSProgressIndicator; 
                 scrollView = NSScrollView; 
                 splitView = RBSplitView; 
+                statusBarProgressIndicatorContainer = NSView; 
                 statusbar = XeeStatusBar; 
             }; 
             SUPERCLASS = NSWindowController; 

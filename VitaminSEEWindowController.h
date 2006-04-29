@@ -52,11 +52,12 @@
 	// File view components:
 	IBOutlet NSView* currentFileViewHolder;
 	id<FileList> fileList;
-	
+
+	IBOutlet NSView* statusBarProgressIndicatorContainer;
+	IBOutlet XeeStatusBar* statusbar;
 	IBOutlet NSProgressIndicator* progressIndicator;
 	bool currentlyAnimated;
 	
-	IBOutlet XeeStatusBar* statusbar;
 	
 	IBOutlet NSTextField * progressCurrentTask;
 	
@@ -72,6 +73,8 @@
 -(id)initWithFileList:(id<FileList>)inFileList;
 
 -(void)setFileList:(id<FileList>)newList;
+
+-(BOOL)statusBarHidden;
 
 //-(IBAction)goToFolder:(id)sender;
 //-(void)finishedGotoFolder:(NSString*)done;

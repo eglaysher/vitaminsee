@@ -47,6 +47,7 @@
                 setAsDesktopImage = id; 
                 toggleFileList = id; 
                 toggleFullScreenControls = id; 
+                toggleStatusBar = id; 
                 zoomIn = id; 
                 zoomOut = id; 
                 zoomToFit = id; 

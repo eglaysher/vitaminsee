@@ -466,6 +466,11 @@
 	return [[splitView subviewAtPosition:0] isCollapsed];
 }
 
+-(BOOL)statusBarHidden
+{
+	return [statusbar isHidden];
+}
+
 //-----------------------------------------------------------------------------
 
 /** Menu item validation
@@ -487,6 +492,15 @@
 			[anItem setTitle:NSLocalizedString(@"Hide File List",
 											   @"Text in View menu")];		
 	}
+	else if(action == @selector(toggleStatusBar:))
+	{
+		if([statusbar isHidden])
+			[anItem setTitle:NSLocalizedString(@"Show Statusbar", 
+											   @"Text in View menu")];
+		else
+			[anItem setTitle:NSLocalizedString(@"Hide Statusbar",
+											   @"Text in View menu")];		
+	}
 	
 	return enable;
 }
@@ -504,6 +518,64 @@
 		[firstSplit expandWithAnimation:NO withResize:NO];
 	else 
 		[firstSplit collapseWithAnimation:NO withResize:NO];
+}
+
+//-----------------------------------------------------------------------------
+
+/** Shows or hides the status bar. This code is a copying pasting from
+ * this article: http://www.stone.com/The_Cocoa_Files/More_or_Less.html
+ */
+-(void)toggleStatusBar:(id)sender
+{
+	NSWindow* win = [self window];
+	NSRect winFrame = [win frame];
+	
+	// 
+	NSRect topFrame = [splitView frame];
+	NSRect bottomFrame = [statusBarProgressIndicatorContainer frame];
+	
+	// Get the original resizing masks for the controls
+	int topMask = [splitView autoresizingMask];
+	int bottomMask = [statusBarProgressIndicatorContainer autoresizingMask];
+	
+	// Set them to not automatically resize so our window resizing doesn't mess
+	// things up
+	[splitView setAutoresizingMask:NSViewNotSizable];
+	[statusBarProgressIndicatorContainer setAutoresizingMask:NSViewNotSizable];
+	
+	if(![statusbar isHidden])
+	{
+		winFrame.size.height -= NSHeight(bottomFrame);
+		winFrame.origin.y += NSHeight(bottomFrame);
+		bottomFrame.origin.y = -NSHeight(bottomFrame);
+		topFrame.origin.y = 0.0;
+		
+		// Set the status bar's hidden event
+		[statusbar setHidden:YES];
+	}
+	else
+	{
+		// Stack the boxes one on top of the other:
+		bottomFrame.origin.y = 0.0;
+		topFrame.origin.y = NSHeight(bottomFrame);
+		
+		// adjest the desired height and origin of the window:
+		winFrame.size.height += NSHeight(bottomFrame);
+		winFrame.origin.y -= NSHeight(bottomFrame);
+		
+		[statusbar setHidden:NO];
+	}
+	
+	// adjust locations of the boxes:
+	[splitView setFrame:topFrame];
+	[statusBarProgressIndicatorContainer setFrame:bottomFrame];
+	
+	// resize the window and display:
+	[win setFrame:winFrame display:YES];
+	
+	// reset the boxes to their original autosize masks:
+	[splitView setAutoresizingMask:topMask];
+	[statusBarProgressIndicatorContainer setAutoresizingMask:bottomMask];
 }
 
 //-----------------------------------------------------------------------------
