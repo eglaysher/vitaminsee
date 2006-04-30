@@ -251,6 +251,16 @@
 
 //-----------------------------------------------------------------------------
 
+/** Provide this here to make the interface consistent with the normal window
+ * controller
+ */
+-(void)setZoomStatusBarCellFromTask:(id)task
+{
+	// Don't do anything
+}
+
+//-----------------------------------------------------------------------------
+
 -(void)setImage:(NSImage*)image
 {
 	[imageViewer setImage:image];

@@ -64,10 +64,8 @@
 	float oldFileListSize;
 	
 	XeeStatusCell* zoomCell;
-
 	XeeStatusCell* filesizeCell;
 	FileSizeFormatter* formater;
-
 	XeeStatusCell* imagesizeCell;
 }
 -(id)initWithFileList:(id<FileList>)inFileList;
@@ -106,4 +104,6 @@
 -(void)toggleStatusBar:(id)sender;
 
 -(void)setFileListVisible:(BOOL)visible;
+
+-(void)setZoomStatusBarCellFromTask:(id)task;
 @end

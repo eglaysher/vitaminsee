@@ -820,6 +820,7 @@ static BOOL newTaskThatPreemptsPreload(NSDictionary* currentTask)
 			
 			if(maxHeight <= viewingAreaHeight && maxWidth <= viewingAreaWidth) 
 			{
+				minRatio = 1.0;
 				size.width = maxWidth;
 				size.height = maxHeight;
 			}
@@ -827,7 +828,8 @@ static BOOL newTaskThatPreemptsPreload(NSDictionary* currentTask)
 			{
 				size.width = imageWidth * minRatio;
 				size.height = imageHeight * minRatio;
-			}			
+			}
+			[task setObject:[NSNumber numberWithFloat:minRatio] forKey:@"Scale Ratio"];
 		}
 	}
 	

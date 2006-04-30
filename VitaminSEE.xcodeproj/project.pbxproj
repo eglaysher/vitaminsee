@@ -98,6 +98,7 @@
 		8B7BA91D09B15721002D34D8 /* ImageViewing.nib in Resources */ = {isa = PBXBuildFile; fileRef = 8B7BA8D009B1553B002D34D8 /* ImageViewing.nib */; };
 		8B7BA91E09B1572F002D34D8 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B7F0DA10964A94E00B7A46D /* Carbon.framework */; };
 		8B7F0DA20964A94E00B7A46D /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B7F0DA10964A94E00B7A46D /* Carbon.framework */; };
+		8B8A42820A050009003D2826 /* status_viewtofit.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B8A42810A050009003D2826 /* status_viewtofit.png */; };
 		8B8B6CD109C79EF300E36801 /* UKCrashReporter.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B8B6CCF09C79EF300E36801 /* UKCrashReporter.h */; };
 		8B8B6CD209C79EF300E36801 /* UKCrashReporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8B6CD009C79EF300E36801 /* UKCrashReporter.m */; };
 		8B8B6CD509C79F1F00E36801 /* UKCrashReporter.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8B8B6CD309C79F1E00E36801 /* UKCrashReporter.strings */; };
@@ -556,6 +557,7 @@
 		8B7BA8DD09B15588002D34D8 /* FullScreenMode.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FullScreenMode.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B7BA8E609B155BC002D34D8 /* FullScreenMode-Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xml; name = "FullScreenMode-Info.plist"; path = "Components/FullScreenMode/FullScreenMode-Info.plist"; sourceTree = "<group>"; };
 		8B7F0DA10964A94E00B7A46D /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
+		8B8A42810A050009003D2826 /* status_viewtofit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = status_viewtofit.png; path = Resources/status_viewtofit.png; sourceTree = "<group>"; };
 		8B8B6CCF09C79EF300E36801 /* UKCrashReporter.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = UKCrashReporter.h; path = Widgets/UKCrashReporter.h; sourceTree = "<group>"; };
 		8B8B6CD009C79EF300E36801 /* UKCrashReporter.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = UKCrashReporter.m; path = Widgets/UKCrashReporter.m; sourceTree = "<group>"; };
 		8B8B6CD409C79F1E00E36801 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/UKCrashReporter.strings; sourceTree = "<group>"; };
@@ -938,6 +940,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8B8A42810A050009003D2826 /* status_viewtofit.png */,
 				8B9F802109F2ABC9000874B5 /* status_rulers.png */,
 				8B9F802209F2ABC9000874B5 /* status_viewmag.png */,
 				8B8B6D5909C8DC2500E36801 /* MacPAD.url */,
@@ -2821,6 +2824,7 @@
 				8B8B6D5A09C8DC2500E36801 /* MacPAD.url in Resources */,
 				8B9F802309F2ABC9000874B5 /* status_rulers.png in Resources */,
 				8B9F802409F2ABC9000874B5 /* status_viewmag.png in Resources */,
+				8B8A42820A050009003D2826 /* status_viewtofit.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

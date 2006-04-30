@@ -293,6 +293,53 @@
 
 //-----------------------------------------------------------------------------
 
+/** Figures out which zoom icon should be set and updates the zoom cell in the
+ * status bar.
+ */
+-(void)setZoomStatusBarCellFromTask:(id)task
+{
+	if(task)
+	{
+		id scaleMode = [task objectForKey:@"Scale Mode"];
+
+		int ratio = [[task objectForKey:@"Scale Ratio"] floatValue] * 100;
+		[zoomCell setTitle:[NSString stringWithFormat:@"%d%%", ratio]];
+		
+		if([scaleMode isEqual:SCALE_IMAGE_TO_FIT]) 
+		{
+			[zoomCell setImage:[NSImage imageNamed:@"status_viewtofit.png"]];	
+			
+//			float vaHeight = [[task objectForKey:@"Viewing Area Height"] floatValue];
+//			float vaWidth = [[task objectForKey:@"Viewing Area Width"] floatValue];
+//			float image = [[task objectForKey:@"Pixel Height"] floatValue];
+//			int ratio;
+//			if(image > viewingArea)
+//				ratio = (int)(100.0f * (viewingArea / image));
+//			else
+//				ratio = 100;
+//
+//			[zoomCell setTitle:[NSString stringWithFormat:@"%d%%", ratio]];			
+		}
+		else
+		{
+			[zoomCell setImage:[NSImage imageNamed:@"status_viewmag.png"]];
+
+		}
+		
+		[statusbar setHidden:NO forCell:zoomCell];
+		[statusbar setNeedsDisplay:YES];
+	}
+	else 
+	{
+		[statusbar setHidden:YES forCell:zoomCell];
+		[statusbar setNeedsDisplay:YES];
+	}
+}
+
+//-----------------------------------------------------------------------------
+
+//-----------------------------------------------------------------------------
+
 -(void)updateWindowTitle
 {
 	// pass the responsibility to the fileilst, who will also mess with the

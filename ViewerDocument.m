@@ -263,6 +263,7 @@
 		// isn't an image and we want to reflect that.		
 		[window setImageSizeLabelText:NSMakeSize(0,0)];
 		[window setFileSizeLabelText:-1 forPath:nil];
+		[window setZoomStatusBarCellFromTask:nil];
 		
 		// Display the icon.
 		NSImage* image = [file iconImageOfSize:NSMakeSize(128,128)];
@@ -291,19 +292,8 @@
 			// Set the image
 			[window setImage:image];
 			
-			// When you're resizing a window, you'll want to consider the 
-			// real pixel size when you're fitting the image, otherwise, some
-			// sort of zoom means size of the current zoom level.
-//			if([task objectForKey:@"Scale Mode"] == SCALE_IMAGE_TO_FIT) 
-//			{
-				pixelWidth = [[task objectForKey:@"Pixel Width"] floatValue];
-				pixelHeight = [[task objectForKey:@"Pixel Height"] floatValue];				
-//			}
-//			else
-//			{
-//				pixelWidth = [image size].width;
-//				pixelHeight = [image size].height;
-//			}
+			pixelWidth = [[task objectForKey:@"Pixel Width"] floatValue];
+			pixelHeight = [[task objectForKey:@"Pixel Height"] floatValue];				
 			
 			// Set the image size label
 			[window setImageSizeLabelText:NSMakeSize(
@@ -313,6 +303,9 @@
 			// Set the size of the image in bytes
 			[window setFileSizeLabelText:[[task objectForKey:@"Data Size"] intValue]
 								 forPath:[task objectForKey:@"Path"]];
+
+			// Set the zoom data on the status bar
+			[window setZoomStatusBarCellFromTask:task];
 		}
 	}
 
