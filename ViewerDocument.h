@@ -44,7 +44,7 @@
 #define EGViewerWindowClosed @"EGViewerWindowClosed"
 
 @interface ViewerDocument : NSDocument <FileListDelegate> {
-	VitaminSEEWindowController* window;
+	id window;
 	
 	NSNotificationCenter* viewerNotifications;
 	
@@ -90,6 +90,10 @@
 
 -(BOOL)validateSetAsDesktopImageItem:(NSMenuItem*)item;
 -(BOOL)validateAction:(SEL)action;
+
+-(void)goNextFile:(id)sender;
+-(void)goPreviousFile:(id)sender;
+
 
 -(void)setDirectoryFromRawPath:(NSString*)path;
 -(BOOL)focusOnFile:(EGPath*)path;

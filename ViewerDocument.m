@@ -42,6 +42,7 @@
 #import "Util.h"
 #import "FileOperations.h"
 #import "RenameFileSheetController.h"
+#import "FullscreenWindowController.h"
 
 @implementation ViewerDocument
 
@@ -716,7 +717,7 @@
 		[window setShouldCloseDocument:NO];
 		
 		// Become fullscreen
-		NSWindow* old = window;
+		id old = window;
 		window = [[[ComponentManager getInteranlComponentNamed:@"FullScreenMode"]
 			build] autorelease];
 		[self addWindowController:window];

@@ -58,7 +58,7 @@
 -(void)updateWindowTitle;
 
 -(void)setImage:(NSImage*)image;
--(void)setFileSizeLabelText:(int)fileSize;
+//-(void)setFileSizeLabelText:(int)fileSize;
 -(void)setImageSizeLabelText:(NSSize)size;
 
 // These should return the size of the screen.

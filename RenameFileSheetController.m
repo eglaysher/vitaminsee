@@ -320,7 +320,7 @@
  */
 -(NSString*)handleDualExtensionProblem:(NSString*)rawName realExt:(NSString*)realExt
 {
-	NSUndoManager* um = [doc undoManager];
+//	NSUndoManager* um = [doc undoManager];
 	
 	NSAlert *alert = [[NSAlert alloc] init];
 	[alert addButtonWithTitle:[NSString stringWithFormat:@"Keep .%@", realExt]];

@@ -31,6 +31,7 @@
 
 #import "EGScrollView.h"
 #import "MyImageView.h"
+#import "ViewerDocument.h"
 
 #define   ARROW_UP_KEY        0x7E
 #define   ARROW_DOWN_KEY      0x7D
