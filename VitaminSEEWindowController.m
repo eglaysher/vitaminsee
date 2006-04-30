@@ -268,7 +268,8 @@
 		[filesizeCell setTitle:[formater stringForObjectValue:[NSNumber numberWithInt:fileSize]]];
 	}
 
-	[statusbar setNeedsDisplay:YES];
+//	[statusbar setNeedsDisplay:YES];
+	[statusBarProgressIndicatorContainer setNeedsDisplay:YES];
 }
 
 //-----------------------------------------------------------------------------
@@ -288,7 +289,8 @@
 			width, height]];
 	}
 	
-	[statusbar setNeedsDisplay:YES];
+//	[statusbar setNeedsDisplay:YES];
+	[statusBarProgressIndicatorContainer setNeedsDisplay:YES];
 }
 
 //-----------------------------------------------------------------------------
@@ -383,11 +385,15 @@
 	float pixelWidth = [[self document] pixelWidth];
 	float pixelHeight = [[self document] pixelHeight];
 	
-	float nonImageWidth = [self nonImageWidth];
+	float nonImageWidth = [self nonImageWidthWithScrollbar:NO];
 	float newWidth = nonImageWidth + pixelWidth;
 	
-	float nonImageHeight = [self nonImageHeight];
+	float nonImageHeight = [self nonImageHeightWithScrollbar:NO];
 	float newHeight = nonImageHeight + pixelHeight;
+
+	NSRect defaultContentFrame = 
+		[NSWindow contentRectForFrameRect:defaultFrame
+								styleMask:[[self window] styleMask]];	
 	
 	// If the image won't fit even in the maximized window, then calculate which
 	// side is too large, and shrink it based on that if we are in scaled image
@@ -395,11 +401,7 @@
 	if(([[[self document] scaleMode] isEqual:SCALE_IMAGE_TO_FIT]) &&
 	   (newHeight > NSHeight(defaultFrame) ||
 		newWidth > NSWidth(defaultFrame)))
-	{
-		NSRect defaultContentFrame = 
-			[NSWindow contentRectForFrameRect:defaultFrame
-									styleMask:[[self window] styleMask]];
-		
+	{		
 		float defaultImageWidth = NSWidth(defaultContentFrame) - nonImageWidth;
 		float defaultImageHeight = NSHeight(defaultContentFrame) - nonImageHeight;
 
@@ -413,10 +415,10 @@
 		// We aren't in a scaling mode. That means we have to make sure that the
 		// scroll bars aren't a menace, displaying both when only one is needed
 		// because we didn't compensate for it.
-		if(newHeight > NSHeight(defaultFrame))
-			newWidth += NSWidth([[scrollView horizontalScroller] frame]);
-		if(newWidth > NSWidth(defaultFrame))
-			newHeight += NSHeight([[scrollView horizontalScroller] frame]);
+		if(pixelHeight > NSHeight(defaultContentFrame) - nonImageHeight)
+			newWidth = [self nonImageWidthWithScrollbar:YES] + pixelWidth;			
+		if(pixelWidth > NSWidth(defaultContentFrame) - nonImageWidth)
+			newHeight = [self nonImageHeightWithScrollbar:YES] + pixelHeight;			
 	}
 	
 	// Code taken from a very nice Mac Dev Center article on window zooming:
@@ -480,14 +482,14 @@
 
 //windowWillReturnUndoManager:
 
--(float)nonImageWidth
+-(float)nonImageWidthWithScrollbar:(BOOL)showScrollbar
 {
 	// Get the subtract the scrollView's frame width from the 
 	NSRect content = [NSWindow contentRectForFrameRect:[[self window] frame] 
 											 styleMask:[[self window] styleMask]];
 	NSSize scrollContent = [NSScrollView contentSizeForFrameSize:[scrollView frame].size
 										   hasHorizontalScroller:NO
-											 hasVerticalScroller:NO
+											 hasVerticalScroller:showScrollbar
 													  borderType:[scrollView borderType]];
 	
 	return content.size.width - scrollContent.width;
@@ -498,12 +500,12 @@
  * window's content rect because we call this method while we're resizing said
  * content view!
  */
--(float)nonImageHeight
+-(float)nonImageHeightWithScrollbar:(BOOL)showScrollbar
 {
 	NSRect content = [NSWindow contentRectForFrameRect:[[self window] frame] 
 											 styleMask:[[self window] styleMask]];
 	NSSize scrollContent = [NSScrollView contentSizeForFrameSize:[scrollView frame].size
-										   hasHorizontalScroller:NO
+										   hasHorizontalScroller:showScrollbar
 											 hasVerticalScroller:NO
 													  borderType:[scrollView borderType]];
 	
@@ -571,7 +573,7 @@
 
 //-----------------------------------------------------------------------------
 
-/** Shows or hides the status bar. This code is a copying pasting from
+/** Shows or hides the status bar. This code is a copy/pasting from
  * this article: http://www.stone.com/The_Cocoa_Files/More_or_Less.html
  */
 -(void)toggleStatusBar:(id)sender
