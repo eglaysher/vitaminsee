@@ -97,8 +97,8 @@
 -(double)viewingAreaWidth;
 -(double)viewingAreaHeight;
 
--(float)nonImageWidth;
--(float)nonImageHeight;
+-(float)nonImageWidthWithScrollbar:(BOOL)showScrollbar;
+-(float)nonImageHeightWithScrollbar:(BOOL)showScrollbar;
 
 -(BOOL)fileListHidden;
 -(void)toggleStatusBar:(id)sender;
