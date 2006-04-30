@@ -306,25 +306,9 @@
 		[zoomCell setTitle:[NSString stringWithFormat:@"%d%%", ratio]];
 		
 		if([scaleMode isEqual:SCALE_IMAGE_TO_FIT]) 
-		{
 			[zoomCell setImage:[NSImage imageNamed:@"status_viewtofit.png"]];	
-			
-//			float vaHeight = [[task objectForKey:@"Viewing Area Height"] floatValue];
-//			float vaWidth = [[task objectForKey:@"Viewing Area Width"] floatValue];
-//			float image = [[task objectForKey:@"Pixel Height"] floatValue];
-//			int ratio;
-//			if(image > viewingArea)
-//				ratio = (int)(100.0f * (viewingArea / image));
-//			else
-//				ratio = 100;
-//
-//			[zoomCell setTitle:[NSString stringWithFormat:@"%d%%", ratio]];			
-		}
 		else
-		{
 			[zoomCell setImage:[NSImage imageNamed:@"status_viewmag.png"]];
-
-		}
 		
 		[statusbar setHidden:NO forCell:zoomCell];
 		[statusbar setNeedsDisplay:YES];
@@ -435,10 +419,6 @@
 			newHeight += NSHeight([[scrollView horizontalScroller] frame]);
 	}
 	
-//	NSLog(@"new: %@ defaultSize: %@", 
-//		  NSStringFromSize(NSMakeSize(newWidth,newHeight)),
-//		  NSStringFromSize(defaultFrame.size));
-	
 	// Code taken from a very nice Mac Dev Center article on window zooming:
 	// http://www.macdevcenter.com/pub/a/mac/2002/05/16/cocoa.html?page=2
 	// Hint to Apple: Incorporate that into an official tutorial! That's
@@ -505,9 +485,12 @@
 	// Get the subtract the scrollView's frame width from the 
 	NSRect content = [NSWindow contentRectForFrameRect:[[self window] frame] 
 											 styleMask:[[self window] styleMask]];
+	NSSize scrollContent = [NSScrollView contentSizeForFrameSize:[scrollView frame].size
+										   hasHorizontalScroller:NO
+											 hasVerticalScroller:NO
+													  borderType:[scrollView borderType]];
 	
-	
-	return content.size.width - [scrollView frame].size.width;
+	return content.size.width - scrollContent.width;
 }
 
 /** The size of the window's content view that isn't taken up by the scrollView.
@@ -519,8 +502,12 @@
 {
 	NSRect content = [NSWindow contentRectForFrameRect:[[self window] frame] 
 											 styleMask:[[self window] styleMask]];
+	NSSize scrollContent = [NSScrollView contentSizeForFrameSize:[scrollView frame].size
+										   hasHorizontalScroller:NO
+											 hasVerticalScroller:NO
+													  borderType:[scrollView borderType]];
 	
-	return content.size.height - [scrollView frame].size.height;
+	return content.size.height - scrollContent.height;
 }
 
 -(BOOL)fileListHidden
