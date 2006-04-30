@@ -527,6 +527,8 @@
  */
 -(void)toggleStatusBar:(id)sender
 {
+	NSLog(@"-----");
+	
 	NSWindow* win = [self window];
 	NSRect winFrame = [win frame];
 	
@@ -543,28 +545,45 @@
 	[splitView setAutoresizingMask:NSViewNotSizable];
 	[statusBarProgressIndicatorContainer setAutoresizingMask:NSViewNotSizable];
 	
+	NSLog(@"winFrame before: %@ (%@)", NSStringFromRect(winFrame), NSStringFromSize(winFrame.size));
+	NSLog(@"bottomFrame : %@", NSStringFromRect(bottomFrame));
+	NSLog(@"topFrame: %@", NSStringFromRect(topFrame));	
+	
 	if(![statusbar isHidden])
 	{
+		
 		winFrame.size.height -= NSHeight(bottomFrame);
 		winFrame.origin.y += NSHeight(bottomFrame);
 		bottomFrame.origin.y = -NSHeight(bottomFrame);
 		topFrame.origin.y = 0.0;
 		
+		
 		// Set the status bar's hidden event
 		[statusbar setHidden:YES];
 	}
 	else
-	{
+	{		
 		// Stack the boxes one on top of the other:
 		bottomFrame.origin.y = 0.0;
 		topFrame.origin.y = NSHeight(bottomFrame);
 		
 		// adjest the desired height and origin of the window:
 		winFrame.size.height += NSHeight(bottomFrame);
-		winFrame.origin.y -= NSHeight(bottomFrame);
+
+		// Make sure that we don't make ourselves bigger then the screen.
+		if(winFrame.origin.y - NSHeight(bottomFrame) < 0) {
+			NSLog(@"It isn't going to fit!!!");
+			float offset = NSHeight(bottomFrame);
+			winFrame.origin.y += offset;
+			topFrame.size.height -= offset;
+		} else {
+			winFrame.origin.y -= NSHeight(bottomFrame);			
+		}
 		
 		[statusbar setHidden:NO];
 	}
+
+	NSLog(@"winFrame: %@ (%@)", NSStringFromRect(winFrame), NSStringFromSize(winFrame.size));
 	
 	// adjust locations of the boxes:
 	[splitView setFrame:topFrame];
