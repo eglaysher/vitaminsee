@@ -84,8 +84,8 @@
 		// Reset the next location; if it needs to be moved, some other object
 		// will tell us to.
 		nextImageStartingLocation = EGSV_NONE;
-		waiting = NO;
 	}
+	waiting = NO;
 }
 
 // ---------------------------------------------------------------------------

@@ -38,12 +38,23 @@
 #import "ImageLoader.h"
 #import "ApplicationController.h"
 #import "ThumbnailManager.h"
+#import "EGPath.h"
 
 #import "XeeStatusBar.h"
 
 #import <Carbon/Carbon.h>
 
 @implementation VitaminSEEWindowController
+
++(void)initialize
+{
+	// Set up this application's default preferences	
+    NSMutableDictionary *defaultPrefs = [NSMutableDictionary dictionary];
+	[defaultPrefs setObject:[NSNumber numberWithBool:NO] forKey:@"StatusBarHidden"];
+	[[NSUserDefaults standardUserDefaults] registerDefaults: defaultPrefs];
+}
+
+//-----------------------------------------------------------------------------
 
 -(id)initWithFileList:(id<FileList>)inFileList 
 {
@@ -86,7 +97,11 @@
 	[statusbar addCell:filesizeCell priority:2];
 	[statusbar addCell:imagesizeCell priority:1];
 	[statusbar setHiddenFrom:0 to:2 values:NO,NO,NO];		
-	
+
+	// Should it be displayed?
+	if([[NSUserDefaults standardUserDefaults] boolForKey:@"StatusBarHidden"] != [statusbar isHidden])
+		[self toggleStatusBar:self];
+		
 	// Build the toolbar
 	[[self window] setToolbar:[ToolbarDelegate buildToolbar]];
 	
@@ -527,10 +542,9 @@
  */
 -(void)toggleStatusBar:(id)sender
 {
-	NSLog(@"-----");
-	
 	NSWindow* win = [self window];
 	NSRect winFrame = [win frame];
+	BOOL newState;
 	
 	// 
 	NSRect topFrame = [splitView frame];
@@ -544,22 +558,16 @@
 	// things up
 	[splitView setAutoresizingMask:NSViewNotSizable];
 	[statusBarProgressIndicatorContainer setAutoresizingMask:NSViewNotSizable];
-	
-	NSLog(@"winFrame before: %@ (%@)", NSStringFromRect(winFrame), NSStringFromSize(winFrame.size));
-	NSLog(@"bottomFrame : %@", NSStringFromRect(bottomFrame));
-	NSLog(@"topFrame: %@", NSStringFromRect(topFrame));	
-	
+
 	if(![statusbar isHidden])
 	{
-		
 		winFrame.size.height -= NSHeight(bottomFrame);
 		winFrame.origin.y += NSHeight(bottomFrame);
 		bottomFrame.origin.y = -NSHeight(bottomFrame);
-		topFrame.origin.y = 0.0;
-		
+		topFrame.origin.y = 0.0;		
 		
 		// Set the status bar's hidden event
-		[statusbar setHidden:YES];
+		newState = YES;
 	}
 	else
 	{		
@@ -572,29 +580,29 @@
 
 		// Make sure that we don't make ourselves bigger then the screen.
 		if(winFrame.origin.y - NSHeight(bottomFrame) < 0) {
-			NSLog(@"It isn't going to fit!!!");
 			float offset = NSHeight(bottomFrame);
 			winFrame.origin.y += offset;
 			topFrame.size.height -= offset;
 		} else {
 			winFrame.origin.y -= NSHeight(bottomFrame);			
 		}
-		
-		[statusbar setHidden:NO];
+
+		newState = NO;
 	}
 
-	NSLog(@"winFrame: %@ (%@)", NSStringFromRect(winFrame), NSStringFromSize(winFrame.size));
-	
 	// adjust locations of the boxes:
 	[splitView setFrame:topFrame];
 	[statusBarProgressIndicatorContainer setFrame:bottomFrame];
 	
+	// Note that we should/shouldn't display the status bar in the future
+	[statusbar setHidden:newState];
+	[[NSUserDefaults standardUserDefaults] setBool:newState forKey:@"StatusBarHidden"];	
 	// resize the window and display:
 	[win setFrame:winFrame display:YES];
 	
 	// reset the boxes to their original autosize masks:
 	[splitView setAutoresizingMask:topMask];
-	[statusBarProgressIndicatorContainer setAutoresizingMask:bottomMask];
+	[statusBarProgressIndicatorContainer setAutoresizingMask:bottomMask];	
 }
 
 //-----------------------------------------------------------------------------

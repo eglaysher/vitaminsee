@@ -103,6 +103,7 @@
 -(float)nonImageHeight;
 
 -(BOOL)fileListHidden;
+-(void)toggleStatusBar:(id)sender;
 
 -(void)setFileListVisible:(BOOL)visible;
 @end
