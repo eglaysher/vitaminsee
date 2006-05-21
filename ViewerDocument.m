@@ -307,6 +307,10 @@
 
 			// Set the zoom data on the status bar
 			[window setZoomStatusBarCellFromTask:task];
+			
+			// If we're in scale mode, update the zoom factor so that if the
+			// user zooms in or out, it's relative to the current image.
+			scaleRatio = [[task objectForKey:@"Scale Ratio"] floatValue];
 		}
 	}
 
