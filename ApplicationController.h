@@ -36,6 +36,7 @@
 @class EGOpenWithMenuDelegate;
 @class UKUpdateChecker;
 @class UKFeedbackProvider;
+@class ViewerDocument;
 
 /*!
 	@class ApplicationController
@@ -61,7 +62,7 @@
 	EGOpenWithMenuDelegate* openWithMenuDelegate;
 	BOOL loadedOpenWithMenu;
 
-	NSMutableArray* pictureViewers;
+	NSMutableArray* viewerDocuments;
 	
 	id prefs;	
 	
@@ -102,5 +103,9 @@
 -(void)sendPluginActivationSignal:(id)menuItem;
 
 -(IBAction)showGPL:(id)sender;
+
+-(void)addViewerDocument:(ViewerDocument*)vd;
+-(void)remvoeViewerDocument:(ViewerDocument*)vd;
+-(NSArray*)viewerDocuments;
 
 @end

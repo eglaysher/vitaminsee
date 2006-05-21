@@ -74,6 +74,10 @@
 	// Tracks whether the document and window have been closed and that we're
 	// only alive because we're owned by a task object on the ImageLoader thread
 	BOOL documentClosed;
+	
+	// Tracks the previous state of other windows while THIS window is in full-
+	// screen mode. {ViewerDocument => NSBoolean(whether it was visible before)}
+	NSMutableArray* previousVisibleState;
 }
 
 -(id)init;

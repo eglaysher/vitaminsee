@@ -70,6 +70,10 @@
 -(void)close
 {
 	NSLog(@"Closing document!");
+	
+	// Release ourselves from the ApplicationController's list of viewers
+	[[ApplicationController controller] remvoeViewerDocument:self];
+	
 	documentClosed = YES;
 	[currentFile release];
 	
@@ -130,7 +134,7 @@
 
 		[fileList setDirectory:path];
 		
-
+		[[ApplicationController controller] addViewerDocument:self];
 	}
 
 	return self;
@@ -719,6 +723,21 @@
 	if([[window class] isEqual:[VitaminSEEWindowController class]])
 	{
 		[window setShouldCloseDocument:NO];
+
+		// Make all the document windows hide, recording their current state
+		// so we can restore it later
+		previousVisibleState = [[NSMutableArray alloc] init];
+		id otherDocuments = [[ApplicationController controller] viewerDocuments];
+		NSEnumerator* e = [otherDocuments objectEnumerator];
+		id curDocument;
+		while(curDocument = [e nextObject]) 
+		{
+			if(curDocument != self) {
+				NSWindow* curWindow = [[[curDocument windowControllers] objectAtIndex:0] window];
+				[previousVisibleState addObject:curWindow];
+				[curWindow orderOut:self];				
+			}
+		}
 		
 		// Become fullscreen
 		id old = window;
@@ -734,6 +753,14 @@
 	{
 		// Leave fullscreen
 		NSWindowController* old = window;
+
+		// Now restore all the other windows
+		NSEnumerator* e = [previousVisibleState objectEnumerator];
+		id curWindow;
+		while(curWindow = [e nextObject]) 
+		{
+			[curWindow orderFront:self];
+		}
 		
 		// Recreate the real VitaminSEE window.
 		window = [[[VitaminSEEWindowController alloc] initWithFileList:fileList] autorelease];
@@ -745,6 +772,8 @@
 		[self redraw];
 		[old close];
 		[window setShouldCloseDocument:YES];
+		
+
 	}
 }
 

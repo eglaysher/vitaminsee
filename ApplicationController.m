@@ -222,7 +222,7 @@ static ApplicationController* appControl;
 	loadedViewPlugins = [[NSMutableDictionary alloc] init];
 	loadedCurrentFilePlugins = [[NSMutableDictionary alloc] init];	
 	
-	pictureViewers = [[NSMutableArray alloc] init];
+	viewerDocuments = [[NSMutableArray alloc] init];
 	
 	setPathForFirstTime = NO;
 	loadedOpenWithMenu = NO;
@@ -693,5 +693,20 @@ static ApplicationController* appControl;
 //	NSLog(@"Pictures: %@");
 }
 
+
+-(void)addViewerDocument:(ViewerDocument*)vd
+{
+	[viewerDocuments addObject:vd];
+}
+
+-(void)remvoeViewerDocument:(ViewerDocument*)vd
+{
+	[viewerDocuments removeObject:vd];
+}
+
+-(NSArray*)viewerDocuments
+{
+	return viewerDocuments;
+}
 
 @end
