@@ -800,10 +800,12 @@ static BOOL newTaskThatPreemptsPreload(NSDictionary* currentTask)
 		
 		// First check to see if the image will fit within the boundaries of the
 		// window 
+		float outputRatio = 0.0f;
 		if(imageWidth <= viewingAreaWidth && imageHeight <= viewingAreaHeight)
 		{
 			size.width = imageWidth;
 			size.height = imageHeight;
+			outputRatio = 1.0;
 		}
 		else
 		{
@@ -818,21 +820,21 @@ static BOOL newTaskThatPreemptsPreload(NSDictionary* currentTask)
 			float maxHeight = imageHeight * maxRatio;
 			float maxWidth = imageWidth * maxRatio;
 
-			float ratio;
 			if(maxHeight <= viewingAreaHeight && maxWidth <= viewingAreaWidth) 
 			{
-				ratio = maxRatio;
+				outputRatio = maxRatio;
 				size.width = maxWidth;
 				size.height = maxHeight;
 			}
 			else
 			{
-				ratio = minRatio;
+				outputRatio = minRatio;
 				size.width = imageWidth * minRatio;
 				size.height = imageHeight * minRatio;
 			}
-			[task setObject:[NSNumber numberWithFloat:ratio] forKey:@"Scale Ratio"];
 		}
+		
+		[task setObject:[NSNumber numberWithFloat:outputRatio] forKey:@"Scale Ratio"];
 	}
 	
 	// Round down, so we don't have a scroll bar apear for 0.1 pixels.
