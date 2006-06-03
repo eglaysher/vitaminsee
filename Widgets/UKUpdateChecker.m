@@ -32,7 +32,7 @@
 
 -(void)startup
 {
-	NSNumber	*   doCheck = [[NSUserDefaults standardUserDefaults] objectForKey: @"UKUpdateChecker:CheckAtStartup"];
+	NSNumber	*   doCheck = [[NSUserDefaults standardUserDefaults] objectForKey: @"UKUpdateCheckerCheckAtStartup"];
 	NSString	*   appName = [[NSFileManager defaultManager] displayNameAtPath: [[NSBundle mainBundle] bundlePath]]; 
 	NSNumber	*   lastCheckDateNum = [[NSUserDefaults standardUserDefaults] objectForKey: @"UKUpdateChecker:LastCheckDate"];
 	NSDate		*   lastCheckDate = nil;
@@ -47,7 +47,7 @@
 			doCheck = [NSNumber numberWithBool:NO];
 		
 		// Save user's preference to prefs file:
-		[[NSUserDefaults standardUserDefaults] setObject: doCheck forKey: @"UKUpdateChecker:CheckAtStartup"];
+		[[NSUserDefaults standardUserDefaults] setObject: doCheck forKey: @"UKUpdateCheckerCheckAtStartup"];
 	}
 	
 	// If user wants us to check for updates at startup, do so:
