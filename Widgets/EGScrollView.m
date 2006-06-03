@@ -68,9 +68,6 @@
 
 -(void)keyDown:(NSEvent*)theEvent 
 {
-	NSRect clipRect = [[self contentView] bounds];
-	NSSize documentSize = [[self documentView] frame].size;
-	
 	if([theEvent keyCode] == ARROW_LEFT_KEY)
 	{
 		[self scrollTheViewByX:-([self horizontalLineScroll]) y:0];		
