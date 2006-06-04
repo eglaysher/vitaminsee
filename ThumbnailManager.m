@@ -522,10 +522,13 @@ static BOOL generateThumbnails;
 		
 		if([path isNaturalFile] && shouldSaveIconToDisk)
 		{
-			[iconFamily setAsCustomIconForFile:[path fileSystemPath]];
+			// We need to perform this task on the main thread because it 
+			// invokes the Resource Manager which is decidedly NOT thread
+			// safe!
+			[[iconFamily performOnMainThreadWaitUntilDone:YES] 
+				setAsCustomIconForFile:[path fileSystemPath]];
 		}
 		
-//		thumbnail = [iconFamily imageWithAllRepsNoAutorelease];
 		thumbnail = [[path iconImageOfSize:NSMakeSize(128,128)] retain];
 		
 		[iconFamily release];
