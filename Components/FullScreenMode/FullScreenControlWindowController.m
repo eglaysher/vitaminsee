@@ -28,6 +28,7 @@
 ////////////////////////////////////////////////////////////////////////
 
 #import "FullScreenControlWindowController.h"
+#import "ViewerDocument.h"
 
 @implementation FullScreenControlWindowController
 
