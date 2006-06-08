@@ -157,7 +157,7 @@ static BOOL shouldPreloadImages;
 	[ourBrowser setCellClass:[ViewIconsCell class]];
 	[ourBrowser setDelegate:self];
 	
-	[ourBrowser setReusesColumns:NO];
+	[ourBrowser setReusesColumns:YES];
 	
 	currentlySelectedCell = nil;
 }
@@ -330,22 +330,17 @@ willDisplayCell:(id)cell
 		 column:(int)column
 {
 	EGPath* path = [fileList objectAtIndex:row];
-	// FIXME
 	[cell setCellPropertiesFromEGPath:path];
 	
 	// If the cell image hasn't been loaded
-	if(![cell iconImage])
-	{
-		// If there's an entry in the thumbnail cache, use it
-		NSImage* icon = [ThumbnailManager getThumbnailFor:path];
-		
-		// If there isn't, use the file icon...
-		if(!icon)
-			icon = [path iconImageOfSize:NSMakeSize(128,128)];
+	// If there's an entry in the thumbnail cache, use it
+	NSImage* icon = [ThumbnailManager getThumbnailFor:path];
+	
+	// If there isn't, use the file icon...
+	if(!icon)
+		icon = [path iconImageOfSize:NSMakeSize(128,128)];
 
-//		[self removeUnneededImageReps:icon];
-		[cell setIconImage:icon];
-	}
+	[cell setIconImage:icon];
 }
 
 //-----------------------------------------------------------------------------
@@ -422,16 +417,6 @@ willDisplayCell:(id)cell
 	}
 }
 
-// Spoilers: This method was responsible for quite a bit of lag in the 0.6 
-// version, since -[NSBrowser setPath:] does a linear search across ALL CELLS
-// EVEN IF IT FINDS IT IN THE FIRST CELL! Replaced with a binary search in 0.7.
-//-(void):(NSString*)fileToSelect
-//{
-//	if(fileToSelect)
-//		[ourBrowser setPath:[NSString pathWithComponents:[NSArray arrayWithObjects:
-//			@"/", [fileToSelect lastPathComponent], nil]]];
-//}
-
 -(void)makeFirstResponderTo:(NSWindow*)window
 {
 	[window makeFirstResponder:ourBrowser];
@@ -444,8 +429,6 @@ willDisplayCell:(id)cell
 	if(index != NSNotFound)
 	{
 		id currentCell = [[ourBrowser matrixInColumn:0] cellAtRow:index column:0];
-
-//		[self removeUnneededImageReps:image];
 		
 		if([currentCell isLoaded])
 		{
@@ -456,22 +439,22 @@ willDisplayCell:(id)cell
 }
 
 // We  don't need image representations that aren't the 128 version. Junk them.
--(void)removeUnneededImageReps:(NSImage*)image
-{
-	int pixelsHigh, pixelsWide, longSide;
-	NSArray* imageReps = [image representations];
-	NSEnumerator* e = [imageReps objectEnumerator];
-	NSImageRep* rep;
-	while(rep = [e nextObject])
-	{
-		pixelsHigh = [rep pixelsHigh];
-		pixelsWide = [rep pixelsWide];
-		longSide = pixelsHigh > pixelsWide ? pixelsHigh : pixelsWide;
-		
-		if(longSide != 128)
-			[image removeRepresentation:rep];
-	}	
-}
+//-(void)removeUnneededImageReps:(NSImage*)image
+//{
+//	int pixelsHigh, pixelsWide, longSide;
+//	NSArray* imageReps = [image representations];
+//	NSEnumerator* e = [imageReps objectEnumerator];
+//	NSImageRep* rep;
+//	while(rep = [e nextObject])
+//	{
+//		pixelsHigh = [rep pixelsHigh];
+//		pixelsWide = [rep pixelsWide];
+//		longSide = pixelsHigh > pixelsWide ? pixelsHigh : pixelsWide;
+//		
+//		if(longSide != 128)
+//			[image removeRepresentation:rep];
+//	}	
+//}
 
 //-----------------------------------------------------------------------------
 
@@ -756,6 +739,11 @@ willDisplayCell:(id)cell
 				unsigned closestPosition = [fileList 
 					lowerBoundToInsert:curFile
 					  withSortSelector:@selector(caseInsensitiveCompare:)];
+
+				// Select last file if out of bounds
+				if(closestPosition >= [fileList count]) 
+					closestPosition = [fileList count] - 1;
+
 				[ourBrowser selectRow:closestPosition inColumn:0];
 				// Now notify the delegate like it's a normal file selection operation.
 				[delegate setDisplayedFileTo:[fileList objectAtIndex:closestPosition]];
