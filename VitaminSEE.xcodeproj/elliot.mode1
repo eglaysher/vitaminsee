@@ -223,7 +223,7 @@
 						<key>_historyCapacity</key>
 						<integer>0</integer>
 						<key>bookmark</key>
-						<string>8BECE7430A3B4C1000399DE1</string>
+						<string>8BECE7510A3B4F8E00399DE1</string>
 						<key>history</key>
 						<array>
 							<string>8B943C860A3B4BCF0029B30E</string>
@@ -263,7 +263,7 @@
 						<key>_historyCapacity</key>
 						<integer>0</integer>
 						<key>bookmark</key>
-						<string>8BECE7440A3B4C1000399DE1</string>
+						<string>8BECE7520A3B4F8E00399DE1</string>
 						<key>history</key>
 						<array>
 							<string>8B943C870A3B4BCF0029B30E</string>
@@ -577,7 +577,7 @@
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 1270}, {320, 836}}</string>
+							<string>{{0, 205}, {320, 836}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -633,7 +633,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>171658248.47321799</real>
+	<real>171659150.728237</real>
 	<key>ToolbarDisplayMode</key>
 	<integer>2</integer>
 	<key>ToolbarIsVisible</key>
@@ -648,6 +648,7 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>8BD128CD09A2B4C0009E0275</string>
 		<string>8B09983F0A386EE200C2BD95</string>
 		<string>8B943C830A3B4BCF0029B30E</string>
 		<string>1C0AD2B3069F1EA900FABCE6</string>
@@ -733,7 +734,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>8BD128CD09A2B4C0009E0275</string>
-				<string>8B943C4A0A387B630029B30E</string>
+				<string>8BECE7490A3B4CD800399DE1</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
