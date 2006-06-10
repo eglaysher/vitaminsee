@@ -157,7 +157,7 @@ static BOOL shouldPreloadImages;
 	[ourBrowser setCellClass:[ViewIconsCell class]];
 	[ourBrowser setDelegate:self];
 	
-	[ourBrowser setReusesColumns:YES];
+	[ourBrowser setReusesColumns:NO];
 	
 	currentlySelectedCell = nil;
 }
@@ -248,7 +248,6 @@ static BOOL shouldPreloadImages;
 	
 	if(index != NSNotFound)
 	{
-		//[[ourBrowser loadedCellAtRow:index column:0] setNeedsDisplay];
 		[ourBrowser setNeedsDisplay];
 		[ourBrowser selectRow:index inColumn:0];
 
