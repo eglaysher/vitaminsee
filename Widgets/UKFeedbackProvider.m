@@ -4,6 +4,7 @@
 //
 //  Created by Uli Kusterer on Mon Nov 24 2003.
 //  Copyright (c) 2003 M. Uli Kusterer. All rights reserved.
+//  Modified to all hell by Elliot Glaysher in 2006.
 //
 
 #import "UKFeedbackProvider.h"
@@ -14,11 +15,20 @@
 
 @implementation UKFeedbackProvider
 
+-(id)init
+{
+	if(self = [super init]) {
+		fromField = [[NSString alloc] init];
+	}
+	
+	return self;
+}
 
 -(void) dealloc
 {
 	// Release all top-level objects from our NIB:
 	[feedbackWindow release];
+	[fromField release];
 	[super dealloc];
 }
 
@@ -51,6 +61,11 @@
 	
 	NSData*		msgText = [[messageText string] dataUsingEncoding: NSUTF8StringEncoding];
 	NSData*     msgSubj = [[subjectField stringValue] dataUsingEncoding: NSUTF8StringEncoding];
+	NSData*     msgFrom;
+	if([fromField isEqualToString:@""])
+		msgFrom = [@"Anonymous" dataUsingEncoding:NSUTF8StringEncoding];
+	else
+		msgFrom = [fromField dataUsingEncoding:NSUTF8StringEncoding];
 	
 	// Prepare a request:
 	NSMutableURLRequest *postRequest = [NSMutableURLRequestClass requestWithURL: [NSURL URLWithString: NSLocalizedString( @"FEEDBACK_REPORT_CGI_URL", @"" )]];
@@ -66,6 +81,11 @@
 	[formData appendData:msgText];
 	[formData appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
 
+	// Add the from field
+	[formData appendData:[[NSString stringWithFormat:@"--%@\r\nContent-Disposition: form-data; name=\"from\"\r\n\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+	[formData appendData:msgFrom];
+	[formData appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];	
+	
 	// Add subject line:
 	[formData appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"subject\"\r\n\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
 	[formData appendData:msgSubj];
@@ -105,5 +125,16 @@
 	[[NSWorkspace sharedWorkspace] openURL: [NSURL URLWithString: NSLocalizedString(@"FEEDBACK_URL", @"URL where the user can provide feedback.")]];
 }
 
+-(void)setFromField:(NSString*)incoming
+{
+	[incoming retain];
+	[fromField release];
+	fromField = incoming;
+}
+
+-(NSString*)fromField
+{
+	return fromField;
+}
 
 @end

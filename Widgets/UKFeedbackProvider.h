@@ -14,6 +14,8 @@
 	IBOutlet NSWindow*		feedbackWindow;			// Will automatically be hooked up. Don't do this yourself.
 	IBOutlet NSComboBox*	subjectField;			// Will automatically be hooked up. Don't do this yourself.
 	IBOutlet NSTextView*	messageText;			// Will automatically be hooked up. Don't do this yourself.
+
+	NSString* fromField;
 }
 
 // Action for the "send feedback" menu item:
@@ -25,6 +27,8 @@
 -(IBAction) closeFeedbackWindow: (id)sender;
 -(IBAction) openURL: (id)sender;
 
+-(void)setFromField:(NSString*)incoming;
+-(NSString*)fromField;
 
 
 @end
