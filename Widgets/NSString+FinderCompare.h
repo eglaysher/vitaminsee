@@ -30,9 +30,9 @@
 
 #import <Cocoa/Cocoa.h>
 
-
 @interface NSString (FinderCompare)
-
 -(NSComparisonResult)finderCompare:(id)object;
-
 @end
+
+NSComparisonResult finderCompareUnichars(UniChar* lhs, CFIndex lhsLen,
+										 UniChar* rhs, CFIndex rhsLen);

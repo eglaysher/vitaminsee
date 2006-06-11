@@ -30,6 +30,8 @@
 #import <Cocoa/Cocoa.h>
 
 @interface EGPath : NSObject <NSCopying> {
+	UniChar* cachedName;
+	int cachedNameLen;	
 }
 -(id)copyWithZone:(NSZone*)zone;
 
@@ -37,6 +39,11 @@
 +(id)pathWithPath:(NSString*)path;
 
 -(NSData*)dataRepresentationOfPath;
+
+// Build the Unichar string
+-(void)buildCachedUnichar;
+-(UniChar*)cachedName;
+-(int)cachedNameLen;
 
 // The filename to display to the user
 -(NSString*)displayName;
@@ -79,6 +86,8 @@
 @interface EGPathFilesystemPath : EGPath {
 	NSString* fileSystemPath;
 }
+
 +(id)pathWithPath:(NSString*)path;
 -(id)initWithPath:(NSString*)path;
+
 @end

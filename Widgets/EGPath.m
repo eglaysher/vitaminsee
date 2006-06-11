@@ -68,6 +68,45 @@ static NSMutableArray* fileExtensions = 0;
 	return nil;
 }
 
+-(id)init
+{
+	if(self = [super init]) {
+		cachedName = 0;
+	}
+	return self;
+}
+
+-(void)dealloc
+{
+	if(cachedName)
+	{
+		NSLog(@"Freeing...");
+		free(cachedName);		
+	}
+	
+	[super dealloc];
+}
+
+-(void)buildCachedUnichar
+{
+	NSString* displayName = [self displayName];
+	NSLog(@"Building cached unichar for %@", displayName);
+
+	cachedNameLen = [displayName length];
+	cachedName = malloc(cachedNameLen * sizeof(UniChar));
+	[displayName getCharacters:cachedName];
+}
+
+-(UniChar*)cachedName
+{
+	return cachedName;
+}
+
+-(int)cachedNameLen
+{
+	return cachedNameLen;
+}
+
 // ----- Comparator
 // Sort in the class order of:
 // - EGPathRoot
@@ -84,8 +123,19 @@ static NSMutableArray* fileExtensions = 0;
 			result = NSOrderedSame;
 		}
 		else if([self isKindOfClass:[EGPathFilesystemPath class]])
-			result = [[self fileSystemPath] caseInsensitiveCompare:
-				[object fileSystemPath]];
+		{			
+			if(!cachedName)
+				[self buildCachedUnichar];
+			if(![object cachedName])
+				[object buildCachedUnichar];
+			
+			result = finderCompareUnichars(cachedName, cachedNameLen,
+										   [object cachedName],
+										   [object cachedNameLen]);
+			
+//			result = [[self fileSystemPath] caseInsensitiveCompare:
+//				[object fileSystemPath]];
+		}
 	}
 	else
 	{
@@ -512,32 +562,6 @@ static NSString* egPathRootDisplayName = 0;
 	
 	return [components objectAtIndex:count];
 //	return [EGPath pathWithPath:[fileSystemPath stringByDeletingLastPathComponent]];
-}
-
--(NSComparisonResult)caseInsensitiveCompare:(id)object
-{
-	NSComparisonResult result;
-	
-	// TODO: This will have to be more robust.
-	if([self isMemberOfClass:[object class]])
-	{
-		if([self isKindOfClass:[EGPathRoot class]])
-			result = NSOrderedSame;
-		else if([self isKindOfClass:[EGPathFilesystemPath class]])
-			result = [[self fileSystemPath] caseInsensitiveCompare:
-				[object fileSystemPath]];
-	}
-	else
-	{
-		// Sort order:
-		if([object isKindOfClass:[EGPathRoot class]] &&
-		   [self isKindOfClass:[EGPathFilesystemPath class]])
-			result = NSOrderedDescending;
-		else
-			result = NSOrderedAscending;
-	}
-	
-	return result;
 }
 
 -(NSImage*)iconImageOfSize:(NSSize)size

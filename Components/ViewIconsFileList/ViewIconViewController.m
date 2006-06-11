@@ -244,7 +244,7 @@ static BOOL shouldPreloadImages;
 //	NSLog(@"File: %@ in %@", file, fileList);
 	
 	unsigned index = [fileList binarySearchFor:file
-							  withSortSelector:@selector(caseInsensitiveCompare:)];
+							  withSortSelector:@selector(compare:)];
 	
 	if(index != NSNotFound)
 	{
@@ -424,7 +424,7 @@ willDisplayCell:(id)cell
 -(void)receiveThumbnail:(NSImage*)image forFile:(EGPath*)path
 {
 	unsigned index = [fileList binarySearchFor:path
-							  withSortSelector:@selector(caseInsensitiveCompare:)];
+							  withSortSelector:@selector(compare:)];
 	if(index != NSNotFound)
 	{
 		id currentCell = [[ourBrowser matrixInColumn:0] cellAtRow:index column:0];
@@ -478,7 +478,7 @@ willDisplayCell:(id)cell
 -(BOOL)canGoNextFile 
 {
 	int index = [fileList binarySearchFor:[delegate currentFile]
-						 withSortSelector:@selector(caseInsensitiveCompare:)];
+						 withSortSelector:@selector(compare:)];
 	
 	int count = [fileList count];
 	if(index < count - 1)
@@ -492,7 +492,7 @@ willDisplayCell:(id)cell
 -(void)goNextFile
 {
 	int index = [fileList binarySearchFor:[delegate currentFile]
-						 withSortSelector:@selector(caseInsensitiveCompare:)];
+						 withSortSelector:@selector(compare:)];
 	index++;
 	
 	// Select this file
@@ -505,7 +505,7 @@ willDisplayCell:(id)cell
 -(BOOL)canGoPreviousFile
 {
 	int index = [fileList binarySearchFor:[delegate currentFile]
-						 withSortSelector:@selector(caseInsensitiveCompare:)];
+						 withSortSelector:@selector(compare:)];
 
 	if(index > 0)
 		return YES;
@@ -518,7 +518,7 @@ willDisplayCell:(id)cell
 -(void)goPreviousFile
 {
 	int index = [fileList binarySearchFor:[delegate currentFile]
-						 withSortSelector:@selector(caseInsensitiveCompare:)];
+						 withSortSelector:@selector(compare:)];
 	index--;
 	
 	// Select this file
@@ -602,7 +602,7 @@ willDisplayCell:(id)cell
 	// Now sort the list since some filesystems (*cough*SAMBA*cough*) don't
 	// present files sorted alphabetically and we do binary searches to avoid
 	// O(n) overhead later on.
-	[myFileList sortUsingSelector:@selector(caseInsensitiveCompare:)];	
+	[myFileList sortUsingSelector:@selector(compare:)];	
 	
 	// Now let's keep our new list of files. (Note it was allocated earlier)
 	[fileList release];	
@@ -733,11 +733,11 @@ willDisplayCell:(id)cell
 			if(![self focusOnFile:curFile] && [fileList count]) 
 			{
 				// If we can't focus on the same file as before, then that means
-				// we got rid of the file we're currently viewing; and we need to
-				// find the closest file to the one we were on.
+				// we got rid of the file we're currently viewing; and we need 
+				// to find the closest file to the one we were on.
 				unsigned closestPosition = [fileList 
 					lowerBoundToInsert:curFile
-					  withSortSelector:@selector(caseInsensitiveCompare:)];
+					  withSortSelector:@selector(compare:)];
 
 				// Select last file if out of bounds
 				if(closestPosition >= [fileList count]) 
@@ -746,7 +746,6 @@ willDisplayCell:(id)cell
 				[ourBrowser selectRow:closestPosition inColumn:0];
 				// Now notify the delegate like it's a normal file selection operation.
 				[delegate setDisplayedFileTo:[fileList objectAtIndex:closestPosition]];
-				
 			}
 			
 			[curFile release];

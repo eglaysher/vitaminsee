@@ -115,6 +115,8 @@
 		8B91ED070978AD1B001B95BE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8B91ED030978AD1B001B95BE /* Localizable.strings */; };
 		8B91ED080978AD1B001B95BE /* SortManager.nib in Resources */ = {isa = PBXBuildFile; fileRef = 8B91ED050978AD1B001B95BE /* SortManager.nib */; };
 		8B91EF85097C95AA001B95BE /* FileOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B91EF63097C9489001B95BE /* FileOperations.m */; };
+		8B944BCA0A3B56E1005C2A86 /* NSString+FinderCompare.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B944BC80A3B56E1005C2A86 /* NSString+FinderCompare.h */; };
+		8B944BCB0A3B56E1005C2A86 /* NSString+FinderCompare.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B944BC90A3B56E1005C2A86 /* NSString+FinderCompare.m */; };
 		8B98BF310939515D00CBBF00 /* ThumbnailManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B98BF2F0939515D00CBBF00 /* ThumbnailManager.m */; };
 		8B9B2F21090DAE82009C69B7 /* DesktopBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B9B2F20090DAE82009C69B7 /* DesktopBackground.m */; };
 		8B9B2F23090DAEC2009C69B7 /* DesktopBackground-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8B9B2F22090DAEC2009C69B7 /* DesktopBackground-Info.plist */; };
@@ -581,6 +583,8 @@
 		8B91EF63097C9489001B95BE /* FileOperations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FileOperations.m; path = Components/FileOperations/FileOperations.m; sourceTree = "<group>"; };
 		8B91EF6E097C9596001B95BE /* FileOperations.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FileOperations.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B91F0AC09808782001B95BE /* FileOperations-Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xml; name = "FileOperations-Info.plist"; path = "Components/FileOperations/FileOperations-Info.plist"; sourceTree = "<group>"; };
+		8B944BC80A3B56E1005C2A86 /* NSString+FinderCompare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+FinderCompare.h"; path = "Widgets/NSString+FinderCompare.h"; sourceTree = "<group>"; };
+		8B944BC90A3B56E1005C2A86 /* NSString+FinderCompare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+FinderCompare.m"; path = "Widgets/NSString+FinderCompare.m"; sourceTree = "<group>"; };
 		8B98BF2E0939515D00CBBF00 /* ThumbnailManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThumbnailManager.h; sourceTree = "<group>"; };
 		8B98BF2F0939515D00CBBF00 /* ThumbnailManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThumbnailManager.m; sourceTree = "<group>"; };
 		8B9B2F15090DAE69009C69B7 /* DesktopBackground.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DesktopBackground.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1042,6 +1046,8 @@
 				8B2448B608FB2033004716BC /* SBCenteringClipView.m */,
 				8BAE04EC095F6C5C007C387D /* NSObject+Invocations.h */,
 				8BAE04ED095F6C5D007C387D /* NSObject+Invocations.m */,
+				8B944BC80A3B56E1005C2A86 /* NSString+FinderCompare.h */,
+				8B944BC90A3B56E1005C2A86 /* NSString+FinderCompare.m */,
 			);
 			name = Widgets;
 			sourceTree = "<group>";
@@ -1417,6 +1423,7 @@
 				8BE1487609D5D9680070E809 /* EGPathTests.h in Headers */,
 				8B56B53909D616B3006C68BE /* main.h in Headers */,
 				8B9F800009F29C26000874B5 /* XeeStatusBar.h in Headers */,
+				8B944BCA0A3B56E1005C2A86 /* NSString+FinderCompare.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3050,6 +3057,7 @@
 				8B8B6CFD09C7AC8400E36801 /* UKUpdateChecker.m in Sources */,
 				8B8B6E5909CC624700E36801 /* NSString+CarbonFSRefCreation.m in Sources */,
 				8B9F800109F29C26000874B5 /* XeeStatusBar.m in Sources */,
+				8B944BCB0A3B56E1005C2A86 /* NSString+FinderCompare.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

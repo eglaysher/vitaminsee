@@ -60,3 +60,15 @@ const UCCollateOptions FinderLikeCompareOptions =
 }
 
 @end
+
+/** Generalized finder compare that takes two UniChar strings.
+ */
+NSComparisonResult finderCompareUnichars(UniChar* lhs, CFIndex lhsLen,
+										 UniChar* rhs, CFIndex rhsLen)
+{
+	SInt32 compareResult;
+	(void) UCCompareTextDefault(FinderLikeCompareOptions, lhs, lhsLen,
+								rhs, rhsLen, NULL, &compareResult);	
+	
+	return (CFComparisonResult) compareResult;	
+}
