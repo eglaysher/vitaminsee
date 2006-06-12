@@ -56,7 +56,15 @@ const UCCollateOptions FinderLikeCompareOptions =
 	(void) UCCompareTextDefault(FinderLikeCompareOptions, lhsBuf, lhsLen,
 								rhsBuf, rhsLen, NULL, &compareResult);	
 	
-	return (CFComparisonResult) compareResult;
+	// Regretfully, instead of returning -1, 0, +1, UCCompareTextDefault is
+	// returning -2, 0, +2. I'm not sure what that means, but this should fix
+	// it.
+	if(compareResult > 0)
+		return NSOrderedDescending;
+	else if(compareResult < 0)
+		return NSOrderedAscending;
+	else
+		return NSOrderedSame;
 }
 
 @end
@@ -69,6 +77,14 @@ NSComparisonResult finderCompareUnichars(UniChar* lhs, CFIndex lhsLen,
 	SInt32 compareResult;
 	(void) UCCompareTextDefault(FinderLikeCompareOptions, lhs, lhsLen,
 								rhs, rhsLen, NULL, &compareResult);	
-	
-	return (CFComparisonResult) compareResult;	
+
+	// Regretfully, instead of returning -1, 0, +1, UCCompareTextDefault is
+	// returning -2, 0, +2. I'm not sure what that means, but this should fix
+	// it.
+	if(compareResult > 0)
+		return NSOrderedDescending;
+	else if(compareResult < 0)
+		return NSOrderedAscending;
+	else
+		return NSOrderedSame;
 }

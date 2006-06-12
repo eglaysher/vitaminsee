@@ -29,8 +29,9 @@
 	while(high - low > 1)
 	{
 		current = (high + low) / 2;
-		if((NSComparisonResult)[object performSelector:sortSelector withObject:[self objectAtIndex:current]]
-		   == NSOrderedDescending)
+		NSComparisonResult result = (NSComparisonResult)[object performSelector:sortSelector withObject:[self objectAtIndex:current]];
+
+		if(result == NSOrderedDescending)
 		{
 			low = current;
 		}

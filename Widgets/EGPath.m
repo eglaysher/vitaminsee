@@ -80,7 +80,7 @@ static NSMutableArray* fileExtensions = 0;
 {
 	if(cachedName)
 	{
-		NSLog(@"Freeing...");
+//		NSLog(@"Freeing...");
 		free(cachedName);		
 	}
 	
@@ -90,7 +90,7 @@ static NSMutableArray* fileExtensions = 0;
 -(void)buildCachedUnichar
 {
 	NSString* displayName = [self displayName];
-	NSLog(@"Building cached unichar for %@", displayName);
+//	NSLog(@"Building cached unichar for %@", displayName);
 
 	cachedNameLen = [displayName length];
 	cachedName = malloc(cachedNameLen * sizeof(UniChar));
