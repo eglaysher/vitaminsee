@@ -81,7 +81,6 @@
 // * Delete key in sort manager preferences should do something. + UNDO!!!!
 // * Automator actions:
 //   * Set wallpaper to selection
-// * Fullscreen + Slideshow
 // * Have thumbnails scale down if right side is shrunk (rework NSBrowserCell
 //   subclass to use NSImageCell?)
 // * Undo on delete. (0.7 by absolute latest!)

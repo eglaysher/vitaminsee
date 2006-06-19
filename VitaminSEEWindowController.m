@@ -168,6 +168,7 @@
 - (void)splitView:(RBSplitView*)sender didExpand:(RBSplitSubview*)subview 
 {
 	// When we expand, make the file view first responder
+	[fileList makeFirstResponderTo:[self window]];
 	[[self document] redraw];
 }
 

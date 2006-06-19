@@ -226,6 +226,11 @@
  */
 -(void)setWindowTitle:(NSWindow*)window;
 
+/** Make the file list take first responder status, and thus pass it to whatever
+ * control needs it.
+ */
+-(void)makeFirstResponderTo:(NSWindow*)window;
+
 //@}
 
 

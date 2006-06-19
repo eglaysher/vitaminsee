@@ -63,6 +63,18 @@
 
 //-----------------------------------------------------------------------------
 
+/** Give the fileList focus when 
+ */ 
+- (IBAction)showWindow:(id)sender
+{
+	[super showWindow:self];
+	
+	// 
+	[fileList makeFirstResponderTo:[self window]];
+}
+
+//-----------------------------------------------------------------------------
+
 -(void)beginCountdownToDisplayProgressIndicator
 {
 	[NSObject cancelPreviousPerformRequestsWithTarget:self

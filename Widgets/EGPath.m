@@ -118,11 +118,7 @@ static NSMutableArray* fileExtensions = 0;
 	// TODO: This will have to be more robust.
 	if([self isMemberOfClass:[object class]])
 	{
-		if([self isKindOfClass:[EGPathRoot class]])
-		{
-			result = NSOrderedSame;
-		}
-		else if([self isKindOfClass:[EGPathFilesystemPath class]])
+		if([self isKindOfClass:[EGPathFilesystemPath class]])
 		{			
 			if(!cachedName)
 				[self buildCachedUnichar];
@@ -132,9 +128,10 @@ static NSMutableArray* fileExtensions = 0;
 			result = finderCompareUnichars(cachedName, cachedNameLen,
 										   [object cachedName],
 										   [object cachedNameLen]);
-			
-//			result = [[self fileSystemPath] caseInsensitiveCompare:
-//				[object fileSystemPath]];
+		}
+		else if([self isKindOfClass:[EGPathRoot class]])
+		{
+			result = NSOrderedSame;
 		}
 	}
 	else

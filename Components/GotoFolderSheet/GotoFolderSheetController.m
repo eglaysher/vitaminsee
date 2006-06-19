@@ -36,10 +36,8 @@
 {
 	if(self = [super initWithWindowNibName:@"GotoFolderSheet"])
 	{
+		// Force load of the window.
 		[self window];
-		
-		// We don't really need the pluginlayer except to conform to the Plugin
-		// protocol so don't do anything with it.
 	}
 	
 	return self;

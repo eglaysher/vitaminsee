@@ -66,6 +66,14 @@ static NSMutableDictionary* taskQueue;
 // Array of the next images to preload... [EGPath, EGPath...]
 static NSMutableArray* preloadQueue = 0;
 
+// Image cache (and its mutex) consisting of:
+// EGPath* => {
+//    @"Date" => NSDate (of load),
+//    @"Path" => EGPath*,
+//    @"Image Rep" => NSImageRep*,
+//    @"Data Size" => NSNumber*
+// }
+//
 static pthread_mutex_t imageCacheLock;
 static NSMutableDictionary* imageCache = 0;
 
@@ -390,7 +398,6 @@ static BOOL newTaskThatPreemptsPreload(NSDictionary* currentTask)
 	// It takes time to load data. Should we cancel?
 	if(newTaskForSameRequester(task)) {
 		[task release];
-//		NSLog(@"Bailing at first sight!");
 		return;	
 	}
 	
@@ -408,18 +415,20 @@ static BOOL newTaskThatPreemptsPreload(NSDictionary* currentTask)
 	if(imageRep == nil) {
 		[task release];
 		[size release];
+		
+		// TODO: Scream and die, since something is wrong here.
+		
 		return;	
 	}	
 
 	// Now we get the target size of the image.
 	NSSize displaySize = [self calculateTargetImageSize:task imageRep:imageRep];
 	
-	// It takes time to load data. Should we cancel?
+	// It took time to load data. Should we cancel?
 	if(newTaskForSameRequester(task)) {
 		[imageRep release];
 		[task release];
 		[size release];
-//		NSLog(@"Bailing after building image size");
 		return;
 	}
 	
@@ -458,7 +467,6 @@ static BOOL newTaskThatPreemptsPreload(NSDictionary* currentTask)
 		if(newTaskForSameRequester(task)) {
 			[imageToRet release];
 			[imageRep release];
-//			NSLog(@"Bailing during quick render!");
 			[task release];
 			[size release];
 			return;		

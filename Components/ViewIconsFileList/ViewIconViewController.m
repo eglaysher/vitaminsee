@@ -67,11 +67,15 @@ static BOOL shouldPreloadImages;
 			 object:nil];	
 }
 
+//-----------------------------------------------------------------------------
+
 +(void)updatePreferences
 {
 	shouldPreloadImages = [[[NSUserDefaults standardUserDefaults]
 		objectForKey:@"PreloadImages"] boolValue];
 }
+
+//-----------------------------------------------------------------------------
 
 -(id)init
 {
@@ -107,6 +111,8 @@ static BOOL shouldPreloadImages;
 	return self;
 }
 
+//-----------------------------------------------------------------------------
+
 /** Cleanup retain cycles that are caused by the ThumbnailManager retaining the
  * subscriber object because I don't know how to force NSArray to be a bunch of
  * weak refs!
@@ -125,6 +131,8 @@ static BOOL shouldPreloadImages;
 		[self unwatchPath:currentDirectory];
 }
 
+//-----------------------------------------------------------------------------
+
 -(void)dealloc
 {
 	[fileList release];
@@ -139,15 +147,21 @@ static BOOL shouldPreloadImages;
 	[super dealloc];
 }
 
+//-----------------------------------------------------------------------------
+
 -(void)setDelegate:(id<FileListDelegate>)newDelegate
 {
 	delegate = newDelegate;
 }
 
+//-----------------------------------------------------------------------------
+
 -(id<FileListDelegate>)delegate
 {
 	return delegate;
 }
+
+//-----------------------------------------------------------------------------
 
 -(void)awakeFromNib
 {
@@ -161,6 +175,8 @@ static BOOL shouldPreloadImages;
 	
 	currentlySelectedCell = nil;
 }
+
+//-----------------------------------------------------------------------------
 
 -(void)connectKeyFocus:(id)nextFocus
 {
@@ -176,10 +192,10 @@ static BOOL shouldPreloadImages;
 	return YES;
 }
 
+//-----------------------------------------------------------------------------
+
 - (BOOL)setDirectory:(EGPath*)newCurrentDirectory
 {		
-//	[pluginLayer flushImageCache];
-	
 //	NSLog(@"Setting directory to %@", newCurrentDirectory);
 	
 	// First subscribe to the new directory.
@@ -290,22 +306,27 @@ static BOOL shouldPreloadImages;
 	[self setDirectory:path];
 }
 
+//-----------------------------------------------------------------------------
+
 -(NSView*)getView
 {
 	return ourView;
 }
 
-
 //-----------------------------------------------------------------------------
+
 -(void)openCurrentItem
 {
 	[self doubleClick:self];
 }
 
+//-----------------------------------------------------------------------------
+
 -(BOOL)canOpenCurrentItem
 {
 	return [[delegate currentFile] isDirectory];
 }
+
 //-----------------------------------------------------------------------------
 //------------------------------------------------------------ BROWSER DELEGATE
 //-----------------------------------------------------------------------------
@@ -416,10 +437,7 @@ willDisplayCell:(id)cell
 	}
 }
 
--(void)makeFirstResponderTo:(NSWindow*)window
-{
-	[window makeFirstResponder:ourBrowser];
-}
+//-----------------------------------------------------------------------------
 
 -(void)receiveThumbnail:(NSImage*)image forFile:(EGPath*)path
 {
@@ -437,23 +455,13 @@ willDisplayCell:(id)cell
 	}
 }
 
-// We  don't need image representations that aren't the 128 version. Junk them.
-//-(void)removeUnneededImageReps:(NSImage*)image
-//{
-//	int pixelsHigh, pixelsWide, longSide;
-//	NSArray* imageReps = [image representations];
-//	NSEnumerator* e = [imageReps objectEnumerator];
-//	NSImageRep* rep;
-//	while(rep = [e nextObject])
-//	{
-//		pixelsHigh = [rep pixelsHigh];
-//		pixelsWide = [rep pixelsWide];
-//		longSide = pixelsHigh > pixelsWide ? pixelsHigh : pixelsWide;
-//		
-//		if(longSide != 128)
-//			[image removeRepresentation:rep];
-//	}	
-//}
+//-----------------------------------------------------------------------------
+
+-(void)makeFirstResponderTo:(NSWindow*)window
+{
+	[window makeFirstResponder:ourBrowser];
+	[self focusOnFile:[delegate currentFile]];
+}
 
 //-----------------------------------------------------------------------------
 
@@ -599,9 +607,7 @@ willDisplayCell:(id)cell
 		}
 	}	
 	
-	// Now sort the list since some filesystems (*cough*SAMBA*cough*) don't
-	// present files sorted alphabetically and we do binary searches to avoid
-	// O(n) overhead later on.
+	// Now sort the list since we don't get files back in Finder-like order
 	[myFileList sortUsingSelector:@selector(compare:)];	
 	
 	// Now let's keep our new list of files. (Note it was allocated earlier)
@@ -612,6 +618,8 @@ willDisplayCell:(id)cell
 	[[NSNotificationCenter defaultCenter] postNotification:
 		[NSNotification notificationWithName:EGFileViewDidChange object:self]];
 }
+
+//-----------------------------------------------------------------------------
 
 -(void)watchPath:(EGPath*)path
 {
@@ -626,6 +634,8 @@ willDisplayCell:(id)cell
 	}
 }
 
+//-----------------------------------------------------------------------------
+
 -(void)unwatchPath:(EGPath*)path
 {
 	NSArray* pathsToWatch = [path pathComponents];
@@ -639,6 +649,8 @@ willDisplayCell:(id)cell
 	}
 }
 
+//-----------------------------------------------------------------------------
+
 // Handle notifications
 -(void)handleDidMountNotification:(id)notification
 {
@@ -651,6 +663,8 @@ willDisplayCell:(id)cell
 		[self singleClick:ourBrowser];		
 	}
 }
+
+//-----------------------------------------------------------------------------
 
 -(void)handleWillUnmountNotification:(id)notification
 {
@@ -680,6 +694,8 @@ willDisplayCell:(id)cell
 	}
 }
 
+//-----------------------------------------------------------------------------
+
 -(void)handleDidUnmountNotification:(id)notification
 {
 	NSString* unmountedPath = [[notification userInfo] objectForKey:
@@ -694,7 +710,6 @@ willDisplayCell:(id)cell
 	
 	needToRebuild = NO;
 }
-
 
 //-----------------------------------------------------------------------------
 
@@ -758,6 +773,8 @@ willDisplayCell:(id)cell
 	}
 }
 
+//-----------------------------------------------------------------------------
+
 -(void)goUpUntilExistingFolder
 {
 	while(![currentDirectory exists]) 
@@ -781,6 +798,8 @@ willDisplayCell:(id)cell
 	//	[ourBrowser setSendsActionOnArrowKeys:NO];
 	[ourBrowser loadColumnZero];	
 }
+
+//-----------------------------------------------------------------------------
 
 -(void)rebuildDropdownMenu
 {

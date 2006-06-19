@@ -773,7 +773,8 @@
 		[old close];
 		[window setShouldCloseDocument:YES];
 		
-
+		// Now redisplay the file list
+		[fileList makeFirstResponderTo:[window window]];
 	}
 }
 

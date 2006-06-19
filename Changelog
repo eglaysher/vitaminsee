@@ -1,3 +1,28 @@
+0.7.2 Release
+-------------
+* [bugfix] Make VitaminSEE sort files like the Finder does
+* [bugfix] Deleting the last image in a directory will select the new last
+  file instead of selecting no file.
+* [bugfix] Theoretically fix crashes where VitaminSEE and a haxie both try
+  to work with the resource fork of a file. I'm not sure if this is fixed 
+  because I'm not sure what combinations of haxies cause this.
+* [bugfix] Hide other VitaminSEE windows when VitaminSEE goes into Fullscreen.
+  This fixes the bug where a person could open two VitaminSEE windows, make one
+  fullscreen, expose to the other window, and then make that fullscreen (which
+  confuses VitaminSEE).
+* [bugfix] Fix longstanding issue with zooming, where VitaminSEE claims to be
+  zooming to actual size, but is actually resizing the image down by two or 
+  three pixels.
+* [bugfix]   
+* Add statusbar, moving information from right underneath the file list to the
+  new status bar. The new status bar also displays the zoom ratio.
+* Add option in General Preferences that allows the user to change whether
+  VitaminSEE should periodicly check for updates.
+* Allow people to optionally specify an email address in the Feedback form.
+  (I've been getting a lot of feedback by people wanting a reply without 
+  giving me any information on who they are)
+
+
 0.7.1.2 Bugfix Release (March 30th, 2006)
 -----------------------------------------
 * Fix memory leaks everywhere.

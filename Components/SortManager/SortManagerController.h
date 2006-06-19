@@ -31,7 +31,6 @@
 
 #import "CurrentFilePlugin.h"
 
-@class PluginLayer;
 @class EGPath;
 
 @interface SortManagerController : NSWindowController <CurrentFilePlugin>
