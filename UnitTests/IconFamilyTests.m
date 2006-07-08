@@ -7,16 +7,17 @@
 //
 
 #import "IconFamilyTests.h"
+#import "TestingUtilities.h"
 
 #import "EGPath.h"
 #import "IconFamily.h"
+
 
 @implementation IconFamilyTests
 
 -(void)testToMakeSureModificationDatesAreRestored
 {
-	char* fileCS = getenv("PROJECT_DIR");
-	NSString* projectDir = [NSString stringWithCString:fileCS];
+	NSString* projectDir = getProjectDir();
 	EGPath* fileOne = [EGPath pathWithPath:[projectDir
 		stringByAppendingPathComponent:@"UnitTests/Images/test1.png"]];
 	NSString* fileOneString = [fileOne fileSystemPath];

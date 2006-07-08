@@ -9,6 +9,7 @@
 #import "EGPath.h"
 #import "ImageLoader.h"
 #import "ImageLoaderTests.h"
+#import "TestingUtilities.h"
 
 @implementation ImageLoaderTests
 
@@ -17,8 +18,7 @@
  */
 -(void)testBasicImageLoading
 {
-	char* fileCS = getenv("PROJECT_DIR");
-	NSString* projectDir = [NSString stringWithCString:fileCS];
+	NSString* projectDir = getProjectDir();
 	EGPath* fileOne = [EGPath pathWithPath:[projectDir
 		stringByAppendingPathComponent:@"UnitTests/Images/test1.png"]];
 //	NSLog(@"fileOne: %@", fileOne);

@@ -88,6 +88,7 @@
 		8B64CD6F090EF81C0060CB34 /* EGOpenWithMenuDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B64CD6B090EF81C0060CB34 /* EGOpenWithMenuDelegate.m */; };
 		8B64CD70090EF81C0060CB34 /* OpenWithMenu-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8B64CD6C090EF81C0060CB34 /* OpenWithMenu-Info.plist */; };
 		8B64CD71090EF81C0060CB34 /* OpenWithMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B64CD6E090EF81C0060CB34 /* OpenWithMenuController.m */; };
+		8B730DAD0A4D9BAB00984B47 /* ViewIconViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B730DAC0A4D9BAB00984B47 /* ViewIconViewControllerTests.m */; };
 		8B7AA5BC090C986A00A351DF /* FavoritesMenuDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7AA5B7090C986A00A351DF /* FavoritesMenuDelegate.m */; };
 		8B7AA5BD090C986A00A351DF /* FavoritesToolbarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7AA5B9090C986A00A351DF /* FavoritesToolbarItem.m */; };
 		8B7AA5BE090C986A00A351DF /* MVMenuButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7AA5BB090C986A00A351DF /* MVMenuButton.m */; };
@@ -111,6 +112,7 @@
 		8B8B6D5A09C8DC2500E36801 /* MacPAD.url in Resources */ = {isa = PBXBuildFile; fileRef = 8B8B6D5909C8DC2500E36801 /* MacPAD.url */; };
 		8B8B6E5809CC624700E36801 /* NSString+CarbonFSRefCreation.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B8B6E5609CC624700E36801 /* NSString+CarbonFSRefCreation.h */; };
 		8B8B6E5909CC624700E36801 /* NSString+CarbonFSRefCreation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8B6E5709CC624700E36801 /* NSString+CarbonFSRefCreation.m */; };
+		8B8BDE9A0A602454002AC2D9 /* TestingUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8BDE990A602454002AC2D9 /* TestingUtilities.m */; };
 		8B91ED020978AD06001B95BE /* SortManagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B91ECFC0978AD06001B95BE /* SortManagerController.m */; };
 		8B91ED070978AD1B001B95BE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8B91ED030978AD1B001B95BE /* Localizable.strings */; };
 		8B91ED080978AD1B001B95BE /* SortManager.nib in Resources */ = {isa = PBXBuildFile; fileRef = 8B91ED050978AD1B001B95BE /* SortManager.nib */; };
@@ -541,6 +543,8 @@
 		8B64CD6C090EF81C0060CB34 /* OpenWithMenu-Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xml; name = "OpenWithMenu-Info.plist"; path = "Components/OpenWithMenu/OpenWithMenu-Info.plist"; sourceTree = "<group>"; };
 		8B64CD6D090EF81C0060CB34 /* OpenWithMenuController.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = OpenWithMenuController.h; path = Components/OpenWithMenu/OpenWithMenuController.h; sourceTree = "<group>"; };
 		8B64CD6E090EF81C0060CB34 /* OpenWithMenuController.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = OpenWithMenuController.m; path = Components/OpenWithMenu/OpenWithMenuController.m; sourceTree = "<group>"; };
+		8B730DAB0A4D9BAB00984B47 /* ViewIconViewControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewIconViewControllerTests.h; path = UnitTests/ViewIconViewControllerTests.h; sourceTree = "<group>"; };
+		8B730DAC0A4D9BAB00984B47 /* ViewIconViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewIconViewControllerTests.m; path = UnitTests/ViewIconViewControllerTests.m; sourceTree = "<group>"; };
 		8B7AA5AB090C983F00A351DF /* FavoritesMenu.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FavoritesMenu.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B7AA5B6090C986A00A351DF /* FavoritesMenuDelegate.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = FavoritesMenuDelegate.h; path = Components/FavoritesMenu/FavoritesMenuDelegate.h; sourceTree = "<group>"; };
 		8B7AA5B7090C986A00A351DF /* FavoritesMenuDelegate.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = FavoritesMenuDelegate.m; path = Components/FavoritesMenu/FavoritesMenuDelegate.m; sourceTree = "<group>"; };
@@ -573,6 +577,8 @@
 		8B8B6E5609CC624700E36801 /* NSString+CarbonFSRefCreation.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = "NSString+CarbonFSRefCreation.h"; path = "Widgets/NSString+CarbonFSRefCreation.h"; sourceTree = "<group>"; };
 		8B8B6E5709CC624700E36801 /* NSString+CarbonFSRefCreation.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = "NSString+CarbonFSRefCreation.m"; path = "Widgets/NSString+CarbonFSRefCreation.m"; sourceTree = "<group>"; };
 		8B8B7229090C1323006DDF10 /* GotoFolderWindow-Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xml; name = "GotoFolderWindow-Info.plist"; path = "Components/GotoFolderWindow/GotoFolderWindow-Info.plist"; sourceTree = "<group>"; };
+		8B8BDE980A602454002AC2D9 /* TestingUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestingUtilities.h; path = UnitTests/TestingUtilities.h; sourceTree = "<group>"; };
+		8B8BDE990A602454002AC2D9 /* TestingUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TestingUtilities.m; path = UnitTests/TestingUtilities.m; sourceTree = "<group>"; };
 		8B91ECED0978ACE3001B95BE /* SortManager.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SortManager.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B91ECFA0978AD06001B95BE /* SortManager-Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xml; name = "SortManager-Info.plist"; path = "Components/SortManager/SortManager-Info.plist"; sourceTree = "<group>"; };
 		8B91ECFB0978AD06001B95BE /* SortManagerController.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = SortManagerController.h; path = Components/SortManager/SortManagerController.h; sourceTree = "<group>"; };
@@ -1381,6 +1387,10 @@
 				8BE14BE209D5E8670070E809 /* ImageLoaderTests.m */,
 				8BEF403C09DB4D3C00E86186 /* IconFamilyTests.h */,
 				8BEF403D09DB4D3C00E86186 /* IconFamilyTests.m */,
+				8B730DAB0A4D9BAB00984B47 /* ViewIconViewControllerTests.h */,
+				8B730DAC0A4D9BAB00984B47 /* ViewIconViewControllerTests.m */,
+				8B8BDE980A602454002AC2D9 /* TestingUtilities.h */,
+				8B8BDE990A602454002AC2D9 /* TestingUtilities.m */,
 			);
 			name = "Unit Tests";
 			sourceTree = "<group>";
@@ -3004,6 +3014,8 @@
 				8B56B44809D5F3AA006C68BE /* ImageLoaderTests.m in Sources */,
 				8BE1487A09D5D9A80070E809 /* EGPathTests.m in Sources */,
 				8BEF403E09DB4D3C00E86186 /* IconFamilyTests.m in Sources */,
+				8B730DAD0A4D9BAB00984B47 /* ViewIconViewControllerTests.m in Sources */,
+				8B8BDE9A0A602454002AC2D9 /* TestingUtilities.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5736,7 +5748,7 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
-				INFOPLIST_FILE = "UnitTests-Info.plist";
+				INFOPLIST_FILE = "UnitTests/UnitTests-Info.plist";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -5759,7 +5771,7 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
-				INFOPLIST_FILE = "UnitTests-Info.plist";
+				INFOPLIST_FILE = "UnitTests/UnitTests-Info.plist";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -5782,7 +5794,7 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
-				INFOPLIST_FILE = "UnitTests-Info.plist";
+				INFOPLIST_FILE = "UnitTests/UnitTests-Info.plist";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
 				OTHER_LDFLAGS = (
 					"-framework",

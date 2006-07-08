@@ -38,6 +38,8 @@
 +(id)root;
 +(id)pathWithPath:(NSString*)path;
 
+-(id)pathByAppendingPathComponent:(NSString*)pathComponent;
+
 -(NSData*)dataRepresentationOfPath;
 
 // Build the Unichar string
@@ -89,5 +91,7 @@
 
 +(id)pathWithPath:(NSString*)path;
 -(id)initWithPath:(NSString*)path;
+
+-(id)pathByAppendingPathComponent:(NSString*)pathComponent;
 
 @end

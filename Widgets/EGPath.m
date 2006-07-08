@@ -590,11 +590,9 @@ static NSString* egPathRootDisplayName = 0;
 	return [fileSystemPath hash];
 }
 
--(id)retain
+-(id)pathByAppendingPathComponent:(NSString*)pathComponent
 {
-	[super retain];
-	
-	return self;
+	return [EGPath pathWithPath:[fileSystemPath stringByAppendingPathComponent:pathComponent]];
 }
 
 @end
