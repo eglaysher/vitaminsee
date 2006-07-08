@@ -54,13 +54,13 @@
 		return @"0 bytes";
 	
 	if(bytes < 1024)
-		return [NSString stringWithFormat:@"%qi bytes", bytes];
+		return [NSString stringWithFormat:@"%qi B", bytes];
 	else if(bytes < 1048567)
-		return [NSString stringWithFormat:@"%qi Kb", bytes/1024];
+		return [NSString stringWithFormat:@"%qi KB", bytes/1024];
 	else if(bytes < 1073741824)
-		return [NSString stringWithFormat:@"%qi Mb", bytes/1048567];
+		return [NSString stringWithFormat:@"%.1f MB", bytes/1048567.0];
 	else
-		return [NSString stringWithFormat:@"%qi Gb", bytes/1073741824];
+		return [NSString stringWithFormat:@"%.2f GB", bytes/1073741824.0];
 }
 
 -(NSAttributedString*)attributedStringForObjectValue:(id)anObject 
