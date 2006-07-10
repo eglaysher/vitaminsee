@@ -1,11 +1,11 @@
 /////////////////////////////////////////////////////////////////////////
-// File:          $URL: http://svn.elliotglaysher.org/VitaminSEE/trunk/Formatters/FileSizeFormatter.m $
+// File:          $URL$
 // Module:        Unit tests for EGPath
 // Part of:       VitaminSEE
 //
-// Revision:      $Revision: 404 $
-// Last edited:   $Date: 2006-03-18 14:18:26 -0600 (Sat, 18 Mar 2006) $
-// Author:        $Author: eglaysher $
+// Revision:      $Revision$
+// Last edited:   $Date$
+// Author:        $Author$
 // Copyright:     (c) 2005 Elliot Glaysher
 // Created:       3/25/06
 //
@@ -64,6 +64,8 @@
 	STAssertEquals([root1 isNaturalFile], NO, @"Root is a natrual file location.");
 	STAssertEquals([root1 isDirectory], YES, @"Root is not a directory (!?)");
 }
+
+// ---------------------------------------------------------------------------
 
 /** Tests a normal EGPath object
  *

@@ -209,24 +209,24 @@
 			<key>Content</key>
 			<dict>
 				<key>PBXProjectModuleGUID</key>
-				<string>8B8BE32F0A60570E002AC2D9</string>
+				<string>8B8BE35F0A61F29A002AC2D9</string>
 				<key>PBXProjectModuleLabel</key>
-				<string>FileSizeFormatter.m</string>
+				<string>ViewerDocument.m</string>
 				<key>PBXSplitModuleInNavigatorKey</key>
 				<dict>
 					<key>Split0</key>
 					<dict>
 						<key>PBXProjectModuleGUID</key>
-						<string>8B8BE3300A60570E002AC2D9</string>
+						<string>8B8BE3600A61F29A002AC2D9</string>
 						<key>PBXProjectModuleLabel</key>
-						<string>FileSizeFormatter.m</string>
+						<string>ViewerDocument.m</string>
 						<key>_historyCapacity</key>
 						<integer>0</integer>
 						<key>bookmark</key>
-						<string>8B8BE34B0A6057F0002AC2D9</string>
+						<string>8B8BE3A30A61F437002AC2D9</string>
 						<key>history</key>
 						<array>
-							<string>8B8BE3310A60570E002AC2D9</string>
+							<string>8B8BE3610A61F29A002AC2D9</string>
 						</array>
 					</dict>
 					<key>SplitCount</key>
@@ -238,11 +238,11 @@
 			<key>Geometry</key>
 			<dict>
 				<key>Frame</key>
-				<string>{{0, 20}, {791, 680}}</string>
+				<string>{{0, 20}, {797, 721}}</string>
 				<key>PBXModuleWindowStatusBarHidden2</key>
 				<false/>
 				<key>RubberWindowFrame</key>
-				<string>15 20 791 721 0 0 1440 938 </string>
+				<string>44 17 797 762 0 0 1440 938 </string>
 			</dict>
 		</dict>
 	</array>
@@ -495,15 +495,20 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateExpansionKey</key>
 							<array>
 								<string>29B97314FDCFA39411CA2CEA</string>
+								<string>8BE1487109D5D87B0070E809</string>
 								<string>8B24490F08FB546C004716BC</string>
+								<string>8B7BA8B809B15468002D34D8</string>
+								<string>8BD7074F090C973F00D28A14</string>
+								<string>8B24491008FB5498004716BC</string>
 								<string>8B2448E208FB20BE004716BC</string>
+								<string>080E96DDFE201D6D7F000001</string>
 								<string>1C37FAAC04509CD000000102</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>24</integer>
-									<integer>22</integer>
+									<integer>11</integer>
+									<integer>2</integer>
 									<integer>0</integer>
 								</array>
 							</array>
@@ -564,7 +569,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>174086128.27122599</real>
+	<real>174191671.512945</real>
 	<key>ToolbarDisplayMode</key>
 	<integer>2</integer>
 	<key>ToolbarIsVisible</key>
@@ -581,9 +586,9 @@
 	<array>
 		<string>1C530D57069F1CE1000CFCEE</string>
 		<string>8B83474C0A473F6A00061E44</string>
-		<string>/Users/elliot/Projects/VitaminSEE/VitaminSEE.xcodeproj</string>
-		<string>8B8BE32F0A60570E002AC2D9</string>
 		<string>1C0AD2B3069F1EA900FABCE6</string>
+		<string>8B8BE35F0A61F29A002AC2D9</string>
+		<string>/Users/elliot/Projects/VitaminSEE/VitaminSEE.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
 	<string>0 43 337 895 0 0 1440 938 </string>

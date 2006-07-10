@@ -1388,8 +1388,8 @@
 				8BEF403C09DB4D3C00E86186 /* IconFamilyTests.h */,
 				8BEF403D09DB4D3C00E86186 /* IconFamilyTests.m */,
 				8B730DAB0A4D9BAB00984B47 /* ViewIconViewControllerTests.h */,
-				8B730DAC0A4D9BAB00984B47 /* ViewIconViewControllerTests.m */,
 				8B8BDE980A602454002AC2D9 /* TestingUtilities.h */,
+				8B730DAC0A4D9BAB00984B47 /* ViewIconViewControllerTests.m */,
 				8B8BDE990A602454002AC2D9 /* TestingUtilities.m */,
 			);
 			name = "Unit Tests";
