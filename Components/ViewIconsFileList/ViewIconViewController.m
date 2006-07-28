@@ -608,7 +608,11 @@ willDisplayCell:(id)cell
 	}	
 	
 	// Now sort the list since we don't get files back in Finder-like order
+	NSDate* date = [NSDate date];
 	[myFileList sortUsingSelector:@selector(compare:)];	
+	NSDate* second = [NSDate date];
+	
+	NSLog(@"Took %f seconds", [second timeIntervalSinceDate:date]);
 	
 	// Now let's keep our new list of files. (Note it was allocated earlier)
 	[fileList release];	

@@ -30,8 +30,8 @@
 #import <Cocoa/Cocoa.h>
 
 @interface EGPath : NSObject <NSCopying> {
-	UniChar* cachedName;
-	int cachedNameLen;	
+	ItemCount collationKeyLen;
+	UCCollationValue* collationKey;
 }
 -(id)copyWithZone:(NSZone*)zone;
 
@@ -44,8 +44,8 @@
 
 // Build the Unichar string
 -(void)buildCachedUnichar;
--(UniChar*)cachedName;
--(int)cachedNameLen;
+-(UCCollationValue*)collationKey;
+-(ItemCount)collationKeyLen;
 
 // The filename to display to the user
 -(NSString*)displayName;

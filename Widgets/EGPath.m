@@ -29,6 +29,7 @@
 
 #import "EGPath.h"
 #import "NSString+FileTasks.h"
+#import "NSString+FinderCompare.h"
 #import "IconFamily.h"
 
 #import <Cocoa/Cocoa.h>
@@ -43,9 +44,19 @@
  */
 static NSMutableArray* fileExtensions = 0;
 
+/** Colloator
+ */ 
+static CollatorRef collatorRef = 0;
+
 // ----------------------------------------------------------------------------
 
 @implementation EGPath
+
++(void)initialize
+{
+	UCCreateCollator(NULL, 0, [NSString finderLikeCollateOptions],
+					 &collatorRef);
+}
 
 -(id)copyWithZone:(NSZone*)zone
 {
@@ -71,18 +82,14 @@ static NSMutableArray* fileExtensions = 0;
 -(id)init
 {
 	if(self = [super init]) {
-		cachedName = 0;
 	}
 	return self;
 }
 
 -(void)dealloc
 {
-	if(cachedName)
-	{
-//		NSLog(@"Freeing...");
-		free(cachedName);		
-	}
+	if(collationKey)
+		free(collationKey);
 	
 	[super dealloc];
 }
@@ -90,21 +97,39 @@ static NSMutableArray* fileExtensions = 0;
 -(void)buildCachedUnichar
 {
 	NSString* displayName = [self displayName];
-//	NSLog(@"Building cached unichar for %@", displayName);
+	int nameLen = [displayName length];
+	UniChar stackName[128];
+	UniChar* cachedName = 0;
 
-	cachedNameLen = [displayName length];
-	cachedName = malloc(cachedNameLen * sizeof(UniChar));
+	if(nameLen > 127)
+		cachedName = malloc(nameLen * sizeof(UniChar));
+	else
+		cachedName = stackName;
 	[displayName getCharacters:cachedName];
+	
+	// Biuld collation key
+	int times = 5;
+	collationKey = malloc(times * nameLen * sizeof(UCCollationValue));
+	while(UCGetCollationKey(collatorRef, cachedName, nameLen,
+							times * nameLen, &collationKeyLen, collationKey) 
+		  != 0) {
+		free(collationKey);
+		times++;
+		collationKey = malloc(times * nameLen * sizeof(UCCollationValue));		
+	}
+
+	if(nameLen > 127)
+		free(cachedName);
 }
 
--(UniChar*)cachedName
+-(UCCollationValue*)collationKey
 {
-	return cachedName;
+	return collationKey;
 }
 
--(int)cachedNameLen
+-(ItemCount)collationKeyLen
 {
-	return cachedNameLen;
+	return collationKeyLen;
 }
 
 // ----- Comparator
@@ -120,14 +145,14 @@ static NSMutableArray* fileExtensions = 0;
 	{
 		if([self isKindOfClass:[EGPathFilesystemPath class]])
 		{			
-			if(!cachedName)
+			if(!collationKey)
 				[self buildCachedUnichar];
-			if(![object cachedName])
+			if(![object collationKey])
 				[object buildCachedUnichar];
 			
-			result = finderCompareUnichars(cachedName, cachedNameLen,
-										   [object cachedName],
-										   [object cachedNameLen]);
+			result = finderCompareCollations(collationKey, collationKeyLen,
+											 [object collationKey], 
+											 [object collationKeyLen]);
 		}
 		else if([self isKindOfClass:[EGPathRoot class]])
 		{

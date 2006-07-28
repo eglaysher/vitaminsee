@@ -31,8 +31,13 @@
 #import <Cocoa/Cocoa.h>
 
 @interface NSString (FinderCompare)
++(UCCollateOptions)finderLikeCollateOptions;
 -(NSComparisonResult)finderCompare:(id)object;
 @end
 
 NSComparisonResult finderCompareUnichars(UniChar* lhs, CFIndex lhsLen,
 										 UniChar* rhs, CFIndex rhsLen);
+NSComparisonResult finderCompareCollations(const UCCollationValue * lhs,
+										   ItemCount lhsLen,
+										   const UCCollationValue * rhs,
+										   ItemCount rhsLen);

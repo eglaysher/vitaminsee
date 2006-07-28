@@ -29,12 +29,17 @@
 
 #import "NSString+FinderCompare.h"
 
-@implementation NSString (FinderCompare)
-
 const UCCollateOptions FinderLikeCompareOptions = 
 	kUCCollateComposeInsensitiveMask | 	kUCCollateWidthInsensitiveMask |
 	kUCCollateCaseInsensitiveMask | kUCCollateDigitsOverrideMask | 
 	kUCCollateDigitsAsNumberMask| kUCCollatePunctuationSignificantMask;
+
+@implementation NSString (FinderCompare)
+
++(UCCollateOptions)finderLikeCollateOptions
+{
+	return FinderLikeCompareOptions;
+}
 
 /** Implements Finder-like sorting. This code was adapted from
  * http://www.cocoadev.com/index.pl?FilenamesArentStrings , where I went the
@@ -88,3 +93,28 @@ NSComparisonResult finderCompareUnichars(UniChar* lhs, CFIndex lhsLen,
 	else
 		return NSOrderedSame;
 }
+
+/** Generalized finder compare that takes two collation keys.
+*/
+NSComparisonResult finderCompareCollations(const UCCollationValue * lhs,
+										   ItemCount lhsLen,
+										   const UCCollationValue * rhs,
+										   ItemCount rhsLen)
+{
+	SInt32 compareResult;
+
+	(void) UCCompareCollationKeys(lhs,lhsLen,rhs,rhsLen,NULL,&compareResult);
+//	(void) UCCompareTextDefault(FinderLikeCompareOptions, lhs, lhsLen,
+//								rhs, rhsLen, NULL, &compareResult);	
+	
+	// Regretfully, instead of returning -1, 0, +1, UCCompareTextDefault is
+	// returning -2, 0, +2. I'm not sure what that means, but this should fix
+	// it.
+	if(compareResult > 0)
+		return NSOrderedDescending;
+	else if(compareResult < 0)
+		return NSOrderedAscending;
+	else
+		return NSOrderedSame;
+}
+

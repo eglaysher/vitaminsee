@@ -13,7 +13,7 @@
 * [bugfix] Fix longstanding issue with zooming, where VitaminSEE claims to be
   zooming to actual size, but is actually resizing the image down by two or 
   three pixels.
-* [bugfix]   
+* [bugfix] Correct typo in the Fullscreen File List palette.
 * Add statusbar, moving information from right underneath the file list to the
   new status bar. The new status bar also displays the zoom ratio.
 * Add option in General Preferences that allows the user to change whether
