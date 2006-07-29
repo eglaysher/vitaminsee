@@ -383,6 +383,19 @@
 			8B432B310A7A42B500B8B3DB /* PBXTextBookmark */ = 8B432B310A7A42B500B8B3DB /* PBXTextBookmark */;
 			8B432B320A7A42B500B8B3DB /* PBXTextBookmark */ = 8B432B320A7A42B500B8B3DB /* PBXTextBookmark */;
 			8B432B330A7A42B500B8B3DB /* PBXTextBookmark */ = 8B432B330A7A42B500B8B3DB /* PBXTextBookmark */;
+			8B432B370A7AD01A00B8B3DB /* PBXTextBookmark */ = 8B432B370A7AD01A00B8B3DB /* PBXTextBookmark */;
+			8B432B380A7AD01A00B8B3DB /* PBXTextBookmark */ = 8B432B380A7AD01A00B8B3DB /* PBXTextBookmark */;
+			8B432B4C0A7ADD5C00B8B3DB /* PBXTextBookmark */ = 8B432B4C0A7ADD5C00B8B3DB /* PBXTextBookmark */;
+			8B432B530A7ADF6000B8B3DB /* PBXTextBookmark */ = 8B432B530A7ADF6000B8B3DB /* PBXTextBookmark */;
+			8B432B540A7ADF6000B8B3DB /* PBXTextBookmark */ = 8B432B540A7ADF6000B8B3DB /* PBXTextBookmark */;
+			8B432B560A7ADFBB00B8B3DB /* PBXTextBookmark */ = 8B432B560A7ADFBB00B8B3DB /* PBXTextBookmark */;
+			8B432B570A7ADFBB00B8B3DB /* PBXTextBookmark */ = 8B432B570A7ADFBB00B8B3DB /* PBXTextBookmark */;
+			8B432B580A7ADFBB00B8B3DB /* PBXTextBookmark */ = 8B432B580A7ADFBB00B8B3DB /* PBXTextBookmark */;
+			8B432B5A0A7AF8AA00B8B3DB /* PBXTextBookmark */ = 8B432B5A0A7AF8AA00B8B3DB /* PBXTextBookmark */;
+			8B432B5B0A7AF8AA00B8B3DB /* PBXTextBookmark */ = 8B432B5B0A7AF8AA00B8B3DB /* PBXTextBookmark */;
+			8B432B5C0A7AF8AA00B8B3DB /* PBXTextBookmark */ = 8B432B5C0A7AF8AA00B8B3DB /* PBXTextBookmark */;
+			8B432B5F0A7AF8AB00B8B3DB /* PBXBookmark */ = 8B432B5F0A7AF8AB00B8B3DB /* PBXBookmark */;
+			8B432B600A7AF8AB00B8B3DB /* PBXTextBookmark */ = 8B432B600A7AF8AB00B8B3DB /* PBXTextBookmark */;
 			8B8BE3A30A61F437002AC2D9 = 8B8BE3A30A61F437002AC2D9 /* PBXTextBookmark */;
 			8B9DA1F20A63544900AE77EF = 8B9DA1F20A63544900AE77EF /* PBXBookmark */;
 			8B9DA1F30A63544900AE77EF = 8B9DA1F30A63544900AE77EF /* PBXTextBookmark */;
@@ -582,17 +595,17 @@
 	8B2448A408FB2033004716BC /* EGPath.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {746, 1552}}";
-			sepNavSelRange = "{1437, 12}";
-			sepNavVisRect = "{{0, 408}, {746, 648}}";
-			sepNavWindowFrame = "{{350, 157}, {791, 721}}";
+			sepNavSelRange = "{2693, 0}";
+			sepNavVisRect = "{{0, 276}, {746, 648}}";
+			sepNavWindowFrame = "{{41, 217}, {791, 721}}";
 		};
 	};
 	8B2448A508FB2033004716BC /* EGPath.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {746, 10048}}";
-			sepNavSelRange = "{3104, 0}";
-			sepNavVisRect = "{{0, 1463}, {746, 648}}";
-			sepNavWindowFrame = "{{244, 32}, {791, 721}}";
+			sepNavIntBoundsRect = "{{0, 0}, {824, 10080}}";
+			sepNavSelRange = "{13586, 0}";
+			sepNavVisRect = "{{0, 1583}, {824, 402}}";
+			sepNavWindowFrame = "{{265, 175}, {791, 721}}";
 		};
 	};
 	8B2448A608FB2033004716BC /* EGScrollView.h */ = {
@@ -905,8 +918,8 @@
 	8B24491C08FB55C8004716BC /* ViewIconViewController.m */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {902, 13600}}";
-			sepNavSelRange = "{16731, 0}";
-			sepNavVisRect = "{{0, 9347}, {750, 810}}";
+			sepNavSelRange = "{21093, 0}";
+			sepNavVisRect = "{{0, 11612}, {750, 810}}";
 			sepNavWindowFrame = "{{357, 50}, {795, 883}}";
 		};
 	};
@@ -1004,7 +1017,7 @@
 		comments = "warning: passing argument 6 of 'UCGetCollationKey' from incompatible pointer type";
 		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
 		rLen = 0;
-		rLoc = 113;
+		rLoc = 115;
 		rType = 1;
 	};
 	8B432A040A79B14B00B8B3DB /* PBXTextBookmark */ = {
@@ -1012,7 +1025,7 @@
 		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
 		name = "EGPath.m: 117";
 		rLen = 0;
-		rLoc = 2931;
+		rLoc = 3074;
 		rType = 0;
 		vrLen = 512;
 		vrLoc = 2604;
@@ -1022,7 +1035,7 @@
 		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
 		name = "EGPath.m: 117";
 		rLen = 0;
-		rLoc = 2931;
+		rLoc = 3074;
 		rType = 0;
 		vrLen = 512;
 		vrLoc = 2604;
@@ -1032,7 +1045,7 @@
 		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
 		name = "EGPath.m: 117";
 		rLen = 0;
-		rLoc = 2931;
+		rLoc = 3074;
 		rType = 0;
 		vrLen = 512;
 		vrLoc = 2604;
@@ -1041,7 +1054,7 @@
 		isa = PBXTextBookmark;
 		fRef = 8B2448A408FB2033004716BC /* EGPath.h */;
 		rLen = 0;
-		rLoc = "-2147483612";
+		rLoc = 2691;
 		rType = 0;
 	};
 	8B432A0A0A79B14C00B8B3DB /* PBXTextBookmark */ = {
@@ -1083,7 +1096,7 @@
 		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
 		name = "EGPath.m: 151";
 		rLen = 0;
-		rLoc = 3804;
+		rLoc = 3945;
 		rType = 0;
 		vrLen = 968;
 		vrLoc = 3047;
@@ -1133,7 +1146,7 @@
 		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
 		name = "EGPath.m: 117";
 		rLen = 0;
-		rLoc = 2931;
+		rLoc = 3074;
 		rType = 0;
 		vrLen = 525;
 		vrLoc = 2604;
@@ -1143,7 +1156,7 @@
 		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
 		name = "EGPath.m: 117";
 		rLen = 0;
-		rLoc = 2931;
+		rLoc = 3074;
 		rType = 0;
 		vrLen = 525;
 		vrLoc = 2604;
@@ -1153,7 +1166,7 @@
 		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
 		name = "EGPath.m: 117";
 		rLen = 0;
-		rLoc = 2931;
+		rLoc = 3074;
 		rType = 0;
 		vrLen = 525;
 		vrLoc = 2604;
@@ -1163,7 +1176,7 @@
 		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
 		name = "EGPath.m: 151";
 		rLen = 0;
-		rLoc = 3804;
+		rLoc = 3945;
 		rType = 0;
 		vrLen = 968;
 		vrLoc = 3047;
@@ -1173,7 +1186,7 @@
 		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
 		name = "EGPath.m: 163";
 		rLen = 0;
-		rLoc = 3804;
+		rLoc = 3945;
 		rType = 0;
 		vrLen = 879;
 		vrLoc = 3048;
@@ -1250,7 +1263,7 @@
 		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
 		name = "EGPath.m: 117";
 		rLen = 0;
-		rLoc = 2931;
+		rLoc = 3074;
 		rType = 0;
 		vrLen = 525;
 		vrLoc = 2604;
@@ -1260,7 +1273,7 @@
 		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
 		name = "EGPath.m: 117";
 		rLen = 0;
-		rLoc = 2931;
+		rLoc = 3074;
 		rType = 0;
 		vrLen = 525;
 		vrLoc = 2604;
@@ -1270,7 +1283,7 @@
 		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
 		name = "EGPath.m: 117";
 		rLen = 0;
-		rLoc = 2931;
+		rLoc = 3074;
 		rType = 0;
 		vrLen = 525;
 		vrLoc = 2604;
@@ -1280,7 +1293,7 @@
 		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
 		name = "EGPath.m: 167";
 		rLen = 0;
-		rLoc = 3805;
+		rLoc = 3946;
 		rType = 0;
 		vrLen = 946;
 		vrLoc = 3093;
@@ -1330,7 +1343,7 @@
 		comments = "error: parse error before 'result'";
 		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
 		rLen = 0;
-		rLoc = 152;
+		rLoc = 154;
 		rType = 1;
 	};
 	8B432A530A79B39E00B8B3DB /* PBXTextBookmark */ = {
@@ -1338,7 +1351,7 @@
 		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
 		name = "EGPath.m: 161";
 		rLen = 0;
-		rLoc = 3663;
+		rLoc = 3804;
 		rType = 0;
 		vrLen = 828;
 		vrLoc = 3308;
@@ -1348,7 +1361,7 @@
 		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
 		name = "EGPath.m: 161";
 		rLen = 0;
-		rLoc = 3663;
+		rLoc = 3804;
 		rType = 0;
 		vrLen = 828;
 		vrLoc = 3308;
@@ -1358,7 +1371,7 @@
 		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
 		name = "EGPath.m: 161";
 		rLen = 0;
-		rLoc = 3663;
+		rLoc = 3804;
 		rType = 0;
 		vrLen = 828;
 		vrLoc = 3308;
@@ -1368,7 +1381,7 @@
 		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
 		name = "EGPath.m: 129";
 		rLen = 0;
-		rLoc = 3107;
+		rLoc = 3250;
 		rType = 0;
 		vrLen = 663;
 		vrLoc = 2990;
@@ -1378,7 +1391,7 @@
 		fRef = 8B2448A408FB2033004716BC /* EGPath.h */;
 		name = "-(BOOL)canUseCollation;";
 		rLen = 0;
-		rLoc = 1687;
+		rLoc = 1686;
 		rType = 0;
 		vrLen = 913;
 		vrLoc = 1162;
@@ -1418,7 +1431,7 @@
 		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
 		name = "EGPath.m: 163";
 		rLen = 0;
-		rLoc = 3666;
+		rLoc = 3807;
 		rType = 0;
 		vrLen = 798;
 		vrLoc = 3308;
@@ -1428,7 +1441,7 @@
 		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
 		name = "EGPath.m: 163";
 		rLen = 0;
-		rLoc = 3666;
+		rLoc = 3807;
 		rType = 0;
 		vrLen = 798;
 		vrLoc = 3308;
@@ -1438,7 +1451,7 @@
 		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
 		name = "EGPath.m: 163";
 		rLen = 0;
-		rLoc = 3666;
+		rLoc = 3807;
 		rType = 0;
 		vrLen = 798;
 		vrLoc = 3308;
@@ -1448,7 +1461,7 @@
 		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
 		name = "EGPath.m: 162";
 		rLen = 0;
-		rLoc = 3663;
+		rLoc = 3804;
 		rType = 0;
 		vrLen = 1186;
 		vrLoc = 3324;
@@ -1458,7 +1471,7 @@
 		fRef = 8B2448A408FB2033004716BC /* EGPath.h */;
 		name = "-(BOOL)canUseCollation;";
 		rLen = 0;
-		rLoc = 1687;
+		rLoc = 1686;
 		rType = 0;
 		vrLen = 913;
 		vrLoc = 1162;
@@ -1498,7 +1511,7 @@
 		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
 		name = "EGPath.m: 162";
 		rLen = 0;
-		rLoc = 3666;
+		rLoc = 3807;
 		rType = 0;
 		vrLen = 762;
 		vrLoc = 3308;
@@ -1508,7 +1521,7 @@
 		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
 		name = "EGPath.m: 162";
 		rLen = 0;
-		rLoc = 3666;
+		rLoc = 3807;
 		rType = 0;
 		vrLen = 762;
 		vrLoc = 3308;
@@ -1518,7 +1531,7 @@
 		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
 		name = "EGPath.m: 162";
 		rLen = 0;
-		rLoc = 3666;
+		rLoc = 3807;
 		rType = 0;
 		vrLen = 762;
 		vrLoc = 3308;
@@ -1528,7 +1541,7 @@
 		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
 		name = "EGPath.m: 161";
 		rLen = 0;
-		rLoc = 3663;
+		rLoc = 3804;
 		rType = 0;
 		vrLen = 1182;
 		vrLoc = 3324;
@@ -1538,7 +1551,7 @@
 		fRef = 8B2448A408FB2033004716BC /* EGPath.h */;
 		name = "-(BOOL)canUseCollation;";
 		rLen = 0;
-		rLoc = 1687;
+		rLoc = 1686;
 		rType = 0;
 		vrLen = 913;
 		vrLoc = 1162;
@@ -1578,7 +1591,7 @@
 		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
 		name = "EGPath.m: 162";
 		rLen = 0;
-		rLoc = 3666;
+		rLoc = 3807;
 		rType = 0;
 		vrLen = 767;
 		vrLoc = 3308;
@@ -1588,7 +1601,7 @@
 		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
 		name = "EGPath.m: 162";
 		rLen = 0;
-		rLoc = 3666;
+		rLoc = 3807;
 		rType = 0;
 		vrLen = 767;
 		vrLoc = 3308;
@@ -1598,7 +1611,7 @@
 		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
 		name = "EGPath.m: 161";
 		rLen = 0;
-		rLoc = 3663;
+		rLoc = 3804;
 		rType = 0;
 		vrLen = 1187;
 		vrLoc = 3324;
@@ -1608,7 +1621,7 @@
 		fRef = 8B2448A408FB2033004716BC /* EGPath.h */;
 		name = "-(BOOL)canUseCollation;";
 		rLen = 0;
-		rLoc = 1687;
+		rLoc = 1686;
 		rType = 0;
 		vrLen = 913;
 		vrLoc = 1162;
@@ -1652,7 +1665,7 @@
 		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
 		name = "EGPath.m: 162";
 		rLen = 0;
-		rLoc = 3666;
+		rLoc = 3807;
 		rType = 0;
 		vrLen = 767;
 		vrLoc = 3308;
@@ -1662,7 +1675,7 @@
 		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
 		name = "EGPath.m: 162";
 		rLen = 0;
-		rLoc = 3666;
+		rLoc = 3807;
 		rType = 0;
 		vrLen = 767;
 		vrLoc = 3308;
@@ -1672,7 +1685,7 @@
 		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
 		name = "EGPath.m: 162";
 		rLen = 0;
-		rLoc = 3666;
+		rLoc = 3807;
 		rType = 0;
 		vrLen = 767;
 		vrLoc = 3308;
@@ -1692,7 +1705,7 @@
 		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
 		name = "EGPath.m: 161";
 		rLen = 0;
-		rLoc = 3663;
+		rLoc = 3804;
 		rType = 0;
 		vrLen = 1187;
 		vrLoc = 3324;
@@ -1702,7 +1715,7 @@
 		fRef = 8B2448A408FB2033004716BC /* EGPath.h */;
 		name = "-(BOOL)canUseCollation;";
 		rLen = 0;
-		rLoc = 1687;
+		rLoc = 1686;
 		rType = 0;
 		vrLen = 913;
 		vrLoc = 1162;
@@ -1752,7 +1765,7 @@
 		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
 		name = "EGPath.m: 161";
 		rLen = 0;
-		rLoc = 3663;
+		rLoc = 3804;
 		rType = 0;
 		vrLen = 1182;
 		vrLoc = 3324;
@@ -1762,7 +1775,7 @@
 		fRef = 8B2448A408FB2033004716BC /* EGPath.h */;
 		name = "-(BOOL)canUseCollation;";
 		rLen = 0;
-		rLoc = 1687;
+		rLoc = 1686;
 		rType = 0;
 		vrLen = 913;
 		vrLoc = 1162;
@@ -1812,7 +1825,7 @@
 		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
 		name = "EGPath.m: 161";
 		rLen = 0;
-		rLoc = 3663;
+		rLoc = 3804;
 		rType = 0;
 		vrLen = 1182;
 		vrLoc = 3324;
@@ -1822,7 +1835,7 @@
 		fRef = 8B2448A408FB2033004716BC /* EGPath.h */;
 		name = "-(BOOL)canUseCollation;";
 		rLen = 0;
-		rLoc = 1687;
+		rLoc = 1686;
 		rType = 0;
 		vrLen = 913;
 		vrLoc = 1162;
@@ -1862,7 +1875,7 @@
 		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
 		name = "EGPath.m: 162";
 		rLen = 0;
-		rLoc = 3666;
+		rLoc = 3807;
 		rType = 0;
 		vrLen = 762;
 		vrLoc = 3308;
@@ -1872,7 +1885,7 @@
 		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
 		name = "EGPath.m: 162";
 		rLen = 0;
-		rLoc = 3666;
+		rLoc = 3807;
 		rType = 0;
 		vrLen = 762;
 		vrLoc = 3308;
@@ -1882,7 +1895,7 @@
 		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
 		name = "EGPath.m: 162";
 		rLen = 0;
-		rLoc = 3666;
+		rLoc = 3807;
 		rType = 0;
 		vrLen = 762;
 		vrLoc = 3308;
@@ -1902,7 +1915,7 @@
 		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
 		name = "EGPath.m: 161";
 		rLen = 0;
-		rLoc = 3663;
+		rLoc = 3804;
 		rType = 0;
 		vrLen = 1182;
 		vrLoc = 3324;
@@ -1912,7 +1925,7 @@
 		fRef = 8B2448A408FB2033004716BC /* EGPath.h */;
 		name = "-(BOOL)canUseCollation;";
 		rLen = 0;
-		rLoc = 1687;
+		rLoc = 1686;
 		rType = 0;
 		vrLen = 913;
 		vrLoc = 1162;
@@ -1952,7 +1965,7 @@
 		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
 		name = "EGPath.m: 162";
 		rLen = 0;
-		rLoc = 3666;
+		rLoc = 3807;
 		rType = 0;
 		vrLen = 767;
 		vrLoc = 3308;
@@ -1962,7 +1975,7 @@
 		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
 		name = "EGPath.m: 162";
 		rLen = 0;
-		rLoc = 3666;
+		rLoc = 3807;
 		rType = 0;
 		vrLen = 767;
 		vrLoc = 3308;
@@ -1972,7 +1985,7 @@
 		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
 		name = "EGPath.m: 162";
 		rLen = 0;
-		rLoc = 3666;
+		rLoc = 3807;
 		rType = 0;
 		vrLen = 767;
 		vrLoc = 3308;
@@ -1982,7 +1995,7 @@
 		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
 		name = "EGPath.m: 161";
 		rLen = 0;
-		rLoc = 3663;
+		rLoc = 3804;
 		rType = 0;
 		vrLen = 1187;
 		vrLoc = 3324;
@@ -2002,7 +2015,7 @@
 		fRef = 8B2448A408FB2033004716BC /* EGPath.h */;
 		name = "-(BOOL)canUseCollation;";
 		rLen = 0;
-		rLoc = 1687;
+		rLoc = 1686;
 		rType = 0;
 		vrLen = 913;
 		vrLoc = 1162;
@@ -2042,7 +2055,7 @@
 		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
 		name = "EGPath.m: 162";
 		rLen = 0;
-		rLoc = 3666;
+		rLoc = 3807;
 		rType = 0;
 		vrLen = 762;
 		vrLoc = 3308;
@@ -2052,7 +2065,7 @@
 		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
 		name = "EGPath.m: 162";
 		rLen = 0;
-		rLoc = 3666;
+		rLoc = 3807;
 		rType = 0;
 		vrLen = 762;
 		vrLoc = 3308;
@@ -2062,7 +2075,7 @@
 		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
 		name = "EGPath.m: 162";
 		rLen = 0;
-		rLoc = 3666;
+		rLoc = 3807;
 		rType = 0;
 		vrLen = 762;
 		vrLoc = 3308;
@@ -2072,7 +2085,7 @@
 		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
 		name = "EGPath.m: 161";
 		rLen = 0;
-		rLoc = 3663;
+		rLoc = 3804;
 		rType = 0;
 		vrLen = 1182;
 		vrLoc = 3324;
@@ -2092,7 +2105,7 @@
 		fRef = 8B2448A408FB2033004716BC /* EGPath.h */;
 		name = "-(BOOL)canUseCollation;";
 		rLen = 0;
-		rLoc = 1687;
+		rLoc = 1686;
 		rType = 0;
 		vrLen = 913;
 		vrLoc = 1162;
@@ -2132,7 +2145,7 @@
 		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
 		name = "EGPath.m: 105";
 		rLen = 0;
-		rLoc = 2489;
+		rLoc = 2488;
 		rType = 0;
 		vrLen = 773;
 		vrLoc = 2287;
@@ -2202,7 +2215,7 @@
 		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
 		name = "EGPath.m: 128";
 		rLen = 0;
-		rLoc = 3107;
+		rLoc = 3250;
 		rType = 0;
 		vrLen = 825;
 		vrLoc = 3149;
@@ -2262,7 +2275,7 @@
 		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
 		name = "EGPath.m: 124";
 		rLen = 0;
-		rLoc = 3107;
+		rLoc = 3250;
 		rType = 0;
 		vrLen = 798;
 		vrLoc = 3135;
@@ -2322,7 +2335,7 @@
 		comments = "error: 'cachedNameLen' undeclared (first use in this function)";
 		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
 		rLen = 1;
-		rLoc = 111;
+		rLoc = 113;
 		rType = 1;
 	};
 	8B432AEE0A79B84D00B8B3DB /* PBXTextBookmark */ = {
@@ -2330,7 +2343,7 @@
 		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
 		name = "EGPath.m: 118";
 		rLen = 0;
-		rLoc = 3024;
+		rLoc = 3167;
 		rType = 0;
 		vrLen = 697;
 		vrLoc = 2444;
@@ -2340,7 +2353,7 @@
 		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
 		name = "EGPath.m: 118";
 		rLen = 0;
-		rLoc = 3024;
+		rLoc = 3167;
 		rType = 0;
 		vrLen = 697;
 		vrLoc = 2444;
@@ -2360,7 +2373,7 @@
 		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
 		name = "EGPath.m: 124";
 		rLen = 0;
-		rLoc = 3107;
+		rLoc = 3250;
 		rType = 0;
 		vrLen = 802;
 		vrLoc = 3105;
@@ -2410,7 +2423,7 @@
 		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
 		name = "EGPath.m: 121";
 		rLen = 0;
-		rLoc = 3024;
+		rLoc = 3167;
 		rType = 0;
 		vrLen = 687;
 		vrLoc = 2444;
@@ -2420,7 +2433,7 @@
 		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
 		name = "EGPath.m: 121";
 		rLen = 0;
-		rLoc = 3024;
+		rLoc = 3167;
 		rType = 0;
 		vrLen = 687;
 		vrLoc = 2444;
@@ -2430,7 +2443,7 @@
 		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
 		name = "EGPath.m: 121";
 		rLen = 0;
-		rLoc = 3024;
+		rLoc = 3167;
 		rType = 0;
 		vrLen = 687;
 		vrLoc = 2444;
@@ -2440,7 +2453,7 @@
 		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
 		name = "EGPath.m: 107";
 		rLen = 0;
-		rLoc = 2647;
+		rLoc = 2790;
 		rType = 0;
 		vrLen = 838;
 		vrLoc = 2413;
@@ -2500,7 +2513,7 @@
 		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
 		name = "EGPath.m: 118";
 		rLen = 0;
-		rLoc = 3024;
+		rLoc = 3167;
 		rType = 0;
 		vrLen = 697;
 		vrLoc = 2444;
@@ -2510,7 +2523,7 @@
 		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
 		name = "EGPath.m: 118";
 		rLen = 0;
-		rLoc = 3024;
+		rLoc = 3167;
 		rType = 0;
 		vrLen = 697;
 		vrLoc = 2444;
@@ -2520,7 +2533,7 @@
 		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
 		name = "EGPath.m: 118";
 		rLen = 0;
-		rLoc = 3024;
+		rLoc = 3167;
 		rType = 0;
 		vrLen = 697;
 		vrLoc = 2444;
@@ -2530,7 +2543,7 @@
 		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
 		name = "EGPath.m: 151";
 		rLen = 0;
-		rLoc = 3596;
+		rLoc = 3738;
 		rType = 0;
 		vrLen = 877;
 		vrLoc = 3389;
@@ -2590,7 +2603,7 @@
 		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
 		name = "EGPath.m: 119";
 		rLen = 0;
-		rLoc = 3064;
+		rLoc = 3207;
 		rType = 0;
 		vrLen = 852;
 		vrLoc = 2371;
@@ -2650,7 +2663,7 @@
 		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
 		name = "EGPath.m: 119";
 		rLen = 0;
-		rLoc = 3024;
+		rLoc = 3167;
 		rType = 0;
 		vrLen = 705;
 		vrLoc = 2444;
@@ -2660,7 +2673,7 @@
 		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
 		name = "EGPath.m: 119";
 		rLen = 0;
-		rLoc = 3024;
+		rLoc = 3167;
 		rType = 0;
 		vrLen = 705;
 		vrLoc = 2444;
@@ -2670,7 +2683,7 @@
 		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
 		name = "EGPath.m: 119";
 		rLen = 0;
-		rLoc = 3024;
+		rLoc = 3167;
 		rType = 0;
 		vrLen = 705;
 		vrLoc = 2444;
@@ -2680,7 +2693,7 @@
 		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
 		name = "EGPath.m: 116";
 		rLen = 0;
-		rLoc = 2957;
+		rLoc = 3100;
 		rType = 0;
 		vrLen = 868;
 		vrLoc = 2371;
@@ -2740,7 +2753,7 @@
 		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
 		name = "EGPath.m: 104";
 		rLen = 0;
-		rLoc = 2595;
+		rLoc = 2738;
 		rType = 0;
 		vrLen = 852;
 		vrLoc = 2371;
@@ -2800,7 +2813,7 @@
 		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
 		name = "EGPath.m: 118";
 		rLen = 0;
-		rLoc = 3024;
+		rLoc = 3167;
 		rType = 0;
 		vrLen = 697;
 		vrLoc = 2444;
@@ -2810,7 +2823,7 @@
 		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
 		name = "EGPath.m: 118";
 		rLen = 0;
-		rLoc = 3024;
+		rLoc = 3167;
 		rType = 0;
 		vrLen = 697;
 		vrLoc = 2444;
@@ -2820,7 +2833,7 @@
 		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
 		name = "EGPath.m: 118";
 		rLen = 0;
-		rLoc = 3024;
+		rLoc = 3167;
 		rType = 0;
 		vrLen = 697;
 		vrLoc = 2444;
@@ -2830,7 +2843,7 @@
 		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
 		name = "EGPath.m: 122";
 		rLen = 0;
-		rLoc = 3104;
+		rLoc = 3247;
 		rType = 0;
 		vrLen = 852;
 		vrLoc = 2371;
@@ -2884,6 +2897,130 @@
 		rType = 0;
 		vrLen = 1418;
 		vrLoc = 2607;
+	};
+	8B432B370A7AD01A00B8B3DB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
+		name = "EGPath.m: 628";
+		rLen = 0;
+		rLoc = 13586;
+		rType = 0;
+		vrLen = 697;
+		vrLoc = 2444;
+	};
+	8B432B380A7AD01A00B8B3DB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
+		name = "EGPath.m: 628";
+		rLen = 0;
+		rLoc = 13586;
+		rType = 0;
+		vrLen = 697;
+		vrLoc = 2444;
+	};
+	8B432B4C0A7ADD5C00B8B3DB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
+		name = "EGPath.m: 628";
+		rLen = 0;
+		rLoc = 13586;
+		rType = 0;
+		vrLen = 697;
+		vrLoc = 2443;
+	};
+	8B432B530A7ADF6000B8B3DB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
+		name = "EGPath.m: 630";
+		rLen = 0;
+		rLoc = 13586;
+		rType = 0;
+		vrLen = 807;
+		vrLoc = 2443;
+	};
+	8B432B540A7ADF6000B8B3DB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
+		name = "EGPath.m: 630";
+		rLen = 0;
+		rLoc = 13586;
+		rType = 0;
+		vrLen = 807;
+		vrLoc = 2443;
+	};
+	8B432B560A7ADFBB00B8B3DB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
+		name = "EGPath.m: 630";
+		rLen = 0;
+		rLoc = 13586;
+		rType = 0;
+		vrLen = 807;
+		vrLoc = 2443;
+	};
+	8B432B570A7ADFBB00B8B3DB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
+		name = "EGPath.m: 630";
+		rLen = 0;
+		rLoc = 13586;
+		rType = 0;
+		vrLen = 807;
+		vrLoc = 2443;
+	};
+	8B432B580A7ADFBB00B8B3DB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
+		name = "EGPath.m: 630";
+		rLen = 0;
+		rLoc = 13586;
+		rType = 0;
+		vrLen = 807;
+		vrLoc = 2443;
+	};
+	8B432B5A0A7AF8AA00B8B3DB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
+		name = "EGPath.m: 630";
+		rLen = 0;
+		rLoc = 13586;
+		rType = 0;
+		vrLen = 807;
+		vrLoc = 2443;
+	};
+	8B432B5B0A7AF8AA00B8B3DB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
+		name = "EGPath.m: 630";
+		rLen = 0;
+		rLoc = 13586;
+		rType = 0;
+		vrLen = 807;
+		vrLoc = 2443;
+	};
+	8B432B5C0A7AF8AA00B8B3DB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B2448A508FB2033004716BC /* EGPath.m */;
+		name = "EGPath.m: 630";
+		rLen = 0;
+		rLoc = 13586;
+		rType = 0;
+		vrLen = 807;
+		vrLoc = 2443;
+	};
+	8B432B5F0A7AF8AB00B8B3DB /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 8B24491C08FB55C8004716BC /* ViewIconViewController.m */;
+	};
+	8B432B600A7AF8AB00B8B3DB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B24491C08FB55C8004716BC /* ViewIconViewController.m */;
+		name = "ViewIconViewController.m: 761";
+		rLen = 0;
+		rLoc = 21093;
+		rType = 0;
+		vrLen = 1629;
+		vrLoc = 19966;
 	};
 	8B4FEFD80996780300922127 /* ImageMetaData.pch */ = {
 		uiCtxt = {
@@ -3061,9 +3198,9 @@
 	};
 	8B730DAC0A4D9BAB00984B47 /* ViewIconViewControllerTests.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {824, 1936}}";
-			sepNavSelRange = "{2430, 0}";
-			sepNavVisRect = "{{0, 1164}, {824, 402}}";
+			sepNavIntBoundsRect = "{{0, 0}, {804, 2288}}";
+			sepNavSelRange = "{5029, 0}";
+			sepNavVisRect = "{{0, 0}, {750, 810}}";
 			sepNavWindowFrame = "{{516, 38}, {795, 883}}";
 		};
 	};
@@ -3369,7 +3506,7 @@
 	8B944BC80A3B56E1005C2A86 /* NSString+FinderCompare.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {750, 810}}";
-			sepNavSelRange = "{1617, 23}";
+			sepNavSelRange = "{1296, 1}";
 			sepNavVisRect = "{{0, 0}, {750, 810}}";
 			sepNavWindowFrame = "{{290, 55}, {795, 883}}";
 		};
@@ -3377,9 +3514,9 @@
 	8B944BC90A3B56E1005C2A86 /* NSString+FinderCompare.m */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {750, 1936}}";
-			sepNavSelRange = "{3328, 178}";
-			sepNavVisRect = "{{0, 1126}, {750, 810}}";
-			sepNavWindowFrame = "{{38, 29}, {795, 883}}";
+			sepNavSelRange = "{3616, 0}";
+			sepNavVisRect = "{{0, 1107}, {750, 810}}";
+			sepNavWindowFrame = "{{364, 55}, {795, 883}}";
 		};
 	};
 	8B98BF2E0939515D00CBBF00 /* ThumbnailManager.h */ = {
@@ -3938,8 +4075,8 @@
 	};
 	8BEF403D09DB4D3C00E86186 /* IconFamilyTests.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {741, 1072}}";
-			sepNavSelRange = "{1505, 0}";
+			sepNavIntBoundsRect = "{{0, 0}, {720, 1072}}";
+			sepNavSelRange = "{1607, 0}";
 			sepNavVisRect = "{{0, 229}, {613, 843}}";
 			sepNavWindowFrame = "{{636, 22}, {658, 916}}";
 		};

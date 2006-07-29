@@ -94,13 +94,15 @@ static CollatorRef collatorRef = 0;
 	[super dealloc];
 }
 
--(void)buildCachedUnichar
+-(void)buildCollationKey
 {
 	NSString* displayName = [self displayName];
 	int nameLen = [displayName length];
 	UniChar stackName[128];
 	UniChar* cachedName = 0;
 
+	// First, unpack the UTF characters from the NSString, allocating memory
+	// only if needed. 90% of all cases will be handled by stack objects
 	if(nameLen > 127)
 		cachedName = malloc(nameLen * sizeof(UniChar));
 	else
@@ -146,9 +148,9 @@ static CollatorRef collatorRef = 0;
 		if([self isKindOfClass:[EGPathFilesystemPath class]])
 		{			
 			if(!collationKey)
-				[self buildCachedUnichar];
+				[self buildCollationKey];
 			if(![object collationKey])
-				[object buildCachedUnichar];
+				[object buildCollationKey];
 			
 			result = finderCompareCollations(collationKey, collationKeyLen,
 											 [object collationKey], 

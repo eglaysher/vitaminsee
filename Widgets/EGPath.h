@@ -43,7 +43,7 @@
 -(NSData*)dataRepresentationOfPath;
 
 // Build the Unichar string
--(void)buildCachedUnichar;
+-(void)buildCollationKey;
 -(UCCollationValue*)collationKey;
 -(ItemCount)collationKeyLen;
 
