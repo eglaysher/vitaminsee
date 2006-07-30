@@ -26,6 +26,16 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 //
 ////////////////////////////////////////////////////////////////////////
+//
+// TODO: This file *requires* major review and refactoring. This will have to
+//       wait until the 0.8 series, since the next version of the 0.7 series
+//       is so behind schedule! At the very least, it should be reorganized so
+//       the various interfaces and delegates are grouped together so they can
+//       be found easier.
+//
+//       Sigh.
+//
+////////////////////////////////////////////////////////////////////////
 
 #import "AppKitAdditions.h"
 #import "ViewIconViewController.h"
@@ -608,11 +618,7 @@ willDisplayCell:(id)cell
 	}	
 	
 	// Now sort the list since we don't get files back in Finder-like order
-	NSDate* date = [NSDate date];
 	[myFileList sortUsingSelector:@selector(compare:)];	
-	NSDate* second = [NSDate date];
-	
-	NSLog(@"Took %f seconds", [second timeIntervalSinceDate:date]);
 	
 	// Now let's keep our new list of files. (Note it was allocated earlier)
 	[fileList release];	
@@ -658,6 +664,8 @@ willDisplayCell:(id)cell
 // Handle notifications
 -(void)handleDidMountNotification:(id)notification
 {
+	// We only care about the mount notification if we have to redisplay, i.e.,
+	// we are currently viewing the virutal root of our filesystem.
 	if([currentDirectory isRoot])
 	{	
 		// Rebuild list to reflect the mounted drive since we're in machine root.
