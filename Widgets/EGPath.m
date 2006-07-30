@@ -54,9 +54,13 @@ static CollatorRef collatorRef = 0;
 
 +(void)initialize
 {
+	// Create the collator, the object that builds specialized strings for
+	// quick sorting/comparing of two unicode strings with locale rules.
 	UCCreateCollator(NULL, 0, [NSString finderLikeCollateOptions],
 					 &collatorRef);
 }
+
+// ----------------------------------------------------------------------------
 
 -(id)copyWithZone:(NSZone*)zone
 {
@@ -64,20 +68,28 @@ static CollatorRef collatorRef = 0;
 	return nil;
 }
 
+// ----------------------------------------------------------------------------
+
 +(id)root
 {
 	return [EGPathRoot root];
 }
+
+// ----------------------------------------------------------------------------
 
 +(id)pathWithPath:(NSString*)path
 {
 	return [EGPathFilesystemPath pathWithPath:path];
 }
 
+// ----------------------------------------------------------------------------
+
 -(NSData*)dataRepresentationOfPath
 {
 	return nil;
 }
+
+// ----------------------------------------------------------------------------
 
 -(id)init
 {
@@ -85,6 +97,8 @@ static CollatorRef collatorRef = 0;
 	}
 	return self;
 }
+
+// ----------------------------------------------------------------------------
 
 -(void)dealloc
 {
@@ -94,45 +108,47 @@ static CollatorRef collatorRef = 0;
 	[super dealloc];
 }
 
+// ----------------------------------------------------------------------------
+
+/** Build a unicode collation key from the display name. This is how we compare
+ * two EGPaths together.
+ */
 -(void)buildCollationKey
 {
 	NSString* displayName = [self displayName];
-	int nameLen = [displayName length];
-	UniChar stackName[128];
-	UniChar* cachedName = 0;
 
-	// First, unpack the UTF characters from the NSString, allocating memory
-	// only if needed. 90% of all cases will be handled by stack objects
-	if(nameLen > 127)
-		cachedName = malloc(nameLen * sizeof(UniChar));
-	else
-		cachedName = stackName;
-	[displayName getCharacters:cachedName];
+	// Unpack the UTF-16 characters from the string
+	int nameLen = [displayName length];
+	UniChar name[nameLen];
+	[displayName getCharacters:name];
 	
 	// Biuld collation key
 	int times = 5;
 	collationKey = malloc(times * nameLen * sizeof(UCCollationValue));
-	while(UCGetCollationKey(collatorRef, cachedName, nameLen,
+	while(UCGetCollationKey(collatorRef, name, nameLen,
 							times * nameLen, &collationKeyLen, collationKey) 
 		  != 0) {
 		free(collationKey);
 		times++;
 		collationKey = malloc(times * nameLen * sizeof(UCCollationValue));		
 	}
-
-	if(nameLen > 127)
-		free(cachedName);
 }
+
+// ----------------------------------------------------------------------------
 
 -(UCCollationValue*)collationKey
 {
 	return collationKey;
 }
 
+// ----------------------------------------------------------------------------
+
 -(ItemCount)collationKeyLen
 {
 	return collationKeyLen;
 }
+
+// ----------------------------------------------------------------------------
 
 // ----- Comparator
 // Sort in the class order of:
@@ -174,12 +190,16 @@ static CollatorRef collatorRef = 0;
 	return result;
 }
 
+// ----------------------------------------------------------------------------
+
 -(BOOL)isEqual:(id)rhs
 {
 	BOOL equal = self == rhs || [self compare:rhs] == NSOrderedSame;
 	
 	return equal;
 }
+
+// ----------------------------------------------------------------------------
 
 // ----- Methods that get overridden in subclasses
 
@@ -189,11 +209,15 @@ static CollatorRef collatorRef = 0;
 	return nil;
 }
 
+// ----------------------------------------------------------------------------
+
 -(NSArray*)directoryContents
 {
 	[self doesNotRecognizeSelector:_cmd];
 	return nil;
 }
+
+// ----------------------------------------------------------------------------
 
 -(NSString*)fileSystemPath
 {
@@ -201,16 +225,22 @@ static CollatorRef collatorRef = 0;
 	return nil;
 }
 
+// ----------------------------------------------------------------------------
+
 -(NSString*)fileName
 {
 	[self doesNotRecognizeSelector:_cmd];
 	return nil;
 }
 
+// ----------------------------------------------------------------------------
+
 -(BOOL)isRoot
 {
 	return NO;
 }
+
+// ----------------------------------------------------------------------------
 
 -(BOOL)exists
 {
@@ -218,10 +248,14 @@ static CollatorRef collatorRef = 0;
 	return NO;
 }
 
+// ----------------------------------------------------------------------------
+
 -(BOOL)isNaturalFile
 {
 	return NO;
 }
+
+// ----------------------------------------------------------------------------
 
 -(BOOL)isDirectory
 {
@@ -229,11 +263,15 @@ static CollatorRef collatorRef = 0;
 	return NO;	
 }
 
+// ----------------------------------------------------------------------------
+
 -(EGPath*)pathByDeletingLastPathComponent
 {
 	[self doesNotRecognizeSelector:_cmd];
 	return NO;
 }
+
+// ----------------------------------------------------------------------------
 
 // The icon for the computer
 -(NSImage*)fileIcon
@@ -242,11 +280,15 @@ static CollatorRef collatorRef = 0;
 	return nil;	
 }
 
+// ----------------------------------------------------------------------------
+
 -(NSArray*)pathDisplayComponents
 {
 	[self doesNotRecognizeSelector:_cmd];
 	return nil;	
 }
+
+// ----------------------------------------------------------------------------
 
 -(NSArray*)pathComponents
 {
@@ -254,11 +296,15 @@ static CollatorRef collatorRef = 0;
 	return nil;	
 }
 
+// ----------------------------------------------------------------------------
+
 -(NSImage*)iconImageOfSize:(NSSize)size
 {
 	[self doesNotRecognizeSelector:_cmd];
 	return nil;	
 }
+
+// ----------------------------------------------------------------------------
 
 -(BOOL)hasThumbnailIcon
 {
@@ -306,7 +352,6 @@ static CollatorRef collatorRef = 0;
 
 @end
 
-
 // ----------------------------------------------------------------------------
 
 static NSString* egPathRootDisplayName = 0;
@@ -318,17 +363,21 @@ static NSString* egPathRootDisplayName = 0;
 	return [[EGPathRoot allocWithZone:zone] init];
 }
 
+// ----------------------------------------------------------------------------
+
 +(id)root
 {
 	return [[[EGPathRoot alloc] init] autorelease];
 }
+
+// ----------------------------------------------------------------------------
 
 -(NSString*)displayName
 {
 	if(!egPathRootDisplayName)
 	{
 		CFStringRef name;
-		// Okay, that failed. Let's ask Carbon for our name instead:
+		// Ask Carbon for our computer's name
 		name = CSCopyMachineName();
 		if(name)
 		{
@@ -336,17 +385,13 @@ static NSString* egPathRootDisplayName = 0;
 			CFRelease(name);
 		}
 		else
-			// Screw it. Use a likely default...
 			egPathRootDisplayName = [[NSString alloc] initWithString:@"Macintosh"];
 	}
 	
 	return egPathRootDisplayName;
 }
-
-//-(BOOL)isEqual:(id)rhs
-//{
-//	return [rhs isKindOfClass:[EGPathRoot class]];
-//}
+	
+// ----------------------------------------------------------------------------
 
 -(NSArray*)directoryContents
 {
@@ -354,25 +399,35 @@ static NSString* egPathRootDisplayName = 0;
 	return [self buildEGPathArrayFromArrayOfNSStrings:paths];
 }
 
+// ----------------------------------------------------------------------------
+
 -(BOOL)exists
 {
 	return YES;
 }
+
+// ----------------------------------------------------------------------------
 
 -(BOOL)isRoot
 {
 	return YES;
 }
 
+// ----------------------------------------------------------------------------
+
 -(BOOL)isNaturalFile
 {
 	return NO;
 }
 
+// ----------------------------------------------------------------------------
+
 -(BOOL)isDirectory
 {
 	return YES;
 }
+
+// ----------------------------------------------------------------------------
 
 -(EGPath*)pathByDeletingLastPathComponent
 {
@@ -381,26 +436,36 @@ static NSString* egPathRootDisplayName = 0;
 	return [EGPathRoot root];
 }
 
+// ----------------------------------------------------------------------------
+
 -(NSString*)fileName
 {
 	[self doesNotRecognizeSelector:_cmd];
 	return nil;
 }
 
+// ----------------------------------------------------------------------------
+
 -(NSImage*)fileIcon
 {
 	return [NSImage imageNamed:@"iMac"];
 }
+
+// ----------------------------------------------------------------------------
 
 -(NSArray*)pathDisplayComponents
 {
 	return [NSArray arrayWithObject:[self displayName]];
 }
 
+// ----------------------------------------------------------------------------
+
 -(NSArray*)pathComponents
 {
 	return [NSArray arrayWithObject:[EGPathRoot root]];
 }
+
+// ----------------------------------------------------------------------------
 
 /** We need an arbitrary hash value that's always equal since all EGPathRoot
  * objects are equal to each other.
@@ -419,10 +484,14 @@ static NSString* egPathRootDisplayName = 0;
 	return [[EGPathFilesystemPath allocWithZone:zone] initWithPath:fileSystemPath];
 }
 
+// ----------------------------------------------------------------------------
+
 +(id)pathWithPath:(NSString*)path
 {
 	return [[[EGPathFilesystemPath alloc] initWithPath:path] autorelease];
 }
+
+// ----------------------------------------------------------------------------
 
 -(id)initWithPath:(NSString*)path
 {
@@ -434,17 +503,15 @@ static NSString* egPathRootDisplayName = 0;
 	return self;
 }
 
+// ----------------------------------------------------------------------------
+
 -(void)dealloc
 {
 	[fileSystemPath release];
 	[super dealloc];
 }
-
-//-(BOOL)isEqual:(id)rhs
-//{
-//	return [rhs isKindOfClass:[EGPathFilesystemPath class]] && 
-//		[[rhs fileSystemPath] isEqualToString:fileSystemPath];
-//}
+	
+// ----------------------------------------------------------------------------
 
 -(NSData*)dataRepresentationOfPath
 {
@@ -467,6 +534,8 @@ static NSString* egPathRootDisplayName = 0;
 	else
 		return [[NSFileManager defaultManager] displayNameAtPath:fileSystemPath];
 }
+
+// ----------------------------------------------------------------------------
 
 -(NSArray*)directoryContents
 {
@@ -495,20 +564,28 @@ static NSString* egPathRootDisplayName = 0;
 	return [self buildEGPathArrayFromArrayOfNSStrings:fullChildPaths];
 }
 
+// ----------------------------------------------------------------------------
+
 -(NSString*)fileSystemPath
 {
 	return fileSystemPath;
 }
+
+// ----------------------------------------------------------------------------
 
 -(NSString*)fileName
 {
 	return [fileSystemPath lastPathComponent];
 }
 
+// ----------------------------------------------------------------------------
+
 -(BOOL)exists
 {
 	return [[NSFileManager defaultManager] fileExistsAtPath:fileSystemPath];
 }
+
+// ----------------------------------------------------------------------------
 
 -(BOOL)isDirectory
 {
@@ -519,15 +596,21 @@ static NSString* egPathRootDisplayName = 0;
 	return exists && isDir;
 }
 
+// ----------------------------------------------------------------------------
+
 -(BOOL)isNaturalFile
 {
 	return YES;
 }
 
+// ----------------------------------------------------------------------------
+
 -(NSImage*)fileIcon
 {
 	return [fileSystemPath iconImageOfSize:NSMakeSize(32,32)];	
 }
+
+// ----------------------------------------------------------------------------
 
 -(NSArray*)pathDisplayComponents
 {
@@ -542,6 +625,8 @@ static NSString* egPathRootDisplayName = 0;
 	
 	return displayComponents;
 }
+
+// ----------------------------------------------------------------------------
 
 -(NSArray*)pathComponents
 {
@@ -575,6 +660,8 @@ static NSString* egPathRootDisplayName = 0;
 	return components;
 }
 
+// ----------------------------------------------------------------------------
+
 -(EGPath*)pathByDeletingLastPathComponent
 {
 	NSArray* components = [self pathComponents];
@@ -587,6 +674,8 @@ static NSString* egPathRootDisplayName = 0;
 	return [components objectAtIndex:count];
 //	return [EGPath pathWithPath:[fileSystemPath stringByDeletingLastPathComponent]];
 }
+
+// ----------------------------------------------------------------------------
 
 -(NSImage*)iconImageOfSize:(NSSize)size
 {
@@ -607,15 +696,21 @@ static NSString* egPathRootDisplayName = 0;
     return nodeImage;	
 }
 
+// ----------------------------------------------------------------------------
+
 -(BOOL)hasThumbnailIcon
 {
 	return [IconFamily fileHasCustomIcon:fileSystemPath];
 }
 
+// ----------------------------------------------------------------------------
+
 -(unsigned int)hash
 {
 	return [fileSystemPath hash];
 }
+
+// ----------------------------------------------------------------------------
 
 -(id)pathByAppendingPathComponent:(NSString*)pathComponent
 {
