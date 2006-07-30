@@ -47,6 +47,22 @@ NSString* NO_SMOOTHING               = @"No Smoothing";
 NSString* LOW_SMOOTHING              = @"Low Smoothing";
 NSString* HIGH_SMOOTHING             = @"High Smoothing";
 
+NSString* IL_REQUESTER               = @"Requester";
+NSString* IL_REQUESTER_ID            = @"Requester ID";
+NSString* IL_PATH                    = @"Path";
+NSString* IL_PARTIAL                 = @"Partial";
+NSString* IL_SCALE_MODE              = @"Scale Mode";
+NSString* IL_VIEWING_AREA_HEIGHT     = @"Viewing Area Height";
+NSString* IL_VIEWING_AREA_WIDTH      = @"Viewing Area Width";
+NSString* IL_SMOOTHING               = @"Smoothing";
+NSString* IL_IMAGE                   = @"Image";
+NSString* IL_PIXEL_WIDTH             = @"Pixel Width";
+NSString* IL_PIXEL_HEIGHT            = @"Pixel Height";
+NSString* IL_SCALE_RATIO             = @"Scale Ratio";
+
+NSString* IL_DATE                    = @"Date";
+NSString* IL_IMAGE_REP               = @"Image Rep";
+NSString* IL_DATA_SIZE               = @"Data Size";
 
 // No data structures can be written to when the taskQueueLock is locked.
 static pthread_mutex_t taskQueueLock;
@@ -99,8 +115,8 @@ typedef BOOL (*CANCELCHECK)(NSDictionary*);
 static BOOL newTaskForSameRequester(NSDictionary* currentTask)
 {
 	id obj;
-	id req = [currentTask objectForKey:@"Requester"];
-		//(id)CFDictionaryGetValue((CFDictionaryRef)currentTask, @"Requester");
+	id req = [currentTask objectForKey:IL_REQUESTER];
+		//(id)CFDictionaryGetValue((CFDictionaryRef)currentTask, IL_REQUESTER);
 	NSNumber* num = [req documentID];
 	pthread_mutex_lock(&taskQueueLock);
 	{
@@ -133,7 +149,7 @@ static BOOL newTaskThatPreemptsPreload(NSDictionary* currentTask)
 		if([taskQueue count]) {
 			cancel = YES;
 			
-			EGPath* path = [currentTask objectForKey:@"Path"];
+			EGPath* path = [currentTask objectForKey:IL_PATH];
 			NSArray* keys = [taskQueue allKeys];
 			
 			// Walk through the paths being requested one by one. If one of them
@@ -143,7 +159,7 @@ static BOOL newTaskThatPreemptsPreload(NSDictionary* currentTask)
 			for(i = 0; i < count; ++i) {
 				// Working on making this the correct expression
 				NSDictionary* dic = [taskQueue objectForKey:[keys objectAtIndex:i]]; 
-				EGPath* thisPath = [dic objectForKey:@"Path"];
+				EGPath* thisPath = [dic objectForKey:IL_PATH];
 				if([path isEqual:thisPath]) {
 //					NSLog(@"Continuing with preload because a display command needs it.");
 					cancel = NO;
@@ -199,11 +215,11 @@ static BOOL newTaskThatPreemptsPreload(NSDictionary* currentTask)
  */
 +(void)loadTask:(NSMutableDictionary*)task
 {	
-	id requester = [task objectForKey:@"Requester"];
+	id requester = [task objectForKey:IL_REQUESTER];
 	NSNumber* num = [requester documentID];
 	
 	// Record the document id in the task dictionary
-	[task setObject:num forKey:@"Requester ID"];
+	[task setObject:num forKey:IL_REQUESTER_ID];
 	
 	pthread_mutex_lock(&taskQueueLock);
 	{	
@@ -392,7 +408,7 @@ static BOOL newTaskThatPreemptsPreload(NSDictionary* currentTask)
 +(void)doDisplayImage:(NSMutableDictionary*)task 
 	 debugMode:(BOOL)debugMode
 {	
-	id requester = [task objectForKey:@"Requester"];
+	id requester = [task objectForKey:IL_REQUESTER];
 	NSNumber* size;
 	
 	// It takes time to load data. Should we cancel?
@@ -409,7 +425,7 @@ static BOOL newTaskThatPreemptsPreload(NSDictionary* currentTask)
 	// Get an imageRep for the current image requested in task
 	NSImageRep* imageRep = [self loadImageForTask:task 
 								   cancelFunction:newTaskForSameRequester];
-	size = [[task objectForKey:@"Data Size"] retain];
+	size = [[task objectForKey:IL_DATA_SIZE] retain];
 		
 	// If we can't load the file, error out.
 	if(imageRep == nil) {
@@ -433,9 +449,9 @@ static BOOL newTaskThatPreemptsPreload(NSDictionary* currentTask)
 	}
 	
 	NSImage* imageToRet;
-	NSString* smoothing = [task objectForKey:@"Smoothing"];
+	NSString* smoothing = [task objectForKey:IL_SMOOTHING];
 	
-	BOOL noSmoothing = [smoothing isEqual:NO_SMOOTHING];
+	BOOL noSmoothing = [smoothing isEqualToString:NO_SMOOTHING];
 	BOOL naturalSize = ([imageRep pixelsWide] <= displaySize.width && 
 						[imageRep pixelsHigh] <= displaySize.height);
 	BOOL animated = imageRepIsAnimated(imageRep);
@@ -472,7 +488,7 @@ static BOOL newTaskThatPreemptsPreload(NSDictionary* currentTask)
 			return;		
 		}
 
-		[task setObject:imageToRet forKey:@"Image"];
+		[task setObject:imageToRet forKey:IL_IMAGE];
 		// Bundle imageToRet up for transport across thread boundaries.
 		[requester performSelectorOnMainThread:@selector(receiveImage:)
 									withObject:task
@@ -532,8 +548,8 @@ static BOOL newTaskThatPreemptsPreload(NSDictionary* currentTask)
 		
 		// Bundle imageToRet up for transport across thread boundaries.
 		NSMutableDictionary* taskCopy = [task mutableCopy];
-		[task setObject:imageToRet forKey:@"Image"];
-		[task setObject:[NSNumber numberWithBool:NO] forKey:@"Partial"];
+		[task setObject:imageToRet forKey:IL_IMAGE];
+		[task setObject:[NSNumber numberWithBool:NO] forKey:IL_PARTIAL];
 		[imageToRet release];
 		[requester performSelectorOnMainThread:@selector(receiveImage:)
 									withObject:task
@@ -547,7 +563,7 @@ static BOOL newTaskThatPreemptsPreload(NSDictionary* currentTask)
 			imageToRet = [[NSImage alloc] initWithSize:displaySize];
 			[imageToRet lockFocus];
 			{
-				if([[taskCopy objectForKey:@"Smoothing"] isEqual:LOW_SMOOTHING])
+				if([[taskCopy objectForKey:IL_SMOOTHING] isEqualToString:LOW_SMOOTHING])
 				{
 					[[NSGraphicsContext currentContext] 
 						setImageInterpolation:NSImageInterpolationLow];
@@ -588,7 +604,7 @@ static BOOL newTaskThatPreemptsPreload(NSDictionary* currentTask)
 		
 		// Now display the final image:
 		// Bundle imageToRet up for transport across thread boundaries.
-		[taskCopy setObject:imageToRet forKey:@"Image"];
+		[taskCopy setObject:imageToRet forKey:IL_IMAGE];
 		[requester performSelectorOnMainThread:@selector(receiveImage:)
 									withObject:taskCopy
 								 waitUntilDone:debugMode];
@@ -694,7 +710,7 @@ static BOOL newTaskThatPreemptsPreload(NSDictionary* currentTask)
 {
 	// First, we load the data from 
 	NSData* imageData;
-	EGPath* path = [task objectForKey:@"Path"];
+	EGPath* path = [task objectForKey:IL_PATH];
 	
 	if(!task) return nil;
 	if(!path) return nil;
@@ -707,17 +723,17 @@ static BOOL newTaskThatPreemptsPreload(NSDictionary* currentTask)
 		id obj;
 		while(obj = [e nextObject])
 		{
-			if([[obj objectForKey:@"Path"] isEqual:path]) {
-				id dataSize = [obj objectForKey:@"Data Size"];
+			if([[obj objectForKey:IL_PATH] isEqual:path]) {
+				id dataSize = [obj objectForKey:IL_DATA_SIZE];
 				if(dataSize)
-					[task setObject:dataSize forKey:@"Data Size"];
+					[task setObject:dataSize forKey:IL_DATA_SIZE];
 				else
 					[task setObject:[NSNumber numberWithInt:0] 
-							 forKey:@"Data Size"];
+							 forKey:IL_DATA_SIZE];
 
 				// Unlock the mutex since we're leaving the function
 				pthread_mutex_unlock(&imageCacheLock);
-				return [[obj objectForKey:@"Image Rep"] retain];
+				return [[obj objectForKey:IL_IMAGE_REP] retain];
 			}
 		}		
 	}
@@ -743,7 +759,7 @@ static BOOL newTaskThatPreemptsPreload(NSDictionary* currentTask)
 	// Load the image from the data loaded from disk.
 	NSImageRep* imageRep = [[imageRepClass alloc] initWithData:imageData];
 	NSNumber* filesize = [NSNumber numberWithInt:[imageData length]];
-	[task setValue:filesize forKey:@"Data Size"];
+	[task setValue:filesize forKey:IL_DATA_SIZE];
 	[imageData release];
 	
 	// It takes time to load data. Should we cancel?
@@ -755,10 +771,10 @@ static BOOL newTaskThatPreemptsPreload(NSDictionary* currentTask)
 	// OK, we took the trouble of loading this image, store it in the cache.
 	[self evictImages];
 	NSMutableDictionary* dict = [NSMutableDictionary 
-		dictionaryWithObjectsAndKeys:[NSDate date], @"Date", 
-		path, @"Path",
-		imageRep, @"Image Rep",
-		filesize, @"Data Size",
+		dictionaryWithObjectsAndKeys:[NSDate date], IL_DATE, 
+		path, IL_PATH,
+		imageRep, IL_IMAGE_REP,
+		filesize, IL_DATA_SIZE,
 		nil];
 	pthread_mutex_lock(&imageCacheLock);
 	{
@@ -782,28 +798,28 @@ static BOOL newTaskThatPreemptsPreload(NSDictionary* currentTask)
 						 imageRep:(NSImageRep*)imageRep
 {
 	NSSize size;
-	NSString* scaleMode = [task objectForKey:@"Scale Mode"];
+	NSString* scaleMode = [task objectForKey:IL_SCALE_MODE];
 	int imageWidth = [imageRep pixelsWide];
 	int imageHeight = [imageRep pixelsHigh];
 	
 	// Add the height and width to our task list.
-	[task setObject:[NSNumber numberWithInt:imageWidth] forKey:@"Pixel Width"];
-	[task setObject:[NSNumber numberWithInt:imageHeight] forKey:@"Pixel Height"];
+	[task setObject:[NSNumber numberWithInt:imageWidth] forKey:IL_PIXEL_WIDTH];
+	[task setObject:[NSNumber numberWithInt:imageHeight] forKey:IL_PIXEL_HEIGHT];
 	
-	if([scaleMode isEqual:SCALE_IMAGE_PROPORTIONALLY])
+	if([scaleMode isEqualToString:SCALE_IMAGE_PROPORTIONALLY])
 	{
 		// Simply scale the image by the scale ratio if we're scaling the image
 		// proportionally
 		
-		double scaleRatio = [[task objectForKey:@"Scale Ratio"] doubleValue];
+		double scaleRatio = [[task objectForKey:IL_SCALE_RATIO] doubleValue];
 		size.width = imageWidth * scaleRatio;
 		size.height = imageHeight * scaleRatio;
 	}
-	else if([scaleMode isEqual:SCALE_IMAGE_TO_FIT])
+	else if([scaleMode isEqualToString:SCALE_IMAGE_TO_FIT])
 	{
-		float viewingAreaHeight = [[task objectForKey:@"Viewing Area Height"] 
+		float viewingAreaHeight = [[task objectForKey:IL_VIEWING_AREA_HEIGHT] 
 			floatValue];
-		float viewingAreaWidth = [[task objectForKey:@"Viewing Area Width"] 
+		float viewingAreaWidth = [[task objectForKey:IL_VIEWING_AREA_WIDTH] 
 			floatValue];
 		
 		// First check to see if the image will fit within the boundaries of the
@@ -842,7 +858,8 @@ static BOOL newTaskThatPreemptsPreload(NSDictionary* currentTask)
 			}
 		}
 		
-		[task setObject:[NSNumber numberWithFloat:outputRatio] forKey:@"Scale Ratio"];
+		[task setObject:[NSNumber numberWithFloat:outputRatio] 
+				 forKey:IL_SCALE_RATIO];
 	}
 	
 	// Round down, so we don't have a scroll bar apear for 0.1 pixels.
@@ -870,7 +887,7 @@ static BOOL newTaskThatPreemptsPreload(NSDictionary* currentTask)
 	if(objectNotLoaded) 
 	{		
 		NSMutableDictionary* dictionary = [NSMutableDictionary 
-			dictionaryWithObject:path forKey:@"Path"];
+			dictionaryWithObject:path forKey:IL_PATH];
 		[[self loadImageForTask:dictionary 
 				 cancelFunction:newTaskThatPreemptsPreload] release];
 	}
@@ -896,11 +913,11 @@ static BOOL newTaskThatPreemptsPreload(NSDictionary* currentTask)
 				NSString* cur = (NSString*)CFArrayGetValueAtIndex((CFArrayRef)
 																currentImages, i);
 				NSDictionary* cacheEntry = [imageCache objectForKey:cur];
-				if([oldestDate compare:[cacheEntry objectForKey:@"Date"]] ==
+				if([oldestDate compare:[cacheEntry objectForKey:IL_DATE]] ==
 				   NSOrderedDescending)
 				{
 					// this is older!
-					oldestDate = [cacheEntry objectForKey:@"Date"];
+					oldestDate = [cacheEntry objectForKey:IL_DATE];
 					oldestPath = cur;
 				}
 			}

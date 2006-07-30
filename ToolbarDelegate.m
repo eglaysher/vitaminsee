@@ -106,7 +106,7 @@ static ToolbarDelegate* toolbarDelegateObject = 0;
 	NSToolbarItem* item = [[[NSToolbarItem alloc] 
 		initWithItemIdentifier:itemIdent] autorelease];
 	
-	if([itemIdent isEqual:ZoomInToolbarID])
+	if([itemIdent isEqualToString:ZoomInToolbarID])
 	{
 		[item setLabel:NSLocalizedString(@"Zoom in", @"Toolbar Item")];
 		[item setPaletteLabel:NSLocalizedString(@"Zoom in", @"Toolbar Item")];
@@ -114,7 +114,7 @@ static ToolbarDelegate* toolbarDelegateObject = 0;
 		[item setImage:[NSImage imageNamed:@"ZoomInToolbarImage"]];
 		[item setAction:@selector(zoomIn:)];
 	}
-	else if([itemIdent isEqual:ZoomOutToolbarID])
+	else if([itemIdent isEqualToString:ZoomOutToolbarID])
 	{
 		[item setLabel:NSLocalizedString(@"Zoom out", @"Toolbar Item")];
 		[item setPaletteLabel:NSLocalizedString(@"Zoom out", @"Toolbar Item")];
@@ -122,7 +122,7 @@ static ToolbarDelegate* toolbarDelegateObject = 0;
 		[item setImage:[NSImage imageNamed:@"ZoomOutToolbarImage"]];
 		[item setAction:@selector(zoomOut:)];
 	}
-	else if([itemIdent isEqual:ZoomToFitToolbarID])
+	else if([itemIdent isEqualToString:ZoomToFitToolbarID])
 	{
 		[item setLabel:NSLocalizedString(@"Zoom to fit", @"Toolbar Item")];
 		[item setPaletteLabel:NSLocalizedString(@"Zoom to fit", 
@@ -131,7 +131,7 @@ static ToolbarDelegate* toolbarDelegateObject = 0;
 		[item setImage:[NSImage imageNamed:@"ZoomToFitToolbarImage"]];
 		[item setAction:@selector(zoomToFit:)];
 	}
-	else if([itemIdent isEqual:ActualSizeToolbarID])
+	else if([itemIdent isEqualToString:ActualSizeToolbarID])
 	{
 		[item setLabel:NSLocalizedString(@"Actual Size", @"Toolbar Item")];
 		[item setPaletteLabel:NSLocalizedString(@"Actual Size", 
@@ -140,7 +140,7 @@ static ToolbarDelegate* toolbarDelegateObject = 0;
 		[item setImage:[NSImage imageNamed:@"ActualSizeToolbarImage"]];
 		[item setAction:@selector(actualSize:)];	
 	}
-	else if([itemIdent isEqual:RevealInFinderToolbarID])
+	else if([itemIdent isEqualToString:RevealInFinderToolbarID])
 	{
 		[item setLabel:NSLocalizedString(@"Finder", @"Toolbar Item")];
 		[item setPaletteLabel:NSLocalizedString(@"Reveal in Finder",
@@ -152,7 +152,7 @@ static ToolbarDelegate* toolbarDelegateObject = 0;
 			iconForApplication:@"Finder"]];
 		[item setAction:@selector(revealInFinder:)];
 	}
-	else if([itemIdent isEqual:ViewInPreviewToolbarID])
+	else if([itemIdent isEqualToString:ViewInPreviewToolbarID])
 	{
 		[item setLabel:NSLocalizedString(@"Preview", @"Toolbar Item")];
 		[item setPaletteLabel:NSLocalizedString(@"View in Preview", 
@@ -164,7 +164,7 @@ static ToolbarDelegate* toolbarDelegateObject = 0;
 			iconForApplication:@"Preview"]];
 		[item setAction:@selector(openInPreview:)];		
 	}
-	else if([itemIdent isEqual:MoveToTrashID])
+	else if([itemIdent isEqualToString:MoveToTrashID])
 	{
 		[item setLabel:NSLocalizedString(@"Delete", @"Toolbar Item")];
 		[item setPaletteLabel:NSLocalizedString(@"Delete", @"Toolbar Item")];
@@ -172,7 +172,7 @@ static ToolbarDelegate* toolbarDelegateObject = 0;
 		[item setImage:[NSImage imageNamed:@"ToolbarDeleteIcon"]];
 		[item setAction:@selector(moveToTrash:)];				
 	}
-	else if([itemIdent isEqual:EnclosingFolderID])
+	else if([itemIdent isEqualToString:EnclosingFolderID])
 	{
 		[item setLabel:NSLocalizedString(@"Enclosing", @"Toolbar Item")];
 		[item setPaletteLabel:NSLocalizedString(@"Enclosing Folder", @"Toolbar Item")];
@@ -180,7 +180,7 @@ static ToolbarDelegate* toolbarDelegateObject = 0;
 		[item setImage:[NSImage imageNamed:@"UpArrow"]];
 		[item setAction:@selector(goEnclosingFolder:)];						
 	}
-	else if([itemIdent isEqual:GotoComputerID])
+	else if([itemIdent isEqualToString:GotoComputerID])
 	{
 		[item setLabel:NSLocalizedString(@"Computer", @"Toolbar Item")];
 		[item setPaletteLabel:NSLocalizedString(@"Computer", @"Toolbar Item")];
@@ -188,7 +188,7 @@ static ToolbarDelegate* toolbarDelegateObject = 0;
 		[item setImage:[NSImage imageNamed:@"iMac"]];
 		[item setAction:@selector(goToComputer:)];				
 	}	
-	else if([itemIdent isEqual:GotoHomeID])
+	else if([itemIdent isEqualToString:GotoHomeID])
 	{
 		[item setLabel:NSLocalizedString(@"Home", @"Toolbar Item")];
 		[item setPaletteLabel:NSLocalizedString(@"Home", @"Toolbar Item")];
@@ -196,7 +196,7 @@ static ToolbarDelegate* toolbarDelegateObject = 0;
 		[item setImage:[NSImage imageNamed:@"HomeFolderIcon"]];
 		[item setAction:@selector(goToHomeDirectory:)];				
 	}
-	else if([itemIdent isEqual:GotoPicturesID])
+	else if([itemIdent isEqualToString:GotoPicturesID])
 	{
 		[item setLabel:NSLocalizedString(@"Pictures", @"Toolbar Item")];
 		[item setPaletteLabel:NSLocalizedString(@"Pictures", @"Toolbar Item")];
@@ -204,7 +204,7 @@ static ToolbarDelegate* toolbarDelegateObject = 0;
 		[item setImage:[NSImage imageNamed:@"ToolbarPicturesFolderIcon"]];
 		[item setAction:@selector(goToPicturesDirectory:)];
 	}
-	else if([itemIdent isEqual:GotoFolderID])
+	else if([itemIdent isEqualToString:GotoFolderID])
 	{
 		[item setLabel:NSLocalizedString(@"Go To...", @"Toolbar Item")];
 		[item setPaletteLabel:NSLocalizedString(@"Go To Folder...", @"Toolbar Item")];
@@ -213,13 +213,13 @@ static ToolbarDelegate* toolbarDelegateObject = 0;
 		[item setTarget:[ApplicationController controller]];
 		[item setAction:@selector(goToFolder:)];
 	}
-	else if([itemIdent isEqual:FavoritesID])
+	else if([itemIdent isEqualToString:FavoritesID])
 	{
 		// FavoritesToolbarItem is special.
 		item = [[[ComponentManager getInteranlComponentNamed:@"FavoritesMenu"] 
 			buildToolbarItemWithIdentifier:itemIdent] autorelease];
 	}
-	else if([itemIdent isEqual:NextPictureToolbarID])
+	else if([itemIdent isEqualToString:NextPictureToolbarID])
 	{
 		[item setLabel:NSLocalizedString(@"Next", @"Toolbar Item")];
 		[item setPaletteLabel:NSLocalizedString(@"Next", @"Toolbar Item")];
@@ -227,7 +227,7 @@ static ToolbarDelegate* toolbarDelegateObject = 0;
 		[item setImage:[NSImage imageNamed:@"NextToolbarImage"]];
 		[item setAction:@selector(goNextFile:)];
 	}
-	else if([itemIdent isEqual:PreviousPictureToolbarID])
+	else if([itemIdent isEqualToString:PreviousPictureToolbarID])
 	{
 		[item setLabel:NSLocalizedString(@"Previous", @"Toolbar Item")];
 		[item setPaletteLabel:NSLocalizedString(@"Previous", @"Toolbar Item")];

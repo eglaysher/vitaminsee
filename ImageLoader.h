@@ -31,14 +31,33 @@
 
 #import <Cocoa/Cocoa.h>
 
+// Scale value constants
 extern NSString* SCALE_IMAGE_PROPORTIONALLY;
 extern NSString* SCALE_IMAGE_TO_FIT;
 extern NSString* SCALE_IMAGE_TO_FIT_WIDTH;
 extern NSString* SCALE_IMAGE_TO_FIT_HEIGHT;
 
+// Smoothing value constants
 extern NSString* NO_SMOOTHING;
 extern NSString* LOW_SMOOTHING;
 extern NSString* HIGH_SMOOTHING;
+
+// ImageLoader structure constants
+extern NSString* IL_REQUESTER;
+extern NSString* IL_PATH;
+extern NSString* IL_PARTIAL;
+extern NSString* IL_SCALE_MODE;
+extern NSString* IL_VIEWING_AREA_HEIGHT;
+extern NSString* IL_VIEWING_AREA_WIDTH;
+extern NSString* IL_SMOOTHING;
+extern NSString* IL_IMAGE;
+extern NSString* IL_PIXEL_WIDTH;
+extern NSString* IL_PIXEL_HEIGHT;
+extern NSString* IL_SCALE_RATIO;
+
+extern NSString* IL_DATE;
+extern NSString* IL_IMAGE_REP;
+extern NSString* IL_DATA_SIZE;
 
 @class EGPath;
 

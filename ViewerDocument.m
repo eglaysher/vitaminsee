@@ -247,15 +247,15 @@
 	
 		NSMutableDictionary* dic = [NSMutableDictionary 
 			dictionaryWithObjectsAndKeys:
-				scaleMode, @"Scale Mode",
+				scaleMode, IL_SCALE_MODE,
 				[NSNumber numberWithDouble:[window viewingAreaWidth]],
-				@"Viewing Area Width",
+				IL_VIEWING_AREA_WIDTH,
 				[NSNumber numberWithDouble:[window viewingAreaHeight]], 
-				@"Viewing Area Height",
-				smoothing, @"Smoothing",
-				[NSNumber numberWithDouble:scaleRatio], @"Scale Ratio",
-				currentFile, @"Path",
-				self, @"Requester",
+				IL_VIEWING_AREA_HEIGHT,
+				smoothing, IL_SMOOTHING,
+				[NSNumber numberWithDouble:scaleRatio], IL_SCALE_RATIO,
+				currentFile, IL_PATH,
+				self, IL_REQUESTER,
 			nil];
 		
 //		NSLog(@"Task dictionary: %@", dic);
@@ -290,38 +290,36 @@
 {	
 //	NSLog(@"Receiving image!");
 	// If this is still the current file (i.e., not stale...)
-	if([[task objectForKey:@"Path"]  isEqual:currentFile]) {
-		NSImage* image = [task objectForKey:@"Image"];
+	if([[task objectForKey:IL_PATH]  isEqual:currentFile]) {
+		NSImage* image = [task objectForKey:IL_IMAGE];
 		
 		if(image && !documentClosed) {			
 			// Set the image
 			[window setImage:image];
 			
-			pixelWidth = [[task objectForKey:@"Pixel Width"] floatValue];
-			pixelHeight = [[task objectForKey:@"Pixel Height"] floatValue];				
+			pixelWidth = [[task objectForKey:IL_PIXEL_WIDTH] floatValue];
+			pixelHeight = [[task objectForKey:IL_PIXEL_HEIGHT] floatValue];				
 			
 			// Set the image size label
-			[window setImageSizeLabelText:NSMakeSize(
-				[[task objectForKey:@"Pixel Width"] floatValue],
-				[[task objectForKey:@"Pixel Height"] floatValue])];
+			[window setImageSizeLabelText:NSMakeSize(pixelWidth, pixelHeight)];
 			
 			// Set the size of the image in bytes
-			[window setFileSizeLabelText:[[task objectForKey:@"Data Size"] intValue]
-								 forPath:[task objectForKey:@"Path"]];
+			[window setFileSizeLabelText:[[task objectForKey:IL_DATA_SIZE] intValue]
+								 forPath:[task objectForKey:IL_PATH]];
 
 			// Set the zoom data on the status bar
 			[window setZoomStatusBarCellFromTask:task];
 			
 			// If we're in scale mode, update the zoom factor so that if the
 			// user zooms in or out, it's relative to the current image.
-			scaleRatio = [[task objectForKey:@"Scale Ratio"] floatValue];
+			scaleRatio = [[task objectForKey:IL_SCALE_RATIO] floatValue];
 		}
 	}
 
 	// Only stop the progress spinner (and the countdown to display it) if this
 	// task message doesn't have a @"Partial" tag on it (since the final results
 	// are on the way
-	if(![task objectForKey:@"Partial"]) 
+	if(![task objectForKey:IL_PARTIAL]) 
 		[self stopProgressIndicator];		
 	
 	[task release];

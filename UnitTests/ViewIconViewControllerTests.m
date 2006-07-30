@@ -139,4 +139,8 @@
 
 -(void)updateWindowTitle { }
 
+-(void)startProgressIndicator { }
+
+-(void)stopProgressIndicator { }
+
 @end

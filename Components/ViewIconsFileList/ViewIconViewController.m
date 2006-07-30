@@ -604,6 +604,9 @@ willDisplayCell:(id)cell
 		[directoryContents count]];
 
 	int i = 0, count = [directoryContents count];
+	if(count > 50)
+		[delegate startProgressIndicator];
+	
 	for(; i < count; ++i)
 	{
 		EGPath* curPath = (id)CFArrayGetValueAtIndex((CFArrayRef)directoryContents, i);
@@ -619,6 +622,9 @@ willDisplayCell:(id)cell
 	
 	// Now sort the list since we don't get files back in Finder-like order
 	[myFileList sortUsingSelector:@selector(compare:)];	
+
+	if(count > 50)
+		[delegate stopProgressIndicator];
 	
 	// Now let's keep our new list of files. (Note it was allocated earlier)
 	[fileList release];	
