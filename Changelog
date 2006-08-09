@@ -1,6 +1,8 @@
 0.7.2 Release
 -------------
-* [bugfix] Make VitaminSEE sort files like the Finder does
+* [bugfix] Make VitaminSEE sort files like the Finder does. This will sort
+  non-roman characters properly and will compare numbers as actual values 
+  instead of literal strings.
 * [bugfix] Deleting the last image in a directory will select the new last
   file instead of selecting no file.
 * [bugfix] Theoretically fix crashes where VitaminSEE and a haxie both try
@@ -14,6 +16,8 @@
   zooming to actual size, but is actually resizing the image down by two or 
   three pixels.
 * [bugfix] Correct typo in the Fullscreen File List palette.
+* [bugfix] Remember the size and location of the first window open. This needs
+  to be fixed for real, but this is better then nothing...
 * Add statusbar, moving information from right underneath the file list to the
   new status bar. The new status bar also displays the zoom ratio.
 * Add option in General Preferences that allows the user to change whether

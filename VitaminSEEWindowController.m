@@ -44,6 +44,8 @@
 
 #import <Carbon/Carbon.h>
 
+static int numberOfOpenWindows = 0;
+
 @implementation VitaminSEEWindowController
 
 +(void)initialize
@@ -77,6 +79,8 @@
 {
 	NSLog(@"Deallocating window!");
 	
+	numberOfOpenWindows--;
+	
 	[formater release];
 	[NSObject cancelPreviousPerformRequestsWithTarget:self];
 	[currentFileViewHolder setSubview:0];	
@@ -101,7 +105,12 @@
 	// Should it be displayed?
 	if([[NSUserDefaults standardUserDefaults] boolForKey:@"StatusBarHidden"] != [statusbar isHidden])
 		[self toggleStatusBar:self];
-		
+
+	// Move the window
+	numberOfOpenWindows++;
+	[self setShouldCascadeWindows:(numberOfOpenWindows != 1)];
+	[self setWindowFrameAutosaveName:@"VitaminSEE window"];
+	
 	// Build the toolbar
 	[[self window] setToolbar:[ToolbarDelegate buildToolbar]];
 	
