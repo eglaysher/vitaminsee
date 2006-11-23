@@ -76,6 +76,8 @@
 	BOOL setPathForFirstTime;
 	
 	int nextDocumentID;
+	
+	ViewerDocument* fullScreenViewerDocument;
 }
 
 -(NSNumber*)getNextAvailableID;
@@ -107,5 +109,7 @@
 -(void)addViewerDocument:(ViewerDocument*)vd;
 -(void)remvoeViewerDocument:(ViewerDocument*)vd;
 -(NSArray*)viewerDocuments;
+
+-(void)setFullScreenDocument:(ViewerDocument*)vd;
 
 @end

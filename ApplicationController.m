@@ -272,19 +272,35 @@ static ApplicationController* appControl;
  */
 -(BOOL)application:(NSApplication*)theApplication openFile:(NSString*)filename
 {
-	if([filename isDir]) 
+	if(fullScreenViewerDocument)
 	{
-		[[ViewerDocument alloc] initWithPath:[EGPath pathWithPath:filename]];
-		return YES;
+		if([filename isDir])
+		{
+			[fullScreenViewerDocument setDirectory:[EGPath pathWithPath:filename]];
+			return YES;
+		}
+		else if([filename isImage])
+		{
+			return [fullScreenViewerDocument focusOnFile:
+				[EGPath pathWithPath:filename]];
+		}
 	}
-	else if([filename isImage])
+	else
 	{
-		id doc = [[ViewerDocument alloc] initWithPath:[EGPath pathWithPath:
-			[filename stringByDeletingLastPathComponent]]];
-		[doc focusOnFile:[EGPath pathWithPath:filename]];
-		return YES;
+		if([filename isDir]) 
+		{
+			[[ViewerDocument alloc] initWithPath:[EGPath pathWithPath:filename]];
+			return YES;
+		}
+		else if([filename isImage])
+		{
+			id doc = [[ViewerDocument alloc] initWithPath:[EGPath pathWithPath:
+				[filename stringByDeletingLastPathComponent]]];
+			[doc focusOnFile:[EGPath pathWithPath:filename]];
+			return YES;
+		}
 	}
-
+	
 	AlertSoundPlay();
 	return NO;
 }
@@ -706,6 +722,12 @@ static ApplicationController* appControl;
 -(NSArray*)viewerDocuments
 {
 	return viewerDocuments;
+}
+
+-(void)setFullScreenDocument:(ViewerDocument*)vd
+{
+	// Don't take ownership...
+	fullScreenViewerDocument = vd;
 }
 
 @end

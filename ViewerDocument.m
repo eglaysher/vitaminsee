@@ -740,6 +740,9 @@
 			}
 		}
 		
+		// Alert the application controller that we are now fullscreen
+		[[ApplicationController controller] setFullScreenDocument:self];
+		
 		// Become fullscreen
 		id old = window;
 		window = [[[ComponentManager getInteranlComponentNamed:@"FullScreenMode"]
@@ -773,6 +776,9 @@
 		[self redraw];
 		[old close];
 		[window setShouldCloseDocument:YES];
+
+		// Alert the application controller that we are not fullscreen anymore
+		[[ApplicationController controller] setFullScreenDocument:nil];
 		
 		// Now redisplay the file list
 		[fileList makeFirstResponderTo:[window window]];
