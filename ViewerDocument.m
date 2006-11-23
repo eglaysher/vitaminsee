@@ -73,6 +73,16 @@
 	
 	// Release ourselves from the ApplicationController's list of viewers
 	[[ApplicationController controller] remvoeViewerDocument:self];
+
+	id appController = [ApplicationController controller];
+	[NSObject cancelPreviousPerformRequestsWithTarget:appController
+											 selector:@selector(becomeMainDocument:)
+											   object:self];
+	
+	// Remove ourselves from the ImageLoader. We do this before any other
+	// cleanup because there's a race condition where some parts of 
+	// ViewerDocument get released while receiveImage: is running...
+	[ImageLoader unregisterRequester:self];
 	
 	documentClosed = YES;
 	[currentFile release];
@@ -84,13 +94,6 @@
 	
 	[undoManager release];
 	
-	[ImageLoader unregisterRequester:self];
-	
-	// Cancel future acts.
-	id appController = [ApplicationController controller];
-	[NSObject cancelPreviousPerformRequestsWithTarget:appController
-											 selector:@selector(becomeMainDocument:)
-											   object:self];
 	[super close];
 	
 	// Release ourselves; we aren't owned by any other object
