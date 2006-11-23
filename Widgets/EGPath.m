@@ -36,6 +36,8 @@
 #import <Carbon/Carbon.h>
 #import <SystemConfiguration/SystemConfiguration.h>
 
+#include <sys/stat.h>
+
 @interface EGPath (Private)
 -(NSArray*)buildEGPathArrayFromArrayOfNSStrings:(NSArray*)paths;
 @end
@@ -508,6 +510,7 @@ static NSString* egPathRootDisplayName = 0;
 -(void)dealloc
 {
 	[fileSystemPath release];
+	[cachedDisplayName release];
 	[super dealloc];
 }
 	
@@ -529,10 +532,19 @@ static NSString* egPathRootDisplayName = 0;
 
 -(NSString*)displayName
 {
-	if([fileSystemPath isLink])
-		return [fileSystemPath lastPathComponent];
+	if(!cachedDisplayName)
+	{
+	struct stat stat_p;
+	// We use lstat because this is actually a bottleneck and turns out to be 
+	// the majority of the time spent SORTING lists of EGPaths!!!
+	lstat([fileSystemPath fileSystemRepresentation], &stat_p);
+
+	if(S_ISLNK(stat_p.st_mode))
+		cachedDisplayName = [[fileSystemPath lastPathComponent] retain];
 	else
-		return [[NSFileManager defaultManager] displayNameAtPath:fileSystemPath];
+		cachedDisplayName = [[[NSFileManager defaultManager] displayNameAtPath:fileSystemPath] retain];
+	}
+	return cachedDisplayName;
 }
 
 // ----------------------------------------------------------------------------

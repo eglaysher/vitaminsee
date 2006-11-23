@@ -612,7 +612,7 @@ willDisplayCell:(id)cell
 		EGPath* curPath = (id)CFArrayGetValueAtIndex((CFArrayRef)directoryContents, i);
 		NSString* currentFileWithPath = [curPath fileSystemPath];
 		
-		if(([curPath isDirectory] || [currentFileWithPath isImage]) &&
+		if(([currentFileWithPath isImage] || [curPath isDirectory]) &&
 		   [currentFileWithPath isVisible])
 		{
 			// Before we  do ANYTHING, we make note of the file's modification time.
