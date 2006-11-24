@@ -78,6 +78,9 @@
 	// Tracks the previous state of other windows while THIS window is in full-
 	// screen mode. {ViewerDocument => NSBoolean(whether it was visible before)}
 	NSMutableArray* previousVisibleState;
+
+	// Save the location of the normal window when going into fullscreen
+	NSRect windowLocation;
 }
 
 -(id)init;

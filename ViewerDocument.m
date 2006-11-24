@@ -745,6 +745,7 @@
 		
 		// Become fullscreen
 		id old = window;
+		windowLocation = [[old window] frame];
 		window = [[[ComponentManager getInteranlComponentNamed:@"FullScreenMode"]
 			build] autorelease];
 		[self addWindowController:window];
@@ -769,6 +770,7 @@
 		// Recreate the real VitaminSEE window.
 		window = [[[VitaminSEEWindowController alloc] initWithFileList:fileList] autorelease];
 		[self addWindowController:window];		
+		[[window window] setFrame:windowLocation display:NO];
 		[window setFileList:fileList];
 		[window updateWindowTitle];
 		
