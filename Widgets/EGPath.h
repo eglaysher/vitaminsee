@@ -87,12 +87,14 @@
 
 @interface EGPathFilesystemPath : EGPath {
 	NSString* fileSystemPath;
+	NSString* parentDirectory;
 	NSString* cachedDisplayName;
 }
 
 +(id)pathWithPath:(NSString*)path;
 -(id)initWithPath:(NSString*)path;
 
+-(NSString*)parentDirectory;
 -(id)pathByAppendingPathComponent:(NSString*)pathComponent;
 
 @end

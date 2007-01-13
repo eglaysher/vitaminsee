@@ -164,7 +164,12 @@ static CollatorRef collatorRef = 0;
 	if([self isMemberOfClass:[object class]])
 	{
 		if([self isKindOfClass:[EGPathFilesystemPath class]])
-		{			
+		{
+			// Make sure they're in the same directory
+			result = [[self parentDirectory] compare:[object parentDirectory]];
+			if(result != NSOrderedSame)
+				return result;
+											
 			if(!collationKey)
 				[self buildCollationKey];
 			if(![object collationKey])
@@ -499,7 +504,8 @@ static NSString* egPathRootDisplayName = 0;
 {
 	if(self = [super init])
 	{
-		fileSystemPath = [[path stringByStandardizingPath] retain];		
+		fileSystemPath = [[path stringByStandardizingPath] retain];
+		parentDirectory = [[fileSystemPath stringByDeletingLastPathComponent] retain];
 	}
 	
 	return self;
@@ -510,6 +516,7 @@ static NSString* egPathRootDisplayName = 0;
 -(void)dealloc
 {
 	[fileSystemPath release];
+	[parentDirectory release];
 	[cachedDisplayName release];
 	[super dealloc];
 }
@@ -727,6 +734,13 @@ static NSString* egPathRootDisplayName = 0;
 -(id)pathByAppendingPathComponent:(NSString*)pathComponent
 {
 	return [EGPath pathWithPath:[fileSystemPath stringByAppendingPathComponent:pathComponent]];
+}
+
+// ----------------------------------------------------------------------------
+
+-(NSString*)parentDirectory
+{
+	return parentDirectory;
 }
 
 @end
