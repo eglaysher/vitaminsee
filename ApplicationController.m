@@ -31,7 +31,7 @@
 #include <sys/stat.h>
 
 
-#import "UKCrashReporter.h"
+//#import "UKCrashReporter.h"
 //#import "FSNodeInfo.h"
 //#import "FSBrowserCell.h"
 
@@ -60,7 +60,7 @@
 #import "EGPath.h"
 //#import "HigherOrderMessaging.h"
 #import "CurrentFilePlugin.h"
-#import "UKUpdateChecker.h"
+//#import "UKUpdateChecker.h"
 #import "ImageLoader.h"
 
 #import "ThumbnailManager.h"
@@ -263,8 +263,12 @@ static ApplicationController* appControl;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-	UKCrashReporterCheckForCrash();
-	[checker startup];
+//  We used to check for crash reports, but since my website is going down, this
+//  is a black hole. :(
+//	UKCrashReporterCheckForCrash();
+
+//  Since this is the final release, disable the update checking.
+//	[checker startup];
 }
 
 /** Handle the opening of files by double-clicks from the Finder and drags to

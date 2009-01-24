@@ -55,8 +55,8 @@
 	IBOutlet NSMenuItem* openWithMenuItem;
 
 	// Helper objects that check for updates, etc.
-	IBOutlet UKUpdateChecker* checker;
-	IBOutlet UKFeedbackProvider* feedbackProvider;
+//	IBOutlet UKUpdateChecker* checker;
+//	IBOutlet UKFeedbackProvider* feedbackProvider;
 	
 	// Open With Menu that needs initialization
 	EGOpenWithMenuDelegate* openWithMenuDelegate;
