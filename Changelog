@@ -1,5 +1,9 @@
-0.7.2 Release
--------------
+0.7.2 Release (January 24th, 2008)
+----------------------------------
+* Turns off feedback and autoupdate; this stops you crazy users from
+  DDOSing elliotglaysher.org.
+* This release is more of a dump of everything that I've had in my local copy
+  for years and is probably the final release by me.
 * [bugfix] Make VitaminSEE sort files like the Finder does. This will sort
   non-roman characters properly and will compare numbers as actual values 
   instead of literal strings.
@@ -20,12 +24,6 @@
   to be fixed for real, but this is better then nothing...
 * Add statusbar, moving information from right underneath the file list to the
   new status bar. The new status bar also displays the zoom ratio.
-* Add option in General Preferences that allows the user to change whether
-  VitaminSEE should periodicly check for updates.
-* Allow people to optionally specify an email address in the Feedback form.
-  (I've been getting a lot of feedback by people wanting a reply without 
-  giving me any information on who they are)
-
 
 0.7.1.2 Bugfix Release (March 30th, 2006)
 -----------------------------------------
