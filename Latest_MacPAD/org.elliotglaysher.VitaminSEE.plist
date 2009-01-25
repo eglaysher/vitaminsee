@@ -15,7 +15,7 @@
 	<key>companyPhone</key>
 	<string></string>
 	<key>companyWebSite</key>
-	<string>www.elliotglaysher.org</string>
+	<string>http://eglaysher.github.com/vitaminsee</string>
 	<key>fileBundleID</key>
 	<string>org.elliotglaysher.VitaminSEE</string>
 	<key>fileCreator</key>
@@ -36,9 +36,8 @@
 	<string>Fast image browser with Fullscreen</string>
 	<key>productDownloadURL</key>
 	<array>
-		<string>http://www.elliotglaysher.org/Releases/VitaminSEE%200.7.1.2.dmg</string>
-		<string>http://www.elliotglaysher.org/Releases/VitaminSEE%200.7.1.2-Panther.dmg</string>
-		<string>http://www.elliotglaysher.org/Releases/VitaminSEE%200.7.1.2%20Source.tar.bz2</string>
+		<string>http://www.elliotglaysher.org/Releases/VitaminSEE%200.7.2.dmg</string>
+		<string>http://github.com/eglaysher/vitaminsee/tarball/VitaminSEE-0.7.2</string>
 	</array>
 	<key>productFileSize</key>
 	<string></string>
@@ -62,18 +61,17 @@
 	<string>VitaminSEE</string>
 	<key>productOS</key>
 	<array>
-		<string>10.3.9</string>
-		<string>10.4.4</string>
+		<string>10.4.11</string>
 	</array>
 	<key>productPageURL</key>
 	<string>http://www.elliotglaysher.org/vitaminsee</string>
 	<key>productPrice</key>
 	<string></string>
 	<key>productReleaseNotes</key>
-	<string>Fixes a number of memory leaks; VitaminSEE was not properly releasing memory when a window was closed. This build fixes that.</string>
+	<string>Disable crash reporting and auto updating since it's DDOSing my website. I haven't really touched VitaminSEE in years, so I've forgotten about all the bugfixes; check the included Changelist. I've dog fooded this for years so this is obviously the most tested version of VitaminSEE ever. :)</string>
 	<key>productRequirements</key>
-	<string>Mac OS 10.3.9, Mac OS 10.4.4 or later</string>
+	<string>Mac OS 10.4.4 or later</string>
 	<key>productVersion</key>
-	<string>0.7.1.2</string>
+	<string>0.7.2</string>
 </dict>
 </plist>
