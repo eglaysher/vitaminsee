@@ -7,12 +7,14 @@ VitaminSEE is an image viewer for OSX that focuses on interface responsiveness
 and speed. It offers a clean interface and fast load times. VitaminSEE will
 automatically thumbnail your images, optionally saving them with the files.
 
-VitaminSEE has been tested on OS X, 10.4. I have gotten several bug reports
-about it freezing and crashing at startup under Leopard; I can not verify this
-because OSX is no longer my <a href="http://www.ubuntu.com">primary operating
-system</a>, and I have no intention of buying Leopard. Anyone who wishes
-to fork VitaminSEE to port it to Apple's newest operating system does so with
-my blessing: the code is available under the GNU GPLv2.
+VitaminSEE has been tested on OS X, 10.4. It has been superficially tested
+under 10.5. I've abandoned the project since OSX is no longer my <a
+href="http://www.ubuntu.com">primary operating system</a>. Anyone who wishes to
+fork VitaminSEE to port it to Apple's newest operating system does so with my
+blessing: the code is available under the GNU GPLv2.
+
+Version 0.7.2 will probably be the last version released by me, unless I
+uncharacteristically start liking proprietary operating systems again.
 
 ### Features
 - VitaminSEE is quick. I've strived to make this the fastest image viewer
@@ -29,13 +31,11 @@ href="screenshots.html">screenshots</a>?
 ### Downloads
 
 VitaminSEE is distributed as a Universal Binary for people who use Tiger
-(10.4.x), and a compatibility build for people who still use Panther
-(10.3).
+(10.4.x). (Psst! It also works with Leopard!)
 
 <ul>
-<li><a href="http://elliotglaysher.org/Releases/VitaminSEE 0.7.1.2.dmg">VitaminSEE v0.7.1.2 (Universal
-  Binary)</a></li>
-<li><a href="http://elliotglaysher.org/Releases/VitaminSEE 0.7.1.2-Panther.dmg">VitaminSEE v0.7.1.2 (for 10.3.x)</a></li>
+<li><a href="http://elliotglaysher.org/Releases/VitaminSEE 0.7.2.dmg">VitaminSEE v0.7.2 (Universal Binary)</a></li>
+<li><a href="http://elliotglaysher.org/Releases/VitaminSEE 0.7.1.2.dmg">VitaminSEE v0.7.1.2 (Universal Binary)</a> -- This was the previous stable release. I'm listing it here just in case people have problems with 0.7.2.</li>
 </ul>
 
 VitaminSEE is offered under the <a
