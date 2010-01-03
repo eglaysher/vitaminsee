@@ -26,7 +26,7 @@ uncharacteristically start liking proprietary operating systems again.
 - VitaminSEE allows you to tag your pictures with keywords.
 
 A picture is worth a thousand words, so how about some <a
-href="screenshots.html">screenshots</a>?
+href="http://www.elliotglaysher.org/vitaminsee/screenshots/">screenshots</a>?
 
 ### Downloads
 
@@ -34,8 +34,8 @@ VitaminSEE is distributed as a Universal Binary for people who use Tiger
 (10.4.x). (Psst! It also works with Leopard!)
 
 <ul>
-<li><a href="http://elliotglaysher.org/Releases/VitaminSEE 0.7.2.dmg">VitaminSEE v0.7.2 (Universal Binary)</a></li>
-<li><a href="http://elliotglaysher.org/Releases/VitaminSEE 0.7.1.2.dmg">VitaminSEE v0.7.1.2 (Universal Binary)</a> -- This was the previous stable release. I'm listing it here just in case people have problems with 0.7.2.</li>
+<li><a href="http://www.elliotglaysher.org/Releases/VitaminSEE 0.7.2.dmg">VitaminSEE v0.7.2 (Universal Binary)</a></li>
+<li><a href="http://www.elliotglaysher.org/Releases/VitaminSEE 0.7.1.2.dmg">VitaminSEE v0.7.1.2 (Universal Binary)</a> -- This was the previous stable release. I'm listing it here just in case people have problems with 0.7.2.</li>
 </ul>
 
 VitaminSEE is offered under the <a
