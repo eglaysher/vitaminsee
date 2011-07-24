@@ -7,6 +7,12 @@ VitaminSEE is an image viewer for OSX that focuses on interface responsiveness
 and speed. It offers a clean interface and fast load times. VitaminSEE will
 automatically thumbnail your images, optionally saving them with the files.
 
+<!-- Place this tag where you want the +1 button to render -->
+<div style="float: right; margin-left: 10px;">
+  <div class="g-plusone" data-size="tall" data-count="true">
+  </div>
+</div>
+
 VitaminSEE has been tested on OS X, 10.4. It has been superficially tested
 under 10.5. I've abandoned the project since OSX is no longer my <a
 href="http://www.ubuntu.com">primary operating system</a>. Anyone who wishes to
