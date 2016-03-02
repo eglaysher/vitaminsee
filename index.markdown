@@ -40,8 +40,8 @@ VitaminSEE is distributed as a Universal Binary for people who use Tiger
 (10.4.x). (Psst! It also works with Leopard!)
 
 <ul>
-<li><a href="http://eglaysher.github.io/Releases/Releases/VitaminSEE 0.7.2.dmg">VitaminSEE v0.7.2 (Universal Binary)</a></li>
-<li><a href="http://eglaysher.github.io/Releases/Releases/VitaminSEE 0.7.1.2.dmg">VitaminSEE v0.7.1.2 (Universal Binary)</a> -- This was the previous stable release. I'm listing it here just in case people have problems with 0.7.2.</li>
+<li><a href="http://eglaysher.github.io/Releases/VitaminSEE 0.7.2.dmg">VitaminSEE v0.7.2 (Universal Binary)</a></li>
+<li><a href="http://eglaysher.github.io/Releases/VitaminSEE 0.7.1.2.dmg">VitaminSEE v0.7.1.2 (Universal Binary)</a> -- This was the previous stable release. I'm listing it here just in case people have problems with 0.7.2.</li>
 </ul>
 
 VitaminSEE is offered under the <a
